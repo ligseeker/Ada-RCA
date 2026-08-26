@@ -1,0 +1,9 @@
+{
+  "case_count": 90,
+  "dataset": "re2ob",
+  "feature_dimensions": [
+    68
+  ],
+  "label_free": true,
+  "variant": "a3"
+}
