@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-P3-A2 zero-model morphology audit.
+P3-A2 bootstrap comparisons and P3-G1 decision.
 
 ## Frozen Protocol Version
 
@@ -16,7 +16,7 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 - P3-A0: PASS.
 - P3-A0.5: PASS.
 - P3-A1: PASS (diagnostic completed).
-- P3-A2: NOT STARTED.
+- P3-A2: RUNS COMPLETE; bootstrap pending.
 - P3-G1: NOT STARTED.
 
 ## Current Blocker
@@ -25,15 +25,15 @@ None. P3-R0, P3-A0, and P3-A0.5 passed. The 514 blank timestamp rows in two RE2-
 
 ## Latest Experiment
 
-P3-A1 magnitude-inversion audit, generated from commit `38a8d78deb01d5dacb39ef98e7c5b04e699aeb18`. OB MI-1/MI-3 are 66/25 cases; TT MI-1/MI-3 are 90/85 cases.
+P3-A2 five zero-model OOF variants, generated from commit `f974c8c0bb6fe487ebcbe54b33d28276846a0708`; bootstrap and P3-G1 gate are pending.
 
 ## Latest Commit
 
-Latest completed audit implementation commit: `38a8d78deb01d5dacb39ef98e7c5b04e699aeb18`; feature artifact commit: `4fdea9da691ca738ffb706d3cc2141c7cca6f796`; representation freeze commit: `7cd6d418a114978b33838e788346febbeae71818`.
+Latest completed experiment commit: `f974c8c0bb6fe487ebcbe54b33d28276846a0708`; MI audit commit: `650b59d90d0cc5baefadc80f8c8dc80d778fe84c`.
 
 ## Next Authorized Action
 
-Run the five frozen zero-model OOF variants independently on OB and TT, then recompute metrics from prediction artifacts.
+Run fixed-seed 10,000-resample paired bootstrap for Z3−Z1 and Z3−Z3-SHUFFLE, then apply P3-G1 exactly.
 
 ## Decision Log
 
@@ -92,3 +92,11 @@ Run the five frozen zero-model OOF variants independently on OB and TT, then rec
 - Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
 - Proposed Revision: None.
 - Scientific Consequence: Frozen magnitude alone often does not place the root first, especially in TT. This diagnostic does not establish that morphology helps; P3-A2 is required.
+
+### 2026-08-26 — P3-A2 zero-model OOF runs
+
+- Frozen Rule: Run only Z0, Z1, Z2, Z3, and Z3-SHUFFLE with fixed L2 logistic regression and train-fold-only scaling.
+- New Evidence: All 10 dataset×variant runs produced 90/90 unique OOF predictions and complete rankings. Z3 Avg@5 is 0.9400 (OB) and 0.7044 (TT); Z1 is 0.9267 (OB) and 0.7600 (TT). Z3-SHUFFLE is 0.7556 (OB) and 0.4422 (TT).
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: The preregistered gate comparison is mixed before uncertainty analysis; bootstrap is mandatory and no neural model is authorized yet.
