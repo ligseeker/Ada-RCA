@@ -59,6 +59,12 @@ def aggregate(rows):
     return {"cases": len(rows), "AC@1": float(np.mean([row["AC@1"] for row in rows])), "AC@3": float(np.mean([row["AC@3"] for row in rows])), "AC@5": float(np.mean([row["AC@5"] for row in rows])), "Avg@5": float(np.mean([row["Avg@5"] for row in rows])), "MRR": float(np.mean([row["MRR"] for row in rows])), "mean_root_rank": float(np.mean([row["rank"] for row in rows]))}
 
 
+def difference_or_none(left, right, metric):
+    if not left.get("cases") or not right.get("cases"):
+        return None
+    return float(left[metric] - right[metric])
+
+
 def transition_label(left_rank, right_rank):
     return "improved" if right_rank < left_rank else "degraded" if right_rank > left_rank else "unchanged"
 
@@ -94,7 +100,7 @@ def subset_analysis(predictions, mi):
         for subset, key, expected in (("MI-1", "mi_1", True), ("non-MI-1", "mi_1", False), ("MI-3", "mi_3", True), ("non-MI-3", "mi_3", False)):
             case_ids = [case_id for case_id, row in membership.items() if bool(row[key]) == expected]
             report[dataset][subset] = {variant: aggregate(predictions[dataset][variant][case_id] for case_id in case_ids) for variant in VARIANTS}
-            report[dataset][subset]["z2_minus_z1"] = {metric: report[dataset][subset]["z2"].get(metric, float("nan")) - report[dataset][subset]["z1"].get(metric, float("nan")) for metric in ("Avg@5", "AC@1", "mean_root_rank")}
+            report[dataset][subset]["z2_minus_z1"] = {metric: difference_or_none(report[dataset][subset]["z2"], report[dataset][subset]["z1"], metric) for metric in ("Avg@5", "AC@1", "mean_root_rank")}
     return report
 
 

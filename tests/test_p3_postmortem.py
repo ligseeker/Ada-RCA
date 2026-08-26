@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.p3_postmortem import case_metrics, transition_label
+from scripts.p3_postmortem import aggregate, case_metrics, difference_or_none, transition_label
 
 
 class P3PostmortemTest(unittest.TestCase):
@@ -12,6 +12,7 @@ class P3PostmortemTest(unittest.TestCase):
         self.assertEqual(transition_label(3, 2), "improved")
         self.assertEqual(transition_label(2, 3), "degraded")
         self.assertEqual(transition_label(2, 2), "unchanged")
+        self.assertIsNone(difference_or_none(aggregate([]), aggregate([]), "Avg@5"))
 
 
 if __name__ == "__main__":
