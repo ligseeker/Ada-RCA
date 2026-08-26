@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-P3-A1 magnitude-inversion audit.
+P3-A2 zero-model morphology audit.
 
 ## Frozen Protocol Version
 
@@ -15,7 +15,7 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 - P3-R0: PASS.
 - P3-A0: PASS.
 - P3-A0.5: PASS.
-- P3-A1: NOT STARTED.
+- P3-A1: PASS (diagnostic completed).
 - P3-A2: NOT STARTED.
 - P3-G1: NOT STARTED.
 
@@ -25,15 +25,15 @@ None. P3-R0, P3-A0, and P3-A0.5 passed. The 514 blank timestamp rows in two RE2-
 
 ## Latest Experiment
 
-P3-A0.5 full feature extraction, generated from commit `19a463cdc138083b38d3a8fe042e03cb73bbf4d1`; OB/TT each 90 cases and all arrays finite. No ranking performance result has been generated.
+P3-A1 magnitude-inversion audit, generated from commit `38a8d78deb01d5dacb39ef98e7c5b04e699aeb18`. OB MI-1/MI-3 are 66/25 cases; TT MI-1/MI-3 are 90/85 cases.
 
 ## Latest Commit
 
-Latest completed audit commit: `19a463cdc138083b38d3a8fe042e03cb73bbf4d1`; representation freeze commit: `7cd6d418a114978b33838e788346febbeae71818`; split implementation commit: `ca4a49b103fe5e688bb9e8f27756e5944fab3f51`.
+Latest completed audit implementation commit: `38a8d78deb01d5dacb39ef98e7c5b04e699aeb18`; feature artifact commit: `4fdea9da691ca738ffb706d3cc2141c7cca6f796`; representation freeze commit: `7cd6d418a114978b33838e788346febbeae71818`.
 
 ## Next Authorized Action
 
-Run the frozen, label-free magnitude-inversion audit and preserve all MI-1/MI-3 cases.
+Run the five frozen zero-model OOF variants independently on OB and TT, then recompute metrics from prediction artifacts.
 
 ## Decision Log
 
@@ -84,3 +84,11 @@ Run the frozen, label-free magnitude-inversion audit and preserve all MI-1/MI-3 
 - Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
 - Proposed Revision: None.
 - Scientific Consequence: P3-A1 magnitude inversion is authorized; no model result has been inspected.
+
+### 2026-08-26 — P3-A1 magnitude inversion
+
+- Frozen Rule: Rank by the label-free frozen `A_i`; report MI-1/MI-3 overall and by all six fault types.
+- New Evidence: OB has MI-1 66/90 (0.7333) and MI-3 25/90 (0.2778). TT has MI-1 90/90 (1.0000) and MI-3 85/90 (0.9444). Complete root-rank distributions are preserved in `artifacts/audits/magnitude_inversion.json`.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: Frozen magnitude alone often does not place the root first, especially in TT. This diagnostic does not establish that morphology helps; P3-A2 is required.
