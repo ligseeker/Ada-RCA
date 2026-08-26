@@ -2,11 +2,17 @@
 
 ## Current Phase
 
-Stopped after P3-G1 morphology signal gate.
+P4-G0: PROTOCOL_FROZEN. Implementation, tests, and configs are not yet frozen.
+No P3-M post-mortem result has been generated under the P4 stage.
 
 ## Frozen Protocol Version
 
 Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stores the protocol as `docs/RCA_P3_Research_Execution_Protocol_V0.6_min.md`; the requested `docs/RESEARCH_DESIGN_V0.6_MIN.md` path is absent and is treated as a filename alias only. Protocol content is not being changed.
+
+P4-G0 Minimal Comparative Protocol V0.7 is frozen in
+`docs/RCA_P4_G0_MINIMAL_COMPARATIVE_PROTOCOL_V0.7.md` before any P3-M
+exploratory analysis. It preserves the P3 representation and split and freezes
+the A1-A0 gate.
 
 ## Completed Gates
 
@@ -18,13 +24,14 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 - P3-A1: PASS (diagnostic completed).
 - P3-A2: PASS (five zero-model OOF variants and integrity checks complete).
 - P3-G1: NO-GO.
+- P3-G1 status: CLOSED; it is not reinterpreted by P4.
+- P4-G0: PROTOCOL_FROZEN.
 
 ## Current Blocker
 
-The frozen morphology hypothesis is not supported by P3-G1. Autonomous
-execution is stopped; no neural RCA stage is authorized. The 514 blank
-timestamp rows in two RE2-OB `simple_metrics.csv` files remain explicit
-missingness evidence.
+None for implementing the frozen P4-G0 minimal comparative test. No neural RCA
+stage or learned comparative model is authorized. The 514 blank timestamp rows
+in two RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
 
 ## Latest Experiment
 
@@ -38,10 +45,27 @@ P3-G1 fixed-seed paired bootstrap, committed in `297cc4eec3eb039bc416576014b3c97
 
 ## Next Authorized Action
 
-None. `STOPPED: MORPHOLOGY HYPOTHESIS NOT SUPPORTED`. Any future work requires
-an explicit user decision and may not silently alter the frozen gate or result.
+Implement and freeze the deterministic percentile transform, conditional-logit
+scorer, evaluation/diagnostic skeleton, tests, and P4 configs. P3-M may run only
+after those implementation and config commits. Learned comparative modeling is
+`NOT YET AUTHORIZED`.
 
 ## Decision Log
+
+### 2026-08-27 — P4-G0 minimal comparative protocol freeze
+
+- Frozen Rule: Test A1-A0 as the sole primary H2 comparison using the frozen
+  Z1 evidence, deterministic within-event feature-wise percentiles, identical
+  event-level conditional-logit scorers, lambda 1.0, frozen repetition OOF,
+  and the preregistered five-condition gate plus integrity checks.
+- New Evidence: No P4 performance result and no new P3 post-mortem result was
+  inspected before this freeze. Repository audit found a clean `main` worktree
+  at `e5103bdb1be648bcda1d54ad91f387dc29a7a68e`; frozen OB/TT inputs, features,
+  splits, predictions, and audits are present and consistent with governance.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: P4 implementation may proceed. P3-G1 remains
+  `NO-GO / CLOSED`; P4 cannot retroactively rescue it.
 
 ### 2026-08-26 — Governance initialization
 
