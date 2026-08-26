@@ -1,0 +1,8 @@
+variant: A1
+common: common.yaml
+representation: Z1
+relative: true
+absolute_dimension: 32
+relative_dimension: 32
+input_dimension: 64
+scorer: conditional_logit

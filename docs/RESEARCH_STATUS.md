@@ -2,8 +2,8 @@
 
 ## Current Phase
 
-P4-G0: PROTOCOL_FROZEN. Implementation, tests, and configs are not yet frozen.
-No P3-M post-mortem result has been generated under the P4 stage.
+P4-G0: IMPLEMENTED / CONFIG_FROZEN. No P3-M post-mortem result and no formal
+P4 result has been generated under the P4 stage.
 
 ## Frozen Protocol Version
 
@@ -26,6 +26,8 @@ the A1-A0 gate.
 - P3-G1: NO-GO.
 - P3-G1 status: CLOSED; it is not reinterpreted by P4.
 - P4-G0: PROTOCOL_FROZEN.
+- P4-G0 implementation/tests: IMPLEMENTED.
+- P4-G0 configs: FROZEN.
 
 ## Current Blocker
 
@@ -45,10 +47,9 @@ P3-G1 fixed-seed paired bootstrap, committed in `297cc4eec3eb039bc416576014b3c97
 
 ## Next Authorized Action
 
-Implement and freeze the deterministic percentile transform, conditional-logit
-scorer, evaluation/diagnostic skeleton, tests, and P4 configs. P3-M may run only
-after those implementation and config commits. Learned comparative modeling is
-`NOT YET AUTHORIZED`.
+Run the frozen P3-M exploratory post-mortem from committed P3 predictions.
+P4 implementation/config changes based on those results are forbidden. Learned
+comparative modeling is `NOT YET AUTHORIZED`.
 
 ## Decision Log
 
@@ -66,6 +67,19 @@ after those implementation and config commits. Learned comparative modeling is
 - Proposed Revision: None.
 - Scientific Consequence: P4 implementation may proceed. P3-G1 remains
   `NO-GO / CLOSED`; P4 cannot retroactively rescue it.
+
+### 2026-08-27 — P4-G0 implementation and config freeze
+
+- Frozen Rule: Use only A0/A1/A2/A3 with dimensions 32/64/68/136, the sole
+  within-event percentile transform, train-fold-only scaling, lambda 1.0,
+  float64 zero-initialized SciPy L-BFGS-B, tolerance 1e-8, max_iter 1000, and
+  the frozen P3 repetition split.
+- New Evidence: The full repository suite passes 37 tests. No formal P4 result
+  or new P3-M result was inspected before the implementation/config freeze.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: P3-M is now authorized as exploratory analysis, but
+  cannot modify P4 scientific design, implementation, or configs.
 
 ### 2026-08-26 — Governance initialization
 

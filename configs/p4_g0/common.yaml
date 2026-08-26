@@ -1,0 +1,23 @@
+protocol: RCA_P4_G0_MINIMAL_COMPARATIVE_PROTOCOL_V0.7
+datasets: [re2ob, re2tt]
+dataset_training: independent
+candidate_registry: frozen_complete_registry_no_pruning
+split: frozen_p3_three_fold_oof
+fold_mapping: repetition_1_to_fold_0_repetition_2_to_fold_1_repetition_3_to_fold_2
+lambda: 1.0
+optimizer: scipy_L-BFGS-B
+initialization: zeros_float64
+max_iter: 1000
+gradient_tolerance: 1.0e-8
+scaler: train_fold_candidate_rows_only
+percentile: feature_wise_within_event_ascending_average_rank_scaled_by_N_minus_1
+bootstrap_resamples: 10000
+bootstrap_seed: 20260826
+metrics: [AC@1, AC@3, AC@5, Avg@5, MRR]
+primary_comparison: A1_minus_A0
+primary_metric: Avg@5
+ac1_guardrail: -0.01
+practical_mean_delta: 0.01
+bootstrap_mean_ci_lower: greater_than_zero
+formal_output_root: artifacts/p4_g0
+model_selection: none_deterministic_single_fit
