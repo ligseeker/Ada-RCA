@@ -2,8 +2,8 @@
 
 ## Current Phase
 
-P4-G0: IMPLEMENTED / CONFIG_FROZEN. No P3-M post-mortem result and no formal
-P4 result has been generated under the P4 stage.
+P4-G0: IMPLEMENTED / CONFIG_FROZEN. P3-M exploratory post-mortem is complete.
+No formal P4 result has been generated.
 
 ## Frozen Protocol Version
 
@@ -28,6 +28,7 @@ the A1-A0 gate.
 - P4-G0: PROTOCOL_FROZEN.
 - P4-G0 implementation/tests: IMPLEMENTED.
 - P4-G0 configs: FROZEN.
+- P3-M exploratory post-mortem: COMPLETE.
 
 ## Current Blocker
 
@@ -47,8 +48,8 @@ P3-G1 fixed-seed paired bootstrap, committed in `297cc4eec3eb039bc416576014b3c97
 
 ## Next Authorized Action
 
-Run the frozen P3-M exploratory post-mortem from committed P3 predictions.
-P4 implementation/config changes based on those results are forbidden. Learned
+Run the frozen P4-G0 A0/A1/A2/A3 configurations for RE2-OB, then RE2-TT.
+P4 implementation/config changes based on P3-M are forbidden. Learned
 comparative modeling is `NOT YET AUTHORIZED`.
 
 ## Decision Log
@@ -80,6 +81,19 @@ comparative modeling is `NOT YET AUTHORIZED`.
 - Proposed Revision: None.
 - Scientific Consequence: P3-M is now authorized as exploratory analysis, but
   cannot modify P4 scientific design, implementation, or configs.
+
+### 2026-08-27 — P3-M exploratory post-mortem
+
+- Frozen Rule: Analyze only committed P3 Z1/Z2/Z3 predictions, frozen MI
+  membership, and frozen feature coverage after all P4 freeze commits.
+- New Evidence: Z2-Z1 Avg@5 is +0.026667 on OB with 95% CI approximately
+  [0, 0.057778] and +0.086667 on TT with CI [0.020000, 0.157778]. Fault, root,
+  fold, MI, transition, and coverage results are heterogeneous and explicitly
+  exploratory.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: No P4 rule or implementation changes. P3-G1 remains
+  `NO-GO / CLOSED`; Z2 is not new untouched confirmatory evidence.
 
 ### 2026-08-26 — Governance initialization
 

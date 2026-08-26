@@ -1,0 +1,56 @@
+{
+  "datasets": {
+    "re2ob": {
+      "AC@1": {
+        "ci95": [
+          -0.05555555555555555,
+          0.07777777777777778
+        ],
+        "fault_stratified": true,
+        "point_delta": 0.011111111111111112,
+        "resamples": 10000,
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          1.2335811384723962e-18,
+          0.05777777777777778
+        ],
+        "fault_stratified": true,
+        "point_delta": 0.026666666666666672,
+        "resamples": 10000,
+        "seed": 20260826
+      }
+    },
+    "re2tt": {
+      "AC@1": {
+        "ci95": [
+          0.03333333333333333,
+          0.2111111111111111
+        ],
+        "fault_stratified": true,
+        "point_delta": 0.12222222222222222,
+        "resamples": 10000,
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          0.019999999999999987,
+          0.1577777777777778
+        ],
+        "fault_stratified": true,
+        "point_delta": 0.08666666666666667,
+        "resamples": 10000,
+        "seed": 20260826
+      }
+    }
+  },
+  "resamples": 10000,
+  "schema_version": "p3_m_z2_vs_z1_bootstrap_v1",
+  "seed": 20260826,
+  "status": "EXPLORATORY_ONLY",
+  "two_dataset_descriptive_mean": {
+    "AC@1": 0.06666666666666667,
+    "Avg@5": 0.05666666666666667
+  }
+}

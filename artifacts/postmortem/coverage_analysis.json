@@ -1,0 +1,68 @@
+{
+  "re2ob": {
+    "by_transition": {
+      "degraded": {
+        "cases": 5,
+        "channel_available_ratio": 0.5454545454545454,
+        "morphology_active_ratio": 0.5454545454545454,
+        "q_observed_ratio": 0.4992613636363636
+      },
+      "improved": {
+        "cases": 10,
+        "channel_available_ratio": 0.5295454545454544,
+        "morphology_active_ratio": 0.5295454545454544,
+        "q_observed_ratio": 0.5295454545454544
+      },
+      "unchanged": {
+        "cases": 75,
+        "channel_available_ratio": 0.5509090909090909,
+        "morphology_active_ratio": 0.5509090909090909,
+        "q_observed_ratio": 0.5490454545454546
+      }
+    },
+    "overall": {
+      "channel_available_ratio": 0.5482323232323233,
+      "morphology_active_ratio": 0.5482323232323233,
+      "q_observed_ratio": 0.5441130050505051
+    },
+    "rank_gain_correlation": {
+      "channel_available_ratio": -0.12590257002619457,
+      "morphology_active_ratio": -0.12590257002619457,
+      "q_observed_ratio": 0.018361100810836518
+    },
+    "status": "AVAILABLE_FROM_FROZEN_FEATURE_ARTIFACTS"
+  },
+  "re2tt": {
+    "by_transition": {
+      "degraded": {
+        "cases": 14,
+        "channel_available_ratio": 0.3595063025210084,
+        "morphology_active_ratio": 0.3595063025210084,
+        "q_observed_ratio": 0.35837710084033614
+      },
+      "improved": {
+        "cases": 27,
+        "channel_available_ratio": 0.3555283224400871,
+        "morphology_active_ratio": 0.3555283224400871,
+        "q_observed_ratio": 0.3555283224400871
+      },
+      "unchanged": {
+        "cases": 49,
+        "channel_available_ratio": 0.35219087635054014,
+        "morphology_active_ratio": 0.35219087635054014,
+        "q_observed_ratio": 0.35219087635054014
+      }
+    },
+    "overall": {
+      "channel_available_ratio": 0.3543300653594771,
+      "morphology_active_ratio": 0.3543300653594771,
+      "q_observed_ratio": 0.35415441176470586
+    },
+    "rank_gain_correlation": {
+      "channel_available_ratio": -0.061031257091353305,
+      "morphology_active_ratio": -0.061031257091353305,
+      "q_observed_ratio": -0.05801899317700052
+    },
+    "status": "AVAILABLE_FROM_FROZEN_FEATURE_ARTIFACTS"
+  }
+}
