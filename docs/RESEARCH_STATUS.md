@@ -2,8 +2,8 @@
 
 ## Current Phase
 
-P4-G0: RUNNING. Polished formal runs and diagnostics are complete; final
-failure analysis and decision remain to be committed.
+P4-G0: NO-GO. Final failure analysis and decision are complete. This round is
+stopped.
 
 ## Frozen Protocol Version
 
@@ -31,6 +31,8 @@ the A1-A0 gate.
 - P3-M exploratory post-mortem: COMPLETE.
 - P4-G0 formal runs: COMPLETE (polished replay).
 - P4-G0 bootstrap/LOSO/context diagnostics: COMPLETE.
+- P4-G0 failure analysis: COMPLETE.
+- P4-G0 decision: NO-GO.
 
 ## Current Blocker
 
@@ -50,9 +52,9 @@ P3-G1 fixed-seed paired bootstrap, committed in `297cc4eec3eb039bc416576014b3c97
 
 ## Next Authorized Action
 
-Complete the frozen failure analysis and P4-G0 decision. P4 implementation or
-config changes are forbidden. Learned comparative modeling is `NOT YET
-AUTHORIZED`.
+STOP. The current minimal candidate-relative route is closed after P4-G0
+NO-GO. Learned comparative modeling is `NOT YET AUTHORIZED`; any next research
+direction requires an explicit human decision and a new protocol version.
 
 ## Decision Log
 
@@ -113,6 +115,19 @@ AUTHORIZED`.
 - Scientific Consequence: Final gate evaluation must mark OB positivity as
   failed despite positive mean bootstrap evidence. Decision remains pending
   failure analysis and must not rescue the cross-dataset condition.
+
+### 2026-08-27 — P4-G0 decision
+
+- Frozen Rule: P4-G0 PASS requires OB and TT A1-A0 Avg@5 deltas both positive,
+  mean delta at least +0.01, both AC@1 guardrails, positive mean bootstrap CI
+  lower bound, and all integrity checks.
+- New Evidence: OB A1-A0 Avg@5 is `-0.004444`; TT is `+0.066667`; mean is
+  `+0.031111` with bootstrap CI `[+0.001111,+0.062222]`. Integrity is PASS.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: Condition 1 fails; P4-G0 is `NO-GO`. H2 is not
+  supported by this minimal comparative test. The current route stops without
+  rescue or learned comparative implementation.
 
 ### 2026-08-26 — Governance initialization
 
