@@ -25,11 +25,11 @@ None. P3-R0, P3-A0, and P3-A0.5 passed. The 514 blank timestamp rows in two RE2-
 
 ## Latest Experiment
 
-P3-A0.5 representation freeze, generated from commit `7cd6d418a114978b33838e788346febbeae71818`. No performance result has been generated.
+P3-A0.5 full feature extraction, generated from commit `19a463cdc138083b38d3a8fe042e03cb73bbf4d1`; OB/TT each 90 cases and all arrays finite. No ranking performance result has been generated.
 
 ## Latest Commit
 
-Latest completed audit commit: `7cd6d418a114978b33838e788346febbeae71818`; split implementation commit: `ca4a49b103fe5e688bb9e8f27756e5944fab3f51`.
+Latest completed audit commit: `19a463cdc138083b38d3a8fe042e03cb73bbf4d1`; representation freeze commit: `7cd6d418a114978b33838e788346febbeae71818`; split implementation commit: `ca4a49b103fe5e688bb9e8f27756e5944fab3f51`.
 
 ## Next Authorized Action
 
@@ -76,3 +76,11 @@ Run the frozen, label-free magnitude-inversion audit and preserve all MI-1/MI-3 
 - Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
 - Proposed Revision: None.
 - Scientific Consequence: P3-A1 and P3-A2 are authorized under the fixed representation.
+
+### 2026-08-26 — P3-A0.5 full representation extraction
+
+- Frozen Rule: Extract only the committed label-free event-relative representation; no labels or paths may enter the feature pipeline.
+- New Evidence: OB and TT each produced 90 finite feature artifacts. Mean observed q-bin ratios are 0.5441 (OB) and 0.3542 (TT); mean available-channel ratios are 0.5482 and 0.3543. Z3 shape is 676 flattened fields per candidate.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: P3-A1 magnitude inversion is authorized; no model result has been inspected.

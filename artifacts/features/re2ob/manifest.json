@@ -1,0 +1,1925 @@
+{
+  "bin_seconds": 15,
+  "candidate_count_distribution": {
+    "11": 90
+  },
+  "case_count": 90,
+  "cases": [
+    {
+      "a_max": 20.0,
+      "a_min": 3.2840386114825844,
+      "artifact": "artifacts/features/re2ob/re2ob-0433b8cb47b1ec8e.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-0433b8cb47b1ec8e",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.496494245255542,
+      "artifact": "artifacts/features/re2ob/re2ob-048f2e7d7bfbc927.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-048f2e7d7bfbc927",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.435893398872942,
+      "artifact": "artifacts/features/re2ob/re2ob-057fe49bd30d47c0.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-057fe49bd30d47c0",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.2391501351989405,
+      "artifact": "artifacts/features/re2ob/re2ob-08f3e5d7b11d1fa7.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-08f3e5d7b11d1fa7",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.6375786407975443,
+      "artifact": "artifacts/features/re2ob/re2ob-097a5d7ac0492007.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-097a5d7ac0492007",
+      "channel_available_ratio": 0.6136363636363636,
+      "finite": true,
+      "morphology_active_ratio": 0.6136363636363636,
+      "q_observed_ratio": 0.6136363636363636,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.194334233282321,
+      "artifact": "artifacts/features/re2ob/re2ob-0c582795f6ae4798.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-0c582795f6ae4798",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.3741187945058373,
+      "artifact": "artifacts/features/re2ob/re2ob-1084f320d8584c61.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-1084f320d8584c61",
+      "channel_available_ratio": 0.6136363636363636,
+      "finite": true,
+      "morphology_active_ratio": 0.6136363636363636,
+      "q_observed_ratio": 0.6136363636363636,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 5.914025128856404,
+      "artifact": "artifacts/features/re2ob/re2ob-1bb2e75872fd9037.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-1bb2e75872fd9037",
+      "channel_available_ratio": 0.5,
+      "finite": true,
+      "morphology_active_ratio": 0.5,
+      "q_observed_ratio": 0.5,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.060520763805812,
+      "artifact": "artifacts/features/re2ob/re2ob-1d19cc60d7a6adc1.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-1d19cc60d7a6adc1",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 12.639106650151078,
+      "a_min": 3.6310218305263766,
+      "artifact": "artifacts/features/re2ob/re2ob-1d9a0d1641171551.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-1d9a0d1641171551",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.40994318181818185,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 17.509724126636883,
+      "a_min": 2.4787201319091157,
+      "artifact": "artifacts/features/re2ob/re2ob-23213ee605c6b050.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-23213ee605c6b050",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.486867164483347,
+      "artifact": "artifacts/features/re2ob/re2ob-34c4e276dad53220.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-34c4e276dad53220",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.3158550598746186,
+      "artifact": "artifacts/features/re2ob/re2ob-35bd9974d6b59069.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-35bd9974d6b59069",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.7557663476545304,
+      "artifact": "artifacts/features/re2ob/re2ob-3758cb8f0f1277f3.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-3758cb8f0f1277f3",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 6.629906870954075,
+      "artifact": "artifacts/features/re2ob/re2ob-3827c8c9ef1e8592.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-3827c8c9ef1e8592",
+      "channel_available_ratio": 0.5,
+      "finite": true,
+      "morphology_active_ratio": 0.5,
+      "q_observed_ratio": 0.5,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.3521691297775824,
+      "artifact": "artifacts/features/re2ob/re2ob-3e7e71a1c83dbc41.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-3e7e71a1c83dbc41",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.309112090457678,
+      "artifact": "artifacts/features/re2ob/re2ob-40e1893e43abba5c.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-40e1893e43abba5c",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.049179740020942,
+      "artifact": "artifacts/features/re2ob/re2ob-428d5ecf570372b5.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-428d5ecf570372b5",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 1.8641596746000286,
+      "artifact": "artifacts/features/re2ob/re2ob-42e80cf6bcd9400f.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-42e80cf6bcd9400f",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.247562276524373,
+      "artifact": "artifacts/features/re2ob/re2ob-435f42d94b785472.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-435f42d94b785472",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.694262745422905,
+      "artifact": "artifacts/features/re2ob/re2ob-45687a171f241b04.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-45687a171f241b04",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 14.534073933773914,
+      "a_min": 2.6327445967240806,
+      "artifact": "artifacts/features/re2ob/re2ob-4677d4ce6ef327e0.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-4677d4ce6ef327e0",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.6544976036195953,
+      "artifact": "artifacts/features/re2ob/re2ob-48e5379f4903b1d2.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-48e5379f4903b1d2",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5866477272727273,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 14.270125949518944,
+      "a_min": 3.5081365878369266,
+      "artifact": "artifacts/features/re2ob/re2ob-4af0de56834334d2.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-4af0de56834334d2",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 12.023470913617352,
+      "a_min": 2.797803374166803,
+      "artifact": "artifacts/features/re2ob/re2ob-4b9110d974bb1875.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-4b9110d974bb1875",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 4.276031221623531,
+      "artifact": "artifacts/features/re2ob/re2ob-4f85dadf2507c3ca.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-4f85dadf2507c3ca",
+      "channel_available_ratio": 0.5,
+      "finite": true,
+      "morphology_active_ratio": 0.5,
+      "q_observed_ratio": 0.5,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.011243266720487,
+      "artifact": "artifacts/features/re2ob/re2ob-505f802370635ec3.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-505f802370635ec3",
+      "channel_available_ratio": 0.6136363636363636,
+      "finite": true,
+      "morphology_active_ratio": 0.6136363636363636,
+      "q_observed_ratio": 0.38267045454545456,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 11.686225761347794,
+      "a_min": 2.881054158126844,
+      "artifact": "artifacts/features/re2ob/re2ob-557d49794f937ec6.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-557d49794f937ec6",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 16.883168056697443,
+      "a_min": 3.1758065360650516,
+      "artifact": "artifacts/features/re2ob/re2ob-57b75da971aabed5.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-57b75da971aabed5",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.198344378947942,
+      "artifact": "artifacts/features/re2ob/re2ob-58cff4fc86081830.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-58cff4fc86081830",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.3494291590357026,
+      "artifact": "artifacts/features/re2ob/re2ob-58eb5ae1a41b77e4.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-58eb5ae1a41b77e4",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.5145406378959683,
+      "artifact": "artifacts/features/re2ob/re2ob-5a4d1a4785969ab2.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-5a4d1a4785969ab2",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.7432157043670116,
+      "artifact": "artifacts/features/re2ob/re2ob-5f261573c1b3bdc5.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-5f261573c1b3bdc5",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.464347289058967,
+      "artifact": "artifacts/features/re2ob/re2ob-6521847c78ca06e9.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-6521847c78ca06e9",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 16.741696543891546,
+      "a_min": 2.929497620842334,
+      "artifact": "artifacts/features/re2ob/re2ob-66c4b614046569c9.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-66c4b614046569c9",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 4.408599936222529,
+      "artifact": "artifacts/features/re2ob/re2ob-6aa36a4c6c99d55c.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-6aa36a4c6c99d55c",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.8528137074998874,
+      "artifact": "artifacts/features/re2ob/re2ob-71c7f9be34b19754.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-71c7f9be34b19754",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 12.960208416217437,
+      "a_min": 3.1322168245155866,
+      "artifact": "artifacts/features/re2ob/re2ob-72b5d278f8908a0a.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-72b5d278f8908a0a",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.6622561401572753,
+      "artifact": "artifacts/features/re2ob/re2ob-7732042f2a190c79.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-7732042f2a190c79",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 6.159973619996623,
+      "artifact": "artifacts/features/re2ob/re2ob-784d7eb25137c3c9.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-784d7eb25137c3c9",
+      "channel_available_ratio": 0.5,
+      "finite": true,
+      "morphology_active_ratio": 0.5,
+      "q_observed_ratio": 0.5,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 19.08718105569464,
+      "a_min": 3.120979442330162,
+      "artifact": "artifacts/features/re2ob/re2ob-7858d4d3815cf005.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-7858d4d3815cf005",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.3253565264565506,
+      "artifact": "artifacts/features/re2ob/re2ob-7890056e7915d551.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-7890056e7915d551",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.601124831568747,
+      "artifact": "artifacts/features/re2ob/re2ob-79fcefff48aef53b.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-79fcefff48aef53b",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.641098267247763,
+      "artifact": "artifacts/features/re2ob/re2ob-7a91adc6e16587c6.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-7a91adc6e16587c6",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 11.180358431013614,
+      "a_min": 3.240670377980285,
+      "artifact": "artifacts/features/re2ob/re2ob-7aec8ac514e0d064.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-7aec8ac514e0d064",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 18.2269322887234,
+      "a_min": 2.6605228803415213,
+      "artifact": "artifacts/features/re2ob/re2ob-7b0a90583e047a88.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-7b0a90583e047a88",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.508966752700432,
+      "artifact": "artifacts/features/re2ob/re2ob-7c278a568194196b.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-7c278a568194196b",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.5552525640372155,
+      "artifact": "artifacts/features/re2ob/re2ob-7f2201e9884e818e.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-7f2201e9884e818e",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.4461428954372995,
+      "artifact": "artifacts/features/re2ob/re2ob-80bf4d093e6ab818.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-80bf4d093e6ab818",
+      "channel_available_ratio": 0.5,
+      "finite": true,
+      "morphology_active_ratio": 0.5,
+      "q_observed_ratio": 0.5,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 11.348981353521289,
+      "a_min": 2.6181280302428296,
+      "artifact": "artifacts/features/re2ob/re2ob-84724d7aa2b9dabd.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-84724d7aa2b9dabd",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.9200552277299274,
+      "artifact": "artifacts/features/re2ob/re2ob-8f991393cb9debdf.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-8f991393cb9debdf",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.7015201063111163,
+      "artifact": "artifacts/features/re2ob/re2ob-93de1fab2ca56e86.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-93de1fab2ca56e86",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 16.948911678297264,
+      "a_min": 2.2358224887871536,
+      "artifact": "artifacts/features/re2ob/re2ob-97935dcb7cfd6e82.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-97935dcb7cfd6e82",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.9591878502314284,
+      "artifact": "artifacts/features/re2ob/re2ob-9e575f44de987a1a.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-9e575f44de987a1a",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 14.280999945573848,
+      "a_min": 2.518557133715285,
+      "artifact": "artifacts/features/re2ob/re2ob-a6318b7e89546125.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-a6318b7e89546125",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.8425784877090727,
+      "artifact": "artifacts/features/re2ob/re2ob-a84cfdf477d8bf62.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-a84cfdf477d8bf62",
+      "channel_available_ratio": 0.5,
+      "finite": true,
+      "morphology_active_ratio": 0.5,
+      "q_observed_ratio": 0.5,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.0603710817657546,
+      "artifact": "artifacts/features/re2ob/re2ob-abc29368674e8298.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-abc29368674e8298",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.829680701321198,
+      "artifact": "artifacts/features/re2ob/re2ob-acf69e21960f63d8.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-acf69e21960f63d8",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 19.129256000713262,
+      "a_min": 10.562075506525584,
+      "artifact": "artifacts/features/re2ob/re2ob-af1b6a7e1667e3f5.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-af1b6a7e1667e3f5",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.0037562029382037,
+      "artifact": "artifacts/features/re2ob/re2ob-b17ce68eb2ce01ee.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-b17ce68eb2ce01ee",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.1260222556643953,
+      "artifact": "artifacts/features/re2ob/re2ob-b6db72fc58931786.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-b6db72fc58931786",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.712866398887705,
+      "artifact": "artifacts/features/re2ob/re2ob-b78a14faa7ea7263.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-b78a14faa7ea7263",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.7875397468663596,
+      "artifact": "artifacts/features/re2ob/re2ob-b84066a37ca0c417.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-b84066a37ca0c417",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.244526366889152,
+      "artifact": "artifacts/features/re2ob/re2ob-bb4a5b75716772f9.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-bb4a5b75716772f9",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.790417376721641,
+      "artifact": "artifacts/features/re2ob/re2ob-bd6f4fb8e84ccb69.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-bd6f4fb8e84ccb69",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.1708130302943798,
+      "artifact": "artifacts/features/re2ob/re2ob-c2ac02db4e3370a9.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-c2ac02db4e3370a9",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 5.191167584536137,
+      "artifact": "artifacts/features/re2ob/re2ob-c9c8f348d3f5974b.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-c9c8f348d3f5974b",
+      "channel_available_ratio": 0.4772727272727273,
+      "finite": true,
+      "morphology_active_ratio": 0.4772727272727273,
+      "q_observed_ratio": 0.4772727272727273,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.3342235477479365,
+      "artifact": "artifacts/features/re2ob/re2ob-ca26cbb7c2cc0c87.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-ca26cbb7c2cc0c87",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 16.966532745569296,
+      "a_min": 3.350377480543505,
+      "artifact": "artifacts/features/re2ob/re2ob-ce3f410f61f739c2.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-ce3f410f61f739c2",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 1.967274103589859,
+      "artifact": "artifacts/features/re2ob/re2ob-ce93ebf8eb13a5ed.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-ce93ebf8eb13a5ed",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.944694819857171,
+      "artifact": "artifacts/features/re2ob/re2ob-cec5183e3f5418cf.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-cec5183e3f5418cf",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 1.799542625574618,
+      "artifact": "artifacts/features/re2ob/re2ob-d0382ea6cedfbd82.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-d0382ea6cedfbd82",
+      "channel_available_ratio": 0.5,
+      "finite": true,
+      "morphology_active_ratio": 0.5,
+      "q_observed_ratio": 0.5,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.1361490368826423,
+      "artifact": "artifacts/features/re2ob/re2ob-d0d93705e784491a.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-d0d93705e784491a",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.3220837908111953,
+      "artifact": "artifacts/features/re2ob/re2ob-d3f1403a4a08a3b1.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-d3f1403a4a08a3b1",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 19.546730604114355,
+      "a_min": 2.1256730506425296,
+      "artifact": "artifacts/features/re2ob/re2ob-d7f2f8eb2f0ad646.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-d7f2f8eb2f0ad646",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 4.373700035042124,
+      "artifact": "artifacts/features/re2ob/re2ob-da48e150772a24fd.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-da48e150772a24fd",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 5.95994579942906,
+      "artifact": "artifacts/features/re2ob/re2ob-df7b6eca09a6c41f.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-df7b6eca09a6c41f",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.882716434724136,
+      "artifact": "artifacts/features/re2ob/re2ob-df7e831dddfac76c.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-df7e831dddfac76c",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 19.56672860978048,
+      "a_min": 3.416137279036199,
+      "artifact": "artifacts/features/re2ob/re2ob-e16e6de30ae75ccd.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-e16e6de30ae75ccd",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.634535520290191,
+      "artifact": "artifacts/features/re2ob/re2ob-e357bd8aec246cdb.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-e357bd8aec246cdb",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 17.80204996129964,
+      "a_min": 2.5157348410897606,
+      "artifact": "artifacts/features/re2ob/re2ob-e849d2be7be5c713.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-e849d2be7be5c713",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 19.186594593809147,
+      "a_min": 4.003452450288493,
+      "artifact": "artifacts/features/re2ob/re2ob-eb8f50fda4f9095f.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-eb8f50fda4f9095f",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 11.608650714347327,
+      "a_min": 2.071428034913636,
+      "artifact": "artifacts/features/re2ob/re2ob-f209212fc63ac713.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-f209212fc63ac713",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 14.21766551751879,
+      "a_min": 2.562308024677549,
+      "artifact": "artifacts/features/re2ob/re2ob-f2b4cc2f87b35c03.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-f2b4cc2f87b35c03",
+      "channel_available_ratio": 0.5909090909090909,
+      "finite": true,
+      "morphology_active_ratio": 0.5909090909090909,
+      "q_observed_ratio": 0.5909090909090909,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.689755172179469,
+      "artifact": "artifacts/features/re2ob/re2ob-f30e2feeaa5218b8.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-f30e2feeaa5218b8",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 19.517190903964714,
+      "a_min": 2.9392628817132924,
+      "artifact": "artifacts/features/re2ob/re2ob-f874f110aae8efa9.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-f874f110aae8efa9",
+      "channel_available_ratio": 0.5454545454545454,
+      "finite": true,
+      "morphology_active_ratio": 0.5454545454545454,
+      "q_observed_ratio": 0.5454545454545454,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 3.2183357079567747,
+      "artifact": "artifacts/features/re2ob/re2ob-f88fc943d724a354.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-f88fc943d724a354",
+      "channel_available_ratio": 0.5,
+      "finite": true,
+      "morphology_active_ratio": 0.5,
+      "q_observed_ratio": 0.5,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.776557075926321,
+      "artifact": "artifacts/features/re2ob/re2ob-fa8a8fae0fda7c42.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-fa8a8fae0fda7c42",
+      "channel_available_ratio": 0.5681818181818182,
+      "finite": true,
+      "morphology_active_ratio": 0.5681818181818182,
+      "q_observed_ratio": 0.5681818181818182,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 2.2916619341180673,
+      "artifact": "artifacts/features/re2ob/re2ob-fd67c49516fa2028.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-fd67c49516fa2028",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    },
+    {
+      "a_max": 20.0,
+      "a_min": 7.887831331898916,
+      "artifact": "artifacts/features/re2ob/re2ob-feeaaba6c71377df.npz",
+      "base_shape": [
+        11,
+        4,
+        8
+      ],
+      "candidate_count": 11,
+      "case_id": "re2ob-feeaaba6c71377df",
+      "channel_available_ratio": 0.5227272727272727,
+      "finite": true,
+      "morphology_active_ratio": 0.5227272727272727,
+      "q_observed_ratio": 0.5227272727272727,
+      "z_shape": [
+        11,
+        4,
+        80
+      ]
+    }
+  ],
+  "channel_available_ratio": {
+    "max": 0.6136363636363636,
+    "mean": 0.5482323232323233,
+    "min": 0.4772727272727273
+  },
+  "channels": [
+    "metric",
+    "log",
+    "trace-error",
+    "trace-latency"
+  ],
+  "dataset": "re2ob",
+  "finite_all_cases": true,
+  "grid_bins": 80,
+  "morphology_active_ratio": {
+    "max": 0.6136363636363636,
+    "mean": 0.5482323232323233,
+    "min": 0.4772727272727273
+  },
+  "q_observed_ratio": {
+    "max": 0.6136363636363636,
+    "mean": 0.5441130050505051,
+    "min": 0.38267045454545456
+  },
+  "schema_version": "p3_a05_feature_manifest_v1",
+  "z3_total_dimension": 676
+}
