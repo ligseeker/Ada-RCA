@@ -1,0 +1,76 @@
+{
+  "re2ob": {
+    "bundle": "/home/zhangll24/RCA_project/Ada-RCA/artifacts/source/re2ob",
+    "candidate_completeness_pass": true,
+    "candidate_registry_violations": [],
+    "candidate_set_count": 1,
+    "cases": 90,
+    "fault_counts": {
+      "cpu": 15,
+      "delay": 15,
+      "disk": 15,
+      "loss": 15,
+      "mem": 15,
+      "socket": 15
+    },
+    "input_forbidden_token_hits": {
+      "fault_type": 0,
+      "injection_target": 0,
+      "metrics_path": 0,
+      "relative_directory": 0,
+      "root_service": 0,
+      "source_root": 0
+    },
+    "input_label_source_ids_match": true,
+    "label_free_input_pass": true,
+    "passed": true,
+    "registry_count": 11,
+    "registry_label_free_derivation": true,
+    "root_counts": {
+      "checkoutservice": 18,
+      "currencyservice": 18,
+      "emailservice": 18,
+      "productcatalogservice": 18,
+      "recommendationservice": 18
+    },
+    "root_registry_violations": [],
+    "unique_input_ids": true
+  },
+  "re2tt": {
+    "bundle": "/home/zhangll24/RCA_project/Ada-RCA/artifacts/source/re2tt",
+    "candidate_completeness_pass": true,
+    "candidate_registry_violations": [],
+    "candidate_set_count": 1,
+    "cases": 90,
+    "fault_counts": {
+      "cpu": 15,
+      "delay": 15,
+      "disk": 15,
+      "loss": 15,
+      "mem": 15,
+      "socket": 15
+    },
+    "input_forbidden_token_hits": {
+      "fault_type": 0,
+      "injection_target": 0,
+      "metrics_path": 0,
+      "relative_directory": 0,
+      "root_service": 0,
+      "source_root": 0
+    },
+    "input_label_source_ids_match": true,
+    "label_free_input_pass": true,
+    "passed": true,
+    "registry_count": 68,
+    "registry_label_free_derivation": true,
+    "root_counts": {
+      "ts-auth-service": 18,
+      "ts-order-service": 18,
+      "ts-route-service": 18,
+      "ts-train-service": 18,
+      "ts-travel-service": 18
+    },
+    "root_registry_violations": [],
+    "unique_input_ids": true
+  }
+}

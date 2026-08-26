@@ -1,0 +1,50 @@
+{
+  "candidate_count": 11,
+  "candidate_registry": [
+    "adservice",
+    "cartservice",
+    "checkoutservice",
+    "currencyservice",
+    "emailservice",
+    "frontend",
+    "paymentservice",
+    "productcatalogservice",
+    "recommendationservice",
+    "redis",
+    "shippingservice"
+  ],
+  "case_count": 90,
+  "dataset": "RCAEval-RE2-OB",
+  "dataset_key": "re2ob",
+  "excluded_count": 0,
+  "files": {
+    "inputs.jsonl": {
+      "bytes": 86940,
+      "sha256": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb"
+    },
+    "labels.jsonl": {
+      "bytes": 8277,
+      "sha256": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7"
+    },
+    "service_registry.json": {
+      "bytes": 490,
+      "sha256": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19"
+    },
+    "sources.jsonl": {
+      "bytes": 97170,
+      "sha256": "c162bb9882035d7b50d94f69e25fd638746519a3f3d4ad6029468d1eee606591"
+    }
+  },
+  "generated_at": "2026-08-26T10:31:04.650154+00:00",
+  "input_forbidden_fields": [
+    "root_service",
+    "fault_type",
+    "relative_directory",
+    "source_path",
+    "injection_target"
+  ],
+  "label_sidecar_only": true,
+  "python": "3.8.20",
+  "schema_version": "p3_a0_manifest_v1",
+  "source_root": "/home/zhangll24/RCA_project/datasets/RCAEval/RE2-OB"
+}
