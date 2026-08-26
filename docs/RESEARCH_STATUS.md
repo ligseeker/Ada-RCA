@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-P3-A0.5 representation freeze.
+P3-A1 magnitude-inversion audit.
 
 ## Frozen Protocol Version
 
@@ -14,26 +14,26 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 - Protocol read-through: COMPLETE.
 - P3-R0: PASS.
 - P3-A0: PASS.
-- P3-A0.5: NOT STARTED.
+- P3-A0.5: PASS.
 - P3-A1: NOT STARTED.
 - P3-A2: NOT STARTED.
 - P3-G1: NOT STARTED.
 
 ## Current Blocker
 
-None. P3-R0 and P3-A0 passed. The 514 blank timestamp rows in two RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
+None. P3-R0, P3-A0, and P3-A0.5 passed. The 514 blank timestamp rows in two RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
 
 ## Latest Experiment
 
-P3-A0 manifests, leakage firewall, and deterministic three-fold split freeze. No morphology performance result has been generated.
+P3-A0.5 representation freeze, generated from commit `7cd6d418a114978b33838e788346febbeae71818`. No performance result has been generated.
 
 ## Latest Commit
 
-Latest completed audit commit: `1b0c295c99c3629976a0c767b56e851c4bcf7d57`; split implementation commit: `ca4a49b103fe5e688bb9e8f27756e5944fab3f51`.
+Latest completed audit commit: `7cd6d418a114978b33838e788346febbeae71818`; split implementation commit: `ca4a49b103fe5e688bb9e8f27756e5944fab3f51`.
 
 ## Next Authorized Action
 
-Freeze event-relative telemetry representation before inspecting morphology performance.
+Run the frozen, label-free magnitude-inversion audit and preserve all MI-1/MI-3 cases.
 
 ## Decision Log
 
@@ -68,3 +68,11 @@ Freeze event-relative telemetry representation before inspecting morphology perf
 - Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
 - Proposed Revision: None.
 - Scientific Consequence: Split is frozen before any morphology performance experiment.
+
+### 2026-08-26 — P3-A0.5 representation freeze
+
+- Frozen Rule: Use the committed event-relative representation in `docs/REPRESENTATION_FREEZE.md`; no post-result representation changes are allowed.
+- New Evidence: The local derived telemetry supports the four fixed channels, 1-second metrics and 15-second log/trace grids, with explicit malformed/missing timestamp masks.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: P3-A1 and P3-A2 are authorized under the fixed representation.
