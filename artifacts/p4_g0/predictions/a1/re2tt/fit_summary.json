@@ -1,0 +1,26 @@
+{
+  "0": {
+    "converged": true,
+    "final_loss": 75.88394313837291,
+    "gradient_norm": 6.623395027716139e-07,
+    "initial_loss": 253.17046231056668,
+    "iterations": 117,
+    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH"
+  },
+  "1": {
+    "converged": true,
+    "final_loss": 62.98533443000453,
+    "gradient_norm": 8.962940724888124e-07,
+    "initial_loss": 253.17046231056668,
+    "iterations": 100,
+    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH"
+  },
+  "2": {
+    "converged": true,
+    "final_loss": 70.7661068856678,
+    "gradient_norm": 6.025476082527348e-07,
+    "initial_loss": 253.17046231056668,
+    "iterations": 103,
+    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH"
+  }
+}
