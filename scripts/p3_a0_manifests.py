@@ -72,6 +72,10 @@ def build_manifest(profile, output_root: Path):
             "services": registry,
         }, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
+    top_level_name = "service_registry_ob.json" if profile.key == "re2ob" else "service_registry_tt.json"
+    (output_root / top_level_name).write_text(
+        (output / "service_registry.json").read_text(encoding="utf-8"), encoding="utf-8"
+    )
     files = {}
     for path in sorted(output.iterdir()):
         if path.is_file():

@@ -112,7 +112,7 @@ Otherwise `morphology_active = 1`. Missing bins store `z=0` with observation mas
 - Z0: `[A_i]`.
 - Z1: the 32-dimensional `B_i` vector.
 - Z2: Z1 plus, per channel, the following eight summaries of observed normalized morphology: pre mean, post mean, post-minus-pre mean, post peak-time fraction (`post_bin / 39`, sentinel `1` if absent), post amplitude-weighted temporal centroid fraction, post ordinary-least-squares slope against post-bin fraction, mean absolute difference over adjacent observed post bins, fraction of observed post bins with `z >= 0.5`, followed by `morphology_active`. Z2 therefore adds 36 fields (9 per channel).
-- Z3: Z1 plus, per channel, 80 stored `z` values, 80 q-observation-mask values, and one `morphology_active` value. Z3 adds 644 fields.
+- Z3: Z1 plus, per channel, 80 stored `z` values, 80 q-observation-mask values, and one `morphology_active` value. Z3 adds 644 fields (676 total including the 32 Z1 fields).
 - Z3-SHUFFLE: identical to Z3 except that, independently for each case, the 80 temporal positions are permuted using a deterministic permutation seeded by SHA-256 of `"Ada-RCA|P3-G1|20260826|<opaque_case_id>"`. The same case permutation is applied to z and its mask for all candidates and channels. Case ID, seed, or permutation is never exposed as a model feature. This preserves the per-channel multiset, amplitude normalization, masks, and dimensionality while destroying cross-case temporal alignment.
 
 The shuffle rule is frozen now. It must not be changed after performance inspection.
