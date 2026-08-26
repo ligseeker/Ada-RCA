@@ -44,15 +44,6 @@ def _service_for_column(column: str, candidates: Sequence[str], channel: str) ->
     return max(matches, key=len) if matches else None
 
 
-def _load_channel(path: Path, timestamp_column: str, candidates: Sequence[str], channel: str) -> Mapping[str, np.ndarray]:
-    frame = pd.read_csv(path, low_memory=False)
-    timestamps = pd.to_numeric(frame[timestamp_column], errors="coerce").to_numpy(dtype=float)
-    bin_indices = np.floor((timestamps - (timestamps[0] if False else 0.0)) / BIN_SECONDS)
-    # The caller shifts timestamps by t0; this placeholder is replaced below.
-    del bin_indices
-    return {"__frame__": frame, "__timestamps__": timestamps}
-
-
 def _binned_indicators(
     path: Path,
     timestamp_column: str,
@@ -154,12 +145,15 @@ def _base_and_morphology(q: np.ndarray, q_mask: np.ndarray) -> Tuple[np.ndarray,
                         onset = (index - PRE_BINS) * BIN_SECONDS
                         onset_missing = 0.0
                         break
+            if not available:
+                base[service_index, channel_index] = (
+                    0.0, 0.0, 0.0, 0.0, 1.0, 0.0, coverage, 0.0,
+                )
+                continue
             base[service_index, channel_index] = (
                 magnitude, mean_impact, post_mean - pre_mean, onset,
-                onset_missing, persistence, coverage, float(available),
+                onset_missing, persistence, coverage, 1.0,
             )
-            if not available:
-                continue
             maximum = float(np.max(values[observed])) if np.any(observed) else 0.0
             if maximum < 1e-6:
                 continue
@@ -177,7 +171,7 @@ def _base_and_morphology(q: np.ndarray, q_mask: np.ndarray) -> Tuple[np.ndarray,
             centroid = float(np.average(post_indices, weights=weights)) / 39.0 if np.sum(weights) > 0 else 0.0
             x = post_indices.astype(float) / 39.0
             slope = float(np.polyfit(x, post_z, 1)[0]) if post_z.size >= 2 and np.ptp(x) > 0 else 0.0
-            adjacent = np.abs(np.diff(post_z))
+            adjacent = np.abs(np.diff(post_z))[np.diff(post_indices) == 1]
             mean_adjacent = float(np.mean(adjacent)) if adjacent.size else 0.0
             fraction_high = float(np.mean(post_z >= 0.5)) if post_z.size else 0.0
             z2[service_index, channel_index] = (

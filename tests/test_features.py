@@ -43,6 +43,16 @@ class FeatureTest(unittest.TestCase):
             self.assertEqual(features.q_mask.shape, (2, 4, 80))
             self.assertTrue(((features.z == 0.0) | (features.q_mask == 1.0)).all())
 
+    def test_unavailable_channel_keeps_only_masks_and_coverage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = self.make_source(directory)
+            features = extract_case_features("case", ("missing",), 600, source)
+            for channel in range(len(CHANNELS)):
+                self.assertEqual(features.base[0, channel, 0], 0.0)
+                self.assertEqual(features.base[0, channel, 3], 0.0)
+                self.assertEqual(features.base[0, channel, 4], 1.0)
+                self.assertEqual(features.base[0, channel, 7], 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()
