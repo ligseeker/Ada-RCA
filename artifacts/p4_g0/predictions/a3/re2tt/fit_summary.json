@@ -1,26 +1,26 @@
 {
   "0": {
     "converged": true,
-    "final_loss": 51.71225460310898,
-    "gradient_norm": 5.663181551485152e-07,
+    "final_loss": 51.712254603108754,
+    "gradient_norm": 4.529709940470639e-14,
     "initial_loss": 253.17046231056668,
     "iterations": 130,
-    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH"
+    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH; Newton polish gradient_inf=4.530e-14"
   },
   "1": {
     "converged": true,
-    "final_loss": 42.853826445033974,
-    "gradient_norm": 6.188910857685137e-07,
+    "final_loss": 42.853826445033484,
+    "gradient_norm": 1.128958038165706e-13,
     "initial_loss": 253.17046231056668,
     "iterations": 112,
-    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH"
+    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH; Newton polish gradient_inf=1.129e-13"
   },
   "2": {
     "converged": true,
-    "final_loss": 49.443131591102485,
-    "gradient_norm": 6.327861008514901e-07,
+    "final_loss": 49.4431315911023,
+    "gradient_norm": 3.3223424011907835e-14,
     "initial_loss": 253.17046231056668,
     "iterations": 122,
-    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH"
+    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH; Newton polish gradient_inf=3.322e-14"
   }
 }

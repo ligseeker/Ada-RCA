@@ -2,9 +2,9 @@
   "dataset": "re2tt",
   "dataset_manifest_sha256": "710901cb6a86fcf7537929f594af723be3d4d600364efde1ad397c707646b9d8",
   "feature_manifest_sha256": "ac0424a4018624a61e993649e2b94c678838a2d02dfc4bf8f5c1b0694a145256",
-  "git_commit": "20d20af866625880b2879e858cd83042243dd990",
+  "git_commit": "4d754f6759ca5b25ae2d8abaeba57247c9f22e29",
   "schema_version": "p4_g0_run_v1",
   "split_manifest_sha256": "3c3947d6377433507ca1ea6b69d88f6d8f359b42937bbcff1a7ac98422f05d7e",
-  "timestamp": "2026-08-26T16:40:26.052077+00:00",
+  "timestamp": "2026-08-26T16:52:18.277275+00:00",
   "variant": "a1"
 }

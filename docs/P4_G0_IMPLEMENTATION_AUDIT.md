@@ -1,6 +1,6 @@
 # P4-G0 Implementation Audit
 
-Status: IMPLEMENTED; FORMAL P4 RESULTS NOT RUN.
+Status: IMPLEMENTED; POLISHED FORMAL RUNS AND DIAGNOSTICS COMPLETE.
 
 Implementation is bound to
 `docs/RCA_P4_G0_MINIMAL_COMPARATIVE_PROTOCOL_V0.7.md` and reuses the frozen P3
@@ -42,14 +42,23 @@ The following protocol-required modules are present:
 - `tests/test_p4_metric_recompute.py`
 - `tests/test_p4_determinism.py`
 
-The full repository suite passes 37 tests. Covered invariants include
+The full repository suite passes 40 tests. Covered invariants include
 percentile bounds/ties, no-label construction, numerical gradient and L2 term,
 softmax normalization, synthetic root recovery, loss decrease, event batching,
 frozen split integrity, complete/unique/root-containing rankings, metric
 recomputation, permutation equivariance, and strict deterministic rerun equality.
 
+## Numerical convergence and deviations
+
+The initial L-BFGS-B formal replay exposed relative-function stopping above the
+frozen gradient tolerance on some TT folds. The exact same objective was
+deterministically polished with damped Newton steps using its analytic Hessian;
+all eight polished runs now satisfy gradient infinity norm `<= 1e-8`. This is
+recorded in `docs/P4_PROTOCOL_DEVIATIONS.md`; the initial unpolished metrics are
+superseded and the polished rankings are numerically identical.
+
 ## Scientific boundary
 
-No P4-G0 dataset result and no new P3-M post-mortem result was generated or
-inspected during implementation. Config freeze remains a separate commit and
-must complete before P3-M.
+P3-M was generated only after protocol, implementation, tests, and config
+freezes. The polished formal results are persisted under `artifacts/p4_g0/`.
+No learned comparative model is authorized.

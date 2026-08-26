@@ -2,8 +2,8 @@
 
 ## Current Phase
 
-P4-G0: IMPLEMENTED / CONFIG_FROZEN. P3-M exploratory post-mortem is complete.
-No formal P4 result has been generated.
+P4-G0: RUNNING. Polished formal runs and diagnostics are complete; final
+failure analysis and decision remain to be committed.
 
 ## Frozen Protocol Version
 
@@ -29,6 +29,8 @@ the A1-A0 gate.
 - P4-G0 implementation/tests: IMPLEMENTED.
 - P4-G0 configs: FROZEN.
 - P3-M exploratory post-mortem: COMPLETE.
+- P4-G0 formal runs: COMPLETE (polished replay).
+- P4-G0 bootstrap/LOSO/context diagnostics: COMPLETE.
 
 ## Current Blocker
 
@@ -48,9 +50,9 @@ P3-G1 fixed-seed paired bootstrap, committed in `297cc4eec3eb039bc416576014b3c97
 
 ## Next Authorized Action
 
-Run the frozen P4-G0 A0/A1/A2/A3 configurations for RE2-OB, then RE2-TT.
-P4 implementation/config changes based on P3-M are forbidden. Learned
-comparative modeling is `NOT YET AUTHORIZED`.
+Complete the frozen failure analysis and P4-G0 decision. P4 implementation or
+config changes are forbidden. Learned comparative modeling is `NOT YET
+AUTHORIZED`.
 
 ## Decision Log
 
@@ -94,6 +96,23 @@ comparative modeling is `NOT YET AUTHORIZED`.
 - Proposed Revision: None.
 - Scientific Consequence: No P4 rule or implementation changes. P3-G1 remains
   `NO-GO / CLOSED`; Z2 is not new untouched confirmatory evidence.
+
+### 2026-08-27 — P4-G0 formal runs and diagnostics
+
+- Frozen Rule: Run all A0/A1/A2/A3 variants separately on RE2-OB and RE2-TT,
+  then use the fixed paired fault-stratified case bootstrap, LOSO, and
+  foreign-context diagnostics.
+- New Evidence: Polished runs are complete with exact metric recomputation,
+  complete rankings, checksums, replay equality, and all fold gradients at or
+  below `1e-8`. Primary Avg@5 deltas are `-0.004444` (OB) and `+0.066667`
+  (TT); mean `+0.031111`, bootstrap 95% CI `[+0.001111,+0.062222]`.
+- Why Current Rule Is Invalid/Infeasible: Initial optimizer stopping required
+  the documented deterministic Newton-polishing deviation; no scientific
+  design was changed.
+- Proposed Revision: None.
+- Scientific Consequence: Final gate evaluation must mark OB positivity as
+  failed despite positive mean bootstrap evidence. Decision remains pending
+  failure analysis and must not rescue the cross-dataset condition.
 
 ### 2026-08-26 — Governance initialization
 

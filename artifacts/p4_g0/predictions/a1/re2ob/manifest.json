@@ -2,9 +2,9 @@
   "dataset": "re2ob",
   "dataset_manifest_sha256": "c0f830b4b89256fe1fe8b69d425173731769268a6e5869a3ade53bcdc0d8bbfc",
   "feature_manifest_sha256": "cc171f32c7642c6ddbe59b5b52bb6f8351dd8d8a35289144277900bbbb1da4ed",
-  "git_commit": "8e0151cbe4717d1c7cd24311a76170001af82116",
+  "git_commit": "4d754f6759ca5b25ae2d8abaeba57247c9f22e29",
   "schema_version": "p4_g0_run_v1",
   "split_manifest_sha256": "a672d12be89e91efd7fe69cdf81713b3d18482bba6b46620b0bfd0b4ff7bfd62",
-  "timestamp": "2026-08-26T16:39:56.747949+00:00",
+  "timestamp": "2026-08-26T16:52:12.457294+00:00",
   "variant": "a1"
 }
