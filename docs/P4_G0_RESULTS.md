@@ -62,6 +62,10 @@ Avg@5 is `+0.004444` (OB) and `+0.017778` (TT), giving
 not causal proof. Full MI, fault, root, fold, transition, LOSO, and context
 outputs are under `artifacts/p4_g0/`.
 
+Morphology consistency is `CONSISTENT` at the descriptive point-estimate level:
+P3 Z2-Z1, A2-A0, and A3-A1 are positive on both datasets. This is not a new
+untouched confirmation, and uncertainty remains material for some comparisons.
+
 ## Gate status
 
 Condition 1 (OB Avg@5 delta > 0): **FAIL**. Condition 2 (TT > 0): **PASS**.

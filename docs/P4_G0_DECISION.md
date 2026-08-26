@@ -36,8 +36,10 @@ CI cannot override the preregistered OB positivity requirement.
 This is a descriptive post-observed analysis, not new untouched confirmation.
 Z2-ABS minus Z1-ABS Avg@5 is `+0.011111` on OB and `+0.086667` on TT;
 Z2-REL minus Z1-REL is `+0.002222` on OB and `+0.024444` on TT. Together with
-P3 Z2-Z1, the morphology status is **MIXED** as a cross-dataset scientific
-claim, while Z2 absolute evidence is descriptively positive in these runs.
+P3 Z2-Z1, all three pre-specified morphology point-estimate comparisons are
+positive on both datasets, so the descriptive morphology status is
+**CONSISTENT**. This is directional consistency after prior result observation,
+not a new untouched confirmation; several uncertainty intervals include zero.
 
 ## Limitations and stop rule
 
