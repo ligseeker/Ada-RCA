@@ -176,3 +176,11 @@ def load_cases(profile: DatasetProfile, raw_path: str = None) -> AdapterResult:
         )
     validate_case_collection(inputs, labels)
     return AdapterResult(tuple(inputs), tuple(labels), tuple(sources), tuple(excluded))
+
+
+def load_re2ob_cases(raw_path: str = None) -> AdapterResult:
+    return load_cases(RE2OB, raw_path)
+
+
+def load_re2tt_cases(raw_path: str = None) -> AdapterResult:
+    return load_cases(RE2TT, raw_path)
