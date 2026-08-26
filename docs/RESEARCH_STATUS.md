@@ -28,12 +28,13 @@ missingness evidence.
 
 ## Latest Experiment
 
-P3-G1 fixed-seed paired bootstrap, committed in `297cc4e5d6fe4a9cb71b78d9f9ac42f3e4c3ac05`; decision artifact is
+P3-G1 fixed-seed paired bootstrap, committed in `297cc4eec3eb039bc416576014b3c97ebe8796bc`; decision artifact is
 `docs/P3_G1_DECISION.md`.
 
 ## Latest Commit
 
-`aa6631ee362ddb82e1e5223269a14e82d50506ad` (P3-G1 gate decision closeout).
+- Latest experiment commit: `297cc4eec3eb039bc416576014b3c97ebe8796bc`.
+- Latest gate decision commit: `aa6631ee362ddb82e1e5223269a14e82d50506ad`.
 
 ## Next Authorized Action
 
