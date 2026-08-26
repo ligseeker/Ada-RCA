@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+
+# Local scratch (never used for formal experiments)
+scratch/
+tmp/
+
+# Large derived representation caches are NOT committed; they are
+# regenerated deterministically from the frozen representation code.
+# Manifests + checksums ARE committed so runs remain verifiable.
+artifacts/cache/
