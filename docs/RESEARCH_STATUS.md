@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Repository governance and benchmark inventory; P3-R0 has not yet been completed.
+P3-A0 data, candidate-universe, split, and leakage audit.
 
 ## Frozen Protocol Version
 
@@ -12,7 +12,7 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 
 - Repository identity check: PASS.
 - Protocol read-through: COMPLETE.
-- P3-R0: NOT STARTED.
+- P3-R0: PASS.
 - P3-A0: NOT STARTED.
 - P3-A0.5: NOT STARTED.
 - P3-A1: NOT STARTED.
@@ -21,19 +21,19 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 
 ## Current Blocker
 
-None. The user-requested RE2-TT path differs from the local layout: the available dataset is `/home/zhangll24/RCA_project/datasets/RCAEval/RE2/RE2-TT`. This is a resolved path-layout issue, not a protocol deviation.
+None. P3-R0 found 514 blank timestamp rows in two RE2-OB `simple_metrics.csv` files. They are preserved as missingness evidence and do not prevent reliable case labels, t0, candidates, or tri-modal access.
 
 ## Latest Experiment
 
-None. No performance result has been generated.
+P3-R0 formal compatibility audit, generated from Ada-RCA commit `04a9bdf8474cb024a4c365ab4ba5d12e6e91549c`. This is a data/evaluator audit, not a performance experiment.
 
 ## Latest Commit
 
-Starting commit inspected: `e60b11d5aa1a177e9ff12b62bf6dfc24baa1a1b2`.
+Audit implementation commit: `04a9bdf8474cb024a4c365ab4ba5d12e6e91549c`.
 
 ## Next Authorized Action
 
-Complete P3-R0 benchmark compatibility and data-semantics audit using the local RCAEval checkout and the two frozen RE2 datasets.
+Complete P3-A0 label-separated manifests, canonical service registries, frozen 3-fold OOF splits, and leakage tests.
 
 ## Decision Log
 
@@ -44,3 +44,11 @@ Complete P3-R0 benchmark compatibility and data-semantics audit using the local 
 - Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible; both differences are local naming/layout issues.
 - Proposed Revision: None. Resolve through documented path aliases.
 - Scientific Consequence: None.
+
+### 2026-08-26 — P3-R0 benchmark compatibility
+
+- Frozen Rule: RE2-OB and RE2-TT must each provide 90 service-level RCA cases, reliable root/fault/t0 semantics, complete metrics/logs/traces, and RCAEval-aligned AC@1/3/5 and Avg@5.
+- New Evidence: Both datasets provide 90/90 valid cases, 720/720 required files, strict 5-root × 6-fault × 3-repetition balance, and complete label-free candidate registries. The content tree digests are `ce48691243bcf4871abaedc49d5c7ffe45d51f66dcf669fec3da54e0aa60df8a` (OB) and `84b26bcd083cea2db5c7d46330974c23d9ef963ed586ec9325c663baa5dd0958` (TT). RCAEval checkout HEAD is `5e96b700445bfb5c599e505ecf37d53bf847bbeb`; its dirty diff digest is `24fd630537aee9daec7ca907e68360b6616046989b79d6c25d32e83021291320`. Two OB metric files contain 514 blank timestamp rows.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible. Blank timestamps are representable through explicit masks.
+- Proposed Revision: None.
+- Scientific Consequence: P3-R0 passes; P3-A0 is authorized. No morphology result has been inspected.
