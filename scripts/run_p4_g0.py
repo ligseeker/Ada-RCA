@@ -40,7 +40,7 @@ def load_event(path):
         return candidates, z1, z2
 
 
-def run(dataset, variant, output_root):
+def run(dataset, variant, output_root, overwrite=False):
     if dataset not in ("re2ob", "re2tt") or variant not in VARIANTS:
         raise ValueError("dataset must be re2ob/re2tt and variant must be a0/a1/a2/a3")
     source = PROJECT_ROOT / "artifacts" / "source" / dataset
@@ -61,9 +61,9 @@ def run(dataset, variant, output_root):
         row["root_service"] = roots[row["case_id"]]
     metrics = evaluate_predictions(predictions, candidates_by_case, roots)
     run_dir = PROJECT_ROOT / output_root / variant / dataset
-    if run_dir.exists():
+    if run_dir.exists() and not overwrite:
         raise FileExistsError("formal run already exists: {}".format(run_dir))
-    run_dir.mkdir(parents=True)
+    run_dir.mkdir(parents=True, exist_ok=overwrite)
     files = {
         "predictions.jsonl": "".join(json.dumps(row, sort_keys=True) + "\n" for row in predictions),
         "metrics.json": json.dumps(metrics, indent=2, sort_keys=True) + "\n",
@@ -87,8 +87,9 @@ def main():
     parser.add_argument("--dataset", required=True)
     parser.add_argument("--variant", required=True, choices=tuple(VARIANTS))
     parser.add_argument("--output-root", default="artifacts/p4_g0/predictions")
+    parser.add_argument("--overwrite", action="store_true")
     args = parser.parse_args()
-    run(args.dataset, args.variant, args.output_root)
+    run(args.dataset, args.variant, args.output_root, overwrite=args.overwrite)
 
 
 if __name__ == "__main__":

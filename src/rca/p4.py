@@ -109,6 +109,21 @@ def conditional_logit_loss_gradient(
     return float(loss), gradient
 
 
+def conditional_logit_hessian(
+    weights: np.ndarray,
+    event_matrices: Sequence[np.ndarray],
+    l2_lambda: float = 1.0,
+) -> np.ndarray:
+    weights = np.asarray(weights, dtype=np.float64)
+    hessian = float(l2_lambda) * np.eye(weights.size, dtype=np.float64)
+    for matrix in event_matrices:
+        scores = matrix.dot(weights)
+        probabilities = event_softmax(scores)
+        centered = matrix - probabilities.dot(matrix)[None, :]
+        hessian += centered.T.dot(probabilities[:, None] * centered)
+    return hessian
+
+
 def event_softmax(scores: np.ndarray) -> np.ndarray:
     scores = np.asarray(scores, dtype=np.float64)
     shifted = scores - np.max(scores)
@@ -150,17 +165,41 @@ def fit_conditional_logit(
         jac=True,
         options={"maxiter": int(max_iter), "gtol": float(gradient_tolerance), "ftol": 1e-15, "maxls": 50},
     )
-    final_loss, final_gradient = objective(result.x)
+    # L-BFGS-B can report relative-function convergence while its projected
+    # gradient is above the protocol tolerance.  Deterministic Newton polishing
+    # on the same convex objective closes that numerical gap without changing
+    # the representation, split, scorer, or regularization.
+    polished = np.asarray(result.x, dtype=np.float64).copy()
+    for _ in range(32):
+        polish_loss, polish_gradient = objective(polished)
+        if np.linalg.norm(polish_gradient, ord=np.inf) <= float(gradient_tolerance):
+            break
+        hessian = conditional_logit_hessian(polished, matrices, l2_lambda)
+        try:
+            step = np.linalg.solve(hessian, polish_gradient)
+        except np.linalg.LinAlgError:
+            break
+        step_size = 1.0
+        while step_size >= 2.0 ** -30:
+            candidate = polished - step_size * step
+            candidate_loss, _ = objective(candidate)
+            if candidate_loss < polish_loss:
+                polished = candidate
+                break
+            step_size *= 0.5
+        else:
+            break
+    final_loss, final_gradient = objective(polished)
     return ConditionalLogitFit(
-        weights=np.asarray(result.x, dtype=np.float64),
+        weights=polished,
         scaler_mean=np.asarray(scaler.mean_, dtype=np.float64),
         scaler_scale=np.asarray(scaler.scale_, dtype=np.float64),
         initial_loss=float(initial_loss),
         final_loss=float(final_loss),
         gradient_norm=float(np.linalg.norm(final_gradient, ord=np.inf)),
         iterations=int(result.nit),
-        converged=bool(result.success),
-        message=str(result.message),
+        converged=bool(result.success) and float(np.linalg.norm(final_gradient, ord=np.inf)) <= float(gradient_tolerance),
+        message=str(result.message) + "; Newton polish gradient_inf={:.3e}".format(float(np.linalg.norm(final_gradient, ord=np.inf))),
     )
 
 

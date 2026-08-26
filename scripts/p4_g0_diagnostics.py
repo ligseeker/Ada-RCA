@@ -23,6 +23,7 @@ from src.rca.p4 import CandidateEvent, build_candidate_representation, fit_condi
 
 DATASETS = ("re2ob", "re2tt")
 VARIANTS = ("a0", "a1", "a2", "a3")
+P4_RUN_ROOT = PROJECT_ROOT / "artifacts" / "p4_g0" / "predictions"
 FAULTS = ("cpu", "mem", "disk", "socket", "delay", "loss")
 REPRESENTATIONS = {"a0": ("z1", False), "a1": ("z1", True), "a2": ("z2", False), "a3": ("z2", True)}
 COMPARISONS = {"A1-A0": ("a1", "a0"), "A3-A2": ("a3", "a2"), "A2-A0": ("a2", "a0"), "A3-A1": ("a3", "a1")}
@@ -48,7 +49,7 @@ def load_dataset(dataset):
         raw["z1"][case_id] = CandidateEvent(case_id, candidates, z1)
         raw["z2"][case_id] = CandidateEvent(case_id, candidates, z2)
     roots = {case_id: row["root_service"] for case_id, row in labels.items()}
-    predictions = {variant: {row["case_id"]: row for row in read_jsonl(PROJECT_ROOT / "artifacts" / "p4_g0" / "predictions" / variant / dataset / "predictions.jsonl")} for variant in VARIANTS}
+    predictions = {variant: {row["case_id"]: row for row in read_jsonl(P4_RUN_ROOT / variant / dataset / "predictions.jsonl")} for variant in VARIANTS}
     return labels, assignments, raw, roots, predictions
 
 
@@ -189,7 +190,7 @@ def main():
     loso_reports = {dataset: loso(dataset, data[dataset]) for dataset in DATASETS}
     foreign_reports = {dataset: foreign_context(dataset, data[dataset]) for dataset in DATASETS}
     transitions = case_transitions(all_metrics)
-    metrics_summary = {dataset: {variant.upper(): json.loads((PROJECT_ROOT / "artifacts" / "p4_g0" / "predictions" / variant / dataset / "metrics.json").read_text())["overall_cases"] for variant in VARIANTS} for dataset in DATASETS}
+    metrics_summary = {dataset: {variant.upper(): json.loads((P4_RUN_ROOT / variant / dataset / "metrics.json").read_text())["overall_cases"] for variant in VARIANTS} for dataset in DATASETS}
     for dataset in DATASETS:
         metrics_summary[dataset]["effects"] = {comparison: {metric: metrics_summary[dataset][left.upper()][metric] - metrics_summary[dataset][right.upper()][metric] for metric in ("Avg@5", "AC@1")} for comparison, (left, right) in COMPARISONS.items()}
         metrics_summary[dataset]["interaction"] = {metric: metrics_summary[dataset]["effects"]["A3-A2"][metric] - metrics_summary[dataset]["effects"]["A1-A0"][metric] for metric in ("Avg@5", "AC@1")}
