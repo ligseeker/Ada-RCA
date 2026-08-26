@@ -85,6 +85,10 @@ def build_split(bundle: Path, output_root: Path, seed: int = 20260826):
         "passed": True,
     }
     (output / "split_manifest.json").write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    (output_root / (bundle.name + "_3fold.json")).write_text(
+        json.dumps({"split_manifest": summary, "assignments": assignments, "folds": train_test}, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
     return summary
 
 

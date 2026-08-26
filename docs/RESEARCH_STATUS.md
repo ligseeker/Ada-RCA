@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-P3-A0 data, candidate-universe, split, and leakage audit.
+P3-A0.5 representation freeze.
 
 ## Frozen Protocol Version
 
@@ -13,7 +13,7 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 - Repository identity check: PASS.
 - Protocol read-through: COMPLETE.
 - P3-R0: PASS.
-- P3-A0: NOT STARTED.
+- P3-A0: PASS.
 - P3-A0.5: NOT STARTED.
 - P3-A1: NOT STARTED.
 - P3-A2: NOT STARTED.
@@ -21,19 +21,19 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 
 ## Current Blocker
 
-None. P3-R0 found 514 blank timestamp rows in two RE2-OB `simple_metrics.csv` files. They are preserved as missingness evidence and do not prevent reliable case labels, t0, candidates, or tri-modal access.
+None. P3-R0 and P3-A0 passed. The 514 blank timestamp rows in two RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
 
 ## Latest Experiment
 
-P3-R0 formal compatibility audit, generated from Ada-RCA commit `04a9bdf8474cb024a4c365ab4ba5d12e6e91549c`. This is a data/evaluator audit, not a performance experiment.
+P3-A0 manifests, leakage firewall, and deterministic three-fold split freeze. No morphology performance result has been generated.
 
 ## Latest Commit
 
-Audit implementation commit: `04a9bdf8474cb024a4c365ab4ba5d12e6e91549c`.
+Latest completed audit commit: `1b0c295c99c3629976a0c767b56e851c4bcf7d57`; split implementation commit: `ca4a49b103fe5e688bb9e8f27756e5944fab3f51`.
 
 ## Next Authorized Action
 
-Complete P3-A0 label-separated manifests, canonical service registries, frozen 3-fold OOF splits, and leakage tests.
+Freeze event-relative telemetry representation before inspecting morphology performance.
 
 ## Decision Log
 
@@ -52,3 +52,19 @@ Complete P3-A0 label-separated manifests, canonical service registries, frozen 3
 - Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible. Blank timestamps are representable through explicit masks.
 - Proposed Revision: None.
 - Scientific Consequence: P3-R0 passes; P3-A0 is authorized. No morphology result has been inspected.
+
+### 2026-08-26 — P3-A0 data and leakage firewall
+
+- Frozen Rule: Inputs and labels must be physically separated; candidate registries must be label-free and complete; no path, root, or fault token may enter prediction-visible data.
+- New Evidence: OB and TT manifests each contain 90 unique inputs, labels, and source records; registry sizes are 11 and 68; all candidate sets are complete and stable; forbidden input token hits are zero; root-in-registry violations are zero.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: P3-A0 data/leakage portion passes.
+
+### 2026-08-26 — P3-A0 split freeze
+
+- Frozen Rule: Each dataset uses independent fixed 3-fold OOF; every root × fault stratum contributes repetition 1/2/3 to fold 0/1/2.
+- New Evidence: Both datasets have 30 test and 60 train cases per fold, with all 30 root × fault strata represented exactly once in every test fold. Main manifests are `artifacts/splits/re2ob_3fold.json` and `artifacts/splits/re2tt_3fold.json`.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
+- Proposed Revision: None.
+- Scientific Consequence: Split is frozen before any morphology performance experiment.
