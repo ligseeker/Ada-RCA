@@ -33,8 +33,7 @@ P3-G1 fixed-seed paired bootstrap, committed in `297cc4e5d6fe4a9cb71b78d9f9ac42f
 
 ## Latest Commit
 
-`297cc4e5d6fe4a9cb71b78d9f9ac42f3e4c3ac05` (bootstrap artifact; gate decision
-closeout is the next commit).
+`aa6631ee362ddb82e1e5223269a14e82d50506ad` (P3-G1 gate decision closeout).
 
 ## Next Authorized Action
 
