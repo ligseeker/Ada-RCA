@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-P3-A2 bootstrap comparisons and P3-G1 decision.
+Stopped after P3-G1 morphology signal gate.
 
 ## Frozen Protocol Version
 
@@ -16,24 +16,30 @@ Ada-RCA Standalone RCA Research Execution Protocol V0.6-min. The repository stor
 - P3-A0: PASS.
 - P3-A0.5: PASS.
 - P3-A1: PASS (diagnostic completed).
-- P3-A2: RUNS COMPLETE; bootstrap pending.
-- P3-G1: NOT STARTED.
+- P3-A2: PASS (five zero-model OOF variants and integrity checks complete).
+- P3-G1: NO-GO.
 
 ## Current Blocker
 
-None. P3-R0, P3-A0, and P3-A0.5 passed. The 514 blank timestamp rows in two RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
+The frozen morphology hypothesis is not supported by P3-G1. Autonomous
+execution is stopped; no neural RCA stage is authorized. The 514 blank
+timestamp rows in two RE2-OB `simple_metrics.csv` files remain explicit
+missingness evidence.
 
 ## Latest Experiment
 
-P3-A2 five zero-model OOF variants, generated from commit `f974c8c0bb6fe487ebcbe54b33d28276846a0708`; bootstrap and P3-G1 gate are pending.
+P3-G1 fixed-seed paired bootstrap, committed in `297cc4e5d6fe4a9cb71b78d9f9ac42f3e4c3ac05`; decision artifact is
+`docs/P3_G1_DECISION.md`.
 
 ## Latest Commit
 
-Latest completed experiment commit: `f974c8c0bb6fe487ebcbe54b33d28276846a0708`; MI audit commit: `650b59d90d0cc5baefadc80f8c8dc80d778fe84c`.
+`297cc4e5d6fe4a9cb71b78d9f9ac42f3e4c3ac05` (bootstrap artifact; gate decision
+closeout is the next commit).
 
 ## Next Authorized Action
 
-Run fixed-seed 10,000-resample paired bootstrap for Z3−Z1 and Z3−Z3-SHUFFLE, then apply P3-G1 exactly.
+None. `STOPPED: MORPHOLOGY HYPOTHESIS NOT SUPPORTED`. Any future work requires
+an explicit user decision and may not silently alter the frozen gate or result.
 
 ## Decision Log
 
@@ -100,3 +106,11 @@ Run fixed-seed 10,000-resample paired bootstrap for Z3−Z1 and Z3−Z3-SHUFFLE,
 - Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible.
 - Proposed Revision: None.
 - Scientific Consequence: The preregistered gate comparison is mixed before uncertainty analysis; bootstrap is mandatory and no neural model is authorized yet.
+
+### 2026-08-26 — P3-G1 morphology signal gate
+
+- Frozen Rule: P3-G1 requires the OB/TT mean `Avg@5(Z3)` to exceed `Avg@5(Z1)`, neither dataset may fall below a `-0.02` Z3-minus-Z1 delta, at least one dataset must improve, the mean Z3 score must exceed Z3-SHUFFLE, and all integrity audits must pass.
+- New Evidence: Z3-minus-Z1 is `+0.013333` on OB, `-0.055556` on TT, and `-0.021111` on the OB/TT mean. Z3-minus-Z3-SHUFFLE is `+0.184444` on OB, `+0.262222` on TT, and `+0.223333` on the mean. The 10,000-resample fixed-seed paired bootstrap is stored in `artifacts/bootstrap/p3_g1_bootstrap.json`.
+- Why Current Rule Is Invalid/Infeasible: It is not invalid or infeasible. The preregistered gate is directly evaluable and produces a negative result.
+- Proposed Revision: None.
+- Scientific Consequence: P3-G1 is NO-GO. The morphology route stops; no neural RCA implementation is authorized.
