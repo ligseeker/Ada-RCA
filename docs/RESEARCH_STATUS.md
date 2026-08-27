@@ -39,17 +39,26 @@ the A1-A0 gate.
 - P4-G0 bootstrap/LOSO/context diagnostics: COMPLETE.
 - P4-G0 failure analysis: COMPLETE.
 - P4-G0 decision: NO-GO.
+- Final Method Freeze V1.0: COMPLETE.
+- Final Z2/P4-A2 replay: INTEGRITY_VALID.
+- S0/S1/S2: COMPLETE; all CONTROL_SEPARATED.
+- S3 service-identity probe: COMPLETE.
+- Anchor feasibility: NOT FEASIBLE UNDER FROZEN PIPELINE.
+- Final scientific status: SCIENTIFIC_CLAIM_RESTRICTED.
+- Final implementation status: FINAL_METHOD_IMPLEMENTATION_FROZEN.
 
 ## Current Blocker
 
-No blocker for the frozen final-method audit path. No neural RCA stage or
-learned comparative model is authorized. The 514 blank timestamp rows in two
-RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
+The round is terminal by protocol: `STOPPED — awaiting human review`. No neural
+RCA stage, learned comparative model, baseline reproduction, thesis writing,
+or new method work is authorized. The 514 blank timestamp rows in two RE2-OB
+`simple_metrics.csv` files remain explicit missingness evidence.
 
 ## Latest Experiment
 
-The latest experiment is the frozen S0/S1/S2 adversarial control audit under
-source commit `dcd1f14ebaa5b34281a04222e20ebec2e85c2a7a`. Exact replay remains
+The last performance-bearing stage is the frozen S3 diagnostic probe generated
+from source commit `88e3dcf726e14256013b989add8d6fbc5183dc74`. The later anchor stage is a
+data-only feasibility audit and computed no performance. Exact final replay is
 identity/integrity verification rather than fresh performance evidence.
 
 ## Latest Commit
@@ -62,17 +71,13 @@ identity/integrity verification rather than fresh performance evidence.
 - Latest anchor-feasibility implementation commit: `5cc0e0747610fa93500da530aa5ffee511bde2e5`.
 - Latest anchor-feasibility correction commit: `9ececc0a9d974841243ddc8a09d5980fceb8d94e`.
 - Anchor performance audit: skipped under the frozen feasibility rule.
-- Final evidence summary and method decision are the next and final logical stage; after their commit the round is stopped for human review.
-- Current HEAD is updated by subsequent logical-stage commits; this document
-  must be refreshed after each committed audit stage.
+- Final evidence summary commit: `43111ecf457bddd7b9c4ca019a450ec5b5ad0ff3`.
+- Final decision document: `docs/FINAL_METHOD_DECISION.md` at final HEAD.
 
 ## Next Authorized Action
 
-Continue only with the frozen final-method integrity replay and pre-frozen
-S0/S1/S2/S3/anchor audits described in
-`docs/RCA_FINAL_METHOD_FREEZE_V1.0.md`. Any integrity failure or frozen
-scientific STOP condition ends this round. Learned comparative modeling,
-method rescue, and new datasets remain unauthorized.
+`STOPPED — awaiting human review`. No next experimental, comparative, thesis,
+or method-development stage is authorized in this round.
 
 ## Final-method audit governance
 
@@ -84,6 +89,26 @@ limitation is recorded in `docs/P4_CONTEXT_DIAGNOSTIC_LIMITATION.md`; it does
 not alter P4-G0.
 
 ## Decision Log
+
+### 2026-08-27 — Final Method Freeze V1.0 decision
+
+- Frozen Rule: Preserve Z2 and the event-level conditional-logit scorer; use
+  exact replay for integrity only; run only S0/S1/S2 and diagnostic S3; require
+  anchor data feasibility before any shifted performance; keep integrity and
+  scientific statuses separate.
+- New Evidence: Final replay is exactly identical to P4 A2 with zero score
+  error. S0-A, S0-B, S1, and S2 are CONTROL_SEPARATED. S3 identifies a strong
+  OB and weaker TT pre-event service fingerprint. Anchor feasibility fails for
+  77 case-source-offset combinations affecting five cases, so no jitter
+  performance exists.
+- Why Current Rule Is Invalid/Infeasible: The final method is implementation-
+  valid. Anchor robustness is infeasible under the frozen derived-data
+  pipeline; this limits evidence but is not a method failure.
+- Proposed Revision: None. Method rescue and pipeline changes are prohibited.
+- Scientific Consequence: `INTEGRITY_VALID`,
+  `SCIENTIFIC_CLAIM_RESTRICTED`, and
+  `FINAL_METHOD_IMPLEMENTATION_FROZEN`. The round is
+  `STOPPED — awaiting human review`.
 
 ### 2026-08-27 — P4-G0 minimal comparative protocol freeze
 
