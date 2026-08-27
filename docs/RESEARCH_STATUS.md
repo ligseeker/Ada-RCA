@@ -2,8 +2,9 @@
 
 ## Current Phase
 
-P4-G0: NO-GO. Final failure analysis and decision are complete. This round is
-stopped.
+Final Method Freeze V1.0 and adversarial scientific audit: governance freeze
+complete; new control/anchor results have not yet been inspected in this
+status update. P3-G1 and P4-G0 remain closed decisions.
 
 ## Frozen Protocol Version
 
@@ -36,25 +37,39 @@ the A1-A0 gate.
 
 ## Current Blocker
 
-None for implementing the frozen P4-G0 minimal comparative test. No neural RCA
-stage or learned comparative model is authorized. The 514 blank timestamp rows
-in two RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
+No blocker for the frozen final-method audit path. No neural RCA stage or
+learned comparative model is authorized. The 514 blank timestamp rows in two
+RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
 
 ## Latest Experiment
 
-P3-G1 fixed-seed paired bootstrap, committed in `297cc4eec3eb039bc416576014b3c97ebe8796bc`; decision artifact is
-`docs/P3_G1_DECISION.md`.
+P4-G0 formal runs, polished replay, bootstrap, LOSO, and foreign-context
+diagnostics are complete and remain the latest pre-audit evidence. The final
+method freeze is a governance artifact, not a new performance experiment.
 
 ## Latest Commit
 
-- Latest experiment commit: `297cc4eec3eb039bc416576014b3c97ebe8796bc`.
-- Latest gate decision commit: `aa6631ee362ddb82e1e5223269a14e82d50506ad`.
+- Latest gate decision commit: `0030111` (`decision: record P4-G0 no-go and stop`).
+- Latest governance freeze commit: `c5507b9cf8394d23b648084fa9c1a5702f26182c`.
+- Current HEAD is updated by subsequent logical-stage commits; this document
+  must be refreshed after each committed audit stage.
 
 ## Next Authorized Action
 
-STOP. The current minimal candidate-relative route is closed after P4-G0
-NO-GO. Learned comparative modeling is `NOT YET AUTHORIZED`; any next research
-direction requires an explicit human decision and a new protocol version.
+Continue only with the frozen final-method integrity replay and pre-frozen
+S0/S1/S2/S3/anchor audits described in
+`docs/RCA_FINAL_METHOD_FREEZE_V1.0.md`. Any integrity failure or frozen
+scientific STOP condition ends this round. Learned comparative modeling,
+method rescue, and new datasets remain unauthorized.
+
+## Final-method audit governance
+
+The final operational combination `Z2 + event-level conditional logit` was
+synthesized after P3 and P4 outcomes were observed. Exact replay is an
+identity/integrity verification, not fresh performance evidence. P3 and P4
+share the same 180-case RE2-OB/RE2-TT corpus. The foreign-context diagnostic
+limitation is recorded in `docs/P4_CONTEXT_DIAGNOSTIC_LIMITATION.md`; it does
+not alter P4-G0.
 
 ## Decision Log
 
