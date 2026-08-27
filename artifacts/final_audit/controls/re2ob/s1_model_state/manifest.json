@@ -1,0 +1,62 @@
+{
+  "0": {
+    "converged": true,
+    "feature_dimension": 8,
+    "feature_names": [
+      "metric.coverage",
+      "metric.channel_available",
+      "log.coverage",
+      "log.channel_available",
+      "trace-error.coverage",
+      "trace-error.channel_available",
+      "trace-latency.coverage",
+      "trace-latency.channel_available"
+    ],
+    "final_loss": 122.41866055590313,
+    "gradient_norm": 4.284256505115991e-09,
+    "initial_loss": 143.8737163679021,
+    "iterations": 20,
+    "lambda": 1.0,
+    "message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL; Newton polish gradient_inf=4.284e-09"
+  },
+  "1": {
+    "converged": true,
+    "feature_dimension": 8,
+    "feature_names": [
+      "metric.coverage",
+      "metric.channel_available",
+      "log.coverage",
+      "log.channel_available",
+      "trace-error.coverage",
+      "trace-error.channel_available",
+      "trace-latency.coverage",
+      "trace-latency.channel_available"
+    ],
+    "final_loss": 122.38314773256121,
+    "gradient_norm": 7.4311499176360485e-09,
+    "initial_loss": 143.8737163679021,
+    "iterations": 11,
+    "lambda": 1.0,
+    "message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL; Newton polish gradient_inf=7.431e-09"
+  },
+  "2": {
+    "converged": true,
+    "feature_dimension": 8,
+    "feature_names": [
+      "metric.coverage",
+      "metric.channel_available",
+      "log.coverage",
+      "log.channel_available",
+      "trace-error.coverage",
+      "trace-error.channel_available",
+      "trace-latency.coverage",
+      "trace-latency.channel_available"
+    ],
+    "final_loss": 121.7444346054377,
+    "gradient_norm": 7.549516567451064e-15,
+    "initial_loss": 143.8737163679021,
+    "iterations": 17,
+    "lambda": 1.0,
+    "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH; Newton polish gradient_inf=7.550e-15"
+  }
+}

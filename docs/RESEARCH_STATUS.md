@@ -2,9 +2,10 @@
 
 ## Current Phase
 
-Final Method Freeze V1.0 and adversarial scientific audit: governance freeze
-complete; new control/anchor results have not yet been inspected in this
-status update. P3-G1 and P4-G0 remain closed decisions.
+Final Method Freeze V1.0 and adversarial scientific audit: exact replay and
+S0/S1/S2 are complete. All three controls are `CONTROL_SEPARATED`; S2 does not
+trigger `CORE_INTERPRETATION_NOT_SUPPORTED`. S3 and anchor feasibility remain
+authorized. P3-G1 and P4-G0 remain closed decisions.
 
 ## Frozen Protocol Version
 
@@ -43,14 +44,16 @@ RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
 
 ## Latest Experiment
 
-P4-G0 formal runs, polished replay, bootstrap, LOSO, and foreign-context
-diagnostics are complete and remain the latest pre-audit evidence. The final
-method freeze is a governance artifact, not a new performance experiment.
+The latest experiment is the frozen S0/S1/S2 adversarial control audit under
+source commit `dcd1f14ebaa5b34281a04222e20ebec2e85c2a7a`. Exact replay remains
+identity/integrity verification rather than fresh performance evidence.
 
 ## Latest Commit
 
 - Latest gate decision commit: `0030111` (`decision: record P4-G0 no-go and stop`).
 - Latest governance freeze commit: `c5507b9cf8394d23b648084fa9c1a5702f26182c`.
+- Latest final-method replay commit: `0e3987b63b941ab37ef922447f6ad2da60e64a3c`.
+- Latest audit source commit: `dcd1f14ebaa5b34281a04222e20ebec2e85c2a7a`.
 - Current HEAD is updated by subsequent logical-stage commits; this document
   must be refreshed after each committed audit stage.
 

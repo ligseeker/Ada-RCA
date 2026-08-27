@@ -1,0 +1,33 @@
+{
+  "aggregation": "frozen service/channel Q90",
+  "case_count": 90,
+  "dataset": "re2ob",
+  "feature_dimension": 16,
+  "feature_names": [
+    "metric.pre_mean_q",
+    "metric.pre_max_q",
+    "metric.pre_coverage",
+    "metric.pre_available",
+    "log.pre_mean_q",
+    "log.pre_max_q",
+    "log.pre_coverage",
+    "log.pre_available",
+    "trace-error.pre_mean_q",
+    "trace-error.pre_max_q",
+    "trace-error.pre_coverage",
+    "trace-error.pre_available",
+    "trace-latency.pre_mean_q",
+    "trace-latency.pre_max_q",
+    "trace-latency.pre_coverage",
+    "trace-latency.pre_available"
+  ],
+  "normalization": "frozen pre-event robust indicator normalization",
+  "post_event_information_used": false,
+  "source_files": [
+    "simple_metrics.csv",
+    "logts.csv",
+    "tracets_err.csv",
+    "tracets_lat.csv"
+  ],
+  "window": "[t0-600,t0)"
+}
