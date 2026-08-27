@@ -1,0 +1,18 @@
+{
+  "environment": {
+    "python": "3.8.20",
+    "scikit_learn": "1.2.1"
+  },
+  "generated_at": "2026-08-27T07:59:30.360432+00:00",
+  "protocol": "docs/RCA_FINAL_METHOD_FREEZE_V1.0.md",
+  "s2_feature_manifests": {
+    "re2ob": "99c814dbf462078d79474d4db0fda6270bf6acdd5fac5cc002ec3adc49b03bcf",
+    "re2tt": "fbb8ced192d81a69d5e10e82087a0548f7d50ce199138db251b5958979af7c99"
+  },
+  "schema_version": "ada_rca_s3_service_identity_v1",
+  "source_commit": "88e3dcf726e14256013b989add8d6fbc5183dc74",
+  "split_manifests": {
+    "re2ob": "a672d12be89e91efd7fe69cdf81713b3d18482bba6b46620b0bfd0b4ff7bfd62",
+    "re2tt": "3c3947d6377433507ca1ea6b69d88f6d8f359b42937bbcff1a7ac98422f05d7e"
+  }
+}
