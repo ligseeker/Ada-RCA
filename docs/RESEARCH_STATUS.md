@@ -6,7 +6,8 @@ Final Method Freeze V1.0 and adversarial scientific audit: exact replay,
 S0/S1/S2, and S3 are complete. All three RCA controls are
 `CONTROL_SEPARATED`; S2 does not trigger `CORE_INTERPRETATION_NOT_SUPPORTED`.
 S3 reports a stronger OB and weaker TT service fingerprint. Anchor feasibility
-remains authorized. P3-G1 and P4-G0 remain closed decisions.
+is `ANCHOR_AUDIT_NOT_FEASIBLE_UNDER_FROZEN_PIPELINE`; shifted performance is
+not authorized. P3-G1 and P4-G0 remain closed decisions.
 
 ## Frozen Protocol Version
 
@@ -56,6 +57,9 @@ identity/integrity verification rather than fresh performance evidence.
 - Latest final-method replay commit: `0e3987b63b941ab37ef922447f6ad2da60e64a3c`.
 - Latest audit source commit: `dcd1f14ebaa5b34281a04222e20ebec2e85c2a7a`.
 - Latest diagnostic probe commit: `88e3dcf726e14256013b989add8d6fbc5183dc74`.
+- Latest anchor-feasibility implementation commit: `5cc0e0747610fa93500da530aa5ffee511bde2e5`.
+- Latest anchor-feasibility correction commit: `9ececc0a9d974841243ddc8a09d5980fceb8d94e`.
+- Anchor performance audit: skipped under the frozen feasibility rule.
 - Current HEAD is updated by subsequent logical-stage commits; this document
   must be refreshed after each committed audit stage.
 
