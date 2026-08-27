@@ -172,7 +172,8 @@ def fit_conditional_logit(
     polished = np.asarray(result.x, dtype=np.float64).copy()
     for _ in range(32):
         polish_loss, polish_gradient = objective(polished)
-        if np.linalg.norm(polish_gradient, ord=np.inf) <= float(gradient_tolerance):
+        polish_gradient_norm = float(np.linalg.norm(polish_gradient, ord=np.inf))
+        if polish_gradient_norm <= float(gradient_tolerance):
             break
         hessian = conditional_logit_hessian(polished, matrices, l2_lambda)
         try:
@@ -182,8 +183,18 @@ def fit_conditional_logit(
         step_size = 1.0
         while step_size >= 2.0 ** -30:
             candidate = polished - step_size * step
-            candidate_loss, _ = objective(candidate)
-            if candidate_loss < polish_loss:
+            candidate_loss, candidate_gradient = objective(candidate)
+            candidate_gradient_norm = float(np.linalg.norm(candidate_gradient, ord=np.inf))
+            # Near the optimum, float64 event-loss summation can move upward by
+            # a handful of ULPs even when the analytic Newton step reduces the
+            # stationarity residual to numerical zero.  Accept that step only
+            # when the loss change is within a fixed eight-ULP arithmetic bound
+            # and the gradient infinity norm strictly decreases.
+            loss_slack = 8.0 * float(np.spacing(abs(polish_loss)))
+            if candidate_loss < polish_loss or (
+                candidate_loss <= polish_loss + loss_slack
+                and candidate_gradient_norm < polish_gradient_norm
+            ):
                 polished = candidate
                 break
             step_size *= 0.5

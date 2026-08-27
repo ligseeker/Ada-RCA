@@ -1,14 +1,17 @@
 import unittest
 
 import numpy as np
+from pathlib import Path
 
 from src.rca.final_audit import (
     S1_FEATURE_NAMES,
     S2_FEATURE_NAMES,
     aggregate_expected,
     observability_event,
+    fit_control_oof,
     s0_rankings,
 )
+from src.rca.final_method import load_dataset
 from src.rca.p4 import CandidateEvent
 
 
@@ -45,7 +48,18 @@ class FinalAuditControlsTest(unittest.TestCase):
         self.assertEqual(test_row["AC@3"], 1.0)
         self.assertAlmostEqual(test_row["MRR"], 0.75)
 
+    def test_formal_observability_control_satisfies_gradient_tolerance(self):
+        root = Path(__file__).resolve().parents[1]
+        events, labels, roots, assignments = load_dataset(root, "re2ob")
+        s1_events = {}
+        for case_id, event in events.items():
+            with np.load(root / "artifacts" / "features" / "re2ob" / (case_id + ".npz")) as data:
+                s1_events[case_id] = observability_event(case_id, event.candidates, data["base"])
+        predictions, fits = fit_control_oof(s1_events, roots, assignments)
+        self.assertEqual(len(predictions), 90)
+        self.assertTrue(all(fit.converged for fit in fits.values()))
+        self.assertLessEqual(max(fit.gradient_norm for fit in fits.values()), 1e-8)
+
 
 if __name__ == "__main__":
     unittest.main()
-
