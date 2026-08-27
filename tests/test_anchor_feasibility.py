@@ -31,8 +31,9 @@ class AnchorFeasibilityTest(unittest.TestCase):
                     self.assertTrue(source["uses_frozen_derived_source"])
                     self.assertTrue(source["frozen_reconstruction_semantics"])
                     self.assertEqual(set(source["offsets"]), {"-30", "-15", "0", "15", "30"})
+                    for offset in source["offsets"].values():
+                        self.assertIn("effective_support_end_relative_seconds", offset)
 
 
 if __name__ == "__main__":
     unittest.main()
-

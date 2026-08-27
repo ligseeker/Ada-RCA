@@ -32,7 +32,7 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def audit_source(path, anchor):
+def audit_source(path, anchor, expected_cadence):
     frame = pd.read_csv(path, usecols=["time"], low_memory=False)
     raw = pd.to_numeric(frame["time"], errors="coerce").to_numpy(dtype=np.float64)
     timestamps = raw[np.isfinite(raw)]
@@ -50,11 +50,16 @@ def audit_source(path, anchor):
     for offset in OFFSETS:
         start = float(anchor) + offset - 600.0
         end = float(anchor) + offset + 600.0
+        # A regularly sampled derived series supports the half-open interval
+        # through the end of the last cadence cell, even when the last sample
+        # itself is before the requested right boundary.
+        support_end = float(timestamps[-1]) + float(expected_cadence)
         offsets[str(offset)] = {
             "window_start_relative_seconds": float(start - anchor),
             "window_end_relative_seconds": float(end - anchor),
-            "supported": bool(float(timestamps[0]) <= start and float(timestamps[-1]) >= end),
+            "supported": bool(float(timestamps[0]) <= start and support_end >= end),
             "valid_rows_in_window": int(np.count_nonzero((timestamps >= start) & (timestamps < end))),
+            "effective_support_end_relative_seconds": float(support_end - anchor),
         }
     return {
         "path": str(path),
@@ -97,7 +102,7 @@ def main():
             source_reports = {}
             for channel, (key, expected_name, expected_cadence) in SOURCES.items():
                 path = Path(str(sources[case_id][key]))
-                source_report = audit_source(path, anchor)
+                source_report = audit_source(path, anchor, expected_cadence)
                 source_report["expected_filename"] = expected_name
                 source_report["expected_cadence_seconds"] = expected_cadence
                 source_report["uses_frozen_derived_source"] = path.name == expected_name
@@ -123,4 +128,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
