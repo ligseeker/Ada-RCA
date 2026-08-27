@@ -2,14 +2,20 @@
 
 ## Current Phase
 
-Final Method Freeze V1.0 and adversarial scientific audit: exact replay,
-S0/S1/S2, S3, and anchor feasibility are complete. All three RCA controls are
-`CONTROL_SEPARATED`; S2 does not trigger `CORE_INTERPRETATION_NOT_SUPPORTED`.
-S3 reports a stronger OB and weaker TT service fingerprint. Anchor feasibility
-is `ANCHOR_AUDIT_NOT_FEASIBLE_UNDER_FROZEN_PIPELINE`; shifted performance is
-not authorized. Final scientific status is `SCIENTIFIC_CLAIM_RESTRICTED` and
-implementation status is `FINAL_METHOD_IMPLEMENTATION_FROZEN`. P3-G1 and
-P4-G0 remain closed decisions.
+P6 final-evaluation governance is complete through the performance-blind
+baseline-selection freeze and published-context non-interference audit. Final
+Evaluation Protocol V1.0 is frozen; static RCAEval compatibility is audited;
+P6-G0 was frozen at commit
+`41bfd10bdfc76861736ad1ea0268bf65255df52d` before the first inspection of the
+human-verified Table 6 reference. The post-read result is
+`BASELINE_SELECTION_NON_INTERFERENCE_PASS`; no tier, priority, rationale,
+comparability, or effort classification changed.
+
+The final scientific baseline is unchanged. All S0/S1/S2 controls are
+`CONTROL_SEPARATED`; anchor feasibility remains
+`ANCHOR_AUDIT_NOT_FEASIBLE_UNDER_FROZEN_PIPELINE`; scientific status is
+`SCIENTIFIC_CLAIM_RESTRICTED`; implementation status is
+`FINAL_METHOD_IMPLEMENTATION_FROZEN`; and P3-G1/P4-G0 remain closed decisions.
 
 ## Frozen Protocol Version
 
@@ -46,13 +52,19 @@ the A1-A0 gate.
 - Anchor feasibility: NOT FEASIBLE UNDER FROZEN PIPELINE.
 - Final scientific status: SCIENTIFIC_CLAIM_RESTRICTED.
 - Final implementation status: FINAL_METHOD_IMPLEMENTATION_FROZEN.
+- P6-E0 Final Evaluation Protocol V1.0: FROZEN.
+- P6-E1 performance-blind compatibility audit: COMPLETE.
+- P6-G0 baseline matrix: FROZEN at `41bfd10bdfc76861736ad1ea0268bf65255df52d`.
+- P6-E2 human-verified published reference inspection: COMPLETE after P6-G0.
+- P6-E3 non-interference audit: BASELINE_SELECTION_NON_INTERFERENCE_PASS.
 
 ## Current Blocker
 
-The round is terminal by protocol: `STOPPED — awaiting human review`. No neural
-RCA stage, learned comparative model, baseline reproduction, thesis writing,
-or new method work is authorized. The 514 blank timestamp rows in two RE2-OB
-`simple_metrics.csv` files remain explicit missingness evidence.
+The round is terminal by protocol: `P6-G0 = FROZEN - AWAITING HUMAN REVIEW`
+and `STOPPED - no external baseline reproduction authorized`. No external
+baseline execution, neural RCA stage, learned comparative model, thesis
+writing, or new method work is authorized. The 514 blank timestamp rows in two
+RE2-OB `simple_metrics.csv` files remain explicit missingness evidence.
 
 ## Latest Experiment
 
@@ -73,11 +85,16 @@ identity/integrity verification rather than fresh performance evidence.
 - Anchor performance audit: skipped under the frozen feasibility rule.
 - Final evidence summary commit: `43111ecf457bddd7b9c4ca019a450ec5b5ad0ff3`.
 - Final decision document: `docs/FINAL_METHOD_DECISION.md` at final HEAD.
+- P6 final-evaluation protocol commit: `e8ca4c2`.
+- P6 compatibility audit commit: `ab352e7`.
+- P6 performance-blind baseline-selection freeze commit:
+  `41bfd10bdfc76861736ad1ea0268bf65255df52d`.
 
 ## Next Authorized Action
 
-`STOPPED — awaiting human review`. No next experimental, comparative, thesis,
-or method-development stage is authorized in this round.
+`P6-G0 = FROZEN - AWAITING HUMAN REVIEW`. No external baseline reproduction,
+next experiment, thesis, or method-development stage is authorized in this
+round.
 
 ## Final-method audit governance
 
