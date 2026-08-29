@@ -5,6 +5,7 @@ from scripts.run_v2_f0 import (
     VARIANT_MODALITIES,
     feature_indices,
     feature_names,
+    full_z2_identity,
 )
 from src.rca.final_method import FINAL_Z2_FEATURE_NAMES
 
@@ -27,6 +28,24 @@ class V2F0Test(unittest.TestCase):
             self.assertEqual(len(feature_names((modality,))), 17)
         self.assertEqual(feature_names(MODALITIES), FINAL_Z2_FEATURE_NAMES)
         self.assertEqual(len(feature_indices(MODALITIES)), 68)
+
+    def test_f0_identity_is_ranking_and_metric_identity(self):
+        fresh = ({
+            "case_id": "opaque-case",
+            "ranking": ["a", "b"],
+            "candidate_scores": {"a": 2.0, "b": 1.0},
+        },)
+        committed = ({
+            "case_id": "opaque-case",
+            "ranking": ["a", "b"],
+            "candidate_scores": {"a": 2.0 + 2e-12, "b": 1.0},
+        },)
+        metrics = {"Avg@5": 1.0}
+        identity = full_z2_identity(fresh, committed, metrics, dict(metrics))
+        self.assertTrue(identity["integrity_valid"])
+        self.assertTrue(identity["ranking_identical"])
+        self.assertTrue(identity["overall_metrics_identical"])
+        self.assertGreater(identity["max_abs_score_difference"], 1e-12)
 
 
 if __name__ == "__main__":

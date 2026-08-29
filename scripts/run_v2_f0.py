@@ -151,6 +151,20 @@ def finalize_checksums(directory):
     write_json(directory / "checksums.json", checksums)
 
 
+def verify_checksums(directory):
+    checksums = json.loads((directory / "checksums.json").read_text(encoding="utf-8"))
+    return all(sha256_file(directory / name) == digest for name, digest in checksums.items())
+
+
+def full_z2_identity(fresh, committed, fresh_metrics, committed_metrics):
+    identity = dict(compare_predictions(fresh, committed))
+    identity["overall_metrics_identical"] = fresh_metrics == committed_metrics
+    identity["integrity_valid"] = bool(
+        identity["ranking_identical"] and identity["overall_metrics_identical"]
+    )
+    return identity
+
+
 def load_availability_coverage(dataset, labels):
     by_case = {}
     for case_id in sorted(labels):
@@ -369,6 +383,57 @@ def build_descriptive_audit(output_root, predictions_by_dataset, metrics_by_data
     finalize_checksums(output_root)
 
 
+def validate_and_load_completed_runs(partial_root):
+    predictions_by_dataset = {}
+    metrics_by_dataset = {}
+    availability = {}
+    source_commits = set()
+    identities = {}
+    for dataset in ("re2ob", "re2tt"):
+        events, labels, roots, assignments = load_dataset(PROJECT_ROOT, dataset)
+        availability_by_case, availability_summary = load_availability_coverage(dataset, labels)
+        availability[dataset] = {
+            "by_case": availability_by_case,
+            "summary": availability_summary,
+        }
+        predictions_by_dataset[dataset] = {}
+        metrics_by_dataset[dataset] = {}
+        for variant in VARIANT_NAMES:
+            run_dir = partial_root / variant / dataset
+            if not verify_checksums(run_dir):
+                raise RuntimeError("F0 checksum verification failed for {} {}".format(dataset, variant))
+            rows = list(read_jsonl(run_dir / "predictions.jsonl"))
+            if len(rows) != 90:
+                raise RuntimeError("F0 partial case count invalid for {} {}".format(dataset, variant))
+            for row in rows:
+                case_id = str(row["case_id"])
+                verify_complete_prediction(row, events[case_id].candidates, roots[case_id])
+                if int(row["root_rank"]) != root_rank(row, roots[case_id]):
+                    raise RuntimeError("F0 partial root rank invalid for {}".format(case_id))
+                if int(row["fold"]) != int(assignments[case_id]):
+                    raise RuntimeError("F0 partial fold invalid for {}".format(case_id))
+            predictions_by_dataset[dataset][variant] = {str(row["case_id"]): row for row in rows}
+            metrics_by_dataset[dataset][variant] = json.loads((run_dir / "metrics.json").read_text(encoding="utf-8"))
+            provenance = json.loads((run_dir / "provenance.json").read_text(encoding="utf-8"))
+            source_commits.add(str(provenance["source_commit"]))
+        full_rows = list(predictions_by_dataset[dataset]["FULL-Z2"].values())
+        committed = list(read_jsonl(PROJECT_ROOT / "artifacts" / "final_method" / dataset / "predictions.jsonl"))
+        committed_metrics = json.loads(
+            (PROJECT_ROOT / "artifacts" / "final_method" / dataset / "metrics.json").read_text(encoding="utf-8")
+        )["overall_cases"]
+        identity = full_z2_identity(
+            full_rows,
+            committed,
+            metrics_by_dataset[dataset]["FULL-Z2"]["overall_cases"],
+            committed_metrics,
+        )
+        if not identity["integrity_valid"]:
+            raise RuntimeError("F0 FULL-Z2 ranking/metric identity failed for {}".format(dataset))
+        identities[dataset] = identity
+        write_json(partial_root / ("{}_v1_identity.json".format(dataset)), identity)
+    return predictions_by_dataset, metrics_by_dataset, availability, source_commits, identities
+
+
 def run(output_root):
     source_commit = subprocess.check_output(("git", "rev-parse", "HEAD"), cwd=PROJECT_ROOT, text=True).strip()
     if subprocess.check_output(("git", "status", "--porcelain"), cwd=PROJECT_ROOT, text=True).strip():
@@ -408,11 +473,26 @@ def run(output_root):
                     ),
                 }, sort_keys=True), flush=True)
             full_rows = list(predictions_by_dataset[dataset]["FULL-Z2"].values())
-            committed = read_jsonl(PROJECT_ROOT / "artifacts" / "final_method" / dataset / "predictions.jsonl")
-            identity = compare_predictions(full_rows, committed)
-            if not identity["ranking_identical"] or identity["max_abs_score_difference"] > 1e-12:
-                raise RuntimeError("F0 FULL-Z2 does not replay V1 for {}".format(dataset))
+            committed = list(read_jsonl(PROJECT_ROOT / "artifacts" / "final_method" / dataset / "predictions.jsonl"))
+            committed_metrics = json.loads(
+                (PROJECT_ROOT / "artifacts" / "final_method" / dataset / "metrics.json").read_text(encoding="utf-8")
+            )["overall_cases"]
+            identity = full_z2_identity(
+                full_rows,
+                committed,
+                metrics_by_dataset[dataset]["FULL-Z2"]["overall_cases"],
+                committed_metrics,
+            )
+            if not identity["integrity_valid"]:
+                raise RuntimeError("F0 FULL-Z2 ranking/metric identity failed for {}".format(dataset))
             write_json(temporary / ("{}_v1_identity.json".format(dataset)), identity)
+        write_json(temporary / "run_manifest.json", {
+            "schema_version": "ada_rca_v2_f0_audit_v1",
+            "source_commit": source_commit,
+            "protocol": "docs/V2_MULTIMODAL_FUSION_PROTOCOL_V0.1.md",
+            "resumed": False,
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+        })
         build_descriptive_audit(
             temporary,
             predictions_by_dataset,
@@ -426,11 +506,49 @@ def run(output_root):
     print(json.dumps({"stage": "V2-F0", "status": "COMPLETED", "output": str(final_root)}, sort_keys=True))
 
 
+def resume_partial(partial_root, output_root):
+    partial_root = Path(partial_root).resolve()
+    final_root = (PROJECT_ROOT / output_root).resolve()
+    if final_root.exists():
+        raise FileExistsError("formal F0 artifact directory already exists: {}".format(final_root))
+    if not partial_root.is_dir() or partial_root.parent != final_root.parent:
+        raise ValueError("partial F0 directory must exist beside the final output directory")
+    if subprocess.call(("git", "diff", "--quiet"), cwd=PROJECT_ROOT) != 0 or subprocess.call(
+        ("git", "diff", "--cached", "--quiet"), cwd=PROJECT_ROOT
+    ) != 0:
+        raise RuntimeError("F0 resume requires all tracked source changes committed")
+    resume_commit = subprocess.check_output(("git", "rev-parse", "HEAD"), cwd=PROJECT_ROOT, text=True).strip()
+    predictions, metrics, availability, source_commits, identities = validate_and_load_completed_runs(partial_root)
+    write_json(partial_root / "run_manifest.json", {
+        "schema_version": "ada_rca_v2_f0_audit_v1",
+        "fit_source_commits": sorted(source_commits),
+        "resume_source_commit": resume_commit,
+        "protocol": "docs/V2_MULTIMODAL_FUSION_PROTOCOL_V0.1.md",
+        "protocol_deviation": "docs/V2_PROTOCOL_DEVIATIONS.md#v2-f0-fresh-fit-score-identity-guard",
+        "resumed": True,
+        "fits_rerun": False,
+        "identity": identities,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+    })
+    build_descriptive_audit(partial_root, predictions, metrics, availability)
+    partial_root.replace(final_root)
+    print(json.dumps({
+        "stage": "V2-F0",
+        "status": "COMPLETED_FROM_VERIFIED_PARTIAL",
+        "fits_rerun": False,
+        "output": str(final_root),
+    }, sort_keys=True))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-root", default="artifacts/v2/f0_modality_audit")
+    parser.add_argument("--resume-partial")
     args = parser.parse_args()
-    run(args.output_root)
+    if args.resume_partial:
+        resume_partial(args.resume_partial, args.output_root)
+    else:
+        run(args.output_root)
 
 
 if __name__ == "__main__":
