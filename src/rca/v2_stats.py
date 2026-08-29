@@ -90,6 +90,11 @@ def paired_joint_fault_bootstrap(
 
 
 def f1_gate_decision(performance_bootstrap, mechanism_bootstrap, metric_deltas, integrity_pass):
+    def ac1_guard(delta):
+        threshold = -1.0 / 90.0
+        value = float(delta)
+        return value >= threshold or bool(np.isclose(value, threshold, rtol=0.0, atol=1e-15))
+
     performance_checks = {
         "ob_avg5_nonnegative": float(metric_deltas["aligned_minus_z2"]["re2ob"]["Avg@5"]) >= 0.0,
         "tt_avg5_nonnegative": float(metric_deltas["aligned_minus_z2"]["re2tt"]["Avg@5"]) >= 0.0,
@@ -98,8 +103,8 @@ def f1_gate_decision(performance_bootstrap, mechanism_bootstrap, metric_deltas, 
             for dataset in DATASET_ORDER
         ),
         "equal_dataset_avg5_ci_lower_positive": float(performance_bootstrap["equal_dataset_mean"]["ci95"][0]) > 0.0,
-        "ob_ac1_guard": float(metric_deltas["aligned_minus_z2"]["re2ob"]["AC@1"]) >= -1.0 / 90.0,
-        "tt_ac1_guard": float(metric_deltas["aligned_minus_z2"]["re2tt"]["AC@1"]) >= -1.0 / 90.0,
+        "ob_ac1_guard": ac1_guard(metric_deltas["aligned_minus_z2"]["re2ob"]["AC@1"]),
+        "tt_ac1_guard": ac1_guard(metric_deltas["aligned_minus_z2"]["re2tt"]["AC@1"]),
         "integrity": bool(integrity_pass),
     }
     mechanism_checks = {

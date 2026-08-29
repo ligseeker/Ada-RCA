@@ -242,6 +242,22 @@ class V2StatisticsTest(unittest.TestCase):
         deltas["aligned_minus_misaligned"]["re2tt"]["Avg@5"] = 0.0
         self.assertEqual(f1_gate_decision(bootstrap, bootstrap, deltas, True)["V2_F1"], "NO_GO")
 
+    def test_ac1_guard_accepts_exact_one_case_loss(self):
+        bootstrap = {"equal_dataset_mean": {"ci95": [0.001, 0.1]}}
+        deltas = {
+            "aligned_minus_z2": {
+                "re2ob": {"Avg@5": 0.01, "AC@1": 0.0},
+                "re2tt": {"Avg@5": 0.01, "AC@1": 0.7 - 0.7111111111111111},
+            },
+            "aligned_minus_misaligned": {
+                "re2ob": {"Avg@5": 0.01},
+                "re2tt": {"Avg@5": 0.01},
+            },
+        }
+        decision = f1_gate_decision(bootstrap, bootstrap, deltas, True)
+        self.assertTrue(decision["performance_checks"]["tt_ac1_guard"])
+        self.assertEqual(decision["V2_F1"], "GO")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -41,3 +41,27 @@ The correction is limited to audit logic:
 This correction cannot improve or change any F0 performance value and does not
 authorize model selection. It removes an unintended F0 stop condition while
 preserving the stricter, already-passed V2-G0 persisted replay requirement.
+
+## V2-F1 AC@1 rational boundary
+
+Status: CORRECTED BEFORE F1 DECISION COMMIT
+Date: 2026-08-29
+
+The first generated F1 gate artifact compared the TT AC@1 point delta to the
+preregistered guard `-1/90` using direct binary floating-point subtraction.
+The observed values are 63/90 for F1-ALIGNED and 64/90 for Z2, so the exact
+delta is `-1/90` and the guard must pass. Aggregate subtraction produced
+`-0.011111111111111183`, approximately `7e-17` below the binary representation
+of the threshold, and incorrectly marked the guard false.
+
+The gate comparison now accepts numerical equality to `-1/90` within a fixed
+absolute tolerance of `1e-15`. This tolerance is used only to represent the
+exact one-case rational boundary; it does not relax any Avg@5, confidence
+interval, strict-positivity, or mechanism condition.
+
+No fit, feature, prediction, metric, bootstrap sample, threshold, or scientific
+gate was changed or rerun. Only `gate_decision.json` and its checksums are
+recomputed from the already-persisted deltas. The final F1 decision remains
+`NO_GO` because TT Avg@5 is negative for both formal comparisons where the
+protocol requires nonnegative or strictly positive direction, and neither
+equal-dataset Avg@5 CI has lower bound greater than zero.

@@ -409,13 +409,62 @@ def run(aligned_output, misaligned_output, bootstrap_output):
     print(json.dumps({"stage": "V2-F1", "decision": decision["V2_F1"], "integrity_pass": integrity_pass}, sort_keys=True))
 
 
+def recompute_gate_only(aligned_output, misaligned_output, bootstrap_output):
+    aligned_root = PROJECT_ROOT / aligned_output
+    misaligned_root = PROJECT_ROOT / misaligned_output
+    bootstrap_root = PROJECT_ROOT / bootstrap_output
+    if not all(path.is_dir() for path in (aligned_root, misaligned_root, bootstrap_root)):
+        raise FileNotFoundError("completed F1 artifacts are required for gate-only recomputation")
+    if subprocess.call(("git", "diff", "--quiet"), cwd=PROJECT_ROOT) != 0 or subprocess.call(
+        ("git", "diff", "--cached", "--quiet"), cwd=PROJECT_ROOT
+    ) != 0:
+        raise RuntimeError("gate-only recomputation requires all tracked source changes committed")
+    source_commit = subprocess.check_output(("git", "rev-parse", "HEAD"), cwd=PROJECT_ROOT, text=True).strip()
+    comparisons = json.loads((bootstrap_root / "comparisons.json").read_text(encoding="utf-8"))
+    deltas = json.loads((bootstrap_root / "metric_deltas.json").read_text(encoding="utf-8"))
+    integrity_pass = all(
+        json.loads((root / dataset / "integrity.json").read_text(encoding="utf-8"))["integrity_pass"]
+        for root in (aligned_root, misaligned_root)
+        for dataset in ("re2ob", "re2tt")
+    )
+    decision = f1_gate_decision(
+        comparisons["aligned_minus_z2"]["Avg@5"],
+        comparisons["aligned_minus_misaligned"]["Avg@5"],
+        deltas,
+        integrity_pass,
+    )
+    write_json(bootstrap_root / "gate_decision.json", decision)
+    write_json(bootstrap_root / "gate_recompute.json", {
+        "schema_version": "ada_rca_v2_f1_gate_recompute_v1",
+        "source_commit": source_commit,
+        "fits_rerun": False,
+        "bootstrap_rerun": False,
+        "reason": "AC@1 -1/90 rational boundary float comparison correction",
+        "protocol_deviation": "docs/V2_PROTOCOL_DEVIATIONS.md#v2-f1-ac1-rational-boundary",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "decision": decision["V2_F1"],
+    })
+    finalize_checksums(bootstrap_root)
+    print(json.dumps({
+        "stage": "V2-F1",
+        "gate_recomputed": True,
+        "fits_rerun": False,
+        "bootstrap_rerun": False,
+        "decision": decision["V2_F1"],
+    }, sort_keys=True))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--aligned-output", default="artifacts/v2/f1_concordance")
     parser.add_argument("--misaligned-output", default="artifacts/v2/f1_misaligned")
     parser.add_argument("--bootstrap-output", default="artifacts/v2/bootstrap/f1")
+    parser.add_argument("--recompute-gate-only", action="store_true")
     args = parser.parse_args()
-    run(args.aligned_output, args.misaligned_output, args.bootstrap_output)
+    if args.recompute_gate_only:
+        recompute_gate_only(args.aligned_output, args.misaligned_output, args.bootstrap_output)
+    else:
+        run(args.aligned_output, args.misaligned_output, args.bootstrap_output)
 
 
 if __name__ == "__main__":
