@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
 from src.rca.final_method import load_dataset
 from src.rca.p4 import CandidateEvent, fit_conditional_logit, rank_candidates
 from src.rca.p4_stats import evaluate_predictions
+from src.rca.evaluator import aggregate_case_metrics, evaluate_case
 
 CHANNELS = ("metric", "log", "trace-error", "trace-latency")
 CHANNEL_INDEX = {name: i for i, name in enumerate(CHANNELS)}
@@ -54,7 +55,12 @@ def predict(fit, events, fold):
 
 
 def score_rows(rows, roots, events):
-    return evaluate_predictions(rows, {e.case_id: e.candidates for e in events}, roots)["overall_cases"]
+    case_rows = []
+    candidates = {e.case_id: e.candidates for e in events}
+    for row in rows:
+        case_id = row["case_id"]
+        case_rows.append(evaluate_case(tuple(row["ranking"]), roots[case_id], tuple(candidates[case_id])))
+    return aggregate_case_metrics(case_rows)
 
 
 def inner_splits(ids, folds=3):
