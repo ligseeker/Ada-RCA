@@ -1,0 +1,23 @@
+{
+  "classifications": {
+    "cluster_info": "REQUIRED_LOADED_NOT_USED",
+    "logs": "REQUIRED_LOADED_NOT_USED",
+    "logts": "REQUIRED_AND_USED",
+    "metric": "REQUIRED_AND_USED",
+    "traces": "REQUIRED_LOADED_NOT_USED",
+    "tracets_err": "REQUIRED_CONDITIONALLY_USED",
+    "tracets_lat": "REQUIRED_CONDITIONALLY_USED"
+  },
+  "dictionary_keys_accessed": [
+    "cluster_info",
+    "logs",
+    "logts",
+    "metric",
+    "traces",
+    "tracets_err",
+    "tracets_lat"
+  ],
+  "key_presence_implies_modality_use": false,
+  "schema_version": "p6_e4_mmbaro_input_dictionary_audit_v1",
+  "source_sha256": "ddaae58b4b03453a812c4af33eb0053d803bcb6132453dd37bfa1f5e675b72c4"
+}

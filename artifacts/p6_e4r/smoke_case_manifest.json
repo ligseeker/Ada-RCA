@@ -1,0 +1,43 @@
+{
+  "cases_per_dataset": 3,
+  "enumerated_legal_case_counts": {
+    "re2-ob": 90,
+    "re2-tt": 90
+  },
+  "performance_or_label_input_used": false,
+  "schema_version": "p6_e4_smoke_case_manifest_v1",
+  "selected_cases": {
+    "re2-ob": [
+      {
+        "normalized_relative_path": "currencyservice_delay/1",
+        "sha256": "04b0ab5ba19c6f32c51d39ccfbcfd52c1327782950fe61a4b18e5a946dcf21f8"
+      },
+      {
+        "normalized_relative_path": "currencyservice_delay/3",
+        "sha256": "0c789951532c6e571a6e6d41212a1e73629e38fc5bcec0d89df98c4c61365d22"
+      },
+      {
+        "normalized_relative_path": "currencyservice_socket/1",
+        "sha256": "0dd7f48cc5785cba8bf7a03da80cc2b10b4cafb5b1a7ea41db8152c394ff7708"
+      }
+    ],
+    "re2-tt": [
+      {
+        "normalized_relative_path": "ts-order-service_socket/1",
+        "sha256": "037847ef12795bd92f60335f91706d49eab395b0a41fa7e80ae7a3688b62e676"
+      },
+      {
+        "normalized_relative_path": "ts-order-service_mem/2",
+        "sha256": "05f39ee8c893b1bdc3649ce68dba8aafd618b0840948847501c6533a0d7e7e26"
+      },
+      {
+        "normalized_relative_path": "ts-route-service_delay/2",
+        "sha256": "06ed19a76111c3b3b464af9e82c302bdcefbb44c113ae027808a9daab0e6f3c6"
+      }
+    ]
+  },
+  "selection_completed_before_tier_a_invocation": true,
+  "selection_inputs": "normalized relative paths only",
+  "selection_rule": "ascending SHA-256(normalized POSIX relative path), path tie-breaker",
+  "tier_a_invocation_count_at_freeze": 0
+}

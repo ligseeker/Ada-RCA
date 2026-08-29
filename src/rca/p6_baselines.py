@@ -799,6 +799,139 @@ def blocked_mmbaro_summary(output_root: Path) -> Mapping[str, object]:
     return summary
 
 
+def load_time_series_window(case_path: Path, filename: str, inject_time: int) -> Mapping[str, object]:
+    """Load a derived time-series source using the frozen half-open event window."""
+    frame = pd.read_csv(case_path / filename)
+    input_rows = len(frame)
+    if "time" not in frame.columns:
+        raise ValueError("{} has no time column".format(filename))
+    frame = frame.replace([np.inf, -np.inf], np.nan).ffill().fillna(0)
+    frame = frame[(frame["time"] >= inject_time - WINDOW_SECONDS) &
+                  (frame["time"] < inject_time + WINDOW_SECONDS)].copy()
+    return {
+        "data": frame,
+        "input_rows": input_rows,
+        "window_rows": len(frame),
+        "pre_rows": int((frame["time"] < inject_time).sum()),
+        "post_rows": int((frame["time"] >= inject_time).sum()),
+    }
+
+
+def load_mmbaro_inputs(case_path: Path, inject_time: int) -> Mapping[str, object]:
+    """Build mmBARO's complete dictionary while activating metric and logts only."""
+    metric = load_metric_window(case_path, inject_time)
+    logts = load_time_series_window(case_path, "logts.csv", inject_time)
+    inactive = {
+        "logs": None,
+        "traces": pd.DataFrame(),
+        "tracets_err": pd.DataFrame(),
+        "tracets_lat": pd.DataFrame(),
+        "cluster_info": None,
+    }
+    data = {"metric": metric["data"], "logts": logts["data"], **inactive}
+    return {
+        "data": data,
+        "metric": metric,
+        "logts": logts,
+        "active_modalities": ["metric", "log_time_series"],
+        "inactive_modalities": [
+            "trace_error_time_series", "trace_latency_time_series", "raw_logs",
+            "raw_spans", "cluster_info",
+        ],
+    }
+
+
+def run_mmbaro_smoke(output_root: Path, rcaeval_root: Path) -> Mapping[str, object]:
+    """Run official mmBARO with official RE2 identifiers and no trace alias."""
+    module = load_clean_source_module(
+        rcaeval_root, "RCAEval/e2e/baro.py", "_p6_clean_rcaeval_mmbaro"
+    )
+    dataset_summaries = {}
+    all_records = []
+    for dataset in sorted(DATASETS):
+        dataset_root = DATASETS[dataset]
+        records = []
+        for case_path in _smoke_paths(output_root, dataset):
+            inject_time = _read_inject_time(case_path)
+            registry = legal_service_registry(case_path)
+            loaded = load_mmbaro_inputs(case_path, inject_time)
+            counts = {
+                "metric_input_row_count": loaded["metric"]["input_rows"],
+                "metric_window_rows": loaded["metric"]["window_rows"],
+                "metric_pre_rows": loaded["metric"]["pre_rows"],
+                "metric_post_rows": loaded["metric"]["post_rows"],
+                "logts_input_row_count": loaded["logts"]["input_rows"],
+                "logts_window_rows": loaded["logts"]["window_rows"],
+                "logts_pre_rows": loaded["logts"]["pre_rows"],
+                "logts_post_rows": loaded["logts"]["post_rows"],
+                "active_modalities": loaded["active_modalities"],
+                "dataset_identifier": dataset,
+                "dataset_alias_used": False,
+                "window": "[t0-600,t0+600)",
+            }
+            for repeat in (1, 2):
+                call = raw_call(
+                    module.mmbaro,
+                    loaded["data"],
+                    inject_time,
+                    dataset=dataset,
+                    dk_select_useful=False,
+                )
+                if call["execution_status"] != "SUCCESS":
+                    records.append(_failure_record(dataset, case_path, dataset_root, repeat, call, counts))
+                    continue
+                native = list(call["output"]["ranks"])
+                projection = project_indicator_ranking(native, registry)
+                status = "SUCCESS"
+                exception = None
+                if not native or not projection["ranking"]:
+                    status = "F-A_ALGORITHMIC_FAILURE"
+                    exception = "empty native or projected ranking"
+                elif projection["unknown_count"]:
+                    status = "F-D_ADAPTER_INTEGRATION"
+                    exception = "unknown indicator-to-service mapping"
+                records.append({
+                    "dataset": dataset,
+                    "normalized_case_path": case_path.relative_to(dataset_root).as_posix(),
+                    "repeat": repeat,
+                    **counts,
+                    "native_rank_length": len(native),
+                    "projected_service_rank_length": len(projection["ranking"]),
+                    "duplicate_count": projection["duplicate_count"],
+                    "unknown_mapping_count": projection["unknown_count"],
+                    "completed_with_unranked_services": False,
+                    "execution_status": status,
+                    "failure_taxonomy": None if status == "SUCCESS" else status,
+                    "exception_type": None,
+                    "exception": exception,
+                    "dummy_fallback_accepted": False,
+                    "native_ranking_checksum": ranking_checksum(native),
+                    "ranking_checksum": ranking_checksum(projection["ranking"]),
+                })
+        write_jsonl(output_root / "mmbaro" / ("ob_smoke.jsonl" if dataset == "re2-ob" else "tt_smoke.jsonl"), records)
+        dataset_summaries[dataset] = summarize_repeat_records(records)
+        all_records.extend(records)
+    base = summarize_method("mmBARO", all_records, dataset_summaries)
+    native_fa = any(row.get("failure_taxonomy") == "F-A_ALGORITHMIC_FAILURE" for row in all_records)
+    if base["status"] == "READY":
+        status = "READY_OFFICIAL_RE2_METRIC_LOG"
+    elif native_fa and all(row.get("failure_taxonomy") in (None, "F-A_ALGORITHMIC_FAILURE") for row in all_records):
+        status = "EXECUTION_QUALIFIED_WITH_NATIVE_F-A"
+    else:
+        status = "BLOCKED / INVALID"
+    summary = dict(base)
+    summary.update({
+        "schema_version": "p6_e4r_mmbaro_qualification_summary_v1",
+        "status": status,
+        "dataset_alias_used": False,
+        "active_modalities": ["metric", "log_time_series"],
+        "trace_branches_active": False,
+        "smoke_execution_performed": True,
+    })
+    write_json(output_root / "mmbaro" / "qualification_summary.json", summary)
+    return summary
+
+
 def write_overall_qualification(
     output_root: Path,
     baro: Mapping[str, object],

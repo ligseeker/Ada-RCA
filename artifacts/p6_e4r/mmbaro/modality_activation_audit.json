@@ -1,0 +1,18 @@
+{
+  "active_score_modalities": [
+    "metric",
+    "log_time_series"
+  ],
+  "cluster_info": "NOT_USED_BY_SCORE",
+  "dataset_identifiers": [
+    "re2-ob",
+    "re2-tt"
+  ],
+  "raw_logs": "NOT_USED_BY_SCORE",
+  "raw_spans": "NOT_USED_BY_SCORE",
+  "schema_version": "p6_e4r_mmbaro_modality_activation_audit_v1",
+  "trace_branches_active": false,
+  "trace_error_time_series": "NOT_USED_BY_SCORE",
+  "trace_latency_time_series": "NOT_USED_BY_SCORE",
+  "tri_modal_claim_permitted": false
+}

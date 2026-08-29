@@ -1,0 +1,15 @@
+{
+  "alias_used": false,
+  "decision_basis": "human resolution rejected unsupported aliases; official code and path semantics only",
+  "official_dataset_identifiers": [
+    "re2-ob",
+    "re2-tt"
+  ],
+  "performance_evidence_used": false,
+  "rejected_aliases": {
+    "re2-ob": "mm-ob",
+    "re2-tt": "mm-tt"
+  },
+  "schema_version": "p6_e4r_mmbaro_dataset_alias_audit_v1",
+  "status": "OFFICIAL_RE2_IDENTIFIERS_FROZEN"
+}
