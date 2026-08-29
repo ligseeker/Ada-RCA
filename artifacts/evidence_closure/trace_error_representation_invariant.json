@@ -1,0 +1,2207 @@
+{
+  "audit_type": "READ_ONLY_FROZEN_TRACE_ERROR_REPRESENTATION_INVARIANT",
+  "datasets": {
+    "re2ob": {
+      "across_case_variation": {
+        "present": false,
+        "unique_case_mean_vectors": 1
+      },
+      "all_zero_rows": 0,
+      "case_count": 90,
+      "classification": "TRACE_ERROR_EFFECTIVELY_NONDISCRIMINATIVE_IN_FROZEN_Z2",
+      "dataset": "re2ob",
+      "dimension_statistics": [
+        {
+          "block_index": 0,
+          "feature": "trace-error.magnitude",
+          "frozen_z2_index": 34,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 1,
+          "feature": "trace-error.mean_impact",
+          "frozen_z2_index": 35,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 2,
+          "feature": "trace-error.pre_post_shift",
+          "frozen_z2_index": 36,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 3,
+          "feature": "trace-error.onset_seconds",
+          "frozen_z2_index": 37,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 4,
+          "feature": "trace-error.onset_missing",
+          "frozen_z2_index": 38,
+          "globally_nonzero": true,
+          "max": 1.0,
+          "min": 1.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 5,
+          "feature": "trace-error.persistence",
+          "frozen_z2_index": 39,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 6,
+          "feature": "trace-error.coverage",
+          "frozen_z2_index": 40,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 7,
+          "feature": "trace-error.channel_available",
+          "frozen_z2_index": 41,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 8,
+          "feature": "trace-error.normalized_pre_mean",
+          "frozen_z2_index": 42,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 9,
+          "feature": "trace-error.normalized_post_mean",
+          "frozen_z2_index": 43,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 10,
+          "feature": "trace-error.normalized_post_minus_pre_mean",
+          "frozen_z2_index": 44,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 11,
+          "feature": "trace-error.post_peak_time_fraction",
+          "frozen_z2_index": 45,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 12,
+          "feature": "trace-error.post_amplitude_weighted_centroid_fraction",
+          "frozen_z2_index": 46,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 13,
+          "feature": "trace-error.post_ols_slope",
+          "frozen_z2_index": 47,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 14,
+          "feature": "trace-error.post_mean_absolute_adjacent_difference",
+          "frozen_z2_index": 48,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 15,
+          "feature": "trace-error.post_fraction_z_ge_0_5",
+          "frozen_z2_index": 49,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 16,
+          "feature": "trace-error.morphology_active",
+          "frozen_z2_index": 50,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        }
+      ],
+      "dimensions_with_nonzero_variance": 0,
+      "exact_unique_vector_when_single": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_relationship": {
+        "base_channel_available_zero_rows": 990,
+        "base_coverage_zero_rows": 990,
+        "exact_relationship": "Every row has base.coverage=0, base.channel_available=0, morphology_active=0, all other morphology fields=0, and base.onset_missing=1. All other base fields are 0.",
+        "fields": [
+          "base.coverage",
+          "base.channel_available",
+          "morphology_active",
+          "remaining_morphology_any_nonzero"
+        ],
+        "implementation_path": "When no Trace Error indicator survives robust pre-event scaling, q remains unobserved, coverage is 0, and the unavailable-channel branch emits onset_missing=1 before morphology computation.",
+        "morphology_active_zero_rows": 990,
+        "observed_combinations": [
+          {
+            "row_count": 990,
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "onset_missing_one_rows": 990,
+        "remaining_morphology_all_zero_rows": 990
+      },
+      "globally_nonzero": true,
+      "nonzero_rows": 990,
+      "provenance": {
+        "all_feature_files_match_frozen_commit": true,
+        "feature_file_count": 90,
+        "feature_file_manifest_sha256": "2446b7074f15c97a277b839521f690157b069732b791e1db0a45cca7e7dea022",
+        "feature_files": [
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "1d13c39dc3cf3a672d4e914c42138de6987b011938ef26a6d83c481bfeb9f263",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-0433b8cb47b1ec8e.npz",
+            "sha256": "1d13c39dc3cf3a672d4e914c42138de6987b011938ef26a6d83c481bfeb9f263"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "bee2d64c861553a1b86a1ac9f788df41ce5e37d452c432dcfac18f816632329c",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-048f2e7d7bfbc927.npz",
+            "sha256": "bee2d64c861553a1b86a1ac9f788df41ce5e37d452c432dcfac18f816632329c"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "f3233b65fcf17f3080d765f4e1e17fb5fa39c0bc047270d5e8b7145717ceae41",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-057fe49bd30d47c0.npz",
+            "sha256": "f3233b65fcf17f3080d765f4e1e17fb5fa39c0bc047270d5e8b7145717ceae41"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "3e55ad54114aa9a7e89bd77ca9a812692d261ad2341b1b33e9c0ac7e20dae1f3",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-08f3e5d7b11d1fa7.npz",
+            "sha256": "3e55ad54114aa9a7e89bd77ca9a812692d261ad2341b1b33e9c0ac7e20dae1f3"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "0700afc4cb3d10d3526cb2eeecb65aa40360956f7be0a9125a488e301bf9328f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-097a5d7ac0492007.npz",
+            "sha256": "0700afc4cb3d10d3526cb2eeecb65aa40360956f7be0a9125a488e301bf9328f"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "37cc2a5f31bfecd4c8281ca09e00d3186a34564bff437595d426654af0da52d1",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-0c582795f6ae4798.npz",
+            "sha256": "37cc2a5f31bfecd4c8281ca09e00d3186a34564bff437595d426654af0da52d1"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "16bc87cb9f6f1f7c13d29b592e894bbca171ebe086df84c86f85499b887ba43a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-1084f320d8584c61.npz",
+            "sha256": "16bc87cb9f6f1f7c13d29b592e894bbca171ebe086df84c86f85499b887ba43a"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "ddf5fea77085825ec654c2fcb4dc4b6af9f4561259e269c9aeb172c9c5a66580",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-1bb2e75872fd9037.npz",
+            "sha256": "ddf5fea77085825ec654c2fcb4dc4b6af9f4561259e269c9aeb172c9c5a66580"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "345cdd1bfa5fa474c93a6e4a14a1e344baeb14c63b7246cab9683987f479a22f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-1d19cc60d7a6adc1.npz",
+            "sha256": "345cdd1bfa5fa474c93a6e4a14a1e344baeb14c63b7246cab9683987f479a22f"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "fc58fb9d7d868b76bdd6a62f5efe6395de52da76641892b5f6f939604775eee0",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-1d9a0d1641171551.npz",
+            "sha256": "fc58fb9d7d868b76bdd6a62f5efe6395de52da76641892b5f6f939604775eee0"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "13cca4c3b99c766381ac1ff2a2c72ae99d7dee340ffa513e5e60fc9c5c48f21e",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-23213ee605c6b050.npz",
+            "sha256": "13cca4c3b99c766381ac1ff2a2c72ae99d7dee340ffa513e5e60fc9c5c48f21e"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "301684733de3c0cc7a2b0a4749cf9621f135a097e24776c556775b4c6f77278d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-34c4e276dad53220.npz",
+            "sha256": "301684733de3c0cc7a2b0a4749cf9621f135a097e24776c556775b4c6f77278d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "7e6f32387f7114eecd4f73cc6266b94275518d379e073ace3077f202ac4d0d2b",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-35bd9974d6b59069.npz",
+            "sha256": "7e6f32387f7114eecd4f73cc6266b94275518d379e073ace3077f202ac4d0d2b"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "40412277bd68327e2402065c1f7dd2ef8243471fa8e7aa954e6497981e54d212",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-3758cb8f0f1277f3.npz",
+            "sha256": "40412277bd68327e2402065c1f7dd2ef8243471fa8e7aa954e6497981e54d212"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "b3bbbba2fe54827a8e8ebf138a0135bc31e2f526df02fcafdbc916a3d18c7f3d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-3827c8c9ef1e8592.npz",
+            "sha256": "b3bbbba2fe54827a8e8ebf138a0135bc31e2f526df02fcafdbc916a3d18c7f3d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "c851651b8e8dfd956caf4e6c8386e5b25161a8b7f7ba9b4a9aef56415d43e450",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-3e7e71a1c83dbc41.npz",
+            "sha256": "c851651b8e8dfd956caf4e6c8386e5b25161a8b7f7ba9b4a9aef56415d43e450"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "0ffd406165d849773f6dc1935cc1e895ba766fe77bb504e3e39a12385b504461",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-40e1893e43abba5c.npz",
+            "sha256": "0ffd406165d849773f6dc1935cc1e895ba766fe77bb504e3e39a12385b504461"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "968f6a635674835728a1d892dbe7a6e43a5bf23049803fccada353561f986927",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-428d5ecf570372b5.npz",
+            "sha256": "968f6a635674835728a1d892dbe7a6e43a5bf23049803fccada353561f986927"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "0ef3674115e8f0f462392614e99ec6894073f455f56e05e15798f6d3d18c5114",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-42e80cf6bcd9400f.npz",
+            "sha256": "0ef3674115e8f0f462392614e99ec6894073f455f56e05e15798f6d3d18c5114"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "340c16278bc83c1352f44a47045c7d4b5940904d965b6f2d866fd25fb3324f2d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-435f42d94b785472.npz",
+            "sha256": "340c16278bc83c1352f44a47045c7d4b5940904d965b6f2d866fd25fb3324f2d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "90013c90a1e856bc9cfe76cb2927da80785f7825c6c8e80c736eadbf1a1a981f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-45687a171f241b04.npz",
+            "sha256": "90013c90a1e856bc9cfe76cb2927da80785f7825c6c8e80c736eadbf1a1a981f"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "82ec8005fb573c831d1a5b9939537a1e9b999b98f6be24e2374d9066dcdb67a9",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-4677d4ce6ef327e0.npz",
+            "sha256": "82ec8005fb573c831d1a5b9939537a1e9b999b98f6be24e2374d9066dcdb67a9"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "01baeed153e0c3f167c44d597f55fca821a54ece88d24791cb3e335c4fa4a359",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-48e5379f4903b1d2.npz",
+            "sha256": "01baeed153e0c3f167c44d597f55fca821a54ece88d24791cb3e335c4fa4a359"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "728a6a06afd84a1b9cbf6f047d2e77465b136ef81627eaab2fded5169ea7a7eb",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-4af0de56834334d2.npz",
+            "sha256": "728a6a06afd84a1b9cbf6f047d2e77465b136ef81627eaab2fded5169ea7a7eb"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "4c0d0d34ee33b8b20854edbdb47fd04c98488d87a484454b117eb8370a6789e4",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-4b9110d974bb1875.npz",
+            "sha256": "4c0d0d34ee33b8b20854edbdb47fd04c98488d87a484454b117eb8370a6789e4"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "93bc3557aac0728aafaa06e40438dccfbc2d52fe4613856ac99b98c40b5f3c3a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-4f85dadf2507c3ca.npz",
+            "sha256": "93bc3557aac0728aafaa06e40438dccfbc2d52fe4613856ac99b98c40b5f3c3a"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "451301508296cd6923a0f4256dc0e5119e6c0696eecaeeedb6e77e51a149326d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-505f802370635ec3.npz",
+            "sha256": "451301508296cd6923a0f4256dc0e5119e6c0696eecaeeedb6e77e51a149326d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "d4f16150840c60940e975bbc4d35faefc22d15b711683c55f16221d2dca975a6",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-557d49794f937ec6.npz",
+            "sha256": "d4f16150840c60940e975bbc4d35faefc22d15b711683c55f16221d2dca975a6"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "4383a12c84161ede05927ea9592afc477d35b129c792ac90624958eb4422f214",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-57b75da971aabed5.npz",
+            "sha256": "4383a12c84161ede05927ea9592afc477d35b129c792ac90624958eb4422f214"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "3cceb829cfec1308d0123db9fe01302917e2375dc1701b45ee06b34dc7519342",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-58cff4fc86081830.npz",
+            "sha256": "3cceb829cfec1308d0123db9fe01302917e2375dc1701b45ee06b34dc7519342"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "ad2d6e11ec250228af526f503bdf269fbb50abe14dab17cf570ffecc14448e27",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-58eb5ae1a41b77e4.npz",
+            "sha256": "ad2d6e11ec250228af526f503bdf269fbb50abe14dab17cf570ffecc14448e27"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "5a54e24ff387fc19fc8f81e65d6be1329010538fdd553876288eb343fbd16c25",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-5a4d1a4785969ab2.npz",
+            "sha256": "5a54e24ff387fc19fc8f81e65d6be1329010538fdd553876288eb343fbd16c25"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "108fa343ab9c3690d73a55e38971d8ee3a12e63dafa9af586725ac6b7483c411",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-5f261573c1b3bdc5.npz",
+            "sha256": "108fa343ab9c3690d73a55e38971d8ee3a12e63dafa9af586725ac6b7483c411"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "d9d1f5ccf183b2f02282d1da04ed19e098ea0aefb3eb3e3e29d444570017416d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-6521847c78ca06e9.npz",
+            "sha256": "d9d1f5ccf183b2f02282d1da04ed19e098ea0aefb3eb3e3e29d444570017416d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "0cb9b822e5b3b96f1a44dfc88dcf983c841f20d6149ca51635fdb2897e88f393",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-66c4b614046569c9.npz",
+            "sha256": "0cb9b822e5b3b96f1a44dfc88dcf983c841f20d6149ca51635fdb2897e88f393"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "e6b58f4aa3cc7efd201dc0f4fa888a6584ae3dd4f1433ecac99869434668a41d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-6aa36a4c6c99d55c.npz",
+            "sha256": "e6b58f4aa3cc7efd201dc0f4fa888a6584ae3dd4f1433ecac99869434668a41d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "c1c0844c3cc7938406593add4f0e28d2e65dc0782453743a7e55e7c32d3e893d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-71c7f9be34b19754.npz",
+            "sha256": "c1c0844c3cc7938406593add4f0e28d2e65dc0782453743a7e55e7c32d3e893d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "dea765da7354788dbd822e0977889d2b0270a4207dd7d9aae00be9ccb00c17c6",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-72b5d278f8908a0a.npz",
+            "sha256": "dea765da7354788dbd822e0977889d2b0270a4207dd7d9aae00be9ccb00c17c6"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "c5a15677e3c468cecb802208209428673a6413be52d5c25459d994ded3bef7e2",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-7732042f2a190c79.npz",
+            "sha256": "c5a15677e3c468cecb802208209428673a6413be52d5c25459d994ded3bef7e2"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "31cea0217ed954b1f71825477926589b668f96205eac02dfbd69f72c5f833fcb",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-784d7eb25137c3c9.npz",
+            "sha256": "31cea0217ed954b1f71825477926589b668f96205eac02dfbd69f72c5f833fcb"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "d885360edc4ba77ebd12410a7237703ec1deb2fab4bfaf3da8552463e26271ed",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-7858d4d3815cf005.npz",
+            "sha256": "d885360edc4ba77ebd12410a7237703ec1deb2fab4bfaf3da8552463e26271ed"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "16d9ec5b7c78c081d7b789fc42c87350da8c54750f8af0ef6c95c09964aefad8",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-7890056e7915d551.npz",
+            "sha256": "16d9ec5b7c78c081d7b789fc42c87350da8c54750f8af0ef6c95c09964aefad8"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "6f95f9370c6c6f5f249d7f19ad782455dbe307fbe2e6a0ea2348599aae8a62fb",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-79fcefff48aef53b.npz",
+            "sha256": "6f95f9370c6c6f5f249d7f19ad782455dbe307fbe2e6a0ea2348599aae8a62fb"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "1c951b9a92956f969b7e254ea828a085c42ff6f99c2c01154a96b6423239f170",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-7a91adc6e16587c6.npz",
+            "sha256": "1c951b9a92956f969b7e254ea828a085c42ff6f99c2c01154a96b6423239f170"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "14df3dec6dff6297ea40d1e7e7028ab38f5a97a9b890b749e5d2df806ef202f7",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-7aec8ac514e0d064.npz",
+            "sha256": "14df3dec6dff6297ea40d1e7e7028ab38f5a97a9b890b749e5d2df806ef202f7"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "2372d9dc5a7094999dd447e3e3c33552cb01d1d58d7f2fa81919d8c77cd01d04",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-7b0a90583e047a88.npz",
+            "sha256": "2372d9dc5a7094999dd447e3e3c33552cb01d1d58d7f2fa81919d8c77cd01d04"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "6ea98af20f368154e6dda503a273924fb705fb43e78b85039accdcc1d41c4b72",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-7c278a568194196b.npz",
+            "sha256": "6ea98af20f368154e6dda503a273924fb705fb43e78b85039accdcc1d41c4b72"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "8b38bb59e1002607db1bebac673ec5120795e2dd63fc88a83d4cfbc6cb009517",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-7f2201e9884e818e.npz",
+            "sha256": "8b38bb59e1002607db1bebac673ec5120795e2dd63fc88a83d4cfbc6cb009517"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "e45e048fc862e6441d723a697c353d049f26348e187be7665200eee466b11a06",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-80bf4d093e6ab818.npz",
+            "sha256": "e45e048fc862e6441d723a697c353d049f26348e187be7665200eee466b11a06"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "55bdf2fbbfb97b9e1f3dd8c45e4cb80e1668a9bb05a0253687a4f755d9200130",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-84724d7aa2b9dabd.npz",
+            "sha256": "55bdf2fbbfb97b9e1f3dd8c45e4cb80e1668a9bb05a0253687a4f755d9200130"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "7f4ff47a135a000149ca0de5c969e471160099b1e52b38cc597a1b5d12497afe",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-8f991393cb9debdf.npz",
+            "sha256": "7f4ff47a135a000149ca0de5c969e471160099b1e52b38cc597a1b5d12497afe"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "69e2283dc9058e9347d22b749eef1efb92e0cc003371dba7c258cc915dec8b75",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-93de1fab2ca56e86.npz",
+            "sha256": "69e2283dc9058e9347d22b749eef1efb92e0cc003371dba7c258cc915dec8b75"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "d8cd2d729dbe4a453cc189f5d5abc94e65f3aca727c28f180e580aad7f1a5444",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-97935dcb7cfd6e82.npz",
+            "sha256": "d8cd2d729dbe4a453cc189f5d5abc94e65f3aca727c28f180e580aad7f1a5444"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "36d9e07624ee31e1e713082508e83936bc0e8a4f5a5036d49b7b1ba7fde24104",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-9e575f44de987a1a.npz",
+            "sha256": "36d9e07624ee31e1e713082508e83936bc0e8a4f5a5036d49b7b1ba7fde24104"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "f57bf6b942dc274f9a49e25baabdfd7535d1e837c2a7e01f41e9024dba63062f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-a6318b7e89546125.npz",
+            "sha256": "f57bf6b942dc274f9a49e25baabdfd7535d1e837c2a7e01f41e9024dba63062f"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "d3fd7046085ecd8a3bdc6ae139cbb472385c9df85b50c32b68ac9a69f4943710",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-a84cfdf477d8bf62.npz",
+            "sha256": "d3fd7046085ecd8a3bdc6ae139cbb472385c9df85b50c32b68ac9a69f4943710"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "8bcfdc52e8aee5af87b0ef3fe2a405a9c8dcf74ad12ad0e5281f180e081b9232",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-abc29368674e8298.npz",
+            "sha256": "8bcfdc52e8aee5af87b0ef3fe2a405a9c8dcf74ad12ad0e5281f180e081b9232"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "7f48227935f6a5b1a652b1ea4568dafb1a2aad99d1c4f17e24c07af46015dc6d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-acf69e21960f63d8.npz",
+            "sha256": "7f48227935f6a5b1a652b1ea4568dafb1a2aad99d1c4f17e24c07af46015dc6d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "6caa4e8f1a345b4047109e84f2058f8bb153fb946e104a03a6414d10ac78f369",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-af1b6a7e1667e3f5.npz",
+            "sha256": "6caa4e8f1a345b4047109e84f2058f8bb153fb946e104a03a6414d10ac78f369"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "6808589042cf1e0216d7d8258d6029362a93d4e4036efc9ea2dab3a863e3767a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-b17ce68eb2ce01ee.npz",
+            "sha256": "6808589042cf1e0216d7d8258d6029362a93d4e4036efc9ea2dab3a863e3767a"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "e6304023d83bbd5bb8f5314205e9f0168e3f191aa170cfa6e78bc806322dbd28",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-b6db72fc58931786.npz",
+            "sha256": "e6304023d83bbd5bb8f5314205e9f0168e3f191aa170cfa6e78bc806322dbd28"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "53003a249b986989679f3d5fedb10db8e9cffa7471dd378d42a6d972d86d1a6e",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-b78a14faa7ea7263.npz",
+            "sha256": "53003a249b986989679f3d5fedb10db8e9cffa7471dd378d42a6d972d86d1a6e"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "d218739f3163499fd88b7ec8de20cc64b45bdc89f3053c0515a0de62853c1441",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-b84066a37ca0c417.npz",
+            "sha256": "d218739f3163499fd88b7ec8de20cc64b45bdc89f3053c0515a0de62853c1441"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "cb0e7fd00d992dcc4c555521d9446636f70a560295d720a27054b19279bb5fb0",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-bb4a5b75716772f9.npz",
+            "sha256": "cb0e7fd00d992dcc4c555521d9446636f70a560295d720a27054b19279bb5fb0"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "152876b2e9411095a1e7623460034728b0e5a26b020b65a8490b3a55bd21ba7a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-bd6f4fb8e84ccb69.npz",
+            "sha256": "152876b2e9411095a1e7623460034728b0e5a26b020b65a8490b3a55bd21ba7a"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "3beedfedf02841c9c7fe0e65d8de9c488c45d0a9bc3a679b5dd5140b9dc5a959",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-c2ac02db4e3370a9.npz",
+            "sha256": "3beedfedf02841c9c7fe0e65d8de9c488c45d0a9bc3a679b5dd5140b9dc5a959"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "2797a33bdb265095c68d53952a099d66f87b206b2ab57c8989682fc527942fd8",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-c9c8f348d3f5974b.npz",
+            "sha256": "2797a33bdb265095c68d53952a099d66f87b206b2ab57c8989682fc527942fd8"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "05c6ef0a9dc7fa7dfe4dc8110a3f2a6234befbd19649b85eb27a5f9b98fcab16",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-ca26cbb7c2cc0c87.npz",
+            "sha256": "05c6ef0a9dc7fa7dfe4dc8110a3f2a6234befbd19649b85eb27a5f9b98fcab16"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "7cb4835a6261d45d6dd4c43cedd4f1803bb40a731a196a6c83acfdbcf1c81526",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-ce3f410f61f739c2.npz",
+            "sha256": "7cb4835a6261d45d6dd4c43cedd4f1803bb40a731a196a6c83acfdbcf1c81526"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "0ad2ae4fc71319848adf408f9b610f2795e1d2f8a7c7a84ee2b978757f44f451",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-ce93ebf8eb13a5ed.npz",
+            "sha256": "0ad2ae4fc71319848adf408f9b610f2795e1d2f8a7c7a84ee2b978757f44f451"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "9717e9d0bae7814275903c5548fd8808e869924ffa5b230bfe0726d4ea20d581",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-cec5183e3f5418cf.npz",
+            "sha256": "9717e9d0bae7814275903c5548fd8808e869924ffa5b230bfe0726d4ea20d581"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "43d0f173b0dc945364414e36b7fa74009a7d21f95b6ee09e5264a5eae96bcc8a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-d0382ea6cedfbd82.npz",
+            "sha256": "43d0f173b0dc945364414e36b7fa74009a7d21f95b6ee09e5264a5eae96bcc8a"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "4310f0da63cf036f93af7681f23f902b92411c087f010c25dc2e00b87f1cce21",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-d0d93705e784491a.npz",
+            "sha256": "4310f0da63cf036f93af7681f23f902b92411c087f010c25dc2e00b87f1cce21"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "421b9c6463f94a2e543dd17e1df677699cbc50529a6a717ad807214b00420f31",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-d3f1403a4a08a3b1.npz",
+            "sha256": "421b9c6463f94a2e543dd17e1df677699cbc50529a6a717ad807214b00420f31"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "08d964329a8edd42a64f64fec8ba1b815f08f92ac34f8b151c839ff21c13b46f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-d7f2f8eb2f0ad646.npz",
+            "sha256": "08d964329a8edd42a64f64fec8ba1b815f08f92ac34f8b151c839ff21c13b46f"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "6fcda296375fceba4f4963c6ae525f78671d9999cb4d51100e0707a8161c8f2d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-da48e150772a24fd.npz",
+            "sha256": "6fcda296375fceba4f4963c6ae525f78671d9999cb4d51100e0707a8161c8f2d"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "ac3947da431200154f656bae3468ed73dec49341d24f3858314bc27ae4177b56",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-df7b6eca09a6c41f.npz",
+            "sha256": "ac3947da431200154f656bae3468ed73dec49341d24f3858314bc27ae4177b56"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "308d3906220d421e29c15062b493f3e70d3e4f8739974f01a4d0f84093639206",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-df7e831dddfac76c.npz",
+            "sha256": "308d3906220d421e29c15062b493f3e70d3e4f8739974f01a4d0f84093639206"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "26658957c8baa75feccd8445abff5ba9f70daf3b4db93cfcdad334d684b0dec5",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-e16e6de30ae75ccd.npz",
+            "sha256": "26658957c8baa75feccd8445abff5ba9f70daf3b4db93cfcdad334d684b0dec5"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "fc758e71ce750bbb91222e4d214fcc2ac5ba966041a0510755e42012a4a6166c",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-e357bd8aec246cdb.npz",
+            "sha256": "fc758e71ce750bbb91222e4d214fcc2ac5ba966041a0510755e42012a4a6166c"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "ce6442188e8ce0b3499d09fcb2c21b25dd7e5915bc4a6719b943a945f5b71cfd",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-e849d2be7be5c713.npz",
+            "sha256": "ce6442188e8ce0b3499d09fcb2c21b25dd7e5915bc4a6719b943a945f5b71cfd"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "c0cc4655ee0d1265ea060849831a7f8e8c0025c90006af431124af84f31b8637",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-eb8f50fda4f9095f.npz",
+            "sha256": "c0cc4655ee0d1265ea060849831a7f8e8c0025c90006af431124af84f31b8637"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "ca01bcac688d71ee85352244ce2b2cddacc7c0391199560b0f33b96a2dde98d7",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-f209212fc63ac713.npz",
+            "sha256": "ca01bcac688d71ee85352244ce2b2cddacc7c0391199560b0f33b96a2dde98d7"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "f29b6265640b13e7f1465defd6e25fea95a4b22a7bb6ec66ef28c7af4146e4cd",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-f2b4cc2f87b35c03.npz",
+            "sha256": "f29b6265640b13e7f1465defd6e25fea95a4b22a7bb6ec66ef28c7af4146e4cd"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "3588afb908ea84f2622e58982f544e3384eb23949e2db3b4ecae4e9445d10cd6",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-f30e2feeaa5218b8.npz",
+            "sha256": "3588afb908ea84f2622e58982f544e3384eb23949e2db3b4ecae4e9445d10cd6"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "81ebd6ee52c65a20c6ec64857d42af69a278501c9e8d4a9ecf19cc10cb6e04e0",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-f874f110aae8efa9.npz",
+            "sha256": "81ebd6ee52c65a20c6ec64857d42af69a278501c9e8d4a9ecf19cc10cb6e04e0"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "5b0baa2c81535af01bf4f4df81fc13673c05401d0a0ea6df2cbb3d179a755df6",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-f88fc943d724a354.npz",
+            "sha256": "5b0baa2c81535af01bf4f4df81fc13673c05401d0a0ea6df2cbb3d179a755df6"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "17e47b886ee9ea0e7772563e78bd34bb70946880d52ecd12b1baceddf3738c8c",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-fa8a8fae0fda7c42.npz",
+            "sha256": "17e47b886ee9ea0e7772563e78bd34bb70946880d52ecd12b1baceddf3738c8c"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "9b06e978dd6e59c2a42023b11adfdf9755bf9c8151488fa9ce25a7fe8db54fd6",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-fd67c49516fa2028.npz",
+            "sha256": "9b06e978dd6e59c2a42023b11adfdf9755bf9c8151488fa9ce25a7fe8db54fd6"
+          },
+          {
+            "candidate_rows": 11,
+            "frozen_commit_sha256": "262f9e908d5db6a65074e86e7f4a1e8c37c0414150c784b30a76f9b851f89373",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2ob/re2ob-feeaaba6c71377df.npz",
+            "sha256": "262f9e908d5db6a65074e86e7f4a1e8c37c0414150c784b30a76f9b851f89373"
+          }
+        ],
+        "frozen_optimization_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6"
+      },
+      "removal_invariant": {
+        "cases_with_trace_error_constant_across_candidates": 90,
+        "change_is_constant_across_candidates_in_every_case": true,
+        "conditional_logit_pairwise_utility_differences_from_trace_error": 0.0,
+        "mathematical_interpretation": "Removing the block changes the raw vector because onset_missing=1, but removes the same block from every candidate in every case; therefore the block cannot change within-case Conditional Logit utility differences or ranking for any fixed coefficient vector.",
+        "raw_candidate_vectors_changed_by_removing_trace_error": 990
+      },
+      "total_candidate_case_rows": 990,
+      "trace_error_dimension": 17,
+      "unique_trace_error_vectors": 1,
+      "within_case_candidate_discriminative_variation": {
+        "any_dimension_varies_within_case": false,
+        "case_count": 0,
+        "case_proportion": 0.0,
+        "cases": [],
+        "present": false
+      }
+    },
+    "re2tt": {
+      "across_case_variation": {
+        "present": false,
+        "unique_case_mean_vectors": 1
+      },
+      "all_zero_rows": 0,
+      "case_count": 90,
+      "classification": "TRACE_ERROR_EFFECTIVELY_NONDISCRIMINATIVE_IN_FROZEN_Z2",
+      "dataset": "re2tt",
+      "dimension_statistics": [
+        {
+          "block_index": 0,
+          "feature": "trace-error.magnitude",
+          "frozen_z2_index": 34,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 1,
+          "feature": "trace-error.mean_impact",
+          "frozen_z2_index": 35,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 2,
+          "feature": "trace-error.pre_post_shift",
+          "frozen_z2_index": 36,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 3,
+          "feature": "trace-error.onset_seconds",
+          "frozen_z2_index": 37,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 4,
+          "feature": "trace-error.onset_missing",
+          "frozen_z2_index": 38,
+          "globally_nonzero": true,
+          "max": 1.0,
+          "min": 1.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 5,
+          "feature": "trace-error.persistence",
+          "frozen_z2_index": 39,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 6,
+          "feature": "trace-error.coverage",
+          "frozen_z2_index": 40,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 7,
+          "feature": "trace-error.channel_available",
+          "frozen_z2_index": 41,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 8,
+          "feature": "trace-error.normalized_pre_mean",
+          "frozen_z2_index": 42,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 9,
+          "feature": "trace-error.normalized_post_mean",
+          "frozen_z2_index": 43,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 10,
+          "feature": "trace-error.normalized_post_minus_pre_mean",
+          "frozen_z2_index": 44,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 11,
+          "feature": "trace-error.post_peak_time_fraction",
+          "frozen_z2_index": 45,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 12,
+          "feature": "trace-error.post_amplitude_weighted_centroid_fraction",
+          "frozen_z2_index": 46,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 13,
+          "feature": "trace-error.post_ols_slope",
+          "frozen_z2_index": 47,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 14,
+          "feature": "trace-error.post_mean_absolute_adjacent_difference",
+          "frozen_z2_index": 48,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 15,
+          "feature": "trace-error.post_fraction_z_ge_0_5",
+          "frozen_z2_index": 49,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        },
+        {
+          "block_index": 16,
+          "feature": "trace-error.morphology_active",
+          "frozen_z2_index": 50,
+          "globally_nonzero": false,
+          "max": 0.0,
+          "min": 0.0,
+          "unique_count": 1,
+          "variance": 0.0,
+          "varies_across_candidates_within_any_case": false
+        }
+      ],
+      "dimensions_with_nonzero_variance": 0,
+      "exact_unique_vector_when_single": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_relationship": {
+        "base_channel_available_zero_rows": 6120,
+        "base_coverage_zero_rows": 6120,
+        "exact_relationship": "Every row has base.coverage=0, base.channel_available=0, morphology_active=0, all other morphology fields=0, and base.onset_missing=1. All other base fields are 0.",
+        "fields": [
+          "base.coverage",
+          "base.channel_available",
+          "morphology_active",
+          "remaining_morphology_any_nonzero"
+        ],
+        "implementation_path": "When no Trace Error indicator survives robust pre-event scaling, q remains unobserved, coverage is 0, and the unavailable-channel branch emits onset_missing=1 before morphology computation.",
+        "morphology_active_zero_rows": 6120,
+        "observed_combinations": [
+          {
+            "row_count": 6120,
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "onset_missing_one_rows": 6120,
+        "remaining_morphology_all_zero_rows": 6120
+      },
+      "globally_nonzero": true,
+      "nonzero_rows": 6120,
+      "provenance": {
+        "all_feature_files_match_frozen_commit": true,
+        "feature_file_count": 90,
+        "feature_file_manifest_sha256": "d888a5a8f5c1360d03323b8dca1104875211f061bce38efa304a06af16dcd9a1",
+        "feature_files": [
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "9a92bc12ea07e6b499c3e7c3b00fc81d53a58df288eb49be924a4f825cfbf718",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-010695b192f8dbea.npz",
+            "sha256": "9a92bc12ea07e6b499c3e7c3b00fc81d53a58df288eb49be924a4f825cfbf718"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "821abbba68dcc241526ed3fb335e8b52e1d0f07d3fea8c876cddea497727919d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-01d0096e9a504ced.npz",
+            "sha256": "821abbba68dcc241526ed3fb335e8b52e1d0f07d3fea8c876cddea497727919d"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "b404b339554d605bd993d476172cb8b57490344f174791c4d8f22e3a515ad3f5",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-04ce93a682b70df6.npz",
+            "sha256": "b404b339554d605bd993d476172cb8b57490344f174791c4d8f22e3a515ad3f5"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "29abb6a4491f903ef818f4e237d88413a285fc2529efcec64a20d79ea2cc3fc3",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-0b529d9f6ca88d4b.npz",
+            "sha256": "29abb6a4491f903ef818f4e237d88413a285fc2529efcec64a20d79ea2cc3fc3"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "4db1159ac99563a48a2a0c4cf53d7201047aed710a81ccdf64461b800c0fa65d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-0f6b6213169d6acc.npz",
+            "sha256": "4db1159ac99563a48a2a0c4cf53d7201047aed710a81ccdf64461b800c0fa65d"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "6c6830ef1da65721596537ff5a35234e3c801732fa8097ea6b1e891e270d5a10",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-1283c56ed7675282.npz",
+            "sha256": "6c6830ef1da65721596537ff5a35234e3c801732fa8097ea6b1e891e270d5a10"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "8925a705dbe28760aa9878d687ece0c2cee21dabbe9eeb26d409bfc1b70e1874",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-14c6e1b70d0c21e5.npz",
+            "sha256": "8925a705dbe28760aa9878d687ece0c2cee21dabbe9eeb26d409bfc1b70e1874"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "a75a0ed6a7752018280b80d82edc1dc714d0e5e09e90b76445b8a298538101a4",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-1d48b3aec1ec4470.npz",
+            "sha256": "a75a0ed6a7752018280b80d82edc1dc714d0e5e09e90b76445b8a298538101a4"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "87b2fdef173a1a878a16239c682c17d7b9e2a2674b611bab7d044ca63369b704",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-20258ce8dbcd2300.npz",
+            "sha256": "87b2fdef173a1a878a16239c682c17d7b9e2a2674b611bab7d044ca63369b704"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "f543b51eb7b9754f9e3af7f8b1ef220821256cc5b71320febbd068f7f431ce08",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-22292d58b67911fb.npz",
+            "sha256": "f543b51eb7b9754f9e3af7f8b1ef220821256cc5b71320febbd068f7f431ce08"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "f447375671463374943daad263a2341482733f878e7246d546f1d76ce907656d",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-2782358136a64e6c.npz",
+            "sha256": "f447375671463374943daad263a2341482733f878e7246d546f1d76ce907656d"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "3a1a10bf5d2fc39d3307dd06bb304b350037f6ae857c415fb2baa405ecd3edf9",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-2a03e4ad1a1d6f85.npz",
+            "sha256": "3a1a10bf5d2fc39d3307dd06bb304b350037f6ae857c415fb2baa405ecd3edf9"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "303a2721f608ef79447f94dec2b057bd0c94aa0b75299c1aeb7d921d4a6012b1",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-2ae0e149b3ab15f1.npz",
+            "sha256": "303a2721f608ef79447f94dec2b057bd0c94aa0b75299c1aeb7d921d4a6012b1"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "1e7b6c7d6eaa992bfbb8022edbca4eff7f8a8699278d27550f01dd0f9251d550",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-2ca7cff33586ca18.npz",
+            "sha256": "1e7b6c7d6eaa992bfbb8022edbca4eff7f8a8699278d27550f01dd0f9251d550"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "3065e34cc4d5181b94875711fbc3e52c964cfdc6847819f6ee25e1b065610874",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-2defd6e102bdaf53.npz",
+            "sha256": "3065e34cc4d5181b94875711fbc3e52c964cfdc6847819f6ee25e1b065610874"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "b349d158bee0d767fa8e2c05cc86e81e130236d5b3c3a02b59a9605b458ec022",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-2fc3d2fb9c492b7c.npz",
+            "sha256": "b349d158bee0d767fa8e2c05cc86e81e130236d5b3c3a02b59a9605b458ec022"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "e45ad129c5dc4c241d4d8eaa2db9dcb886975f2137306cdc90e5be26d83a25ff",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-35e803c63786ac4e.npz",
+            "sha256": "e45ad129c5dc4c241d4d8eaa2db9dcb886975f2137306cdc90e5be26d83a25ff"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "7ebba02a61510bd1af9380792ce2c970e4ab0181c636457f4361cd961b881084",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-38941ca70beb687a.npz",
+            "sha256": "7ebba02a61510bd1af9380792ce2c970e4ab0181c636457f4361cd961b881084"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "97b8bf077ec93f53588a1cee70e3a0b66cb4e75b3e1d4f4bfa9c2c2525d3422e",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-3bd96ed8cc02f613.npz",
+            "sha256": "97b8bf077ec93f53588a1cee70e3a0b66cb4e75b3e1d4f4bfa9c2c2525d3422e"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "d232aa6fe0f18979500661898d2cbdfbcc4fb968d743a1ac472730e5a3c75ef1",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-3e24ca7f9747c84e.npz",
+            "sha256": "d232aa6fe0f18979500661898d2cbdfbcc4fb968d743a1ac472730e5a3c75ef1"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "1319ffc89ba671d413ac12f2d7f1919a7f47498157b0e791eaf56ec2f0ffe2df",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-3fffa88dd3653f99.npz",
+            "sha256": "1319ffc89ba671d413ac12f2d7f1919a7f47498157b0e791eaf56ec2f0ffe2df"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "11a356f101626884d281e103dbe47afc967c0cbb5973966d63109d4da3536bfb",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-406c40ff0016fa9c.npz",
+            "sha256": "11a356f101626884d281e103dbe47afc967c0cbb5973966d63109d4da3536bfb"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "3b68d563ef32f8ae9834ffdc3099af65873e365464a960527f500775340d893b",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-420fff915c5f5bc5.npz",
+            "sha256": "3b68d563ef32f8ae9834ffdc3099af65873e365464a960527f500775340d893b"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "c59b01667f4507ce8c6cf8f7ae33c377faf23cd7be10800b1ba6d5fd62cfa6b2",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-426ec979883ae8dc.npz",
+            "sha256": "c59b01667f4507ce8c6cf8f7ae33c377faf23cd7be10800b1ba6d5fd62cfa6b2"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "7ea7c9c2b1b90cac4e0714ce73b3f009c89f3d078e2541e806666c512a9c6894",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-44604ef8713a5943.npz",
+            "sha256": "7ea7c9c2b1b90cac4e0714ce73b3f009c89f3d078e2541e806666c512a9c6894"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "73b541042658f67a0b72bf7667ea5fb98b2a90eab29d73b6973e2a889a7cb35a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-472c8339fd3703e9.npz",
+            "sha256": "73b541042658f67a0b72bf7667ea5fb98b2a90eab29d73b6973e2a889a7cb35a"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "3aa65588d34e596e4e4792df4a708c1059a1a95870df2eb77ef85ff230597160",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-4780a4f90c190bf4.npz",
+            "sha256": "3aa65588d34e596e4e4792df4a708c1059a1a95870df2eb77ef85ff230597160"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "154b5c21d3fe7fdd185b215d3ed3bd65eb7fe04ecb0e5619cfe37e292b4bd439",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-56db4956167f9980.npz",
+            "sha256": "154b5c21d3fe7fdd185b215d3ed3bd65eb7fe04ecb0e5619cfe37e292b4bd439"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "bfab1c8c3bd7b68f1bbbf23788b3bf3d55714da85080046a9d5edd049c6f70e4",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-575015aa80c376c6.npz",
+            "sha256": "bfab1c8c3bd7b68f1bbbf23788b3bf3d55714da85080046a9d5edd049c6f70e4"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "fbf8613241efb8c3e425459ee7a8382c4fe7a57cd6f11090b9d3a602e0d9a7c8",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-5a65eea398ba8435.npz",
+            "sha256": "fbf8613241efb8c3e425459ee7a8382c4fe7a57cd6f11090b9d3a602e0d9a7c8"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "becba82ba40b95265a3f600eb17fab34bd68ff0bbf23bdecc74f750bac13a38a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-5bb89b87741349d7.npz",
+            "sha256": "becba82ba40b95265a3f600eb17fab34bd68ff0bbf23bdecc74f750bac13a38a"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "566bfa17617b06bedd966f1ba76636b0c8fb660d4e55bb70ed72335b34e390a0",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-5d2e4747cab0d818.npz",
+            "sha256": "566bfa17617b06bedd966f1ba76636b0c8fb660d4e55bb70ed72335b34e390a0"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "00ce201f9f7b5a85578a4f3bd680755ef1f67d9391dd73b97dcb2dce0d4784b4",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-5f50dc54f6cb9fce.npz",
+            "sha256": "00ce201f9f7b5a85578a4f3bd680755ef1f67d9391dd73b97dcb2dce0d4784b4"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "688ecb8dd9ee5589f26a1b9dedd28842b3dd864d42eed81277e1d1e0feea47d3",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-606ef267348d40e5.npz",
+            "sha256": "688ecb8dd9ee5589f26a1b9dedd28842b3dd864d42eed81277e1d1e0feea47d3"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "21c0b59eb78c6cb67698b2cd4ca8ec99cda38bed2e71cb3de7cb6e6312e36832",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-653810995a9aa3db.npz",
+            "sha256": "21c0b59eb78c6cb67698b2cd4ca8ec99cda38bed2e71cb3de7cb6e6312e36832"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "f250b32196c4c39c30b37dedf887327ca683848172826fd9d142701ee34d43a5",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-67172e499653d426.npz",
+            "sha256": "f250b32196c4c39c30b37dedf887327ca683848172826fd9d142701ee34d43a5"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "1bf8bcfcc429a2a4b091e3f6567c9384268b905146830d78c4c6e09e2dacb319",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-6a0d1ebf31fb52a6.npz",
+            "sha256": "1bf8bcfcc429a2a4b091e3f6567c9384268b905146830d78c4c6e09e2dacb319"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "cc00e59e2d229b14aa9ebb80f22ceb5fc0cf9f328805bf1d3d2895e2a890c5f8",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-714d157727edd2d0.npz",
+            "sha256": "cc00e59e2d229b14aa9ebb80f22ceb5fc0cf9f328805bf1d3d2895e2a890c5f8"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "5e21d13e1bfd2ebde3b283b269535a050366bcb0af62ed5015c28cba48586b71",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-722f5f89a57be699.npz",
+            "sha256": "5e21d13e1bfd2ebde3b283b269535a050366bcb0af62ed5015c28cba48586b71"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "8296868d305973a1e849bc4af7f838d4faebe05164a681d293b52513ce727e9f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-727331fee88d4ce7.npz",
+            "sha256": "8296868d305973a1e849bc4af7f838d4faebe05164a681d293b52513ce727e9f"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "6402216b9dbec29858428f6f27dba158d1f00b2b1616491af91724608eecbd68",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-72822d018b0df53f.npz",
+            "sha256": "6402216b9dbec29858428f6f27dba158d1f00b2b1616491af91724608eecbd68"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "56e277293accc52901a1ea57b8f0a035e6d5c04b71bf60ff33797aa26d19b6f6",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-739ad24f1e2d7c29.npz",
+            "sha256": "56e277293accc52901a1ea57b8f0a035e6d5c04b71bf60ff33797aa26d19b6f6"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "9f9dd4df626050e9b7cbb6d030447233f8b687408c1912eb3dbd588a7985afe1",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-783d045c8102f972.npz",
+            "sha256": "9f9dd4df626050e9b7cbb6d030447233f8b687408c1912eb3dbd588a7985afe1"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "000b9e1483e7485ecd8efc7de1539b61afd0deade94fcf1b2c32970dfdcd9a7a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-7cff180e5ff1cc71.npz",
+            "sha256": "000b9e1483e7485ecd8efc7de1539b61afd0deade94fcf1b2c32970dfdcd9a7a"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "1bb3b4f490f8f95d7e09600fc664e077fa095d7bd564311bca81999d0227865c",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-7d3fb265c1c0f9ed.npz",
+            "sha256": "1bb3b4f490f8f95d7e09600fc664e077fa095d7bd564311bca81999d0227865c"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "17414a948a014b5e39730812f30548765ee320d4f68f6234e65734cc3667b39a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-7d84c0b80f7f0032.npz",
+            "sha256": "17414a948a014b5e39730812f30548765ee320d4f68f6234e65734cc3667b39a"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "68701fdba86108c9599087dd0b1ec5c6314800fd7885866377bfd8c6c6e9010b",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-877f6cbd0cb33e7c.npz",
+            "sha256": "68701fdba86108c9599087dd0b1ec5c6314800fd7885866377bfd8c6c6e9010b"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "3fbed5b19a2019adb6a419e990c441d0228a6f01c32d9e043cb633b7f5ba1cf6",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-93fbbdf23f58f440.npz",
+            "sha256": "3fbed5b19a2019adb6a419e990c441d0228a6f01c32d9e043cb633b7f5ba1cf6"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "0145a1e2276e2305427835d156aebda3ec5a8f893e7837fc475220d6266be206",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-94bd05feab03461e.npz",
+            "sha256": "0145a1e2276e2305427835d156aebda3ec5a8f893e7837fc475220d6266be206"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "2de6a801d5667a0c8af8cb137bb5155ba71339e25231b4686179480b2cbeef3a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-995607e863fb7731.npz",
+            "sha256": "2de6a801d5667a0c8af8cb137bb5155ba71339e25231b4686179480b2cbeef3a"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "530481df3b5eb1e8b9bed0f423844646e55ade2989a65d4dbaf7929beb4d8ef9",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-a0c0a90c5448e7fa.npz",
+            "sha256": "530481df3b5eb1e8b9bed0f423844646e55ade2989a65d4dbaf7929beb4d8ef9"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "7b28860015649eda83607d641f6603686c0e548326041dce8f96255682d3aed9",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-a141811c79edaa0b.npz",
+            "sha256": "7b28860015649eda83607d641f6603686c0e548326041dce8f96255682d3aed9"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "d6e33e2b2b2f226ca18333e7cc952ec7d5a50555f8a237a5d62cded192802114",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-a33887653c475d04.npz",
+            "sha256": "d6e33e2b2b2f226ca18333e7cc952ec7d5a50555f8a237a5d62cded192802114"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "9e9290eeb125c4a36159906663f1aff2b74256ee9014ea5603fe2394741c57b6",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-a7213c3da47edbd0.npz",
+            "sha256": "9e9290eeb125c4a36159906663f1aff2b74256ee9014ea5603fe2394741c57b6"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "f99877718c5a261ff826250a3a7f52e69697e84c91b3a453649868e29cad94de",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-aa71e41ec8e7922d.npz",
+            "sha256": "f99877718c5a261ff826250a3a7f52e69697e84c91b3a453649868e29cad94de"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "b95dbe3448d036c2a8ecfaa72afd52cc976bbda244ebcc92ede557673c2ec1d1",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-ae09714023e727e1.npz",
+            "sha256": "b95dbe3448d036c2a8ecfaa72afd52cc976bbda244ebcc92ede557673c2ec1d1"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "91569b03b883434ac41c94df74a66b7bdd7ee1b59269e1a3477170823c86be9b",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-afdac60e6b000d3c.npz",
+            "sha256": "91569b03b883434ac41c94df74a66b7bdd7ee1b59269e1a3477170823c86be9b"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "708bb8a4bb90724ee5cfc1ce0d4d804f80bc11c05329a3b1bda675df7efdce9f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-b2342b2478b249cb.npz",
+            "sha256": "708bb8a4bb90724ee5cfc1ce0d4d804f80bc11c05329a3b1bda675df7efdce9f"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "b0b172f8535021b891a8d8b669dd1f1fea871d9777e3a7704630b06748a8bca4",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-b5173d4edf252af8.npz",
+            "sha256": "b0b172f8535021b891a8d8b669dd1f1fea871d9777e3a7704630b06748a8bca4"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "8c517592be6772034b94670c57042a1c4e6061eae765ba82b8c2359dc9c62f0b",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-bbbcbf7787fa152c.npz",
+            "sha256": "8c517592be6772034b94670c57042a1c4e6061eae765ba82b8c2359dc9c62f0b"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "0bf4a53a5ec76de2079622247237b4ade6595a81a8ca5c45bc48f39fd610dddc",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-bc9cd2d131533d16.npz",
+            "sha256": "0bf4a53a5ec76de2079622247237b4ade6595a81a8ca5c45bc48f39fd610dddc"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "fe9ceaaaefc4ae7995940cb619c17728f8d2df540816101437f982a2ff2c6e04",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-bed634aec03e773f.npz",
+            "sha256": "fe9ceaaaefc4ae7995940cb619c17728f8d2df540816101437f982a2ff2c6e04"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "367d0224e89e65d6c7c25b13dfecbe117b599c80a96e57878acf45dcc2760582",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-c1b234f6cc4acbee.npz",
+            "sha256": "367d0224e89e65d6c7c25b13dfecbe117b599c80a96e57878acf45dcc2760582"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "ae7d9d6261b0dc45212c527ca7b437335a999c11a7e6a40184b5aa41bd84d760",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-c7f9112580bfde33.npz",
+            "sha256": "ae7d9d6261b0dc45212c527ca7b437335a999c11a7e6a40184b5aa41bd84d760"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "4244ad482a69f6fbe9a2a0432147d4e95153672c1f038d083f09703900c5ed84",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-c82529d65e13adc0.npz",
+            "sha256": "4244ad482a69f6fbe9a2a0432147d4e95153672c1f038d083f09703900c5ed84"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "48206a961c63af4cf115650e596fe4181c7aa437dd98921ae66c17a6589df2fd",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-c8fbd9a7d1e92284.npz",
+            "sha256": "48206a961c63af4cf115650e596fe4181c7aa437dd98921ae66c17a6589df2fd"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "6927ebb0a7b51ca98e4f76816e17155ea5517ea5434918425121d94236548566",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-cb1f1df38c99005a.npz",
+            "sha256": "6927ebb0a7b51ca98e4f76816e17155ea5517ea5434918425121d94236548566"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "bfaf1f71d73d8542c090fdabf0d6dcaeea24d9696a42d8384263ad1a005a92c7",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-cb3381bf9ed05034.npz",
+            "sha256": "bfaf1f71d73d8542c090fdabf0d6dcaeea24d9696a42d8384263ad1a005a92c7"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "d0e3a08894157b118d645054895fc1fd6700954001ece9896e025b8daf893337",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-cc6c772d4116d054.npz",
+            "sha256": "d0e3a08894157b118d645054895fc1fd6700954001ece9896e025b8daf893337"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "bda9213d4dcd0644f552ab3186cb6e74ddd25b256885b032d46126f2555f86e8",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-cdf514b035f34990.npz",
+            "sha256": "bda9213d4dcd0644f552ab3186cb6e74ddd25b256885b032d46126f2555f86e8"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "56b364e2557dc669678ec3c71703a727db672408c28231467bdf7adacfdae3ab",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-d0a74725c5d96362.npz",
+            "sha256": "56b364e2557dc669678ec3c71703a727db672408c28231467bdf7adacfdae3ab"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "25dcd45210d1b769f14b3a4a46c24cb6ac8e70e58e27d11373a1896de105dfed",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-d14727a3c74e9768.npz",
+            "sha256": "25dcd45210d1b769f14b3a4a46c24cb6ac8e70e58e27d11373a1896de105dfed"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "a618a783cb3f34e4fb8936c2abb5acefbd3cb5b2f801da1ff34c2df6b82f34a8",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-d4b1d66aaaa1a728.npz",
+            "sha256": "a618a783cb3f34e4fb8936c2abb5acefbd3cb5b2f801da1ff34c2df6b82f34a8"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "0cc19bf32b09ce33dad6e0787efaac5397f308250df33037d460d1eae985668a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-d83931768111dc58.npz",
+            "sha256": "0cc19bf32b09ce33dad6e0787efaac5397f308250df33037d460d1eae985668a"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "2556b97c3f6216b6222a515fc85e187110980fb6140993fc946954340c984f3c",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-e3f89de859062727.npz",
+            "sha256": "2556b97c3f6216b6222a515fc85e187110980fb6140993fc946954340c984f3c"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "163a971cc633465a4c299f8751fe54d857acd0c4a841b781dfbb3bade311b0b2",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-e44ccb97e7cc1570.npz",
+            "sha256": "163a971cc633465a4c299f8751fe54d857acd0c4a841b781dfbb3bade311b0b2"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "d7b51259bc580419cfbf94daadbec9a0cc41c73fc1e5f61d07dc8416fba7461f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-e4be9aa8e249ddf3.npz",
+            "sha256": "d7b51259bc580419cfbf94daadbec9a0cc41c73fc1e5f61d07dc8416fba7461f"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "ae9a48d7a81afa1eccc6b179b38800661497be9b3bdcd58efd15b6b92473732a",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-e76e500ff655313b.npz",
+            "sha256": "ae9a48d7a81afa1eccc6b179b38800661497be9b3bdcd58efd15b6b92473732a"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "a70e3b81530d7f47e81941bacd670f8647d206ab07f2e27e242b62d1ef3cc003",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-e9071bdee1904785.npz",
+            "sha256": "a70e3b81530d7f47e81941bacd670f8647d206ab07f2e27e242b62d1ef3cc003"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "6067d12c81bdaafad3b9a6d77cc8073245be72baa3da52b31b681c6e1d5aa30e",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-ee2421859dfb0792.npz",
+            "sha256": "6067d12c81bdaafad3b9a6d77cc8073245be72baa3da52b31b681c6e1d5aa30e"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "04e92612c14eb65828fcfc10b78d906e371bc9e54b46e58909685ab218ab14f5",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-f09cbf3636ad02de.npz",
+            "sha256": "04e92612c14eb65828fcfc10b78d906e371bc9e54b46e58909685ab218ab14f5"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "bcb9ca9ef2a64bdaac8a30cab2822461346f6c68710445b3ae07d713602c135f",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-f1aa29dd3ba2343f.npz",
+            "sha256": "bcb9ca9ef2a64bdaac8a30cab2822461346f6c68710445b3ae07d713602c135f"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "fcbe90deed37f9e17fb8dd9a84d738778c5bc5b56ee2c4a470389c8cc22b4e58",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-f5512e2434f96386.npz",
+            "sha256": "fcbe90deed37f9e17fb8dd9a84d738778c5bc5b56ee2c4a470389c8cc22b4e58"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "243cbf585b131b1d3cd4d5f003d1cf06d1244b5cce368a4351aac6ae60b3b045",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-f578fe138f6d4c7a.npz",
+            "sha256": "243cbf585b131b1d3cd4d5f003d1cf06d1244b5cce368a4351aac6ae60b3b045"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "4488dfe9210c293453b9a15ea4ae5075271f17cc05c8ea4fc1497c2176057895",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-fa81461ebec56b42.npz",
+            "sha256": "4488dfe9210c293453b9a15ea4ae5075271f17cc05c8ea4fc1497c2176057895"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "6f714ca047124db9a70ed9370f2683c8e7b042c7d8198b40de29cf53c51b4e47",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-fb57d883cd727c81.npz",
+            "sha256": "6f714ca047124db9a70ed9370f2683c8e7b042c7d8198b40de29cf53c51b4e47"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "fcb8a1c5334c566e0b87fcdc88eeec1d0ad1306ba96b5cea70da56f54e307788",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-fc53b7fb52199fb7.npz",
+            "sha256": "fcb8a1c5334c566e0b87fcdc88eeec1d0ad1306ba96b5cea70da56f54e307788"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "84e959abb6873dfc54c7a7f6169771f6531df71ae8d8697d4e44d30cf7c74ade",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-fd20b1f93a6ff4c0.npz",
+            "sha256": "84e959abb6873dfc54c7a7f6169771f6531df71ae8d8697d4e44d30cf7c74ade"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "d145c8c89588ea61e488c0f2bc3a6c2fff3c1030592c9d4656c85f868ddc7179",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-fe28a6c0dbd7d892.npz",
+            "sha256": "d145c8c89588ea61e488c0f2bc3a6c2fff3c1030592c9d4656c85f868ddc7179"
+          },
+          {
+            "candidate_rows": 68,
+            "frozen_commit_sha256": "6b79f2ba9970a084de7bcab5d752795314a40a710a9ee13728096700cabcacd4",
+            "matches_frozen_commit": true,
+            "path": "artifacts/features/re2tt/re2tt-ffda523857bbf5c2.npz",
+            "sha256": "6b79f2ba9970a084de7bcab5d752795314a40a710a9ee13728096700cabcacd4"
+          }
+        ],
+        "frozen_optimization_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6"
+      },
+      "removal_invariant": {
+        "cases_with_trace_error_constant_across_candidates": 90,
+        "change_is_constant_across_candidates_in_every_case": true,
+        "conditional_logit_pairwise_utility_differences_from_trace_error": 0.0,
+        "mathematical_interpretation": "Removing the block changes the raw vector because onset_missing=1, but removes the same block from every candidate in every case; therefore the block cannot change within-case Conditional Logit utility differences or ranking for any fixed coefficient vector.",
+        "raw_candidate_vectors_changed_by_removing_trace_error": 6120
+      },
+      "total_candidate_case_rows": 6120,
+      "trace_error_dimension": 17,
+      "unique_trace_error_vectors": 1,
+      "within_case_candidate_discriminative_variation": {
+        "any_dimension_varies_within_case": false,
+        "case_count": 0,
+        "case_proportion": 0.0,
+        "cases": [],
+        "present": false
+      }
+    }
+  },
+  "feature_order": {
+    "base_dimension": 8,
+    "channel": "trace-error",
+    "channel_index": 2,
+    "feature_names": [
+      "trace-error.magnitude",
+      "trace-error.mean_impact",
+      "trace-error.pre_post_shift",
+      "trace-error.onset_seconds",
+      "trace-error.onset_missing",
+      "trace-error.persistence",
+      "trace-error.coverage",
+      "trace-error.channel_available",
+      "trace-error.normalized_pre_mean",
+      "trace-error.normalized_post_mean",
+      "trace-error.normalized_post_minus_pre_mean",
+      "trace-error.post_peak_time_fraction",
+      "trace-error.post_amplitude_weighted_centroid_fraction",
+      "trace-error.post_ols_slope",
+      "trace-error.post_mean_absolute_adjacent_difference",
+      "trace-error.post_fraction_z_ge_0_5",
+      "trace-error.morphology_active"
+    ],
+    "frozen_z2_indices": [
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "frozen_z2_total_dimension": 68,
+    "morphology_dimension": 9,
+    "trace_error_dimension": 17
+  },
+  "final_classification": "TRACE_ERROR_EFFECTIVELY_NONDISCRIMINATIVE_IN_FROZEN_Z2",
+  "implementation_provenance": {
+    "src/rca/features.py": "91d452cc17bb2bdc51712a65e13cd079057f1d112016ef94836bbc13445e0a11",
+    "src/rca/final_method.py": "8587e9790d6a1d0d73ce9ae3b3149baea6a8e61153475f48f0cdc7143b6dbed7"
+  },
+  "optimization_trace_cross_check": {
+    "equivalences": {
+      "FULL-Z2_vs_M+L+TL": {
+        "all_available_comparisons_exact": true,
+        "datasets": {
+          "re2ob": {
+            "final_selection_trace": {
+              "byte_identical_to_o4": true,
+              "path": "artifacts/opt/final/PER-DATASET-OPT/re2ob/selection_trace.json",
+              "sha256": "5094e8abf88673dea07678df569d7abac9a3b804ad7c729277633cff35f3319a"
+            },
+            "o4_selection_trace": {
+              "path": "artifacts/opt/o4_nested/re2ob/selection_trace.json",
+              "sha256": "5094e8abf88673dea07678df569d7abac9a3b804ad7c729277633cff35f3319a"
+            },
+            "outer_folds": [
+              {
+                "exact_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ],
+                "outer_fold": 0,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ]
+              },
+              {
+                "exact_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ],
+                "outer_fold": 1,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ]
+              },
+              {
+                "exact_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ],
+                "outer_fold": 2,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ]
+              }
+            ],
+            "ranker_grid_comparisons_available": 9,
+            "ranker_grid_comparisons_exact": 9,
+            "representation_screen_comparisons_available": 3,
+            "representation_screen_comparisons_exact": 3
+          },
+          "re2tt": {
+            "final_selection_trace": {
+              "byte_identical_to_o4": true,
+              "path": "artifacts/opt/final/PER-DATASET-OPT/re2tt/selection_trace.json",
+              "sha256": "f94c1c1b82b47daaf78f8d3baac6808928bb6ee100c7ec981c480b9e1576e2b0"
+            },
+            "o4_selection_trace": {
+              "path": "artifacts/opt/o4_nested/re2tt/selection_trace.json",
+              "sha256": "f94c1c1b82b47daaf78f8d3baac6808928bb6ee100c7ec981c480b9e1576e2b0"
+            },
+            "outer_folds": [
+              {
+                "exact_ranker_grid_configurations": [],
+                "outer_fold": 0,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": []
+              },
+              {
+                "exact_ranker_grid_configurations": [],
+                "outer_fold": 1,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": []
+              },
+              {
+                "exact_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ],
+                "outer_fold": 2,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ]
+              }
+            ],
+            "ranker_grid_comparisons_available": 3,
+            "ranker_grid_comparisons_exact": 3,
+            "representation_screen_comparisons_available": 3,
+            "representation_screen_comparisons_exact": 3
+          }
+        },
+        "interpretation": "CONSISTENT_WITH_TE_NONDISCRIMINATIVE",
+        "left_representation": "FULL-Z2",
+        "ranker_grid_comparisons_available": 12,
+        "ranker_grid_comparisons_exact": 12,
+        "representation_screen_comparisons_available": 6,
+        "representation_screen_comparisons_exact": 6,
+        "right_representation": "M+L+TL"
+      },
+      "M+TE_vs_Z1-M": {
+        "all_available_comparisons_exact": true,
+        "datasets": {
+          "re2ob": {
+            "final_selection_trace": {
+              "byte_identical_to_o4": true,
+              "path": "artifacts/opt/final/PER-DATASET-OPT/re2ob/selection_trace.json",
+              "sha256": "5094e8abf88673dea07678df569d7abac9a3b804ad7c729277633cff35f3319a"
+            },
+            "o4_selection_trace": {
+              "path": "artifacts/opt/o4_nested/re2ob/selection_trace.json",
+              "sha256": "5094e8abf88673dea07678df569d7abac9a3b804ad7c729277633cff35f3319a"
+            },
+            "outer_folds": [
+              {
+                "exact_ranker_grid_configurations": [],
+                "outer_fold": 0,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": []
+              },
+              {
+                "exact_ranker_grid_configurations": [],
+                "outer_fold": 1,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": []
+              },
+              {
+                "exact_ranker_grid_configurations": [],
+                "outer_fold": 2,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": []
+              }
+            ],
+            "ranker_grid_comparisons_available": 0,
+            "ranker_grid_comparisons_exact": 0,
+            "representation_screen_comparisons_available": 3,
+            "representation_screen_comparisons_exact": 3
+          },
+          "re2tt": {
+            "final_selection_trace": {
+              "byte_identical_to_o4": true,
+              "path": "artifacts/opt/final/PER-DATASET-OPT/re2tt/selection_trace.json",
+              "sha256": "f94c1c1b82b47daaf78f8d3baac6808928bb6ee100c7ec981c480b9e1576e2b0"
+            },
+            "o4_selection_trace": {
+              "path": "artifacts/opt/o4_nested/re2tt/selection_trace.json",
+              "sha256": "f94c1c1b82b47daaf78f8d3baac6808928bb6ee100c7ec981c480b9e1576e2b0"
+            },
+            "outer_folds": [
+              {
+                "exact_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ],
+                "outer_fold": 0,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ]
+              },
+              {
+                "exact_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ],
+                "outer_fold": 1,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": [
+                  {
+                    "lambda": 0.1,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 1.0,
+                    "ranker": "R0-ConditionalLogit"
+                  },
+                  {
+                    "lambda": 10.0,
+                    "ranker": "R0-ConditionalLogit"
+                  }
+                ]
+              },
+              {
+                "exact_ranker_grid_configurations": [],
+                "outer_fold": 2,
+                "representation_screen_exact": true,
+                "representation_screen_pair_available": true,
+                "shared_ranker_grid_configurations": []
+              }
+            ],
+            "ranker_grid_comparisons_available": 6,
+            "ranker_grid_comparisons_exact": 6,
+            "representation_screen_comparisons_available": 3,
+            "representation_screen_comparisons_exact": 3
+          }
+        },
+        "interpretation": "CONSISTENT_WITH_TE_NONDISCRIMINATIVE",
+        "left_representation": "M+TE",
+        "ranker_grid_comparisons_available": 6,
+        "ranker_grid_comparisons_exact": 6,
+        "representation_screen_comparisons_available": 6,
+        "representation_screen_comparisons_exact": 6,
+        "right_representation": "Z1-M"
+      }
+    },
+    "primary_proof": "FROZEN_FEATURE_MATRICES",
+    "role": "SECONDARY_ONLY",
+    "status": "CONSISTENT_WITH_TE_NONDISCRIMINATIVE"
+  },
+  "schema_version": "ada_rca_trace_error_representation_invariant_v1",
+  "scope": {
+    "feature_modification": "NOT EXECUTED",
+    "model_fit": "NOT EXECUTED",
+    "model_scoring": "NOT EXECUTED",
+    "prediction_regeneration": "NOT EXECUTED",
+    "primary_proof": "FROZEN_FEATURE_MATRICES"
+  }
+}
