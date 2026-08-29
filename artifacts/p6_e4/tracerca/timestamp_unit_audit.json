@@ -1,0 +1,56 @@
+{
+  "chosen_conversion_factor": 1000000,
+  "duration_unit": "microseconds",
+  "endTime_unit": "microseconds since Unix epoch",
+  "inject_time_unit": "seconds since Unix epoch",
+  "justification": "convert inject_time seconds to the microsecond unit used by span endTime",
+  "numeric_evidence": {
+    "re2-ob": {
+      "duration_max": 115030995.0,
+      "duration_min": 1.0,
+      "endTime_max": 1708489861030985.0,
+      "endTime_min": 1705339822001107.0,
+      "inject_time_max": 1708489141,
+      "inject_time_min": 1705340542,
+      "startTime_max": 1708489860999772.0,
+      "startTime_min": 1705339822000999.0
+    },
+    "re2-tt": {
+      "duration_max": 18126930.0,
+      "duration_min": 79.0,
+      "endTime_max": 1708818224934726.0,
+      "endTime_min": 1705917385002349.0,
+      "inject_time_max": 1708817505,
+      "inject_time_min": 1705918105,
+      "startTime_max": 1708818224929484.0,
+      "startTime_min": 1705917385000000.0
+    }
+  },
+  "ob_tt_consistency": true,
+  "remaining_ambiguity": null,
+  "schema_version": "p6_e4_tracerca_timestamp_unit_audit_v1",
+  "source_evidence": [
+    {
+      "fact": "inject_time.txt is documented as a Unix timestamp",
+      "source": "pinned README.md"
+    },
+    {
+      "fact": "inject_time is multiplied by 1_000_000 before comparison with startTime + duration",
+      "source": "pinned RCAEval/e2e/pdiagnose.py"
+    },
+    {
+      "fact": "the internal pre/post split compares startTime + duration with inject_time",
+      "source": "pinned RCAEval/e2e/tracerca.py"
+    },
+    {
+      "fact": "startTime is approximately 1e15 and paired startTimeMillis is approximately 1e12",
+      "source": "RE2 traces.csv schema"
+    },
+    {
+      "fact": "duration is divided by 1_000 to obtain millisecond-scale latency",
+      "source": "TraceRCA duration processing"
+    }
+  ],
+  "startTime_unit": "microseconds since Unix epoch",
+  "status": "UNIQUE_SEMANTICS_JUSTIFIED"
+}

@@ -1,0 +1,19 @@
+{
+  "chosen_mapping": null,
+  "mapping_frozen": false,
+  "performance_evidence_used": false,
+  "proposed_mapping": {
+    "re2-ob": "mm-ob",
+    "re2-tt": "mm-tt"
+  },
+  "remaining_ambiguity": "No explicit upstream intended-alias statement or runner mapping exists",
+  "schema_version": "p6_e4_mmbaro_dataset_alias_audit_v1",
+  "source_evidence": [
+    "baro.py gates trace-derived branches on literal mm-ob or mm-tt",
+    "main.py and README use official dataset identifiers re2-ob and re2-tt",
+    "comments and hard-coded demos use mm-ob as an older multi-source path name",
+    "the official multi-source notebook calls mmbaro without a dataset argument",
+    "no pinned code, history, notebook, CI command, or documentation explicitly maps re2-* to mm-*"
+  ],
+  "status": "BLOCKED / SEMANTIC_AMBIGUITY"
+}

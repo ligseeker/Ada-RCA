@@ -1,0 +1,13 @@
+{
+  "adapter_assumption": true,
+  "assumption_reason": "no official symmetric TraceRCA runner window is implemented",
+  "boundary": "half-open",
+  "frozen_window_seconds": [
+    -600,
+    600
+  ],
+  "inclusion_quantity": "startTime + duration",
+  "performance_evidence_used": false,
+  "schema_version": "p6_e4_tracerca_window_semantics_v1",
+  "source_basis": "TraceRCA uses span endTime for its internal pre/post partition"
+}

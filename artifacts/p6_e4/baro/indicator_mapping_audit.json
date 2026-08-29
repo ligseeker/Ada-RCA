@@ -1,0 +1,2452 @@
+{
+  "datasets": {
+    "re2-ob": {
+      "auxiliary_count": 8,
+      "legal_service_registry": [
+        "adservice",
+        "cartservice",
+        "checkoutservice",
+        "currencyservice",
+        "emailservice",
+        "frontend",
+        "paymentservice",
+        "productcatalogservice",
+        "recommendationservice",
+        "redis",
+        "shippingservice"
+      ],
+      "mappings": [
+        {
+          "indicator": "InboundPassthroughClusterIpv4_workload",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "PassthroughCluster_workload",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "adservice_cpu",
+          "service": "adservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "adservice_diskio",
+          "service": "adservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "adservice_error",
+          "service": "adservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "adservice_latency-50",
+          "service": "adservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "adservice_latency-90",
+          "service": "adservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "adservice_mem",
+          "service": "adservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "adservice_socket",
+          "service": "adservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "adservice_workload",
+          "service": "adservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "cartservice_cpu",
+          "service": "cartservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "cartservice_diskio",
+          "service": "cartservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "cartservice_error",
+          "service": "cartservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "cartservice_latency-50",
+          "service": "cartservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "cartservice_latency-90",
+          "service": "cartservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "cartservice_mem",
+          "service": "cartservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "cartservice_socket",
+          "service": "cartservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "cartservice_workload",
+          "service": "cartservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "checkoutservice_cpu",
+          "service": "checkoutservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "checkoutservice_diskio",
+          "service": "checkoutservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "checkoutservice_latency-50",
+          "service": "checkoutservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "checkoutservice_latency-90",
+          "service": "checkoutservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "checkoutservice_mem",
+          "service": "checkoutservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "checkoutservice_socket",
+          "service": "checkoutservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "checkoutservice_workload",
+          "service": "checkoutservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "currencyservice_cpu",
+          "service": "currencyservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "currencyservice_diskio",
+          "service": "currencyservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "currencyservice_error",
+          "service": "currencyservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "currencyservice_latency-50",
+          "service": "currencyservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "currencyservice_latency-90",
+          "service": "currencyservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "currencyservice_mem",
+          "service": "currencyservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "currencyservice_socket",
+          "service": "currencyservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "currencyservice_workload",
+          "service": "currencyservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "emailservice_cpu",
+          "service": "emailservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "emailservice_diskio",
+          "service": "emailservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "emailservice_latency-50",
+          "service": "emailservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "emailservice_latency-90",
+          "service": "emailservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "emailservice_mem",
+          "service": "emailservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "emailservice_socket",
+          "service": "emailservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "emailservice_workload",
+          "service": "emailservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "frontend-check_mem",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "frontend-check_socket",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "frontend-external_error",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "frontend-external_workload",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "frontend_cpu",
+          "service": "frontend",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "frontend_diskio",
+          "service": "frontend",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "frontend_error",
+          "service": "frontend",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "frontend_latency-50",
+          "service": "frontend",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "frontend_latency-90",
+          "service": "frontend",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "frontend_mem",
+          "service": "frontend",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "frontend_socket",
+          "service": "frontend",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "frontend_workload",
+          "service": "frontend",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "istio-init_mem",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "istio-init_socket",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "paymentservice_cpu",
+          "service": "paymentservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "paymentservice_diskio",
+          "service": "paymentservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "paymentservice_latency-50",
+          "service": "paymentservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "paymentservice_latency-90",
+          "service": "paymentservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "paymentservice_mem",
+          "service": "paymentservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "paymentservice_socket",
+          "service": "paymentservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "paymentservice_workload",
+          "service": "paymentservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "productcatalogservice_cpu",
+          "service": "productcatalogservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "productcatalogservice_diskio",
+          "service": "productcatalogservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "productcatalogservice_error",
+          "service": "productcatalogservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "productcatalogservice_latency-50",
+          "service": "productcatalogservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "productcatalogservice_latency-90",
+          "service": "productcatalogservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "productcatalogservice_mem",
+          "service": "productcatalogservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "productcatalogservice_socket",
+          "service": "productcatalogservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "productcatalogservice_workload",
+          "service": "productcatalogservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "recommendationservice_cpu",
+          "service": "recommendationservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "recommendationservice_diskio",
+          "service": "recommendationservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "recommendationservice_latency-50",
+          "service": "recommendationservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "recommendationservice_latency-90",
+          "service": "recommendationservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "recommendationservice_mem",
+          "service": "recommendationservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "recommendationservice_socket",
+          "service": "recommendationservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "recommendationservice_workload",
+          "service": "recommendationservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "redis_cpu",
+          "service": "redis",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "redis_diskio",
+          "service": "redis",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "redis_mem",
+          "service": "redis",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "redis_socket",
+          "service": "redis",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "shippingservice_cpu",
+          "service": "shippingservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "shippingservice_latency-50",
+          "service": "shippingservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "shippingservice_latency-90",
+          "service": "shippingservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "shippingservice_mem",
+          "service": "shippingservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "shippingservice_socket",
+          "service": "shippingservice",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "shippingservice_workload",
+          "service": "shippingservice",
+          "status": "LEGAL_PREFIX"
+        }
+      ],
+      "observed_indicator_count": 86,
+      "unknown_count": 0
+    },
+    "re2-tt": {
+      "auxiliary_count": 2,
+      "legal_service_registry": [
+        "ts-admin-basic-info-service",
+        "ts-admin-order-service",
+        "ts-admin-route-service",
+        "ts-admin-travel-service",
+        "ts-admin-user-service",
+        "ts-assurance-mongo",
+        "ts-assurance-service",
+        "ts-auth-mongo",
+        "ts-auth-service",
+        "ts-avatar-service",
+        "ts-basic-service",
+        "ts-cancel-service",
+        "ts-config-mongo",
+        "ts-config-service",
+        "ts-consign-mongo",
+        "ts-consign-price-mongo",
+        "ts-consign-price-service",
+        "ts-consign-service",
+        "ts-contacts-mongo",
+        "ts-contacts-service",
+        "ts-execute-service",
+        "ts-food-map-mongo",
+        "ts-food-map-service",
+        "ts-food-mongo",
+        "ts-food-mysql",
+        "ts-food-service",
+        "ts-inside-payment-mongo",
+        "ts-inside-payment-service",
+        "ts-news-service",
+        "ts-notification-mongo",
+        "ts-notification-service",
+        "ts-order-mongo",
+        "ts-order-other-mongo",
+        "ts-order-other-service",
+        "ts-order-service",
+        "ts-payment-mongo",
+        "ts-payment-service",
+        "ts-preserve-mongo",
+        "ts-preserve-other-mongo",
+        "ts-preserve-other-service",
+        "ts-preserve-service",
+        "ts-price-mongo",
+        "ts-price-service",
+        "ts-rebook-service",
+        "ts-route-mongo",
+        "ts-route-plan-service",
+        "ts-route-service",
+        "ts-seat-service",
+        "ts-security-mongo",
+        "ts-security-service",
+        "ts-station-mongo",
+        "ts-station-service",
+        "ts-ticket-office-mongo",
+        "ts-ticket-office-service",
+        "ts-ticketinfo-service",
+        "ts-train-mongo",
+        "ts-train-service",
+        "ts-travel-mongo",
+        "ts-travel-plan-service",
+        "ts-travel-service",
+        "ts-travel2-mongo",
+        "ts-travel2-service",
+        "ts-ui-dashboard",
+        "ts-user-mongo",
+        "ts-user-service",
+        "ts-verification-code-service",
+        "ts-voucher-mysql",
+        "ts-voucher-service"
+      ],
+      "mappings": [
+        {
+          "indicator": "istio-init_mem",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "istio-init_socket",
+          "service": null,
+          "status": "NON_SERVICE_AUXILIARY"
+        },
+        {
+          "indicator": "ts-admin-basic-info-service_cpu",
+          "service": "ts-admin-basic-info-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-basic-info-service_diskio",
+          "service": "ts-admin-basic-info-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-basic-info-service_error",
+          "service": "ts-admin-basic-info-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-basic-info-service_latency-50",
+          "service": "ts-admin-basic-info-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-basic-info-service_latency-90",
+          "service": "ts-admin-basic-info-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-basic-info-service_mem",
+          "service": "ts-admin-basic-info-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-basic-info-service_socket",
+          "service": "ts-admin-basic-info-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-basic-info-service_workload",
+          "service": "ts-admin-basic-info-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-order-service_cpu",
+          "service": "ts-admin-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-order-service_diskio",
+          "service": "ts-admin-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-order-service_mem",
+          "service": "ts-admin-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-order-service_socket",
+          "service": "ts-admin-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-route-service_cpu",
+          "service": "ts-admin-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-route-service_diskio",
+          "service": "ts-admin-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-route-service_mem",
+          "service": "ts-admin-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-route-service_socket",
+          "service": "ts-admin-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-travel-service_cpu",
+          "service": "ts-admin-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-travel-service_diskio",
+          "service": "ts-admin-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-travel-service_error",
+          "service": "ts-admin-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-travel-service_latency-50",
+          "service": "ts-admin-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-travel-service_latency-90",
+          "service": "ts-admin-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-travel-service_mem",
+          "service": "ts-admin-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-travel-service_socket",
+          "service": "ts-admin-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-travel-service_workload",
+          "service": "ts-admin-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-user-service_cpu",
+          "service": "ts-admin-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-user-service_diskio",
+          "service": "ts-admin-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-user-service_mem",
+          "service": "ts-admin-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-admin-user-service_socket",
+          "service": "ts-admin-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-mongo_cpu",
+          "service": "ts-assurance-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-mongo_diskio",
+          "service": "ts-assurance-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-mongo_mem",
+          "service": "ts-assurance-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-mongo_socket",
+          "service": "ts-assurance-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-service_cpu",
+          "service": "ts-assurance-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-service_diskio",
+          "service": "ts-assurance-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-service_error",
+          "service": "ts-assurance-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-service_latency-50",
+          "service": "ts-assurance-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-service_latency-90",
+          "service": "ts-assurance-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-service_mem",
+          "service": "ts-assurance-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-service_socket",
+          "service": "ts-assurance-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-assurance-service_workload",
+          "service": "ts-assurance-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-mongo_cpu",
+          "service": "ts-auth-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-mongo_diskio",
+          "service": "ts-auth-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-mongo_mem",
+          "service": "ts-auth-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-mongo_socket",
+          "service": "ts-auth-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-service_cpu",
+          "service": "ts-auth-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-service_diskio",
+          "service": "ts-auth-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-service_error",
+          "service": "ts-auth-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-service_latency-50",
+          "service": "ts-auth-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-service_latency-90",
+          "service": "ts-auth-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-service_mem",
+          "service": "ts-auth-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-service_socket",
+          "service": "ts-auth-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-auth-service_workload",
+          "service": "ts-auth-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-avatar-service_cpu",
+          "service": "ts-avatar-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-avatar-service_diskio",
+          "service": "ts-avatar-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-avatar-service_mem",
+          "service": "ts-avatar-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-avatar-service_socket",
+          "service": "ts-avatar-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-basic-service_cpu",
+          "service": "ts-basic-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-basic-service_diskio",
+          "service": "ts-basic-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-basic-service_error",
+          "service": "ts-basic-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-basic-service_latency-50",
+          "service": "ts-basic-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-basic-service_latency-90",
+          "service": "ts-basic-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-basic-service_mem",
+          "service": "ts-basic-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-basic-service_socket",
+          "service": "ts-basic-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-basic-service_workload",
+          "service": "ts-basic-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-cancel-service_cpu",
+          "service": "ts-cancel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-cancel-service_diskio",
+          "service": "ts-cancel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-cancel-service_mem",
+          "service": "ts-cancel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-cancel-service_socket",
+          "service": "ts-cancel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-mongo_cpu",
+          "service": "ts-config-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-mongo_diskio",
+          "service": "ts-config-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-mongo_mem",
+          "service": "ts-config-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-mongo_socket",
+          "service": "ts-config-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-service_cpu",
+          "service": "ts-config-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-service_diskio",
+          "service": "ts-config-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-service_error",
+          "service": "ts-config-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-service_latency-50",
+          "service": "ts-config-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-service_latency-90",
+          "service": "ts-config-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-service_mem",
+          "service": "ts-config-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-service_socket",
+          "service": "ts-config-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-config-service_workload",
+          "service": "ts-config-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-mongo_cpu",
+          "service": "ts-consign-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-mongo_diskio",
+          "service": "ts-consign-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-mongo_mem",
+          "service": "ts-consign-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-mongo_socket",
+          "service": "ts-consign-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-mongo_cpu",
+          "service": "ts-consign-price-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-mongo_diskio",
+          "service": "ts-consign-price-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-mongo_mem",
+          "service": "ts-consign-price-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-mongo_socket",
+          "service": "ts-consign-price-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-service_cpu",
+          "service": "ts-consign-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-service_diskio",
+          "service": "ts-consign-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-service_latency-50",
+          "service": "ts-consign-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-service_latency-90",
+          "service": "ts-consign-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-service_mem",
+          "service": "ts-consign-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-service_socket",
+          "service": "ts-consign-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-price-service_workload",
+          "service": "ts-consign-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-service_cpu",
+          "service": "ts-consign-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-service_diskio",
+          "service": "ts-consign-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-service_error",
+          "service": "ts-consign-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-service_latency-50",
+          "service": "ts-consign-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-service_latency-90",
+          "service": "ts-consign-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-service_mem",
+          "service": "ts-consign-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-service_socket",
+          "service": "ts-consign-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-consign-service_workload",
+          "service": "ts-consign-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-mongo_cpu",
+          "service": "ts-contacts-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-mongo_diskio",
+          "service": "ts-contacts-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-mongo_mem",
+          "service": "ts-contacts-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-mongo_socket",
+          "service": "ts-contacts-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-service_cpu",
+          "service": "ts-contacts-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-service_diskio",
+          "service": "ts-contacts-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-service_error",
+          "service": "ts-contacts-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-service_latency-50",
+          "service": "ts-contacts-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-service_latency-90",
+          "service": "ts-contacts-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-service_mem",
+          "service": "ts-contacts-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-service_socket",
+          "service": "ts-contacts-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-contacts-service_workload",
+          "service": "ts-contacts-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-execute-service_cpu",
+          "service": "ts-execute-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-execute-service_diskio",
+          "service": "ts-execute-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-execute-service_mem",
+          "service": "ts-execute-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-execute-service_socket",
+          "service": "ts-execute-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-mongo_cpu",
+          "service": "ts-food-map-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-mongo_diskio",
+          "service": "ts-food-map-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-mongo_mem",
+          "service": "ts-food-map-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-mongo_socket",
+          "service": "ts-food-map-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-service_cpu",
+          "service": "ts-food-map-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-service_diskio",
+          "service": "ts-food-map-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-service_error",
+          "service": "ts-food-map-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-service_latency-50",
+          "service": "ts-food-map-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-service_latency-90",
+          "service": "ts-food-map-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-service_mem",
+          "service": "ts-food-map-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-service_socket",
+          "service": "ts-food-map-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-map-service_workload",
+          "service": "ts-food-map-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-mongo_cpu",
+          "service": "ts-food-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-mongo_diskio",
+          "service": "ts-food-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-mongo_mem",
+          "service": "ts-food-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-mongo_socket",
+          "service": "ts-food-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-mysql_cpu",
+          "service": "ts-food-mysql",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-mysql_diskio",
+          "service": "ts-food-mysql",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-mysql_mem",
+          "service": "ts-food-mysql",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-mysql_socket",
+          "service": "ts-food-mysql",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-service_cpu",
+          "service": "ts-food-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-service_diskio",
+          "service": "ts-food-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-service_error",
+          "service": "ts-food-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-service_latency-50",
+          "service": "ts-food-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-service_latency-90",
+          "service": "ts-food-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-service_mem",
+          "service": "ts-food-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-service_socket",
+          "service": "ts-food-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-food-service_workload",
+          "service": "ts-food-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-mongo_cpu",
+          "service": "ts-inside-payment-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-mongo_diskio",
+          "service": "ts-inside-payment-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-mongo_mem",
+          "service": "ts-inside-payment-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-mongo_socket",
+          "service": "ts-inside-payment-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-service_cpu",
+          "service": "ts-inside-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-service_diskio",
+          "service": "ts-inside-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-service_error",
+          "service": "ts-inside-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-service_latency-50",
+          "service": "ts-inside-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-service_latency-90",
+          "service": "ts-inside-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-service_mem",
+          "service": "ts-inside-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-service_socket",
+          "service": "ts-inside-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-inside-payment-service_workload",
+          "service": "ts-inside-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-news-service_cpu",
+          "service": "ts-news-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-news-service_mem",
+          "service": "ts-news-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-news-service_socket",
+          "service": "ts-news-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-notification-mongo_cpu",
+          "service": "ts-notification-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-notification-mongo_diskio",
+          "service": "ts-notification-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-notification-mongo_mem",
+          "service": "ts-notification-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-notification-mongo_socket",
+          "service": "ts-notification-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-notification-service_cpu",
+          "service": "ts-notification-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-notification-service_diskio",
+          "service": "ts-notification-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-notification-service_mem",
+          "service": "ts-notification-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-notification-service_socket",
+          "service": "ts-notification-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-mongo_cpu",
+          "service": "ts-order-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-mongo_diskio",
+          "service": "ts-order-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-mongo_mem",
+          "service": "ts-order-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-mongo_socket",
+          "service": "ts-order-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-mongo_cpu",
+          "service": "ts-order-other-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-mongo_diskio",
+          "service": "ts-order-other-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-mongo_mem",
+          "service": "ts-order-other-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-mongo_socket",
+          "service": "ts-order-other-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-service_cpu",
+          "service": "ts-order-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-service_diskio",
+          "service": "ts-order-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-service_error",
+          "service": "ts-order-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-service_latency-50",
+          "service": "ts-order-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-service_latency-90",
+          "service": "ts-order-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-service_mem",
+          "service": "ts-order-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-service_socket",
+          "service": "ts-order-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-other-service_workload",
+          "service": "ts-order-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-service_cpu",
+          "service": "ts-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-service_diskio",
+          "service": "ts-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-service_error",
+          "service": "ts-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-service_latency-50",
+          "service": "ts-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-service_latency-90",
+          "service": "ts-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-service_mem",
+          "service": "ts-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-service_socket",
+          "service": "ts-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-order-service_workload",
+          "service": "ts-order-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-mongo_cpu",
+          "service": "ts-payment-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-mongo_diskio",
+          "service": "ts-payment-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-mongo_mem",
+          "service": "ts-payment-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-mongo_socket",
+          "service": "ts-payment-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-service_cpu",
+          "service": "ts-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-service_diskio",
+          "service": "ts-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-service_latency-50",
+          "service": "ts-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-service_latency-90",
+          "service": "ts-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-service_mem",
+          "service": "ts-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-service_socket",
+          "service": "ts-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-payment-service_workload",
+          "service": "ts-payment-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-mongo_cpu",
+          "service": "ts-preserve-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-mongo_diskio",
+          "service": "ts-preserve-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-mongo_mem",
+          "service": "ts-preserve-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-mongo_socket",
+          "service": "ts-preserve-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-mongo_cpu",
+          "service": "ts-preserve-other-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-mongo_diskio",
+          "service": "ts-preserve-other-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-mongo_mem",
+          "service": "ts-preserve-other-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-mongo_socket",
+          "service": "ts-preserve-other-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-service_cpu",
+          "service": "ts-preserve-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-service_diskio",
+          "service": "ts-preserve-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-service_error",
+          "service": "ts-preserve-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-service_latency-50",
+          "service": "ts-preserve-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-service_latency-90",
+          "service": "ts-preserve-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-service_mem",
+          "service": "ts-preserve-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-service_socket",
+          "service": "ts-preserve-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-other-service_workload",
+          "service": "ts-preserve-other-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-service_cpu",
+          "service": "ts-preserve-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-service_diskio",
+          "service": "ts-preserve-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-service_error",
+          "service": "ts-preserve-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-service_latency-50",
+          "service": "ts-preserve-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-service_latency-90",
+          "service": "ts-preserve-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-service_mem",
+          "service": "ts-preserve-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-service_socket",
+          "service": "ts-preserve-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-preserve-service_workload",
+          "service": "ts-preserve-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-mongo_cpu",
+          "service": "ts-price-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-mongo_diskio",
+          "service": "ts-price-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-mongo_mem",
+          "service": "ts-price-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-mongo_socket",
+          "service": "ts-price-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-service_cpu",
+          "service": "ts-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-service_diskio",
+          "service": "ts-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-service_error",
+          "service": "ts-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-service_latency-50",
+          "service": "ts-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-service_latency-90",
+          "service": "ts-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-service_mem",
+          "service": "ts-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-service_socket",
+          "service": "ts-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-price-service_workload",
+          "service": "ts-price-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-rebook-service_cpu",
+          "service": "ts-rebook-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-rebook-service_diskio",
+          "service": "ts-rebook-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-rebook-service_mem",
+          "service": "ts-rebook-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-rebook-service_socket",
+          "service": "ts-rebook-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-mongo_cpu",
+          "service": "ts-route-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-mongo_diskio",
+          "service": "ts-route-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-mongo_mem",
+          "service": "ts-route-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-mongo_socket",
+          "service": "ts-route-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-plan-service_cpu",
+          "service": "ts-route-plan-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-plan-service_diskio",
+          "service": "ts-route-plan-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-plan-service_mem",
+          "service": "ts-route-plan-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-plan-service_socket",
+          "service": "ts-route-plan-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-service_cpu",
+          "service": "ts-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-service_diskio",
+          "service": "ts-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-service_error",
+          "service": "ts-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-service_latency-50",
+          "service": "ts-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-service_latency-90",
+          "service": "ts-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-service_mem",
+          "service": "ts-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-service_socket",
+          "service": "ts-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-route-service_workload",
+          "service": "ts-route-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-seat-service_cpu",
+          "service": "ts-seat-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-seat-service_diskio",
+          "service": "ts-seat-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-seat-service_error",
+          "service": "ts-seat-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-seat-service_latency-50",
+          "service": "ts-seat-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-seat-service_latency-90",
+          "service": "ts-seat-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-seat-service_mem",
+          "service": "ts-seat-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-seat-service_socket",
+          "service": "ts-seat-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-seat-service_workload",
+          "service": "ts-seat-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-mongo_cpu",
+          "service": "ts-security-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-mongo_diskio",
+          "service": "ts-security-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-mongo_mem",
+          "service": "ts-security-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-mongo_socket",
+          "service": "ts-security-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-service_cpu",
+          "service": "ts-security-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-service_diskio",
+          "service": "ts-security-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-service_error",
+          "service": "ts-security-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-service_latency-50",
+          "service": "ts-security-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-service_latency-90",
+          "service": "ts-security-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-service_mem",
+          "service": "ts-security-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-service_socket",
+          "service": "ts-security-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-security-service_workload",
+          "service": "ts-security-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-mongo_cpu",
+          "service": "ts-station-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-mongo_diskio",
+          "service": "ts-station-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-mongo_mem",
+          "service": "ts-station-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-mongo_socket",
+          "service": "ts-station-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-service_cpu",
+          "service": "ts-station-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-service_diskio",
+          "service": "ts-station-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-service_error",
+          "service": "ts-station-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-service_latency-50",
+          "service": "ts-station-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-service_latency-90",
+          "service": "ts-station-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-service_mem",
+          "service": "ts-station-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-service_socket",
+          "service": "ts-station-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-station-service_workload",
+          "service": "ts-station-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticket-office-mongo_cpu",
+          "service": "ts-ticket-office-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticket-office-mongo_diskio",
+          "service": "ts-ticket-office-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticket-office-mongo_mem",
+          "service": "ts-ticket-office-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticket-office-mongo_socket",
+          "service": "ts-ticket-office-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticket-office-service_cpu",
+          "service": "ts-ticket-office-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticket-office-service_diskio",
+          "service": "ts-ticket-office-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticket-office-service_mem",
+          "service": "ts-ticket-office-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticket-office-service_socket",
+          "service": "ts-ticket-office-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticketinfo-service_cpu",
+          "service": "ts-ticketinfo-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticketinfo-service_diskio",
+          "service": "ts-ticketinfo-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticketinfo-service_error",
+          "service": "ts-ticketinfo-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticketinfo-service_latency-50",
+          "service": "ts-ticketinfo-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticketinfo-service_latency-90",
+          "service": "ts-ticketinfo-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticketinfo-service_mem",
+          "service": "ts-ticketinfo-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticketinfo-service_socket",
+          "service": "ts-ticketinfo-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ticketinfo-service_workload",
+          "service": "ts-ticketinfo-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-mongo_cpu",
+          "service": "ts-train-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-mongo_diskio",
+          "service": "ts-train-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-mongo_mem",
+          "service": "ts-train-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-mongo_socket",
+          "service": "ts-train-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-service_cpu",
+          "service": "ts-train-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-service_diskio",
+          "service": "ts-train-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-service_error",
+          "service": "ts-train-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-service_latency-50",
+          "service": "ts-train-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-service_latency-90",
+          "service": "ts-train-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-service_mem",
+          "service": "ts-train-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-service_socket",
+          "service": "ts-train-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-train-service_workload",
+          "service": "ts-train-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-mongo_cpu",
+          "service": "ts-travel-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-mongo_diskio",
+          "service": "ts-travel-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-mongo_mem",
+          "service": "ts-travel-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-mongo_socket",
+          "service": "ts-travel-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-plan-service_cpu",
+          "service": "ts-travel-plan-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-plan-service_diskio",
+          "service": "ts-travel-plan-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-plan-service_mem",
+          "service": "ts-travel-plan-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-plan-service_socket",
+          "service": "ts-travel-plan-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-service_cpu",
+          "service": "ts-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-service_diskio",
+          "service": "ts-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-service_error",
+          "service": "ts-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-service_latency-50",
+          "service": "ts-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-service_latency-90",
+          "service": "ts-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-service_mem",
+          "service": "ts-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-service_socket",
+          "service": "ts-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel-service_workload",
+          "service": "ts-travel-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-mongo_cpu",
+          "service": "ts-travel2-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-mongo_diskio",
+          "service": "ts-travel2-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-mongo_mem",
+          "service": "ts-travel2-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-mongo_socket",
+          "service": "ts-travel2-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-service_cpu",
+          "service": "ts-travel2-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-service_diskio",
+          "service": "ts-travel2-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-service_error",
+          "service": "ts-travel2-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-service_latency-50",
+          "service": "ts-travel2-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-service_latency-90",
+          "service": "ts-travel2-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-service_mem",
+          "service": "ts-travel2-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-service_socket",
+          "service": "ts-travel2-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-travel2-service_workload",
+          "service": "ts-travel2-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ui-dashboard_cpu",
+          "service": "ts-ui-dashboard",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ui-dashboard_diskio",
+          "service": "ts-ui-dashboard",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ui-dashboard_error",
+          "service": "ts-ui-dashboard",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ui-dashboard_latency-50",
+          "service": "ts-ui-dashboard",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ui-dashboard_latency-90",
+          "service": "ts-ui-dashboard",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ui-dashboard_mem",
+          "service": "ts-ui-dashboard",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ui-dashboard_socket",
+          "service": "ts-ui-dashboard",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-ui-dashboard_workload",
+          "service": "ts-ui-dashboard",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-mongo_cpu",
+          "service": "ts-user-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-mongo_diskio",
+          "service": "ts-user-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-mongo_mem",
+          "service": "ts-user-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-mongo_socket",
+          "service": "ts-user-mongo",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-service_cpu",
+          "service": "ts-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-service_diskio",
+          "service": "ts-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-service_error",
+          "service": "ts-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-service_latency-50",
+          "service": "ts-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-service_latency-90",
+          "service": "ts-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-service_mem",
+          "service": "ts-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-service_socket",
+          "service": "ts-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-user-service_workload",
+          "service": "ts-user-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-verification-code-service_cpu",
+          "service": "ts-verification-code-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-verification-code-service_diskio",
+          "service": "ts-verification-code-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-verification-code-service_mem",
+          "service": "ts-verification-code-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-verification-code-service_socket",
+          "service": "ts-verification-code-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-voucher-mysql_cpu",
+          "service": "ts-voucher-mysql",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-voucher-mysql_diskio",
+          "service": "ts-voucher-mysql",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-voucher-mysql_mem",
+          "service": "ts-voucher-mysql",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-voucher-mysql_socket",
+          "service": "ts-voucher-mysql",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-voucher-service_cpu",
+          "service": "ts-voucher-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-voucher-service_diskio",
+          "service": "ts-voucher-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-voucher-service_mem",
+          "service": "ts-voucher-service",
+          "status": "LEGAL_PREFIX"
+        },
+        {
+          "indicator": "ts-voucher-service_socket",
+          "service": "ts-voucher-service",
+          "status": "LEGAL_PREFIX"
+        }
+      ],
+      "observed_indicator_count": 383,
+      "unknown_count": 0
+    }
+  },
+  "db_suffix_rule": "remove terminal -db only when the resulting service is legal",
+  "rule": "longest legal service prefix at underscore boundary; governed aliases; auxiliary exclusion",
+  "schema_version": "p6_e4_baro_indicator_mapping_audit_v1",
+  "special_mappings": {
+    "frontendservice": "frontend"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "alias_status": "BLOCKED / SEMANTIC_AMBIGUITY",
+  "dataset_argument": "re2-ob or re2-tt (official identifier; alias not applied)",
+  "description_boundary": "metric + log time series only under official RE2 identifiers",
+  "modalities": {
+    "cluster_info": "LOADED_NOT_USED",
+    "log_time_series": "USED",
+    "metric": "USED",
+    "raw_logs": "LOADED_NOT_USED",
+    "raw_spans": "LOADED_NOT_USED",
+    "trace_error_time_series": "LOADED_NOT_USED",
+    "trace_latency_time_series": "LOADED_NOT_USED"
+  },
+  "schema_version": "p6_e4_mmbaro_modality_activation_audit_v1",
+  "smoke_execution_authorized": false,
+  "tri_modal_claim_permitted": false
+}
