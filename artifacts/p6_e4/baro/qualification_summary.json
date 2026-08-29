@@ -1,0 +1,26 @@
+{
+  "all_smoke_records_successful": true,
+  "datasets": {
+    "re2-ob": {
+      "case_count": 3,
+      "deterministic_repeats": true,
+      "failure_counts": {},
+      "record_count": 6,
+      "successful_records": 6
+    },
+    "re2-tt": {
+      "case_count": 3,
+      "deterministic_repeats": true,
+      "failure_counts": {},
+      "record_count": 6,
+      "successful_records": 6
+    }
+  },
+  "deterministic_repeat_output": true,
+  "dummy_fallback_accepted": false,
+  "mapping_unknown_count": 0,
+  "method": "BARO",
+  "performance_firewall": "PASS",
+  "schema_version": "p6_e4_method_qualification_summary_v1",
+  "status": "READY"
+}

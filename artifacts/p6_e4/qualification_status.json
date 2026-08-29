@@ -1,0 +1,11 @@
+{
+  "formal_p6_e5_executed": false,
+  "methods": {
+    "BARO": "READY",
+    "TraceRCA": "BLOCKED / UNSUPPORTED_INPUT",
+    "mmBARO": "BLOCKED / SEMANTIC_AMBIGUITY"
+  },
+  "p6_g1": "P6-G1 = PARTIAL \u2014 AWAITING HUMAN REVIEW",
+  "schema_version": "p6_e4_overall_qualification_v1",
+  "tier_b_substitution": false
+}

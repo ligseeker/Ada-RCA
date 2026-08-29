@@ -1,0 +1,9 @@
+{
+  "method": "mmBARO",
+  "performance_firewall": "PASS",
+  "reason": "No explicit upstream intended-alias statement or runner mapping exists",
+  "schema_version": "p6_e4_method_qualification_summary_v1",
+  "smoke_execution_performed": false,
+  "status": "BLOCKED / SEMANTIC_AMBIGUITY",
+  "tier_b_substitution": false
+}

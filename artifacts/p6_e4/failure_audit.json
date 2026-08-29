@@ -1,0 +1,9 @@
+{
+  "dummy_fallback_accepted": false,
+  "failures_converted_to_performance_zero": false,
+  "raw_failure_counts": {
+    "F-A_ALGORITHMIC_FAILURE": 2
+  },
+  "schema_version": "p6_e4_failure_audit_v1",
+  "successful_subset_suppression_used": false
+}
