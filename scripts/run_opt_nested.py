@@ -68,7 +68,7 @@ def fit_score(rep_events, ids_train, roots, lam, outer_fold):
     return fit, fit.gradient_norm
 
 
-def select_config(raw_events, roots, outer_train_ids):
+def select_config(raw_events, roots, labels, outer_train_ids):
     ordered = sorted(outer_train_ids)
     splits = inner_splits(ordered, 3)
     rep_scores = []
@@ -78,6 +78,8 @@ def select_config(raw_events, roots, outer_train_ids):
         for split in splits:
             fit, _ = fit_score(rep_events, split["train"], roots, 1.0, -1)
             rows = predict(fit, [rep_events[x] for x in split["valid"]], -1)
+            for row in rows:
+                row["fault_type"] = labels[row["case_id"]]["fault_type"]
             vals.append(score_rows(rows, roots, [rep_events[x] for x in split["valid"]])["Avg@5"])
         rep_scores.append((float(np.mean(vals)), rep_name, vals))
     rep_scores.sort(key=lambda x: (-x[0], x[1]))
@@ -93,6 +95,8 @@ def select_config(raw_events, roots, outer_train_ids):
             for split in splits:
                 fit, _ = fit_score(rep_events, split["train"], roots, lam, -1)
                 rows = predict(fit, [rep_events[x] for x in split["valid"]], -1)
+                for row in rows:
+                    row["fault_type"] = labels[row["case_id"]]["fault_type"]
                 metrics = score_rows(rows, roots, [rep_events[x] for x in split["valid"]])
                 vals.append(metrics["Avg@5"])
                 ac1_vals.append(metrics["AC@1"])
@@ -112,7 +116,7 @@ def run_dataset(dataset, output_root):
     for fold in (0, 1, 2):
         train_ids = sorted(cid for cid, f in assignments.items() if f != fold)
         test_ids = sorted(cid for cid, f in assignments.items() if f == fold)
-        chosen, trace = select_config(events, roots, train_ids)
+        chosen, trace = select_config(events, roots, labels, train_ids)
         channels = REPRESENTATIONS[chosen["representation"]]
         rep_events = {cid: slice_event(events[cid], channels) for cid in events}
         fit, grad = fit_score(rep_events, train_ids, roots, chosen["lambda"], fold)
