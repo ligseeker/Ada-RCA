@@ -1,0 +1,20 @@
+{
+  "MECHANISM_GO": false,
+  "PERFORMANCE_GO": false,
+  "V2_F1": "NO_GO",
+  "mechanism_checks": {
+    "equal_dataset_avg5_ci_lower_positive": false,
+    "integrity": true,
+    "ob_avg5_strict_positive": true,
+    "tt_avg5_strict_positive": false
+  },
+  "performance_checks": {
+    "at_least_one_avg5_strict_positive": false,
+    "equal_dataset_avg5_ci_lower_positive": false,
+    "integrity": true,
+    "ob_ac1_guard": true,
+    "ob_avg5_nonnegative": true,
+    "tt_ac1_guard": true,
+    "tt_avg5_nonnegative": false
+  }
+}

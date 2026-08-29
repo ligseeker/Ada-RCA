@@ -1,0 +1,13 @@
+{
+  "assignment_sha256": "88b4615ed3c950569ed7e4c4e9c66a302e8f88adf1715a8457540e00390b68e7",
+  "dataset": "re2tt",
+  "dataset_tree_sha256": "84b26bcd083cea2db5c7d46330974c23d9ef963ed586ec9325c663baa5dd0958",
+  "feature_manifest_sha256": "ac0424a4018624a61e993649e2b94c678838a2d02dfc4bf8f5c1b0694a145256",
+  "generated_at": "2026-08-29T12:29:10.446902+00:00",
+  "protocol": "docs/V2_MULTIMODAL_FUSION_PROTOCOL_V0.1.md",
+  "schema_version": "ada_rca_v2_f1_run_v1",
+  "source_commit": "76e4045af701ebea89594e7770a9534656170c18",
+  "source_manifest_sha256": "710901cb6a86fcf7537929f594af723be3d4d600364efde1ad397c707646b9d8",
+  "split_manifest_sha256": "3c3947d6377433507ca1ea6b69d88f6d8f359b42937bbcff1a7ac98422f05d7e",
+  "variant": "aligned"
+}

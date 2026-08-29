@@ -1,0 +1,1119 @@
+{
+  "by_fault": {
+    "cpu": {
+      "AC@1": 0.9333333333333333,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9866666666666667,
+      "MRR": 0.9666666666666667
+    },
+    "delay": {
+      "AC@1": 0.26666666666666666,
+      "AC@3": 0.6,
+      "AC@5": 0.8,
+      "Avg@5": 0.5866666666666667,
+      "MRR": 0.4829629629629629
+    },
+    "disk": {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0
+    },
+    "loss": {
+      "AC@1": 0.4,
+      "AC@3": 0.6666666666666666,
+      "AC@5": 0.8,
+      "Avg@5": 0.6,
+      "MRR": 0.5423768823768822
+    },
+    "mem": {
+      "AC@1": 0.8,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9466666666666667,
+      "MRR": 0.8888888888888888
+    },
+    "socket": {
+      "AC@1": 0.9333333333333333,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9866666666666667,
+      "MRR": 0.9666666666666667
+    }
+  },
+  "by_fold": {
+    "0": {
+      "AC@1": 0.6666666666666666,
+      "AC@3": 0.9333333333333333,
+      "AC@5": 1.0,
+      "Avg@5": 0.8733333333333333,
+      "MRR": 0.7966666666666666
+    },
+    "1": {
+      "AC@1": 0.7333333333333333,
+      "AC@3": 0.8333333333333334,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.8133333333333334,
+      "MRR": 0.794045584045584
+    },
+    "2": {
+      "AC@1": 0.7666666666666667,
+      "AC@3": 0.8666666666666667,
+      "AC@5": 0.9333333333333333,
+      "Avg@5": 0.8666666666666668,
+      "MRR": 0.833068783068783
+    }
+  },
+  "by_root": {
+    "ts-auth-service": {
+      "AC@1": 0.7777777777777778,
+      "AC@3": 0.7777777777777778,
+      "AC@5": 0.7777777777777778,
+      "Avg@5": 0.7777777777777778,
+      "MRR": 0.7936474019807354
+    },
+    "ts-order-service": {
+      "AC@1": 0.7777777777777778,
+      "AC@3": 0.9444444444444444,
+      "AC@5": 1.0,
+      "Avg@5": 0.911111111111111,
+      "MRR": 0.8629629629629629
+    },
+    "ts-route-service": {
+      "AC@1": 0.7222222222222222,
+      "AC@3": 0.9444444444444444,
+      "AC@5": 1.0,
+      "Avg@5": 0.9222222222222223,
+      "MRR": 0.8472222222222222
+    },
+    "ts-train-service": {
+      "AC@1": 0.6666666666666666,
+      "AC@3": 0.9444444444444444,
+      "AC@5": 0.9444444444444444,
+      "Avg@5": 0.8555555555555556,
+      "MRR": 0.787037037037037
+    },
+    "ts-travel-service": {
+      "AC@1": 0.6666666666666666,
+      "AC@3": 0.7777777777777778,
+      "AC@5": 0.9444444444444444,
+      "Avg@5": 0.7888888888888889,
+      "MRR": 0.7487654320987654
+    }
+  },
+  "case_metrics": [
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-010695b192f8dbea",
+      "fault_type": "disk",
+      "fold": 2,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "MRR": 0.047619047619047616,
+      "case_id": "re2tt-01d0096e9a504ced",
+      "fault_type": "loss",
+      "fold": 2,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.6,
+      "MRR": 0.3333333333333333,
+      "case_id": "re2tt-04ce93a682b70df6",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-0b529d9f6ca88d4b",
+      "fault_type": "cpu",
+      "fold": 2,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-0f6b6213169d6acc",
+      "fault_type": "socket",
+      "fold": 2,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.6,
+      "MRR": 0.3333333333333333,
+      "case_id": "re2tt-1283c56ed7675282",
+      "fault_type": "delay",
+      "fold": 0,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "MRR": 0.07692307692307693,
+      "case_id": "re2tt-14c6e1b70d0c21e5",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-1d48b3aec1ec4470",
+      "fault_type": "disk",
+      "fold": 2,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.2,
+      "MRR": 0.2,
+      "case_id": "re2tt-20258ce8dbcd2300",
+      "fault_type": "loss",
+      "fold": 0,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-22292d58b67911fb",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-2782358136a64e6c",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-2a03e4ad1a1d6f85",
+      "fault_type": "cpu",
+      "fold": 0,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-2ae0e149b3ab15f1",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-2ca7cff33586ca18",
+      "fault_type": "socket",
+      "fold": 0,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-2defd6e102bdaf53",
+      "fault_type": "cpu",
+      "fold": 2,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2tt-2fc3d2fb9c492b7c",
+      "fault_type": "mem",
+      "fold": 0,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2tt-35e803c63786ac4e",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.6,
+      "MRR": 0.3333333333333333,
+      "case_id": "re2tt-38941ca70beb687a",
+      "fault_type": "delay",
+      "fold": 0,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "MRR": 0.16666666666666666,
+      "case_id": "re2tt-3bd96ed8cc02f613",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-3e24ca7f9747c84e",
+      "fault_type": "socket",
+      "fold": 2,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-3fffa88dd3653f99",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-406c40ff0016fa9c",
+      "fault_type": "mem",
+      "fold": 2,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2tt-420fff915c5f5bc5",
+      "fault_type": "mem",
+      "fold": 0,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-426ec979883ae8dc",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-44604ef8713a5943",
+      "fault_type": "loss",
+      "fold": 2,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-472c8339fd3703e9",
+      "fault_type": "cpu",
+      "fold": 2,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-4780a4f90c190bf4",
+      "fault_type": "disk",
+      "fold": 2,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-56db4956167f9980",
+      "fault_type": "cpu",
+      "fold": 0,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-575015aa80c376c6",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-5a65eea398ba8435",
+      "fault_type": "delay",
+      "fold": 2,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2tt-5bb89b87741349d7",
+      "fault_type": "cpu",
+      "fold": 2,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-5d2e4747cab0d818",
+      "fault_type": "socket",
+      "fold": 0,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2tt-5f50dc54f6cb9fce",
+      "fault_type": "socket",
+      "fold": 0,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2tt-606ef267348d40e5",
+      "fault_type": "delay",
+      "fold": 0,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-653810995a9aa3db",
+      "fault_type": "mem",
+      "fold": 2,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-67172e499653d426",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-6a0d1ebf31fb52a6",
+      "fault_type": "loss",
+      "fold": 0,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-714d157727edd2d0",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-722f5f89a57be699",
+      "fault_type": "mem",
+      "fold": 0,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-727331fee88d4ce7",
+      "fault_type": "loss",
+      "fold": 2,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-72822d018b0df53f",
+      "fault_type": "mem",
+      "fold": 0,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.4,
+      "MRR": 0.25,
+      "case_id": "re2tt-739ad24f1e2d7c29",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-783d045c8102f972",
+      "fault_type": "delay",
+      "fold": 0,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-7cff180e5ff1cc71",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-7d3fb265c1c0f9ed",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-7d84c0b80f7f0032",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.6,
+      "MRR": 0.3333333333333333,
+      "case_id": "re2tt-877f6cbd0cb33e7c",
+      "fault_type": "loss",
+      "fold": 0,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-93fbbdf23f58f440",
+      "fault_type": "cpu",
+      "fold": 0,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-94bd05feab03461e",
+      "fault_type": "loss",
+      "fold": 0,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-995607e863fb7731",
+      "fault_type": "disk",
+      "fold": 2,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-a0c0a90c5448e7fa",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.4,
+      "MRR": 0.25,
+      "case_id": "re2tt-a141811c79edaa0b",
+      "fault_type": "delay",
+      "fold": 2,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-a33887653c475d04",
+      "fault_type": "mem",
+      "fold": 2,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-a7213c3da47edbd0",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-aa71e41ec8e7922d",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-ae09714023e727e1",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.2,
+      "MRR": 0.2,
+      "case_id": "re2tt-afdac60e6b000d3c",
+      "fault_type": "loss",
+      "fold": 0,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-b2342b2478b249cb",
+      "fault_type": "disk",
+      "fold": 0,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-b5173d4edf252af8",
+      "fault_type": "disk",
+      "fold": 0,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-bbbcbf7787fa152c",
+      "fault_type": "mem",
+      "fold": 0,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-bc9cd2d131533d16",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-bed634aec03e773f",
+      "fault_type": "socket",
+      "fold": 0,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-c1b234f6cc4acbee",
+      "fault_type": "disk",
+      "fold": 0,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-c7f9112580bfde33",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-c82529d65e13adc0",
+      "fault_type": "socket",
+      "fold": 0,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-c8fbd9a7d1e92284",
+      "fault_type": "disk",
+      "fold": 0,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-cb1f1df38c99005a",
+      "fault_type": "socket",
+      "fold": 2,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "MRR": 0.1111111111111111,
+      "case_id": "re2tt-cb3381bf9ed05034",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "MRR": 0.1111111111111111,
+      "case_id": "re2tt-cc6c772d4116d054",
+      "fault_type": "delay",
+      "fold": 2,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-cdf514b035f34990",
+      "fault_type": "disk",
+      "fold": 0,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-d0a74725c5d96362",
+      "fault_type": "delay",
+      "fold": 2,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-d14727a3c74e9768",
+      "fault_type": "socket",
+      "fold": 2,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-d4b1d66aaaa1a728",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-d83931768111dc58",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-e3f89de859062727",
+      "fault_type": "cpu",
+      "fold": 2,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-e44ccb97e7cc1570",
+      "fault_type": "cpu",
+      "fold": 0,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2tt-e4be9aa8e249ddf3",
+      "fault_type": "delay",
+      "fold": 0,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "MRR": 0.05,
+      "case_id": "re2tt-e76e500ff655313b",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "ts-auth-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.6,
+      "MRR": 0.3333333333333333,
+      "case_id": "re2tt-e9071bdee1904785",
+      "fault_type": "loss",
+      "fold": 2,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.6,
+      "MRR": 0.3333333333333333,
+      "case_id": "re2tt-ee2421859dfb0792",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-f09cbf3636ad02de",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-f1aa29dd3ba2343f",
+      "fault_type": "socket",
+      "fold": 2,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-f5512e2434f96386",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-f578fe138f6d4c7a",
+      "fault_type": "mem",
+      "fold": 2,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-fa81461ebec56b42",
+      "fault_type": "disk",
+      "fold": 2,
+      "root_service": "ts-train-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.4,
+      "MRR": 0.25,
+      "case_id": "re2tt-fb57d883cd727c81",
+      "fault_type": "delay",
+      "fold": 2,
+      "root_service": "ts-travel-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-fc53b7fb52199fb7",
+      "fault_type": "mem",
+      "fold": 2,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-fd20b1f93a6ff4c0",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "ts-route-service"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2tt-fe28a6c0dbd7d892",
+      "fault_type": "cpu",
+      "fold": 0,
+      "root_service": "ts-order-service"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2tt-ffda523857bbf5c2",
+      "fault_type": "loss",
+      "fold": 2,
+      "root_service": "ts-train-service"
+    }
+  ],
+  "fault_macro": {
+    "AC@1": 0.7222222222222223,
+    "AC@3": 0.8777777777777778,
+    "AC@5": 0.9333333333333332,
+    "Avg@5": 0.851111111111111,
+    "MRR": 0.8079270112603446
+  },
+  "overall_cases": {
+    "AC@1": 0.7222222222222222,
+    "AC@3": 0.8777777777777778,
+    "AC@5": 0.9333333333333333,
+    "Avg@5": 0.851111111111111,
+    "MRR": 0.8079270112603448
+  },
+  "root_macro": {
+    "AC@1": 0.7222222222222221,
+    "AC@3": 0.8777777777777779,
+    "AC@5": 0.9333333333333333,
+    "Avg@5": 0.8511111111111112,
+    "MRR": 0.8079270112603446
+  }
+}

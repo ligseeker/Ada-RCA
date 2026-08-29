@@ -1,3 +1,5 @@
+import json
+import hashlib
 import inspect
 from pathlib import Path
 import unittest
@@ -5,8 +7,9 @@ import unittest
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 
-from src.rca.final_method import FINAL_Z2_DIMENSION, sha256_file
+from src.rca.final_method import FINAL_Z2_DIMENSION, load_dataset, read_jsonl, sha256_file
 from src.rca.p4 import fit_predict_oof, verify_complete_prediction
+from src.rca.p4_stats import evaluate_predictions
 from src.rca.schema import RCACaseInput, SchemaValidationError
 from src.rca.v2_fusion import (
     F1_DIMENSION,
@@ -19,6 +22,7 @@ from src.rca.v2_fusion import (
     build_f1_representation,
     build_xc30,
     deterministic_misalignment_shifts,
+    load_fusion_case,
     reorder_fusion_case,
     shifted_source_indices,
 )
@@ -32,6 +36,15 @@ V1_SOURCE_SHA256 = {
     "src/rca/evaluator.py": "1002f10457c422560f27e22b30ccd7ef2c77d68352b750c14376b3bd8197b3fb",
     "src/rca/schema.py": "95407ed538b99f43248a2c146e706e12b72df5e220374dd5576e20d36ecf9a81",
 }
+
+
+def verify_checksums(directory):
+    checksums = json.loads((directory / "checksums.json").read_text(encoding="utf-8"))
+    return all(sha256_file(directory / name) == digest for name, digest in checksums.items())
+
+
+def array_sha256(values):
+    return hashlib.sha256(np.ascontiguousarray(values).view(np.uint8)).hexdigest()
 
 
 def synthetic_case(case_id="opaque", candidates=None):
@@ -60,7 +73,7 @@ class V2FusionRepresentationTest(unittest.TestCase):
         for relative, expected in V1_SOURCE_SHA256.items():
             self.assertEqual(sha256_file(root / relative), expected)
         for dataset in ("re2ob", "re2tt"):
-            audit = __import__("json").loads(
+            audit = json.loads(
                 (root / "artifacts" / "final_method" / dataset / "replay_audit.json").read_text(encoding="utf-8")
             )
             self.assertEqual(audit["integrity_status"], "INTEGRITY_VALID")
@@ -257,6 +270,109 @@ class V2StatisticsTest(unittest.TestCase):
         decision = f1_gate_decision(bootstrap, bootstrap, deltas, True)
         self.assertTrue(decision["performance_checks"]["tt_ac1_guard"])
         self.assertEqual(decision["V2_F1"], "GO")
+
+
+class V2F1FormalArtifactTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.root = Path(__file__).resolve().parents[1]
+        cls.aligned = cls.root / "artifacts" / "v2" / "f1_concordance"
+        cls.misaligned = cls.root / "artifacts" / "v2" / "f1_misaligned"
+        cls.bootstrap = cls.root / "artifacts" / "v2" / "bootstrap" / "f1"
+        if not all(path.is_dir() for path in (cls.aligned, cls.misaligned, cls.bootstrap)):
+            raise unittest.SkipTest("formal V2-F1 artifacts not generated")
+
+    def test_checksums_complete_rankings_and_metric_recomputation(self):
+        self.assertTrue(verify_checksums(self.aligned))
+        self.assertTrue(verify_checksums(self.misaligned))
+        self.assertTrue(verify_checksums(self.bootstrap))
+        for variant_root in (self.aligned, self.misaligned):
+            for dataset in ("re2ob", "re2tt"):
+                self.assertTrue(verify_checksums(variant_root / dataset))
+                events, labels, roots, assignments = load_dataset(self.root, dataset)
+                candidates = {case_id: event.candidates for case_id, event in events.items()}
+                rows = list(read_jsonl(variant_root / dataset / "predictions.jsonl"))
+                self.assertEqual(len(rows), 90)
+                for row in rows:
+                    case_id = str(row["case_id"])
+                    verify_complete_prediction(row, candidates[case_id], roots[case_id])
+                    self.assertEqual(int(row["fold"]), assignments[case_id])
+                    self.assertEqual(int(row["root_rank"]), row["ranking"].index(roots[case_id]) + 1)
+                recomputed = evaluate_predictions(rows, candidates, roots)
+                persisted = json.loads((variant_root / dataset / "metrics.json").read_text(encoding="utf-8"))
+                self.assertEqual(recomputed["overall_cases"], persisted["overall_cases"])
+
+    def test_formal_features_shifts_and_train_only_scalers(self):
+        for variant_root, misaligned in ((self.aligned, False), (self.misaligned, True)):
+            for dataset in ("re2ob", "re2tt"):
+                events, labels, roots, assignments = load_dataset(self.root, dataset)
+                represented = {}
+                manifest = json.loads((variant_root / dataset / "feature_manifest.json").read_text(encoding="utf-8"))
+                feature_rows = {row["case_id"]: row for row in manifest["case_features"]}
+                self.assertEqual(manifest["feature_dimension"], 98)
+                self.assertEqual(len(feature_rows), 90)
+                for case_id in sorted(events):
+                    case = load_fusion_case(self.root / "artifacts" / "features" / dataset / (case_id + ".npz"))
+                    representation = build_f1_representation(case, misaligned=misaligned)
+                    represented[case_id] = representation.event
+                    persisted = feature_rows[case_id]
+                    self.assertEqual(persisted["z2_sha256"], array_sha256(representation.z2))
+                    self.assertEqual(persisted["xc30_sha256"], array_sha256(representation.xc30))
+                    self.assertEqual(persisted["f1_sha256"], array_sha256(representation.event.features))
+                    if misaligned:
+                        shifts = persisted["shifts"]
+                        self.assertEqual(shifts["M"], 0)
+                        self.assertEqual(len({shifts["L"], shifts["TE"], shifts["TL"]}), 3)
+                        self.assertTrue(all(shifts[name] != 0 for name in ("L", "TE", "TL")))
+                    else:
+                        self.assertTrue(all(value == 0 for value in persisted["shifts"].values()))
+                for fold in (0, 1, 2):
+                    train_rows = np.concatenate([
+                        represented[case_id].features
+                        for case_id in sorted(represented)
+                        if assignments[case_id] != fold
+                    ])
+                    expected = StandardScaler().fit(train_rows)
+                    with np.load(variant_root / dataset / "model_state" / ("fold_{}.npz".format(fold))) as state:
+                        np.testing.assert_allclose(state["scaler_mean"], expected.mean_, rtol=0, atol=0)
+                        np.testing.assert_allclose(state["scaler_scale"], expected.scale_, rtol=0, atol=0)
+
+    def test_bootstrap_recomputes_and_gate_is_no_go(self):
+        comparisons = json.loads((self.bootstrap / "comparisons.json").read_text(encoding="utf-8"))
+        metrics = {
+            "aligned": {
+                dataset: json.loads((self.aligned / dataset / "metrics.json").read_text(encoding="utf-8"))
+                for dataset in ("re2ob", "re2tt")
+            },
+            "misaligned": {
+                dataset: json.loads((self.misaligned / dataset / "metrics.json").read_text(encoding="utf-8"))
+                for dataset in ("re2ob", "re2tt")
+            },
+            "z2": {
+                dataset: json.loads((self.root / "artifacts" / "final_method" / dataset / "metrics.json").read_text(encoding="utf-8"))
+                for dataset in ("re2ob", "re2tt")
+            },
+        }
+        case_maps = {
+            name: {dataset: {row["case_id"]: row for row in values[dataset]["case_metrics"]} for dataset in ("re2ob", "re2tt")}
+            for name, values in metrics.items()
+        }
+        for comparison, left, right in (
+            ("aligned_minus_z2", "aligned", "z2"),
+            ("aligned_minus_misaligned", "aligned", "misaligned"),
+        ):
+            recomputed = paired_joint_fault_bootstrap(
+                case_maps[left], case_maps[right], "Avg@5", resamples=10000, seed=20260829
+            )
+            self.assertEqual(recomputed, comparisons[comparison]["Avg@5"])
+        decision = json.loads((self.bootstrap / "gate_decision.json").read_text(encoding="utf-8"))
+        self.assertEqual(decision["V2_F1"], "NO_GO")
+        self.assertFalse(decision["PERFORMANCE_GO"])
+        self.assertFalse(decision["MECHANISM_GO"])
+        self.assertTrue(decision["performance_checks"]["tt_ac1_guard"])
+        recompute = json.loads((self.bootstrap / "gate_recompute.json").read_text(encoding="utf-8"))
+        self.assertFalse(recompute["fits_rerun"])
+        self.assertFalse(recompute["bootstrap_rerun"])
 
 
 if __name__ == "__main__":

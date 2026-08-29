@@ -1,0 +1,18 @@
+{
+  "aligned_prediction_sha256": {
+    "re2ob": "c817ff477ee62ac0ce3f4623e8d8afff0b7d80edc655e5381f12626f80d69860",
+    "re2tt": "9f4aa9ab5cdb5c7e54bcec28fe890adb28d44b73352df07e3b85c45f24160d19"
+  },
+  "generated_at": "2026-08-29T12:29:42.756477+00:00",
+  "misaligned_prediction_sha256": {
+    "re2ob": "64cd7616c21bfb40d18bc8f3bb20df435e22671cf310545ddafb043592947399",
+    "re2tt": "1de9dfae47b2f7c1d97636a2d7deef39c12347553612b6a82f105ac39b328565"
+  },
+  "protocol": "docs/V2_MULTIMODAL_FUSION_PROTOCOL_V0.1.md",
+  "schema_version": "ada_rca_v2_f1_bootstrap_v1",
+  "source_commit": "76e4045af701ebea89594e7770a9534656170c18",
+  "z2_prediction_sha256": {
+    "re2ob": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+    "re2tt": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d"
+  }
+}

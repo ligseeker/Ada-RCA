@@ -1,0 +1,10 @@
+{
+  "bootstrap_rerun": false,
+  "decision": "NO_GO",
+  "fits_rerun": false,
+  "generated_at": "2026-08-29T12:32:44.378671+00:00",
+  "protocol_deviation": "docs/V2_PROTOCOL_DEVIATIONS.md#v2-f1-ac1-rational-boundary",
+  "reason": "AC@1 -1/90 rational boundary float comparison correction",
+  "schema_version": "ada_rca_v2_f1_gate_recompute_v1",
+  "source_commit": "369719c55e5476a6b2217bb2008688253e375e41"
+}

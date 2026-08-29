@@ -1,0 +1,10 @@
+{
+  "datasets": [
+    "re2ob",
+    "re2tt"
+  ],
+  "generated_at": "2026-08-29T12:29:42.801132+00:00",
+  "schema_version": "ada_rca_v2_f1_variant_v1",
+  "source_commit": "76e4045af701ebea89594e7770a9534656170c18",
+  "variant": "aligned"
+}

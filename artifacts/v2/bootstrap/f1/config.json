@@ -1,0 +1,23 @@
+{
+  "dataset_order": [
+    "re2ob",
+    "re2tt"
+  ],
+  "equal_dataset_mean": true,
+  "metrics": [
+    "AC@1",
+    "AC@3",
+    "AC@5",
+    "Avg@5",
+    "MRR"
+  ],
+  "percentile_ci": [
+    2.5,
+    97.5
+  ],
+  "resamples": 10000,
+  "sampling_unit": "paired failure case",
+  "seed": 20260829,
+  "stage": "V2-F1",
+  "stratification": "six fault types, 15 cases each"
+}

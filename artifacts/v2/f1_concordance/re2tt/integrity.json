@@ -1,0 +1,14 @@
+{
+  "all_features_finite": true,
+  "all_folds_converged": true,
+  "case_count": 90,
+  "complete_rankings": true,
+  "feature_dimension": [
+    98
+  ],
+  "integrity_pass": true,
+  "max_gradient_norm": 1.7194579093882112e-13,
+  "misalignment_integrity": true,
+  "root_present_all_cases": true,
+  "z2_unchanged": true
+}
