@@ -1,0 +1,35 @@
+{
+  "candidate_ordering": {
+    "status": "PASS",
+    "tie_break": "descending score then ascending service name"
+  },
+  "complete_rankings": {
+    "datasets": {
+      "re2ob": 90,
+      "re2tt": 90
+    },
+    "status": "PASS"
+  },
+  "fault_type": {
+    "diagnostic_only": true,
+    "predictive_feature": false,
+    "status": "PASS"
+  },
+  "nested_leakage": {
+    "outer_test_intersection_selection": 0,
+    "status": "PASS"
+  },
+  "root_frequency": {
+    "predictive_feature": false,
+    "status": "PASS"
+  },
+  "scaler_leakage": {
+    "fit_scope": "outer-train / inner-train only",
+    "status": "PASS"
+  },
+  "service_fingerprint": {
+    "coverage_and_availability_present": true,
+    "interpretation": "stable service-specific telemetry fingerprints may be exploited",
+    "status": "ADVISORY"
+  }
+}
