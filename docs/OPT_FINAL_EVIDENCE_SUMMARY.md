@@ -20,6 +20,17 @@ AC@1 `0.8222`. The mean Avg@5 difference is `-0.0022`, within the practical
 equivalence threshold `1/90 = 0.0111`, while AC@1 is higher for PER-DATASET.
 Dataset-level trade-off remains material: OB decreases and TT increases.
 
+## Paired bootstrap (10,000; seed 20260829)
+
+For V1 minus `PER-DATASET-OPT` deltas ordered `(Avg@5, AC@1, MRR)`, OB is
+`(-0.0111, -0.0222, -0.0157)` with 95% CIs `[-0.0489,-0.0089]`,
+`[-0.1222,-0.0222]`, `[-0.0815,-0.0148]`; TT is
+`(+0.0067,+0.0778,+0.0358)` with CIs `[-0.1400,-0.0244]`,
+`[-0.1111,+0.1111]`, `[-0.1108,+0.0231]`. V1 versus GLOBAL-OPT is exactly
+zero because the shared configuration is V1 itself. These intervals are
+conditional on fixed predictions and do not include search or benchmark-reuse
+uncertainty.
+
 ## Shortcut and leakage audit
 
 Feature names contain no root/fault/service identity tokens. Candidate sets and
