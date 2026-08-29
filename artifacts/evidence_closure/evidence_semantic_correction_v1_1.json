@@ -1,0 +1,775 @@
+{
+  "audit_type": "EVIDENCE_LEVEL_SEMANTIC_CORRECTION",
+  "corrections": [
+    {
+      "canonical_check": "complete_candidate_ranking_exists",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2ob",
+      "historical_check": "immutable_complete_candidate_ranking",
+      "historical_status": "FAIL",
+      "rationale": "No complete candidate ranking was frozen; absence cannot contradict properties of that missing object.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "complete_candidate_scores_exist",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2ob",
+      "historical_check": "complete_candidate_scores_where_expected",
+      "historical_status": "FAIL",
+      "rationale": "No complete candidate score object was frozen.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "every_legal_candidate_represented_once",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2ob",
+      "historical_check": "every_legal_candidate_exactly_once",
+      "historical_status": "FAIL",
+      "rationale": "Candidate membership cannot be evaluated without the complete ranking.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "no_duplicate_candidate_in_ranking",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2ob",
+      "historical_check": "no_duplicate_candidate",
+      "historical_status": "FAIL",
+      "rationale": "Duplicate absence cannot be evaluated without the complete ranking.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "root_present_in_complete_candidate_ranking",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2ob",
+      "historical_check": "root_present",
+      "historical_status": "FAIL",
+      "rationale": "The root mapping and legal-registry membership pass separately, but root presence in the missing full ranking is not auditable.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "score_to_ranking_consistency",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2ob",
+      "historical_check": "score_to_ranking_consistency",
+      "historical_status": "FAIL",
+      "rationale": "Neither complete scores nor the complete ranking were frozen.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "deterministic_candidate_ordering",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2ob",
+      "historical_check": "deterministic_tie_and_order_consistency",
+      "historical_status": "FAIL",
+      "rationale": "Ordering determinism cannot be evaluated without the complete ranking and scores.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "case_and_fold_provenance_from_root_rank_artifact",
+      "canonical_status": "PASS",
+      "dataset": "re2ob",
+      "historical_check": "valid_fold_and_case_provenance",
+      "historical_status": "FAIL",
+      "rationale": "The immutable root-rank artifact directly verifies exact case coverage, unique case IDs, valid folds, and canonical fold assignments.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "complete_candidate_ranking_exists",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2tt",
+      "historical_check": "immutable_complete_candidate_ranking",
+      "historical_status": "FAIL",
+      "rationale": "No complete candidate ranking was frozen; absence cannot contradict properties of that missing object.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "complete_candidate_scores_exist",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2tt",
+      "historical_check": "complete_candidate_scores_where_expected",
+      "historical_status": "FAIL",
+      "rationale": "No complete candidate score object was frozen.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "every_legal_candidate_represented_once",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2tt",
+      "historical_check": "every_legal_candidate_exactly_once",
+      "historical_status": "FAIL",
+      "rationale": "Candidate membership cannot be evaluated without the complete ranking.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "no_duplicate_candidate_in_ranking",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2tt",
+      "historical_check": "no_duplicate_candidate",
+      "historical_status": "FAIL",
+      "rationale": "Duplicate absence cannot be evaluated without the complete ranking.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "root_present_in_complete_candidate_ranking",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2tt",
+      "historical_check": "root_present",
+      "historical_status": "FAIL",
+      "rationale": "The root mapping and legal-registry membership pass separately, but root presence in the missing full ranking is not auditable.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "score_to_ranking_consistency",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2tt",
+      "historical_check": "score_to_ranking_consistency",
+      "historical_status": "FAIL",
+      "rationale": "Neither complete scores nor the complete ranking were frozen.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "deterministic_candidate_ordering",
+      "canonical_status": "NOT_AUDITABLE",
+      "dataset": "re2tt",
+      "historical_check": "deterministic_tie_and_order_consistency",
+      "historical_status": "FAIL",
+      "rationale": "Ordering determinism cannot be evaluated without the complete ranking and scores.",
+      "track": "PER-DATASET-OPT"
+    },
+    {
+      "canonical_check": "case_and_fold_provenance_from_root_rank_artifact",
+      "canonical_status": "PASS",
+      "dataset": "re2tt",
+      "historical_check": "valid_fold_and_case_provenance",
+      "historical_status": "FAIL",
+      "rationale": "The immutable root-rank artifact directly verifies exact case coverage, unique case IDs, valid folds, and canonical fold assignments.",
+      "track": "PER-DATASET-OPT"
+    }
+  ],
+  "historical_artifacts": {
+    "artifacts/evidence_closure/input_manifest.json": {
+      "preservation": "UNCHANGED_HISTORICAL_EVIDENCE",
+      "sha256": "3727b5e6d1c86f793b5b0e5a75a5ba94213474594b10fe3c845c5e40d232669d"
+    },
+    "artifacts/evidence_closure/metric_reconstruction_v1_1.json": {
+      "preservation": "UNCHANGED_HISTORICAL_EVIDENCE",
+      "sha256": "0cfc89c2bf48abeabb931a668522a80ba7cf7121f30fed3344fae866202e78c3"
+    }
+  },
+  "schema_version": "ada_rca_evidence_semantic_correction_v1_1",
+  "status_definitions": {
+    "FAIL": "Available evidence directly contradicts the required condition.",
+    "NOT_AUDITABLE": "The required object was not frozen, so the condition cannot be evaluated.",
+    "PASS": "The claim was directly verified from available immutable evidence."
+  },
+  "summary": {
+    "canonical_interpretation_layer": true,
+    "canonical_status_counts": {
+      "FAIL": 0,
+      "NOT_AUDITABLE": 18,
+      "PASS": 86
+    },
+    "genuine_fail_count": 0,
+    "per_dataset_full_ranking_limitation": "PERMANENT",
+    "per_dataset_full_ranking_status": "FULL_RANKING_INTEGRITY_NOT_AUDITABLE",
+    "per_dataset_rank_metric_status": "RANK_METRIC_SUFFICIENT_PASS"
+  },
+  "tracks": {
+    "GLOBAL-OPT": {
+      "datasets": {
+        "re2ob": {
+          "FULL_RANKING_INTEGRITY": "FULL_RANKING_INTEGRITY_PASS",
+          "RANK_METRIC_SUFFICIENT": "RANK_METRIC_SUFFICIENT_PASS",
+          "direct_root_rank_checks": {
+            "case_coverage": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "fold_provenance": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "no_model_refit_required": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_belongs_to_registry": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_mapping": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_artifact_immutability": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_integer": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_range": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "sha_and_commit_provenance": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            }
+          },
+          "historical_status_corrections": [],
+          "ranking_object_checks": {
+            "complete_candidate_scores_where_expected": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "deterministic_tie_and_order_consistency": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "every_legal_candidate_exactly_once": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "immutable_complete_candidate_ranking": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "no_duplicate_candidate": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_present": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "score_to_ranking_consistency": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "valid_fold_and_case_provenance": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "status": "PASS"
+            }
+          }
+        },
+        "re2tt": {
+          "FULL_RANKING_INTEGRITY": "FULL_RANKING_INTEGRITY_PASS",
+          "RANK_METRIC_SUFFICIENT": "RANK_METRIC_SUFFICIENT_PASS",
+          "direct_root_rank_checks": {
+            "case_coverage": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "fold_provenance": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "no_model_refit_required": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_belongs_to_registry": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_mapping": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_artifact_immutability": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_integer": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_range": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "sha_and_commit_provenance": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            }
+          },
+          "historical_status_corrections": [],
+          "ranking_object_checks": {
+            "complete_candidate_scores_where_expected": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "deterministic_tie_and_order_consistency": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "every_legal_candidate_exactly_once": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "immutable_complete_candidate_ranking": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "no_duplicate_candidate": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_present": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "score_to_ranking_consistency": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "valid_fold_and_case_provenance": {
+              "evidence": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "status": "PASS"
+            }
+          }
+        }
+      }
+    },
+    "PER-DATASET-OPT": {
+      "datasets": {
+        "re2ob": {
+          "FULL_RANKING_INTEGRITY": "FULL_RANKING_INTEGRITY_NOT_AUDITABLE",
+          "RANK_METRIC_SUFFICIENT": "RANK_METRIC_SUFFICIENT_PASS",
+          "direct_root_rank_checks": {
+            "case_coverage": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            },
+            "fold_provenance": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            },
+            "no_model_refit_required": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_belongs_to_registry": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_mapping": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_rank_artifact_immutability": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_rank_integer": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_rank_range": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            },
+            "sha_and_commit_provenance": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "status": "PASS"
+            }
+          },
+          "historical_status_corrections": [
+            {
+              "canonical_check": "complete_candidate_ranking_exists",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "immutable_complete_candidate_ranking",
+              "historical_status": "FAIL",
+              "rationale": "No complete candidate ranking was frozen; absence cannot contradict properties of that missing object."
+            },
+            {
+              "canonical_check": "complete_candidate_scores_exist",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "complete_candidate_scores_where_expected",
+              "historical_status": "FAIL",
+              "rationale": "No complete candidate score object was frozen."
+            },
+            {
+              "canonical_check": "every_legal_candidate_represented_once",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "every_legal_candidate_exactly_once",
+              "historical_status": "FAIL",
+              "rationale": "Candidate membership cannot be evaluated without the complete ranking."
+            },
+            {
+              "canonical_check": "no_duplicate_candidate_in_ranking",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "no_duplicate_candidate",
+              "historical_status": "FAIL",
+              "rationale": "Duplicate absence cannot be evaluated without the complete ranking."
+            },
+            {
+              "canonical_check": "root_present_in_complete_candidate_ranking",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "root_present",
+              "historical_status": "FAIL",
+              "rationale": "The root mapping and legal-registry membership pass separately, but root presence in the missing full ranking is not auditable."
+            },
+            {
+              "canonical_check": "score_to_ranking_consistency",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "score_to_ranking_consistency",
+              "historical_status": "FAIL",
+              "rationale": "Neither complete scores nor the complete ranking were frozen."
+            },
+            {
+              "canonical_check": "deterministic_candidate_ordering",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "deterministic_tie_and_order_consistency",
+              "historical_status": "FAIL",
+              "rationale": "Ordering determinism cannot be evaluated without the complete ranking and scores."
+            },
+            {
+              "canonical_check": "case_and_fold_provenance_from_root_rank_artifact",
+              "canonical_status": "PASS",
+              "historical_check": "valid_fold_and_case_provenance",
+              "historical_status": "FAIL",
+              "rationale": "The immutable root-rank artifact directly verifies exact case coverage, unique case IDs, valid folds, and canonical fold assignments."
+            }
+          ],
+          "ranking_object_checks": {
+            "complete_candidate_level_reproducibility": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "complete_candidate_ranking_exists": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "complete_candidate_scores_exist": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "deterministic_candidate_ordering": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "every_legal_candidate_represented_once": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "no_duplicate_candidate_in_ranking": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "root_present_in_complete_candidate_ranking": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "score_calibration": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "score_to_ranking_consistency": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            }
+          }
+        },
+        "re2tt": {
+          "FULL_RANKING_INTEGRITY": "FULL_RANKING_INTEGRITY_NOT_AUDITABLE",
+          "RANK_METRIC_SUFFICIENT": "RANK_METRIC_SUFFICIENT_PASS",
+          "direct_root_rank_checks": {
+            "case_coverage": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            },
+            "fold_provenance": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            },
+            "no_model_refit_required": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_belongs_to_registry": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_mapping": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_rank_artifact_immutability": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_rank_integer": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            },
+            "root_rank_range": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            },
+            "sha_and_commit_provenance": {
+              "evidence": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "status": "PASS"
+            }
+          },
+          "historical_status_corrections": [
+            {
+              "canonical_check": "complete_candidate_ranking_exists",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "immutable_complete_candidate_ranking",
+              "historical_status": "FAIL",
+              "rationale": "No complete candidate ranking was frozen; absence cannot contradict properties of that missing object."
+            },
+            {
+              "canonical_check": "complete_candidate_scores_exist",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "complete_candidate_scores_where_expected",
+              "historical_status": "FAIL",
+              "rationale": "No complete candidate score object was frozen."
+            },
+            {
+              "canonical_check": "every_legal_candidate_represented_once",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "every_legal_candidate_exactly_once",
+              "historical_status": "FAIL",
+              "rationale": "Candidate membership cannot be evaluated without the complete ranking."
+            },
+            {
+              "canonical_check": "no_duplicate_candidate_in_ranking",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "no_duplicate_candidate",
+              "historical_status": "FAIL",
+              "rationale": "Duplicate absence cannot be evaluated without the complete ranking."
+            },
+            {
+              "canonical_check": "root_present_in_complete_candidate_ranking",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "root_present",
+              "historical_status": "FAIL",
+              "rationale": "The root mapping and legal-registry membership pass separately, but root presence in the missing full ranking is not auditable."
+            },
+            {
+              "canonical_check": "score_to_ranking_consistency",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "score_to_ranking_consistency",
+              "historical_status": "FAIL",
+              "rationale": "Neither complete scores nor the complete ranking were frozen."
+            },
+            {
+              "canonical_check": "deterministic_candidate_ordering",
+              "canonical_status": "NOT_AUDITABLE",
+              "historical_check": "deterministic_tie_and_order_consistency",
+              "historical_status": "FAIL",
+              "rationale": "Ordering determinism cannot be evaluated without the complete ranking and scores."
+            },
+            {
+              "canonical_check": "case_and_fold_provenance_from_root_rank_artifact",
+              "canonical_status": "PASS",
+              "historical_check": "valid_fold_and_case_provenance",
+              "historical_status": "FAIL",
+              "rationale": "The immutable root-rank artifact directly verifies exact case coverage, unique case IDs, valid folds, and canonical fold assignments."
+            }
+          ],
+          "ranking_object_checks": {
+            "complete_candidate_level_reproducibility": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "complete_candidate_ranking_exists": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "complete_candidate_scores_exist": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "deterministic_candidate_ordering": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "every_legal_candidate_represented_once": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "no_duplicate_candidate_in_ranking": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "root_present_in_complete_candidate_ranking": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "score_calibration": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            },
+            "score_to_ranking_consistency": {
+              "reason": "The complete candidate score/ranking object was not frozen.",
+              "status": "NOT_AUDITABLE"
+            }
+          }
+        }
+      }
+    },
+    "V1-SCIENTIFIC": {
+      "datasets": {
+        "re2ob": {
+          "FULL_RANKING_INTEGRITY": "FULL_RANKING_INTEGRITY_PASS",
+          "RANK_METRIC_SUFFICIENT": "RANK_METRIC_SUFFICIENT_PASS",
+          "direct_root_rank_checks": {
+            "case_coverage": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "fold_provenance": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "no_model_refit_required": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_belongs_to_registry": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_mapping": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_artifact_immutability": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_integer": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_range": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "sha_and_commit_provenance": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            }
+          },
+          "historical_status_corrections": [],
+          "ranking_object_checks": {
+            "complete_candidate_scores_where_expected": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "deterministic_tie_and_order_consistency": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "every_legal_candidate_exactly_once": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "immutable_complete_candidate_ranking": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "no_duplicate_candidate": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_present": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "score_to_ranking_consistency": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            },
+            "valid_fold_and_case_provenance": {
+              "evidence": "artifacts/final_method/re2ob/predictions.jsonl",
+              "status": "PASS"
+            }
+          }
+        },
+        "re2tt": {
+          "FULL_RANKING_INTEGRITY": "FULL_RANKING_INTEGRITY_PASS",
+          "RANK_METRIC_SUFFICIENT": "RANK_METRIC_SUFFICIENT_PASS",
+          "direct_root_rank_checks": {
+            "case_coverage": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "fold_provenance": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "no_model_refit_required": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_belongs_to_registry": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_mapping": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_artifact_immutability": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_integer": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_rank_range": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "sha_and_commit_provenance": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            }
+          },
+          "historical_status_corrections": [],
+          "ranking_object_checks": {
+            "complete_candidate_scores_where_expected": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "deterministic_tie_and_order_consistency": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "every_legal_candidate_exactly_once": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "immutable_complete_candidate_ranking": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "no_duplicate_candidate": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "root_present": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "score_to_ranking_consistency": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            },
+            "valid_fold_and_case_provenance": {
+              "evidence": "artifacts/final_method/re2tt/predictions.jsonl",
+              "status": "PASS"
+            }
+          }
+        }
+      }
+    }
+  }
+}
