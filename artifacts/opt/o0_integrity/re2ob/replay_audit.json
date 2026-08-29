@@ -1,0 +1,32 @@
+{
+  "all_folds_converged": true,
+  "case_count": 90,
+  "complete_legal_rankings": true,
+  "expected_metric_absolute_errors": {
+    "AC@1": 0.0,
+    "AC@3": 0.0,
+    "AC@5": 0.0,
+    "Avg@5": 0.0,
+    "MRR": 1.1102230246251565e-16
+  },
+  "fit_to_persisted_replay": {
+    "case_count": 90,
+    "max_abs_score_difference": 0.0,
+    "ranking_identical": true
+  },
+  "fresh_fit_to_committed_p4_a2": {
+    "case_count": 90,
+    "max_abs_score_difference": 0.0,
+    "ranking_identical": true
+  },
+  "integrity_status": "INTEGRITY_VALID",
+  "max_gradient_norm": 3.4139358007223564e-14,
+  "metrics_exact_between_fit_and_persisted_replay": true,
+  "persisted_state_to_committed_p4_a2": {
+    "case_count": 90,
+    "max_abs_score_difference": 0.0,
+    "ranking_identical": true
+  },
+  "root_present_all_cases": true,
+  "score_tolerance": 1e-12
+}
