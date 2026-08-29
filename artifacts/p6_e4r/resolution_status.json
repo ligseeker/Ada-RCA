@@ -1,0 +1,13 @@
+{
+  "schema_version": "p6_e4r_resolution_status_v1",
+  "historical_p6_g1": "P6-G1 = PARTIAL — AWAITING HUMAN REVIEW",
+  "methods": {
+    "BARO": "READY",
+    "TraceRCA": "EXECUTION_QUALIFIED_WITH_NATIVE_F-A",
+    "mmBARO": "READY_OFFICIAL_RE2_METRIC_LOG"
+  },
+  "tier_a_membership_changed": false,
+  "tier_b_substitution": false,
+  "formal_p6_e5_executed": false,
+  "performance_firewall": "PASS"
+}

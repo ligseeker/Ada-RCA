@@ -1,0 +1,11 @@
+{
+  "schema_version": "p6_e4r_failure_policy_audit_v1",
+  "policy_document": "docs/P6_E5_BASELINE_FAILURE_POLICY.md",
+  "f_a_algorithmic_failure": {"future_strict_utility": 0, "retain_in_90_case_denominator": true},
+  "f_b_officially_unsupported": {"requires_explicit_upstream_evidence": true, "crash_alone_is_not_f_b": true},
+  "f_c_environment": {"unreconstructable_status": "NR / NOT RUN", "converted_to_zero": false},
+  "f_d_adapter": {"status": "INVALID RUN", "converted_to_baseline_failure": false},
+  "f_e_data_integrity": {"stop_affected_comparison": true, "converted_to_performance": false},
+  "primary_view": "STRICT ALL-CASE ROBUSTNESS VIEW",
+  "successful_subset_is_diagnostic_only": true
+}

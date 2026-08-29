@@ -1,0 +1,13 @@
+{
+  "schema_version": "p6_e4r_performance_firewall_audit_v1",
+  "root_label_dependency": false,
+  "performance_evaluator_dependency": false,
+  "performance_fields_in_smoke_artifacts": [],
+  "published_result_used_for_adapter_choice": false,
+  "result_based_adapter_choice": false,
+  "ac_at_k_computed": false,
+  "avg_at_5_computed": false,
+  "mrr_computed": false,
+  "root_rank_computed": false,
+  "status": "PASS"
+}
