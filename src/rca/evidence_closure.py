@@ -17,7 +17,10 @@ from typing import Any, Dict, Iterable, List, Mapping, Sequence, Tuple
 
 FROZEN_COMMIT = "53c9face2c96761c9114edb558eb6d8666a38dc6"
 V1_REFERENCE_COMMIT = "bed295326e567395e725caa82840a534dcc0b1de"
+AMENDMENT_COMMIT = "775ec8034cad35a53c4bbe38a1093243b3050a15"
 DATASETS = ("re2ob", "re2tt")
+RANK_METRICS = ("AC@1", "AC@3", "AC@5", "Avg@5", "MRR")
+METRIC_TOLERANCE = 1e-12
 TRACKS = {
     "V1-SCIENTIFIC": {
         "kind": "full",
@@ -61,6 +64,17 @@ def _last_modifying_commit(root: Path, relative_path: str) -> str:
 def _is_ancestor(root: Path, ancestor: str, descendant: str) -> bool:
     result = subprocess.run(
         ("git", "merge-base", "--is-ancestor", ancestor, descendant),
+        cwd=root,
+        check=False,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    return result.returncode == 0
+
+
+def _path_exists_in_commit(root: Path, commit: str, relative_path: str) -> bool:
+    result = subprocess.run(
+        ("git", "cat-file", "-e", f"{commit}:{relative_path}"),
         cwd=root,
         check=False,
         stdout=subprocess.DEVNULL,
@@ -378,7 +392,336 @@ def build_input_manifest(root: Path) -> Dict[str, Any]:
     }
 
 
+def load_frozen_rank_cases(root: Path, track: str, dataset: str) -> List[Dict[str, Any]]:
+    """Load only the immutable case quantities needed by rank-derived metrics.
+
+    Complete-ranking tracks derive the root rank from the frozen ranking.  The
+    PER-DATASET track reads the committed root-rank CSV directly.  This path
+    performs no model, feature, score, or evaluator call.
+    """
+
+    root = root.resolve()
+    if track not in TRACKS:
+        raise ValueError(f"unknown track: {track}")
+    if dataset not in DATASETS:
+        raise ValueError(f"unknown dataset: {dataset}")
+    inputs, labels, _ = _source_bundle(root, dataset)
+    spec = TRACKS[track]
+    relative_path = str(spec["path"]).format(dataset=dataset)
+    cases: List[Dict[str, Any]] = []
+    if spec["kind"] == "full":
+        rows: Sequence[Mapping[str, Any]] = load_jsonl(root / relative_path)
+        for row in rows:
+            case_id = str(row["case_id"])
+            canonical_root = str(labels[case_id]["root_service"])
+            ranking = [str(candidate) for candidate in row["ranking"]]
+            if canonical_root not in ranking:
+                raise ValueError(f"{track}/{dataset}/{case_id}: root absent from ranking")
+            cases.append(
+                {
+                    "case_id": case_id,
+                    "fold": int(row["fold"]),
+                    "root_service": canonical_root,
+                    "fault_type": str(labels[case_id]["fault_type"]),
+                    "root_rank": ranking.index(canonical_root) + 1,
+                    "candidate_count": len(inputs[case_id]["candidates"]),
+                }
+            )
+    else:
+        rows = load_csv(root / relative_path)
+        for row in rows:
+            case_id = str(row["case_id"])
+            raw_rank = str(row["root_rank"])
+            if not raw_rank.isdigit():
+                raise ValueError(f"{track}/{dataset}/{case_id}: root rank is not an integer")
+            cases.append(
+                {
+                    "case_id": case_id,
+                    "fold": int(row["fold"]),
+                    "root_service": str(row["root_service"]),
+                    "fault_type": str(row["fault_type"]),
+                    "root_rank": int(raw_rank),
+                    "candidate_count": len(inputs[case_id]["candidates"]),
+                }
+            )
+    return sorted(cases, key=lambda row: row["case_id"])
+
+
+def _status_checks(checks: Mapping[str, bool]) -> Dict[str, str]:
+    return {name: "PASS" if value else "FAIL" for name, value in checks.items()}
+
+
+def classify_evidence_levels(root: Path) -> Dict[str, Any]:
+    """Classify claim-specific frozen evidence under Amendment V1.1."""
+
+    root = root.resolve()
+    inventory = build_input_manifest(root)
+    v1_cases = {
+        dataset: load_frozen_rank_cases(root, "V1-SCIENTIFIC", dataset)
+        for dataset in DATASETS
+    }
+    canonical_folds = {
+        dataset: {str(row["case_id"]): int(row["fold"]) for row in cases}
+        for dataset, cases in v1_cases.items()
+    }
+    levels: Dict[str, Any] = {}
+    for track, spec in TRACKS.items():
+        by_dataset: Dict[str, Any] = {}
+        for dataset in DATASETS:
+            record = inventory["evidence"][track]["datasets"][dataset]
+            integrity = record["integrity"]
+            source = record["source_files"][0]
+            cases = load_frozen_rank_cases(root, track, dataset)
+            case_ids = [str(row["case_id"]) for row in cases]
+            folds = Counter(int(row["fold"]) for row in cases)
+            inputs, labels, registry = _source_bundle(root, dataset)
+            mappings_valid = all(
+                row["root_service"] == str(labels[row["case_id"]]["root_service"])
+                and row["fault_type"] == str(labels[row["case_id"]]["fault_type"])
+                for row in cases
+            )
+            roots_legal = all(
+                row["root_service"] in inputs[row["case_id"]]["candidates"]
+                and row["root_service"] in registry
+                for row in cases
+            )
+            ranks_integer = all(
+                isinstance(row["root_rank"], int) and not isinstance(row["root_rank"], bool)
+                for row in cases
+            )
+            ranks_in_range = all(
+                1 <= int(row["root_rank"]) <= int(row["candidate_count"])
+                for row in cases
+            )
+            relative_path = str(spec["path"]).format(dataset=dataset)
+            last_commit = str(source["last_modifying_commit"])
+            rank_checks = {
+                "committed_immutable_root_rank_source": bool(
+                    source["working_copy_matches_frozen_commit"]
+                    and source["sha256"] == source["git_blob_sha256_at_frozen_commit"]
+                ),
+                "sha256_recorded": len(str(source["sha256"])) == 64,
+                "exact_expected_90_cases": len(cases) == 90 and set(case_ids) == set(inputs),
+                "unique_case_ids": len(case_ids) == len(set(case_ids)),
+                "valid_folds": folds == Counter({0: 30, 1: 30, 2: 30}),
+                "fold_assignment_consistency": all(
+                    canonical_folds[dataset].get(row["case_id"]) == row["fold"] for row in cases
+                ),
+                "root_mapping_consistency": mappings_valid,
+                "root_belongs_to_legal_candidate_registry": roots_legal,
+                "root_rank_integer": ranks_integer,
+                "root_rank_range": ranks_in_range,
+                "no_model_refit_required": spec["kind"] in {"full", "root_rank"},
+                "traceable_to_frozen_optimization_commit": bool(
+                    _path_exists_in_commit(root, FROZEN_COMMIT, relative_path)
+                    and _is_ancestor(root, last_commit, FROZEN_COMMIT)
+                ),
+                "no_post_audit_root_rank_modification": bool(
+                    source["working_copy_matches_frozen_commit"]
+                ),
+            }
+            full_checks = {
+                "immutable_complete_candidate_ranking": bool(
+                    spec["kind"] == "full"
+                    and source["working_copy_matches_frozen_commit"]
+                    and integrity["ranking_completeness"] == "PASS"
+                ),
+                "complete_candidate_scores_where_expected": bool(
+                    spec["kind"] == "full"
+                    and integrity["candidate_coverage"]["status"] == "PASS"
+                ),
+                "every_legal_candidate_exactly_once": bool(
+                    spec["kind"] == "full"
+                    and integrity["candidate_coverage"]["status"] == "PASS"
+                    and integrity["duplicate_ranking_entries"] == "PASS"
+                ),
+                "no_duplicate_candidate": bool(
+                    spec["kind"] == "full"
+                    and integrity["duplicate_ranking_entries"] == "PASS"
+                ),
+                "root_present": bool(spec["kind"] == "full" and integrity["root_presence"] == "PASS"),
+                "score_to_ranking_consistency": bool(
+                    spec["kind"] == "full" and integrity["ranking_deterministic"] == "PASS"
+                ),
+                "deterministic_tie_and_order_consistency": bool(
+                    spec["kind"] == "full" and integrity["ranking_deterministic"] == "PASS"
+                ),
+                "valid_fold_and_case_provenance": bool(
+                    spec["kind"] == "full"
+                    and integrity["event_id_uniqueness"] == "PASS"
+                    and integrity["expected_case_coverage"] == "PASS"
+                    and integrity["fold_assignments_valid"] == "PASS"
+                    and integrity["root_mapping_consistency"] == "PASS"
+                ),
+            }
+            if spec["kind"] != "full":
+                full_status = "FULL_RANKING_INTEGRITY_NOT_AUDITABLE"
+            elif all(full_checks.values()):
+                full_status = "FULL_RANKING_INTEGRITY_PASS"
+            else:
+                full_status = "FULL_RANKING_INTEGRITY_FAIL"
+            rank_status = (
+                "RANK_METRIC_SUFFICIENT_PASS"
+                if all(rank_checks.values())
+                else "RANK_METRIC_SUFFICIENT_FAIL"
+            )
+            normalized_cases = json.dumps(cases, sort_keys=True, separators=(",", ":")).encode("utf-8")
+            by_dataset[dataset] = {
+                "FULL_RANKING_INTEGRITY": {
+                    "status": full_status,
+                    "checks": _status_checks(full_checks),
+                    "limitation": (
+                        "None"
+                        if full_status == "FULL_RANKING_INTEGRITY_PASS"
+                        else "Complete candidate scores/rankings are absent; candidate-level integrity is not auditable."
+                    ),
+                },
+                "RANK_METRIC_SUFFICIENT": {
+                    "status": rank_status,
+                    "checks": _status_checks(rank_checks),
+                    "source_file": relative_path,
+                    "source_kind": (
+                        "complete_frozen_ranking_root_rank_derived"
+                        if spec["kind"] == "full"
+                        else "immutable_root_rank_artifact"
+                    ),
+                    "source_sha256": source["sha256"],
+                    "frozen_commit": FROZEN_COMMIT,
+                    "last_modifying_commit": last_commit,
+                    "case_quantity_sha256": sha256_bytes(normalized_cases),
+                },
+            }
+        levels[track] = {"datasets": by_dataset}
+    return levels
+
+
+def independent_case_metrics(root_rank: int) -> Dict[str, float]:
+    """Compute a case's five metrics using only its one-indexed root rank."""
+
+    if isinstance(root_rank, bool) or not isinstance(root_rank, int) or root_rank < 1:
+        raise ValueError("root_rank must be a positive integer")
+    return {
+        "AC@1": float(root_rank <= 1),
+        "AC@3": float(root_rank <= 3),
+        "AC@5": float(root_rank <= 5),
+        "Avg@5": sum(float(root_rank <= k) for k in range(1, 6)) / 5.0,
+        "MRR": 1.0 / float(root_rank),
+    }
+
+
+def aggregate_independent_rank_metrics(cases: Sequence[Mapping[str, Any]]) -> Dict[str, float]:
+    """Aggregate case metrics without importing or calling the legacy evaluator."""
+
+    if not cases:
+        raise ValueError("cannot aggregate zero cases")
+    per_case = [independent_case_metrics(int(row["root_rank"])) for row in cases]
+    return {
+        metric: sum(row[metric] for row in per_case) / float(len(per_case))
+        for metric in RANK_METRICS
+    }
+
+
+def build_metric_reconstruction(root: Path) -> Dict[str, Any]:
+    """Build Gate 1 from immutable rank quantities and legacy summaries."""
+
+    root = root.resolve()
+    evidence_levels = classify_evidence_levels(root)
+    comparisons: Dict[str, Any] = {}
+    all_rank_evidence_pass = True
+    all_legacy_metrics_match = True
+    for track, spec in TRACKS.items():
+        datasets: Dict[str, Any] = {}
+        for dataset in DATASETS:
+            level = evidence_levels[track]["datasets"][dataset]
+            rank_pass = level["RANK_METRIC_SUFFICIENT"]["status"] == "RANK_METRIC_SUFFICIENT_PASS"
+            all_rank_evidence_pass = all_rank_evidence_pass and rank_pass
+            if not rank_pass:
+                datasets[dataset] = {
+                    "status": "NOT_COMPUTED_RANK_EVIDENCE_FAILURE",
+                    "evidence_levels": level,
+                }
+                continue
+            cases = load_frozen_rank_cases(root, track, dataset)
+            independent = aggregate_independent_rank_metrics(cases)
+            legacy_path = str(spec["metric_path"]).format(dataset=dataset)
+            legacy_document = json.loads((root / legacy_path).read_text(encoding="utf-8"))
+            legacy = {metric: float(legacy_document["overall_cases"][metric]) for metric in RANK_METRICS}
+            metric_comparison: Dict[str, Any] = {}
+            for metric in RANK_METRICS:
+                difference = abs(independent[metric] - legacy[metric])
+                status = "PASS" if difference <= METRIC_TOLERANCE else "FAIL"
+                all_legacy_metrics_match = all_legacy_metrics_match and status == "PASS"
+                metric_comparison[metric] = {
+                    "independent_metric": independent[metric],
+                    "legacy_metric": legacy[metric],
+                    "absolute_difference": difference,
+                    "tolerance": METRIC_TOLERANCE,
+                    "status": status,
+                }
+            datasets[dataset] = {
+                "status": (
+                    "PASS"
+                    if all(item["status"] == "PASS" for item in metric_comparison.values())
+                    else "FAIL"
+                ),
+                "evidence_levels": level,
+                "case_count": len(cases),
+                "metric_comparison": metric_comparison,
+                "legacy_metric_source": {
+                    "path": legacy_path,
+                    "sha256": sha256_file(root / legacy_path),
+                },
+            }
+        comparisons[track] = {"datasets": datasets}
+    gate_pass = all_rank_evidence_pass and all_legacy_metrics_match
+    input_manifest_path = root / "artifacts/evidence_closure/input_manifest.json"
+    evaluator_path = root / "src/rca/evaluator.py"
+    corrected_paths = (
+        "artifacts/evidence_closure/metric_reconstruction_v1_1.json",
+        "artifacts/evidence_closure/bootstrap_corrected_v1_1.json",
+    )
+    return {
+        "schema_version": "ada_rca_metric_reconstruction_v1_1",
+        "audit_type": "INDEPENDENT_FROZEN_RANK_METRIC_RECONSTRUCTION",
+        "protocol_amendment": {
+            "status": "POST-AUDIT PROTOCOL CLARIFICATION",
+            "path": "docs/RCA_EVIDENCE_CLOSURE_PROTOCOL_AMENDMENT_V1_1.md",
+            "commit": AMENDMENT_COMMIT,
+            "commit_is_ancestor_of_execution_head": _is_ancestor(
+                root, AMENDMENT_COMMIT, _git(root, "rev-parse", "HEAD").strip()
+            ),
+            "corrected_outputs_absent_at_amendment_commit": {
+                path: not _path_exists_in_commit(root, AMENDMENT_COMMIT, path)
+                for path in corrected_paths
+            },
+        },
+        "frozen_input_manifest": {
+            "path": "artifacts/evidence_closure/input_manifest.json",
+            "sha256": sha256_file(input_manifest_path),
+        },
+        "metric_definition_verification": {
+            "scientific_protocol": "docs/RCA_FINAL_EVALUATION_PROTOCOL_V1.0.md section 3",
+            "legacy_definition_source": "src/rca/evaluator.py",
+            "legacy_definition_source_sha256": sha256_file(evaluator_path),
+            "formulas": {
+                "AC@k": "AC@k = (1/N) * sum_i 1[root_rank_i <= k], for k in {1,3,5}",
+                "Avg@5": "Avg@5 = (1/N) * sum_i ((1/5) * sum_{k=1}^5 1[root_rank_i <= k])",
+                "MRR": "MRR = (1/N) * sum_i (1/root_rank_i)",
+            },
+            "implementation": "Independent root-rank implementation; no import or call to src.rca.evaluator",
+        },
+        "evidence_levels": evidence_levels,
+        "tracks": comparisons,
+        "gate_1": {
+            "status": "PASS" if gate_pass else "FAIL",
+            "rank_evidence_status": "PASS" if all_rank_evidence_pass else "FAIL",
+            "legacy_metric_consistency": "PASS" if all_legacy_metrics_match else "FAIL",
+            "bootstrap_authorization": "GATE_2_AUTHORIZED" if gate_pass else "STOP",
+            "terminal_state_if_failed": "RCA_EVIDENCE_NOT_CLOSED" if not gate_pass else None,
+        },
+    }
+
+
 def write_json(path: Path, value: Mapping[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
