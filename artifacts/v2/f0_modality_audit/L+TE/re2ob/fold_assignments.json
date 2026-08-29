@@ -1,0 +1,362 @@
+[
+  {
+    "case_id": "re2ob-0433b8cb47b1ec8e",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-048f2e7d7bfbc927",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-057fe49bd30d47c0",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-08f3e5d7b11d1fa7",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-097a5d7ac0492007",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-0c582795f6ae4798",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-1084f320d8584c61",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-1bb2e75872fd9037",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-1d19cc60d7a6adc1",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-1d9a0d1641171551",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-23213ee605c6b050",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-34c4e276dad53220",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-35bd9974d6b59069",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-3758cb8f0f1277f3",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-3827c8c9ef1e8592",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-3e7e71a1c83dbc41",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-40e1893e43abba5c",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-428d5ecf570372b5",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-42e80cf6bcd9400f",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-435f42d94b785472",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-45687a171f241b04",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-4677d4ce6ef327e0",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-48e5379f4903b1d2",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-4af0de56834334d2",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-4b9110d974bb1875",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-4f85dadf2507c3ca",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-505f802370635ec3",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-557d49794f937ec6",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-57b75da971aabed5",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-58cff4fc86081830",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-58eb5ae1a41b77e4",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-5a4d1a4785969ab2",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-5f261573c1b3bdc5",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-6521847c78ca06e9",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-66c4b614046569c9",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-6aa36a4c6c99d55c",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-71c7f9be34b19754",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-72b5d278f8908a0a",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-7732042f2a190c79",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-784d7eb25137c3c9",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-7858d4d3815cf005",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-7890056e7915d551",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-79fcefff48aef53b",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-7a91adc6e16587c6",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-7aec8ac514e0d064",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-7b0a90583e047a88",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-7c278a568194196b",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-7f2201e9884e818e",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-80bf4d093e6ab818",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-84724d7aa2b9dabd",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-8f991393cb9debdf",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-93de1fab2ca56e86",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-97935dcb7cfd6e82",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-9e575f44de987a1a",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-a6318b7e89546125",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-a84cfdf477d8bf62",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-abc29368674e8298",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-acf69e21960f63d8",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-af1b6a7e1667e3f5",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-b17ce68eb2ce01ee",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-b6db72fc58931786",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-b78a14faa7ea7263",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-b84066a37ca0c417",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-bb4a5b75716772f9",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-bd6f4fb8e84ccb69",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-c2ac02db4e3370a9",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-c9c8f348d3f5974b",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-ca26cbb7c2cc0c87",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-ce3f410f61f739c2",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-ce93ebf8eb13a5ed",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-cec5183e3f5418cf",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-d0382ea6cedfbd82",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-d0d93705e784491a",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-d3f1403a4a08a3b1",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-d7f2f8eb2f0ad646",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-da48e150772a24fd",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-df7b6eca09a6c41f",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-df7e831dddfac76c",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-e16e6de30ae75ccd",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-e357bd8aec246cdb",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-e849d2be7be5c713",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-eb8f50fda4f9095f",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-f209212fc63ac713",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-f2b4cc2f87b35c03",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-f30e2feeaa5218b8",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-f874f110aae8efa9",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-f88fc943d724a354",
+    "fold": 0
+  },
+  {
+    "case_id": "re2ob-fa8a8fae0fda7c42",
+    "fold": 1
+  },
+  {
+    "case_id": "re2ob-fd67c49516fa2028",
+    "fold": 2
+  },
+  {
+    "case_id": "re2ob-feeaaba6c71377df",
+    "fold": 1
+  }
+]

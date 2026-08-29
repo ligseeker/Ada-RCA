@@ -1,0 +1,28 @@
+{
+  "fit_source_commits": [
+    "d3041956ca376835831293e971304bcad0129afa"
+  ],
+  "fits_rerun": false,
+  "generated_at": "2026-08-29T12:12:45.462987+00:00",
+  "identity": {
+    "re2ob": {
+      "case_count": 90,
+      "integrity_valid": true,
+      "max_abs_score_difference": 1.2079226507921703e-13,
+      "overall_metrics_identical": true,
+      "ranking_identical": true
+    },
+    "re2tt": {
+      "case_count": 90,
+      "integrity_valid": true,
+      "max_abs_score_difference": 1.2008172234345693e-12,
+      "overall_metrics_identical": true,
+      "ranking_identical": true
+    }
+  },
+  "protocol": "docs/V2_MULTIMODAL_FUSION_PROTOCOL_V0.1.md",
+  "protocol_deviation": "docs/V2_PROTOCOL_DEVIATIONS.md#v2-f0-fresh-fit-score-identity-guard",
+  "resume_source_commit": "9e64ab1fff4fc18049c10b3e778f34f6772b1aef",
+  "resumed": true,
+  "schema_version": "ada_rca_v2_f0_audit_v1"
+}

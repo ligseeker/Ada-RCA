@@ -1,0 +1,78 @@
+{
+  "re2ob": {
+    "L-TE": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 3.8666666666666667,
+      "mean_signed_rank_difference": -1.2,
+      "nonzero_disagreement_count": 86
+    },
+    "L-TL": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 3.1555555555555554,
+      "mean_signed_rank_difference": 0.6222222222222222,
+      "nonzero_disagreement_count": 84
+    },
+    "M-L": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 3.4444444444444446,
+      "mean_signed_rank_difference": -3.3777777777777778,
+      "nonzero_disagreement_count": 75
+    },
+    "M-TE": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 4.622222222222222,
+      "mean_signed_rank_difference": -4.5777777777777775,
+      "nonzero_disagreement_count": 88
+    },
+    "M-TL": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 2.7777777777777777,
+      "mean_signed_rank_difference": -2.7555555555555555,
+      "nonzero_disagreement_count": 77
+    },
+    "TE-TL": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 2.111111111111111,
+      "mean_signed_rank_difference": 1.8222222222222222,
+      "nonzero_disagreement_count": 79
+    }
+  },
+  "re2tt": {
+    "L-TE": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 24.511111111111113,
+      "mean_signed_rank_difference": -23.155555555555555,
+      "nonzero_disagreement_count": 89
+    },
+    "L-TL": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 22.22222222222222,
+      "mean_signed_rank_difference": -16.244444444444444,
+      "nonzero_disagreement_count": 89
+    },
+    "M-L": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 18.18888888888889,
+      "mean_signed_rank_difference": -15.322222222222223,
+      "nonzero_disagreement_count": 88
+    },
+    "M-TE": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 40.144444444444446,
+      "mean_signed_rank_difference": -38.477777777777774,
+      "nonzero_disagreement_count": 90
+    },
+    "M-TL": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 33.27777777777778,
+      "mean_signed_rank_difference": -31.566666666666666,
+      "nonzero_disagreement_count": 81
+    },
+    "TE-TL": {
+      "case_count": 90,
+      "mean_absolute_rank_difference": 8.133333333333333,
+      "mean_signed_rank_difference": 6.911111111111111,
+      "nonzero_disagreement_count": 81
+    }
+  }
+}

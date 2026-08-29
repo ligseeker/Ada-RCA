@@ -1,0 +1,512 @@
+{
+  "re2ob": {
+    "family_unique_rank1": {
+      "leave_one_out": {
+        "FULL-L": {
+          "case_ids": [
+            "re2ob-3e7e71a1c83dbc41"
+          ],
+          "count": 1
+        },
+        "FULL-M": {
+          "case_ids": [],
+          "count": 0
+        },
+        "FULL-TE": {
+          "case_ids": [],
+          "count": 0
+        },
+        "FULL-TL": {
+          "case_ids": [
+            "re2ob-71c7f9be34b19754"
+          ],
+          "count": 1
+        }
+      },
+      "pair": {
+        "L+TE": {
+          "case_ids": [
+            "re2ob-4b9110d974bb1875"
+          ],
+          "count": 1
+        },
+        "L+TL": {
+          "case_ids": [],
+          "count": 0
+        },
+        "M+L": {
+          "case_ids": [
+            "re2ob-7732042f2a190c79",
+            "re2ob-80bf4d093e6ab818",
+            "re2ob-c2ac02db4e3370a9",
+            "re2ob-d0382ea6cedfbd82",
+            "re2ob-e357bd8aec246cdb"
+          ],
+          "count": 5
+        },
+        "M+TE": {
+          "case_ids": [],
+          "count": 0
+        },
+        "M+TL": {
+          "case_ids": [],
+          "count": 0
+        },
+        "TE+TL": {
+          "case_ids": [
+            "re2ob-79fcefff48aef53b"
+          ],
+          "count": 1
+        }
+      },
+      "single": {
+        "L": {
+          "case_ids": [
+            "re2ob-4b9110d974bb1875",
+            "re2ob-d0382ea6cedfbd82",
+            "re2ob-f874f110aae8efa9"
+          ],
+          "count": 3
+        },
+        "M": {
+          "case_ids": [
+            "re2ob-0433b8cb47b1ec8e",
+            "re2ob-048f2e7d7bfbc927",
+            "re2ob-057fe49bd30d47c0",
+            "re2ob-08f3e5d7b11d1fa7",
+            "re2ob-097a5d7ac0492007",
+            "re2ob-0c582795f6ae4798",
+            "re2ob-1084f320d8584c61",
+            "re2ob-1d19cc60d7a6adc1",
+            "re2ob-1d9a0d1641171551",
+            "re2ob-23213ee605c6b050",
+            "re2ob-3e7e71a1c83dbc41",
+            "re2ob-40e1893e43abba5c",
+            "re2ob-42e80cf6bcd9400f",
+            "re2ob-435f42d94b785472",
+            "re2ob-4677d4ce6ef327e0",
+            "re2ob-48e5379f4903b1d2",
+            "re2ob-4f85dadf2507c3ca",
+            "re2ob-557d49794f937ec6",
+            "re2ob-57b75da971aabed5",
+            "re2ob-58cff4fc86081830",
+            "re2ob-58eb5ae1a41b77e4",
+            "re2ob-5a4d1a4785969ab2",
+            "re2ob-5f261573c1b3bdc5",
+            "re2ob-6521847c78ca06e9",
+            "re2ob-66c4b614046569c9",
+            "re2ob-71c7f9be34b19754",
+            "re2ob-72b5d278f8908a0a",
+            "re2ob-784d7eb25137c3c9",
+            "re2ob-7a91adc6e16587c6",
+            "re2ob-7aec8ac514e0d064",
+            "re2ob-7b0a90583e047a88",
+            "re2ob-7f2201e9884e818e",
+            "re2ob-8f991393cb9debdf",
+            "re2ob-93de1fab2ca56e86",
+            "re2ob-97935dcb7cfd6e82",
+            "re2ob-9e575f44de987a1a",
+            "re2ob-a6318b7e89546125",
+            "re2ob-abc29368674e8298",
+            "re2ob-af1b6a7e1667e3f5",
+            "re2ob-b17ce68eb2ce01ee",
+            "re2ob-b6db72fc58931786",
+            "re2ob-bd6f4fb8e84ccb69",
+            "re2ob-ce3f410f61f739c2",
+            "re2ob-ce93ebf8eb13a5ed",
+            "re2ob-cec5183e3f5418cf",
+            "re2ob-d0d93705e784491a",
+            "re2ob-d3f1403a4a08a3b1",
+            "re2ob-d7f2f8eb2f0ad646",
+            "re2ob-da48e150772a24fd",
+            "re2ob-e16e6de30ae75ccd",
+            "re2ob-eb8f50fda4f9095f",
+            "re2ob-f209212fc63ac713",
+            "re2ob-f2b4cc2f87b35c03",
+            "re2ob-f30e2feeaa5218b8",
+            "re2ob-f88fc943d724a354",
+            "re2ob-fd67c49516fa2028",
+            "re2ob-feeaaba6c71377df"
+          ],
+          "count": 57
+        },
+        "TE": {
+          "case_ids": [],
+          "count": 0
+        },
+        "TL": {
+          "case_ids": [],
+          "count": 0
+        }
+      }
+    },
+    "relative_to_full_z2": {
+      "FULL-L": {
+        "case_ids": [
+          "re2ob-0433b8cb47b1ec8e",
+          "re2ob-3e7e71a1c83dbc41",
+          "re2ob-5f261573c1b3bdc5",
+          "re2ob-bd6f4fb8e84ccb69"
+        ],
+        "count": 4
+      },
+      "FULL-M": {
+        "case_ids": [
+          "re2ob-0433b8cb47b1ec8e",
+          "re2ob-5f261573c1b3bdc5"
+        ],
+        "count": 2
+      },
+      "FULL-TE": {
+        "case_ids": [],
+        "count": 0
+      },
+      "FULL-TL": {
+        "case_ids": [
+          "re2ob-0433b8cb47b1ec8e",
+          "re2ob-5f261573c1b3bdc5",
+          "re2ob-71c7f9be34b19754",
+          "re2ob-bd6f4fb8e84ccb69"
+        ],
+        "count": 4
+      },
+      "L": {
+        "case_ids": [
+          "re2ob-4b9110d974bb1875"
+        ],
+        "count": 1
+      },
+      "L+TE": {
+        "case_ids": [
+          "re2ob-4b9110d974bb1875"
+        ],
+        "count": 1
+      },
+      "L+TL": {
+        "case_ids": [
+          "re2ob-0433b8cb47b1ec8e",
+          "re2ob-5f261573c1b3bdc5"
+        ],
+        "count": 2
+      },
+      "M": {
+        "case_ids": [
+          "re2ob-0433b8cb47b1ec8e",
+          "re2ob-3e7e71a1c83dbc41",
+          "re2ob-5f261573c1b3bdc5",
+          "re2ob-71c7f9be34b19754",
+          "re2ob-bd6f4fb8e84ccb69"
+        ],
+        "count": 5
+      },
+      "M+L": {
+        "case_ids": [
+          "re2ob-0433b8cb47b1ec8e",
+          "re2ob-5f261573c1b3bdc5",
+          "re2ob-71c7f9be34b19754",
+          "re2ob-bd6f4fb8e84ccb69"
+        ],
+        "count": 4
+      },
+      "M+TE": {
+        "case_ids": [
+          "re2ob-0433b8cb47b1ec8e",
+          "re2ob-3e7e71a1c83dbc41",
+          "re2ob-5f261573c1b3bdc5",
+          "re2ob-71c7f9be34b19754",
+          "re2ob-bd6f4fb8e84ccb69"
+        ],
+        "count": 5
+      },
+      "M+TL": {
+        "case_ids": [
+          "re2ob-0433b8cb47b1ec8e",
+          "re2ob-3e7e71a1c83dbc41",
+          "re2ob-5f261573c1b3bdc5",
+          "re2ob-bd6f4fb8e84ccb69"
+        ],
+        "count": 4
+      },
+      "TE": {
+        "case_ids": [],
+        "count": 0
+      },
+      "TE+TL": {
+        "case_ids": [
+          "re2ob-79fcefff48aef53b"
+        ],
+        "count": 1
+      },
+      "TL": {
+        "case_ids": [],
+        "count": 0
+      }
+    }
+  },
+  "re2tt": {
+    "family_unique_rank1": {
+      "leave_one_out": {
+        "FULL-L": {
+          "case_ids": [
+            "re2tt-04ce93a682b70df6",
+            "re2tt-2fc3d2fb9c492b7c",
+            "re2tt-35e803c63786ac4e",
+            "re2tt-5a65eea398ba8435",
+            "re2tt-5f50dc54f6cb9fce",
+            "re2tt-7d3fb265c1c0f9ed",
+            "re2tt-877f6cbd0cb33e7c",
+            "re2tt-ee2421859dfb0792",
+            "re2tt-ffda523857bbf5c2"
+          ],
+          "count": 9
+        },
+        "FULL-M": {
+          "case_ids": [
+            "re2tt-6a0d1ebf31fb52a6",
+            "re2tt-afdac60e6b000d3c",
+            "re2tt-fb57d883cd727c81"
+          ],
+          "count": 3
+        },
+        "FULL-TE": {
+          "case_ids": [],
+          "count": 0
+        },
+        "FULL-TL": {
+          "case_ids": [],
+          "count": 0
+        }
+      },
+      "pair": {
+        "L+TE": {
+          "case_ids": [],
+          "count": 0
+        },
+        "L+TL": {
+          "case_ids": [],
+          "count": 0
+        },
+        "M+L": {
+          "case_ids": [
+            "re2tt-3fffa88dd3653f99",
+            "re2tt-5bb89b87741349d7"
+          ],
+          "count": 2
+        },
+        "M+TE": {
+          "case_ids": [],
+          "count": 0
+        },
+        "M+TL": {
+          "case_ids": [
+            "re2tt-5f50dc54f6cb9fce",
+            "re2tt-ee2421859dfb0792"
+          ],
+          "count": 2
+        },
+        "TE+TL": {
+          "case_ids": [],
+          "count": 0
+        }
+      },
+      "single": {
+        "L": {
+          "case_ids": [
+            "re2tt-6a0d1ebf31fb52a6",
+            "re2tt-afdac60e6b000d3c",
+            "re2tt-fb57d883cd727c81",
+            "re2tt-fe28a6c0dbd7d892"
+          ],
+          "count": 4
+        },
+        "M": {
+          "case_ids": [
+            "re2tt-04ce93a682b70df6",
+            "re2tt-22292d58b67911fb",
+            "re2tt-2a03e4ad1a1d6f85",
+            "re2tt-2ca7cff33586ca18",
+            "re2tt-2defd6e102bdaf53",
+            "re2tt-2fc3d2fb9c492b7c",
+            "re2tt-35e803c63786ac4e",
+            "re2tt-38941ca70beb687a",
+            "re2tt-3bd96ed8cc02f613",
+            "re2tt-3e24ca7f9747c84e",
+            "re2tt-406c40ff0016fa9c",
+            "re2tt-420fff915c5f5bc5",
+            "re2tt-426ec979883ae8dc",
+            "re2tt-44604ef8713a5943",
+            "re2tt-472c8339fd3703e9",
+            "re2tt-4780a4f90c190bf4",
+            "re2tt-5a65eea398ba8435",
+            "re2tt-653810995a9aa3db",
+            "re2tt-714d157727edd2d0",
+            "re2tt-722f5f89a57be699",
+            "re2tt-727331fee88d4ce7",
+            "re2tt-72822d018b0df53f",
+            "re2tt-783d045c8102f972",
+            "re2tt-7cff180e5ff1cc71",
+            "re2tt-7d3fb265c1c0f9ed",
+            "re2tt-7d84c0b80f7f0032",
+            "re2tt-877f6cbd0cb33e7c",
+            "re2tt-93fbbdf23f58f440",
+            "re2tt-94bd05feab03461e",
+            "re2tt-995607e863fb7731",
+            "re2tt-a33887653c475d04",
+            "re2tt-a7213c3da47edbd0",
+            "re2tt-ae09714023e727e1",
+            "re2tt-b2342b2478b249cb",
+            "re2tt-bbbcbf7787fa152c",
+            "re2tt-bc9cd2d131533d16",
+            "re2tt-bed634aec03e773f",
+            "re2tt-c1b234f6cc4acbee",
+            "re2tt-c7f9112580bfde33",
+            "re2tt-cb1f1df38c99005a",
+            "re2tt-cdf514b035f34990",
+            "re2tt-d0a74725c5d96362",
+            "re2tt-d14727a3c74e9768",
+            "re2tt-d4b1d66aaaa1a728",
+            "re2tt-d83931768111dc58",
+            "re2tt-e44ccb97e7cc1570",
+            "re2tt-f1aa29dd3ba2343f",
+            "re2tt-f5512e2434f96386",
+            "re2tt-f578fe138f6d4c7a",
+            "re2tt-fa81461ebec56b42",
+            "re2tt-fc53b7fb52199fb7",
+            "re2tt-fd20b1f93a6ff4c0",
+            "re2tt-ffda523857bbf5c2"
+          ],
+          "count": 53
+        },
+        "TE": {
+          "case_ids": [],
+          "count": 0
+        },
+        "TL": {
+          "case_ids": [
+            "re2tt-67172e499653d426",
+            "re2tt-c82529d65e13adc0"
+          ],
+          "count": 2
+        }
+      }
+    },
+    "relative_to_full_z2": {
+      "FULL-L": {
+        "case_ids": [
+          "re2tt-04ce93a682b70df6",
+          "re2tt-2a03e4ad1a1d6f85",
+          "re2tt-2fc3d2fb9c492b7c",
+          "re2tt-35e803c63786ac4e",
+          "re2tt-5a65eea398ba8435",
+          "re2tt-5f50dc54f6cb9fce",
+          "re2tt-7d3fb265c1c0f9ed",
+          "re2tt-877f6cbd0cb33e7c",
+          "re2tt-ee2421859dfb0792",
+          "re2tt-ffda523857bbf5c2"
+        ],
+        "count": 10
+      },
+      "FULL-M": {
+        "case_ids": [
+          "re2tt-6a0d1ebf31fb52a6",
+          "re2tt-afdac60e6b000d3c",
+          "re2tt-fb57d883cd727c81"
+        ],
+        "count": 3
+      },
+      "FULL-TE": {
+        "case_ids": [],
+        "count": 0
+      },
+      "FULL-TL": {
+        "case_ids": [
+          "re2tt-2a03e4ad1a1d6f85"
+        ],
+        "count": 1
+      },
+      "L": {
+        "case_ids": [
+          "re2tt-6a0d1ebf31fb52a6",
+          "re2tt-afdac60e6b000d3c",
+          "re2tt-fb57d883cd727c81"
+        ],
+        "count": 3
+      },
+      "L+TE": {
+        "case_ids": [
+          "re2tt-6a0d1ebf31fb52a6",
+          "re2tt-afdac60e6b000d3c",
+          "re2tt-fb57d883cd727c81"
+        ],
+        "count": 3
+      },
+      "L+TL": {
+        "case_ids": [
+          "re2tt-6a0d1ebf31fb52a6",
+          "re2tt-afdac60e6b000d3c",
+          "re2tt-fb57d883cd727c81"
+        ],
+        "count": 3
+      },
+      "M": {
+        "case_ids": [
+          "re2tt-04ce93a682b70df6",
+          "re2tt-2a03e4ad1a1d6f85",
+          "re2tt-2fc3d2fb9c492b7c",
+          "re2tt-35e803c63786ac4e",
+          "re2tt-5a65eea398ba8435",
+          "re2tt-7d3fb265c1c0f9ed",
+          "re2tt-877f6cbd0cb33e7c",
+          "re2tt-ffda523857bbf5c2"
+        ],
+        "count": 8
+      },
+      "M+L": {
+        "case_ids": [
+          "re2tt-2a03e4ad1a1d6f85"
+        ],
+        "count": 1
+      },
+      "M+TE": {
+        "case_ids": [
+          "re2tt-04ce93a682b70df6",
+          "re2tt-2a03e4ad1a1d6f85",
+          "re2tt-2fc3d2fb9c492b7c",
+          "re2tt-35e803c63786ac4e",
+          "re2tt-5a65eea398ba8435",
+          "re2tt-7d3fb265c1c0f9ed",
+          "re2tt-877f6cbd0cb33e7c",
+          "re2tt-ffda523857bbf5c2"
+        ],
+        "count": 8
+      },
+      "M+TL": {
+        "case_ids": [
+          "re2tt-04ce93a682b70df6",
+          "re2tt-2a03e4ad1a1d6f85",
+          "re2tt-2fc3d2fb9c492b7c",
+          "re2tt-35e803c63786ac4e",
+          "re2tt-5a65eea398ba8435",
+          "re2tt-5f50dc54f6cb9fce",
+          "re2tt-7d3fb265c1c0f9ed",
+          "re2tt-877f6cbd0cb33e7c",
+          "re2tt-ee2421859dfb0792",
+          "re2tt-ffda523857bbf5c2"
+        ],
+        "count": 10
+      },
+      "TE": {
+        "case_ids": [],
+        "count": 0
+      },
+      "TE+TL": {
+        "case_ids": [],
+        "count": 0
+      },
+      "TL": {
+        "case_ids": [],
+        "count": 0
+      }
+    }
+  }
+}

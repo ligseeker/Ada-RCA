@@ -1,0 +1,3334 @@
+{
+  "re2ob": {
+    "by_case": {
+      "re2ob-0433b8cb47b1ec8e": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-048f2e7d7bfbc927": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-057fe49bd30d47c0": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-08f3e5d7b11d1fa7": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-097a5d7ac0492007": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.6363636363636364,
+          "coverage_candidate_mean": 0.6363636363636364
+        }
+      },
+      "re2ob-0c582795f6ae4798": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-1084f320d8584c61": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.6363636363636364,
+          "coverage_candidate_mean": 0.6363636363636364
+        }
+      },
+      "re2ob-1bb2e75872fd9037": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.18181818181818182,
+          "coverage_candidate_mean": 0.18181818181818182
+        }
+      },
+      "re2ob-1d19cc60d7a6adc1": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-1d9a0d1641171551": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.593181818181818
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 0.7375
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.3090909090909091
+        }
+      },
+      "re2ob-23213ee605c6b050": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-34c4e276dad53220": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-35bd9974d6b59069": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-3758cb8f0f1277f3": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-3827c8c9ef1e8592": {
+        "L": {
+          "availability_candidate_mean": 0.7272727272727273,
+          "coverage_candidate_mean": 0.7272727272727273
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-3e7e71a1c83dbc41": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-40e1893e43abba5c": {
+        "L": {
+          "availability_candidate_mean": 0.7272727272727273,
+          "coverage_candidate_mean": 0.7272727272727273
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-428d5ecf570372b5": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-42e80cf6bcd9400f": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-435f42d94b785472": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-45687a171f241b04": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-4677d4ce6ef327e0": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-48e5379f4903b1d2": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8079545454545456
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5386363636363636
+        }
+      },
+      "re2ob-4af0de56834334d2": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-4b9110d974bb1875": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-4f85dadf2507c3ca": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.18181818181818182,
+          "coverage_candidate_mean": 0.18181818181818182
+        }
+      },
+      "re2ob-505f802370635ec3": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.5215909090909091
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 0.6749999999999999
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.6363636363636364,
+          "coverage_candidate_mean": 0.33409090909090905
+        }
+      },
+      "re2ob-557d49794f937ec6": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-57b75da971aabed5": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-58cff4fc86081830": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-58eb5ae1a41b77e4": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-5a4d1a4785969ab2": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-5f261573c1b3bdc5": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-6521847c78ca06e9": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-66c4b614046569c9": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-6aa36a4c6c99d55c": {
+        "L": {
+          "availability_candidate_mean": 0.7272727272727273,
+          "coverage_candidate_mean": 0.7272727272727273
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-71c7f9be34b19754": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-72b5d278f8908a0a": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-7732042f2a190c79": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-784d7eb25137c3c9": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.18181818181818182,
+          "coverage_candidate_mean": 0.18181818181818182
+        }
+      },
+      "re2ob-7858d4d3815cf005": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-7890056e7915d551": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-79fcefff48aef53b": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-7a91adc6e16587c6": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-7aec8ac514e0d064": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-7b0a90583e047a88": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-7c278a568194196b": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-7f2201e9884e818e": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-80bf4d093e6ab818": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.18181818181818182,
+          "coverage_candidate_mean": 0.18181818181818182
+        }
+      },
+      "re2ob-84724d7aa2b9dabd": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-8f991393cb9debdf": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-93de1fab2ca56e86": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-97935dcb7cfd6e82": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-9e575f44de987a1a": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-a6318b7e89546125": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-a84cfdf477d8bf62": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.18181818181818182,
+          "coverage_candidate_mean": 0.18181818181818182
+        }
+      },
+      "re2ob-abc29368674e8298": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-acf69e21960f63d8": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-af1b6a7e1667e3f5": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-b17ce68eb2ce01ee": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-b6db72fc58931786": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-b78a14faa7ea7263": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-b84066a37ca0c417": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-bb4a5b75716772f9": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-bd6f4fb8e84ccb69": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-c2ac02db4e3370a9": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-c9c8f348d3f5974b": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.09090909090909091,
+          "coverage_candidate_mean": 0.09090909090909091
+        }
+      },
+      "re2ob-ca26cbb7c2cc0c87": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-ce3f410f61f739c2": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-ce93ebf8eb13a5ed": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-cec5183e3f5418cf": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-d0382ea6cedfbd82": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.18181818181818182,
+          "coverage_candidate_mean": 0.18181818181818182
+        }
+      },
+      "re2ob-d0d93705e784491a": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-d3f1403a4a08a3b1": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-d7f2f8eb2f0ad646": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-da48e150772a24fd": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-df7b6eca09a6c41f": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-df7e831dddfac76c": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-e16e6de30ae75ccd": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-e357bd8aec246cdb": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-e849d2be7be5c713": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-eb8f50fda4f9095f": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-f209212fc63ac713": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-f2b4cc2f87b35c03": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.5454545454545454,
+          "coverage_candidate_mean": 0.5454545454545454
+        }
+      },
+      "re2ob-f30e2feeaa5218b8": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-f874f110aae8efa9": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.36363636363636365,
+          "coverage_candidate_mean": 0.36363636363636365
+        }
+      },
+      "re2ob-f88fc943d724a354": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.18181818181818182,
+          "coverage_candidate_mean": 0.18181818181818182
+        }
+      },
+      "re2ob-fa8a8fae0fda7c42": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.45454545454545453,
+          "coverage_candidate_mean": 0.45454545454545453
+        }
+      },
+      "re2ob-fd67c49516fa2028": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      },
+      "re2ob-feeaaba6c71377df": {
+        "L": {
+          "availability_candidate_mean": 0.8181818181818182,
+          "coverage_candidate_mean": 0.8181818181818182
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.2727272727272727,
+          "coverage_candidate_mean": 0.2727272727272727
+        }
+      }
+    },
+    "summary": {
+      "L": {
+        "candidate_row_availability_mean": 0.815151515151515,
+        "candidate_row_coverage_mean": 0.8092424242424241,
+        "event_availability_max": 0.8181818181818182,
+        "event_availability_min": 0.7272727272727273,
+        "event_coverage_max": 0.8181818181818182,
+        "event_coverage_min": 0.5215909090909091,
+        "event_modality_availability_mean": 0.815151515151515,
+        "event_modality_coverage_mean": 0.8092424242424241
+      },
+      "M": {
+        "candidate_row_availability_mean": 1.0,
+        "candidate_row_coverage_mean": 0.9934722222222222,
+        "event_availability_max": 1.0,
+        "event_availability_min": 1.0,
+        "event_coverage_max": 1.0,
+        "event_coverage_min": 0.6749999999999999,
+        "event_modality_availability_mean": 1.0,
+        "event_modality_coverage_mean": 0.9934722222222222
+      },
+      "TE": {
+        "candidate_row_availability_mean": 0.0,
+        "candidate_row_coverage_mean": 0.0,
+        "event_availability_max": 0.0,
+        "event_availability_min": 0.0,
+        "event_coverage_max": 0.0,
+        "event_coverage_min": 0.0,
+        "event_modality_availability_mean": 0.0,
+        "event_modality_coverage_mean": 0.0
+      },
+      "TL": {
+        "candidate_row_availability_mean": 0.37777777777777777,
+        "candidate_row_coverage_mean": 0.37373737373737376,
+        "event_availability_max": 0.6363636363636364,
+        "event_availability_min": 0.09090909090909091,
+        "event_coverage_max": 0.6363636363636364,
+        "event_coverage_min": 0.09090909090909091,
+        "event_modality_availability_mean": 0.37777777777777777,
+        "event_modality_coverage_mean": 0.37373737373737376
+      }
+    }
+  },
+  "re2tt": {
+    "by_case": {
+      "re2tt-010695b192f8dbea": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.19117647058823528,
+          "coverage_candidate_mean": 0.19117647058823528
+        }
+      },
+      "re2tt-01d0096e9a504ced": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-04ce93a682b70df6": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-0b529d9f6ca88d4b": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-0f6b6213169d6acc": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-1283c56ed7675282": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-14c6e1b70d0c21e5": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.17647058823529413,
+          "coverage_candidate_mean": 0.17647058823529413
+        }
+      },
+      "re2tt-1d48b3aec1ec4470": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-20258ce8dbcd2300": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.1323529411764706,
+          "coverage_candidate_mean": 0.1323529411764706
+        }
+      },
+      "re2tt-22292d58b67911fb": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-2782358136a64e6c": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.19117647058823528,
+          "coverage_candidate_mean": 0.19117647058823528
+        }
+      },
+      "re2tt-2a03e4ad1a1d6f85": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.11764705882352941,
+          "coverage_candidate_mean": 0.11764705882352941
+        }
+      },
+      "re2tt-2ae0e149b3ab15f1": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.08823529411764706,
+          "coverage_candidate_mean": 0.08823529411764706
+        }
+      },
+      "re2tt-2ca7cff33586ca18": {
+        "L": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        }
+      },
+      "re2tt-2defd6e102bdaf53": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-2fc3d2fb9c492b7c": {
+        "L": {
+          "availability_candidate_mean": 0.27941176470588236,
+          "coverage_candidate_mean": 0.27941176470588236
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-35e803c63786ac4e": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.1323529411764706,
+          "coverage_candidate_mean": 0.1323529411764706
+        }
+      },
+      "re2tt-38941ca70beb687a": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-3bd96ed8cc02f613": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-3e24ca7f9747c84e": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-3fffa88dd3653f99": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-406c40ff0016fa9c": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.08823529411764706,
+          "coverage_candidate_mean": 0.08823529411764706
+        }
+      },
+      "re2tt-420fff915c5f5bc5": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.058823529411764705,
+          "coverage_candidate_mean": 0.058823529411764705
+        }
+      },
+      "re2tt-426ec979883ae8dc": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.07352941176470588,
+          "coverage_candidate_mean": 0.07352941176470588
+        }
+      },
+      "re2tt-44604ef8713a5943": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.07352941176470588,
+          "coverage_candidate_mean": 0.07352941176470588
+        }
+      },
+      "re2tt-472c8339fd3703e9": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.058823529411764705,
+          "coverage_candidate_mean": 0.058823529411764705
+        }
+      },
+      "re2tt-4780a4f90c190bf4": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.07352941176470588,
+          "coverage_candidate_mean": 0.07352941176470588
+        }
+      },
+      "re2tt-56db4956167f9980": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.17647058823529413,
+          "coverage_candidate_mean": 0.17647058823529413
+        }
+      },
+      "re2tt-575015aa80c376c6": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-5a65eea398ba8435": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-5bb89b87741349d7": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-5d2e4747cab0d818": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-5f50dc54f6cb9fce": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.1323529411764706,
+          "coverage_candidate_mean": 0.1323529411764706
+        }
+      },
+      "re2tt-606ef267348d40e5": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-653810995a9aa3db": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-67172e499653d426": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.19117647058823528,
+          "coverage_candidate_mean": 0.19117647058823528
+        }
+      },
+      "re2tt-6a0d1ebf31fb52a6": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.1323529411764706,
+          "coverage_candidate_mean": 0.1323529411764706
+        }
+      },
+      "re2tt-714d157727edd2d0": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.058823529411764705,
+          "coverage_candidate_mean": 0.058823529411764705
+        }
+      },
+      "re2tt-722f5f89a57be699": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.08823529411764706,
+          "coverage_candidate_mean": 0.08823529411764706
+        }
+      },
+      "re2tt-727331fee88d4ce7": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-72822d018b0df53f": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-739ad24f1e2d7c29": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-783d045c8102f972": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-7cff180e5ff1cc71": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-7d3fb265c1c0f9ed": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-7d84c0b80f7f0032": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.04411764705882353,
+          "coverage_candidate_mean": 0.04411764705882353
+        }
+      },
+      "re2tt-877f6cbd0cb33e7c": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-93fbbdf23f58f440": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-94bd05feab03461e": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-995607e863fb7731": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.04411764705882353,
+          "coverage_candidate_mean": 0.04411764705882353
+        }
+      },
+      "re2tt-a0c0a90c5448e7fa": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-a141811c79edaa0b": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-a33887653c475d04": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.08823529411764706,
+          "coverage_candidate_mean": 0.08823529411764706
+        }
+      },
+      "re2tt-a7213c3da47edbd0": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-aa71e41ec8e7922d": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.17647058823529413,
+          "coverage_candidate_mean": 0.17647058823529413
+        }
+      },
+      "re2tt-ae09714023e727e1": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.08823529411764706,
+          "coverage_candidate_mean": 0.08823529411764706
+        }
+      },
+      "re2tt-afdac60e6b000d3c": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-b2342b2478b249cb": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-b5173d4edf252af8": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-bbbcbf7787fa152c": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.08823529411764706,
+          "coverage_candidate_mean": 0.08823529411764706
+        }
+      },
+      "re2tt-bc9cd2d131533d16": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.04411764705882353,
+          "coverage_candidate_mean": 0.04411764705882353
+        }
+      },
+      "re2tt-bed634aec03e773f": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.08823529411764706,
+          "coverage_candidate_mean": 0.08823529411764706
+        }
+      },
+      "re2tt-c1b234f6cc4acbee": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.17647058823529413,
+          "coverage_candidate_mean": 0.17647058823529413
+        }
+      },
+      "re2tt-c7f9112580bfde33": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-c82529d65e13adc0": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.19117647058823528,
+          "coverage_candidate_mean": 0.19117647058823528
+        }
+      },
+      "re2tt-c8fbd9a7d1e92284": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.17647058823529413,
+          "coverage_candidate_mean": 0.17647058823529413
+        }
+      },
+      "re2tt-cb1f1df38c99005a": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-cb3381bf9ed05034": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-cc6c772d4116d054": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.17647058823529413,
+          "coverage_candidate_mean": 0.17647058823529413
+        }
+      },
+      "re2tt-cdf514b035f34990": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-d0a74725c5d96362": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.04411764705882353,
+          "coverage_candidate_mean": 0.04411764705882353
+        }
+      },
+      "re2tt-d14727a3c74e9768": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.11764705882352941,
+          "coverage_candidate_mean": 0.11764705882352941
+        }
+      },
+      "re2tt-d4b1d66aaaa1a728": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-d83931768111dc58": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.07352941176470588,
+          "coverage_candidate_mean": 0.07352941176470588
+        }
+      },
+      "re2tt-e3f89de859062727": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-e44ccb97e7cc1570": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.17647058823529413,
+          "coverage_candidate_mean": 0.17647058823529413
+        }
+      },
+      "re2tt-e4be9aa8e249ddf3": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.2536764705882353
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.1389705882352941
+        }
+      },
+      "re2tt-e76e500ff655313b": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.19117647058823528,
+          "coverage_candidate_mean": 0.19117647058823528
+        }
+      },
+      "re2tt-e9071bdee1904785": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-ee2421859dfb0792": {
+        "L": {
+          "availability_candidate_mean": 0.20588235294117646,
+          "coverage_candidate_mean": 0.20588235294117646
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.08823529411764706,
+          "coverage_candidate_mean": 0.08823529411764706
+        }
+      },
+      "re2tt-f09cbf3636ad02de": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-f1aa29dd3ba2343f": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.17647058823529413,
+          "coverage_candidate_mean": 0.17647058823529413
+        }
+      },
+      "re2tt-f5512e2434f96386": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-f578fe138f6d4c7a": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-fa81461ebec56b42": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-fb57d883cd727c81": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-fc53b7fb52199fb7": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.058823529411764705,
+          "coverage_candidate_mean": 0.058823529411764705
+        }
+      },
+      "re2tt-fd20b1f93a6ff4c0": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      },
+      "re2tt-fe28a6c0dbd7d892": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.16176470588235295,
+          "coverage_candidate_mean": 0.16176470588235295
+        }
+      },
+      "re2tt-ffda523857bbf5c2": {
+        "L": {
+          "availability_candidate_mean": 0.29411764705882354,
+          "coverage_candidate_mean": 0.29411764705882354
+        },
+        "M": {
+          "availability_candidate_mean": 1.0,
+          "coverage_candidate_mean": 1.0
+        },
+        "TE": {
+          "availability_candidate_mean": 0.0,
+          "coverage_candidate_mean": 0.0
+        },
+        "TL": {
+          "availability_candidate_mean": 0.14705882352941177,
+          "coverage_candidate_mean": 0.14705882352941177
+        }
+      }
+    },
+    "summary": {
+      "L": {
+        "candidate_row_availability_mean": 0.27892156862745093,
+        "candidate_row_coverage_mean": 0.2784722222222221,
+        "event_availability_max": 0.29411764705882354,
+        "event_availability_min": 0.0,
+        "event_coverage_max": 0.29411764705882354,
+        "event_coverage_min": 0.0,
+        "event_modality_availability_mean": 0.27892156862745093,
+        "event_modality_coverage_mean": 0.2784722222222221
+      },
+      "M": {
+        "candidate_row_availability_mean": 1.0,
+        "candidate_row_coverage_mean": 1.0,
+        "event_availability_max": 1.0,
+        "event_availability_min": 1.0,
+        "event_coverage_max": 1.0,
+        "event_coverage_min": 1.0,
+        "event_modality_availability_mean": 1.0,
+        "event_modality_coverage_mean": 1.0
+      },
+      "TE": {
+        "candidate_row_availability_mean": 0.0,
+        "candidate_row_coverage_mean": 0.0,
+        "event_availability_max": 0.0,
+        "event_availability_min": 0.0,
+        "event_coverage_max": 0.0,
+        "event_coverage_min": 0.0,
+        "event_modality_availability_mean": 0.0,
+        "event_modality_coverage_mean": 0.0
+      },
+      "TL": {
+        "candidate_row_availability_mean": 0.13839869281045752,
+        "candidate_row_coverage_mean": 0.1381454248366013,
+        "event_availability_max": 0.19117647058823528,
+        "event_availability_min": 0.0,
+        "event_coverage_max": 0.19117647058823528,
+        "event_coverage_min": 0.0,
+        "event_modality_availability_mean": 0.13839869281045752,
+        "event_modality_coverage_mean": 0.1381454248366013
+      }
+    }
+  }
+}

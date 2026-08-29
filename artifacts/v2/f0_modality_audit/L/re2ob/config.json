@@ -1,0 +1,43 @@
+{
+  "dataset": "re2ob",
+  "feature_dimension": 17,
+  "feature_names": [
+    "log.magnitude",
+    "log.mean_impact",
+    "log.pre_post_shift",
+    "log.onset_seconds",
+    "log.onset_missing",
+    "log.persistence",
+    "log.coverage",
+    "log.channel_available",
+    "log.normalized_pre_mean",
+    "log.normalized_post_mean",
+    "log.normalized_post_minus_pre_mean",
+    "log.post_peak_time_fraction",
+    "log.post_amplitude_weighted_centroid_fraction",
+    "log.post_ols_slope",
+    "log.post_mean_absolute_adjacent_difference",
+    "log.post_fraction_z_ge_0_5",
+    "log.morphology_active"
+  ],
+  "feature_order_sha256": "c9f3e7d6f9db3bee69699a975e486459308e81351f31bac0c440e0e0dca2d0b3",
+  "gradient_tolerance": 1e-08,
+  "lambda": 1.0,
+  "max_iter": 1000,
+  "modalities": [
+    "L"
+  ],
+  "modality_order": [
+    "M",
+    "L",
+    "TE",
+    "TL"
+  ],
+  "model_selection": false,
+  "optimizer": "src.rca.p4.fit_conditional_logit",
+  "relative": false,
+  "scaler": "StandardScaler fitted on training-fold candidate rows only",
+  "split": "frozen repetition 3-fold OOF",
+  "stage": "V2-F0",
+  "variant": "L"
+}

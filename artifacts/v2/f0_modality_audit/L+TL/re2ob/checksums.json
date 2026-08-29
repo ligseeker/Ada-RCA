@@ -1,0 +1,16 @@
+{
+  "config.json": "2bd5672c262be87c5f68ab697bdbed481e9e4bf745ea95141a45dafc519294f2",
+  "environment.json": "37cf8c8c8e79e7dc9bf036fbe29c3a9b97d3de61274ccf57553bdcc2ebe7d0c9",
+  "fold_assignments.json": "387454c9914f74ba398fb67929330c452f8f91b7562d2f8caa1faf5beebafbb0",
+  "metrics.json": "e8685271b41862f1bb83c862128bcbe1a8cfc7f7bf4549eb6ffc50da4cf90280",
+  "model_state/fold_0.json": "2d8bb50556a366cf07ae2c6151f5541e10bec3fa8170358932d1f6fb03023e63",
+  "model_state/fold_0.npz": "6a00f2c1556973c790e68c3d3ea9834c6d1eb7a73d41f2d12239973a76f1869e",
+  "model_state/fold_1.json": "4982bea3a62ecde06595c5626ffde30bc1553f83a65cfda1575d682f30ce8771",
+  "model_state/fold_1.npz": "2d682a4e8eedf119d30f0fe4cc2d24e11d263fbc6d49db3d7cc8af02a7ccd27a",
+  "model_state/fold_2.json": "13ad21b5770616acfb43b987f3b6a4409c893b1531a08aaf2fe70da7f7d73b3c",
+  "model_state/fold_2.npz": "59e00aef0be0770bef7e37c945a340243475bf62e334b2299e39a844f49c2deb",
+  "model_state_manifest.json": "2fee3d00d8e1cbc2bed9b8fe6bc5ea5b7409378b7573a1cf00d65492cb94ccdb",
+  "predictions.jsonl": "1cd5c80d41a2a00cce7ed2072ab78a7188fd7bde49bbf8d7106dd45da4501ae7",
+  "provenance.json": "885db2fe970f7be431f02e2be38dc537bf28618e018367aff0af4245513998bc",
+  "runtime.json": "aab8bc0cded6c7a20227bdba9b6e0298fcd1b15d3bbbbe5042e208f410bc0526"
+}
