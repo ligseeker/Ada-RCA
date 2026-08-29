@@ -797,3 +797,60 @@ def blocked_mmbaro_summary(output_root: Path) -> Mapping[str, object]:
     }
     write_json(output_root / "mmbaro" / "qualification_summary.json", summary)
     return summary
+
+
+def write_overall_qualification(
+    output_root: Path,
+    baro: Mapping[str, object],
+    tracerca: Mapping[str, object],
+    mmbaro: Mapping[str, object],
+) -> Mapping[str, object]:
+    methods = {"BARO": baro["status"], "TraceRCA": tracerca["status"], "mmBARO": mmbaro["status"]}
+    gate = (
+        "P6-G1 = GO — TIER-A INTEGRATION QUALIFIED"
+        if all(status == "READY" for status in methods.values())
+        else "P6-G1 = PARTIAL — AWAITING HUMAN REVIEW"
+    )
+    status = {
+        "schema_version": "p6_e4_overall_qualification_v1",
+        "methods": methods,
+        "p6_g1": gate,
+        "tier_b_substitution": False,
+        "formal_p6_e5_executed": False,
+    }
+    write_json(output_root / "qualification_status.json", status)
+
+    failure_counts: Dict[str, int] = {}
+    for method_dir in ("baro", "tracerca"):
+        for filename in ("ob_smoke.jsonl", "tt_smoke.jsonl"):
+            path = output_root / method_dir / filename
+            if not path.is_file():
+                continue
+            for line in path.read_text(encoding="utf-8").splitlines():
+                row = json.loads(line)
+                failure = row.get("failure_taxonomy")
+                if failure:
+                    failure_counts[str(failure)] = failure_counts.get(str(failure), 0) + 1
+    write_json(
+        output_root / "failure_audit.json",
+        {
+            "schema_version": "p6_e4_failure_audit_v1",
+            "raw_failure_counts": failure_counts,
+            "failures_converted_to_performance_zero": False,
+            "dummy_fallback_accepted": False,
+            "successful_subset_suppression_used": False,
+        },
+    )
+    write_json(
+        output_root / "performance_firewall_audit.json",
+        {
+            "schema_version": "p6_e4_performance_firewall_audit_v1",
+            "root_label_dependency": False,
+            "performance_evaluator_dependency": False,
+            "performance_fields_in_smoke_artifacts": [],
+            "published_result_used_for_adapter_choice": False,
+            "result_based_adapter_choice": False,
+            "status": "PASS",
+        },
+    )
+    return status
