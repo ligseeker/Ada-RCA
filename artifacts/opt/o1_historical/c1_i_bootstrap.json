@@ -1,0 +1,69 @@
+{
+  "bootstrap_schema_version": "p2_c1_i_paired_bootstrap_v1",
+  "claim_ready": false,
+  "claim_ready_checks": {
+    "both_primary_ci_lower_bounds_positive": false,
+    "both_secondary_point_deltas_at_least_minus_0_01": false
+  },
+  "exploratory_signal": true,
+  "results": {
+    "gaia_main": {
+      "case_count": 13470,
+      "comparator": "c0_m",
+      "comparison": "c1_i minus best single modality chosen by root-macro Avg@5 point estimate",
+      "iterations": 10000,
+      "metric_results": {
+        "AC@1": {
+          "bootstrap_mean_delta": -0.09130063787552961,
+          "bootstrap_std": 0.02140342312401416,
+          "ci95_lower": -0.1322059303085503,
+          "ci95_upper": -0.04916502921963798,
+          "point_delta": -0.09113170780661653,
+          "probability_delta_nonpositive": 1.0
+        },
+        "Avg@5": {
+          "bootstrap_mean_delta": 0.025332585017359466,
+          "bootstrap_std": 0.015189732298889402,
+          "ci95_lower": -0.00355691728256199,
+          "ci95_upper": 0.05634046622713952,
+          "point_delta": 0.025260650077832836,
+          "probability_delta_nonpositive": 0.0445
+        }
+      },
+      "random_generator": "numpy.default_rng/PCG64",
+      "random_seed": 20260819,
+      "resampling_unit": "context_group",
+      "resampling_unit_count": 322,
+      "root_service_count": 10
+    },
+    "re2ob": {
+      "case_count": 90,
+      "comparator": "c0_m",
+      "comparison": "c1_i minus best single modality chosen by root-macro Avg@5 point estimate",
+      "iterations": 10000,
+      "metric_results": {
+        "AC@1": {
+          "bootstrap_mean_delta": 0.06609491256201211,
+          "bootstrap_std": 0.033368532719928075,
+          "ci95_lower": 0.0020501672240802694,
+          "ci95_upper": 0.13333333333333336,
+          "point_delta": 0.06666666666666665,
+          "probability_delta_nonpositive": 0.0223
+        },
+        "Avg@5": {
+          "bootstrap_mean_delta": 0.019834688894406004,
+          "bootstrap_std": 0.009656717781549836,
+          "ci95_lower": 0.0025139285714285706,
+          "ci95_upper": 0.039999999999999994,
+          "point_delta": 0.019999999999999997,
+          "probability_delta_nonpositive": 0.0118
+        }
+      },
+      "random_generator": "numpy.default_rng/PCG64",
+      "random_seed": 20260819,
+      "resampling_unit": "case",
+      "resampling_unit_count": 90,
+      "root_service_count": 5
+    }
+  }
+}

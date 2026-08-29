@@ -1,0 +1,74 @@
+{
+  "bootstrap_schema_version": "p2_m1_s_paired_bootstrap_v1",
+  "claim_ready": false,
+  "claim_ready_checks": {
+    "both_primary_ci_lower_bounds_positive": false,
+    "both_secondary_point_deltas_at_least_minus_0_01": false
+  },
+  "exploratory_signal": false,
+  "hypothesis": "H1",
+  "method": "m1_s",
+  "p2_g4_decision": "no-go",
+  "primary_endpoint": "root_service_macro Avg@5",
+  "results": {
+    "gaia_main": {
+      "case_count": 13470,
+      "comparator": "c1_i",
+      "comparison": "m1_s minus c1_i under the frozen nested OOF protocol",
+      "iterations": 10000,
+      "metric_results": {
+        "AC@1": {
+          "bootstrap_mean_delta": 0.03979292621872352,
+          "bootstrap_std": 0.016059900272113136,
+          "ci95_lower": 0.008127654539067362,
+          "ci95_upper": 0.07054649971423099,
+          "point_delta": 0.0399181081900122,
+          "probability_delta_nonpositive": 0.0066
+        },
+        "Avg@5": {
+          "bootstrap_mean_delta": 0.024711671293459497,
+          "bootstrap_std": 0.009771841541363745,
+          "ci95_lower": 0.005371337929911182,
+          "ci95_upper": 0.043953910067245125,
+          "point_delta": 0.02464601881690908,
+          "probability_delta_nonpositive": 0.007
+        }
+      },
+      "random_generator": "numpy.default_rng/PCG64",
+      "random_seed": 20260819,
+      "resampling_unit": "context_group",
+      "resampling_unit_count": 322,
+      "root_service_count": 10
+    },
+    "re2ob": {
+      "case_count": 90,
+      "comparator": "c1_i",
+      "comparison": "m1_s minus c1_i under the frozen nested OOF protocol",
+      "iterations": 10000,
+      "metric_results": {
+        "AC@1": {
+          "bootstrap_mean_delta": -0.011136841450527691,
+          "bootstrap_std": 0.011089072836480493,
+          "ci95_lower": -0.0375,
+          "ci95_upper": 0.0,
+          "point_delta": -0.01111111111111111,
+          "probability_delta_nonpositive": 1.0
+        },
+        "Avg@5": {
+          "bootstrap_mean_delta": -0.0022273682901055372,
+          "bootstrap_std": 0.0022178145672960984,
+          "ci95_lower": -0.007499999999999998,
+          "ci95_upper": 0.0,
+          "point_delta": -0.002222222222222222,
+          "probability_delta_nonpositive": 1.0
+        }
+      },
+      "random_generator": "numpy.default_rng/PCG64",
+      "random_seed": 20260819,
+      "resampling_unit": "case",
+      "resampling_unit_count": 90,
+      "root_service_count": 5
+    }
+  },
+  "secondary_endpoint": "root_service_macro AC@1"
+}
