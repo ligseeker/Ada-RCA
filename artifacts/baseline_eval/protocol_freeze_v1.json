@@ -1,0 +1,437 @@
+{
+  "ada_rca": {
+    "frozen_artifacts_unchanged": true,
+    "frozen_evidence_head": "9342e06db91945be2e44703437229ba45b18bda8",
+    "optimization_head": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+    "scientific_v1_reference": "bed295326e567395e725caa82840a534dcc0b1de"
+  },
+  "adapter_policy": {
+    "allowed_aliases": {
+      "frontendservice": "frontend"
+    },
+    "candidate_source": "frozen label-free per-dataset service registry",
+    "duplicate_rule": "FIRST_BEST_NATIVE_RANK_WINS",
+    "illegal_service_rule": "RECORD_UNMAPPED_AND_OMIT",
+    "mapping_rule": "LONGEST_EXACT_OR_UNDERSCORE_PREFIX_IN_FROZEN_REGISTRY",
+    "no_legal_mapping_status": "ADAPTER_FAILURE",
+    "root_label_available_to_adapter": false
+  },
+  "candidate_completion": {
+    "adapted_complete_ranking_metric": false,
+    "missing_reason_states": [
+      "NO_OBSERVED_TELEMETRY",
+      "ALGORITHM_FILTERED_INDICATOR",
+      "NATIVE_TOP_K_TRUNCATION",
+      "ADAPTER_MISMATCH",
+      "EXECUTION_FAILURE"
+    ],
+    "policy": "NONE"
+  },
+  "datasets": {
+    "re2ob": {
+      "candidate_count": 11,
+      "candidate_registry": "artifacts/source/re2ob/service_registry.json",
+      "candidate_registry_sha256": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+      "case_count": 90,
+      "event_metadata": "artifacts/source/re2ob/inputs.jsonl",
+      "event_metadata_sha256": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb",
+      "root_mapping": "artifacts/source/re2ob/labels.jsonl",
+      "root_mapping_sha256": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7",
+      "source_metadata": "artifacts/source/re2ob/sources.jsonl",
+      "source_metadata_sha256": "c162bb9882035d7b50d94f69e25fd638746519a3f3d4ad6029468d1eee606591"
+    },
+    "re2tt": {
+      "candidate_count": 68,
+      "candidate_registry": "artifacts/source/re2tt/service_registry.json",
+      "candidate_registry_sha256": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+      "case_count": 90,
+      "event_metadata": "artifacts/source/re2tt/inputs.jsonl",
+      "event_metadata_sha256": "1ca5e91387641c891e75a6e26bc3979f2398dae93e46147e97864cd503c7655d",
+      "root_mapping": "artifacts/source/re2tt/labels.jsonl",
+      "root_mapping_sha256": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca",
+      "source_metadata": "artifacts/source/re2tt/sources.jsonl",
+      "source_metadata_sha256": "866ee17bec973d004984822eadef3076ca12c3b67505ba2ccabd7f4cfb9bc931"
+    }
+  },
+  "execution_environment": {
+    "authorized_environment": ".venv",
+    "base_environment": "/home/zhangll24/miniconda3/envs/rcaeval",
+    "clean_rcaeval_checkout": "/home/zhangll24/RCA_project/RCAEval-clean",
+    "dependency_versions": {
+      "causal-learn": "0.1.3.3",
+      "networkx": "2.5",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "pingouin": "0.5.3",
+      "scikit-learn": "1.7.2",
+      "scikit-network": "0.33.5",
+      "scipy": "1.15.3",
+      "tigramite": "5.2.10.1",
+      "torch": "2.8.0"
+    },
+    "python": "3.10.20",
+    "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+    "rcd_environment_status": "NOT_FROZEN"
+  },
+  "failure_policy": {
+    "automatic_retry": false,
+    "fallback_rankings_allowed": false,
+    "failure_ranking_allowed": false,
+    "per_case_timeout_seconds": 3600,
+    "record_count_per_method_dataset": 90,
+    "successful_subset_allowed": false,
+    "terminal_statuses": [
+      "SUCCESS",
+      "METHOD_FAILURE",
+      "ADAPTER_FAILURE",
+      "DATA_FAILURE",
+      "TIMEOUT"
+    ]
+  },
+  "final_decision": "BASELINE_PROTOCOL_FROZEN_PARTIAL_AUTHORIZATION",
+  "input_firewall": {
+    "forbidden_predictive_fields": [
+      "root_service",
+      "fault_type",
+      "relative_directory",
+      "source_path",
+      "injection_target"
+    ],
+    "label_join_phase": "SEPARATE_POST_EXECUTION_PHASE_AFTER_USER_REVIEW"
+  },
+  "methods": {
+    "BARO": {
+      "audit_classification": "EXECUTABLE-CANDIDATE",
+      "candidate_policy": "PARTIAL_RETAINED_INDICATORS_NO_COMPLETION",
+      "compatibility_tier": "P2_BENCHMARK_COMPARABLE_WITH_MATERIAL_DIFFERENCES",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": ".venv-python3.10.20",
+      "execution_authorization": "AUTHORIZED_FOR_CONFIRMATORY_EXECUTION",
+      "family": "ROBUST_STATISTICAL_METRIC_RANKING",
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "EXACT_WINDOW_SIMPLE_METRICS",
+      "native_output": "COMPLETE_RETAINED_INDICATOR_LIST_NO_RETURNED_SCORES",
+      "provenance": "RCAEval/e2e/baro.py::baro",
+      "source_sha256": "ddaae58b4b03453a812c4af33eb0053d803bcb6132453dd37bfa1f5e675b72c4",
+      "timestamp_status": "PROVEN_SECONDS",
+      "window_status": "WINDOW-ALIGNED"
+    },
+    "CIRCA": {
+      "audit_classification": "EXECUTABLE-CANDIDATE",
+      "candidate_policy": "PARTIAL_GRAPH_INDICATORS_NO_COMPLETION",
+      "compatibility_tier": "P2_BENCHMARK_COMPARABLE_WITH_MATERIAL_DIFFERENCES",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": ".venv-python3.10.20",
+      "execution_authorization": "AUTHORIZED_FOR_CONFIRMATORY_EXECUTION",
+      "family": "PC_CAUSAL_GRAPH_RHT",
+      "failure_detector": "EMPTY_ADJ_AND_INPUT_COLUMN_ORDER",
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "EXACT_WINDOW_SIMPLE_METRICS",
+      "native_internal_window": "T0_MINUS_120_THROUGH_T0_PLUS_300_INCLUSIVE",
+      "native_output": "GRAPH_AND_PARTIAL_INDICATOR_LIST_NO_RETURNED_SCORES",
+      "provenance": "RCAEval/e2e/circa.py::circa",
+      "seed": 20260830,
+      "source_sha256": "2e7c0a4fc860f3401dc1b0b002cb3e3b5d2553d8f79914d942d3041d90984324",
+      "timestamp_status": "PROVEN_SECONDS",
+      "window_status": "WINDOW-COMPATIBLE-WITH-NATIVE-INTERNAL-PROCESSING"
+    },
+    "CausalRCA": {
+      "audit_classification": "EXECUTABLE-CANDIDATE",
+      "candidate_policy": "PARTIAL_RETAINED_INDICATORS_NO_COMPLETION",
+      "compatibility_tier": "P2_BENCHMARK_COMPARABLE_WITH_MATERIAL_DIFFERENCES",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": ".venv-python3.10.20-deterministic-cpu",
+      "execution_authorization": "AUTHORIZED_FOR_CONFIRMATORY_EXECUTION",
+      "family": "NEURAL_GRAPH_PAGERANK",
+      "failure_detector": "EMPTY_GRAPH_AND_INPUT_NODE_ORDER",
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "EXACT_WINDOW_SIMPLE_METRICS_METRIC_BRANCH",
+      "native_output": "GRAPH_AND_RETAINED_INDICATOR_LIST_NO_RETURNED_SCORES",
+      "provenance": "RCAEval/e2e/causalrca.py::causalrca",
+      "seed": 20260830,
+      "source_sha256": "74aebfb9f8211db3a48385a73ae577e9673a432d719f859771bbf66dc2a008f0",
+      "timestamp_status": "PROVEN_SECONDS",
+      "window_status": "WINDOW-ALIGNED"
+    },
+    "MicroCause": {
+      "audit_classification": "EXECUTABLE-CANDIDATE",
+      "candidate_policy": "PARTIAL_RETAINED_INDICATORS_NO_COMPLETION",
+      "compatibility_tier": "P2_BENCHMARK_COMPARABLE_WITH_MATERIAL_DIFFERENCES",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": ".venv-python3.10.20",
+      "execution_authorization": "AUTHORIZED_FOR_CONFIRMATORY_EXECUTION",
+      "family": "TEMPORAL_PCMCI_RANDOM_WALK",
+      "label_independent_sli": {
+        "re2ob": "frontend_latency",
+        "re2tt": "ts-ui-dashboard_latency"
+      },
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "EXACT_WINDOW_SIMPLE_METRICS_AND_DATASET_DEFAULT_SLI",
+      "native_output": "GRAPH_AND_RETAINED_INDICATOR_LIST_NO_RETURNED_SCORES",
+      "provenance": "RCAEval/e2e/microcause.py::microcause",
+      "seed": 20260830,
+      "source_sha256": "373bbe69b71a7608889169d8b114ed7234b71f70cb31157d195475c3b276855f",
+      "timestamp_status": "PROVEN_SECONDS",
+      "window_status": "WINDOW-ALIGNED"
+    },
+    "MicroRank": {
+      "audit_classification": "EXECUTABLE-CANDIDATE",
+      "candidate_policy": "FIRST_FIVE_PREFIX_OF_OPERATION_LIST_NO_COMPLETION",
+      "compatibility_tier": "P2_BENCHMARK_COMPARABLE_WITH_MATERIAL_DIFFERENCES",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": ".venv-python3.10.20-hash-seed",
+      "execution_authorization": "AUTHORIZED_FOR_CONFIRMATORY_EXECUTION",
+      "family": "TRACE_PAGERANK_SPECTRUM",
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "EXACT_SPAN_END_WINDOW_RAW_TRACES_AND_T0_MICROSECONDS",
+      "native_output": "OPERATION_LIST_CAPPED_AT_11_NO_RETURNED_SCORES",
+      "provenance": "RCAEval/e2e/microrank.py::microrank",
+      "source_sha256": "717be27e7fbe631c9606b8f917c0fb58484c49d37af5fdcd87bdc054660021f8",
+      "timestamp_status": "PROVEN_START_AND_DURATION_MICROSECONDS_T0_SECONDS",
+      "window_status": "WINDOW-COMPATIBLE-WITH-NATIVE-INTERNAL-PROCESSING"
+    },
+    "PDiagnose": {
+      "audit_classification": "CONTEXT-ONLY",
+      "candidate_policy": "UNRESOLVED",
+      "compatibility_tier": "P3_CONTEXT_ONLY",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": "NONE_AUTHORIZED",
+      "execution_authorization": "CONTEXT_ONLY",
+      "family": "RULE_BASED_MULTI_SOURCE",
+      "metric_legality": {
+        "AC@1": "NOT-IDENTIFIABLE",
+        "AC@3": "NOT-IDENTIFIABLE",
+        "AC@5": "NOT-IDENTIFIABLE",
+        "Avg@5": "NOT-IDENTIFIABLE",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "HARD_CODED_OB_DEMO_WITH_WHOLE_FILE_LOGS",
+      "native_output": "PRINTED_SERVICE_ORDER_ONLY",
+      "provenance": "RCAEval/e2e/pdiagnose.py::main",
+      "reason": "NO_GENERAL_CALLABLE_AND_WINDOW_NOT_COMPARABLE",
+      "source_sha256": "1c24cb66ad6cd940d1129eef337ef7aba8a1c28cbfadf4ef04311da112a6b268",
+      "timestamp_status": "MIXED_WITH_NONCOMPARABLE_LOG_WINDOW",
+      "window_status": "WINDOW-NOT-COMPARABLE"
+    },
+    "RCD": {
+      "audit_classification": "EXECUTION-AUDIT-REQUIRED",
+      "candidate_policy": "PARTIAL_SELECTED_INDICATORS_NO_COMPLETION",
+      "compatibility_tier": "P2_BENCHMARK_COMPARABLE_WITH_MATERIAL_DIFFERENCES",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": "PYTHON3.8_REQUIREMENTS_RCD_LOCK_NOT_FROZEN",
+      "execution_authorization": "BLOCKED_PENDING_SEMANTIC_AUDIT",
+      "family": "DISTRIBUTION_CHANGE_LOCALIZED_PC",
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "EXACT_WINDOW_SIMPLE_METRICS",
+      "native_output": "PARTIAL_SELECTED_INDICATOR_LIST_NO_SCORES",
+      "provenance": "RCAEval/e2e/rcd.py::rcd",
+      "reason": "OFFICIAL_PYTHON3.8_DEPENDENCY_ENVIRONMENT_NOT_FROZEN",
+      "seed": 20260830,
+      "source_sha256": "e6a7df13e4f3256b45da0713b07b6bf41fb9178333e31397701ab2f08872f628",
+      "timestamp_status": "PROVEN_SECONDS",
+      "window_status": "WINDOW-ALIGNED"
+    },
+    "TraceRCA": {
+      "audit_classification": "EXECUTABLE-CANDIDATE",
+      "candidate_policy": "PARTIAL_OBSERVED_OPERATIONS_NO_COMPLETION",
+      "compatibility_tier": "P2_BENCHMARK_COMPARABLE_WITH_MATERIAL_DIFFERENCES",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": ".venv-python3.10.20",
+      "execution_authorization": "AUTHORIZED_FOR_CONFIRMATORY_EXECUTION",
+      "family": "TRACE_SUPPORT_CONFIDENCE",
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "EXACT_SPAN_END_WINDOW_RAW_TRACES_AND_T0_MICROSECONDS",
+      "native_output": "PARTIAL_OBSERVED_OPERATION_LIST_NO_RETURNED_SCORES",
+      "provenance": "RCAEval/e2e/tracerca.py::tracerca",
+      "source_sha256": "1ef420e4430a7ad0379689c1d18eee9dd7fb0d15ac4371f6ff968900a22b0946",
+      "timestamp_status": "PROVEN_START_AND_DURATION_MICROSECONDS_T0_SECONDS",
+      "window_status": "WINDOW-COMPATIBLE-WITH-NATIVE-INTERNAL-PROCESSING"
+    },
+    "mmBARO": {
+      "audit_classification": "EXECUTABLE-CANDIDATE",
+      "candidate_policy": "PARTIAL_CROSS_MODALITY_INDICATORS_NO_COMPLETION",
+      "compatibility_tier": "P2_BENCHMARK_COMPARABLE_WITH_MATERIAL_DIFFERENCES",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": ".venv-python3.10.20",
+      "execution_authorization": "AUTHORIZED_FOR_CONFIRMATORY_EXECUTION",
+      "family": "MULTI_SOURCE_ROBUST_ANOMALY_RANKING",
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_dataset_keys": {
+        "re2ob": "mm-ob",
+        "re2tt": "mm-tt"
+      },
+      "native_input": "EXACT_WINDOW_METRIC_LOGTS_TRACETS_ERR_TRACETS_LAT",
+      "native_output": "CROSS_MODALITY_INDICATOR_LIST_NO_RETURNED_SCORES",
+      "provenance": "RCAEval/e2e/baro.py::mmbaro",
+      "source_sha256": "ddaae58b4b03453a812c4af33eb0053d803bcb6132453dd37bfa1f5e675b72c4",
+      "timestamp_status": "PROVEN_DERIVED_SECONDS",
+      "window_status": "WINDOW-COMPATIBLE-WITH-NATIVE-INTERNAL-PROCESSING"
+    },
+    "mmRCD": {
+      "audit_classification": "CONTEXT-ONLY",
+      "candidate_policy": "EXCLUDED_NOMINAL_MULTI_SOURCE_ROLE",
+      "compatibility_tier": "P3_CONTEXT_ONLY",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": "NONE_SELECTED",
+      "execution_authorization": "CONTEXT_ONLY",
+      "family": "NOMINAL_MULTI_SOURCE_RCD_METRIC_ONLY_COMPUTATION",
+      "metric_legality": {
+        "AC@1": "NOT-IDENTIFIABLE",
+        "AC@3": "NOT-IDENTIFIABLE",
+        "AC@5": "NOT-IDENTIFIABLE",
+        "Avg@5": "NOT-IDENTIFIABLE",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "DICT_KEYS_INDEXED_BUT_ONLY_METRIC_COMPUTED",
+      "native_output": "PARTIAL_METRIC_INDICATOR_LIST",
+      "provenance": "RCAEval/e2e/mmrcd.py::mmrcd",
+      "reason": "DOES_NOT_PROVIDE_MULTI_SOURCE_SCIENTIFIC_COVERAGE_AND_DUPLICATES_RCD",
+      "source_sha256": "327c696f48cebc893851cf81e7b3aad5505cd78e8cc58653a0c69681fae765f1",
+      "timestamp_status": "PROVEN_DERIVED_SECONDS",
+      "window_status": "WINDOW-ALIGNED_FOR_ACTUAL_METRIC_PATH"
+    },
+    "multi-source CIRCA": {
+      "audit_classification": "CONTEXT-ONLY",
+      "candidate_policy": "UNRESOLVED",
+      "compatibility_tier": "P3_CONTEXT_ONLY",
+      "datasets": [
+        "re2ob",
+        "re2tt"
+      ],
+      "environment": "NONE",
+      "execution_authorization": "CONTEXT_ONLY",
+      "family": "MULTI_SOURCE_CAUSAL_GRAPH",
+      "metric_legality": {
+        "AC@1": "NOT-IDENTIFIABLE",
+        "AC@3": "NOT-IDENTIFIABLE",
+        "AC@5": "NOT-IDENTIFIABLE",
+        "Avg@5": "NOT-IDENTIFIABLE",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "native_input": "NO_IMPLEMENTATION",
+      "native_output": "NO_IMPLEMENTATION",
+      "provenance": "NO_PINNED_CALLABLE",
+      "reason": "NO_OFFICIAL_EXECUTABLE_PATH",
+      "timestamp_status": "UNRESOLVED",
+      "window_status": "WINDOW-NOT-COMPARABLE"
+    }
+  },
+  "partial_ranking": {
+    "avg_at_5_identifiable_from_first_five": true,
+    "baseline_mrr_policy": "NOT-IDENTIFIABLE",
+    "missing_order_invention_allowed": false,
+    "native_and_adapted_metrics_reported_separately": true
+  },
+  "performance_blind": true,
+  "performance_firewall": {
+    "baseline_performance_exposed": false,
+    "breach_status": "NONE",
+    "full_real_case_invocation_allowed_in_this_phase": false
+  },
+  "protocol_version": "RCA_BASELINE_PROTOCOL_FREEZE_V1",
+  "randomness": {
+    "canonical_seed": 20260830,
+    "number_of_runs_per_method": 1,
+    "python_hash_seed": 20260830,
+    "seed_search_allowed": false,
+    "torch_device": "CPU",
+    "torch_deterministic_algorithms": true
+  },
+  "rcaeval": {
+    "execution_source_dirty": false,
+    "head": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+    "remote": "https://github.com/phamquiluan/RCAEval.git"
+  },
+  "timestamp_policy": {
+    "derived_time_unit": "s",
+    "inject_time_unit": "s",
+    "raw_trace_duration_unit": "us",
+    "raw_trace_start_time_unit": "us",
+    "trace_anchor_conversion": "T0_SECONDS_MULTIPLIED_BY_1000000",
+    "trace_filter_clock": "SPAN_END_STARTTIME_PLUS_DURATION"
+  },
+  "user_review_required_before_execution": true,
+  "window_policy": {
+    "canonical": "[t0-600s,t0+600s)",
+    "end_exclusive": true,
+    "force_identical_internal_preprocessing": false
+  }
+}
