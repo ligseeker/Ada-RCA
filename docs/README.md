@@ -10,6 +10,9 @@ Ada-RCA performance search is part of this scientific freeze.
 
 The documents below are retained as historical research execution context.
 
+The RCAEval baseline activation and method-to-environment map is maintained in
+[`baseline_eval/RCA_BASELINE_ENVIRONMENTS.md`](baseline_eval/RCA_BASELINE_ENVIRONMENTS.md).
+
 The completed P3 stage remains governed by [`RCA_P3_Research_Execution_Protocol_V0.6_min.md`](RCA_P3_Research_Execution_Protocol_V0.6_min.md). P3-G1 is permanently `NO-GO / CLOSED`.
 
 The completed P4-G0 minimal candidate-relative falsification experiment is
