@@ -343,10 +343,6 @@ def invoke_predictive_method(
                 preprocess(telemetry.copy(), dataset=native_dataset, dk_select_useful=False).columns
             )
     ranks = validate_native_output(method, output, input_columns)
-    if method == "MicroCause":
-        adjacency = np.asarray(output.get("adj"))
-        if adjacency.size == 0 or not np.any(adjacency):
-            raise MethodOutputError("MicroCause returned an empty graph")
     return output, ranks, module_path, sink
 
 
@@ -585,7 +581,7 @@ def synthetic_preflight(method: str) -> dict[str, Any]:
             sli = None
         else:
             telemetry, anchor, candidates, sli = _synthetic_metric(dataset)
-        output, ranks, module_path, sink = invoke_predictive_method(
+        output, ranks, module_path, _sink = invoke_predictive_method(
             method, dataset, f"synthetic-{dataset}", anchor, telemetry, candidates, sli
         )
         del output
@@ -598,7 +594,6 @@ def synthetic_preflight(method: str) -> dict[str, Any]:
             "adapted_length": len(adapted.services),
             "native_digest": canonical_payload_digest(list(ranks)),
             "adapted_digest": canonical_payload_digest(list(adapted.services)),
-            "native_console_digest": sink.hexdigest,
         })
         module_paths.append(str(module_path))
     return {

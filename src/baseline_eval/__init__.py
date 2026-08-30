@@ -298,6 +298,9 @@ def validate_mmbaro_payload(payload: Mapping[str, Any]) -> None:
     missing = sorted(_MMBARO_KEYS.difference(payload))
     if missing:
         raise AdapterError("mmBARO payload missing native keys: " + ", ".join(missing))
+    unexpected = sorted(set(payload).difference(_MMBARO_KEYS))
+    if unexpected:
+        raise AdapterError("mmBARO payload has unauthorized keys: " + ", ".join(unexpected))
 
 
 def _empty_graph(value: Any) -> bool:
@@ -331,6 +334,10 @@ def validate_native_output(
         raise MethodOutputError("native output must be a mapping")
     if detect_silent_fallback(method, output, input_columns):
         raise MethodOutputError("audited input-column fallback is a method failure")
+    if method.lower() == "microcause" and (
+        output.get("adj") is None or _empty_graph(output.get("adj"))
+    ):
+        raise MethodOutputError("MicroCause returned a missing or empty graph")
     ranks = output.get("ranks")
     if not isinstance(ranks, (list, tuple)) or not ranks:
         raise MethodOutputError("native ranks must be a non-empty ordered sequence")

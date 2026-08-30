@@ -29,7 +29,7 @@ from src.baseline_eval.confirmatory import (
     verify_rcaeval_clean,
 )
 from src.baseline_eval.evaluation import failure_zero_top_k
-from src.baseline_eval.worker import invoke_predictive_method
+from src.baseline_eval.worker import invoke_predictive_method, synthetic_preflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -222,6 +222,11 @@ class ConfirmatoryFirewallTest(unittest.TestCase):
     def test_24_rcaeval_clean_remains_clean(self):
         result = verify_rcaeval_clean()
         self.assertTrue(result["clean"])
+
+    def test_25_microrank_synthetic_prediction_fingerprint_is_deterministic(self):
+        first = synthetic_preflight("MicroRank")
+        second = synthetic_preflight("MicroRank")
+        self.assertEqual(first["fingerprint"], second["fingerprint"])
 
 
 if __name__ == "__main__":

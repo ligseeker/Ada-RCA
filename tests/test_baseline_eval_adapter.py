@@ -82,6 +82,13 @@ class BaselineEvalAdapterTest(unittest.TestCase):
         with self.assertRaises(MethodOutputError):
             validate_native_output("MicroRank", {"ranks": native + ("service_11",)})
 
+    def test_microcause_empty_graph_is_a_method_output_failure(self):
+        with self.assertRaises(MethodOutputError):
+            validate_native_output(
+                "MicroCause",
+                {"adj": [[0, 0], [0, 0]], "ranks": ["frontend_latency"]},
+            )
+
     def test_mmbaro_uses_official_multimodal_keys(self):
         self.assertEqual(mmbaro_dataset_key("re2ob"), "mm-ob")
         self.assertEqual(mmbaro_dataset_key("re2tt"), "mm-tt")
@@ -97,6 +104,20 @@ class BaselineEvalAdapterTest(unittest.TestCase):
         validate_mmbaro_payload(payload)
         with self.assertRaises(AdapterError):
             validate_mmbaro_payload({"metric": object(), "logts": object()})
+
+    def test_mmbaro_rejects_payload_fields_outside_the_frozen_contract(self):
+        payload = {
+            "metric": object(),
+            "logs": object(),
+            "logts": object(),
+            "traces": object(),
+            "tracets_err": object(),
+            "tracets_lat": object(),
+            "cluster_info": None,
+            "root_service": "must-not-reach-native-method",
+        }
+        with self.assertRaises(AdapterError):
+            validate_mmbaro_payload(payload)
 
 
 if __name__ == "__main__":
