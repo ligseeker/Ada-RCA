@@ -43,6 +43,10 @@ class FirewallBreach(ValueError):
     """A case record contains a forbidden label or performance field."""
 
 
+class MethodOutputError(ValueError):
+    """A method returned no valid native ranking or violated its output contract."""
+
+
 class TerminalStatus(str, Enum):
     SUCCESS = "SUCCESS"
     METHOD_FAILURE = "METHOD_FAILURE"
@@ -318,6 +322,25 @@ def detect_silent_fallback(
     return ranks == tuple(input_columns) == node_names and _empty_graph(output.get("adj"))
 
 
+def validate_native_output(
+    method: str, output: Mapping[str, Any], input_columns: Sequence[str] = ()
+) -> tuple[str, ...]:
+    """Validate only native output shape; do not complete or evaluate it."""
+
+    if not isinstance(output, Mapping):
+        raise MethodOutputError("native output must be a mapping")
+    if detect_silent_fallback(method, output, input_columns):
+        raise MethodOutputError("audited input-column fallback is a method failure")
+    ranks = output.get("ranks")
+    if not isinstance(ranks, (list, tuple)) or not ranks:
+        raise MethodOutputError("native ranks must be a non-empty ordered sequence")
+    if any(not isinstance(item, str) or not item for item in ranks):
+        raise MethodOutputError("native ranks must contain non-empty names")
+    if method.lower() == "microrank" and len(ranks) > 11:
+        raise MethodOutputError("pinned MicroRank output cannot exceed top_max + 6 = 11")
+    return tuple(ranks)
+
+
 def canonical_seed_environment(seed: int = CANONICAL_SEED) -> dict[str, str]:
     return {
         "PYTHONHASHSEED": str(seed),
@@ -404,6 +427,7 @@ __all__ = [
     "CaseRecord",
     "DenominatorError",
     "FirewallBreach",
+    "MethodOutputError",
     "PROTOCOL_VERSION",
     "STARTING_HEAD",
     "TerminalStatus",
@@ -423,4 +447,5 @@ __all__ = [
     "trace_anchor_microseconds",
     "validate_case_denominator",
     "validate_mmbaro_payload",
+    "validate_native_output",
 ]

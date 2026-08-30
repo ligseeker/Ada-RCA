@@ -1,0 +1,87 @@
+{
+  "ada_rca": {
+    "branch_at_start": "evaluation/rcaeval-baselines",
+    "frozen_evidence_head": "9342e06db91945be2e44703437229ba45b18bda8",
+    "git_status_at_start": "CLEAN",
+    "optimization_head": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+    "scientific_v1_reference": "bed295326e567395e725caa82840a534dcc0b1de",
+    "worktree": "/home/zhangll24/RCA_project/Ada-RCA-baselines"
+  },
+  "performance_firewall": {
+    "baseline_performance_exposed": false,
+    "breach_status": "NONE"
+  },
+  "python_environments": [
+    {
+      "name": "base",
+      "path": "/home/zhangll24/miniconda3",
+      "python": "3.8.17"
+    },
+    {
+      "name": "DAG",
+      "path": "/home/zhangll24/miniconda3/envs/DAG",
+      "python": "3.8.20"
+    },
+    {
+      "name": "mstgad",
+      "path": "/home/zhangll24/miniconda3/envs/mstgad",
+      "python": "3.8.20"
+    },
+    {
+      "name": "rcaeval",
+      "path": "/home/zhangll24/miniconda3/envs/rcaeval",
+      "python": "3.10.20"
+    },
+    {
+      "base": "/home/zhangll24/miniconda3/envs/rcaeval",
+      "name": ".venv",
+      "path": "/home/zhangll24/RCA_project/Ada-RCA-baselines/.venv",
+      "python": "3.10.20",
+      "system_site_packages": true
+    }
+  ],
+  "rcaeval": {
+    "clean_reference_checkout": {
+      "dirty": false,
+      "head": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+      "path": "/home/zhangll24/RCA_project/RCAEval-clean"
+    },
+    "current_local_checkout": {
+      "branch": "main",
+      "dirty": true,
+      "dirty_diff_sha256": "24fd630537aee9daec7ca907e68360b6616046989b79d6c25d32e83021291320",
+      "head": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+      "path": "/home/zhangll24/RCA_project/RCAEval",
+      "pre_existing_modifications": [
+        {
+          "path": "RCAEval/e2e/run.py",
+          "state": "MODIFIED",
+          "summary": "imports torch in run() and selects cuda:0 when available instead of fixed -1"
+        },
+        {
+          "path": "main.py",
+          "state": "MODIFIED",
+          "summary": "adds Python 3.10 to the Python 3.12 method-import branch and removes forced CUDA_VISIBLE_DEVICES=-1"
+        },
+        {
+          "bytes": 50822578,
+          "file_count": 3435,
+          "inventory_digest_kind": "sha256(sorted relative path TAB byte-size LF)",
+          "inventory_sha256": "f0bb85195c39060549a47474b209799f4a0a0558e4a6778011c368c093456ef0",
+          "path": ".mimocode/",
+          "state": "UNTRACKED"
+        },
+        {
+          "bytes": 25040,
+          "content_inspected": false,
+          "path": "RE2-TT_METHOD_ANALYSIS.md",
+          "sha256": "99981bcaae4115b42d3cc88f075083a967030e11ae635725ab04fcb2c547537b",
+          "state": "UNTRACKED"
+        }
+      ],
+      "unchanged_by_this_audit": true
+    },
+    "remote": "https://github.com/phamquiluan/RCAEval.git"
+  },
+  "schema_version": "rca_baseline_provenance_v1"
+}

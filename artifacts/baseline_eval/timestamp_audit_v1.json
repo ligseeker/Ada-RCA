@@ -1,0 +1,89 @@
+{
+  "code_findings": {
+    "mmbaro": {
+      "derived_time_unit": "s",
+      "inject_time_unit": "s",
+      "trace_branches_require_dataset_keys": [
+        "mm-ob",
+        "mm-tt"
+      ]
+    },
+    "microrank": {
+      "comparison": "startTime + duration < inject_time",
+      "conversion_in_pinned_code": "COMMENTED_OUT",
+      "required_adapter_conversion": "inject_time_seconds * 1000000"
+    },
+    "tracerca": {
+      "comparison": "startTime + duration < inject_time",
+      "conversion_in_pinned_code": "COMMENTED_OUT",
+      "required_adapter_conversion": "inject_time_seconds * 1000000"
+    }
+  },
+  "conclusion": {
+    "commented_conversion_reflects_actual_mismatch": true,
+    "duration_unit": "us",
+    "inject_time_unit": "s",
+    "raw_trace_start_time_unit": "us",
+    "timestamp_status": "PROVEN"
+  },
+  "dataset_samples": {
+    "re2ob": [
+      {
+        "case_id": "re2ob-9e575f44de987a1a",
+        "duration": 186,
+        "inject_time": 1705354566,
+        "start_time": 1705353846065999,
+        "start_time_minus_anchor_seconds": -719.934001
+      },
+      {
+        "case_id": "re2ob-bb4a5b75716772f9",
+        "duration": 45,
+        "inject_time": 1705351632,
+        "start_time": 1705350912191971,
+        "start_time_minus_anchor_seconds": -719.808029
+      },
+      {
+        "case_id": "re2ob-ce93ebf8eb13a5ed",
+        "duration": 84,
+        "inject_time": 1705542843,
+        "start_time": 1705542123000999,
+        "start_time_minus_anchor_seconds": -719.999001
+      }
+    ],
+    "re2tt": [
+      {
+        "case_id": "re2tt-e44ccb97e7cc1570",
+        "duration": 63643,
+        "inject_time": 1705918105,
+        "start_time": 1705917385000000,
+        "start_time_minus_anchor_seconds": -720.0
+      },
+      {
+        "case_id": "re2tt-94bd05feab03461e",
+        "duration": 1146,
+        "inject_time": 1705993539,
+        "start_time": 1705992819003196,
+        "start_time_minus_anchor_seconds": -719.996804
+      },
+      {
+        "case_id": "re2tt-3e24ca7f9747c84e",
+        "duration": 1307,
+        "inject_time": 1706150271,
+        "start_time": 1706149551034673,
+        "start_time_minus_anchor_seconds": -719.965327
+      }
+    ]
+  },
+  "evidence": {
+    "committed_input_metadata": "artifacts/source/<dataset>/inputs.jsonl",
+    "committed_source_paths": "artifacts/source/<dataset>/sources.jsonl",
+    "pinned_rcaeval_files": [
+      "RCAEval/e2e/microrank.py",
+      "RCAEval/e2e/tracerca.py",
+      "RCAEval/e2e/pdiagnose.py",
+      "RCAEval/e2e/baro.py"
+    ],
+    "unit_test": "tests/test_baseline_eval_adapter.py"
+  },
+  "schema_version": "rca_baseline_timestamp_audit_v1"
+}

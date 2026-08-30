@@ -3,6 +3,7 @@ import unittest
 
 from src.baseline_eval import (
     AdapterError,
+    MethodOutputError,
     adapt_native_ranking,
     inspect_trace_timestamp_sample,
     is_complete_legal_ranking,
@@ -11,6 +12,7 @@ from src.baseline_eval import (
     span_end_in_canonical_window,
     trace_anchor_microseconds,
     validate_mmbaro_payload,
+    validate_native_output,
 )
 
 
@@ -73,6 +75,12 @@ class BaselineEvalAdapterTest(unittest.TestCase):
         self.assertTrue(is_complete_legal_ranking(("a", "b"), ("a", "b")))
         self.assertFalse(is_complete_legal_ranking(("a",), ("a", "b")))
         self.assertFalse(is_complete_legal_ranking(("a", "a"), ("a", "b")))
+
+    def test_microrank_native_cap_is_eleven_not_five(self):
+        native = tuple(f"service_{index}" for index in range(11))
+        self.assertEqual(validate_native_output("MicroRank", {"ranks": native}), native)
+        with self.assertRaises(MethodOutputError):
+            validate_native_output("MicroRank", {"ranks": native + ("service_11",)})
 
     def test_mmbaro_uses_official_multimodal_keys(self):
         self.assertEqual(mmbaro_dataset_key("re2ob"), "mm-ob")

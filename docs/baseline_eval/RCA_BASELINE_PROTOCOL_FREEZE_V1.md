@@ -132,9 +132,13 @@ Native output granularity must be preserved in each result record:
 - native top-k; or
 - complete native list over the method's retained nodes.
 
-AC@1, AC@3, AC@5, and Avg@5 are identifiable for an ordered native top-5 (or a
-longer native list) after the frozen service projection. Absence from the
-exhausted native top-5 is a negative top-5 retrieval result. Avg@5 is computed
+AC@1, AC@3, AC@5, and Avg@5 are identifiable for the first five items of an
+ordered native list after the frozen service projection. MicroRank is not
+described as native top-5: although its call passes `top_max=5`, the pinned
+implementation retains indices `< top_max + 6` and therefore returns up to 11
+operations. Only its identifiable first-five prefix is used for top-5 metrics.
+Absence from the exhausted native first-five prefix is a negative top-5
+retrieval result. Avg@5 is computed
 only from the five identifiable nested top-k relationships. It must never use a
 fabricated rank below the known list.
 
