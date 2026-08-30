@@ -137,6 +137,32 @@ class EvidenceClosureFinalTest(unittest.TestCase):
             text = (ROOT / relative_path).read_text(encoding="utf-8")
             self.assertNotIn(forbidden, text, relative_path)
 
+    def test_canonical_index_routes_and_marks_legacy_summary_superseded(self):
+        index = (ROOT / "docs/RCA_EVIDENCE_INDEX.md").read_text(encoding="utf-8")
+        readme = (ROOT / "docs/README.md").read_text(encoding="utf-8")
+        self.assertIn("## CANONICAL CURRENT EVIDENCE", index)
+        self.assertIn("## HISTORICAL / SUPERSEDED", index)
+        for filename in (
+            "RCA_FINAL_SCIENTIFIC_FREEZE_V1.md",
+            "RCA_THESIS_RESULTS_PACKAGE.md",
+            "RCA_THESIS_CLAIM_MATRIX.md",
+            "BOOTSTRAP_FORENSIC_AUDIT.md",
+            "TELEMETRY_INFORMATION_LOSS_AUDIT_V1_1.md",
+            "TRACE_ERROR_REPRESENTATION_INVARIANT.md",
+            "EVIDENCE_ERRATA.md",
+        ):
+            self.assertIn(filename, index)
+        legacy_section = index.split("## HISTORICAL / SUPERSEDED", 1)[1]
+        normalized_legacy = " ".join(legacy_section.split())
+        self.assertIn("OPT_FINAL_EVIDENCE_SUMMARY.md", normalized_legacy)
+        self.assertIn("bootstrap intervals are superseded", normalized_legacy)
+        self.assertIn("historical terminology is superseded", normalized_legacy)
+        self.assertIn(
+            "must not be used as canonical thesis evidence", normalized_legacy
+        )
+        self.assertIn("RCA_EVIDENCE_CLOSURE_FAILURE.md", normalized_legacy)
+        self.assertIn("RCA_EVIDENCE_INDEX.md", readme)
+
 
 if __name__ == "__main__":
     unittest.main()

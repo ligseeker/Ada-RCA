@@ -37,7 +37,7 @@ Canonical implementation: `src/rca/features.py` and
 |---|---|
 | V1 scientific reference | `bed295326e567395e725caa82840a534dcc0b1de` |
 | Frozen optimization record | `53c9face2c96761c9114edb558eb6d8666a38dc6` |
-| Evidence Closure final decision | `EVIDENCE_CLOSURE_FINAL_COMMIT_PENDING` |
+| Evidence Closure final decision | `5957b465fac7351a6c55ab799a058ef66a60f9bc` |
 
 The final decision commit is recorded after the self-contained freeze commit is
 created. Any later evidence-index routing commit is documentation-only and does
