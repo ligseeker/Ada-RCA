@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class BaselineEvalPerformanceFirewallTest(unittest.TestCase):
-    def test_b0_b1_artifact_tree_contains_only_audit_and_freeze_files(self):
+    def test_b0_b1_and_label_free_b2_artifact_tree_is_allowlisted(self):
         assert_performance_firewall_tree(ROOT)
 
     def test_baseline_eval_package_exposes_no_aggregate_evaluator(self):

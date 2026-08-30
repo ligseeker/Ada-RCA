@@ -376,6 +376,10 @@ _FORBIDDEN_RECORD_KEYS = frozenset(
         "delta",
         "comparison",
         "label",
+        "condition",
+        "relativedirectory",
+        "sourcepath",
+        "injectiontarget",
     }
 )
 
@@ -400,7 +404,7 @@ def assert_firewall_safe_record(record: Mapping[str, Any]) -> None:
 
 
 def assert_performance_firewall_tree(root: Path) -> None:
-    """Fail closed if B0/B1 contains an outcome/prediction artifact."""
+    """Fail closed on unauthorized B0/B1 or label-free B2 artifacts."""
 
     artifact_root = root / "artifacts" / "baseline_eval"
     allowed = {
@@ -414,12 +418,24 @@ def assert_performance_firewall_tree(root: Path) -> None:
         for path in artifact_root.rglob("*")
         if path.is_file()
     }
-    unexpected = sorted(observed.difference(allowed))
     missing = sorted(allowed.difference(observed))
-    if unexpected or missing:
+    execution_files = sorted(path for path in observed if path.startswith("execution_v1/"))
+    unexpected = sorted(observed.difference(allowed).difference(execution_files))
+    allowed_execution_patterns = (
+        re.compile(r"execution_v1/input_manifest_v1\.json"),
+        re.compile(r"execution_v1/environments/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)\.json"),
+        re.compile(r"execution_v1/locks/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)_prediction_lock\.json"),
+        re.compile(r"execution_v1/records/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)/[A-Za-z0-9_.-]+/re2(?:ob|tt)/re2(?:ob|tt)-[0-9a-f]{16}\.json"),
+        re.compile(r"execution_v1/prediction_lock_v1\.json"),
+        re.compile(r"execution_v1/evaluation_v1\.json"),
+    )
+    unexpected_execution = [
+        path for path in execution_files if not any(pattern.fullmatch(path) for pattern in allowed_execution_patterns)
+    ]
+    if unexpected or unexpected_execution or missing:
         raise FirewallBreach(
-            "B0/B1 artifact allowlist mismatch; missing={!r}, unexpected={!r}".format(
-                missing, unexpected
+            "baseline artifact allowlist mismatch; missing={!r}, unexpected={!r}".format(
+                missing, unexpected + unexpected_execution
             )
         )
     protocol = json.loads((artifact_root / "protocol_freeze_v1.json").read_text(encoding="utf-8"))
@@ -430,6 +446,15 @@ def assert_performance_firewall_tree(root: Path) -> None:
         raise FirewallBreach("provenance records baseline performance exposure")
     if protocol["performance_firewall"]["breach_status"] != "NONE":
         raise FirewallBreach("protocol contains a performance firewall breach")
+    global_lock = artifact_root / "execution_v1" / "prediction_lock_v1.json"
+    evaluation = artifact_root / "execution_v1" / "evaluation_v1.json"
+    if evaluation.exists() and not global_lock.exists():
+        raise FirewallBreach("post-lock evaluation exists without a global prediction lock")
+    for relative in execution_files:
+        if relative == "execution_v1/evaluation_v1.json":
+            continue
+        payload = json.loads((artifact_root / relative).read_text(encoding="utf-8"))
+        assert_firewall_safe_record(payload)
 
 
 def persist_case_record(output_directory: Path, record: CaseRecord) -> Path:
