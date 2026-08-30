@@ -1,0 +1,852 @@
+{
+  "ada_rca_starting_commit": "54b403ff0441c318817818abeda13526652ae1d2",
+  "datasets": [
+    "re2ob",
+    "re2tt"
+  ],
+  "deterministic_controls": {
+    "canonical_seed": 20260830,
+    "cpu_only": false,
+    "python_hash_seed": 20260830,
+    "torch_deterministic_algorithms": false
+  },
+  "environment_digest": "3a25de908e2b08290f0db636528e6cc9bfaebe3c1f4adfff2dee8c34ac565371",
+  "execution_harness_commit": "5b3d9440f57ee91e8e1431739be6fb9de51d11ee",
+  "frozen_at": "2026-08-30T10:26:43.455549+00:00",
+  "identity": {
+    "dependency_manifest_digest": "e56e8bf161211ef2868cbec515f9159163bfde93a2593c12fb5f42b1406b7227",
+    "environment_path": "/home/zhangll24/RCA_project/Ada-RCA-baselines/.venv",
+    "environment_type": "venv",
+    "machine": "x86_64",
+    "os": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+    "packages": [
+      {
+        "name": "aiobotocore",
+        "version": "2.5.0"
+      },
+      {
+        "name": "aiohappyeyeballs",
+        "version": "2.7.1"
+      },
+      {
+        "name": "aiohttp",
+        "version": "3.10.5"
+      },
+      {
+        "name": "aiohttp-retry",
+        "version": "2.8.3"
+      },
+      {
+        "name": "aioitertools",
+        "version": "0.11.0"
+      },
+      {
+        "name": "aiosignal",
+        "version": "1.3.1"
+      },
+      {
+        "name": "amqp",
+        "version": "5.1.1"
+      },
+      {
+        "name": "antlr4-python3-runtime",
+        "version": "4.9.3"
+      },
+      {
+        "name": "appdirs",
+        "version": "1.4.4"
+      },
+      {
+        "name": "asttokens",
+        "version": "2.2.1"
+      },
+      {
+        "name": "async-timeout",
+        "version": "4.0.2"
+      },
+      {
+        "name": "asyncssh",
+        "version": "2.13.1"
+      },
+      {
+        "name": "atpublic",
+        "version": "3.1.1"
+      },
+      {
+        "name": "attrs",
+        "version": "23.1.0"
+      },
+      {
+        "name": "backcall",
+        "version": "0.2.0"
+      },
+      {
+        "name": "billiard",
+        "version": "3.6.4.0"
+      },
+      {
+        "name": "boto3",
+        "version": "1.26.76"
+      },
+      {
+        "name": "botocore",
+        "version": "1.29.76"
+      },
+      {
+        "name": "cairocffi",
+        "version": "1.5.1"
+      },
+      {
+        "name": "CairoSVG",
+        "version": "2.7.0"
+      },
+      {
+        "name": "causal-learn",
+        "version": "0.1.3.3"
+      },
+      {
+        "name": "causality",
+        "version": "0.0.10"
+      },
+      {
+        "name": "celery",
+        "version": "5.2.7"
+      },
+      {
+        "name": "certifi",
+        "version": "2023.5.7"
+      },
+      {
+        "name": "cffi",
+        "version": "1.15.1"
+      },
+      {
+        "name": "cfgv",
+        "version": "3.3.1"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.1.0"
+      },
+      {
+        "name": "click",
+        "version": "8.1.3"
+      },
+      {
+        "name": "click-didyoumean",
+        "version": "0.3.0"
+      },
+      {
+        "name": "click-plugins",
+        "version": "1.1.1"
+      },
+      {
+        "name": "click-repl",
+        "version": "0.2.0"
+      },
+      {
+        "name": "colorama",
+        "version": "0.4.6"
+      },
+      {
+        "name": "comm",
+        "version": "0.1.3"
+      },
+      {
+        "name": "configobj",
+        "version": "5.0.8"
+      },
+      {
+        "name": "contourpy",
+        "version": "1.0.7"
+      },
+      {
+        "name": "cryptography",
+        "version": "40.0.2"
+      },
+      {
+        "name": "cssselect2",
+        "version": "0.7.0"
+      },
+      {
+        "name": "cycler",
+        "version": "0.11.0"
+      },
+      {
+        "name": "debugpy",
+        "version": "1.6.7"
+      },
+      {
+        "name": "decorator",
+        "version": "5.1.1"
+      },
+      {
+        "name": "defusedxml",
+        "version": "0.7.1"
+      },
+      {
+        "name": "dictdiffer",
+        "version": "0.9.0"
+      },
+      {
+        "name": "diskcache",
+        "version": "5.6.1"
+      },
+      {
+        "name": "distlib",
+        "version": "0.3.6"
+      },
+      {
+        "name": "distro",
+        "version": "1.8.0"
+      },
+      {
+        "name": "dpath",
+        "version": "2.1.5"
+      },
+      {
+        "name": "dulwich",
+        "version": "0.21.5"
+      },
+      {
+        "name": "et-xmlfile",
+        "version": "1.1.0"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.1.1"
+      },
+      {
+        "name": "executing",
+        "version": "1.2.0"
+      },
+      {
+        "name": "filelock",
+        "version": "3.12.0"
+      },
+      {
+        "name": "flatten-dict",
+        "version": "0.4.2"
+      },
+      {
+        "name": "flufl.lock",
+        "version": "7.1.1"
+      },
+      {
+        "name": "fonttools",
+        "version": "4.39.4"
+      },
+      {
+        "name": "frozenlist",
+        "version": "1.8.0"
+      },
+      {
+        "name": "fsspec",
+        "version": "2023.5.0"
+      },
+      {
+        "name": "funcy",
+        "version": "2.0"
+      },
+      {
+        "name": "gitdb",
+        "version": "4.0.10"
+      },
+      {
+        "name": "GitPython",
+        "version": "3.1.31"
+      },
+      {
+        "name": "grandalf",
+        "version": "0.8"
+      },
+      {
+        "name": "graphviz",
+        "version": "0.20.1"
+      },
+      {
+        "name": "hydra-core",
+        "version": "1.3.2"
+      },
+      {
+        "name": "identify",
+        "version": "2.5.24"
+      },
+      {
+        "name": "idna",
+        "version": "3.4"
+      },
+      {
+        "name": "igraph",
+        "version": "0.10.4"
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.0.0"
+      },
+      {
+        "name": "ipykernel",
+        "version": "6.23.1"
+      },
+      {
+        "name": "ipython",
+        "version": "8.13.2"
+      },
+      {
+        "name": "iterative-telemetry",
+        "version": "0.0.8"
+      },
+      {
+        "name": "jedi",
+        "version": "0.18.2"
+      },
+      {
+        "name": "Jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "jmespath",
+        "version": "1.0.1"
+      },
+      {
+        "name": "joblib",
+        "version": "1.2.0"
+      },
+      {
+        "name": "jupyter_client",
+        "version": "8.2.0"
+      },
+      {
+        "name": "jupyter_core",
+        "version": "5.3.0"
+      },
+      {
+        "name": "kiwisolver",
+        "version": "1.4.4"
+      },
+      {
+        "name": "kombu",
+        "version": "5.2.4"
+      },
+      {
+        "name": "lazy_loader",
+        "version": "0.2"
+      },
+      {
+        "name": "littleutils",
+        "version": "0.2.2"
+      },
+      {
+        "name": "llvmlite",
+        "version": "0.48.0"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "2.2.0"
+      },
+      {
+        "name": "MarkupSafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "matplotlib",
+        "version": "3.10.9"
+      },
+      {
+        "name": "matplotlib-inline",
+        "version": "0.2.2"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "mpmath",
+        "version": "1.3.0"
+      },
+      {
+        "name": "multidict",
+        "version": "6.7.1"
+      },
+      {
+        "name": "nanotime",
+        "version": "0.5.2"
+      },
+      {
+        "name": "nest-asyncio",
+        "version": "1.5.6"
+      },
+      {
+        "name": "networkx",
+        "version": "2.5"
+      },
+      {
+        "name": "nodeenv",
+        "version": "1.8.0"
+      },
+      {
+        "name": "numba",
+        "version": "0.66.0"
+      },
+      {
+        "name": "numpy",
+        "version": "1.26.4"
+      },
+      {
+        "name": "nvidia-cublas-cu12",
+        "version": "12.8.4.1"
+      },
+      {
+        "name": "nvidia-cuda-cupti-cu12",
+        "version": "12.8.90"
+      },
+      {
+        "name": "nvidia-cuda-nvrtc-cu12",
+        "version": "12.8.93"
+      },
+      {
+        "name": "nvidia-cuda-runtime-cu12",
+        "version": "12.8.90"
+      },
+      {
+        "name": "nvidia-cudnn-cu12",
+        "version": "9.10.2.21"
+      },
+      {
+        "name": "nvidia-cufft-cu12",
+        "version": "11.3.3.83"
+      },
+      {
+        "name": "nvidia-cufile-cu12",
+        "version": "1.13.1.3"
+      },
+      {
+        "name": "nvidia-curand-cu12",
+        "version": "10.3.9.90"
+      },
+      {
+        "name": "nvidia-cusolver-cu12",
+        "version": "11.7.3.90"
+      },
+      {
+        "name": "nvidia-cusparse-cu12",
+        "version": "12.5.8.93"
+      },
+      {
+        "name": "nvidia-cusparselt-cu12",
+        "version": "0.7.1"
+      },
+      {
+        "name": "nvidia-nccl-cu12",
+        "version": "2.27.3"
+      },
+      {
+        "name": "nvidia-nvjitlink-cu12",
+        "version": "12.8.93"
+      },
+      {
+        "name": "nvidia-nvtx-cu12",
+        "version": "12.8.90"
+      },
+      {
+        "name": "omegaconf",
+        "version": "2.3.0"
+      },
+      {
+        "name": "openpyxl",
+        "version": "3.1.2"
+      },
+      {
+        "name": "orjson",
+        "version": "3.8.12"
+      },
+      {
+        "name": "outdated",
+        "version": "0.2.2"
+      },
+      {
+        "name": "packaging",
+        "version": "23.1"
+      },
+      {
+        "name": "pandas",
+        "version": "2.3.3"
+      },
+      {
+        "name": "pandas-flavor",
+        "version": "0.8.1"
+      },
+      {
+        "name": "parso",
+        "version": "0.8.3"
+      },
+      {
+        "name": "pathspec",
+        "version": "0.11.1"
+      },
+      {
+        "name": "patsy",
+        "version": "1.0.2"
+      },
+      {
+        "name": "pexpect",
+        "version": "4.8.0"
+      },
+      {
+        "name": "pickleshare",
+        "version": "0.7.5"
+      },
+      {
+        "name": "Pillow",
+        "version": "9.5.0"
+      },
+      {
+        "name": "pingouin",
+        "version": "0.5.3"
+      },
+      {
+        "name": "pip",
+        "version": "23.0.1"
+      },
+      {
+        "name": "pip",
+        "version": "26.1.2"
+      },
+      {
+        "name": "platformdirs",
+        "version": "3.5.1"
+      },
+      {
+        "name": "pluggy",
+        "version": "1.0.0"
+      },
+      {
+        "name": "pre-commit",
+        "version": "3.3.2"
+      },
+      {
+        "name": "prompt-toolkit",
+        "version": "3.0.38"
+      },
+      {
+        "name": "psutil",
+        "version": "5.9.5"
+      },
+      {
+        "name": "ptyprocess",
+        "version": "0.7.0"
+      },
+      {
+        "name": "pure-eval",
+        "version": "0.2.2"
+      },
+      {
+        "name": "pyAgrum",
+        "version": "3.0.0"
+      },
+      {
+        "name": "pycparser",
+        "version": "2.21"
+      },
+      {
+        "name": "pydot",
+        "version": "1.4.2"
+      },
+      {
+        "name": "pydotplus",
+        "version": "2.0.2"
+      },
+      {
+        "name": "Pygments",
+        "version": "2.15.1"
+      },
+      {
+        "name": "pygtrie",
+        "version": "2.5.0"
+      },
+      {
+        "name": "pyparsing",
+        "version": "3.0.9"
+      },
+      {
+        "name": "pytest",
+        "version": "7.3.1"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.8.2"
+      },
+      {
+        "name": "python-igraph",
+        "version": "0.10.4"
+      },
+      {
+        "name": "pytz",
+        "version": "2023.3"
+      },
+      {
+        "name": "PyYAML",
+        "version": "6.0.3"
+      },
+      {
+        "name": "pyzmq",
+        "version": "27.1.0"
+      },
+      {
+        "name": "RCAEval",
+        "version": "1.2.0"
+      },
+      {
+        "name": "requests",
+        "version": "2.30.0"
+      },
+      {
+        "name": "rich",
+        "version": "13.3.5"
+      },
+      {
+        "name": "ruamel.yaml",
+        "version": "0.17.26"
+      },
+      {
+        "name": "ruamel.yaml.clib",
+        "version": "0.2.15"
+      },
+      {
+        "name": "s3fs",
+        "version": "2023.5.0"
+      },
+      {
+        "name": "s3transfer",
+        "version": "0.6.1"
+      },
+      {
+        "name": "scikit-learn",
+        "version": "1.7.2"
+      },
+      {
+        "name": "scikit-network",
+        "version": "0.33.5"
+      },
+      {
+        "name": "scipy",
+        "version": "1.15.3"
+      },
+      {
+        "name": "seaborn",
+        "version": "0.12.2"
+      },
+      {
+        "name": "setuptools",
+        "version": "79.0.1"
+      },
+      {
+        "name": "setuptools",
+        "version": "83.0.0"
+      },
+      {
+        "name": "shortuuid",
+        "version": "1.0.11"
+      },
+      {
+        "name": "shtab",
+        "version": "1.6.1"
+      },
+      {
+        "name": "six",
+        "version": "1.16.0"
+      },
+      {
+        "name": "smmap",
+        "version": "5.0.0"
+      },
+      {
+        "name": "sqltrie",
+        "version": "0.3.1"
+      },
+      {
+        "name": "stack-data",
+        "version": "0.6.2"
+      },
+      {
+        "name": "statsmodels",
+        "version": "0.14.6"
+      },
+      {
+        "name": "sympy",
+        "version": "1.14.0"
+      },
+      {
+        "name": "tabulate",
+        "version": "0.9.0"
+      },
+      {
+        "name": "texttable",
+        "version": "1.6.7"
+      },
+      {
+        "name": "threadpoolctl",
+        "version": "3.1.0"
+      },
+      {
+        "name": "tigramite",
+        "version": "5.2.10.1"
+      },
+      {
+        "name": "tinycss2",
+        "version": "1.2.1"
+      },
+      {
+        "name": "tk",
+        "version": "0.1.0"
+      },
+      {
+        "name": "toml",
+        "version": "0.10.2"
+      },
+      {
+        "name": "tomli",
+        "version": "2.0.1"
+      },
+      {
+        "name": "tomlkit",
+        "version": "0.11.8"
+      },
+      {
+        "name": "torch",
+        "version": "2.8.0"
+      },
+      {
+        "name": "tornado",
+        "version": "6.3.2"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.65.0"
+      },
+      {
+        "name": "traitlets",
+        "version": "5.9.0"
+      },
+      {
+        "name": "triton",
+        "version": "3.4.0"
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0"
+      },
+      {
+        "name": "tzdata",
+        "version": "2023.3"
+      },
+      {
+        "name": "urllib3",
+        "version": "1.26.15"
+      },
+      {
+        "name": "vine",
+        "version": "5.0.0"
+      },
+      {
+        "name": "virtualenv",
+        "version": "20.23.0"
+      },
+      {
+        "name": "voluptuous",
+        "version": "0.13.1"
+      },
+      {
+        "name": "wcwidth",
+        "version": "0.2.6"
+      },
+      {
+        "name": "webencodings",
+        "version": "0.5.1"
+      },
+      {
+        "name": "wheel",
+        "version": "0.47.0"
+      },
+      {
+        "name": "wrapt",
+        "version": "1.15.0"
+      },
+      {
+        "name": "xarray",
+        "version": "2023.5.0"
+      },
+      {
+        "name": "yarl",
+        "version": "1.9.2"
+      },
+      {
+        "name": "zc.lockfile",
+        "version": "3.0.post1"
+      }
+    ],
+    "processor": "x86_64",
+    "python_executable": "/home/zhangll24/RCA_project/Ada-RCA-baselines/.venv/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.10.20",
+    "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+    "rcaeval_source_digests": {
+      "RCAEval/e2e/baro.py": "ddaae58b4b03453a812c4af33eb0053d803bcb6132453dd37bfa1f5e675b72c4",
+      "RCAEval/e2e/causalrca.py": "74aebfb9f8211db3a48385a73ae577e9673a432d719f859771bbf66dc2a008f0",
+      "RCAEval/e2e/circa.py": "2e7c0a4fc860f3401dc1b0b002cb3e3b5d2553d8f79914d942d3041d90984324",
+      "RCAEval/e2e/microcause.py": "373bbe69b71a7608889169d8b114ed7234b71f70cb31157d195475c3b276855f",
+      "RCAEval/e2e/microrank.py": "717be27e7fbe631c9606b8f917c0fb58484c49d37af5fdcd87bdc054660021f8",
+      "RCAEval/e2e/tracerca.py": "1ef420e4430a7ad0379689c1d18eee9dd7fb0d15ac4371f6ff968900a22b0946"
+    },
+    "runtime_python_executable": "/home/zhangll24/miniconda3/envs/rcaeval/bin/python3.10",
+    "worker_environment": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "CUDA_VISIBLE_DEVICES": "",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONHASHSEED": "20260830",
+      "PYTHONPATH": "/home/zhangll24/RCA_project/RCAEval-clean:/home/zhangll24/RCA_project/Ada-RCA-baselines"
+    }
+  },
+  "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+  "method": "BARO",
+  "protocol_bundle_digest": "b81d576096daa6661d693ad1e885e007a7020255ff5223b8dc957b1ab6ecb9dd",
+  "protocol_digest": "aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e",
+  "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+  "schema_preflight": [
+    {
+      "case_count": 90,
+      "dataset": "re2ob",
+      "derived_column_counts": {
+        "logts": 31,
+        "tracets_err": 18,
+        "tracets_lat": 18
+      },
+      "metric_column_count": 73,
+      "status": "PASS",
+      "trace_column_count": 11
+    },
+    {
+      "case_count": 90,
+      "dataset": "re2tt",
+      "derived_column_counts": {
+        "logts": 175,
+        "tracets_err": 158,
+        "tracets_lat": 158
+      },
+      "metric_column_count": 370,
+      "status": "PASS",
+      "trace_column_count": 11
+    }
+  ],
+  "schema_version": "rca_baseline_environment_v1",
+  "synthetic_preflight": {
+    "fingerprint": "62b8e917b6394d5be54b84c497140711cc1ec5bad43025c541d6f14c7e142c7c",
+    "native_output_kind": "INDICATOR_RANKING",
+    "runs": 2,
+    "status": "PASS"
+  }
+}
