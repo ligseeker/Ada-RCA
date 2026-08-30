@@ -5,6 +5,7 @@ from src.baseline_eval import (
     AdapterError,
     MethodOutputError,
     adapt_native_ranking,
+    frozen_microcause_sli,
     inspect_trace_timestamp_sample,
     is_complete_legal_ranking,
     metric_legality,
@@ -88,6 +89,22 @@ class BaselineEvalAdapterTest(unittest.TestCase):
                 "MicroCause",
                 {"adj": [[0, 0], [0, 0]], "ranks": ["frontend_latency"]},
             )
+
+    def test_microcause_sli_is_dataset_frozen_and_label_independent(self):
+        self.assertEqual(
+            frozen_microcause_sli("re2ob", ("frontend_latency", "root-coded_latency")),
+            "frontend_latency",
+        )
+        self.assertEqual(
+            frozen_microcause_sli("re2ob", ("frontend_1", "root-coded_latency")),
+            "frontend_1",
+        )
+        self.assertEqual(
+            frozen_microcause_sli("re2tt", ("root-coded_latency", "frontend_1")),
+            "ts-ui-dashboard_latency",
+        )
+        with self.assertRaises(AdapterError):
+            frozen_microcause_sli("unknown", ())
 
     def test_mmbaro_uses_official_multimodal_keys(self):
         self.assertEqual(mmbaro_dataset_key("re2ob"), "mm-ob")

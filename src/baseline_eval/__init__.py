@@ -294,6 +294,18 @@ def mmbaro_dataset_key(dataset: str) -> str:
         raise AdapterError("mmBARO supports only frozen RE2-OB and RE2-TT") from exc
 
 
+def frozen_microcause_sli(dataset: str, available_columns: Sequence[str]) -> str:
+    """Return the label-independent dataset SLI frozen by the adapter spec."""
+
+    if dataset == "re2tt":
+        return "ts-ui-dashboard_latency"
+    if dataset == "re2ob":
+        if "frontend_latency" not in available_columns and "frontend_1" in available_columns:
+            return "frontend_1"
+        return "frontend_latency"
+    raise AdapterError("MicroCause supports only frozen RE2-OB and RE2-TT")
+
+
 def validate_mmbaro_payload(payload: Mapping[str, Any]) -> None:
     missing = sorted(_MMBARO_KEYS.difference(payload))
     if missing:

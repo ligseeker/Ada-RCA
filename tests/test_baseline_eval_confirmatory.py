@@ -19,11 +19,13 @@ from src.baseline_eval.confirmatory import (
     METHOD_ORDER,
     PreflightError,
     SequenceError,
+    _run_synthetic_preflight,
     assert_method_sequence_ready,
     canonical_payload_digest,
     exclusive_execution_lock,
     format_case_status,
     method_lock_relative,
+    preflight_environment,
     validate_attempt_is_new,
     validate_terminal_record,
     verify_rcaeval_clean,
@@ -106,6 +108,73 @@ class ConfirmatorySequenceTest(unittest.TestCase):
             (attempt / "re2ob-0000000000000000.json").write_text("{}", encoding="utf-8")
             with self.assertRaises(SequenceError):
                 validate_attempt_is_new(root, "BARO", "attempt-2")
+
+    def test_06a_environment_preflight_is_read_only_and_not_sequence_gated(self):
+        identity = {
+            "python_executable": "/external/env/bin/python",
+            "runtime_python_executable": "/base/bin/python",
+            "python_version": "3.10.20",
+            "python_implementation": "CPython",
+            "environment_path": "/external/env",
+            "environment_type": "venv",
+            "dependency_manifest_digest": "d" * 64,
+        }
+        synthetic = {
+            "status": "PASS",
+            "method": "mmBARO",
+            "fingerprint": "f" * 64,
+            "native_output_kind": "CROSS_MODALITY_INDICATOR_RANKING",
+            "module_paths_within_clean_checkout": True,
+        }
+        schema = [{"dataset": dataset, "status": "PASS"} for dataset in DATASET_ORDER]
+        with mock.patch("src.baseline_eval.confirmatory.verify_protocol_artifacts"), mock.patch(
+            "src.baseline_eval.confirmatory.verify_rcaeval_clean"
+        ), mock.patch("src.baseline_eval.confirmatory.assert_ada_rca_frozen_unchanged"), mock.patch(
+            "src.baseline_eval.confirmatory.require_committed_file"
+        ), mock.patch(
+            "src.baseline_eval.confirmatory._environment_preflight_details",
+            return_value=(identity, synthetic, schema),
+        ), mock.patch(
+            "src.baseline_eval.confirmatory.sha256_file", return_value="i" * 64
+        ), mock.patch(
+            "src.baseline_eval.confirmatory.assert_method_sequence_ready"
+        ) as sequence:
+            result = preflight_environment(ROOT, "mmBARO", Path("/external/env/bin/python"))
+        sequence.assert_not_called()
+        self.assertFalse(result["writes_artifacts"])
+        self.assertFalse(result["authorizes_real_execution"])
+        self.assertEqual(result["synthetic_preflight"]["runs"], 2)
+        self.assertNotIn("packages", result["environment"])
+
+    def test_06b_synthetic_preflight_rejects_nonclean_import_resolution(self):
+        payload = {
+            "status": "PASS",
+            "method": "TraceRCA",
+            "fingerprint": "f" * 64,
+            "native_output_kind": "PARTIAL_OPERATION_RANKING",
+            "module_paths_within_clean_checkout": False,
+        }
+        completed = subprocess.CompletedProcess(
+            args=(), returncode=0, stdout=json.dumps(payload), stderr=""
+        )
+        with mock.patch("src.baseline_eval.confirmatory.subprocess.run", return_value=completed):
+            with self.assertRaisesRegex(PreflightError, "outside RCAEval-clean"):
+                _run_synthetic_preflight(ROOT, Path("/external/env/bin/python"), "TraceRCA")
+
+    def test_06c_synthetic_preflight_requires_sha256_fingerprint(self):
+        payload = {
+            "status": "PASS",
+            "method": "mmBARO",
+            "fingerprint": "not-a-digest",
+            "native_output_kind": "CROSS_MODALITY_INDICATOR_RANKING",
+            "module_paths_within_clean_checkout": True,
+        }
+        completed = subprocess.CompletedProcess(
+            args=(), returncode=0, stdout=json.dumps(payload), stderr=""
+        )
+        with mock.patch("src.baseline_eval.confirmatory.subprocess.run", return_value=completed):
+            with self.assertRaisesRegex(PreflightError, "invalid fingerprint"):
+                _run_synthetic_preflight(ROOT, Path("/external/env/bin/python"), "mmBARO")
 
 
 class ConfirmatoryFirewallTest(unittest.TestCase):

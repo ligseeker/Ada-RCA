@@ -522,9 +522,70 @@ def _run_synthetic_preflight(root: Path, python: Path, method: str) -> dict[str,
         result = json.loads(completed.stdout)
     except json.JSONDecodeError as exc:
         raise PreflightError(f"{method} synthetic preflight returned invalid JSON") from exc
-    if result.get("status") != "PASS":
+    if result.get("status") != "PASS" or result.get("method") != method:
         raise PreflightError(f"{method} synthetic preflight did not pass")
+    if result.get("module_paths_within_clean_checkout") is not True:
+        raise PreflightError(f"{method} synthetic preflight imported outside RCAEval-clean")
+    fingerprint = result.get("fingerprint")
+    if not isinstance(fingerprint, str) or not re.fullmatch(r"[0-9a-f]{64}", fingerprint):
+        raise PreflightError(f"{method} synthetic preflight returned an invalid fingerprint")
     return result
+
+
+def _environment_preflight_details(
+    root: Path, method: str, python: Path
+) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
+    """Resolve one environment with synthetic data only and without writing artifacts."""
+
+    identity = collect_environment_identity(root, python)
+    first = _run_synthetic_preflight(root, python, method)
+    second = _run_synthetic_preflight(root, python, method)
+    if first["fingerprint"] != second["fingerprint"]:
+        raise PreflightError(f"{method} synthetic executions are not deterministic")
+    schema = [schema_preflight(root, dataset) for dataset in DATASET_ORDER]
+    return identity, first, schema
+
+
+def preflight_environment(root: Path, method: str, python: Path) -> dict[str, Any]:
+    """Read-only environment resolution for a current or later baseline.
+
+    This deliberately does not enforce the method execution sequence and does
+    not create an environment manifest. It is safe to use while an earlier
+    method is incomplete, but it never authorizes a real case run.
+    """
+
+    require_method(method)
+    verify_protocol_artifacts(root)
+    verify_rcaeval_clean()
+    assert_ada_rca_frozen_unchanged(root)
+    require_committed_file(root, INPUT_MANIFEST_RELATIVE)
+    identity, synthetic, schema = _environment_preflight_details(root, method, python)
+    return {
+        "schema_version": "rca_baseline_environment_preflight_v1",
+        "method": method,
+        "datasets": list(DATASET_ORDER),
+        "environment": {
+            "python_executable": identity["python_executable"],
+            "runtime_python_executable": identity["runtime_python_executable"],
+            "python_version": identity["python_version"],
+            "python_implementation": identity["python_implementation"],
+            "environment_path": identity["environment_path"],
+            "environment_type": identity["environment_type"],
+            "dependency_manifest_digest": identity["dependency_manifest_digest"],
+        },
+        "protocol_digest": PROTOCOL_DIGEST,
+        "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
+        "rcaeval_commit": RCAEVAL_COMMIT,
+        "synthetic_preflight": {
+            "status": "PASS",
+            "fingerprint": synthetic["fingerprint"],
+            "native_output_kind": synthetic["native_output_kind"],
+            "runs": 2,
+        },
+        "schema_preflight": schema,
+        "writes_artifacts": False,
+        "authorizes_real_execution": False,
+    }
 
 
 def freeze_environment(root: Path, method: str, python: Path) -> Path:
@@ -537,12 +598,7 @@ def freeze_environment(root: Path, method: str, python: Path) -> Path:
     path = root / environment_relative(method)
     if path.exists():
         raise PreflightError(f"environment freeze already exists for {method}")
-    identity = collect_environment_identity(root, python)
-    first = _run_synthetic_preflight(root, python, method)
-    second = _run_synthetic_preflight(root, python, method)
-    if first["fingerprint"] != second["fingerprint"]:
-        raise PreflightError(f"{method} synthetic executions are not deterministic")
-    schema = [schema_preflight(root, dataset) for dataset in DATASET_ORDER]
+    identity, first, schema = _environment_preflight_details(root, method, python)
     stable = {
         "schema_version": "rca_baseline_environment_v1",
         "method": method,
@@ -1005,6 +1061,9 @@ def command_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
     preflight = sub.add_parser("global-preflight")
     preflight.add_argument("--require-exact-head", action="store_true")
+    environment_preflight = sub.add_parser("preflight-environment")
+    environment_preflight.add_argument("--method", choices=METHOD_ORDER, required=True)
+    environment_preflight.add_argument("--python", type=Path, required=True)
     sub.add_parser("build-input-manifest")
     freeze = sub.add_parser("freeze-environment")
     freeze.add_argument("--method", choices=METHOD_ORDER, required=True)
@@ -1024,6 +1083,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     root = Path(__file__).resolve().parents[2]
     if args.command == "global-preflight":
         result = global_preflight(root, require_exact_head=args.require_exact_head)
+        print(json.dumps(result, indent=2, sort_keys=True))
+    elif args.command == "preflight-environment":
+        result = preflight_environment(root, args.method, args.python)
         print(json.dumps(result, indent=2, sort_keys=True))
     elif args.command == "build-input-manifest":
         print(write_input_manifest(root).relative_to(root))

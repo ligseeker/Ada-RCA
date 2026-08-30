@@ -27,6 +27,7 @@ from src.baseline_eval import (
     TerminalStatus,
     adapt_native_ranking,
     assert_firewall_safe_record,
+    frozen_microcause_sli,
     seed_in_process,
     validate_mmbaro_payload,
     validate_native_output,
@@ -271,9 +272,7 @@ def load_legal_case_input(
         metric = _common_metric_adapter(pd.read_csv(paths["simple_metrics"]), dataset, anchor)
         observed = _observed_metric_services(metric, candidates)
         if method == "MicroCause":
-            sli = "frontend_latency" if dataset == "re2ob" else "ts-ui-dashboard_latency"
-            if dataset == "re2ob" and sli not in metric and "frontend_1" in metric:
-                sli = "frontend_1"
+            sli = frozen_microcause_sli(dataset, tuple(metric.columns))
         return metric, anchor, candidates, sli, observed, provenance
     if method in {"MicroRank", "TraceRCA"}:
         traces = _trace_adapter(pd.read_csv(paths["traces"]), anchor)
