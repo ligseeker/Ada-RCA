@@ -22,7 +22,7 @@ environments and requires a new preflight and environment freeze.
 | Method | Activate | Special requirement | Current execution note |
 |---|---|---|---|
 | BARO | Common RCAEval | None beyond the frozen worker controls | The completed confirmatory attempt remains bound to its historical project-local `.venv` manifest; do not regenerate it |
-| CIRCA | Common RCAEval for a future attempt | None beyond the frozen worker controls | The running attempt remains bound to the already frozen project-local `.venv`; never switch environments mid-attempt |
+| CIRCA | Common RCAEval for a future attempt | None beyond the frozen worker controls | Attempt `circa-a1-20260830` stopped after 99/180 terminal records without a prediction lock; it remains bound to the frozen project-local `.venv` and must not be restarted automatically |
 | MicroCause | MicroCause | `tigramite==4.2.2.1` | Use the external MicroCause environment for freeze and execution after the CIRCA prediction lock exists |
 | MicroRank | Common RCAEval | Fixed `PYTHONHASHSEED=20260830` through the runner | Ready for a later environment freeze |
 | TraceRCA | Common RCAEval | None beyond the frozen worker controls | Ready for a later environment freeze |
@@ -70,6 +70,17 @@ deactivate
 
 Activation is convenient for interactive work, but formal freezes should pass
 the absolute interpreter path so that the environment identity is unambiguous.
+
+Before the prior method has a prediction lock, a later environment may be
+checked with the read-only command below. It runs two synthetic predictions and
+both dataset schema checks, but writes no artifact and does not authorize real
+execution:
+
+```bash
+python scripts/run_baseline_confirmatory.py preflight-environment \
+  --method MicroRank \
+  --python /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
+```
 
 Common environment example:
 
