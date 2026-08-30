@@ -399,6 +399,39 @@ def assert_firewall_safe_record(record: Mapping[str, Any]) -> None:
     walk(record)
 
 
+def assert_performance_firewall_tree(root: Path) -> None:
+    """Fail closed if B0/B1 contains an outcome/prediction artifact."""
+
+    artifact_root = root / "artifacts" / "baseline_eval"
+    allowed = {
+        "execution_matrix_v1.json",
+        "protocol_freeze_v1.json",
+        "provenance_v1.json",
+        "timestamp_audit_v1.json",
+    }
+    observed = {
+        str(path.relative_to(artifact_root))
+        for path in artifact_root.rglob("*")
+        if path.is_file()
+    }
+    unexpected = sorted(observed.difference(allowed))
+    missing = sorted(allowed.difference(observed))
+    if unexpected or missing:
+        raise FirewallBreach(
+            "B0/B1 artifact allowlist mismatch; missing={!r}, unexpected={!r}".format(
+                missing, unexpected
+            )
+        )
+    protocol = json.loads((artifact_root / "protocol_freeze_v1.json").read_text(encoding="utf-8"))
+    provenance = json.loads((artifact_root / "provenance_v1.json").read_text(encoding="utf-8"))
+    if protocol["performance_firewall"]["baseline_performance_exposed"]:
+        raise FirewallBreach("protocol records baseline performance exposure")
+    if provenance["performance_firewall"]["baseline_performance_exposed"]:
+        raise FirewallBreach("provenance records baseline performance exposure")
+    if protocol["performance_firewall"]["breach_status"] != "NONE":
+        raise FirewallBreach("protocol contains a performance firewall breach")
+
+
 def persist_case_record(output_directory: Path, record: CaseRecord) -> Path:
     payload = record.to_dict()
     assert_firewall_safe_record(payload)
@@ -434,6 +467,7 @@ __all__ = [
     "adapt_native_ranking",
     "assert_ada_rca_frozen_unchanged",
     "assert_firewall_safe_record",
+    "assert_performance_firewall_tree",
     "audit_frozen_inputs",
     "canonical_seed_environment",
     "detect_silent_fallback",
