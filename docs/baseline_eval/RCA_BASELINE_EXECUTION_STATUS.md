@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **IN PROGRESS — RAW-TRACE PARSER REPAIR VALIDATED**
-State revision: `2026-09-01.1`
+State revision: `2026-09-01.2`
 Last operational audit: 2026-09-01, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `ec66f6c` (V1.2 repair pending commit)
+Last synchronized central commit: `f072c2a`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -35,7 +35,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | V1.1 is local at `ec66f6c`; V1.2 repair is pending commit | PENDING REVIEW / MERGE / PUSH |
+| Push state for this revision | V1.2 repair is local at `f072c2a` | PENDING PUSH |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -97,7 +97,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Canonical execution status/handoff | `a5ea541` | complete |
 | Later-baseline execution-integrity hardening | `c51d37a` | complete |
 | Later-baseline data/graph contract validation | `0d0efcf` | complete |
-| Raw-trace CSV parser repair and V1.2 amendment | this revision | implementation and regression validation complete; commit pending |
+| Raw-trace CSV parser repair and V1.2 amendment | `f072c2a` | complete; central and affected task branches integrated |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
 
 The read-only command below performs dependency identity collection, two
@@ -145,7 +145,7 @@ ranks, or metrics may be added before the global prediction lock.
 | CIRCA | RE2-TT | 10/90 | 3 | 1 | 0 | 0 | 6 | absent |
 | MicroCause A1 | RE2-OB | 6/90 | 5 | 0 | 0 | 1 | 0 | absent |
 | MicroCause A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent |
-| MicroRank A1 | RE2-OB | 12/90 | 12 | 0 | 0 | 0 | 0 | absent; retain |
+| MicroRank A1 | RE2-OB | 17/90 | 17 | 0 | 0 | 0 | 0 | absent; external container active; retain |
 | MicroRank A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
 | TraceRCA A1 | RE2-OB | 59/90 | 59 | 0 | 0 | 0 | 0 | absent; retain |
 | TraceRCA A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
@@ -255,6 +255,15 @@ MicroRank A1 is also restarted prospectively because it shares the loader and
 one attempt cannot mix execution commits. Authorized IDs are
 `microrank-a2-20260901`, `tracerca-a2-20260901`, and
 `mmbaro-a2-20260901`.
+
+Central repair commit `f072c2a` passed 193 tests and global preflight. A1
+evidence commits are `3c4c0d5` (MicroRank first 15 records), `37e288e`
+(TraceRCA 59 records), and `414140c` (mmBARO 59 records). Repair cherry-picks
+are `2a66e75`, `65878d8`, and `7650588`, respectively. TraceRCA and mmBARO
+task branches are clean and both global plus environment preflights pass.
+MicroRank produced another record from its still-running external container
+after the first evidence commit; its worktree is intentionally left dirty and
+must not start A2 until A1 stops and the remaining evidence is committed.
 
 ## 7. Remaining parallel plan
 

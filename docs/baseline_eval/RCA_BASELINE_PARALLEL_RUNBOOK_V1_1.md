@@ -200,10 +200,10 @@ those A1 attempts and use the recovery procedure below.
 
 ## V1.2 raw-trace parser recovery
 
-Run these blocks only after the V1.2 repair has been committed. Before each
-block, verify that no process for that method is active. Replace
-`<TRACE_CSV_REPAIR_COMMIT>` with the coordinator-provided repair commit. The
-already committed environment manifests are reused unchanged.
+Repair commit `f072c2a` is already integrated into the current three task
+branches as `2a66e75` (MicroRank), `65878d8` (TraceRCA), and `7650588`
+(mmBARO). Do not cherry-pick it again. The already committed environment
+manifests are reused unchanged.
 
 ### MicroRank A1 archive and A2 restart
 
@@ -212,11 +212,16 @@ cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/microrank
 source ~/.venvs/ada-rca-baselines-common/bin/activate
 set -euo pipefail
 
+# Do not continue until the original A1 container has returned and stopped
+# writing. The worktree is intentionally dirty while that container is active.
+git status --short --branch
 git add artifacts/baseline_eval/execution_v1/records/microrank/microrank-a1-20260831
-git commit -m "eval: preserve interrupted MicroRank attempt a1"
-git cherry-pick <TRACE_CSV_REPAIR_COMMIT>
+git commit -m "eval: preserve remaining interrupted MicroRank attempt a1"
 
 python scripts/run_baseline_confirmatory.py global-preflight
+python scripts/run_baseline_confirmatory.py preflight-environment \
+  --method MicroRank \
+  --python /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 python scripts/run_baseline_confirmatory.py run-method \
   --method MicroRank \
   --attempt-id microrank-a2-20260901 \
@@ -235,11 +240,11 @@ cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/tracerca
 source ~/.venvs/ada-rca-baselines-common/bin/activate
 set -euo pipefail
 
-git add artifacts/baseline_eval/execution_v1/records/tracerca/tracerca-a1-20260831
-git commit -m "eval: preserve interrupted TraceRCA attempt a1"
-git cherry-pick <TRACE_CSV_REPAIR_COMMIT>
-
+git status --short --branch
 python scripts/run_baseline_confirmatory.py global-preflight
+python scripts/run_baseline_confirmatory.py preflight-environment \
+  --method TraceRCA \
+  --python /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 python scripts/run_baseline_confirmatory.py run-method \
   --method TraceRCA \
   --attempt-id tracerca-a2-20260901 \
@@ -258,11 +263,11 @@ cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/mmbaro
 source ~/.venvs/ada-rca-baselines-common/bin/activate
 set -euo pipefail
 
-git add artifacts/baseline_eval/execution_v1/records/mmbaro/mmbaro-a1-20260831
-git commit -m "eval: preserve interrupted mmBARO attempt a1"
-git cherry-pick <TRACE_CSV_REPAIR_COMMIT>
-
+git status --short --branch
 python scripts/run_baseline_confirmatory.py global-preflight
+python scripts/run_baseline_confirmatory.py preflight-environment \
+  --method mmBARO \
+  --python /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 python scripts/run_baseline_confirmatory.py run-method \
   --method mmBARO \
   --attempt-id mmbaro-a2-20260901 \
