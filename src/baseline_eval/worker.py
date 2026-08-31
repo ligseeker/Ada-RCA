@@ -120,6 +120,24 @@ class DigestSink(io.TextIOBase):
         return self._digest.hexdigest()
 
 
+def _read_csv_source(path: Path, role: str) -> pd.DataFrame:
+    try:
+        return pd.read_csv(path)
+    except (OSError, UnicodeError, pd.errors.EmptyDataError, pd.errors.ParserError) as exc:
+        raise DataInputError(f"frozen {role} source is unreadable") from exc
+
+
+def _require_numeric(
+    data: pd.DataFrame, columns: Sequence[str], context: str, *, require_finite: bool = True
+) -> None:
+    for column in columns:
+        if not pd.api.types.is_numeric_dtype(data[column]):
+            raise DataInputError(f"{context} column is not numeric: {column}")
+        values = data[column].to_numpy()
+        if require_finite and not bool(np.isfinite(values).all()):
+            raise DataInputError(f"{context} column is not finite: {column}")
+
+
 def _module_callable(method: str):
     # Importing ``RCAEval.e2e`` normally eagerly imports every RCA method.  A
     # fresh per-case worker would otherwise pay that unrelated import cost and
@@ -154,6 +172,7 @@ def _module_callable(method: str):
 def _common_metric_adapter(raw: pd.DataFrame, dataset: str, anchor: int) -> pd.DataFrame:
     if "time" not in raw:
         raise DataInputError("simple metric input has no time column")
+    _require_numeric(raw, ("time",), "simple metric time")
     data = raw.loc[:, ~raw.columns.str.endswith("_latency-50")].copy()
     if dataset == "re2tt":
         time_column = data["time"].copy()
@@ -170,12 +189,20 @@ def _common_metric_adapter(raw: pd.DataFrame, dataset: str, anchor: int) -> pd.D
     )
     if data.empty:
         raise DataInputError("simple metric canonical window is empty")
+    _require_numeric(data, tuple(data.columns), "simple metric")
     return data.reset_index(drop=True)
 
 
 def _derived_adapter(raw: pd.DataFrame, anchor: int) -> pd.DataFrame:
     if "time" not in raw:
         raise DataInputError("derived telemetry has no time column")
+    _require_numeric(raw, ("time",), "derived telemetry time")
+    _require_numeric(
+        raw,
+        tuple(column for column in raw.columns if column != "time"),
+        "derived telemetry",
+        require_finite=False,
+    )
     data = raw[(raw["time"] >= anchor - 600) & (raw["time"] < anchor + 600)].copy()
     if data.empty:
         raise DataInputError("derived telemetry canonical window is empty")
@@ -187,12 +214,24 @@ def _trace_adapter(raw: pd.DataFrame, anchor: int) -> pd.DataFrame:
         "serviceName",
         "methodName",
         "operationName",
+        "traceID",
+        "spanID",
+        "parentSpanID",
         "startTime",
         "startTimeMillis",
         "duration",
     }
     if not required.issubset(raw.columns):
         raise DataInputError("raw trace schema is incomplete")
+    _require_numeric(raw, ("startTime", "startTimeMillis", "duration"), "raw trace")
+    if bool((raw["duration"] < 0).any()):
+        raise DataInputError("raw trace duration cannot be negative")
+    for column in ("serviceName", "operationName", "traceID", "spanID"):
+        if raw[column].isna().any() or not raw[column].map(lambda value: isinstance(value, str)).all():
+            raise DataInputError(f"raw trace identity column is invalid: {column}")
+    non_null_parent_ids = raw["parentSpanID"].dropna()
+    if not non_null_parent_ids.map(lambda value: isinstance(value, str)).all():
+        raise DataInputError("raw trace identity column is invalid: parentSpanID")
     sampled = raw.iloc[:: max(len(raw) // 1000, 1)]
     if not bool(((sampled["startTime"] // 1000) == sampled["startTimeMillis"]).all()):
         raise DataInputError("raw trace timestamp units are inconsistent")
@@ -271,25 +310,33 @@ def load_legal_case_input(
     sli = None
     observed: set[str]
     if method in {"BARO", "CIRCA", "MicroCause", "CausalRCA"}:
-        metric = _common_metric_adapter(pd.read_csv(paths["simple_metrics"]), dataset, anchor)
+        metric = _common_metric_adapter(
+            _read_csv_source(paths["simple_metrics"], "simple_metrics"), dataset, anchor
+        )
         observed = _observed_metric_services(metric, candidates)
         if method == "MicroCause":
             sli = frozen_microcause_sli(dataset, tuple(metric.columns))
         return metric, anchor, candidates, sli, observed, provenance
     if method in {"MicroRank", "TraceRCA"}:
-        traces = _trace_adapter(pd.read_csv(paths["traces"]), anchor)
+        traces = _trace_adapter(_read_csv_source(paths["traces"], "traces"), anchor)
         observed = _observed_trace_services(traces, candidates)
         return traces, anchor, candidates, sli, observed, provenance
     if method == "mmBARO":
-        metric = _common_metric_adapter(pd.read_csv(paths["simple_metrics"]), dataset, anchor)
-        traces = _trace_adapter(pd.read_csv(paths["traces"]), anchor)
+        metric = _common_metric_adapter(
+            _read_csv_source(paths["simple_metrics"], "simple_metrics"), dataset, anchor
+        )
+        traces = _trace_adapter(_read_csv_source(paths["traces"], "traces"), anchor)
         payload = {
             "metric": metric,
-            "logs": pd.read_csv(paths["logs"]),
-            "logts": _derived_adapter(pd.read_csv(paths["logts"]), anchor),
+            "logs": _read_csv_source(paths["logs"], "logs"),
+            "logts": _derived_adapter(_read_csv_source(paths["logts"], "logts"), anchor),
             "traces": traces,
-            "tracets_err": _derived_adapter(pd.read_csv(paths["tracets_err"]), anchor),
-            "tracets_lat": _derived_adapter(pd.read_csv(paths["tracets_lat"]), anchor),
+            "tracets_err": _derived_adapter(
+                _read_csv_source(paths["tracets_err"], "tracets_err"), anchor
+            ),
+            "tracets_lat": _derived_adapter(
+                _read_csv_source(paths["tracets_lat"], "tracets_lat"), anchor
+            ),
             "cluster_info": None,
         }
         validate_mmbaro_payload(payload)

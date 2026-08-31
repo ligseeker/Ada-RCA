@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from unittest import mock
 
+import numpy as np
 import pandas as pd
 
 from src.baseline_eval import (
@@ -34,7 +35,16 @@ from src.baseline_eval.confirmatory import (
     verify_rcaeval_clean,
 )
 from src.baseline_eval.evaluation import failure_zero_top_k
-from src.baseline_eval.worker import _missing_reasons, invoke_predictive_method, synthetic_preflight
+from src.baseline_eval.worker import (
+    DataInputError,
+    _common_metric_adapter,
+    _derived_adapter,
+    _missing_reasons,
+    _read_csv_source,
+    _trace_adapter,
+    invoke_predictive_method,
+    synthetic_preflight,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -235,6 +245,56 @@ class ConfirmatorySequenceTest(unittest.TestCase):
         with mock.patch("src.baseline_eval.confirmatory.subprocess.run", return_value=completed):
             with self.assertRaisesRegex(PreflightError, "invalid fingerprint"):
                 _run_synthetic_preflight(ROOT, Path("/external/env/bin/python"), "mmBARO")
+
+    def test_06d_metric_and_derived_adapters_reject_invalid_time_or_value_types(self):
+        anchor = 1_700_000_000
+        metric = pd.DataFrame(
+            {
+                "time": [anchor - 1, anchor],
+                "frontend_latency-90": [np.inf, 2.0],
+                "frontend_latency-50": [1.0, 1.0],
+            }
+        )
+        adapted = _common_metric_adapter(metric, "re2ob", anchor)
+        self.assertEqual(tuple(adapted.columns), ("time", "frontend_latency"))
+        self.assertTrue(np.isfinite(adapted.to_numpy()).all())
+        with self.assertRaises(DataInputError):
+            _common_metric_adapter(metric.assign(time=["bad", "time"]), "re2ob", anchor)
+        with self.assertRaises(DataInputError):
+            _derived_adapter(
+                pd.DataFrame({"time": [anchor], "frontend_count": ["not-numeric"]}),
+                anchor,
+            )
+
+    def test_06e_trace_adapter_validates_native_identity_and_timestamp_schema(self):
+        anchor = 1_700_000_000
+        valid = pd.DataFrame(
+            {
+                "serviceName": ["frontend"],
+                "methodName": [None],
+                "operationName": ["GET"],
+                "traceID": ["trace-1"],
+                "spanID": ["span-1"],
+                "parentSpanID": [None],
+                "startTime": [anchor * 1_000_000],
+                "startTimeMillis": [anchor * 1_000],
+                "duration": [100],
+            }
+        )
+        self.assertEqual(len(_trace_adapter(valid, anchor)), 1)
+        with self.assertRaises(DataInputError):
+            _trace_adapter(valid.drop(columns=["traceID"]), anchor)
+        with self.assertRaises(DataInputError):
+            _trace_adapter(valid.assign(duration=[-1]), anchor)
+        with self.assertRaises(DataInputError):
+            _trace_adapter(valid.assign(startTime=["not-numeric"]), anchor)
+
+    def test_06f_unreadable_csv_is_a_data_input_failure(self):
+        with mock.patch(
+            "src.baseline_eval.worker.pd.read_csv", side_effect=pd.errors.ParserError("bad csv")
+        ):
+            with self.assertRaises(DataInputError):
+                _read_csv_source(Path("/frozen/source.csv"), "traces")
 
 
 class ConfirmatoryFirewallTest(unittest.TestCase):

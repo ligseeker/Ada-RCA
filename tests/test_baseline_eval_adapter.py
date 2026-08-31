@@ -90,6 +90,32 @@ class BaselineEvalAdapterTest(unittest.TestCase):
                 {"adj": [[0, 0], [0, 0]], "ranks": ["frontend_latency"]},
             )
 
+    def test_graph_outputs_require_square_finite_node_aligned_adjacency(self):
+        valid = {
+            "adj": [[0.0, 1.0], [0.0, 0.0]],
+            "node_names": ["a", "b"],
+            "ranks": ["b", "a"],
+        }
+        self.assertEqual(validate_native_output("MicroCause", valid), ("b", "a"))
+        self.assertEqual(validate_native_output("CausalRCA", valid), ("b", "a"))
+        self.assertEqual(
+            validate_native_output(
+                "CIRCA", {**valid, "node_names": ["a", "b", "time"], "ranks": ["b"]}
+            ),
+            ("b",),
+        )
+        invalid_outputs = (
+            {"adj": 1, "node_names": ["a"], "ranks": ["a"]},
+            {"adj": [[0, 1]], "node_names": ["a", "b"], "ranks": ["a"]},
+            {"adj": [[0]], "node_names": ["a", "b"], "ranks": ["a"]},
+            {"adj": [[float("nan")]], "node_names": ["a"], "ranks": ["a"]},
+            {"adj": [[0]], "node_names": [], "ranks": ["a"]},
+            {"adj": [[0]], "node_names": ["a"], "ranks": ["outside"]},
+        )
+        for output in invalid_outputs:
+            with self.subTest(output=output), self.assertRaises(MethodOutputError):
+                validate_native_output("CausalRCA", output)
+
     def test_microcause_sli_is_dataset_frozen_and_label_independent(self):
         self.assertEqual(
             frozen_microcause_sli("re2ob", ("frontend_latency", "root-coded_latency")),
@@ -135,6 +161,13 @@ class BaselineEvalAdapterTest(unittest.TestCase):
         }
         with self.assertRaises(AdapterError):
             validate_mmbaro_payload(payload)
+
+    def test_mmbaro_native_duplicates_remain_available_for_projection_audit(self):
+        ranks = ("frontend_latency", "frontend_latency")
+        self.assertEqual(validate_native_output("mmBARO", {"ranks": ranks}), ranks)
+        adapted = adapt_native_ranking(ranks, ("frontend",))
+        self.assertEqual(adapted.services, ("frontend",))
+        self.assertEqual(adapted.duplicates, ("frontend_latency",))
 
 
 if __name__ == "__main__":

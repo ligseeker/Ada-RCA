@@ -325,6 +325,36 @@ def _empty_graph(value: Any) -> bool:
         return value == []
 
 
+def _validate_graph_output(method: str, output: Mapping[str, Any]) -> None:
+    """Validate graph shape without interpreting edges or ranking quality."""
+
+    if method.lower() not in {"circa", "microcause", "causalrca"}:
+        return
+    adjacency = output.get("adj")
+    node_names = output.get("node_names")
+    if adjacency is None or not isinstance(node_names, (list, tuple)) or not node_names:
+        raise MethodOutputError(f"{method} returned an incomplete graph structure")
+    if any(not isinstance(name, str) or not name for name in node_names):
+        raise MethodOutputError(f"{method} returned invalid graph node names")
+    if len(set(node_names)) != len(node_names):
+        raise MethodOutputError(f"{method} returned duplicate graph node names")
+    try:
+        array = np.asarray(adjacency)
+        finite = bool(np.isfinite(array).all())
+    except (TypeError, ValueError):
+        finite = False
+        array = np.asarray(())
+    if array.ndim != 2 or array.shape[0] != array.shape[1] or not finite:
+        raise MethodOutputError(f"{method} returned an invalid adjacency matrix")
+    graph_nodes = (
+        tuple(name for name in node_names if name != "time")
+        if method.lower() == "circa"
+        else tuple(node_names)
+    )
+    if array.shape != (len(graph_nodes), len(graph_nodes)):
+        raise MethodOutputError(f"{method} graph dimensions do not match its node names")
+
+
 def detect_silent_fallback(
     method: str, output: Mapping[str, Any], input_columns: Sequence[str]
 ) -> bool:
@@ -346,6 +376,7 @@ def validate_native_output(
         raise MethodOutputError("native output must be a mapping")
     if detect_silent_fallback(method, output, input_columns):
         raise MethodOutputError("audited input-column fallback is a method failure")
+    _validate_graph_output(method, output)
     if method.lower() == "microcause" and (
         output.get("adj") is None or _empty_graph(output.get("adj"))
     ):
@@ -355,6 +386,11 @@ def validate_native_output(
         raise MethodOutputError("native ranks must be a non-empty ordered sequence")
     if any(not isinstance(item, str) or not item for item in ranks):
         raise MethodOutputError("native ranks must contain non-empty names")
+    if method.lower() in {"circa", "microcause", "causalrca"}:
+        if len(set(ranks)) != len(ranks):
+            raise MethodOutputError("graph ranks must not contain duplicate names")
+        if not set(ranks).issubset(set(output["node_names"])):
+            raise MethodOutputError("graph ranking contains a name outside the returned graph")
     if method.lower() == "microrank" and len(ranks) > 11:
         raise MethodOutputError("pinned MicroRank output cannot exceed top_max + 6 = 11")
     return tuple(ranks)
