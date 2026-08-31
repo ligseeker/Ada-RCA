@@ -1,7 +1,7 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **IN PROGRESS — CIRCA INCOMPLETE**  
-State revision: `2026-08-31.4`
+Status: **IN PROGRESS — CIRCA RECOVERY RUNNING**
+State revision: `2026-08-31.5`
 Last operational audit: 2026-08-31, Asia/Shanghai  
 Branch: `evaluation/rcaeval-baselines`  
 Last synchronized substantive code commit: `0d0efcf`
@@ -32,7 +32,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | branch synchronized through `6f4c5b7`; the user-decision/recovery-readiness commit follows locally | PENDING PUSH |
+| Push state for this revision | user decisions committed locally at `3bedcb5`; this running-state handoff follows locally | PENDING PUSH |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -45,9 +45,9 @@ The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
 only removes the final newline from the existing `artifacts/cache/` line. On
 2026-08-31 the user explicitly accepted this state and authorized selective
 future ignore additions only for files that are not execution evidence. The
-change is included in the recovery-readiness decision commit. The 99 CIRCA
-execution records remain intentionally untracked evidence until a valid method
-lock can be produced; they are not ignored.
+change is included in recovery-readiness commit `3bedcb5`. The CIRCA execution
+records remain intentionally untracked evidence until a valid method lock can
+be produced; they are not ignored.
 
 ## 3. Environment migration status
 
@@ -133,7 +133,7 @@ ranks, or metrics may be added before the global prediction lock.
 | BARO | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
 | BARO | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
 | CIRCA | RE2-OB | 90/90 | 86 | 4 | 0 | 0 | 0 | absent |
-| CIRCA | RE2-TT | 9/90 | 3 | 1 | 0 | 0 | 5 | absent |
+| CIRCA | RE2-TT | 10/90 | 3 | 1 | 0 | 0 | 6 | absent |
 | MicroCause | — | 0 | — | — | — | — | — | absent |
 | MicroRank | — | 0 | — | — | — | — | — | absent |
 | TraceRCA | — | 0 | — | — | — | — | — | absent |
@@ -143,14 +143,15 @@ ranks, or metrics may be added before the global prediction lock.
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
 both 90-case denominators valid, environment unchanged.
 
-CIRCA attempt: `circa-a1-20260830`. It stopped after 99/180 persisted terminal
-records. Its last persisted case is terminal and is not eligible for retry.
-There is no CIRCA prediction lock and no baseline runner, worker, or tmux
-session currently running. All 99 records have execution commit `d5d837e`.
-Their structure and frozen provenance validate, but the current branch HEAD is
-different. The new resume gate therefore rejects a direct resume at the
-current HEAD, preventing mixed-commit records in one attempt. Do not restart
-or resume it automatically.
+CIRCA attempt: `circa-a1-20260830`. Provenance-consistent recovery started at
+2026-08-31 19:31:48 Asia/Shanghai from the original repository path on branch
+`recovery/circa-a1-20260830` at exact execution commit `d5d837e`. Before the
+resume, all 99 existing records were revalidated and a separate recovery copy
+was confirmed byte-identical. The first missing case reached the frozen
+3,600-second deadline and was persisted as `TIMEOUT`, bringing coverage to
+100/180. The parent runner PID was `37630` at this audit; a child case process
+was active. There is no CIRCA prediction lock. Do not start, resume, freeze, or
+execute another baseline while this process is active.
 
 ## 6. Current blockers and decisions required
 
@@ -178,9 +179,11 @@ records, or retain the attempt and follow a reviewed new-attempt disposition.
 On 2026-08-31 the user explicitly authorized recovery and allowed a full rerun
 only if the provenance-consistent resume path proves impractical. Because all
 99 persisted records validate and no systematic framework defect has been
-established, the selected first path is same-attempt recovery from an isolated
-worktree at exact commit `d5d837e`. The original records must remain preserved,
-and the recovery copy must be byte-for-byte verified before execution.
+established, the selected path is same-attempt recovery at exact commit
+`d5d837e`. An isolated worktree copy was byte-for-byte verified, but the frozen
+environment identity binds the original repository path through `PYTHONPATH`.
+The formal resume therefore runs from the original path on the dedicated
+recovery branch. The environment gate was not bypassed or modified.
 
 The historical command below is valid only from the exact original execution
 commit context after a fresh read-only audit and explicit user authorization:
@@ -251,12 +254,10 @@ earlier method.
 
 - Completed: explicit user authorization obtained for provenance-consistent
   resume, with a full rerun permitted only if that path proves impractical.
-- Before authorizing resume, choose and document a provenance-consistent
-  recovery that uses the exact original execution commit `d5d837e`; direct
-  resume from the current branch HEAD is now rejected.
-- If a same-attempt recovery is approved, continue only the 81 missing RE2-TT
-  cases under `circa-a1-20260830`, the already frozen project `.venv`, and the
-  original execution commit.
+- Completed: recovery is running from the original repository path on branch
+  `recovery/circa-a1-20260830` at exact commit `d5d837e`.
+- Continue only missing RE2-TT cases under `circa-a1-20260830`, the already
+  frozen project `.venv`, and the original execution commit.
 - Preserve the five existing timeouts and all other terminal records.
 - Verify exactly 90 unique records per dataset, one status per case, identical
   environment/protocol/input digests, and clean RCAEval.
