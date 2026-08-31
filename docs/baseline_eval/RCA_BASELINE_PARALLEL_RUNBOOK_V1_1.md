@@ -205,18 +205,14 @@ branches as `2a66e75` (MicroRank), `65878d8` (TraceRCA), and `7650588`
 (mmBARO). Do not cherry-pick it again. The already committed environment
 manifests are reused unchanged.
 
-### MicroRank A1 archive and A2 restart
+### MicroRank A2 restart (A1 already archived)
 
 ```bash
 cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/microrank
 source ~/.venvs/ada-rca-baselines-common/bin/activate
 set -euo pipefail
 
-# Do not continue until the original A1 container has returned and stopped
-# writing. The worktree is intentionally dirty while that container is active.
 git status --short --branch
-git add artifacts/baseline_eval/execution_v1/records/microrank/microrank-a1-20260831
-git commit -m "eval: preserve remaining interrupted MicroRank attempt a1"
 
 python scripts/run_baseline_confirmatory.py global-preflight
 python scripts/run_baseline_confirmatory.py preflight-environment \

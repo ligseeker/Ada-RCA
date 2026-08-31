@@ -61,10 +61,10 @@ project worktrees under `~/.venvs/`.
 |---|---|---|---|---|
 | BARO | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; execution complete |
 | CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; attempt incomplete; never migrate mid-attempt |
-| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | frozen on task branch; A1 incomplete |
-| MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | frozen on task branch; A1 retained, repaired A2 required |
-| TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | frozen on task branch; A1 parser crash, repaired A2 required |
-| mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | frozen on task branch; A1 parser crash, repaired A2 required |
+| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | frozen on task branch; A1 active and incomplete |
+| MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | frozen on task branch; A1 retained; repaired A2 ready |
+| TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | repaired A2 complete and method-locked on task branch |
+| mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | repaired A2 complete and method-locked on task branch |
 | CausalRCA | no active confirmatory environment | — | saved GPU amendment only | explicitly deferred; do not freeze or run |
 
 Activation commands:
@@ -142,15 +142,21 @@ ranks, or metrics may be added before the global prediction lock.
 | BARO | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
 | BARO | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
 | CIRCA | RE2-OB | 90/90 | 86 | 4 | 0 | 0 | 0 | absent |
-| CIRCA | RE2-TT | 10/90 | 3 | 1 | 0 | 0 | 6 | absent |
-| MicroCause A1 | RE2-OB | 6/90 | 5 | 0 | 0 | 1 | 0 | absent |
+| CIRCA | RE2-TT | 13/90 | 3 | 1 | 0 | 0 | 9 | absent |
+| MicroCause A1 | RE2-OB | 48/90 | 46 | 0 | 0 | 2 | 0 | absent; active |
 | MicroCause A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent |
-| MicroRank A1 | RE2-OB | 17/90 | 17 | 0 | 0 | 0 | 0 | absent; external container active; retain |
+| MicroRank A1 | RE2-OB | 59/90 | 59 | 0 | 0 | 0 | 0 | absent; retained |
 | MicroRank A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
+| MicroRank A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; ready |
+| MicroRank A2 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; ready |
 | TraceRCA A1 | RE2-OB | 59/90 | 59 | 0 | 0 | 0 | 0 | absent; retain |
 | TraceRCA A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
+| TraceRCA A2 | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid on task branch |
+| TraceRCA A2 | RE2-TT | 90/90 | 75 | 15 | 0 | 0 | 0 | valid on task branch |
 | mmBARO A1 | RE2-OB | 59/90 | 57 | 0 | 0 | 2 | 0 | absent; retain |
 | mmBARO A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
+| mmBARO A2 | RE2-OB | 90/90 | 87 | 1 | 0 | 2 | 0 | valid on task branch |
+| mmBARO A2 | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid on task branch |
 | CausalRCA | — | 0 | — | — | — | — | — | deferred |
 
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
@@ -161,9 +167,10 @@ CIRCA attempt: `circa-a1-20260830`. Provenance-consistent recovery started at
 `recovery/circa-a1-20260830` at exact execution commit `d5d837e`. Before the
 resume, all 99 existing records were revalidated and a separate recovery copy
 was confirmed byte-identical. The first missing case reached the frozen
-3,600-second deadline and was persisted as `TIMEOUT`, bringing coverage to
-100/180. At the latest audit a CIRCA recovery runner/server was observed; the
-attempt still has no prediction lock. Do not launch a duplicate. The V1.1
+3,600-second deadline and was persisted as `TIMEOUT`. At the 2026-09-01
+03:16 Asia/Shanghai audit, coverage was 103/180 and a CIRCA recovery
+runner/server was observed; the attempt still has no prediction lock. Do not
+launch a duplicate. The V1.1
 amendment permits different methods to run in isolated containers while CIRCA
 remains incomplete.
 
@@ -257,13 +264,20 @@ one attempt cannot mix execution commits. Authorized IDs are
 `mmbaro-a2-20260901`.
 
 Central repair commit `f072c2a` passed 193 tests and global preflight. A1
-evidence commits are `3c4c0d5` (MicroRank first 15 records), `37e288e`
-(TraceRCA 59 records), and `414140c` (mmBARO 59 records). Repair cherry-picks
-are `2a66e75`, `65878d8`, and `7650588`, respectively. TraceRCA and mmBARO
-task branches are clean and both global plus environment preflights pass.
-MicroRank produced another record from its still-running external container
-after the first evidence commit; its worktree is intentionally left dirty and
-must not start A2 until A1 stops and the remaining evidence is committed.
+evidence commits are `3c4c0d5` plus `8b1a15f` (MicroRank 59 records),
+`37e288e` (TraceRCA 59 records), and `414140c` (mmBARO 59 records). Repair
+cherry-picks are `2a66e75`, `65878d8`, and `7650588`, respectively.
+
+The original MicroRank failure is now confirmed at the same opaque case and
+same C-parser signal-11 path. A performance-blind repaired execution of that
+full case reached `SUCCESS`; the A1 tail is committed, the task worktree is
+clean, and both global and environment preflights pass. MicroRank A2 may start.
+MicroCause does not load the raw `traces` role; all 180 frozen
+`simple_metrics` CSVs loaded successfully with its isolated environment, so
+its active A1 is not restarted for V1.2.
+TraceRCA A2 commit `c7c8265` and mmBARO A2 commit `643cde4` each contain 180
+terminal records and a method lock that passes `verify_method_lock`; central
+integration remains pending.
 
 ## 7. Remaining parallel plan
 
@@ -322,32 +336,26 @@ the global prediction lock remain a barrier after all tracks finish.
 
 ### P3 — Archive MicroRank A1, execute repaired A2, and lock
 
-- Commit the incomplete `microrank-a1-20260831` directory as immutable
-  execution evidence; do not resume it.
-- Integrate the committed V1.2 repair into the existing task branch and reuse
-  the unchanged committed environment manifest.
+- A1 is completely archived by `3c4c0d5` plus `8b1a15f`; never resume it.
+- V1.2 is integrated as `2a66e75`, the environment is unchanged, and both
+  preflights pass.
 - Run preflight, then start `microrank-a2-20260901` from case 1 under the common
   interpreter and fixed `PYTHONHASHSEED=20260830`.
 - Commit the complete A2 records and method lock.
 
 ### P4 — Archive TraceRCA A1, execute repaired A2, and lock
 
-- Commit the incomplete `tracerca-a1-20260831` directory as immutable evidence;
-  do not resume it.
-- Integrate V1.2, reuse the unchanged frozen environment, and run preflight.
-- Start `tracerca-a2-20260901` from case 1 with the common interpreter.
-- Preserve raw trace microseconds, span-end filtering, and `t0*1_000_000`.
-- Commit the complete A2 records and method lock.
+- A1 remains immutable evidence and must not be resumed.
+- A2 is complete and method-locked in task commit `c7c8265`; preserve raw
+  trace microseconds, span-end filtering, and `t0*1_000_000`.
+- Integrate the verified task commit centrally.
 
 ### P5 — Archive mmBARO A1, execute repaired A2, and lock
 
-- Commit the incomplete `mmbaro-a1-20260831` directory as immutable evidence;
-  do not resume it.
-- Integrate V1.2, reuse the unchanged frozen environment, and run preflight.
-- Start `mmbaro-a2-20260901` from case 1 with the common interpreter and
-  official `mm-ob` / `mm-tt` keys.
-- Preserve the frozen modality-specific native preprocessing.
-- Commit the complete A2 records and method lock.
+- A1 remains immutable evidence and must not be resumed.
+- A2 is complete and method-locked in task commit `643cde4`; preserve the
+  official `mm-ob` / `mm-tt` keys and frozen modality-specific preprocessing.
+- Integrate the verified task commit centrally.
 
 ### P6 — Record CausalRCA cancellation
 
