@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **IN PROGRESS — CIRCA INCOMPLETE**  
-State revision: `2026-08-31.2`
+State revision: `2026-08-31.3`
 Last operational audit: 2026-08-31, Asia/Shanghai  
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized substantive code commit: `c51d37a`
+Last synchronized substantive code commit: `0d0efcf`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -32,7 +32,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | code `c51d37a` and handoff `5b23774` pushed to `origin/evaluation/rcaeval-baselines` | PASS |
+| Push state for this revision | code `0d0efcf` pushed to `origin/evaluation/rcaeval-baselines`; this handoff update follows it | PASS |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -92,6 +92,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Environment/preflight guide update | `1a7718c` | complete |
 | Canonical execution status/handoff | `a5ea541` | complete |
 | Later-baseline execution-integrity hardening | `c51d37a` | complete |
+| Later-baseline data/graph contract validation | `0d0efcf` | complete |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
 
 The read-only command below performs dependency identity collection, two
@@ -113,11 +114,13 @@ Verified synthetic fingerprints:
 | TraceRCA | `b56fedf7a64308ce1ba3f915712b3672ae029c060e319ff1d942628751dfb125` | two-run PASS |
 | mmBARO | `233b5ca861daaaab6f39198b5244a1f858b6a753a74a1bed1812527029eaec49` | two-run PASS |
 
-All four read-only preflights were repeated after `c51d37a`; their fingerprints
+All four read-only preflights were repeated after `0d0efcf`; their fingerprints
 remained identical to the values above. The stricter BARO method-lock verifier
-also passed against all 180 frozen terminal records.
+also passed against all 180 frozen terminal records. Adapter-only input loading
+for one opaque MicroRank case per dataset passed the real trace schema, digest,
+timestamp-unit, and canonical-window checks without invoking the method.
 
-The full suite most recently passed with `179` tests. This does not replace a
+The full suite most recently passed with `184` tests. This does not replace a
 fresh full-suite run after future code changes.
 
 ## 5. Confirmatory execution coverage
@@ -218,10 +221,11 @@ earlier method.
 
 ### P0A — Finish performance-blind later-adapter hardening
 
-- Add structural graph-output validation for MicroCause and the other graph
-  methods without changing native algorithms or ranking semantics.
-- Tighten real-input schema/type checks so pre-invocation malformed telemetry
-  is consistently classified as `DATA_FAILURE`.
+- Completed in `0d0efcf`: structural graph-output validation for MicroCause
+  and the other graph methods without changing native algorithms or ranking
+  semantics.
+- Completed in `0d0efcf`: real-input schema/type checks so pre-invocation
+  malformed telemetry is consistently classified as `DATA_FAILURE`.
 - Add symmetric deterministic synthetic tests for MicroCause, TraceRCA, and
   mmBARO where their method-specific environments permit it.
 - Keep this work synthetic/schema-only; do not schedule a real later-method
