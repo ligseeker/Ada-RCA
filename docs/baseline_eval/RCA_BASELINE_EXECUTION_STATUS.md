@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **IN PROGRESS — CIRCA INCOMPLETE**  
-State revision: `2026-08-31.1`  
+State revision: `2026-08-31.2`
 Last operational audit: 2026-08-31, Asia/Shanghai  
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized substantive commit: `1a7718c`
+Last synchronized substantive code commit: `c51d37a`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -32,7 +32,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Current remote state at audit | local `1a7718c`; matched `origin/evaluation/rcaeval-baselines` | PASS |
+| Current state at audit | local code commit `c51d37a`; remote was `a5ea541` before this handoff update | push pending |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -41,19 +41,13 @@ contents, and update this document.
 | Protocol digest | `aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e` | frozen |
 | Input-manifest digest | `b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec` | frozen |
 
-The only observed worktree modification at the last audit was an uncommitted
-`.gitignore` change. It adds:
-
-```gitignore
-artifacts/baseline_eval/execution_v1/
-artifacts/features/
-```
-
-Its ownership was not established, so it has been preserved and excluded from
-all baseline commits. It is a material workflow risk because it ignores future
-environment manifests, records, and prediction locks, and because formal
-environment freezing requires a clean worktree. Resolve it explicitly before
-the next formal environment freeze; do not silently discard it.
+The uncommitted `.gitignore` change was re-audited. It does **not** add ignore
+patterns; it only removes the final newline from the existing
+`artifacts/cache/` line. Its ownership remains unestablished, so it has been
+preserved and excluded from all baseline commits. It still dirties the
+worktree and must be reconciled before a future formal environment freeze.
+The 99 CIRCA execution records are intentionally untracked evidence until a
+valid method lock can be produced; they are not ignored.
 
 ## 3. Environment migration status
 
@@ -96,6 +90,8 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | External environment documentation | `1529f4b` | complete and merged into this branch |
 | Read-only later-method environment preflight | `6b01649` | complete |
 | Environment/preflight guide update | `1a7718c` | complete |
+| Canonical execution status/handoff | `a5ea541` | complete |
+| Later-baseline execution-integrity hardening | `c51d37a` | complete |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
 
 The read-only command below performs dependency identity collection, two
@@ -117,7 +113,11 @@ Verified synthetic fingerprints:
 | TraceRCA | `b56fedf7a64308ce1ba3f915712b3672ae029c060e319ff1d942628751dfb125` | two-run PASS |
 | mmBARO | `233b5ca861daaaab6f39198b5244a1f858b6a753a74a1bed1812527029eaec49` | two-run PASS |
 
-The full suite most recently passed with `175` tests. This does not replace a
+All four read-only preflights were repeated after `c51d37a`; their fingerprints
+remained identical to the values above. The stricter BARO method-lock verifier
+also passed against all 180 frozen terminal records.
+
+The full suite most recently passed with `179` tests. This does not replace a
 fresh full-suite run after future code changes.
 
 ## 5. Confirmatory execution coverage
@@ -143,7 +143,11 @@ both 90-case denominators valid, environment unchanged.
 CIRCA attempt: `circa-a1-20260830`. It stopped after 99/180 persisted terminal
 records. Its last persisted case is terminal and is not eligible for retry.
 There is no CIRCA prediction lock and no baseline runner, worker, or tmux
-session currently running. Do not restart or resume it automatically.
+session currently running. All 99 records have execution commit `d5d837e`.
+Their structure and frozen provenance validate, but the current branch HEAD is
+different. The new resume gate therefore rejects a direct resume at the
+current HEAD, preventing mixed-commit records in one attempt. Do not restart
+or resume it automatically.
 
 ## 6. Current blockers and decisions required
 
@@ -163,9 +167,15 @@ Before any recovery action, re-audit:
 - absence of a CIRCA prediction lock.
 
 Resuming the same attempt may only continue missing cases with the same frozen
-environment and attempt ID. It must not rerun or replace any persisted failure
-or timeout. Because automatic restart was explicitly prohibited, obtain a new
-explicit user instruction before running:
+environment, attempt ID, and exact execution commit `d5d837e`. It must not
+rerun or replace any persisted failure or timeout. The current branch HEAD
+cannot legally issue that resume. A controlled recovery must either execute in
+the original committed code context while preserving and re-verifying the 99
+records, or retain the attempt and follow a reviewed new-attempt disposition.
+No recovery path is authorized automatically.
+
+The historical command below is valid only from the exact original execution
+commit context after a fresh read-only audit and explicit user authorization:
 
 ```bash
 ./.venv/bin/python scripts/run_baseline_confirmatory.py run-method \
@@ -180,10 +190,10 @@ correctness or performance.
 
 ### B2. Uncommitted `.gitignore`
 
-The current change both dirties the worktree and ignores the execution artifact
-tree. Before a formal transition, determine whether it should be committed,
-revised to allow required manifests/locks/records, or intentionally removed.
-Do not resolve it by losing existing execution evidence.
+The current change only removes the file's final newline; it does not ignore
+the execution artifact tree. Before a formal transition, determine whether it
+should be retained or restored. Do not include it accidentally in an
+evaluation commit.
 
 ### B3. CausalRCA disposition
 
@@ -206,12 +216,27 @@ earlier method.
 - Re-run the full unit test suite after any code change.
 - Update this document with the resolution and current HEAD.
 
+### P0A — Finish performance-blind later-adapter hardening
+
+- Add structural graph-output validation for MicroCause and the other graph
+  methods without changing native algorithms or ranking semantics.
+- Tighten real-input schema/type checks so pre-invocation malformed telemetry
+  is consistently classified as `DATA_FAILURE`.
+- Add symmetric deterministic synthetic tests for MicroCause, TraceRCA, and
+  mmBARO where their method-specific environments permit it.
+- Keep this work synthetic/schema-only; do not schedule a real later-method
+  case and do not alter the frozen CIRCA attempt.
+
 ### P1 — Complete and lock CIRCA
 
 - Obtain explicit user authorization for resume or another protocol-valid
   disposition.
-- If resumed, continue only the 81 missing RE2-TT cases under
-  `circa-a1-20260830` and the already frozen project `.venv`.
+- Before authorizing resume, choose and document a provenance-consistent
+  recovery that uses the exact original execution commit `d5d837e`; direct
+  resume from the current branch HEAD is now rejected.
+- If a same-attempt recovery is approved, continue only the 81 missing RE2-TT
+  cases under `circa-a1-20260830`, the already frozen project `.venv`, and the
+  original execution commit.
 - Preserve the five existing timeouts and all other terminal records.
 - Verify exactly 90 unique records per dataset, one status per case, identical
   environment/protocol/input digests, and clean RCAEval.
