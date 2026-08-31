@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **IN PROGRESS — PARALLEL BASELINE TASKS AUTHORIZED**
-State revision: `2026-08-31.6`
-Last operational audit: 2026-08-31, Asia/Shanghai  
+Status: **IN PROGRESS — RAW-TRACE PARSER REPAIR VALIDATED**
+State revision: `2026-09-01.1`
+Last operational audit: 2026-09-01, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized substantive code commit: `0d0efcf`
+Last synchronized central commit: `ec66f6c` (V1.2 repair pending commit)
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -24,17 +24,18 @@ contents, and update this document.
 4. `RCA_BASELINE_ADAPTER_SPEC_V1.md`;
 5. `RCA_BASELINE_EXECUTION_MATRIX_V1.md`;
 6. `RCA_BASELINE_FAILURE_POLICY_V1.md`;
-7. `RCA_BASELINE_PERFORMANCE_FIREWALL_V1.md`; and
+7. `RCA_BASELINE_PERFORMANCE_FIREWALL_V1.md`;
 8. `RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md`;
-9. `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`; and
-10. `RCA_BASELINE_ENVIRONMENTS.md`.
+9. `RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md`;
+10. `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`; and
+11. `RCA_BASELINE_ENVIRONMENTS.md`.
 
 ## 2. Frozen repository and provenance
 
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | parallel amendment and harness are on a local protocol branch | PENDING REVIEW / MERGE / PUSH |
+| Push state for this revision | V1.1 is local at `ec66f6c`; V1.2 repair is pending commit | PENDING REVIEW / MERGE / PUSH |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -60,10 +61,10 @@ project worktrees under `~/.venvs/`.
 |---|---|---|---|---|
 | BARO | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; execution complete |
 | CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; attempt incomplete; never migrate mid-attempt |
-| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | migration and read-only preflight complete; parallel task ready |
-| MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | read-only preflight complete; formal freeze pending |
-| TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | read-only preflight complete; formal freeze pending |
-| mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | read-only preflight complete; formal freeze pending |
+| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | frozen on task branch; A1 incomplete |
+| MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | frozen on task branch; A1 retained, repaired A2 required |
+| TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | frozen on task branch; A1 parser crash, repaired A2 required |
+| mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | frozen on task branch; A1 parser crash, repaired A2 required |
 | CausalRCA | no active confirmatory environment | — | saved GPU amendment only | explicitly deferred; do not freeze or run |
 
 Activation commands:
@@ -96,6 +97,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Canonical execution status/handoff | `a5ea541` | complete |
 | Later-baseline execution-integrity hardening | `c51d37a` | complete |
 | Later-baseline data/graph contract validation | `0d0efcf` | complete |
+| Raw-trace CSV parser repair and V1.2 amendment | this revision | implementation and regression validation complete; commit pending |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
 
 The read-only command below performs dependency identity collection, two
@@ -123,10 +125,12 @@ also passed against all 180 frozen terminal records. Adapter-only input loading
 for one opaque MicroRank case per dataset passed the real trace schema, digest,
 timestamp-unit, and canonical-window checks without invoking the method.
 
-The full suite for the V1.1 parallel-harness revision passed with `190` tests,
-including same-method exclusion, different-method concurrent locks, disjoint
-artifact paths, shared Git-common lock placement, and the frozen amendment
-digest. This does not replace a fresh full-suite run after future code changes.
+The full suite for the V1.2 parser-repair revision passed with `193` tests.
+This includes the actual 365,484-by-11 crashing trace in a subprocess, parser
+scope enforcement, both amendment digests, same-method exclusion, different-
+method concurrent locks, disjoint artifact paths, and shared Git-common lock
+placement. The original failing case also reached `SUCCESS` for TraceRCA and
+mmBARO with the repaired code; prediction contents were not inspected.
 
 ## 5. Confirmatory execution coverage
 
@@ -139,10 +143,14 @@ ranks, or metrics may be added before the global prediction lock.
 | BARO | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
 | CIRCA | RE2-OB | 90/90 | 86 | 4 | 0 | 0 | 0 | absent |
 | CIRCA | RE2-TT | 10/90 | 3 | 1 | 0 | 0 | 6 | absent |
-| MicroCause | — | 0 | — | — | — | — | — | absent |
-| MicroRank | — | 0 | — | — | — | — | — | absent |
-| TraceRCA | — | 0 | — | — | — | — | — | absent |
-| mmBARO | — | 0 | — | — | — | — | — | absent |
+| MicroCause A1 | RE2-OB | 6/90 | 5 | 0 | 0 | 1 | 0 | absent |
+| MicroCause A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent |
+| MicroRank A1 | RE2-OB | 12/90 | 12 | 0 | 0 | 0 | 0 | absent; retain |
+| MicroRank A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
+| TraceRCA A1 | RE2-OB | 59/90 | 59 | 0 | 0 | 0 | 0 | absent; retain |
+| TraceRCA A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
+| mmBARO A1 | RE2-OB | 59/90 | 57 | 0 | 0 | 2 | 0 | absent; retain |
+| mmBARO A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
 | CausalRCA | — | 0 | — | — | — | — | — | deferred |
 
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
@@ -154,10 +162,10 @@ CIRCA attempt: `circa-a1-20260830`. Provenance-consistent recovery started at
 resume, all 99 existing records were revalidated and a separate recovery copy
 was confirmed byte-identical. The first missing case reached the frozen
 3,600-second deadline and was persisted as `TIMEOUT`, bringing coverage to
-100/180. At the latest audit no CIRCA runner/server/worker process remained;
-the attempt is paused and has no prediction lock. Do not restart it
-automatically. The V1.1 amendment permits different methods to run in isolated
-containers while CIRCA remains incomplete.
+100/180. At the latest audit a CIRCA recovery runner/server was observed; the
+attempt still has no prediction lock. Do not launch a duplicate. The V1.1
+amendment permits different methods to run in isolated containers while CIRCA
+remains incomplete.
 
 ## 6. Current blockers and decisions required
 
@@ -233,6 +241,21 @@ locks below the shared Git common directory rather than container-local
 adequate CPU and memory; reduce task concurrency if the platform does not
 isolate physical resources.
 
+### B5. Raw-trace native parser crash — repaired; A2 required
+
+TraceRCA and mmBARO A1 deterministically stopped after 59 records on
+`re2ob-f30e2feeaa5218b8`. Both child workers exited on signal 11 inside Pandas
+2.3.3's C CSV parser while loading the valid raw trace source. The same file
+has 365,484 rows and 11 fields per row and loads with Pandas' Python engine.
+
+V1.2 limits the repair to `pandas.read_csv(..., engine="python")` for the
+logical `traces` role. The package environment and all scientific semantics
+remain unchanged. TraceRCA and mmBARO A1 must be archived and never resumed;
+MicroRank A1 is also restarted prospectively because it shares the loader and
+one attempt cannot mix execution commits. Authorized IDs are
+`microrank-a2-20260901`, `tracerca-a2-20260901`, and
+`mmbaro-a2-20260901`.
+
 ## 7. Remaining parallel plan
 
 MicroCause, MicroRank, TraceRCA, and mmBARO are independent worker tracks.
@@ -275,41 +298,47 @@ the global prediction lock remain a barrier after all tracks finish.
 - Suggested commit: `eval: freeze label-free CIRCA predictions`.
 - Update this document with final operational counts and lock commit.
 
-### P2 — Freeze, execute, and lock MicroCause in its own task
+### P2 — Continue and lock MicroCause in its own task
 
-- Start from the committed V1.1 parallel-harness revision.
-- Re-run read-only preflight with the MicroCause external interpreter.
-- Freeze `environments/microcause.json` and commit it before any real case.
-- Suggested environment commit: `eval: freeze MicroCause execution environment`.
-- Run RE2-OB 90 cases, then RE2-TT 90 cases, using one attempt and the same
+- Keep `microcause-a1-20260831` on its original execution commit and committed
+  frozen MicroCause environment; V1.2 does not affect this method.
+- Continue only through the same exact-commit resume procedure if the task was
+  interrupted; never replace its existing terminal records.
+- Complete RE2-OB 90 cases, then RE2-TT 90 cases under the same attempt and
   frozen environment; no automatic retries.
 - Audit denominator and digests, create the method lock, and commit records plus
   lock as `eval: freeze label-free MicroCause predictions`.
 - Return the two task commit IDs to the central coordinator; do not edit this
   document from the worker task.
 
-### P3 — Freeze, execute, and lock MicroRank in its own task
+### P3 — Archive MicroRank A1, execute repaired A2, and lock
 
-- Start from the same committed V1.1 parallel-harness revision.
-- Use the common external interpreter and fixed `PYTHONHASHSEED=20260830`.
-- Repeat preflight, environment-freeze commit, OB then TT execution, integrity
-  audit, prediction lock, prediction commit, and status-document update.
+- Commit the incomplete `microrank-a1-20260831` directory as immutable
+  execution evidence; do not resume it.
+- Integrate the committed V1.2 repair into the existing task branch and reuse
+  the unchanged committed environment manifest.
+- Run preflight, then start `microrank-a2-20260901` from case 1 under the common
+  interpreter and fixed `PYTHONHASHSEED=20260830`.
+- Commit the complete A2 records and method lock.
 
-### P4 — Freeze, execute, and lock TraceRCA in its own task
+### P4 — Archive TraceRCA A1, execute repaired A2, and lock
 
-- Start from the same committed V1.1 parallel-harness revision.
-- Use the common external interpreter.
+- Commit the incomplete `tracerca-a1-20260831` directory as immutable evidence;
+  do not resume it.
+- Integrate V1.2, reuse the unchanged frozen environment, and run preflight.
+- Start `tracerca-a2-20260901` from case 1 with the common interpreter.
 - Preserve raw trace microseconds, span-end filtering, and `t0*1_000_000`.
-- Repeat the same method-local environment-freeze, execution, lock, and commit
-  workflow.
+- Commit the complete A2 records and method lock.
 
-### P5 — Freeze, execute, and lock mmBARO in its own task
+### P5 — Archive mmBARO A1, execute repaired A2, and lock
 
-- Start from the same committed V1.1 parallel-harness revision.
-- Use the common external interpreter and official `mm-ob` / `mm-tt` keys.
+- Commit the incomplete `mmbaro-a1-20260831` directory as immutable evidence;
+  do not resume it.
+- Integrate V1.2, reuse the unchanged frozen environment, and run preflight.
+- Start `mmbaro-a2-20260901` from case 1 with the common interpreter and
+  official `mm-ob` / `mm-tt` keys.
 - Preserve the frozen modality-specific native preprocessing.
-- Repeat the same method-local environment-freeze, execution, lock, and commit
-  workflow.
+- Commit the complete A2 records and method lock.
 
 ### P6 — Record CausalRCA cancellation
 

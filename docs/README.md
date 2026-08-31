@@ -19,6 +19,10 @@ Cross-method parallel execution is governed by
 with copy-ready per-method commands in
 [`baseline_eval/RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`](baseline_eval/RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md).
 
+The performance-blind raw-trace parser repair and A1-to-A2 disposition are
+frozen in
+[`baseline_eval/RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md`](baseline_eval/RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md).
+
 The RCAEval baseline activation and method-to-environment map is maintained in
 [`baseline_eval/RCA_BASELINE_ENVIRONMENTS.md`](baseline_eval/RCA_BASELINE_ENVIRONMENTS.md).
 

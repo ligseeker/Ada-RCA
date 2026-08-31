@@ -194,6 +194,86 @@ python scripts/run_baseline_confirmatory.py run-method \
   >> /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/<THE-SAME-LOG>.log 2>&1
 ```
 
+This generic resume procedure does not apply to the MicroRank, TraceRCA, or
+mmBARO A1 attempts affected by the V1.2 raw-trace parser amendment. Retain
+those A1 attempts and use the recovery procedure below.
+
+## V1.2 raw-trace parser recovery
+
+Run these blocks only after the V1.2 repair has been committed. Before each
+block, verify that no process for that method is active. Replace
+`<TRACE_CSV_REPAIR_COMMIT>` with the coordinator-provided repair commit. The
+already committed environment manifests are reused unchanged.
+
+### MicroRank A1 archive and A2 restart
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/microrank
+source ~/.venvs/ada-rca-baselines-common/bin/activate
+set -euo pipefail
+
+git add artifacts/baseline_eval/execution_v1/records/microrank/microrank-a1-20260831
+git commit -m "eval: preserve interrupted MicroRank attempt a1"
+git cherry-pick <TRACE_CSV_REPAIR_COMMIT>
+
+python scripts/run_baseline_confirmatory.py global-preflight
+python scripts/run_baseline_confirmatory.py run-method \
+  --method MicroRank \
+  --attempt-id microrank-a2-20260901 \
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/microrank-a2-20260901.log 2>&1
+
+git add \
+  artifacts/baseline_eval/execution_v1/records/microrank/microrank-a2-20260901 \
+  artifacts/baseline_eval/execution_v1/locks/microrank_prediction_lock.json
+git commit -m "eval: freeze repaired label-free MicroRank predictions"
+```
+
+### TraceRCA A1 archive and A2 restart
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/tracerca
+source ~/.venvs/ada-rca-baselines-common/bin/activate
+set -euo pipefail
+
+git add artifacts/baseline_eval/execution_v1/records/tracerca/tracerca-a1-20260831
+git commit -m "eval: preserve interrupted TraceRCA attempt a1"
+git cherry-pick <TRACE_CSV_REPAIR_COMMIT>
+
+python scripts/run_baseline_confirmatory.py global-preflight
+python scripts/run_baseline_confirmatory.py run-method \
+  --method TraceRCA \
+  --attempt-id tracerca-a2-20260901 \
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/tracerca-a2-20260901.log 2>&1
+
+git add \
+  artifacts/baseline_eval/execution_v1/records/tracerca/tracerca-a2-20260901 \
+  artifacts/baseline_eval/execution_v1/locks/tracerca_prediction_lock.json
+git commit -m "eval: freeze repaired label-free TraceRCA predictions"
+```
+
+### mmBARO A1 archive and A2 restart
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/mmbaro
+source ~/.venvs/ada-rca-baselines-common/bin/activate
+set -euo pipefail
+
+git add artifacts/baseline_eval/execution_v1/records/mmbaro/mmbaro-a1-20260831
+git commit -m "eval: preserve interrupted mmBARO attempt a1"
+git cherry-pick <TRACE_CSV_REPAIR_COMMIT>
+
+python scripts/run_baseline_confirmatory.py global-preflight
+python scripts/run_baseline_confirmatory.py run-method \
+  --method mmBARO \
+  --attempt-id mmbaro-a2-20260901 \
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/mmbaro-a2-20260901.log 2>&1
+
+git add \
+  artifacts/baseline_eval/execution_v1/records/mmbaro/mmbaro-a2-20260901 \
+  artifacts/baseline_eval/execution_v1/locks/mmbaro_prediction_lock.json
+git commit -m "eval: freeze repaired label-free mmBARO predictions"
+```
+
 ## Central integration after tasks finish
 
 Cherry-pick each task's environment commit followed by its prediction commit.

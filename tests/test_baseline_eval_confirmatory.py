@@ -23,6 +23,7 @@ from src.baseline_eval.confirmatory import (
     METHOD_ORDER,
     PreflightError,
     SequenceError,
+    TRACE_CSV_PARSER_AMENDMENT_SHA256,
     _run_synthetic_preflight,
     assert_method_execution_ready,
     canonical_payload_digest,
@@ -206,6 +207,8 @@ class ConfirmatoryParallelExecutionTest(unittest.TestCase):
         with mock.patch("src.baseline_eval.confirmatory.verify_protocol_artifacts"), mock.patch(
             "src.baseline_eval.confirmatory.verify_parallel_execution_amendment"
         ), mock.patch(
+            "src.baseline_eval.confirmatory.verify_trace_csv_parser_amendment"
+        ), mock.patch(
             "src.baseline_eval.confirmatory.verify_rcaeval_clean"
         ), mock.patch("src.baseline_eval.confirmatory.assert_ada_rca_frozen_unchanged"), mock.patch(
             "src.baseline_eval.confirmatory.require_committed_file"
@@ -222,6 +225,10 @@ class ConfirmatoryParallelExecutionTest(unittest.TestCase):
         self.assertFalse(result["writes_artifacts"])
         self.assertFalse(result["authorizes_real_execution"])
         self.assertEqual(result["synthetic_preflight"]["runs"], 2)
+        self.assertEqual(
+            result["trace_csv_parser_amendment_sha256"],
+            TRACE_CSV_PARSER_AMENDMENT_SHA256,
+        )
         self.assertNotIn("packages", result["environment"])
 
     def test_06b_synthetic_preflight_rejects_nonclean_import_resolution(self):

@@ -60,6 +60,12 @@ PARALLEL_AMENDMENT_RELATIVE = Path(
     "docs/baseline_eval/RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md"
 )
 PARALLEL_AMENDMENT_SHA256 = "ca9aa4df34740195d5c5dedd3436a7cee7fa2779bb111091e7905fd8d3c2653c"
+TRACE_CSV_PARSER_AMENDMENT_RELATIVE = Path(
+    "docs/baseline_eval/RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md"
+)
+TRACE_CSV_PARSER_AMENDMENT_SHA256 = (
+    "9ba42aa7acefb21b99554ccbc49052394e4b00fed20395027bb8c89b4247e4bf"
+)
 
 PROTOCOL_ARTIFACT_DIGESTS = {
     "docs/baseline_eval/RCA_BASELINE_PROTOCOL_FREEZE_V1.md": "f16ad5778a4df3c772461e06cb8f9aa59a750298364bf6b97af286466a71202f",
@@ -231,6 +237,14 @@ def verify_parallel_execution_amendment(root: Path) -> str:
     return observed
 
 
+def verify_trace_csv_parser_amendment(root: Path) -> str:
+    require_committed_file(root, TRACE_CSV_PARSER_AMENDMENT_RELATIVE)
+    observed = sha256_file(root / TRACE_CSV_PARSER_AMENDMENT_RELATIVE)
+    if observed != TRACE_CSV_PARSER_AMENDMENT_SHA256:
+        raise PreflightError("raw-trace CSV parser amendment digest mismatch")
+    return observed
+
+
 def verify_frozen_inputs(root: Path) -> dict[str, dict[str, Any]]:
     audit = audit_frozen_inputs(root)
     for dataset in DATASET_ORDER:
@@ -259,6 +273,7 @@ def global_preflight(root: Path, *, require_exact_head: bool = False) -> dict[st
     require_clean_git(root)
     protocol = verify_protocol_artifacts(root)
     parallel_amendment = verify_parallel_execution_amendment(root)
+    trace_csv_parser_amendment = verify_trace_csv_parser_amendment(root)
     rcaeval = verify_rcaeval_clean()
     frozen_inputs = verify_frozen_inputs(root)
     assert_ada_rca_frozen_unchanged(root)
@@ -269,6 +284,7 @@ def global_preflight(root: Path, *, require_exact_head: bool = False) -> dict[st
         "protocol_artifacts": protocol,
         "protocol_bundle_digest": protocol_bundle_digest(root),
         "parallel_execution_amendment_sha256": parallel_amendment,
+        "trace_csv_parser_amendment_sha256": trace_csv_parser_amendment,
         "rcaeval": rcaeval,
         "frozen_inputs": frozen_inputs,
         "ada_rca_frozen_paths_unchanged": True,
@@ -568,6 +584,7 @@ def preflight_environment(root: Path, method: str, python: Path) -> dict[str, An
     require_method(method)
     verify_protocol_artifacts(root)
     verify_parallel_execution_amendment(root)
+    verify_trace_csv_parser_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
@@ -587,6 +604,7 @@ def preflight_environment(root: Path, method: str, python: Path) -> dict[str, An
         },
         "protocol_digest": PROTOCOL_DIGEST,
         "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
+        "trace_csv_parser_amendment_sha256": TRACE_CSV_PARSER_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "rcaeval_commit": RCAEVAL_COMMIT,
         "synthetic_preflight": {
@@ -605,6 +623,7 @@ def freeze_environment(root: Path, method: str, python: Path) -> Path:
     require_clean_git(root)
     verify_protocol_artifacts(root)
     verify_parallel_execution_amendment(root)
+    verify_trace_csv_parser_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     assert_method_execution_ready(root, method)
@@ -621,6 +640,7 @@ def freeze_environment(root: Path, method: str, python: Path) -> Path:
         "protocol_digest": PROTOCOL_DIGEST,
         "protocol_bundle_digest": protocol_bundle_digest(root),
         "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
+        "trace_csv_parser_amendment_sha256": TRACE_CSV_PARSER_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "ada_rca_starting_commit": REQUIRED_STARTING_HEAD,
         "execution_harness_commit": git(root, "rev-parse", "HEAD").stdout.strip(),
@@ -855,6 +875,7 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
     require_clean_git(root) if not resume else None
     verify_protocol_artifacts(root)
     verify_parallel_execution_amendment(root)
+    verify_trace_csv_parser_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     assert_method_execution_ready(root, method)
@@ -1024,6 +1045,7 @@ def record_method_block(
         raise ConfirmatoryError("invalid method-level block disposition")
     require_clean_git(root)
     verify_parallel_execution_amendment(root)
+    verify_trace_csv_parser_amendment(root)
     assert_method_execution_ready(root, method)
     lock_path = root / method_lock_relative(method)
     payload = {
@@ -1138,6 +1160,7 @@ def create_global_prediction_lock(root: Path) -> Path:
     require_clean_git(root)
     verify_protocol_artifacts(root)
     verify_parallel_execution_amendment(root)
+    verify_trace_csv_parser_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
@@ -1162,6 +1185,7 @@ def create_global_prediction_lock(root: Path) -> Path:
         "protocol_digest": PROTOCOL_DIGEST,
         "protocol_bundle_digest": protocol_bundle_digest(root),
         "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
+        "trace_csv_parser_amendment_sha256": TRACE_CSV_PARSER_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "ada_rca_starting_commit": REQUIRED_STARTING_HEAD,
         "scientific_v1_reference": SCIENTIFIC_V1_HEAD,
@@ -1181,6 +1205,7 @@ def create_global_prediction_lock(root: Path) -> Path:
 
 def verify_global_prediction_lock(root: Path, *, require_committed: bool = True) -> dict[str, Any]:
     verify_parallel_execution_amendment(root)
+    verify_trace_csv_parser_amendment(root)
     if require_committed:
         require_committed_file(root, GLOBAL_LOCK_RELATIVE)
     lock = read_json(root / GLOBAL_LOCK_RELATIVE)
@@ -1190,6 +1215,8 @@ def verify_global_prediction_lock(root: Path, *, require_committed: bool = True)
         raise PreflightError("global prediction lock protocol mismatch")
     if lock.get("parallel_execution_amendment_sha256") != PARALLEL_AMENDMENT_SHA256:
         raise PreflightError("global prediction lock parallel amendment mismatch")
+    if lock.get("trace_csv_parser_amendment_sha256") != TRACE_CSV_PARSER_AMENDMENT_SHA256:
+        raise PreflightError("global prediction lock raw-trace CSV parser amendment mismatch")
     for method in METHOD_ORDER:
         verify_method_lock(root, method, require_committed=True)
     return lock

@@ -122,6 +122,14 @@ class DigestSink(io.TextIOBase):
 
 def _read_csv_source(path: Path, role: str) -> pd.DataFrame:
     try:
+        # Pandas 2.3.3's native C parser deterministically segfaults on the
+        # frozen trace source for re2ob-f30e2feeaa5218b8.  The CSV is
+        # structurally valid and the Python parser preserves the same rows and
+        # columns without crossing into native parser code.  Scope the safer
+        # engine to raw traces; all other frozen sources retain their audited
+        # parser behavior.
+        if role == "traces":
+            return pd.read_csv(path, engine="python")
         return pd.read_csv(path)
     except (OSError, UnicodeError, pd.errors.EmptyDataError, pd.errors.ParserError) as exc:
         raise DataInputError(f"frozen {role} source is unreadable") from exc

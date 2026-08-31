@@ -11,6 +11,7 @@ under `docs/baseline_eval/`, especially:
 
 - `RCA_BASELINE_EXECUTION_STATUS.md`
 - `RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md`
+- `RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md`
 - `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`
 - `RCA_BASELINE_PROTOCOL_FREEZE_V1.md`
 - `RCA_BASELINE_ADAPTER_SPEC_V1.md`
@@ -139,6 +140,11 @@ Apply these rules:
 - Candidate completion is `NONE`; baseline MRR is `NOT-IDENTIFIABLE` under V1.
 - Confirm the frozen Git identity, environment manifest, input manifest, and
   clean pinned RCAEval checkout before a formal run.
+- Load the logical `traces` CSV role with Pandas' Python engine as frozen by
+  V1.2. Other CSV roles retain their existing parser behavior.
+- Retain the incomplete MicroRank, TraceRCA, and mmBARO A1 attempts. Do not
+  resume or overwrite them after the V1.2 repair; start the authorized A2
+  attempt from case 1 under one repaired execution commit.
 
 Container isolation must include adequate CPU and memory allocation. If
 physical-resource throttling occurs, reduce task concurrency; do not change
@@ -175,8 +181,9 @@ complete remaining plan are maintained in
 conversation summary when that committed handoff and fresh read-only evidence
 are available.
 
-As of the latest 2026-08-31 read-only audit, BARO has a valid frozen prediction
-lock and CIRCA has 100 of 180 terminal records but no lock. No CIRCA process is
-running; re-audit before discussing recovery and do not restart it
-automatically. The external-environment documentation is merged into this
-branch.
+As of the latest 2026-09-01 read-only audit, BARO has a valid frozen prediction
+lock and CIRCA has 100 of 180 terminal records but no lock. A CIRCA recovery
+process was observed, so never launch a duplicate without a fresh process
+audit. TraceRCA and mmBARO A1 both stopped after 59 records at the same native
+CSV-parser crash; V1.2 authorizes repaired A2 attempts and also requires
+MicroRank to restart prospectively under the same repaired commit.
