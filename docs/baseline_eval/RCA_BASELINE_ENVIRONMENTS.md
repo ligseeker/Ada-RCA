@@ -22,11 +22,11 @@ environments and requires a new preflight and environment freeze.
 | Method | Activate | Special requirement | Current execution note |
 |---|---|---|---|
 | BARO | Common RCAEval | None beyond the frozen worker controls | The completed confirmatory attempt remains bound to its historical project-local `.venv` manifest; do not regenerate it |
-| CIRCA | Common RCAEval for a future attempt | None beyond the frozen worker controls | Attempt `circa-a1-20260830` stopped after 99/180 terminal records without a prediction lock; it remains bound to the frozen project-local `.venv` and must not be restarted automatically |
-| MicroCause | MicroCause | `tigramite==4.2.2.1` | Use the external MicroCause environment for freeze and execution after the CIRCA prediction lock exists |
-| MicroRank | Common RCAEval | Fixed `PYTHONHASHSEED=20260830` through the runner | Ready for a later environment freeze |
-| TraceRCA | Common RCAEval | None beyond the frozen worker controls | Ready for a later environment freeze |
-| mmBARO | Common RCAEval | Official `mm-ob` / `mm-tt` dataset keys are enforced by the adapter | Ready for a later environment freeze |
+| CIRCA | Common RCAEval for a future attempt | None beyond the frozen worker controls | Attempt `circa-a1-20260830` is paused after 100/180 terminal records without a prediction lock; it remains bound to the frozen project-local `.venv` and must not be restarted automatically |
+| MicroCause | MicroCause | `tigramite==4.2.2.1` | Authorized for an isolated parallel task |
+| MicroRank | Common RCAEval | Fixed `PYTHONHASHSEED=20260830` through the runner | Authorized for an isolated parallel task |
+| TraceRCA | Common RCAEval | None beyond the frozen worker controls | Authorized for an isolated parallel task |
+| mmBARO | Common RCAEval | Official `mm-ob` / `mm-tt` dataset keys are enforced by the adapter | Authorized for an isolated parallel task |
 | CausalRCA | Common RCAEval if re-authorized | CUDA availability plus the saved GPU amendment | Deferred; do not freeze or run unless the method is explicitly restored |
 
 RCD and the context-only methods are not part of this environment map because
@@ -71,10 +71,9 @@ deactivate
 Activation is convenient for interactive work, but formal freezes should pass
 the absolute interpreter path so that the environment identity is unambiguous.
 
-Before the prior method has a prediction lock, a later environment may be
-checked with the read-only command below. It runs two synthetic predictions and
-both dataset schema checks, but writes no artifact and does not authorize real
-execution:
+An environment may be checked with the read-only command below. It runs two
+synthetic predictions and both dataset schema checks, but writes no artifact
+and does not authorize real execution:
 
 ```bash
 python scripts/run_baseline_confirmatory.py preflight-environment \
@@ -100,9 +99,10 @@ python scripts/run_baseline_confirmatory.py freeze-environment \
   --python /home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/python
 ```
 
-The frozen method order still applies. Environment preparation does not permit
-a real method to start before the preceding method has produced and passed its
-prediction lock.
+Under the V1.1 parallel amendment, different methods may freeze and execute in
+separate task containers without waiting for preceding registry entries. Each
+task must use its own Git working copy and method-scoped artifacts. See
+`RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md` for the full commands.
 
 ## Recreation commands
 

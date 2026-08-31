@@ -1,8 +1,8 @@
 """Frozen orchestration primitives for RCAEval confirmatory execution.
 
 This module owns repository/integrity checks, the input manifest, environment
-freezes, method ordering, subprocess isolation, and prediction locks.  It is
-strictly label-free: post-lock label joins live in ``evaluation.py``.
+freezes, method-isolated execution, subprocess isolation, and prediction locks.
+It is strictly label-free: post-lock label joins live in ``evaluation.py``.
 """
 
 from __future__ import annotations
@@ -37,7 +37,6 @@ from src.baseline_eval import (
 )
 
 
-REQUIRED_BRANCH = "evaluation/rcaeval-baselines"
 REQUIRED_STARTING_HEAD = "54b403ff0441c318817818abeda13526652ae1d2"
 FROZEN_EVIDENCE_HEAD = "9342e06db91945be2e44703437229ba45b18bda8"
 SCIENTIFIC_V1_HEAD = "bed295326e567395e725caa82840a534dcc0b1de"
@@ -57,6 +56,10 @@ METHOD_ORDER = (
 )
 DATASET_ORDER = ("re2ob", "re2tt")
 DATASET_DISPLAY = {"re2ob": "RE2-OB", "re2tt": "RE2-TT"}
+PARALLEL_AMENDMENT_RELATIVE = Path(
+    "docs/baseline_eval/RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md"
+)
+PARALLEL_AMENDMENT_SHA256 = "026dc810d34c9f2dd300a478eb0c4c401b3dcb05cb95162836b7bc9db113526e"
 
 PROTOCOL_ARTIFACT_DIGESTS = {
     "docs/baseline_eval/RCA_BASELINE_PROTOCOL_FREEZE_V1.md": "f16ad5778a4df3c772461e06cb8f9aa59a750298364bf6b97af286466a71202f",
@@ -92,7 +95,7 @@ INPUT_ROLES = {
 EXECUTION_ROOT_RELATIVE = Path("artifacts/baseline_eval/execution_v1")
 INPUT_MANIFEST_RELATIVE = EXECUTION_ROOT_RELATIVE / "input_manifest_v1.json"
 GLOBAL_LOCK_RELATIVE = EXECUTION_ROOT_RELATIVE / "prediction_lock_v1.json"
-PROCESS_LOCK_PATH = Path("/tmp/ada_rca_rcaeval_confirmatory_execution.lock")
+PROCESS_LOCK_ROOT = Path("/tmp/ada_rca_rcaeval_confirmatory_execution")
 
 FIXED_WORKER_ENV = {
     "PYTHONHASHSEED": str(CANONICAL_SEED),
@@ -115,7 +118,7 @@ class PreflightError(ConfirmatoryError):
 
 
 class SequenceError(ConfirmatoryError):
-    """A method attempted to run outside the frozen sequence."""
+    """A method attempted an invalid or conflicting execution transition."""
 
 
 class FrameworkError(ConfirmatoryError):
@@ -220,6 +223,14 @@ def verify_protocol_artifacts(root: Path) -> dict[str, str]:
     return observed
 
 
+def verify_parallel_execution_amendment(root: Path) -> str:
+    require_committed_file(root, PARALLEL_AMENDMENT_RELATIVE)
+    observed = sha256_file(root / PARALLEL_AMENDMENT_RELATIVE)
+    if observed != PARALLEL_AMENDMENT_SHA256:
+        raise PreflightError("parallel execution amendment digest mismatch")
+    return observed
+
+
 def verify_frozen_inputs(root: Path) -> dict[str, dict[str, Any]]:
     audit = audit_frozen_inputs(root)
     for dataset in DATASET_ORDER:
@@ -240,8 +251,6 @@ def verify_frozen_inputs(root: Path) -> dict[str, dict[str, Any]]:
 def global_preflight(root: Path, *, require_exact_head: bool = False) -> dict[str, Any]:
     branch = git(root, "branch", "--show-current").stdout.strip()
     head = git(root, "rev-parse", "HEAD").stdout.strip()
-    if branch != REQUIRED_BRANCH:
-        raise PreflightError(f"required branch is {REQUIRED_BRANCH}, observed {branch}")
     if require_exact_head and head != REQUIRED_STARTING_HEAD:
         raise PreflightError(f"required starting HEAD is {REQUIRED_STARTING_HEAD}, observed {head}")
     ancestor = git(root, "merge-base", "--is-ancestor", REQUIRED_STARTING_HEAD, head, check=False)
@@ -249,6 +258,7 @@ def global_preflight(root: Path, *, require_exact_head: bool = False) -> dict[st
         raise PreflightError("current HEAD is not descended from the required starting HEAD")
     require_clean_git(root)
     protocol = verify_protocol_artifacts(root)
+    parallel_amendment = verify_parallel_execution_amendment(root)
     rcaeval = verify_rcaeval_clean()
     frozen_inputs = verify_frozen_inputs(root)
     assert_ada_rca_frozen_unchanged(root)
@@ -258,20 +268,29 @@ def global_preflight(root: Path, *, require_exact_head: bool = False) -> dict[st
         "starting_head": REQUIRED_STARTING_HEAD,
         "protocol_artifacts": protocol,
         "protocol_bundle_digest": protocol_bundle_digest(root),
+        "parallel_execution_amendment_sha256": parallel_amendment,
         "rcaeval": rcaeval,
         "frozen_inputs": frozen_inputs,
         "ada_rca_frozen_paths_unchanged": True,
     }
 
 
+def method_execution_lock_path(method: str, lock_root: Path = PROCESS_LOCK_ROOT) -> Path:
+    require_method(method)
+    return lock_root / f"{method.lower()}.lock"
+
+
 @contextmanager
-def exclusive_execution_lock(path: Path = PROCESS_LOCK_PATH) -> Iterator[None]:
+def exclusive_method_execution_lock(
+    method: str, *, lock_root: Path = PROCESS_LOCK_ROOT
+) -> Iterator[None]:
+    path = method_execution_lock_path(method, lock_root)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a+", encoding="utf-8") as handle:
         try:
             fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as exc:
-            raise SequenceError("another baseline execution process is active") from exc
+            raise SequenceError(f"another {method} execution process is active") from exc
         try:
             yield
         finally:
@@ -297,7 +316,7 @@ def method_records_relative(method: str, attempt_id: str, dataset: str) -> Path:
 
 def require_method(method: str) -> None:
     if method not in METHOD_ORDER:
-        raise SequenceError(f"method is not in the frozen authorized order: {method}")
+        raise SequenceError(f"method is not in the frozen authorized registry: {method}")
 
 
 def require_dataset(dataset: str) -> None:
@@ -310,26 +329,13 @@ def require_attempt_id(attempt_id: str) -> None:
         raise ConfirmatoryError("attempt ID must be an opaque safe slug")
 
 
-def prior_method(method: str) -> str | None:
+def assert_method_execution_ready(
+    root: Path, method: str, *, require_current_absent: bool = True
+) -> None:
     require_method(method)
-    index = METHOD_ORDER.index(method)
-    return METHOD_ORDER[index - 1] if index else None
-
-
-def assert_method_sequence_ready(root: Path, method: str, *, require_current_absent: bool = True) -> None:
-    require_method(method)
-    previous = prior_method(method)
-    if previous is not None:
-        try:
-            verify_method_lock(root, previous, require_committed=True)
-        except (KeyError, PreflightError) as exc:
-            raise SequenceError(f"previous method {previous} has no valid terminal lock") from exc
     current_path = root / method_lock_relative(method)
     if require_current_absent and current_path.exists():
         raise SequenceError(f"{method} already has a method-level lock")
-    for later in METHOD_ORDER[METHOD_ORDER.index(method) + 1 :]:
-        if (root / method_lock_relative(later)).exists():
-            raise SequenceError(f"later method lock exists before {method}: {later}")
 
 
 def _manifest_record(dataset: str, case: Mapping[str, Any], source: Mapping[str, Any]) -> dict[str, Any]:
@@ -546,15 +552,15 @@ def _environment_preflight_details(
 
 
 def preflight_environment(root: Path, method: str, python: Path) -> dict[str, Any]:
-    """Read-only environment resolution for a current or later baseline.
+    """Read-only environment resolution for an authorized baseline.
 
-    This deliberately does not enforce the method execution sequence and does
-    not create an environment manifest. It is safe to use while an earlier
-    method is incomplete, but it never authorizes a real case run.
+    This does not create an environment manifest. It is safe to use while a
+    different method is executing, but it never authorizes a real case run.
     """
 
     require_method(method)
     verify_protocol_artifacts(root)
+    verify_parallel_execution_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
@@ -573,6 +579,7 @@ def preflight_environment(root: Path, method: str, python: Path) -> dict[str, An
             "dependency_manifest_digest": identity["dependency_manifest_digest"],
         },
         "protocol_digest": PROTOCOL_DIGEST,
+        "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "rcaeval_commit": RCAEVAL_COMMIT,
         "synthetic_preflight": {
@@ -590,9 +597,10 @@ def preflight_environment(root: Path, method: str, python: Path) -> dict[str, An
 def freeze_environment(root: Path, method: str, python: Path) -> Path:
     require_clean_git(root)
     verify_protocol_artifacts(root)
+    verify_parallel_execution_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
-    assert_method_sequence_ready(root, method)
+    assert_method_execution_ready(root, method)
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
     path = root / environment_relative(method)
     if path.exists():
@@ -605,6 +613,7 @@ def freeze_environment(root: Path, method: str, python: Path) -> Path:
         "identity": identity,
         "protocol_digest": PROTOCOL_DIGEST,
         "protocol_bundle_digest": protocol_bundle_digest(root),
+        "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "ada_rca_starting_commit": REQUIRED_STARTING_HEAD,
         "execution_harness_commit": git(root, "rev-parse", "HEAD").stdout.strip(),
@@ -838,9 +847,10 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
     require_attempt_id(attempt_id)
     require_clean_git(root) if not resume else None
     verify_protocol_artifacts(root)
+    verify_parallel_execution_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
-    assert_method_sequence_ready(root, method)
+    assert_method_execution_ready(root, method)
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
     require_committed_file(root, environment_relative(method))
     environment = verify_environment_current(root, method)
@@ -859,7 +869,7 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
         validate_attempt_is_new(root, method, attempt_id)
         existing = {}
 
-    with exclusive_execution_lock():
+    with exclusive_method_execution_lock(method):
         server = subprocess.Popen(
             (str(python), "-m", "src.baseline_eval.server", "--method", method),
             cwd=root,
@@ -1004,7 +1014,8 @@ def record_method_block(
     if disposition not in {"ENVIRONMENT_BLOCKED", "PREEXECUTION_BLOCKED"}:
         raise ConfirmatoryError("invalid method-level block disposition")
     require_clean_git(root)
-    assert_method_sequence_ready(root, method)
+    verify_parallel_execution_amendment(root)
+    assert_method_execution_ready(root, method)
     lock_path = root / method_lock_relative(method)
     payload = {
         "schema_version": "rca_baseline_method_prediction_lock_v1",
@@ -1117,6 +1128,7 @@ def verify_method_lock(root: Path, method: str, *, require_committed: bool = Tru
 def create_global_prediction_lock(root: Path) -> Path:
     require_clean_git(root)
     verify_protocol_artifacts(root)
+    verify_parallel_execution_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
@@ -1140,6 +1152,7 @@ def create_global_prediction_lock(root: Path) -> Path:
         "protocol_version": PROTOCOL_VERSION,
         "protocol_digest": PROTOCOL_DIGEST,
         "protocol_bundle_digest": protocol_bundle_digest(root),
+        "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "ada_rca_starting_commit": REQUIRED_STARTING_HEAD,
         "scientific_v1_reference": SCIENTIFIC_V1_HEAD,
@@ -1158,6 +1171,7 @@ def create_global_prediction_lock(root: Path) -> Path:
 
 
 def verify_global_prediction_lock(root: Path, *, require_committed: bool = True) -> dict[str, Any]:
+    verify_parallel_execution_amendment(root)
     if require_committed:
         require_committed_file(root, GLOBAL_LOCK_RELATIVE)
     lock = read_json(root / GLOBAL_LOCK_RELATIVE)
@@ -1165,6 +1179,8 @@ def verify_global_prediction_lock(root: Path, *, require_committed: bool = True)
         raise PreflightError("global prediction lock is invalid")
     if lock.get("protocol_digest") != PROTOCOL_DIGEST:
         raise PreflightError("global prediction lock protocol mismatch")
+    if lock.get("parallel_execution_amendment_sha256") != PARALLEL_AMENDMENT_SHA256:
+        raise PreflightError("global prediction lock parallel amendment mismatch")
     for method in METHOD_ORDER:
         verify_method_lock(root, method, require_committed=True)
     return lock

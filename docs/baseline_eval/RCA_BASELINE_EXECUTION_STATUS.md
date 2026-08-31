@@ -1,7 +1,7 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **IN PROGRESS — CIRCA RECOVERY RUNNING**
-State revision: `2026-08-31.5`
+Status: **IN PROGRESS — PARALLEL BASELINE TASKS AUTHORIZED**
+State revision: `2026-08-31.6`
 Last operational audit: 2026-08-31, Asia/Shanghai  
 Branch: `evaluation/rcaeval-baselines`  
 Last synchronized substantive code commit: `0d0efcf`
@@ -25,14 +25,16 @@ contents, and update this document.
 5. `RCA_BASELINE_EXECUTION_MATRIX_V1.md`;
 6. `RCA_BASELINE_FAILURE_POLICY_V1.md`;
 7. `RCA_BASELINE_PERFORMANCE_FIREWALL_V1.md`; and
-8. `RCA_BASELINE_ENVIRONMENTS.md`.
+8. `RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md`;
+9. `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`; and
+10. `RCA_BASELINE_ENVIRONMENTS.md`.
 
 ## 2. Frozen repository and provenance
 
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | user decisions committed locally at `3bedcb5`; this running-state handoff follows locally | PENDING PUSH |
+| Push state for this revision | parallel amendment and harness are on a local protocol branch | PENDING REVIEW / MERGE / PUSH |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -58,7 +60,7 @@ project worktrees under `~/.venvs/`.
 |---|---|---|---|---|
 | BARO | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; execution complete |
 | CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; attempt incomplete; never migrate mid-attempt |
-| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | migration and read-only preflight complete; formal freeze pending CIRCA lock |
+| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | migration and read-only preflight complete; parallel task ready |
 | MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | read-only preflight complete; formal freeze pending |
 | TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | read-only preflight complete; formal freeze pending |
 | mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | read-only preflight complete; formal freeze pending |
@@ -81,7 +83,8 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 |---|---|---|
 | Frozen adapter/protocol audit | `b777f15` through `f7dcd8d` | complete |
 | Performance firewall | `54b403f`, `2d9e96e` | complete |
-| Sequential execution harness | `e056958` | complete |
+| Original sequential execution harness | `e056958` | superseded for cross-method scheduling only |
+| Parallel execution amendment and method-isolated harness | this revision | complete; task launch pending |
 | Frozen input manifest | `5b3d944` | complete |
 | BARO environment freeze | `5018f5d` | complete |
 | BARO label-free prediction lock | `fbfb6e6` | complete |
@@ -120,8 +123,10 @@ also passed against all 180 frozen terminal records. Adapter-only input loading
 for one opaque MicroRank case per dataset passed the real trace schema, digest,
 timestamp-unit, and canonical-window checks without invoking the method.
 
-The full suite most recently passed with `184` tests. This does not replace a
-fresh full-suite run after future code changes.
+The full suite for the V1.1 parallel-harness revision passed with `189` tests,
+including same-method exclusion, different-method concurrent locks, disjoint
+artifact paths, and the frozen amendment digest. This does not replace a fresh
+full-suite run after future code changes.
 
 ## 5. Confirmatory execution coverage
 
@@ -149,17 +154,17 @@ CIRCA attempt: `circa-a1-20260830`. Provenance-consistent recovery started at
 resume, all 99 existing records were revalidated and a separate recovery copy
 was confirmed byte-identical. The first missing case reached the frozen
 3,600-second deadline and was persisted as `TIMEOUT`, bringing coverage to
-100/180. The parent runner PID was `37630` at this audit; a child case process
-was active. There is no CIRCA prediction lock. Do not start, resume, freeze, or
-execute another baseline while this process is active.
+100/180. At the latest audit no CIRCA runner/server/worker process remained;
+the attempt is paused and has no prediction lock. Do not restart it
+automatically. The V1.1 amendment permits different methods to run in isolated
+containers while CIRCA remains incomplete.
 
 ## 6. Current blockers and decisions required
 
-### B1. CIRCA sequence gate
+### B1. CIRCA recovery — independent incomplete task
 
-MicroCause cannot be formally frozen or executed until CIRCA has a committed,
-integrity-valid method-level prediction lock. The existing CIRCA attempt is
-incomplete but its environment remains valid.
+The existing CIRCA attempt is incomplete but its environment remains valid.
+It no longer gates other methods under the V1.1 parallel amendment.
 
 Before any recovery action, re-audit:
 
@@ -215,19 +220,20 @@ or equivalent protocol-level disposition. It must not be represented as a
 technical method failure. The saved GPU implementation remains isolated on
 `wip/causalrca-gpu-amendment` at `89db7ec` and is not part of this execution.
 
-### B4. Cross-method concurrency — not authorized
+### B4. Cross-method concurrency — authorized
 
-The user allowed concurrency only if environments could be activated without
-interference. That condition is not sufficient under the frozen protocol: the
-runner has a global execution lock, the method order is mandatory, and CPU/RAM
-contention could change timeout outcomes. Confirmatory execution therefore
-remains strictly sequential. Read-only preflights and synthetic checks may run
-only when they do not overlap a real method invocation or mutate an environment.
+The user explicitly authorized different baselines to run concurrently in
+separate task containers provided their experiment data cannot interfere. The
+committed V1.1 amendment provides method-scoped environment, record, lock, and
+branch ownership; the harness uses a per-method process lock. Registry order is
+reporting order only. Each container must still have adequate CPU and memory;
+reduce task concurrency if the platform does not isolate physical resources.
 
-## 7. Remaining sequential plan
+## 7. Remaining parallel plan
 
-The following order is mandatory. A later real method must not overlap an
-earlier method.
+MicroCause, MicroRank, TraceRCA, and mmBARO are independent worker tracks.
+CIRCA recovery is a fifth independent legacy track. Central integration and
+the global prediction lock remain a barrier after all tracks finish.
 
 ### P0 — Resolve repository transition readiness
 
@@ -250,12 +256,12 @@ earlier method.
 - Keep this work synthetic/schema-only; do not schedule a real later-method
   case and do not alter the frozen CIRCA attempt.
 
-### P1 — Complete and lock CIRCA
+### P1 — Complete and lock CIRCA independently
 
 - Completed: explicit user authorization obtained for provenance-consistent
   resume, with a full rerun permitted only if that path proves impractical.
-- Completed: recovery is running from the original repository path on branch
-  `recovery/circa-a1-20260830` at exact commit `d5d837e`.
+- Completed: recovery ran from the original repository path on branch
+  `recovery/circa-a1-20260830` at exact commit `d5d837e` and paused at 100/180.
 - Continue only missing RE2-TT cases under `circa-a1-20260830`, the already
   frozen project `.venv`, and the original execution commit.
 - Preserve the five existing timeouts and all other terminal records.
@@ -265,9 +271,9 @@ earlier method.
 - Suggested commit: `eval: freeze label-free CIRCA predictions`.
 - Update this document with final operational counts and lock commit.
 
-### P2 — Freeze, execute, and lock MicroCause
+### P2 — Freeze, execute, and lock MicroCause in its own task
 
-- Require the committed CIRCA lock first.
+- Start from the committed V1.1 parallel-harness revision.
 - Re-run read-only preflight with the MicroCause external interpreter.
 - Freeze `environments/microcause.json` and commit it before any real case.
 - Suggested environment commit: `eval: freeze MicroCause execution environment`.
@@ -275,31 +281,31 @@ earlier method.
   frozen environment; no automatic retries.
 - Audit denominator and digests, create the method lock, and commit records plus
   lock as `eval: freeze label-free MicroCause predictions`.
-- Update this document after the environment freeze and again after the method
-  lock.
+- Return the two task commit IDs to the central coordinator; do not edit this
+  document from the worker task.
 
-### P3 — Freeze, execute, and lock MicroRank
+### P3 — Freeze, execute, and lock MicroRank in its own task
 
-- Require the committed MicroCause lock.
+- Start from the same committed V1.1 parallel-harness revision.
 - Use the common external interpreter and fixed `PYTHONHASHSEED=20260830`.
 - Repeat preflight, environment-freeze commit, OB then TT execution, integrity
   audit, prediction lock, prediction commit, and status-document update.
 
-### P4 — Freeze, execute, and lock TraceRCA
+### P4 — Freeze, execute, and lock TraceRCA in its own task
 
-- Require the committed MicroRank lock.
+- Start from the same committed V1.1 parallel-harness revision.
 - Use the common external interpreter.
 - Preserve raw trace microseconds, span-end filtering, and `t0*1_000_000`.
-- Repeat the same environment-freeze, execution, lock, commit, and documentation
-  sequence.
+- Repeat the same method-local environment-freeze, execution, lock, and commit
+  workflow.
 
-### P5 — Freeze, execute, and lock mmBARO
+### P5 — Freeze, execute, and lock mmBARO in its own task
 
-- Require the committed TraceRCA lock.
+- Start from the same committed V1.1 parallel-harness revision.
 - Use the common external interpreter and official `mm-ob` / `mm-tt` keys.
 - Preserve the frozen modality-specific native preprocessing.
-- Repeat the same environment-freeze, execution, lock, commit, and documentation
-  sequence.
+- Repeat the same method-local environment-freeze, execution, lock, and commit
+  workflow.
 
 ### P6 — Record CausalRCA cancellation
 
@@ -311,6 +317,8 @@ earlier method.
 
 ### P7 — Global prediction lock
 
+- Integrate every worker's environment commit before its prediction commit;
+  worker-owned paths must remain disjoint.
 - Require a committed, valid disposition for every method in the frozen order.
 - Verify all method locks and terminal record digests.
 - Create and commit `prediction_lock_v1.json`.

@@ -24,10 +24,11 @@ from src.baseline_eval.confirmatory import (
     PreflightError,
     SequenceError,
     _run_synthetic_preflight,
-    assert_method_sequence_ready,
+    assert_method_execution_ready,
     canonical_payload_digest,
-    exclusive_execution_lock,
+    exclusive_method_execution_lock,
     format_case_status,
+    method_lock_relative,
     preflight_environment,
     validate_attempt_is_new,
     validate_resume_execution_commit,
@@ -87,40 +88,45 @@ def _failure_record(**overrides):
     return payload
 
 
-class ConfirmatorySequenceTest(unittest.TestCase):
-    def test_01_method_execution_order_is_exactly_frozen(self):
+class ConfirmatoryParallelExecutionTest(unittest.TestCase):
+    def test_01_method_registry_order_is_exactly_frozen(self):
         self.assertEqual(
             METHOD_ORDER,
             ("BARO", "CIRCA", "MicroCause", "MicroRank", "TraceRCA", "mmBARO", "CausalRCA"),
         )
         self.assertEqual(DATASET_ORDER, ("re2ob", "re2tt"))
 
-    def test_02_two_methods_cannot_hold_execution_lock_concurrently(self):
+    def test_02_same_method_cannot_hold_execution_lock_concurrently(self):
         with tempfile.TemporaryDirectory() as directory:
-            path = Path(directory) / "execution.lock"
-            with exclusive_execution_lock(path):
+            lock_root = Path(directory)
+            with exclusive_method_execution_lock("MicroRank", lock_root=lock_root):
                 with self.assertRaises(SequenceError):
-                    with exclusive_execution_lock(path):
+                    with exclusive_method_execution_lock("MicroRank", lock_root=lock_root):
                         pass
 
-    def test_03_method_cannot_start_before_committed_previous_lock(self):
+    def test_02a_different_methods_can_hold_execution_locks_concurrently(self):
+        with tempfile.TemporaryDirectory() as directory:
+            lock_root = Path(directory)
+            with exclusive_method_execution_lock("MicroRank", lock_root=lock_root):
+                with exclusive_method_execution_lock("TraceRCA", lock_root=lock_root):
+                    pass
+
+    def test_03_method_does_not_require_another_method_lock(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            _git(root, "init")
-            _git(root, "config", "user.email", "test@example.invalid")
-            _git(root, "config", "user.name", "Test")
-            with mock.patch(
-                "src.baseline_eval.confirmatory.verify_method_lock",
-                side_effect=PreflightError("invalid lock"),
-            ):
-                with self.assertRaises(SequenceError):
-                    assert_method_sequence_ready(root, "CIRCA")
-            with mock.patch(
-                "src.baseline_eval.confirmatory.verify_method_lock",
-                return_value={"method": "BARO", "disposition": "EXECUTION_COMPLETE"},
-            ) as verify:
-                assert_method_sequence_ready(root, "CIRCA")
-            verify.assert_called_once_with(root, "BARO", require_committed=True)
+            other_lock = root / method_lock_relative("BARO")
+            other_lock.parent.mkdir(parents=True)
+            other_lock.write_text("{}", encoding="utf-8")
+            assert_method_execution_ready(root, "CIRCA")
+
+    def test_03a_method_cannot_start_after_its_own_lock_exists(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            current_lock = root / method_lock_relative("CIRCA")
+            current_lock.parent.mkdir(parents=True)
+            current_lock.write_text("{}", encoding="utf-8")
+            with self.assertRaises(SequenceError):
+                assert_method_execution_ready(root, "CIRCA")
 
     def test_04_ob_and_tt_records_must_use_same_environment_digest(self):
         common = _failure_record()
@@ -179,7 +185,7 @@ class ConfirmatorySequenceTest(unittest.TestCase):
             with self.assertRaises(SequenceError):
                 validate_attempt_is_new(root, "BARO", "attempt-2")
 
-    def test_06a_environment_preflight_is_read_only_and_not_sequence_gated(self):
+    def test_06a_environment_preflight_is_read_only_and_not_execution_gated(self):
         identity = {
             "python_executable": "/external/env/bin/python",
             "runtime_python_executable": "/base/bin/python",
@@ -198,6 +204,8 @@ class ConfirmatorySequenceTest(unittest.TestCase):
         }
         schema = [{"dataset": dataset, "status": "PASS"} for dataset in DATASET_ORDER]
         with mock.patch("src.baseline_eval.confirmatory.verify_protocol_artifacts"), mock.patch(
+            "src.baseline_eval.confirmatory.verify_parallel_execution_amendment"
+        ), mock.patch(
             "src.baseline_eval.confirmatory.verify_rcaeval_clean"
         ), mock.patch("src.baseline_eval.confirmatory.assert_ada_rca_frozen_unchanged"), mock.patch(
             "src.baseline_eval.confirmatory.require_committed_file"
@@ -207,10 +215,10 @@ class ConfirmatorySequenceTest(unittest.TestCase):
         ), mock.patch(
             "src.baseline_eval.confirmatory.sha256_file", return_value="i" * 64
         ), mock.patch(
-            "src.baseline_eval.confirmatory.assert_method_sequence_ready"
-        ) as sequence:
+            "src.baseline_eval.confirmatory.assert_method_execution_ready"
+        ) as execution_gate:
             result = preflight_environment(ROOT, "mmBARO", Path("/external/env/bin/python"))
-        sequence.assert_not_called()
+        execution_gate.assert_not_called()
         self.assertFalse(result["writes_artifacts"])
         self.assertFalse(result["authorizes_real_execution"])
         self.assertEqual(result["synthetic_preflight"]["runs"], 2)

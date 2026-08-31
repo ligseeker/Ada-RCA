@@ -203,9 +203,9 @@ def evaluate_locked_predictions(root: Path) -> Path:
             "protocol_digest": PROTOCOL_DIGEST,
             "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         },
-        "sequential_execution_order": [
+        "method_registry": [
             {
-                "order": index + 1,
+                "display_order": index + 1,
                 "method": method,
                 "disposition": read_json(root / method_lock_relative(method))["disposition"],
                 "method_lock_commit": _commit_for_path(root, method_lock_relative(method)),
@@ -223,9 +223,10 @@ def evaluate_locked_predictions(root: Path) -> Path:
             "sota_claim": False,
         },
         "integrity": {
-            "method_order": "PASS",
+            "method_registry": "PASS",
             "same_environment_two_datasets": "PASS",
-            "exclusive_process_lock": "PASS",
+            "method_isolated_output_paths": "PASS",
+            "per_method_process_lock": "PASS",
             "root_path_not_in_predictive_call": "PASS",
             "console_contains_only_opaque_status_and_lengths": "PASS",
             "global_lock_committed_before_label_join": "PASS",
@@ -265,9 +266,12 @@ def render_report(root: Path, evaluation: Mapping[str, Any]) -> str:
     repo = evaluation["provenance"]
     final_head = git(root, "rev-parse", "HEAD").stdout.strip()
     branch = git(root, "branch", "--show-current").stdout.strip()
-    order_rows = [
-        (row["order"], row["method"], row["disposition"], row["method_lock_commit"])
-        for row in evaluation["sequential_execution_order"]
+    registry_rows = [
+        (
+            row["display_order"], row["method"], row["disposition"],
+            row["method_lock_commit"],
+        )
+        for row in evaluation["method_registry"]
     ]
     environment_rows = [
         (
@@ -331,9 +335,13 @@ def render_report(root: Path, evaluation: Mapping[str, Any]) -> str:
 - Git status before report generation: clean
 - Push status: reported in the final handoff after push
 
-# B. Sequential Execution Order
+# B. Parallel Execution Registry
 
-{_table(('Order', 'Method', 'Disposition', 'Method-level lock commit'), order_rows)}
+{_table(('Display order', 'Method', 'Disposition', 'Method-level lock commit'), registry_rows)}
+
+Methods were eligible to execute concurrently in isolated task containers.
+Display order is stable reporting order only and does not imply a dependency
+between method runs.
 
 # C. Environment Matrix
 

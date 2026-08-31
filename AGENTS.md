@@ -10,6 +10,8 @@ Before changing evaluation code or running a method, read the applicable files
 under `docs/baseline_eval/`, especially:
 
 - `RCA_BASELINE_EXECUTION_STATUS.md`
+- `RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md`
+- `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`
 - `RCA_BASELINE_PROTOCOL_FREEZE_V1.md`
 - `RCA_BASELINE_ADAPTER_SPEC_V1.md`
 - `RCA_BASELINE_EXECUTION_MATRIX_V1.md`
@@ -25,9 +27,13 @@ environment, lock, and process checks before taking action.
 
 ## Progress handoff discipline
 
-- After every completed task that changes code, environments, execution
-  records, locks, blockers, decisions, or the remaining plan, update
+- After every completed central coordination task that changes code,
+  environments, integrated execution records, locks, blockers, decisions, or
+  the remaining plan, update
   `docs/baseline_eval/RCA_BASELINE_EXECUTION_STATUS.md` before handing off.
+- An isolated parallel method task must not edit the canonical status document.
+  It commits only its method-scoped environment, records, and lock; the central
+  coordinator updates status after integrating that task's commits.
 - Keep the handoff performance-blind before the global prediction lock: record
   only operational counts, statuses, runtimes, digests, paths, commits, tests,
   blockers, and next actions.
@@ -99,17 +105,24 @@ run pass. Diagnose the mismatch and preserve its evidence.
 
 ## Confirmatory execution rules
 
-The frozen method sequence is:
+The stable method registry/reporting order is:
 
 ```text
 BARO -> CIRCA -> MicroCause -> MicroRank -> TraceRCA -> mmBARO -> CausalRCA
 ```
 
+The V1.1 execution amendment authorizes MicroCause, MicroRank, TraceRCA, and
+mmBARO to run concurrently in separate task containers and working copies.
 Apply these rules:
 
-- Run only one baseline method at a time. No cross-method execution overlap.
-- Do not start method N+1 until method N has complete terminal records, a valid
-  prediction lock, and integrity verification.
+- Assign exactly one method to each task. Never share a writable worktree or
+  method output path between tasks.
+- Different methods may overlap. Two runs of the same method may not overlap.
+- Treat registry order as reporting order only; a method does not depend on a
+  preceding method's prediction lock.
+- Worker tasks write only their method environment, records, and method lock.
+  The central coordinator alone integrates commits, updates the status, and
+  creates the global prediction lock.
 - Every RE2-OB and RE2-TT method run has 90 canonical cases per dataset.
 - The per-case timeout is 3,600 seconds. There is no automatic retry. Preserve
   `METHOD_FAILURE`, `ADAPTER_FAILURE`, `DATA_FAILURE`, and `TIMEOUT` records.
@@ -120,6 +133,10 @@ Apply these rules:
 - Candidate completion is `NONE`; baseline MRR is `NOT-IDENTIFIABLE` under V1.
 - Confirm the frozen Git identity, environment manifest, input manifest, and
   clean pinned RCAEval checkout before a formal run.
+
+Container isolation must include adequate CPU and memory allocation. If
+physical-resource throttling occurs, reduce task concurrency; do not change
+timeouts or rerun based on observed results.
 
 CausalRCA is currently deferred by explicit user decision. Do not freeze or
 run it unless the user explicitly restores it as a baseline. Its saved GPU
@@ -152,7 +169,8 @@ complete remaining plan are maintained in
 conversation summary when that committed handoff and fresh read-only evidence
 are available.
 
-As of 2026-08-31, BARO has a valid frozen prediction lock and CIRCA has 99 of
-180 terminal records but no lock. No CIRCA process is assumed to be running;
-re-audit before discussing recovery and do not restart it automatically. The
-external-environment documentation is merged into this branch.
+As of the latest 2026-08-31 read-only audit, BARO has a valid frozen prediction
+lock and CIRCA has 100 of 180 terminal records but no lock. No CIRCA process is
+running; re-audit before discussing recovery and do not restart it
+automatically. The external-environment documentation is merged into this
+branch.
