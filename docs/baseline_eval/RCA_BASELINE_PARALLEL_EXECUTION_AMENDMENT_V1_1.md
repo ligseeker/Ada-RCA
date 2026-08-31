@@ -23,9 +23,17 @@ context-only methods remain unauthorized.
 
 ## 2. Isolation contract
 
-Each concurrent method must run in its own task container and Git working copy,
-starting from the same committed parallel-harness revision. A task owns exactly
-one method and may write only its method-scoped paths:
+The task containers share one filesystem. Container boundaries therefore do
+not isolate Git indexes, worktree files, records, or locks. Each concurrent
+method must run in its own task container **and its own linked Git worktree
+directory**, starting from the same committed parallel-harness revision. Two
+containers must never `cd` into or write the same worktree.
+
+The central coordinator creates all linked worktrees and unique task branches
+before launching containers. Worker containers must not run `git worktree add`,
+reuse the central evaluation worktree, or switch another task's branch. A task
+owns exactly one method and may write only its method-scoped paths inside its
+assigned worktree:
 
 - `artifacts/baseline_eval/execution_v1/environments/<method>.json`;
 - `artifacts/baseline_eval/execution_v1/records/<method>/<attempt-id>/...`; and
@@ -36,11 +44,12 @@ Frozen inputs, the input manifest, protocol artifacts, Ada-RCA artifacts, and
 not create the global prediction lock, join labels, evaluate results, edit the
 canonical execution-status document, or write another method's paths.
 
-Different methods use different process-lock files and may overlap. Two
-processes for the same method may not overlap, even in different working
-copies on the same host. Within a method, RE2-OB and RE2-TT remain one
-canonical attempt, use one frozen environment, and execute in frozen dataset
-and case order.
+Different methods use different process-lock files and may overlap. These
+locks live below the repository's shared Git common directory, not under
+container-local `/tmp` and not inside an individual worktree. Two processes
+for the same method may not overlap, even from different linked worktrees.
+Within a method, RE2-OB and RE2-TT remain one canonical attempt, use one frozen
+environment, and execute in frozen dataset and case order.
 
 Container separation must also provide enough CPU and memory for each method.
 If the platform shares and throttles physical resources, reduce the number of
@@ -54,13 +63,14 @@ The task must activate the method-specific external environment, run the
 read-only preflight, freeze the method environment, and commit that manifest
 before the first real case. Every method's 180 records must share the same
 attempt ID, environment/input/protocol digests, candidate registries, and
-execution commit. Resume is legal only in the same task working copy at the
-exact original execution commit.
+execution commit. Resume is legal only in the same assigned task worktree at
+the exact original execution commit.
 
-The branch name is operational metadata, not scientific identity. A clean
-branch or detached task checkout is valid when it descends from the required
-starting commit and contains this committed amendment. The recorded execution
-commit and artifact digests remain authoritative.
+The branch name is operational metadata, not scientific identity. Each shared-
+filesystem task nevertheless requires a unique branch so Git can maintain a
+separate linked-worktree index. A clean task branch is valid when it descends
+from the required starting commit and contains this committed amendment. The
+recorded execution commit and artifact digests remain authoritative.
 
 ## 4. Parallel merge and global barrier
 

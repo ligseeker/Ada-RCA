@@ -123,10 +123,10 @@ also passed against all 180 frozen terminal records. Adapter-only input loading
 for one opaque MicroRank case per dataset passed the real trace schema, digest,
 timestamp-unit, and canonical-window checks without invoking the method.
 
-The full suite for the V1.1 parallel-harness revision passed with `189` tests,
+The full suite for the V1.1 parallel-harness revision passed with `190` tests,
 including same-method exclusion, different-method concurrent locks, disjoint
-artifact paths, and the frozen amendment digest. This does not replace a fresh
-full-suite run after future code changes.
+artifact paths, shared Git-common lock placement, and the frozen amendment
+digest. This does not replace a fresh full-suite run after future code changes.
 
 ## 5. Confirmatory execution coverage
 
@@ -225,9 +225,13 @@ technical method failure. The saved GPU implementation remains isolated on
 The user explicitly authorized different baselines to run concurrently in
 separate task containers provided their experiment data cannot interfere. The
 committed V1.1 amendment provides method-scoped environment, record, lock, and
-branch ownership; the harness uses a per-method process lock. Registry order is
-reporting order only. Each container must still have adequate CPU and memory;
-reduce task concurrency if the platform does not isolate physical resources.
+branch ownership. Because containers share the filesystem, the coordinator
+must pre-create one linked Git worktree and unique branch per method; two
+containers must never use the same path. The harness stores per-method process
+locks below the shared Git common directory rather than container-local
+`/tmp`. Registry order is reporting order only. Each container must still have
+adequate CPU and memory; reduce task concurrency if the platform does not
+isolate physical resources.
 
 ## 7. Remaining parallel plan
 

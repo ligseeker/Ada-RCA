@@ -50,7 +50,7 @@ Set the clean RCAEval checkout and Ada-RCA harness on `PYTHONPATH` for manual
 import or synthetic checks:
 
 ```bash
-export PYTHONPATH=/home/zhangll24/RCA_project/RCAEval-clean:/home/zhangll24/RCA_project/Ada-RCA-baselines
+export PYTHONPATH=/home/zhangll24/RCA_project/RCAEval-clean:<ASSIGNED_TASK_WORKTREE>
 ```
 
 Confirm the active interpreter:
@@ -100,8 +100,9 @@ python scripts/run_baseline_confirmatory.py freeze-environment \
 ```
 
 Under the V1.1 parallel amendment, different methods may freeze and execute in
-separate task containers without waiting for preceding registry entries. Each
-task must use its own Git working copy and method-scoped artifacts. See
+separate task containers without waiting for preceding registry entries. The
+containers share a filesystem, so each task must use its own centrally created
+linked Git worktree directory, unique branch, and method-scoped artifacts. See
 `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md` for the full commands.
 
 ## Recreation commands

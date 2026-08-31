@@ -1,5 +1,6 @@
 import hashlib
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 
@@ -8,6 +9,7 @@ from src.baseline_eval.confirmatory import (
     PARALLEL_AMENDMENT_RELATIVE,
     PARALLEL_AMENDMENT_SHA256,
     environment_relative,
+    git_common_execution_lock_root,
     method_execution_lock_path,
     method_lock_relative,
     method_records_relative,
@@ -44,6 +46,20 @@ class ParallelExecutionProtocolTest(unittest.TestCase):
                 method_execution_lock_path(method, lock_root) for method in METHOD_ORDER
             }
         self.assertEqual(len(paths), len(METHOD_ORDER))
+
+    def test_process_locks_live_in_the_shared_git_common_directory(self):
+        common = subprocess.run(
+            ("git", "rev-parse", "--git-common-dir"),
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        expected_common = Path(common)
+        if not expected_common.is_absolute():
+            expected_common = ROOT / expected_common
+        lock_root = git_common_execution_lock_root(ROOT)
+        self.assertEqual(lock_root.parent, expected_common.resolve())
 
 
 if __name__ == "__main__":

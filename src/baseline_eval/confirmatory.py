@@ -59,7 +59,7 @@ DATASET_DISPLAY = {"re2ob": "RE2-OB", "re2tt": "RE2-TT"}
 PARALLEL_AMENDMENT_RELATIVE = Path(
     "docs/baseline_eval/RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md"
 )
-PARALLEL_AMENDMENT_SHA256 = "026dc810d34c9f2dd300a478eb0c4c401b3dcb05cb95162836b7bc9db113526e"
+PARALLEL_AMENDMENT_SHA256 = "ca9aa4df34740195d5c5dedd3436a7cee7fa2779bb111091e7905fd8d3c2653c"
 
 PROTOCOL_ARTIFACT_DIGESTS = {
     "docs/baseline_eval/RCA_BASELINE_PROTOCOL_FREEZE_V1.md": "f16ad5778a4df3c772461e06cb8f9aa59a750298364bf6b97af286466a71202f",
@@ -95,7 +95,7 @@ INPUT_ROLES = {
 EXECUTION_ROOT_RELATIVE = Path("artifacts/baseline_eval/execution_v1")
 INPUT_MANIFEST_RELATIVE = EXECUTION_ROOT_RELATIVE / "input_manifest_v1.json"
 GLOBAL_LOCK_RELATIVE = EXECUTION_ROOT_RELATIVE / "prediction_lock_v1.json"
-PROCESS_LOCK_ROOT = Path("/tmp/ada_rca_rcaeval_confirmatory_execution")
+PROCESS_LOCK_DIRECTORY_NAME = "ada_rca_rcaeval_confirmatory_execution_locks"
 
 FIXED_WORKER_ENV = {
     "PYTHONHASHSEED": str(CANONICAL_SEED),
@@ -275,14 +275,21 @@ def global_preflight(root: Path, *, require_exact_head: bool = False) -> dict[st
     }
 
 
-def method_execution_lock_path(method: str, lock_root: Path = PROCESS_LOCK_ROOT) -> Path:
+def git_common_execution_lock_root(root: Path) -> Path:
+    common = Path(git(root, "rev-parse", "--git-common-dir").stdout.strip())
+    if not common.is_absolute():
+        common = root / common
+    return common.resolve() / PROCESS_LOCK_DIRECTORY_NAME
+
+
+def method_execution_lock_path(method: str, lock_root: Path) -> Path:
     require_method(method)
     return lock_root / f"{method.lower()}.lock"
 
 
 @contextmanager
 def exclusive_method_execution_lock(
-    method: str, *, lock_root: Path = PROCESS_LOCK_ROOT
+    method: str, *, lock_root: Path
 ) -> Iterator[None]:
     path = method_execution_lock_path(method, lock_root)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -869,7 +876,9 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
         validate_attempt_is_new(root, method, attempt_id)
         existing = {}
 
-    with exclusive_method_execution_lock(method):
+    with exclusive_method_execution_lock(
+        method, lock_root=git_common_execution_lock_root(root)
+    ):
         server = subprocess.Popen(
             (str(python), "-m", "src.baseline_eval.server", "--method", method),
             cwd=root,

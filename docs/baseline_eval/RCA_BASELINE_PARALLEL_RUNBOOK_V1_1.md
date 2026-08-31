@@ -1,22 +1,45 @@
 # RCAEval Parallel Baseline Runbook V1.1
 
-This runbook contains the copy-and-run commands for separate task containers.
-Use one task per method. Replace `<PARALLEL_BASE_COMMIT>` with the committed
-revision that contains the V1.1 parallel amendment and harness.
+This runbook contains the copy-and-run commands for task containers that share
+one filesystem. Use one task per method. Replace `<SHARED_FS_BASE_COMMIT>` with
+the committed revision that contains the shared-filesystem V1.1 amendment and
+harness.
 
 ## Common task rules
 
-Run every task from its own Ada-RCA working copy. Do not point two tasks at the
-same worktree. Store console logs outside the repository so the clean-worktree
-preflight is not tripped.
+Container isolation does not isolate files. Run every task from the dedicated
+linked worktree assigned below. Do not point two containers at the same path.
+Store console logs outside every Git worktree so the clean-worktree preflight
+is not tripped.
 
-Before starting a task:
+Before starting any containers, run the following once from the central
+coordinator. Do not run these commands concurrently:
 
 ```bash
-cd /home/zhangll24/RCA_project/Ada-RCA-baselines
-git switch --detach <PARALLEL_BASE_COMMIT>
-git switch -c execution/<METHOD-SLUG>-a1-20260831
-git status --short --branch
+TASK_ROOT=/home/zhangll24/RCA_project/Ada-RCA-baseline-tasks
+LOG_ROOT=/home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs
+ADMIN_ROOT=/home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin
+BASE_COMMIT=<SHARED_FS_BASE_COMMIT>
+
+mkdir -p "${TASK_ROOT}" "${LOG_ROOT}"
+
+git -C "${ADMIN_ROOT}" worktree add \
+  -b execution/microcause-a1-20260831 \
+  "${TASK_ROOT}/microcause" "${BASE_COMMIT}"
+
+git -C "${ADMIN_ROOT}" worktree add \
+  -b execution/microrank-a1-20260831 \
+  "${TASK_ROOT}/microrank" "${BASE_COMMIT}"
+
+git -C "${ADMIN_ROOT}" worktree add \
+  -b execution/tracerca-a1-20260831 \
+  "${TASK_ROOT}/tracerca" "${BASE_COMMIT}"
+
+git -C "${ADMIN_ROOT}" worktree add \
+  -b execution/mmbaro-a1-20260831 \
+  "${TASK_ROOT}/mmbaro" "${BASE_COMMIT}"
+
+git -C "${ADMIN_ROOT}" worktree list
 ```
 
 The four currently runnable methods are independent. Their task branches may
@@ -26,6 +49,7 @@ recovery workflow, and CausalRCA must not be run.
 ## MicroCause task
 
 ```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/microcause
 source ~/.venvs/ada-rca-baselines-microcause/bin/activate
 set -euo pipefail
 command -v python
@@ -46,7 +70,7 @@ git commit -m "eval: freeze MicroCause execution environment"
 python scripts/run_baseline_confirmatory.py run-method \
   --method MicroCause \
   --attempt-id microcause-a1-20260831 \
-  > /tmp/ada-rca-microcause-a1-20260831.log 2>&1
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/microcause-a1-20260831.log 2>&1
 
 git add \
   artifacts/baseline_eval/execution_v1/records/microcause/microcause-a1-20260831 \
@@ -58,6 +82,7 @@ git status --short --branch
 ## MicroRank task
 
 ```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/microrank
 source ~/.venvs/ada-rca-baselines-common/bin/activate
 set -euo pipefail
 command -v python
@@ -78,7 +103,7 @@ git commit -m "eval: freeze MicroRank execution environment"
 python scripts/run_baseline_confirmatory.py run-method \
   --method MicroRank \
   --attempt-id microrank-a1-20260831 \
-  > /tmp/ada-rca-microrank-a1-20260831.log 2>&1
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/microrank-a1-20260831.log 2>&1
 
 git add \
   artifacts/baseline_eval/execution_v1/records/microrank/microrank-a1-20260831 \
@@ -90,6 +115,7 @@ git status --short --branch
 ## TraceRCA task
 
 ```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/tracerca
 source ~/.venvs/ada-rca-baselines-common/bin/activate
 set -euo pipefail
 command -v python
@@ -110,7 +136,7 @@ git commit -m "eval: freeze TraceRCA execution environment"
 python scripts/run_baseline_confirmatory.py run-method \
   --method TraceRCA \
   --attempt-id tracerca-a1-20260831 \
-  > /tmp/ada-rca-tracerca-a1-20260831.log 2>&1
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/tracerca-a1-20260831.log 2>&1
 
 git add \
   artifacts/baseline_eval/execution_v1/records/tracerca/tracerca-a1-20260831 \
@@ -122,6 +148,7 @@ git status --short --branch
 ## mmBARO task
 
 ```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/mmbaro
 source ~/.venvs/ada-rca-baselines-common/bin/activate
 set -euo pipefail
 command -v python
@@ -142,7 +169,7 @@ git commit -m "eval: freeze mmBARO execution environment"
 python scripts/run_baseline_confirmatory.py run-method \
   --method mmBARO \
   --attempt-id mmbaro-a1-20260831 \
-  > /tmp/ada-rca-mmbaro-a1-20260831.log 2>&1
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/mmbaro-a1-20260831.log 2>&1
 
 git add \
   artifacts/baseline_eval/execution_v1/records/mmbaro/mmbaro-a1-20260831 \
@@ -153,17 +180,18 @@ git status --short --branch
 
 ## Resume after a task interruption
 
-Resume only from the same task working copy and exact execution commit. Do not
-commit partial records before resuming.
+Resume only from the same assigned task worktree and exact execution commit.
+Do not commit partial records before resuming.
 
 ```bash
 source <THE-SAME-ENVIRONMENT>/bin/activate
+cd <THE-SAME-ASSIGNED-WORKTREE>
 git status --short --branch
 python scripts/run_baseline_confirmatory.py run-method \
   --method <METHOD> \
   --attempt-id <THE-SAME-ATTEMPT-ID> \
   --resume \
-  >> /tmp/<THE-SAME-LOG>.log 2>&1
+  >> /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/<THE-SAME-LOG>.log 2>&1
 ```
 
 ## Central integration after tasks finish
@@ -172,7 +200,7 @@ Cherry-pick each task's environment commit followed by its prediction commit.
 The exact commit IDs come from the task branches.
 
 ```bash
-git switch evaluation/rcaeval-baselines
+cd /home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin
 git cherry-pick <MICROCAUSE_ENV_COMMIT> <MICROCAUSE_PREDICTION_COMMIT>
 git cherry-pick <MICRORANK_ENV_COMMIT> <MICRORANK_PREDICTION_COMMIT>
 git cherry-pick <TRACERCA_ENV_COMMIT> <TRACERCA_PREDICTION_COMMIT>

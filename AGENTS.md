@@ -112,12 +112,18 @@ BARO -> CIRCA -> MicroCause -> MicroRank -> TraceRCA -> mmBARO -> CausalRCA
 ```
 
 The V1.1 execution amendment authorizes MicroCause, MicroRank, TraceRCA, and
-mmBARO to run concurrently in separate task containers and working copies.
+mmBARO to run concurrently in separate task containers. The containers share
+one filesystem, so each task must use the dedicated linked Git worktree and
+unique branch created by the central coordinator before launch.
 Apply these rules:
 
-- Assign exactly one method to each task. Never share a writable worktree or
-  method output path between tasks.
+- Assign exactly one method to each task. Never let two containers enter the
+  same worktree path, share a Git index, or write the same method output path.
+- Worker containers must not create/remove worktrees or switch task branches.
+  The coordinator owns worktree creation and later commit integration.
 - Different methods may overlap. Two runs of the same method may not overlap.
+- Per-method process locks live in the repository's shared Git common
+  directory; container-local `/tmp` is not an execution lock authority.
 - Treat registry order as reporting order only; a method does not depend on a
   preceding method's prediction lock.
 - Worker tasks write only their method environment, records, and method lock.
