@@ -1,7 +1,7 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **IN PROGRESS — CIRCA INCOMPLETE**  
-State revision: `2026-08-31.3`
+State revision: `2026-08-31.4`
 Last operational audit: 2026-08-31, Asia/Shanghai  
 Branch: `evaluation/rcaeval-baselines`  
 Last synchronized substantive code commit: `0d0efcf`
@@ -32,7 +32,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | code `0d0efcf` pushed to `origin/evaluation/rcaeval-baselines`; this handoff update follows it | PASS |
+| Push state for this revision | branch synchronized through `6f4c5b7`; the user-decision/recovery-readiness commit follows locally | PENDING PUSH |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -41,13 +41,13 @@ contents, and update this document.
 | Protocol digest | `aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e` | frozen |
 | Input-manifest digest | `b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec` | frozen |
 
-The uncommitted `.gitignore` change was re-audited. It does **not** add ignore
-patterns; it only removes the final newline from the existing
-`artifacts/cache/` line. Its ownership remains unestablished, so it has been
-preserved and excluded from all baseline commits. It still dirties the
-worktree and must be reconciled before a future formal environment freeze.
-The 99 CIRCA execution records are intentionally untracked evidence until a
-valid method lock can be produced; they are not ignored.
+The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
+only removes the final newline from the existing `artifacts/cache/` line. On
+2026-08-31 the user explicitly accepted this state and authorized selective
+future ignore additions only for files that are not execution evidence. The
+change is included in the recovery-readiness decision commit. The 99 CIRCA
+execution records remain intentionally untracked evidence until a valid method
+lock can be produced; they are not ignored.
 
 ## 3. Environment migration status
 
@@ -175,7 +175,12 @@ rerun or replace any persisted failure or timeout. The current branch HEAD
 cannot legally issue that resume. A controlled recovery must either execute in
 the original committed code context while preserving and re-verifying the 99
 records, or retain the attempt and follow a reviewed new-attempt disposition.
-No recovery path is authorized automatically.
+On 2026-08-31 the user explicitly authorized recovery and allowed a full rerun
+only if the provenance-consistent resume path proves impractical. Because all
+99 persisted records validate and no systematic framework defect has been
+established, the selected first path is same-attempt recovery from an isolated
+worktree at exact commit `d5d837e`. The original records must remain preserved,
+and the recovery copy must be byte-for-byte verified before execution.
 
 The historical command below is valid only from the exact original execution
 commit context after a fresh read-only audit and explicit user authorization:
@@ -191,20 +196,30 @@ If a systematic framework defect is established instead, retain the entire
 attempt and follow the new-attempt protocol. Do not decide this from prediction
 correctness or performance.
 
-### B2. Uncommitted `.gitignore`
+### B2. `.gitignore` decision — resolved
 
-The current change only removes the file's final newline; it does not ignore
-the execution artifact tree. Before a formal transition, determine whether it
-should be retained or restored. Do not include it accidentally in an
-evaluation commit.
+The user accepted the current no-final-newline state. It does not ignore the
+execution artifact tree. Future ignore rules may be added selectively only for
+non-evidence files; terminal records, locks, manifests, and execution logs must
+remain visible to Git and the integrity workflow.
 
-### B3. CausalRCA disposition
+### B3. CausalRCA disposition — user decision recorded
 
-CausalRCA is deferred. Its GPU implementation is saved separately, but neither
-its environment nor execution is currently authorized. Before the global lock,
-the user must explicitly decide whether to restore it under a committed
-protocol amendment or assign a legitimate method-level blocked disposition.
-Do not infer either decision.
+On 2026-08-31 the user explicitly cancelled CausalRCA from the current
+confirmatory baseline execution. Do not freeze or run it. Before the global
+lock, encode this decision in a dedicated performance-blind protocol amendment
+or equivalent protocol-level disposition. It must not be represented as a
+technical method failure. The saved GPU implementation remains isolated on
+`wip/causalrca-gpu-amendment` at `89db7ec` and is not part of this execution.
+
+### B4. Cross-method concurrency — not authorized
+
+The user allowed concurrency only if environments could be activated without
+interference. That condition is not sufficient under the frozen protocol: the
+runner has a global execution lock, the method order is mandatory, and CPU/RAM
+contention could change timeout outcomes. Confirmatory execution therefore
+remains strictly sequential. Read-only preflights and synthetic checks may run
+only when they do not overlap a real method invocation or mutate an environment.
 
 ## 7. Remaining sequential plan
 
@@ -213,7 +228,8 @@ earlier method.
 
 ### P0 — Resolve repository transition readiness
 
-- Reconcile the uncommitted `.gitignore` without deleting evidence.
+- Completed: user accepted the `.gitignore` byte state; CIRCA evidence remains
+  unignored and preserved.
 - Verify the branch, protocol bundle, input manifest, Ada-RCA frozen paths, and
   clean pinned RCAEval checkout.
 - Re-run the full unit test suite after any code change.
@@ -233,8 +249,8 @@ earlier method.
 
 ### P1 — Complete and lock CIRCA
 
-- Obtain explicit user authorization for resume or another protocol-valid
-  disposition.
+- Completed: explicit user authorization obtained for provenance-consistent
+  resume, with a full rerun permitted only if that path proves impractical.
 - Before authorizing resume, choose and document a provenance-consistent
   recovery that uses the exact original execution commit `d5d837e`; direct
   resume from the current branch HEAD is now rejected.
@@ -284,14 +300,13 @@ earlier method.
 - Repeat the same environment-freeze, execution, lock, commit, and documentation
   sequence.
 
-### P6 — Resolve CausalRCA
+### P6 — Record CausalRCA cancellation
 
-- Keep deferred unless the user explicitly restores it.
-- If restored, first commit the required protocol/GPU amendment and revalidate
-  determinism and environment semantics before any formal freeze.
-- Otherwise record only a protocol-legitimate method-level blocked disposition;
-  user deferral alone must not be silently rewritten as a technical failure.
-- Update this document with the decision and evidence location.
+- Do not freeze or execute CausalRCA in the current confirmatory baseline.
+- Add a dedicated performance-blind protocol amendment or protocol-level
+  withdrawal disposition before the global lock.
+- Keep the saved GPU branch and commit as non-executed context only.
+- Update this document with the amendment path and commit.
 
 ### P7 — Global prediction lock
 
