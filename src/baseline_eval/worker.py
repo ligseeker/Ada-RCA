@@ -28,7 +28,9 @@ from src.baseline_eval import (
     adapt_native_ranking,
     assert_firewall_safe_record,
     frozen_microcause_sli,
+    mmbaro_dataset_key,
     seed_in_process,
+    trace_anchor_microseconds,
     validate_mmbaro_payload,
     validate_native_output,
 )
@@ -313,7 +315,7 @@ def invoke_predictive_method(
     del case_id, candidates  # legal identity/registry fields are not needed by native callables
     native_dataset = {"re2ob": "re2-ob", "re2tt": "re2-tt"}[dataset]
     if method == "mmBARO":
-        native_dataset = {"re2ob": "mm-ob", "re2tt": "mm-tt"}[dataset]
+        native_dataset = mmbaro_dataset_key(dataset)
     seed_in_process(CANONICAL_SEED, include_torch=method == "CausalRCA")
     if method == "CausalRCA":
         import torch
@@ -325,7 +327,11 @@ def invoke_predictive_method(
     function, module_path = _module_callable(method)
     sink = DigestSink()
     kwargs = {
-        "inject_time": anchor * 1_000_000 if method in {"MicroRank", "TraceRCA"} else anchor,
+        "inject_time": (
+            trace_anchor_microseconds(anchor)
+            if method in {"MicroRank", "TraceRCA"}
+            else anchor
+        ),
         "dataset": native_dataset,
         "dk_select_useful": False,
         "sli": sli,
@@ -346,9 +352,14 @@ def invoke_predictive_method(
 
 
 def _missing_reasons(
-    method: str, candidates: Sequence[str], adapted: Sequence[str], observed: set[str]
+    method: str, candidates: Sequence[str], adapted: Sequence[str], observed: set[str],
+    native_length: int,
 ) -> dict[str, str]:
-    default = "NATIVE_TOP_K_TRUNCATION" if method == "MicroRank" else "ALGORITHM_FILTERED_INDICATOR"
+    default = (
+        "NATIVE_TOP_K_TRUNCATION"
+        if method == "MicroRank" and native_length == 11
+        else "ALGORITHM_FILTERED_INDICATOR"
+    )
     return {
         candidate: ("NO_OBSERVED_TELEMETRY" if candidate not in observed else default)
         for candidate in candidates
@@ -410,7 +421,9 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
             adapted_ranking = list(adapted.services)
             duplicate_items = list(adapted.duplicates)
             unmapped_items = list(adapted.unmapped)
-            missing = _missing_reasons(args.method, candidates, adapted.services, observed)
+            missing = _missing_reasons(
+                args.method, candidates, adapted.services, observed, native_length
+            )
     except DataInputError as exc:
         terminal_status = TerminalStatus.DATA_FAILURE
         error_type = type(exc).__name__

@@ -320,14 +320,10 @@ def assert_method_sequence_ready(root: Path, method: str, *, require_current_abs
     require_method(method)
     previous = prior_method(method)
     if previous is not None:
-        require_committed_file(root, method_lock_relative(previous))
-        previous_lock = read_json(root / method_lock_relative(previous))
-        if previous_lock["method"] != previous or previous_lock["disposition"] not in {
-            "EXECUTION_COMPLETE",
-            "ENVIRONMENT_BLOCKED",
-            "PREEXECUTION_BLOCKED",
-        }:
-            raise SequenceError(f"previous method {previous} has no valid terminal lock")
+        try:
+            verify_method_lock(root, previous, require_committed=True)
+        except (KeyError, PreflightError) as exc:
+            raise SequenceError(f"previous method {previous} has no valid terminal lock") from exc
     current_path = root / method_lock_relative(method)
     if require_current_absent and current_path.exists():
         raise SequenceError(f"{method} already has a method-level lock")
@@ -660,32 +656,81 @@ def record_path(root: Path, method: str, attempt_id: str, dataset: str, case_id:
 
 def validate_terminal_record(
     payload: Mapping[str, Any], *, method: str, dataset: str, case_id: str, environment_digest: str,
-    input_manifest_digest: str,
+    input_manifest_digest: str, attempt_id: str, candidate_registry_digest: str,
+    execution_commit: str | None,
 ) -> None:
     assert_firewall_safe_record(payload)
     expected = {
+        "schema_version": "rca_baseline_case_record_v1",
+        "protocol_version": PROTOCOL_VERSION,
         "method": method,
         "dataset": dataset,
         "case_id": case_id,
+        "attempt_id": attempt_id,
+        "ada_rca_commit": REQUIRED_STARTING_HEAD,
         "environment_digest": environment_digest,
         "input_manifest_digest": input_manifest_digest,
+        "candidate_registry_digest": candidate_registry_digest,
         "protocol_digest": PROTOCOL_DIGEST,
         "rcaeval_commit": RCAEVAL_COMMIT,
+        "timeout_seconds": CASE_TIMEOUT_SECONDS,
+        "window_semantics": "[t0-600s,t0+600s)",
     }
+    if execution_commit is not None:
+        expected["execution_commit"] = execution_commit
     for key, value in expected.items():
         if payload.get(key) != value:
             raise FrameworkError(f"terminal record provenance mismatch: {key}")
+    record_execution_commit = payload.get("execution_commit")
+    if not isinstance(record_execution_commit, str) or not re.fullmatch(
+        r"[0-9a-f]{40}", record_execution_commit
+    ):
+        raise FrameworkError("terminal record has an invalid execution commit")
+    seed_state = payload.get("seed_state")
+    if not isinstance(seed_state, Mapping) or seed_state.get("canonical_seed") != CANONICAL_SEED:
+        raise FrameworkError("terminal record has invalid canonical seed controls")
+    if seed_state.get("python_hash_seed") != CANONICAL_SEED:
+        raise FrameworkError("terminal record has invalid Python hash seed controls")
     try:
         status = TerminalStatus(payload["terminal_status"])
     except (KeyError, ValueError) as exc:
         raise FrameworkError("terminal record has an invalid status") from exc
     native = payload.get("native_ranking", [])
     adapted = payload.get("adapted_ranking", [])
+    duplicates = payload.get("duplicate_native_items", [])
+    unmapped = payload.get("unmapped_native_items", [])
+    if not all(isinstance(items, list) for items in (native, adapted, duplicates, unmapped)):
+        raise FrameworkError("terminal record ranking audits must be lists")
+    if payload.get("native_output_length") != len(native) and status is TerminalStatus.SUCCESS:
+        raise FrameworkError("SUCCESS record native length does not match its ranking")
+    if payload.get("adapted_output_length") != len(adapted):
+        raise FrameworkError("terminal record adapted length does not match its ranking")
+    if payload.get("duplicate_count") != len(duplicates):
+        raise FrameworkError("terminal record duplicate count does not match its audit")
+    if payload.get("unmapped_count") != len(unmapped):
+        raise FrameworkError("terminal record unmapped count does not match its audit")
     if status is TerminalStatus.SUCCESS:
         if not native or not adapted or len(adapted) != len(set(adapted)):
             raise FrameworkError("SUCCESS record has invalid rankings")
+        digest = payload.get("native_output_digest")
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise FrameworkError("SUCCESS record has an invalid native-output digest")
+        if digest != canonical_payload_digest(native):
+            raise FrameworkError("SUCCESS record native-output digest does not match its ranking")
     elif native or adapted:
         raise FrameworkError("failure record contains a fallback ranking")
+
+
+def validate_resume_execution_commit(
+    records: Mapping[tuple[str, str], Mapping[str, Any]], current_execution_commit: str
+) -> None:
+    """Prevent one attempt from mixing records produced by different Git commits."""
+
+    observed = {record.get("execution_commit") for record in records.values()}
+    if observed != {current_execution_commit}:
+        raise SequenceError(
+            "resume requires the exact execution commit used by every persisted record"
+        )
 
 
 def format_case_status(payload: Mapping[str, Any]) -> str:
@@ -751,6 +796,7 @@ def validate_attempt_is_new(root: Path, method: str, attempt_id: str) -> None:
 
 def _load_existing_attempt_records(
     root: Path, method: str, attempt_id: str, environment_digest: str, input_manifest_digest: str,
+    execution_commit: str | None,
 ) -> dict[tuple[str, str], dict[str, Any]]:
     records: dict[tuple[str, str], dict[str, Any]] = {}
     for dataset in DATASET_ORDER:
@@ -766,6 +812,9 @@ def _load_existing_attempt_records(
                 case_id=case_id,
                 environment_digest=environment_digest,
                 input_manifest_digest=input_manifest_digest,
+                attempt_id=attempt_id,
+                candidate_registry_digest=_candidate_registry_digest(root, dataset),
+                execution_commit=execution_commit,
             )
             records[(dataset, case_id)] = payload
     return records
@@ -798,10 +847,11 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
     execution_commit = git(root, "rev-parse", "HEAD").stdout.strip()
     if resume:
         existing = _load_existing_attempt_records(
-            root, method, attempt_id, environment_digest, input_manifest_digest
+            root, method, attempt_id, environment_digest, input_manifest_digest, None
         )
         if not existing:
             raise SequenceError("resume requested but this attempt has no persisted records")
+        validate_resume_execution_commit(existing, execution_commit)
     else:
         validate_attempt_is_new(root, method, attempt_id)
         existing = {}
@@ -875,6 +925,9 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
                         case_id=case_id,
                         environment_digest=environment_digest,
                         input_manifest_digest=input_manifest_digest,
+                        attempt_id=attempt_id,
+                        candidate_registry_digest=candidate_digest,
+                        execution_commit=execution_commit,
                     )
                     print(format_case_status(payload), flush=True)
             server.stdin.write(json.dumps({"command": "stop"}) + "\n")
@@ -894,7 +947,7 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
                     server.wait(timeout=10)
 
         records = _load_existing_attempt_records(
-            root, method, attempt_id, environment_digest, input_manifest_digest
+            root, method, attempt_id, environment_digest, input_manifest_digest, execution_commit
         )
         if len(records) != len(DATASET_ORDER) * EXPECTED_CASES_PER_DATASET:
             raise FrameworkError("method attempt does not contain 180 terminal records")
@@ -976,15 +1029,47 @@ def verify_method_lock(root: Path, method: str, *, require_committed: bool = Tru
     if require_committed:
         require_committed_file(root, relative)
     lock = read_json(root / relative)
-    if lock.get("method") != method or lock.get("protocol_digest") != PROTOCOL_DIGEST:
+    expected_common = {
+        "schema_version": "rca_baseline_method_prediction_lock_v1",
+        "method": method,
+        "protocol_digest": PROTOCOL_DIGEST,
+        "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
+        "rcaeval_commit": RCAEVAL_COMMIT,
+        "contains_evaluation": False,
+    }
+    if any(lock.get(key) != value for key, value in expected_common.items()):
         raise PreflightError(f"invalid method lock for {method}")
     if lock["disposition"] == "EXECUTION_COMPLETE":
+        attempt_id = lock.get("attempt_id")
+        if not isinstance(attempt_id, str):
+            raise PreflightError(f"invalid execution attempt in {method} lock")
+        require_attempt_id(attempt_id)
+        if lock.get("datasets") != list(DATASET_ORDER):
+            raise PreflightError(f"invalid dataset order in {method} lock")
+        environment = read_json(root / environment_relative(method))
+        if lock.get("environment_digest") != environment.get("environment_digest"):
+            raise PreflightError(f"environment digest mismatch in {method} lock")
+        if lock.get("protocol_bundle_digest") != protocol_bundle_digest(root):
+            raise PreflightError(f"protocol bundle mismatch in {method} lock")
         expected_pairs = {
             (dataset, case_id)
             for dataset in DATASET_ORDER
             for case_id in expected_case_ids(root, dataset)
         }
+        expected_ids = {
+            dataset: list(expected_case_ids(root, dataset)) for dataset in DATASET_ORDER
+        }
+        if lock.get("expected_case_ids") != expected_ids:
+            raise PreflightError(f"expected case identities mismatch in {method} lock")
+        if lock.get("record_counts") != {
+            dataset: EXPECTED_CASES_PER_DATASET for dataset in DATASET_ORDER
+        }:
+            raise PreflightError(f"record counts mismatch in {method} lock")
         observed_pairs: set[tuple[str, str]] = set()
+        execution_commits: set[str] = set()
+        observed_statuses: dict[str, Counter[str]] = {
+            dataset: Counter() for dataset in DATASET_ORDER
+        }
         for row in lock["terminal_record_digests"]:
             pair = (row["dataset"], row["case_id"])
             if pair in observed_pairs:
@@ -993,8 +1078,34 @@ def verify_method_lock(root: Path, method: str, *, require_committed: bool = Tru
             path = record_path(root, method, lock["attempt_id"], row["dataset"], row["case_id"])
             if sha256_file(path) != row["sha256"]:
                 raise PreflightError(f"terminal record digest mismatch in {method} lock")
+            payload = read_json(path)
+            execution_commit = payload.get("execution_commit")
+            validate_terminal_record(
+                payload,
+                method=method,
+                dataset=row["dataset"],
+                case_id=row["case_id"],
+                environment_digest=lock["environment_digest"],
+                input_manifest_digest=lock["input_manifest_digest"],
+                attempt_id=attempt_id,
+                candidate_registry_digest=_candidate_registry_digest(root, row["dataset"]),
+                execution_commit=execution_commit if isinstance(execution_commit, str) else None,
+            )
+            execution_commits.add(str(execution_commit))
+            observed_statuses[row["dataset"]][payload["terminal_status"]] += 1
         if observed_pairs != expected_pairs:
             raise PreflightError(f"{method} lock does not cover both 90-case datasets")
+        if len(execution_commits) != 1:
+            raise PreflightError(f"{method} lock mixes terminal records from different commits")
+        expected_status_counts = {
+            dataset: {
+                status.value: observed_statuses[dataset].get(status.value, 0)
+                for status in TerminalStatus
+            }
+            for dataset in DATASET_ORDER
+        }
+        if lock.get("status_counts") != expected_status_counts:
+            raise PreflightError(f"status counts mismatch in {method} lock")
     elif lock["disposition"] not in {"ENVIRONMENT_BLOCKED", "PREEXECUTION_BLOCKED"}:
         raise PreflightError(f"invalid disposition in {method} lock")
     return lock

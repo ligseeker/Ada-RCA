@@ -6,6 +6,8 @@ import tempfile
 import unittest
 from unittest import mock
 
+import pandas as pd
+
 from src.baseline_eval import (
     AdapterError,
     adapt_native_ranking,
@@ -16,6 +18,7 @@ from src.baseline_eval import (
 )
 from src.baseline_eval.confirmatory import (
     DATASET_ORDER,
+    FrameworkError,
     METHOD_ORDER,
     PreflightError,
     SequenceError,
@@ -24,14 +27,14 @@ from src.baseline_eval.confirmatory import (
     canonical_payload_digest,
     exclusive_execution_lock,
     format_case_status,
-    method_lock_relative,
     preflight_environment,
     validate_attempt_is_new,
+    validate_resume_execution_commit,
     validate_terminal_record,
     verify_rcaeval_clean,
 )
 from src.baseline_eval.evaluation import failure_zero_top_k
-from src.baseline_eval.worker import invoke_predictive_method, synthetic_preflight
+from src.baseline_eval.worker import _missing_reasons, invoke_predictive_method, synthetic_preflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,6 +42,39 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def _git(root: Path, *args: str) -> None:
     subprocess.run(("git", *args), cwd=root, check=True, capture_output=True)
+
+
+def _failure_record(**overrides):
+    payload = {
+        "schema_version": "rca_baseline_case_record_v1",
+        "protocol_version": "RCA_BASELINE_PROTOCOL_FREEZE_V1",
+        "protocol_digest": "aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e",
+        "method": "BARO",
+        "dataset": "re2ob",
+        "case_id": "re2ob-0000000000000000",
+        "attempt_id": "attempt-1",
+        "ada_rca_commit": "54b403ff0441c318817818abeda13526652ae1d2",
+        "execution_commit": "e" * 40,
+        "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+        "environment_digest": "env-a",
+        "input_manifest_digest": "input",
+        "candidate_registry_digest": "candidate",
+        "seed_state": {"canonical_seed": 20260830, "python_hash_seed": 20260830},
+        "timeout_seconds": 3600,
+        "window_semantics": "[t0-600s,t0+600s)",
+        "native_output_length": 0,
+        "adapted_output_length": 0,
+        "native_ranking": [],
+        "adapted_ranking": [],
+        "native_output_digest": None,
+        "duplicate_native_items": [],
+        "duplicate_count": 0,
+        "unmapped_native_items": [],
+        "unmapped_count": 0,
+        "terminal_status": "METHOD_FAILURE",
+    }
+    payload.update(overrides)
+    return payload
 
 
 class ConfirmatorySequenceTest(unittest.TestCase):
@@ -63,28 +99,21 @@ class ConfirmatorySequenceTest(unittest.TestCase):
             _git(root, "init")
             _git(root, "config", "user.email", "test@example.invalid")
             _git(root, "config", "user.name", "Test")
-            with self.assertRaises(PreflightError):
+            with mock.patch(
+                "src.baseline_eval.confirmatory.verify_method_lock",
+                side_effect=PreflightError("invalid lock"),
+            ):
+                with self.assertRaises(SequenceError):
+                    assert_method_sequence_ready(root, "CIRCA")
+            with mock.patch(
+                "src.baseline_eval.confirmatory.verify_method_lock",
+                return_value={"method": "BARO", "disposition": "EXECUTION_COMPLETE"},
+            ) as verify:
                 assert_method_sequence_ready(root, "CIRCA")
-            relative = method_lock_relative("BARO")
-            path = root / relative
-            path.parent.mkdir(parents=True)
-            path.write_text(json.dumps({"method": "BARO", "disposition": "EXECUTION_COMPLETE"}), encoding="utf-8")
-            _git(root, "add", relative.as_posix())
-            _git(root, "commit", "-m", "freeze BARO")
-            assert_method_sequence_ready(root, "CIRCA")
+            verify.assert_called_once_with(root, "BARO", require_committed=True)
 
     def test_04_ob_and_tt_records_must_use_same_environment_digest(self):
-        common = {
-            "method": "BARO",
-            "case_id": "re2ob-0000000000000000",
-            "environment_digest": "env-a",
-            "input_manifest_digest": "input",
-            "protocol_digest": "aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e",
-            "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
-            "terminal_status": "METHOD_FAILURE",
-            "native_ranking": [],
-            "adapted_ranking": [],
-        }
+        common = _failure_record()
         with self.assertRaises(Exception):
             validate_terminal_record(
                 {**common, "dataset": "re2ob"},
@@ -93,7 +122,38 @@ class ConfirmatorySequenceTest(unittest.TestCase):
                 case_id=common["case_id"],
                 environment_digest="env-b",
                 input_manifest_digest="input",
+                attempt_id="attempt-1",
+                candidate_registry_digest="candidate",
+                execution_commit="e" * 40,
             )
+
+    def test_04a_terminal_record_binds_attempt_registry_commit_and_controls(self):
+        common = _failure_record()
+        arguments = {
+            "method": "BARO",
+            "dataset": "re2ob",
+            "case_id": common["case_id"],
+            "environment_digest": "env-a",
+            "input_manifest_digest": "input",
+            "attempt_id": "attempt-1",
+            "candidate_registry_digest": "candidate",
+            "execution_commit": "e" * 40,
+        }
+        validate_terminal_record(common, **arguments)
+        for field, value in (
+            ("attempt_id", "other-attempt"),
+            ("candidate_registry_digest", "other-registry"),
+            ("execution_commit", "f" * 40),
+            ("timeout_seconds", 1),
+        ):
+            with self.subTest(field=field), self.assertRaises(FrameworkError):
+                validate_terminal_record({**common, field: value}, **arguments)
+
+    def test_04b_resume_requires_the_exact_original_execution_commit(self):
+        records = {("re2ob", "case-a"): {"execution_commit": "a" * 40}}
+        validate_resume_execution_commit(records, "a" * 40)
+        with self.assertRaisesRegex(SequenceError, "exact execution commit"):
+            validate_resume_execution_commit(records, "b" * 40)
 
     def test_05_environment_manifest_digest_changes_on_mutation(self):
         frozen = {"python": "3.10", "packages": [{"name": "numpy", "version": "1.26.4"}]}
@@ -257,6 +317,50 @@ class ConfirmatoryFirewallTest(unittest.TestCase):
         self.assertEqual(validate_native_output("MicroRank", {"ranks": ranks}), tuple(ranks))
         with self.assertRaises(Exception):
             validate_native_output("MicroRank", {"ranks": ranks + ["a_11"]})
+
+    def test_17a_microrank_missing_reason_requires_actual_native_cap(self):
+        candidates = ("a", "b")
+        observed = set(candidates)
+        self.assertEqual(
+            _missing_reasons("MicroRank", candidates, ("a",), observed, 10)["b"],
+            "ALGORITHM_FILTERED_INDICATOR",
+        )
+        self.assertEqual(
+            _missing_reasons("MicroRank", candidates, ("a",), observed, 11)["b"],
+            "NATIVE_TOP_K_TRUNCATION",
+        )
+
+    def test_17b_trace_and_mmbaro_helpers_drive_actual_native_kwargs(self):
+        calls = []
+
+        def native(_telemetry, **kwargs):
+            calls.append(kwargs)
+            return {"ranks": ["frontend_GET"]}
+
+        frame = pd.DataFrame({"time": [1], "serviceName": ["frontend"]})
+        with mock.patch(
+            "src.baseline_eval.worker._module_callable",
+            return_value=(native, Path("/frozen/method.py")),
+        ), mock.patch("src.baseline_eval.worker.seed_in_process"), mock.patch(
+            "src.baseline_eval.worker.trace_anchor_microseconds", return_value=123_000_000
+        ) as trace_anchor:
+            invoke_predictive_method(
+                "MicroRank", "re2ob", "synthetic", 123, frame, ("frontend",), None
+            )
+        trace_anchor.assert_called_once_with(123)
+        self.assertEqual(calls[-1]["inject_time"], 123_000_000)
+
+        with mock.patch(
+            "src.baseline_eval.worker._module_callable",
+            return_value=(native, Path("/frozen/method.py")),
+        ), mock.patch("src.baseline_eval.worker.seed_in_process"), mock.patch(
+            "src.baseline_eval.worker.mmbaro_dataset_key", return_value="mm-ob"
+        ) as dataset_key:
+            invoke_predictive_method(
+                "mmBARO", "re2ob", "synthetic", 123, {}, ("frontend",), None
+            )
+        dataset_key.assert_called_once_with("re2ob")
+        self.assertEqual(calls[-1]["dataset"], "mm-ob")
 
     def test_18_circa_silent_fallback_is_detected(self):
         columns = ("a_cpu", "b_mem")
