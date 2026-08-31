@@ -32,7 +32,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Current state at audit | local code commit `c51d37a`; remote was `a5ea541` before this handoff update | push pending |
+| Push state for this revision | code `c51d37a` and handoff `5b23774` pushed to `origin/evaluation/rcaeval-baselines` | PASS |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
