@@ -10,6 +10,10 @@ Ada-RCA performance search is part of this scientific freeze.
 
 The documents below are retained as historical research execution context.
 
+The canonical live RCAEval baseline progress, blockers, resumption checklist,
+and remaining sequential plan are maintained in
+[`baseline_eval/RCA_BASELINE_EXECUTION_STATUS.md`](baseline_eval/RCA_BASELINE_EXECUTION_STATUS.md).
+
 The RCAEval baseline activation and method-to-environment map is maintained in
 [`baseline_eval/RCA_BASELINE_ENVIRONMENTS.md`](baseline_eval/RCA_BASELINE_ENVIRONMENTS.md).
 

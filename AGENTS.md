@@ -9,6 +9,7 @@ an open-ended benchmark or model-development workspace.
 Before changing evaluation code or running a method, read the applicable files
 under `docs/baseline_eval/`, especially:
 
+- `RCA_BASELINE_EXECUTION_STATUS.md`
 - `RCA_BASELINE_PROTOCOL_FREEZE_V1.md`
 - `RCA_BASELINE_ADAPTER_SPEC_V1.md`
 - `RCA_BASELINE_EXECUTION_MATRIX_V1.md`
@@ -17,6 +18,25 @@ under `docs/baseline_eval/`, especially:
 
 The committed protocol and machine-readable freezes are the scientific source
 of truth. A convenient command or upstream default never overrides them.
+
+`RCA_BASELINE_EXECUTION_STATUS.md` is the canonical operational handoff. At the
+start of a new session, reconcile it with read-only Git, artifact-count,
+environment, lock, and process checks before taking action.
+
+## Progress handoff discipline
+
+- After every completed task that changes code, environments, execution
+  records, locks, blockers, decisions, or the remaining plan, update
+  `docs/baseline_eval/RCA_BASELINE_EXECUTION_STATUS.md` before handing off.
+- Keep the handoff performance-blind before the global prediction lock: record
+  only operational counts, statuses, runtimes, digests, paths, commits, tests,
+  blockers, and next actions.
+- Include the status update in the task's logical commit or in an immediate
+  follow-up documentation commit. Push it when the active workflow authorizes
+  pushing.
+- If fresh read-only evidence disagrees with the handoff, stop execution,
+  preserve artifacts, and correct the handoff. Never alter evidence merely to
+  make the document agree.
 
 ## Repository and worktree discipline
 
@@ -126,13 +146,13 @@ counts, elapsed time, resource use, and error categories.
 
 ## Current execution checkpoint
 
-As of 2026-08-31, BARO has a frozen prediction lock. The CIRCA attempt stopped
-without a lock after 99 of 180 records; the last persisted record is a
-`TIMEOUT`. No CIRCA process is currently assumed to be running. Re-audit the
-records, process state, frozen environment, and Git identity before discussing
-recovery, and do not restart it automatically.
+The current checkpoint, method coverage, environment migration, blockers, and
+complete remaining plan are maintained in
+`docs/baseline_eval/RCA_BASELINE_EXECUTION_STATUS.md`. Do not rely on a copied
+conversation summary when that committed handoff and fresh read-only evidence
+are available.
 
-The environment-management documentation is saved separately on branch
-`chore/baseline-env-management` at commit `efbe691`; do not assume it has been
-merged into this branch. The two activation commands above remain the working
-environment map.
+As of 2026-08-31, BARO has a valid frozen prediction lock and CIRCA has 99 of
+180 terminal records but no lock. No CIRCA process is assumed to be running;
+re-audit before discussing recovery and do not restart it automatically. The
+external-environment documentation is merged into this branch.
