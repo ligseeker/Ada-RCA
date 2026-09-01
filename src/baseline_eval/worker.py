@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from contextlib import redirect_stderr, redirect_stdout
+from contextlib import contextmanager, nullcontext, redirect_stderr, redirect_stdout
 from datetime import datetime, timezone
 import argparse
 import ast
@@ -94,6 +94,9 @@ NATIVE_OUTPUT_TYPES = {
     "CausalRCA": "GRAPH_AND_RETAINED_INDICATOR_RANKING",
 }
 
+MICROCAUSE_SYNTHETIC_RANDOM_WALK_EPOCHS = 10
+MICROCAUSE_SYNTHETIC_RANDOM_WALK_STEPS = 100
+
 
 class DataInputError(ValueError):
     """A frozen case source is absent or does not match its manifest."""
@@ -175,6 +178,40 @@ def _module_callable(method: str):
     if clean_root not in module_path.parents:
         raise RuntimeError("RCAEval import did not resolve to the frozen clean checkout")
     return getattr(module, attribute), module_path
+
+
+@contextmanager
+def synthetic_preflight_native_limits(method: str):
+    """Bound diagnostic-only work without changing any real case invocation."""
+
+    if method != "MicroCause":
+        yield
+        return
+    module = importlib.import_module(METHOD_MODULES[method][0])
+    native_randomwalk = module.randomwalk
+
+    def bounded_randomwalk(
+        matrix,
+        epochs,
+        start_node,
+        teleportation_prob,
+        walk_step=50,
+        print_trace=False,
+    ):
+        return native_randomwalk(
+            matrix,
+            min(epochs, MICROCAUSE_SYNTHETIC_RANDOM_WALK_EPOCHS),
+            start_node,
+            teleportation_prob,
+            min(walk_step, MICROCAUSE_SYNTHETIC_RANDOM_WALK_STEPS),
+            print_trace,
+        )
+
+    module.randomwalk = bounded_randomwalk
+    try:
+        yield
+    finally:
+        module.randomwalk = native_randomwalk
 
 
 def _common_metric_adapter(raw: pd.DataFrame, dataset: str, anchor: int) -> pd.DataFrame:
@@ -364,6 +401,8 @@ def invoke_predictive_method(
     telemetry: Any,
     candidates: Sequence[str],
     sli: str | None,
+    *,
+    synthetic: bool = False,
 ) -> tuple[Mapping[str, Any], tuple[str, ...], Path, DigestSink]:
     """Call only with frozen legal predictive fields; no path/root/fault input."""
 
@@ -392,8 +431,9 @@ def invoke_predictive_method(
         "sli": sli,
         "verbose": False,
     }
-    with redirect_stdout(sink), redirect_stderr(sink):
-        output = function(telemetry, **kwargs)
+    with synthetic_preflight_native_limits(method) if synthetic else nullcontext():
+        with redirect_stdout(sink), redirect_stderr(sink):
+            output = function(telemetry, **kwargs)
     input_columns: tuple[str, ...] = ()
     if isinstance(telemetry, pd.DataFrame):
         input_columns = tuple(column for column in telemetry.columns if column != "time")
@@ -651,7 +691,14 @@ def synthetic_preflight(method: str) -> dict[str, Any]:
         else:
             telemetry, anchor, candidates, sli = _synthetic_metric(dataset)
         output, ranks, module_path, _sink = invoke_predictive_method(
-            method, dataset, f"synthetic-{dataset}", anchor, telemetry, candidates, sli
+            method,
+            dataset,
+            f"synthetic-{dataset}",
+            anchor,
+            telemetry,
+            candidates,
+            sli,
+            synthetic=True,
         )
         del output
         adapted = adapt_native_ranking(ranks, candidates)

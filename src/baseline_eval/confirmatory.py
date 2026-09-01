@@ -501,18 +501,26 @@ def write_input_manifest(root: Path) -> Path:
     return path
 
 
-def fixed_worker_environment(root: Path) -> dict[str, str]:
+def fixed_worker_environment(
+    root: Path, *, user_site_enabled: bool | None = None
+) -> dict[str, str]:
     env = os.environ.copy()
+    if user_site_enabled is True:
+        env.pop("PYTHONNOUSERSITE", None)
+    elif user_site_enabled is False:
+        env["PYTHONNOUSERSITE"] = "1"
     env.update(FIXED_WORKER_ENV)
     env["PYTHONPATH"] = os.pathsep.join((str(RCAEVAL_CLEAN), str(root)))
     return env
 
 
-def _python_json(python: Path, code: str, root: Path) -> Any:
+def _python_json(
+    python: Path, code: str, root: Path, *, worker_environment: Mapping[str, str] | None = None
+) -> Any:
     completed = subprocess.run(
         (str(python), "-c", code),
         cwd=root,
-        env=fixed_worker_environment(root),
+        env=dict(worker_environment or fixed_worker_environment(root)),
         check=False,
         text=True,
         capture_output=True,
@@ -526,7 +534,9 @@ def _python_json(python: Path, code: str, root: Path) -> Any:
         raise PreflightError("environment inspection did not return JSON") from exc
 
 
-def collect_environment_identity(root: Path, python: Path) -> dict[str, Any]:
+def collect_environment_identity(
+    root: Path, python: Path, *, worker_environment: Mapping[str, str] | None = None
+) -> dict[str, Any]:
     python = python.expanduser()
     if not python.is_absolute():
         python = root / python
@@ -546,7 +556,9 @@ print(json.dumps({
     "packages": packages,
 }, sort_keys=True))
 '''
-    inspected = _python_json(python, code, root)
+    inspected = _python_json(
+        python, code, root, worker_environment=worker_environment
+    )
     dependency_manifest_digest = canonical_payload_digest(inspected["packages"])
     identity = {
         "python_executable": str(python),
@@ -565,6 +577,34 @@ print(json.dumps({
         "rcaeval_source_digests": RCAEVAL_SOURCE_DIGESTS,
     }
     return identity
+
+
+def resolve_frozen_worker_environment(
+    root: Path, manifest: Mapping[str, Any]
+) -> dict[str, str]:
+    """Resolve a frozen interpreter without inheriting container user-site policy.
+
+    Historical manifests were created in containers with different ambient
+    ``PYTHONNOUSERSITE`` values.  The complete frozen package list records
+    which visibility profile was actually used, so try both deterministic
+    profiles and accept only one that reproduces that exact identity.
+    """
+
+    expected = manifest["identity"]
+    python = Path(expected["python_executable"])
+    matches: list[dict[str, str]] = []
+    for user_site_enabled in (False, True):
+        worker_environment = fixed_worker_environment(
+            root, user_site_enabled=user_site_enabled
+        )
+        current = collect_environment_identity(
+            root, python, worker_environment=worker_environment
+        )
+        if current == expected:
+            matches.append(worker_environment)
+    if not matches:
+        raise PreflightError(f"{manifest['method']} frozen environment has changed")
+    return matches[0]
 
 
 def schema_preflight(root: Path, dataset: str) -> dict[str, Any]:
@@ -617,16 +657,27 @@ def schema_preflight(root: Path, dataset: str) -> dict[str, Any]:
     }
 
 
-def _run_synthetic_preflight(root: Path, python: Path, method: str) -> dict[str, Any]:
-    completed = subprocess.run(
-        (str(python), "-m", "src.baseline_eval.worker", "preflight", "--method", method),
-        cwd=root,
-        env=fixed_worker_environment(root),
-        check=False,
-        text=True,
-        capture_output=True,
-        timeout=900,
-    )
+def _run_synthetic_preflight(
+    root: Path,
+    python: Path,
+    method: str,
+    *,
+    worker_environment: Mapping[str, str] | None = None,
+) -> dict[str, Any]:
+    try:
+        completed = subprocess.run(
+            (str(python), "-m", "src.baseline_eval.worker", "preflight", "--method", method),
+            cwd=root,
+            env=dict(worker_environment or fixed_worker_environment(root)),
+            check=False,
+            text=True,
+            capture_output=True,
+            timeout=900,
+        )
+    except subprocess.TimeoutExpired as exc:
+        raise PreflightError(
+            f"{method} synthetic preflight exceeded 900 seconds"
+        ) from exc
     if completed.returncode != 0:
         raise PreflightError(f"{method} synthetic preflight failed with exit {completed.returncode}")
     try:
@@ -648,9 +699,21 @@ def _environment_preflight_details(
 ) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
     """Resolve one environment with synthetic data only and without writing artifacts."""
 
-    identity = collect_environment_identity(root, python)
-    first = _run_synthetic_preflight(root, python, method)
-    second = _run_synthetic_preflight(root, python, method)
+    environment_path = root / environment_relative(method)
+    worker_environment = fixed_worker_environment(root, user_site_enabled=False)
+    if environment_path.is_file():
+        manifest = read_json(environment_path)
+        if Path(manifest["identity"]["python_executable"]) == python:
+            worker_environment = resolve_frozen_worker_environment(root, manifest)
+    identity = collect_environment_identity(
+        root, python, worker_environment=worker_environment
+    )
+    first = _run_synthetic_preflight(
+        root, python, method, worker_environment=worker_environment
+    )
+    second = _run_synthetic_preflight(
+        root, python, method, worker_environment=worker_environment
+    )
     if first["fingerprint"] != second["fingerprint"]:
         raise PreflightError(f"{method} synthetic executions are not deterministic")
     schema = [schema_preflight(root, dataset) for dataset in DATASET_ORDER]
@@ -758,10 +821,7 @@ def verify_environment_current(root: Path, method: str) -> dict[str, Any]:
     stable = {key: value for key, value in manifest.items() if key not in {"environment_digest", "frozen_at"}}
     if canonical_payload_digest(stable) != stored_digest:
         raise PreflightError(f"{method} environment manifest digest is invalid")
-    python = Path(manifest["identity"]["python_executable"])
-    current = collect_environment_identity(root, python)
-    if current != manifest["identity"]:
-        raise PreflightError(f"{method} frozen environment has changed")
+    resolve_frozen_worker_environment(root, manifest)
     return manifest
 
 
@@ -1104,11 +1164,17 @@ def validate_attempt_runtime_summary(
         raise PreflightError("runtime summary aggregate does not match terminal records")
 
 
-def _start_method_server(root: Path, python: Path, method: str) -> subprocess.Popen[str]:
+def _start_method_server(
+    root: Path,
+    python: Path,
+    method: str,
+    *,
+    worker_environment: Mapping[str, str],
+) -> subprocess.Popen[str]:
     server = subprocess.Popen(
         (str(python), "-m", "src.baseline_eval.server", "--method", method),
         cwd=root,
-        env=fixed_worker_environment(root),
+        env=dict(worker_environment),
         text=True,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
@@ -1265,6 +1331,7 @@ def run_method(
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
     require_committed_file(root, environment_relative(method))
     environment = verify_environment_current(root, method)
+    worker_environment = resolve_frozen_worker_environment(root, environment)
     python = Path(environment["identity"]["python_executable"])
     environment_digest = environment["environment_digest"]
     input_manifest_digest = sha256_file(root / INPUT_MANIFEST_RELATIVE)
@@ -1303,7 +1370,14 @@ def run_method(
             # several cold imports begin at the same instant.  Preload the four
             # servers deterministically, then parallelize only isolated cases.
             for _ in shards:
-                servers.append(_start_method_server(root, python, method))
+                servers.append(
+                    _start_method_server(
+                        root,
+                        python,
+                        method,
+                        worker_environment=worker_environment,
+                    )
+                )
 
             def run_shard(slot: int, shard: Sequence[tuple[str, str]]) -> int:
                 return _run_case_server_shard(

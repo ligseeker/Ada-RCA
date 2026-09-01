@@ -3,11 +3,15 @@ import json
 from pathlib import Path
 import subprocess
 import tempfile
+import types
 import unittest
 from unittest import mock
 
 import numpy as np
 import pandas as pd
+
+import src.baseline_eval.confirmatory as confirmatory_module
+import src.baseline_eval.worker as worker_module
 
 from src.baseline_eval import (
     AdapterError,
@@ -292,6 +296,59 @@ class ConfirmatoryParallelExecutionTest(unittest.TestCase):
         with mock.patch("src.baseline_eval.confirmatory.subprocess.run", return_value=completed):
             with self.assertRaisesRegex(PreflightError, "invalid fingerprint"):
                 _run_synthetic_preflight(ROOT, Path("/external/env/bin/python"), "mmBARO")
+
+    def test_06c0_synthetic_preflight_reports_a_sanitized_timeout(self):
+        with mock.patch(
+            "src.baseline_eval.confirmatory.subprocess.run",
+            side_effect=subprocess.TimeoutExpired(("python", "worker"), 900),
+        ):
+            with self.assertRaisesRegex(
+                PreflightError, "MicroCause synthetic preflight exceeded 900 seconds"
+            ):
+                _run_synthetic_preflight(
+                    ROOT, Path("/external/env/bin/python"), "MicroCause"
+                )
+
+    def test_06ca_frozen_environment_resolution_is_independent_of_ambient_user_site(self):
+        expected = {"profile": "frozen"}
+        manifest = {
+            "identity": {
+                **expected,
+                "python_executable": "/external/env/bin/python",
+            }
+        }
+
+        def identity(_root, _python, *, worker_environment=None):
+            if "PYTHONNOUSERSITE" in worker_environment:
+                return {"profile": "ambiently-hidden"}
+            return manifest["identity"]
+
+        with mock.patch(
+            "src.baseline_eval.confirmatory.collect_environment_identity",
+            side_effect=identity,
+        ):
+            resolved = confirmatory_module.resolve_frozen_worker_environment(ROOT, manifest)
+
+        self.assertNotIn("PYTHONNOUSERSITE", resolved)
+
+    def test_06cb_microcause_synthetic_limit_is_scoped_and_restores_native_function(self):
+        calls = []
+
+        def native_randomwalk(
+            matrix, epochs, start_node, teleportation_prob, walk_step=50, print_trace=False
+        ):
+            calls.append((epochs, walk_step))
+            return [(0, 1.0)]
+
+        module = types.SimpleNamespace(randomwalk=native_randomwalk)
+        with mock.patch(
+            "src.baseline_eval.worker.importlib.import_module", return_value=module
+        ):
+            with worker_module.synthetic_preflight_native_limits("MicroCause"):
+                module.randomwalk(None, 1000, 1, 0, walk_step=1000)
+
+        self.assertEqual(calls, [(10, 100)])
+        self.assertIs(module.randomwalk, native_randomwalk)
 
     def test_06d_metric_and_derived_adapters_reject_invalid_time_or_value_types(self):
         anchor = 1_700_000_000
