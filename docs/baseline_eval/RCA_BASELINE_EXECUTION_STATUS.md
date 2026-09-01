@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **IN PROGRESS — RAW-TRACE PARSER REPAIR VALIDATED**
-State revision: `2026-09-01.2`
-Last operational audit: 2026-09-01, Asia/Shanghai
+Status: **IN PROGRESS — FOUR-WAY CIRCA/MICROCAUSE A2 AUTHORIZED**
+State revision: `2026-09-01.3`
+Last operational audit: 2026-09-01 15:39, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `f072c2a`
+Last synchronized central commit: this V1.3 revision
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -27,15 +27,16 @@ contents, and update this document.
 7. `RCA_BASELINE_PERFORMANCE_FIREWALL_V1.md`;
 8. `RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md`;
 9. `RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md`;
-10. `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`; and
-11. `RCA_BASELINE_ENVIRONMENTS.md`.
+10. `RCA_BASELINE_CASE_PARALLELISM_AMENDMENT_V1_3.md`;
+11. `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`; and
+12. `RCA_BASELINE_ENVIRONMENTS.md`.
 
 ## 2. Frozen repository and provenance
 
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | V1.2 repair is local at `f072c2a` | PENDING PUSH |
+| Push state for this revision | V1.3 acceleration is local | PENDING PUSH |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -60,8 +61,8 @@ project worktrees under `~/.venvs/`.
 | Method | Environment/interpreter | Python | Key dependency | Current state |
 |---|---|---|---|---|
 | BARO | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; execution complete |
-| CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; attempt incomplete; never migrate mid-attempt |
-| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | frozen on task branch; A1 active and incomplete |
+| CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | A1 active; stop and retain; four-worker A2 authorized |
+| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | A1 active; stop and retain; four-worker A2 authorized |
 | MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | frozen on task branch; A1 retained; repaired A2 ready |
 | TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | repaired A2 complete and method-locked on task branch |
 | mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | repaired A2 complete and method-locked on task branch |
@@ -98,6 +99,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Later-baseline execution-integrity hardening | `c51d37a` | complete |
 | Later-baseline data/graph contract validation | `0d0efcf` | complete |
 | Raw-trace CSV parser repair and V1.2 amendment | `f072c2a` | complete; central and affected task branches integrated |
+| Four-way case scheduler, runtime summary, and V1.3 amendment | this revision | implementation complete; A1 stop and A2 launch pending |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
 
 The read-only command below performs dependency identity collection, two
@@ -141,10 +143,14 @@ ranks, or metrics may be added before the global prediction lock.
 |---|---|---:|---:|---:|---:|---:|---:|---|
 | BARO | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
 | BARO | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
-| CIRCA | RE2-OB | 90/90 | 86 | 4 | 0 | 0 | 0 | absent |
-| CIRCA | RE2-TT | 13/90 | 3 | 1 | 0 | 0 | 9 | absent |
-| MicroCause A1 | RE2-OB | 48/90 | 46 | 0 | 0 | 2 | 0 | absent; active |
-| MicroCause A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent |
+| CIRCA A1 | RE2-OB | 90/90 | 86 | 4 | 0 | 0 | 0 | absent; stop and retain |
+| CIRCA A1 | RE2-TT | 27/90 | 8 | 2 | 0 | 0 | 17 | absent; stop and retain |
+| CIRCA A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
+| CIRCA A2 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
+| MicroCause A1 | RE2-OB | 90/90 | 87 | 1 | 0 | 2 | 0 | absent; stop and retain |
+| MicroCause A1 | RE2-TT | 9/90 | 0 | 0 | 0 | 0 | 9 | absent; stop and retain |
+| MicroCause A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
+| MicroCause A2 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
 | MicroRank A1 | RE2-OB | 59/90 | 59 | 0 | 0 | 0 | 0 | absent; retained |
 | MicroRank A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
 | MicroRank A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; ready |
@@ -162,62 +168,28 @@ ranks, or metrics may be added before the global prediction lock.
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
 both 90-case denominators valid, environment unchanged.
 
-CIRCA attempt: `circa-a1-20260830`. Provenance-consistent recovery started at
-2026-08-31 19:31:48 Asia/Shanghai from the original repository path on branch
-`recovery/circa-a1-20260830` at exact execution commit `d5d837e`. Before the
-resume, all 99 existing records were revalidated and a separate recovery copy
-was confirmed byte-identical. The first missing case reached the frozen
-3,600-second deadline and was persisted as `TIMEOUT`. At the 2026-09-01
-03:16 Asia/Shanghai audit, coverage was 103/180 and a CIRCA recovery
-runner/server was observed; the attempt still has no prediction lock. Do not
-launch a duplicate. The V1.1
-amendment permits different methods to run in isolated containers while CIRCA
-remains incomplete.
+CIRCA A1 and MicroCause A1 were still writing from external containers at the
+latest audit. V1.3 requires both original processes to stop before their A1
+records are committed and before either A2 starts. The counts above are a
+timestamped snapshot and may increase until the user stops those processes.
 
 ## 6. Current blockers and decisions required
 
-### B1. CIRCA recovery — independent incomplete task
+### B1. External A1 processes must stop before V1.3 A2 launch
 
-The existing CIRCA attempt is incomplete but its environment remains valid.
-It no longer gates other methods under the V1.1 parallel amendment.
+The user authorized V1.3 four-way within-method case parallelism. The old
+CIRCA and MicroCause runners are still outside this container and cannot be
+reliably terminated from here. The user must stop each original command in its
+own container and wait for the shell prompt. Only then may the coordinator:
 
-Before any recovery action, re-audit:
+- take a final performance-blind count/status audit;
+- commit each complete A1 record directory as immutable evidence;
+- merge the V1.3 execution commit into each existing path-bound task worktree;
+  and
+- launch `circa-a2-20260901` and `microcause-a2-20260901` with exactly
+  `--workers 4`.
 
-- branch and Git identity;
-- process/tmux state;
-- exact record counts and terminal-status counts only;
-- CIRCA environment digest and current environment identity;
-- input/protocol/RCAEval identities; and
-- absence of a CIRCA prediction lock.
-
-Resuming the same attempt may only continue missing cases with the same frozen
-environment, attempt ID, and exact execution commit `d5d837e`. It must not
-rerun or replace any persisted failure or timeout. The current branch HEAD
-cannot legally issue that resume. A controlled recovery must either execute in
-the original committed code context while preserving and re-verifying the 99
-records, or retain the attempt and follow a reviewed new-attempt disposition.
-On 2026-08-31 the user explicitly authorized recovery and allowed a full rerun
-only if the provenance-consistent resume path proves impractical. Because all
-99 persisted records validate and no systematic framework defect has been
-established, the selected path is same-attempt recovery at exact commit
-`d5d837e`. An isolated worktree copy was byte-for-byte verified, but the frozen
-environment identity binds the original repository path through `PYTHONPATH`.
-The formal resume therefore runs from the original path on the dedicated
-recovery branch. The environment gate was not bypassed or modified.
-
-The historical command below is valid only from the exact original execution
-commit context after a fresh read-only audit and explicit user authorization:
-
-```bash
-./.venv/bin/python scripts/run_baseline_confirmatory.py run-method \
-  --method CIRCA \
-  --attempt-id circa-a1-20260830 \
-  --resume
-```
-
-If a systematic framework defect is established instead, retain the entire
-attempt and follow the new-attempt protocol. Do not decide this from prediction
-correctness or performance.
+Never resume either A1. Never start A2 while an A1 process can still write.
 
 ### B2. `.gitignore` decision — resolved
 
@@ -306,33 +278,22 @@ the global prediction lock remain a barrier after all tracks finish.
 - Keep this work synthetic/schema-only; do not schedule a real later-method
   case and do not alter the frozen CIRCA attempt.
 
-### P1 — Complete and lock CIRCA independently
+### P1 — Stop/archive CIRCA A1, then execute four-worker A2
 
-- Completed: explicit user authorization obtained for provenance-consistent
-  resume, with a full rerun permitted only if that path proves impractical.
-- Completed: recovery ran from the original repository path on branch
-  `recovery/circa-a1-20260830` at exact commit `d5d837e` and paused at 100/180.
-- Continue only missing RE2-TT cases under `circa-a1-20260830`, the already
-  frozen project `.venv`, and the original execution commit.
-- Preserve the five existing timeouts and all other terminal records.
-- Verify exactly 90 unique records per dataset, one status per case, identical
-  environment/protocol/input digests, and clean RCAEval.
-- Create and commit `locks/circa_prediction_lock.json` with the records.
-- Suggested commit: `eval: freeze label-free CIRCA predictions`.
-- Update this document with final operational counts and lock commit.
+- Stop the external A1 process; commit every terminal A1 record without a lock.
+- Merge V1.3 into the same absolute worktree path and reuse the unchanged CIRCA
+  environment manifest/interpreter.
+- Run both preflights, then start `circa-a2-20260901 --workers 4` from case 1.
+- Commit all 180 records, the runtime summary, and method lock together.
 
-### P2 — Continue and lock MicroCause in its own task
+### P2 — Stop/archive MicroCause A1, then execute four-worker A2
 
-- Keep `microcause-a1-20260831` on its original execution commit and committed
-  frozen MicroCause environment; V1.2 does not affect this method.
-- Continue only through the same exact-commit resume procedure if the task was
-  interrupted; never replace its existing terminal records.
-- Complete RE2-OB 90 cases, then RE2-TT 90 cases under the same attempt and
-  frozen environment; no automatic retries.
-- Audit denominator and digests, create the method lock, and commit records plus
-  lock as `eval: freeze label-free MicroCause predictions`.
-- Return the two task commit IDs to the central coordinator; do not edit this
-  document from the worker task.
+- Stop the external A1 process; commit every terminal A1 record without a lock.
+- Merge V1.3 into the same absolute worktree path and reuse the integrated
+  unchanged MicroCause environment manifest.
+- Run both preflights, then start `microcause-a2-20260901 --workers 4` from
+  case 1.
+- Commit all 180 records, the runtime summary, and method lock together.
 
 ### P3 — Archive MicroRank A1, execute repaired A2, and lock
 

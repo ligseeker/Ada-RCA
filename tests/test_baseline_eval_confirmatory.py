@@ -18,6 +18,7 @@ from src.baseline_eval import (
     validate_native_output,
 )
 from src.baseline_eval.confirmatory import (
+    CASE_PARALLELISM_AMENDMENT_SHA256,
     DATASET_ORDER,
     FrameworkError,
     METHOD_ORDER,
@@ -172,6 +173,31 @@ class ConfirmatoryParallelExecutionTest(unittest.TestCase):
         with self.assertRaisesRegex(SequenceError, "exact execution commit"):
             validate_resume_execution_commit(records, "b" * 40)
 
+    def test_04c_parallel_terminal_record_binds_worker_count_and_slot(self):
+        common = _failure_record(
+            execution_worker_count=4,
+            execution_worker_slot=3,
+        )
+        arguments = {
+            "method": "BARO",
+            "dataset": "re2ob",
+            "case_id": common["case_id"],
+            "environment_digest": "env-a",
+            "input_manifest_digest": "input",
+            "attempt_id": "attempt-1",
+            "candidate_registry_digest": "candidate",
+            "execution_commit": "e" * 40,
+            "execution_worker_count": 4,
+        }
+        validate_terminal_record(common, **arguments)
+        with self.assertRaisesRegex(FrameworkError, "case-worker controls"):
+            validate_terminal_record(
+                {**common, "execution_worker_slot": 4},
+                **arguments,
+            )
+        with self.assertRaisesRegex(FrameworkError, "execution_worker_count"):
+            validate_terminal_record(common, **{**arguments, "execution_worker_count": 2})
+
     def test_05_environment_manifest_digest_changes_on_mutation(self):
         frozen = {"python": "3.10", "packages": [{"name": "numpy", "version": "1.26.4"}]}
         mutated = {"python": "3.10", "packages": [{"name": "numpy", "version": "2.0.0"}]}
@@ -209,6 +235,8 @@ class ConfirmatoryParallelExecutionTest(unittest.TestCase):
         ), mock.patch(
             "src.baseline_eval.confirmatory.verify_trace_csv_parser_amendment"
         ), mock.patch(
+            "src.baseline_eval.confirmatory.verify_case_parallelism_amendment"
+        ), mock.patch(
             "src.baseline_eval.confirmatory.verify_rcaeval_clean"
         ), mock.patch("src.baseline_eval.confirmatory.assert_ada_rca_frozen_unchanged"), mock.patch(
             "src.baseline_eval.confirmatory.require_committed_file"
@@ -228,6 +256,10 @@ class ConfirmatoryParallelExecutionTest(unittest.TestCase):
         self.assertEqual(
             result["trace_csv_parser_amendment_sha256"],
             TRACE_CSV_PARSER_AMENDMENT_SHA256,
+        )
+        self.assertEqual(
+            result["case_parallelism_amendment_sha256"],
+            CASE_PARALLELISM_AMENDMENT_SHA256,
         )
         self.assertNotIn("packages", result["environment"])
 

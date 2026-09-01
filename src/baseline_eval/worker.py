@@ -510,6 +510,8 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
         "attempt_id": args.attempt_id,
         "ada_rca_commit": REQUIRED_STARTING_HEAD,
         "execution_commit": args.execution_commit,
+        "execution_worker_count": getattr(args, "execution_worker_count", 1),
+        "execution_worker_slot": getattr(args, "execution_worker_slot", 0),
         "rcaeval_commit": RCAEVAL_COMMIT,
         "environment_digest": args.environment_digest,
         "input_manifest_digest": args.input_manifest_digest,
@@ -688,6 +690,8 @@ def parser() -> argparse.ArgumentParser:
     case.add_argument("--input-manifest-digest", required=True)
     case.add_argument("--candidate-registry-digest", required=True)
     case.add_argument("--execution-commit", required=True)
+    case.add_argument("--execution-worker-count", type=int, default=1)
+    case.add_argument("--execution-worker-slot", type=int, default=0)
     case.add_argument("--output", type=Path, required=True)
     return root
 

@@ -48,6 +48,9 @@ recovery workflow, and CausalRCA must not be run.
 
 ## MicroCause task
 
+The A1 commands in this section are historical. Do not resume A1 after V1.3;
+use the V1.3 stop/archive/A2 procedure below.
+
 ```bash
 cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/microcause
 source ~/.venvs/ada-rca-baselines-microcause/bin/activate
@@ -273,6 +276,104 @@ git add \
   artifacts/baseline_eval/execution_v1/records/mmbaro/mmbaro-a2-20260901 \
   artifacts/baseline_eval/execution_v1/locks/mmbaro_prediction_lock.json
 git commit -m "eval: freeze repaired label-free mmBARO predictions"
+```
+
+## V1.3 four-worker CIRCA and MicroCause recovery
+
+The original A1 commands run in other containers. In each original container,
+press `Ctrl-C` once and wait for the shell prompt before running any command
+below. The final A1 record counts may be larger than the last central audit.
+Never delete those records and never use `--resume` for either A1.
+
+The environment manifests bind the existing absolute worktree paths, so A2
+must reuse those paths. The coordinator first archives A1 and merges the
+committed V1.3 branch into each clean task worktree.
+
+### CIRCA A1 archive and A2 branch preparation
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baselines
+set -euo pipefail
+
+git status --short --branch
+git add artifacts/baseline_eval/execution_v1/records/circa/circa-a1-20260830
+git commit -m "eval: preserve interrupted CIRCA attempt a1"
+git merge --no-edit evaluation/rcaeval-baselines
+git branch -m execution/circa-a2-20260901
+git status --short --branch
+```
+
+### MicroCause A1 archive and A2 branch preparation
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/microcause
+set -euo pipefail
+
+git status --short --branch
+git add artifacts/baseline_eval/execution_v1/records/microcause/microcause-a1-20260831
+git commit -m "eval: preserve interrupted MicroCause attempt a1"
+git merge --no-edit evaluation/rcaeval-baselines
+git branch -m execution/microcause-a2-20260901
+git status --short --branch
+```
+
+Only after both A1 commands have returned and the preparation blocks above are
+clean may the following A2 blocks start. The CIRCA and MicroCause blocks may be
+pasted into their two separate containers and run concurrently if each
+container has at least four dedicated CPU cores and adequate memory.
+
+### CIRCA four-worker A2
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baselines
+source ./.venv/bin/activate
+set -euo pipefail
+
+git status --short --branch
+python scripts/run_baseline_confirmatory.py global-preflight
+python scripts/run_baseline_confirmatory.py preflight-environment \
+  --method CIRCA \
+  --python /home/zhangll24/RCA_project/Ada-RCA-baselines/.venv/bin/python
+
+python scripts/run_baseline_confirmatory.py run-method \
+  --method CIRCA \
+  --attempt-id circa-a2-20260901 \
+  --workers 4 \
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/circa-a2-20260901.log 2>&1
+
+git add \
+  artifacts/baseline_eval/execution_v1/records/circa/circa-a2-20260901 \
+  artifacts/baseline_eval/execution_v1/runtimes/circa/circa-a2-20260901.json \
+  artifacts/baseline_eval/execution_v1/locks/circa_prediction_lock.json
+git commit -m "eval: freeze four-worker label-free CIRCA predictions"
+git status --short --branch
+```
+
+### MicroCause four-worker A2
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baseline-tasks/microcause
+source ~/.venvs/ada-rca-baselines-microcause/bin/activate
+set -euo pipefail
+
+git status --short --branch
+python scripts/run_baseline_confirmatory.py global-preflight
+python scripts/run_baseline_confirmatory.py preflight-environment \
+  --method MicroCause \
+  --python /home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/python
+
+python scripts/run_baseline_confirmatory.py run-method \
+  --method MicroCause \
+  --attempt-id microcause-a2-20260901 \
+  --workers 4 \
+  > /home/zhangll24/RCA_project/Ada-RCA-baseline-task-logs/microcause-a2-20260901.log 2>&1
+
+git add \
+  artifacts/baseline_eval/execution_v1/records/microcause/microcause-a2-20260901 \
+  artifacts/baseline_eval/execution_v1/runtimes/microcause/microcause-a2-20260901.json \
+  artifacts/baseline_eval/execution_v1/locks/microcause_prediction_lock.json
+git commit -m "eval: freeze four-worker label-free MicroCause predictions"
+git status --short --branch
 ```
 
 ## Central integration after tasks finish

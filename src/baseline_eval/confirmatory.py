@@ -8,6 +8,7 @@ It is strictly label-free: post-lock label joins live in ``evaluation.py``.
 from __future__ import annotations
 
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 from datetime import datetime, timezone
 import argparse
@@ -24,8 +25,9 @@ import select
 import subprocess
 import sys
 import tempfile
+import threading
 import time
-from typing import Any, Iterable, Iterator, Mapping, Sequence
+from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 
 from src.baseline_eval import (
     CANONICAL_SEED,
@@ -66,6 +68,22 @@ TRACE_CSV_PARSER_AMENDMENT_RELATIVE = Path(
 TRACE_CSV_PARSER_AMENDMENT_SHA256 = (
     "9ba42aa7acefb21b99554ccbc49052394e4b00fed20395027bb8c89b4247e4bf"
 )
+CASE_PARALLELISM_AMENDMENT_RELATIVE = Path(
+    "docs/baseline_eval/RCA_BASELINE_CASE_PARALLELISM_AMENDMENT_V1_3.md"
+)
+CASE_PARALLELISM_AMENDMENT_SHA256 = (
+    "3d83616d80b11bd0d0f472ce018bab3cf8601cab71e7422abc666d1c2acb841e"
+)
+CASE_PARALLEL_METHODS = frozenset({"CIRCA", "MicroCause"})
+MAX_CASE_WORKERS = 4
+CASE_PARALLEL_ATTEMPT_WORKERS = {
+    ("CIRCA", "circa-a2-20260901"): 4,
+    ("MicroCause", "microcause-a2-20260901"): 4,
+}
+RETIRED_CASE_PARALLEL_A1_ATTEMPTS = frozenset({
+    ("CIRCA", "circa-a1-20260830"),
+    ("MicroCause", "microcause-a1-20260831"),
+})
 
 PROTOCOL_ARTIFACT_DIGESTS = {
     "docs/baseline_eval/RCA_BASELINE_PROTOCOL_FREEZE_V1.md": "f16ad5778a4df3c772461e06cb8f9aa59a750298364bf6b97af286466a71202f",
@@ -245,6 +263,14 @@ def verify_trace_csv_parser_amendment(root: Path) -> str:
     return observed
 
 
+def verify_case_parallelism_amendment(root: Path) -> str:
+    require_committed_file(root, CASE_PARALLELISM_AMENDMENT_RELATIVE)
+    observed = sha256_file(root / CASE_PARALLELISM_AMENDMENT_RELATIVE)
+    if observed != CASE_PARALLELISM_AMENDMENT_SHA256:
+        raise PreflightError("within-method case parallelism amendment digest mismatch")
+    return observed
+
+
 def verify_frozen_inputs(root: Path) -> dict[str, dict[str, Any]]:
     audit = audit_frozen_inputs(root)
     for dataset in DATASET_ORDER:
@@ -274,6 +300,7 @@ def global_preflight(root: Path, *, require_exact_head: bool = False) -> dict[st
     protocol = verify_protocol_artifacts(root)
     parallel_amendment = verify_parallel_execution_amendment(root)
     trace_csv_parser_amendment = verify_trace_csv_parser_amendment(root)
+    case_parallelism_amendment = verify_case_parallelism_amendment(root)
     rcaeval = verify_rcaeval_clean()
     frozen_inputs = verify_frozen_inputs(root)
     assert_ada_rca_frozen_unchanged(root)
@@ -285,6 +312,7 @@ def global_preflight(root: Path, *, require_exact_head: bool = False) -> dict[st
         "protocol_bundle_digest": protocol_bundle_digest(root),
         "parallel_execution_amendment_sha256": parallel_amendment,
         "trace_csv_parser_amendment_sha256": trace_csv_parser_amendment,
+        "case_parallelism_amendment_sha256": case_parallelism_amendment,
         "rcaeval": rcaeval,
         "frozen_inputs": frozen_inputs,
         "ada_rca_frozen_paths_unchanged": True,
@@ -337,6 +365,12 @@ def method_records_relative(method: str, attempt_id: str, dataset: str) -> Path:
     return EXECUTION_ROOT_RELATIVE / "records" / method.lower() / attempt_id / dataset
 
 
+def attempt_runtime_relative(method: str, attempt_id: str) -> Path:
+    require_method(method)
+    require_attempt_id(attempt_id)
+    return EXECUTION_ROOT_RELATIVE / "runtimes" / method.lower() / f"{attempt_id}.json"
+
+
 def require_method(method: str) -> None:
     if method not in METHOD_ORDER:
         raise SequenceError(f"method is not in the frozen authorized registry: {method}")
@@ -350,6 +384,55 @@ def require_dataset(dataset: str) -> None:
 def require_attempt_id(attempt_id: str) -> None:
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,79}", attempt_id):
         raise ConfirmatoryError("attempt ID must be an opaque safe slug")
+
+
+def validate_case_worker_count(method: str, workers: int) -> int:
+    require_method(method)
+    if isinstance(workers, bool) or not isinstance(workers, int):
+        raise SequenceError("case worker count must be an integer")
+    if workers < 1 or workers > MAX_CASE_WORKERS:
+        raise SequenceError(f"case worker count must be between 1 and {MAX_CASE_WORKERS}")
+    if workers > 1 and method not in CASE_PARALLEL_METHODS:
+        raise SequenceError(f"within-method case parallelism is not authorized for {method}")
+    return workers
+
+
+def validate_attempt_worker_contract(
+    method: str, attempt_id: str, workers: int, *, resume: bool = False
+) -> int:
+    workers = validate_case_worker_count(method, workers)
+    require_attempt_id(attempt_id)
+    key = (method, attempt_id)
+    if resume and key in RETIRED_CASE_PARALLEL_A1_ATTEMPTS:
+        raise SequenceError(f"V1.3 prohibits resuming retained A1 attempt {attempt_id}")
+    expected = CASE_PARALLEL_ATTEMPT_WORKERS.get(key)
+    if expected is not None and workers != expected:
+        raise SequenceError(f"{attempt_id} requires exactly {expected} case workers")
+    if workers > 1 and expected is None:
+        raise SequenceError(
+            f"within-method parallelism is not authorized for attempt {attempt_id}"
+        )
+    return workers
+
+
+def partition_pending_cases(
+    cases: Sequence[tuple[str, str]], workers: int
+) -> tuple[tuple[tuple[str, str], ...], ...]:
+    if workers < 1:
+        raise SequenceError("case worker count must be positive")
+    active = min(workers, len(cases))
+    return tuple(tuple(cases[slot::active]) for slot in range(active)) if active else ()
+
+
+def execute_case_shards(
+    shards: Sequence[Sequence[tuple[str, str]]],
+    run_shard: Callable[[int, Sequence[tuple[str, str]]], Any],
+) -> tuple[Any, ...]:
+    if not shards:
+        return ()
+    with ThreadPoolExecutor(max_workers=len(shards), thread_name_prefix="baseline-case-shard") as pool:
+        futures = [pool.submit(run_shard, slot, shard) for slot, shard in enumerate(shards)]
+        return tuple(future.result() for future in futures)
 
 
 def assert_method_execution_ready(
@@ -585,6 +668,7 @@ def preflight_environment(root: Path, method: str, python: Path) -> dict[str, An
     verify_protocol_artifacts(root)
     verify_parallel_execution_amendment(root)
     verify_trace_csv_parser_amendment(root)
+    verify_case_parallelism_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
@@ -605,6 +689,7 @@ def preflight_environment(root: Path, method: str, python: Path) -> dict[str, An
         "protocol_digest": PROTOCOL_DIGEST,
         "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
         "trace_csv_parser_amendment_sha256": TRACE_CSV_PARSER_AMENDMENT_SHA256,
+        "case_parallelism_amendment_sha256": CASE_PARALLELISM_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "rcaeval_commit": RCAEVAL_COMMIT,
         "synthetic_preflight": {
@@ -624,6 +709,7 @@ def freeze_environment(root: Path, method: str, python: Path) -> Path:
     verify_protocol_artifacts(root)
     verify_parallel_execution_amendment(root)
     verify_trace_csv_parser_amendment(root)
+    verify_case_parallelism_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     assert_method_execution_ready(root, method)
@@ -641,6 +727,7 @@ def freeze_environment(root: Path, method: str, python: Path) -> Path:
         "protocol_bundle_digest": protocol_bundle_digest(root),
         "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
         "trace_csv_parser_amendment_sha256": TRACE_CSV_PARSER_AMENDMENT_SHA256,
+        "case_parallelism_amendment_sha256": CASE_PARALLELISM_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "ada_rca_starting_commit": REQUIRED_STARTING_HEAD,
         "execution_harness_commit": git(root, "rev-parse", "HEAD").stdout.strip(),
@@ -696,7 +783,7 @@ def record_path(root: Path, method: str, attempt_id: str, dataset: str, case_id:
 def validate_terminal_record(
     payload: Mapping[str, Any], *, method: str, dataset: str, case_id: str, environment_digest: str,
     input_manifest_digest: str, attempt_id: str, candidate_registry_digest: str,
-    execution_commit: str | None,
+    execution_commit: str | None, execution_worker_count: int | None = None,
 ) -> None:
     assert_firewall_safe_record(payload)
     expected = {
@@ -717,6 +804,8 @@ def validate_terminal_record(
     }
     if execution_commit is not None:
         expected["execution_commit"] = execution_commit
+    if execution_worker_count is not None:
+        expected["execution_worker_count"] = execution_worker_count
     for key, value in expected.items():
         if payload.get(key) != value:
             raise FrameworkError(f"terminal record provenance mismatch: {key}")
@@ -730,6 +819,18 @@ def validate_terminal_record(
         raise FrameworkError("terminal record has invalid canonical seed controls")
     if seed_state.get("python_hash_seed") != CANONICAL_SEED:
         raise FrameworkError("terminal record has invalid Python hash seed controls")
+    record_worker_count = payload.get("execution_worker_count")
+    record_worker_slot = payload.get("execution_worker_slot")
+    if record_worker_count is not None or record_worker_slot is not None:
+        if (
+            isinstance(record_worker_count, bool)
+            or not isinstance(record_worker_count, int)
+            or isinstance(record_worker_slot, bool)
+            or not isinstance(record_worker_slot, int)
+            or record_worker_count < 1
+            or not 0 <= record_worker_slot < record_worker_count
+        ):
+            raise FrameworkError("terminal record has invalid case-worker controls")
     try:
         status = TerminalStatus(payload["terminal_status"])
     except (KeyError, ValueError) as exc:
@@ -784,7 +885,8 @@ def format_case_status(payload: Mapping[str, Any]) -> str:
 def _timeout_record(
     root: Path, method: str, dataset: str, case_id: str, attempt_id: str,
     environment_digest: str, input_manifest_digest: str, candidate_registry_digest: str,
-    execution_commit: str, start: str, wall_time: float,
+    execution_commit: str, execution_worker_count: int, execution_worker_slot: int,
+    start: str, wall_time: float,
 ) -> dict[str, Any]:
     payload = {
         "schema_version": "rca_baseline_case_record_v1",
@@ -796,6 +898,8 @@ def _timeout_record(
         "attempt_id": attempt_id,
         "ada_rca_commit": REQUIRED_STARTING_HEAD,
         "execution_commit": execution_commit,
+        "execution_worker_count": execution_worker_count,
+        "execution_worker_slot": execution_worker_slot,
         "rcaeval_commit": RCAEVAL_COMMIT,
         "environment_digest": environment_digest,
         "input_manifest_digest": input_manifest_digest,
@@ -835,7 +939,7 @@ def validate_attempt_is_new(root: Path, method: str, attempt_id: str) -> None:
 
 def _load_existing_attempt_records(
     root: Path, method: str, attempt_id: str, environment_digest: str, input_manifest_digest: str,
-    execution_commit: str | None,
+    execution_commit: str | None, execution_worker_count: int | None = None,
 ) -> dict[tuple[str, str], dict[str, Any]]:
     records: dict[tuple[str, str], dict[str, Any]] = {}
     for dataset in DATASET_ORDER:
@@ -854,6 +958,7 @@ def _load_existing_attempt_records(
                 attempt_id=attempt_id,
                 candidate_registry_digest=_candidate_registry_digest(root, dataset),
                 execution_commit=execution_commit,
+                execution_worker_count=execution_worker_count,
             )
             records[(dataset, case_id)] = payload
     return records
@@ -869,13 +974,291 @@ def _persist_parent_record(path: Path, payload: Mapping[str, Any]) -> None:
     atomic_write_json(path, payload)
 
 
-def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False) -> Path:
+def build_attempt_runtime_summary(
+    *,
+    method: str,
+    attempt_id: str,
+    execution_commit: str,
+    worker_count: int,
+    attempt_start_timestamp: str,
+    attempt_end_timestamp: str,
+    attempt_wall_time_seconds: float,
+    ordered_case_keys: Sequence[tuple[str, str]],
+    records: Mapping[tuple[str, str], Mapping[str, Any]],
+) -> dict[str, Any]:
+    validate_case_worker_count(method, worker_count)
+    case_timings: list[dict[str, Any]] = []
+    dataset_totals = {dataset: 0.0 for dataset in DATASET_ORDER}
+    for dataset, case_id in ordered_case_keys:
+        row = records[(dataset, case_id)]
+        if row.get("execution_worker_count") != worker_count:
+            raise FrameworkError("runtime summary found a mismatched case-worker count")
+        wall_time = float(row["wall_time_seconds"])
+        dataset_totals[dataset] += wall_time
+        case_timings.append({
+            "dataset": dataset,
+            "case_id": case_id,
+            "terminal_status": row["terminal_status"],
+            "execution_worker_slot": row["execution_worker_slot"],
+            "start_timestamp": row["start_timestamp"],
+            "end_timestamp": row["end_timestamp"],
+            "wall_time_seconds": wall_time,
+        })
+    payload = {
+        "schema_version": "rca_baseline_attempt_runtime_v1",
+        "method": method,
+        "attempt_id": attempt_id,
+        "execution_commit": execution_commit,
+        "execution_worker_count": worker_count,
+        "attempt_start_timestamp": attempt_start_timestamp,
+        "attempt_end_timestamp": attempt_end_timestamp,
+        "attempt_wall_time_seconds": float(attempt_wall_time_seconds),
+        "terminal_case_count": len(case_timings),
+        "aggregate_case_wall_time_seconds": sum(
+            row["wall_time_seconds"] for row in case_timings
+        ),
+        "dataset_case_wall_time_seconds": dataset_totals,
+        "case_timings": case_timings,
+        "contains_evaluation": False,
+    }
+    assert_firewall_safe_record(payload)
+    validate_attempt_runtime_summary(
+        payload,
+        method=method,
+        attempt_id=attempt_id,
+        execution_commit=execution_commit,
+        worker_count=worker_count,
+        ordered_case_keys=ordered_case_keys,
+        records=records,
+    )
+    return payload
+
+
+def validate_attempt_runtime_summary(
+    payload: Mapping[str, Any],
+    *,
+    method: str,
+    attempt_id: str,
+    execution_commit: str,
+    worker_count: int,
+    ordered_case_keys: Sequence[tuple[str, str]],
+    records: Mapping[tuple[str, str], Mapping[str, Any]],
+) -> None:
+    assert_firewall_safe_record(payload)
+    expected_identity = {
+        "schema_version": "rca_baseline_attempt_runtime_v1",
+        "method": method,
+        "attempt_id": attempt_id,
+        "execution_commit": execution_commit,
+        "execution_worker_count": worker_count,
+        "terminal_case_count": len(ordered_case_keys),
+        "contains_evaluation": False,
+    }
+    if any(payload.get(key) != value for key, value in expected_identity.items()):
+        raise PreflightError("runtime summary identity mismatch")
+
+    timestamps = []
+    for key in ("attempt_start_timestamp", "attempt_end_timestamp"):
+        value = payload.get(key)
+        if not isinstance(value, str):
+            raise PreflightError(f"runtime summary has invalid {key}")
+        try:
+            parsed = datetime.fromisoformat(value)
+        except ValueError as exc:
+            raise PreflightError(f"runtime summary has invalid {key}") from exc
+        if parsed.tzinfo is None:
+            raise PreflightError(f"runtime summary has timezone-free {key}")
+        timestamps.append(parsed)
+    if timestamps[1] < timestamps[0]:
+        raise PreflightError("runtime summary timestamps are reversed")
+    attempt_wall = payload.get("attempt_wall_time_seconds")
+    if isinstance(attempt_wall, bool) or not isinstance(attempt_wall, (int, float)) or attempt_wall < 0:
+        raise PreflightError("runtime summary has invalid attempt wall time")
+
+    expected_case_timings: list[dict[str, Any]] = []
+    expected_dataset_totals = {dataset: 0.0 for dataset in DATASET_ORDER}
+    for dataset, case_id in ordered_case_keys:
+        try:
+            row = records[(dataset, case_id)]
+            wall_time = float(row["wall_time_seconds"])
+        except (KeyError, TypeError, ValueError) as exc:
+            raise PreflightError("runtime summary source record is missing timing data") from exc
+        if wall_time < 0:
+            raise PreflightError("runtime summary source record has negative wall time")
+        expected_dataset_totals[dataset] += wall_time
+        expected_case_timings.append({
+            "dataset": dataset,
+            "case_id": case_id,
+            "terminal_status": row["terminal_status"],
+            "execution_worker_slot": row["execution_worker_slot"],
+            "start_timestamp": row["start_timestamp"],
+            "end_timestamp": row["end_timestamp"],
+            "wall_time_seconds": wall_time,
+        })
+    if payload.get("case_timings") != expected_case_timings:
+        raise PreflightError("runtime summary case timings do not match terminal records")
+    if payload.get("dataset_case_wall_time_seconds") != expected_dataset_totals:
+        raise PreflightError("runtime summary dataset totals do not match terminal records")
+    expected_aggregate = sum(row["wall_time_seconds"] for row in expected_case_timings)
+    if payload.get("aggregate_case_wall_time_seconds") != expected_aggregate:
+        raise PreflightError("runtime summary aggregate does not match terminal records")
+
+
+def _start_method_server(root: Path, python: Path, method: str) -> subprocess.Popen[str]:
+    server = subprocess.Popen(
+        (str(python), "-m", "src.baseline_eval.server", "--method", method),
+        cwd=root,
+        env=fixed_worker_environment(root),
+        text=True,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    try:
+        if server.stdin is None or server.stdout is None:
+            raise FrameworkError("method server pipes are unavailable")
+        ready, _, _ = select.select([server.stdout], [], [], 900)
+        if not ready:
+            raise FrameworkError("method server did not finish its import preflight within 900 seconds")
+        handshake = json.loads(server.stdout.readline())
+        if handshake != {"status": "READY", "method": method}:
+            raise FrameworkError("method server returned an invalid readiness handshake")
+        return server
+    except BaseException:
+        _terminate_method_server(server)
+        raise
+
+
+def _terminate_method_server(server: subprocess.Popen[str]) -> None:
+    if server.poll() is None:
+        server.terminate()
+        try:
+            server.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            server.kill()
+            server.wait(timeout=10)
+
+
+def _stop_method_server(server: subprocess.Popen[str]) -> None:
+    if server.stdin is None or server.stdout is None:
+        raise FrameworkError("method server pipes are unavailable")
+    server.stdin.write(json.dumps({"command": "stop"}) + "\n")
+    server.stdin.flush()
+    ready, _, _ = select.select([server.stdout], [], [], 30)
+    if not ready or json.loads(server.stdout.readline()).get("status") != "STOPPED":
+        raise FrameworkError("method server did not stop cleanly")
+    if server.wait(timeout=30) != 0:
+        raise FrameworkError("method server exited nonzero")
+
+
+def _run_case_server_shard(
+    *,
+    server: subprocess.Popen[str],
+    root: Path,
+    method: str,
+    attempt_id: str,
+    environment_digest: str,
+    input_manifest_digest: str,
+    execution_commit: str,
+    worker_count: int,
+    worker_slot: int,
+    shard: Sequence[tuple[str, str]],
+    stop_event: threading.Event,
+) -> int:
+    processed = 0
+    try:
+        if server.stdin is None or server.stdout is None:
+            raise FrameworkError("method server pipes are unavailable")
+        for dataset, case_id in shard:
+            if stop_event.is_set():
+                break
+            candidate_digest = _candidate_registry_digest(root, dataset)
+            path = record_path(root, method, attempt_id, dataset, case_id)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            request = {
+                "command": "case",
+                "method": method,
+                "dataset": dataset,
+                "case_id": case_id,
+                "attempt_id": attempt_id,
+                "environment_digest": environment_digest,
+                "input_manifest_digest": input_manifest_digest,
+                "candidate_registry_digest": candidate_digest,
+                "execution_commit": execution_commit,
+                "execution_worker_count": worker_count,
+                "execution_worker_slot": worker_slot,
+                "output": str(path),
+            }
+            start_timestamp = utc_now()
+            start = time.monotonic()
+            server.stdin.write(json.dumps(request, sort_keys=True) + "\n")
+            server.stdin.flush()
+            ready, _, _ = select.select([server.stdout], [], [], CASE_TIMEOUT_SECONDS + 30)
+            if not ready:
+                raise FrameworkError(
+                    f"method server failed to enforce the frozen deadline for {case_id}"
+                )
+            response = json.loads(server.stdout.readline())
+            if response.get("case_id") != case_id:
+                raise FrameworkError("method server response case identity mismatch")
+            if response.get("status") == "TIMEOUT":
+                payload = _timeout_record(
+                    root,
+                    method,
+                    dataset,
+                    case_id,
+                    attempt_id,
+                    environment_digest,
+                    input_manifest_digest,
+                    candidate_digest,
+                    execution_commit,
+                    worker_count,
+                    worker_slot,
+                    start_timestamp,
+                    time.monotonic() - start,
+                )
+                _persist_parent_record(path, payload)
+            elif response.get("status") != "RECORDED" or not path.is_file():
+                raise FrameworkError(
+                    f"worker framework failure for {case_id}; retain this attempt and start a new attempt"
+                )
+            payload = read_json(path)
+            validate_terminal_record(
+                payload,
+                method=method,
+                dataset=dataset,
+                case_id=case_id,
+                environment_digest=environment_digest,
+                input_manifest_digest=input_manifest_digest,
+                attempt_id=attempt_id,
+                candidate_registry_digest=candidate_digest,
+                execution_commit=execution_commit,
+                execution_worker_count=worker_count,
+            )
+            print(f"worker={worker_slot} {format_case_status(payload)}", flush=True)
+            processed += 1
+        _stop_method_server(server)
+        return processed
+    except BaseException:
+        stop_event.set()
+        raise
+    finally:
+        _terminate_method_server(server)
+
+
+def run_method(
+    root: Path, method: str, attempt_id: str, *, resume: bool = False, workers: int = 1
+) -> Path:
     require_method(method)
     require_attempt_id(attempt_id)
+    workers = validate_attempt_worker_contract(
+        method, attempt_id, workers, resume=resume
+    )
     require_clean_git(root) if not resume else None
     verify_protocol_artifacts(root)
     verify_parallel_execution_amendment(root)
     verify_trace_csv_parser_amendment(root)
+    verify_case_parallelism_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     assert_method_execution_ready(root, method)
@@ -888,109 +1271,70 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
     execution_commit = git(root, "rev-parse", "HEAD").stdout.strip()
     if resume:
         existing = _load_existing_attempt_records(
-            root, method, attempt_id, environment_digest, input_manifest_digest, None
+            root, method, attempt_id, environment_digest, input_manifest_digest, None, workers
         )
         if not existing:
             raise SequenceError("resume requested but this attempt has no persisted records")
         validate_resume_execution_commit(existing, execution_commit)
     else:
         validate_attempt_is_new(root, method, attempt_id)
+        if (root / attempt_runtime_relative(method, attempt_id)).exists():
+            raise SequenceError("a new attempt cannot reuse an existing runtime summary")
         existing = {}
 
     with exclusive_method_execution_lock(
         method, lock_root=git_common_execution_lock_root(root)
     ):
-        server = subprocess.Popen(
-            (str(python), "-m", "src.baseline_eval.server", "--method", method),
-            cwd=root,
-            env=fixed_worker_environment(root),
-            text=True,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
+        ordered_case_keys = tuple(
+            (dataset, case_id)
+            for dataset in DATASET_ORDER
+            for case_id in expected_case_ids(root, dataset)
         )
+        canonical_shards = partition_pending_cases(ordered_case_keys, workers)
+        shards = tuple(
+            tuple(key for key in shard if key not in existing) for shard in canonical_shards
+        )
+        stop_event = threading.Event()
+        attempt_start_timestamp = utc_now()
+        attempt_start = time.monotonic()
+        servers: list[subprocess.Popen[str]] = []
         try:
-            if server.stdin is None or server.stdout is None:
-                raise FrameworkError("method server pipes are unavailable")
-            ready, _, _ = select.select([server.stdout], [], [], 900)
-            if not ready:
-                raise FrameworkError("method server did not finish its import preflight within 900 seconds")
-            handshake = json.loads(server.stdout.readline())
-            if handshake != {"status": "READY", "method": method}:
-                raise FrameworkError("method server returned an invalid readiness handshake")
-            for dataset in DATASET_ORDER:
-                candidate_digest = _candidate_registry_digest(root, dataset)
-                for case_id in expected_case_ids(root, dataset):
-                    if (dataset, case_id) in existing:
-                        continue
-                    path = record_path(root, method, attempt_id, dataset, case_id)
-                    path.parent.mkdir(parents=True, exist_ok=True)
-                    request = {
-                        "command": "case",
-                        "method": method,
-                        "dataset": dataset,
-                        "case_id": case_id,
-                        "attempt_id": attempt_id,
-                        "environment_digest": environment_digest,
-                        "input_manifest_digest": input_manifest_digest,
-                        "candidate_registry_digest": candidate_digest,
-                        "execution_commit": execution_commit,
-                        "output": str(path),
-                    }
-                    start_timestamp = utc_now()
-                    start = time.monotonic()
-                    server.stdin.write(json.dumps(request, sort_keys=True) + "\n")
-                    server.stdin.flush()
-                    ready, _, _ = select.select([server.stdout], [], [], CASE_TIMEOUT_SECONDS + 30)
-                    if not ready:
-                        raise FrameworkError(
-                            f"method server failed to enforce the frozen deadline for {case_id}"
-                        )
-                    response = json.loads(server.stdout.readline())
-                    if response.get("case_id") != case_id:
-                        raise FrameworkError("method server response case identity mismatch")
-                    if response.get("status") == "TIMEOUT":
-                        payload = _timeout_record(
-                            root, method, dataset, case_id, attempt_id, environment_digest,
-                            input_manifest_digest, candidate_digest, execution_commit,
-                            start_timestamp, time.monotonic() - start,
-                        )
-                        _persist_parent_record(path, payload)
-                    elif response.get("status") != "RECORDED" or not path.is_file():
-                        raise FrameworkError(
-                            f"worker framework failure for {case_id}; retain this attempt and start a new attempt"
-                        )
-                    payload = read_json(path)
-                    validate_terminal_record(
-                        payload,
-                        method=method,
-                        dataset=dataset,
-                        case_id=case_id,
-                        environment_digest=environment_digest,
-                        input_manifest_digest=input_manifest_digest,
-                        attempt_id=attempt_id,
-                        candidate_registry_digest=candidate_digest,
-                        execution_commit=execution_commit,
-                    )
-                    print(format_case_status(payload), flush=True)
-            server.stdin.write(json.dumps({"command": "stop"}) + "\n")
-            server.stdin.flush()
-            ready, _, _ = select.select([server.stdout], [], [], 30)
-            if not ready or json.loads(server.stdout.readline()).get("status") != "STOPPED":
-                raise FrameworkError("method server did not stop cleanly")
-            if server.wait(timeout=30) != 0:
-                raise FrameworkError("method server exited nonzero")
+            # Some pinned scientific libraries do not initialize safely when
+            # several cold imports begin at the same instant.  Preload the four
+            # servers deterministically, then parallelize only isolated cases.
+            for _ in shards:
+                servers.append(_start_method_server(root, python, method))
+
+            def run_shard(slot: int, shard: Sequence[tuple[str, str]]) -> int:
+                return _run_case_server_shard(
+                    server=servers[slot],
+                    root=root,
+                    method=method,
+                    attempt_id=attempt_id,
+                    environment_digest=environment_digest,
+                    input_manifest_digest=input_manifest_digest,
+                    execution_commit=execution_commit,
+                    worker_count=workers,
+                    worker_slot=slot,
+                    shard=shard,
+                    stop_event=stop_event,
+                )
+
+            execute_case_shards(shards, run_shard)
         finally:
-            if server.poll() is None:
-                server.terminate()
-                try:
-                    server.wait(timeout=10)
-                except subprocess.TimeoutExpired:
-                    server.kill()
-                    server.wait(timeout=10)
+            for server in servers:
+                _terminate_method_server(server)
+        attempt_end_timestamp = utc_now()
+        attempt_wall_time_seconds = time.monotonic() - attempt_start
 
         records = _load_existing_attempt_records(
-            root, method, attempt_id, environment_digest, input_manifest_digest, execution_commit
+            root,
+            method,
+            attempt_id,
+            environment_digest,
+            input_manifest_digest,
+            execution_commit,
+            workers,
         )
         if len(records) != len(DATASET_ORDER) * EXPECTED_CASES_PER_DATASET:
             raise FrameworkError("method attempt does not contain 180 terminal records")
@@ -1000,6 +1344,22 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
         lock_path = root / method_lock_relative(method)
         if lock_path.exists():
             raise SequenceError(f"method lock already exists for {method}")
+        runtime_relative = attempt_runtime_relative(method, attempt_id)
+        runtime_path = root / runtime_relative
+        if runtime_path.exists():
+            raise SequenceError("attempt runtime summary already exists")
+        runtime_summary = build_attempt_runtime_summary(
+            method=method,
+            attempt_id=attempt_id,
+            execution_commit=execution_commit,
+            worker_count=workers,
+            attempt_start_timestamp=attempt_start_timestamp,
+            attempt_end_timestamp=attempt_end_timestamp,
+            attempt_wall_time_seconds=attempt_wall_time_seconds,
+            ordered_case_keys=ordered_case_keys,
+            records=records,
+        )
+        atomic_write_json(runtime_path, runtime_summary)
         terminal_records: list[dict[str, Any]] = []
         counts: dict[str, dict[str, int]] = {}
         for dataset in DATASET_ORDER:
@@ -1021,6 +1381,7 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
             "environment_digest": environment_digest,
             "protocol_digest": PROTOCOL_DIGEST,
             "protocol_bundle_digest": protocol_bundle_digest(root),
+            "case_parallelism_amendment_sha256": CASE_PARALLELISM_AMENDMENT_SHA256,
             "input_manifest_digest": input_manifest_digest,
             "rcaeval_commit": RCAEVAL_COMMIT,
             "datasets": list(DATASET_ORDER),
@@ -1030,6 +1391,11 @@ def run_method(root: Path, method: str, attempt_id: str, *, resume: bool = False
             "terminal_record_digests": terminal_records,
             "record_counts": {dataset: EXPECTED_CASES_PER_DATASET for dataset in DATASET_ORDER},
             "status_counts": counts,
+            "execution_worker_count": workers,
+            "runtime_summary": {
+                "path": runtime_relative.as_posix(),
+                "sha256": sha256_file(runtime_path),
+            },
             "contains_evaluation": False,
             "locked_at": utc_now(),
         }
@@ -1046,6 +1412,7 @@ def record_method_block(
     require_clean_git(root)
     verify_parallel_execution_amendment(root)
     verify_trace_csv_parser_amendment(root)
+    verify_case_parallelism_amendment(root)
     assert_method_execution_ready(root, method)
     lock_path = root / method_lock_relative(method)
     payload = {
@@ -1096,6 +1463,14 @@ def verify_method_lock(root: Path, method: str, *, require_committed: bool = Tru
             raise PreflightError(f"environment digest mismatch in {method} lock")
         if lock.get("protocol_bundle_digest") != protocol_bundle_digest(root):
             raise PreflightError(f"protocol bundle mismatch in {method} lock")
+        worker_count = lock.get("execution_worker_count")
+        if worker_count is not None:
+            validate_attempt_worker_contract(method, attempt_id, worker_count)
+            if (
+                lock.get("case_parallelism_amendment_sha256")
+                != CASE_PARALLELISM_AMENDMENT_SHA256
+            ):
+                raise PreflightError(f"case-parallelism amendment mismatch in {method} lock")
         expected_pairs = {
             (dataset, case_id)
             for dataset in DATASET_ORDER
@@ -1111,6 +1486,7 @@ def verify_method_lock(root: Path, method: str, *, require_committed: bool = Tru
         }:
             raise PreflightError(f"record counts mismatch in {method} lock")
         observed_pairs: set[tuple[str, str]] = set()
+        observed_records: dict[tuple[str, str], Mapping[str, Any]] = {}
         execution_commits: set[str] = set()
         observed_statuses: dict[str, Counter[str]] = {
             dataset: Counter() for dataset in DATASET_ORDER
@@ -1124,6 +1500,7 @@ def verify_method_lock(root: Path, method: str, *, require_committed: bool = Tru
             if sha256_file(path) != row["sha256"]:
                 raise PreflightError(f"terminal record digest mismatch in {method} lock")
             payload = read_json(path)
+            observed_records[pair] = payload
             execution_commit = payload.get("execution_commit")
             validate_terminal_record(
                 payload,
@@ -1135,6 +1512,7 @@ def verify_method_lock(root: Path, method: str, *, require_committed: bool = Tru
                 attempt_id=attempt_id,
                 candidate_registry_digest=_candidate_registry_digest(root, row["dataset"]),
                 execution_commit=execution_commit if isinstance(execution_commit, str) else None,
+                execution_worker_count=worker_count,
             )
             execution_commits.add(str(execution_commit))
             observed_statuses[row["dataset"]][payload["terminal_status"]] += 1
@@ -1151,6 +1529,33 @@ def verify_method_lock(root: Path, method: str, *, require_committed: bool = Tru
         }
         if lock.get("status_counts") != expected_status_counts:
             raise PreflightError(f"status counts mismatch in {method} lock")
+        runtime_binding = lock.get("runtime_summary")
+        if worker_count is not None:
+            if not isinstance(runtime_binding, Mapping):
+                raise PreflightError(f"runtime summary is missing from {method} lock")
+            runtime_relative = attempt_runtime_relative(method, attempt_id)
+            if runtime_binding.get("path") != runtime_relative.as_posix():
+                raise PreflightError(f"runtime summary path mismatch in {method} lock")
+            if require_committed:
+                require_committed_file(root, runtime_relative)
+            runtime_path = root / runtime_relative
+            if sha256_file(runtime_path) != runtime_binding.get("sha256"):
+                raise PreflightError(f"runtime summary digest mismatch in {method} lock")
+            runtime_summary = read_json(runtime_path)
+            ordered_case_keys = tuple(
+                (dataset, case_id)
+                for dataset in DATASET_ORDER
+                for case_id in expected_case_ids(root, dataset)
+            )
+            validate_attempt_runtime_summary(
+                runtime_summary,
+                method=method,
+                attempt_id=attempt_id,
+                execution_commit=next(iter(execution_commits)),
+                worker_count=worker_count,
+                ordered_case_keys=ordered_case_keys,
+                records=observed_records,
+            )
     elif lock["disposition"] not in {"ENVIRONMENT_BLOCKED", "PREEXECUTION_BLOCKED"}:
         raise PreflightError(f"invalid disposition in {method} lock")
     return lock
@@ -1161,6 +1566,7 @@ def create_global_prediction_lock(root: Path) -> Path:
     verify_protocol_artifacts(root)
     verify_parallel_execution_amendment(root)
     verify_trace_csv_parser_amendment(root)
+    verify_case_parallelism_amendment(root)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     require_committed_file(root, INPUT_MANIFEST_RELATIVE)
@@ -1186,6 +1592,7 @@ def create_global_prediction_lock(root: Path) -> Path:
         "protocol_bundle_digest": protocol_bundle_digest(root),
         "parallel_execution_amendment_sha256": PARALLEL_AMENDMENT_SHA256,
         "trace_csv_parser_amendment_sha256": TRACE_CSV_PARSER_AMENDMENT_SHA256,
+        "case_parallelism_amendment_sha256": CASE_PARALLELISM_AMENDMENT_SHA256,
         "input_manifest_digest": sha256_file(root / INPUT_MANIFEST_RELATIVE),
         "ada_rca_starting_commit": REQUIRED_STARTING_HEAD,
         "scientific_v1_reference": SCIENTIFIC_V1_HEAD,
@@ -1206,6 +1613,7 @@ def create_global_prediction_lock(root: Path) -> Path:
 def verify_global_prediction_lock(root: Path, *, require_committed: bool = True) -> dict[str, Any]:
     verify_parallel_execution_amendment(root)
     verify_trace_csv_parser_amendment(root)
+    verify_case_parallelism_amendment(root)
     if require_committed:
         require_committed_file(root, GLOBAL_LOCK_RELATIVE)
     lock = read_json(root / GLOBAL_LOCK_RELATIVE)
@@ -1217,6 +1625,8 @@ def verify_global_prediction_lock(root: Path, *, require_committed: bool = True)
         raise PreflightError("global prediction lock parallel amendment mismatch")
     if lock.get("trace_csv_parser_amendment_sha256") != TRACE_CSV_PARSER_AMENDMENT_SHA256:
         raise PreflightError("global prediction lock raw-trace CSV parser amendment mismatch")
+    if lock.get("case_parallelism_amendment_sha256") != CASE_PARALLELISM_AMENDMENT_SHA256:
+        raise PreflightError("global prediction lock case-parallelism amendment mismatch")
     for method in METHOD_ORDER:
         verify_method_lock(root, method, require_committed=True)
     return lock
@@ -1238,6 +1648,7 @@ def command_parser() -> argparse.ArgumentParser:
     run.add_argument("--method", choices=METHOD_ORDER, required=True)
     run.add_argument("--attempt-id", required=True)
     run.add_argument("--resume", action="store_true")
+    run.add_argument("--workers", type=int, default=1)
     sub.add_parser("create-global-lock")
     sub.add_parser("evaluate")
     sub.add_parser("report")
@@ -1258,7 +1669,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     elif args.command == "freeze-environment":
         print(freeze_environment(root, args.method, args.python).relative_to(root))
     elif args.command == "run-method":
-        print(run_method(root, args.method, args.attempt_id, resume=args.resume).relative_to(root))
+        print(
+            run_method(
+                root,
+                args.method,
+                args.attempt_id,
+                resume=args.resume,
+                workers=args.workers,
+            ).relative_to(root)
+        )
     elif args.command == "create-global-lock":
         print(create_global_prediction_lock(root).relative_to(root))
     elif args.command == "evaluate":

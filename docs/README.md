@@ -23,6 +23,10 @@ The performance-blind raw-trace parser repair and A1-to-A2 disposition are
 frozen in
 [`baseline_eval/RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md`](baseline_eval/RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md).
 
+The four-way CIRCA/MicroCause case scheduler and runtime-accounting rules are
+frozen in
+[`baseline_eval/RCA_BASELINE_CASE_PARALLELISM_AMENDMENT_V1_3.md`](baseline_eval/RCA_BASELINE_CASE_PARALLELISM_AMENDMENT_V1_3.md).
+
 The RCAEval baseline activation and method-to-environment map is maintained in
 [`baseline_eval/RCA_BASELINE_ENVIRONMENTS.md`](baseline_eval/RCA_BASELINE_ENVIRONMENTS.md).
 

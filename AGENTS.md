@@ -12,6 +12,7 @@ under `docs/baseline_eval/`, especially:
 - `RCA_BASELINE_EXECUTION_STATUS.md`
 - `RCA_BASELINE_PARALLEL_EXECUTION_AMENDMENT_V1_1.md`
 - `RCA_BASELINE_TRACE_CSV_PARSER_AMENDMENT_V1_2.md`
+- `RCA_BASELINE_CASE_PARALLELISM_AMENDMENT_V1_3.md`
 - `RCA_BASELINE_PARALLEL_RUNBOOK_V1_1.md`
 - `RCA_BASELINE_PROTOCOL_FREEZE_V1.md`
 - `RCA_BASELINE_ADAPTER_SPEC_V1.md`
@@ -145,6 +146,13 @@ Apply these rules:
 - Retain the incomplete MicroRank, TraceRCA, and mmBARO A1 attempts. Do not
   resume or overwrite them after the V1.2 repair; start the authorized A2
   attempt from case 1 under one repaired execution commit.
+- Retain and never resume the incomplete CIRCA and MicroCause A1 attempts once
+  their external processes have stopped. V1.3 authorizes only their new A2
+  attempts to use exactly four deterministic case-worker slots under one
+  top-level method lock; no second runner for either method may overlap.
+- Every V1.3 case record retains its own timestamps and monotonic wall time.
+  Commit the completed attempt runtime summary together with the 180 records
+  and method lock.
 
 Container isolation must include adequate CPU and memory allocation. If
 physical-resource throttling occurs, reduce task concurrency; do not change

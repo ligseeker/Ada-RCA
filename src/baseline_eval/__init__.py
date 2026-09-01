@@ -481,6 +481,7 @@ def assert_performance_firewall_tree(root: Path) -> None:
         re.compile(r"execution_v1/environments/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)\.json"),
         re.compile(r"execution_v1/locks/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)_prediction_lock\.json"),
         re.compile(r"execution_v1/records/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)/[A-Za-z0-9_.-]+/re2(?:ob|tt)/re2(?:ob|tt)-[0-9a-f]{16}\.json"),
+        re.compile(r"execution_v1/runtimes/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)/[A-Za-z0-9_.-]+\.json"),
         re.compile(r"execution_v1/prediction_lock_v1\.json"),
         re.compile(r"execution_v1/evaluation_v1\.json"),
     )
