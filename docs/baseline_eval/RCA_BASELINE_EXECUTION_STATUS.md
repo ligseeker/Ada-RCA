@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **IN PROGRESS — FOUR-WAY CIRCA/MICROCAUSE A2 AUTHORIZED**
-State revision: `2026-09-01.3`
-Last operational audit: 2026-09-01 15:39, Asia/Shanghai
+Status: **IN PROGRESS — CIRCA/MICROCAUSE A2 PREFLIGHTS REPAIRED; LAUNCH READY**
+State revision: `2026-09-01.4`
+Last operational audit: 2026-09-01 17:03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: this V1.3 revision
+Last synchronized central commit: `c1c7a96`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -61,8 +61,8 @@ project worktrees under `~/.venvs/`.
 | Method | Environment/interpreter | Python | Key dependency | Current state |
 |---|---|---|---|---|
 | BARO | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; execution complete |
-| CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | A1 active; stop and retain; four-worker A2 authorized |
-| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | A1 active; stop and retain; four-worker A2 authorized |
+| CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | A1 retained; repaired A2 preflight passes; four-worker launch ready |
+| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | A1 retained; repaired A2 preflight passes; four-worker launch ready |
 | MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | frozen on task branch; A1 retained; repaired A2 ready |
 | TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | repaired A2 complete and method-locked on task branch |
 | mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | repaired A2 complete and method-locked on task branch |
@@ -100,6 +100,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Later-baseline data/graph contract validation | `0d0efcf` | complete |
 | Raw-trace CSV parser repair and V1.2 amendment | `f072c2a` | complete; central and affected task branches integrated |
 | Four-way case scheduler, runtime summary, and V1.3 amendment | this revision | implementation complete; A1 stop and A2 launch pending |
+| Frozen-environment/preflight stabilization | `c1c7a96` | complete; merged as `83e2df7` (CIRCA) and `60a346a` (MicroCause) |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
 
 The read-only command below performs dependency identity collection, two
@@ -134,6 +135,15 @@ method concurrent locks, disjoint artifact paths, and shared Git-common lock
 placement. The original failing case also reached `SUCCESS` for TraceRCA and
 mmBARO with the repaired code; prediction contents were not inspected.
 
+The V1.3 preflight repair passed the full suite with `203` tests. It resolves
+the frozen user-site visibility profile from the complete committed environment
+identity instead of inheriting a container's ambient `PYTHONNOUSERSITE` value.
+The MicroCause synthetic-only random walk is bounded to 10 epochs and 100 steps;
+the two-run fingerprint remains the frozen `594e370e...` value, while the exact
+preflight completed in 12.1 seconds. CIRCA's exact two-run preflight completed
+in 9.0 seconds. Real case invocations retain the native 1,000-by-1,000
+MicroCause random walk.
+
 ## 5. Confirmatory execution coverage
 
 Only operational state is recorded here. No prediction contents, labels, root
@@ -143,12 +153,12 @@ ranks, or metrics may be added before the global prediction lock.
 |---|---|---:|---:|---:|---:|---:|---:|---|
 | BARO | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
 | BARO | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
-| CIRCA A1 | RE2-OB | 90/90 | 86 | 4 | 0 | 0 | 0 | absent; stop and retain |
-| CIRCA A1 | RE2-TT | 27/90 | 8 | 2 | 0 | 0 | 17 | absent; stop and retain |
+| CIRCA A1 | RE2-OB | 90/90 | 86 | 4 | 0 | 0 | 0 | absent; retained |
+| CIRCA A1 | RE2-TT | 27/90 | 8 | 2 | 0 | 0 | 17 | absent; retained |
 | CIRCA A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
 | CIRCA A2 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
-| MicroCause A1 | RE2-OB | 90/90 | 87 | 1 | 0 | 2 | 0 | absent; stop and retain |
-| MicroCause A1 | RE2-TT | 9/90 | 0 | 0 | 0 | 0 | 9 | absent; stop and retain |
+| MicroCause A1 | RE2-OB | 90/90 | 87 | 1 | 0 | 2 | 0 | absent; retained |
+| MicroCause A1 | RE2-TT | 10/90 | 0 | 0 | 0 | 0 | 10 | absent; retained |
 | MicroCause A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
 | MicroCause A2 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
 | MicroRank A1 | RE2-OB | 59/90 | 59 | 0 | 0 | 0 | 0 | absent; retained |
@@ -168,28 +178,19 @@ ranks, or metrics may be added before the global prediction lock.
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
 both 90-case denominators valid, environment unchanged.
 
-CIRCA A1 and MicroCause A1 were still writing from external containers at the
-latest audit. V1.3 requires both original processes to stop before their A1
-records are committed and before either A2 starts. The counts above are a
-timestamped snapshot and may increase until the user stops those processes.
+CIRCA A1 and MicroCause A1 are stopped and committed as immutable evidence in
+their assigned task worktrees. No A2 records or method locks exist, and no
+runner process was observed at the latest audit.
 
 ## 6. Current blockers and decisions required
 
-### B1. External A1 processes must stop before V1.3 A2 launch
+### B1. External A1 stop/archive — resolved
 
-The user authorized V1.3 four-way within-method case parallelism. The old
-CIRCA and MicroCause runners are still outside this container and cannot be
-reliably terminated from here. The user must stop each original command in its
-own container and wait for the shell prompt. Only then may the coordinator:
-
-- take a final performance-blind count/status audit;
-- commit each complete A1 record directory as immutable evidence;
-- merge the V1.3 execution commit into each existing path-bound task worktree;
-  and
-- launch `circa-a2-20260901` and `microcause-a2-20260901` with exactly
-  `--workers 4`.
-
-Never resume either A1. Never start A2 while an A1 process can still write.
+The user stopped both external A1 runners. CIRCA A1 is preserved in `ee98d7f`
+and MicroCause A1 in `95dd037`. V1.3 and the preflight repair are merged into
+the same path-bound worktrees. Their exact global and environment preflights
+pass, so each A2 may now start from case 1 with exactly `--workers 4`. Never
+resume either A1 and never overlap two top-level runners for the same method.
 
 ### B2. `.gitignore` decision — resolved
 
@@ -261,10 +262,11 @@ the global prediction lock remain a barrier after all tracks finish.
 
 - Completed: user accepted the `.gitignore` byte state; CIRCA evidence remains
   unignored and preserved.
-- Verify the branch, protocol bundle, input manifest, Ada-RCA frozen paths, and
-  clean pinned RCAEval checkout.
-- Re-run the full unit test suite after any code change.
-- Update this document with the resolution and current HEAD.
+- Completed: branch, protocol bundle, input manifest, Ada-RCA frozen paths, and
+  clean pinned RCAEval checkout passed their preflights.
+- Completed: the current full suite passed all 203 tests.
+- Completed: both A1 attempts are archived and both A2 worktrees contain the
+  same central repair commit.
 
 ### P0A — Finish performance-blind later-adapter hardening
 
@@ -280,19 +282,19 @@ the global prediction lock remain a barrier after all tracks finish.
 
 ### P1 — Stop/archive CIRCA A1, then execute four-worker A2
 
-- Stop the external A1 process; commit every terminal A1 record without a lock.
-- Merge V1.3 into the same absolute worktree path and reuse the unchanged CIRCA
-  environment manifest/interpreter.
-- Run both preflights, then start `circa-a2-20260901 --workers 4` from case 1.
+- Completed: A1 stopped and its 117 terminal records are committed without a
+  method lock; V1.3 and `c1c7a96` are merged into the same worktree.
+- Completed: both preflights pass against the unchanged CIRCA environment.
+- Next: start `circa-a2-20260901 --workers 4` from case 1.
 - Commit all 180 records, the runtime summary, and method lock together.
 
 ### P2 — Stop/archive MicroCause A1, then execute four-worker A2
 
-- Stop the external A1 process; commit every terminal A1 record without a lock.
-- Merge V1.3 into the same absolute worktree path and reuse the integrated
-  unchanged MicroCause environment manifest.
-- Run both preflights, then start `microcause-a2-20260901 --workers 4` from
-  case 1.
+- Completed: A1 stopped and its 100 terminal records are committed without a
+  method lock; V1.3 and `c1c7a96` are merged into the same worktree.
+- Completed: both preflights pass against the unchanged MicroCause environment;
+  the two-run synthetic fingerprint is unchanged.
+- Next: start `microcause-a2-20260901 --workers 4` from case 1.
 - Commit all 180 records, the runtime summary, and method lock together.
 
 ### P3 — Archive MicroRank A1, execute repaired A2, and lock
