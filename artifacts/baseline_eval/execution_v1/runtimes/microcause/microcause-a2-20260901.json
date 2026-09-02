@@ -1,0 +1,1639 @@
+{
+  "aggregate_case_wall_time_seconds": 322955.77530452283,
+  "attempt_end_timestamp": "2026-09-02T11:30:47.967935+00:00",
+  "attempt_id": "microcause-a2-20260901",
+  "attempt_start_timestamp": "2026-09-01T11:46:47.615338+00:00",
+  "attempt_wall_time_seconds": 85440.35260581295,
+  "case_timings": [
+    {
+      "case_id": "re2ob-9e575f44de987a1a",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:49:40.145442+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T11:46:57.792278+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 162.35310094198212
+    },
+    {
+      "case_id": "re2ob-505f802370635ec3",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:46:57.832076+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T11:46:57.790741+00:00",
+      "terminal_status": "DATA_FAILURE",
+      "wall_time_seconds": 0.04126444598659873
+    },
+    {
+      "case_id": "re2ob-057fe49bd30d47c0",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:49:32.721706+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T11:46:57.789858+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 154.9317576510366
+    },
+    {
+      "case_id": "re2ob-79fcefff48aef53b",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:49:36.744370+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T11:46:57.790413+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 158.95390069112182
+    },
+    {
+      "case_id": "re2ob-4b9110d974bb1875",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:52:18.723390+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T11:49:40.200858+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 158.522467515897
+    },
+    {
+      "case_id": "re2ob-428d5ecf570372b5",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:49:28.945014+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T11:46:57.903425+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 151.04154173610732
+    },
+    {
+      "case_id": "re2ob-66c4b614046569c9",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:52:27.574807+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T11:49:32.881782+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 174.69299402297474
+    },
+    {
+      "case_id": "re2ob-7aec8ac514e0d064",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:52:20.195904+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T11:49:36.906176+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 163.2896698601544
+    },
+    {
+      "case_id": "re2ob-a6318b7e89546125",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:54:56.203617+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T11:52:18.809629+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 157.39392639999278
+    },
+    {
+      "case_id": "re2ob-7f2201e9884e818e",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:52:12.275916+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T11:49:29.070473+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 163.20535573293455
+    },
+    {
+      "case_id": "re2ob-7c278a568194196b",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:55:20.428021+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T11:52:27.647438+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 172.78048845706508
+    },
+    {
+      "case_id": "re2ob-72b5d278f8908a0a",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:55:04.510248+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T11:52:20.266418+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 164.24377396213822
+    },
+    {
+      "case_id": "re2ob-b17ce68eb2ce01ee",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:57:28.786465+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T11:54:56.250066+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 152.5363490919117
+    },
+    {
+      "case_id": "re2ob-1d9a0d1641171551",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:52:12.360189+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T11:52:12.322260+00:00",
+      "terminal_status": "DATA_FAILURE",
+      "wall_time_seconds": 0.03786337515339255
+    },
+    {
+      "case_id": "re2ob-abc29368674e8298",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:58:01.757266+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T11:55:20.569857+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 161.18736532400362
+    },
+    {
+      "case_id": "re2ob-1d19cc60d7a6adc1",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:57:36.054405+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T11:55:04.554954+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 151.4993934580125
+    },
+    {
+      "case_id": "re2ob-71c7f9be34b19754",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:00:05.083164+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T11:57:29.514048+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 155.56905902386643
+    },
+    {
+      "case_id": "re2ob-557d49794f937ec6",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:55:00.385129+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T11:52:12.401472+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 167.98362571001053
+    },
+    {
+      "case_id": "re2ob-cec5183e3f5418cf",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:00:57.415073+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T11:58:01.818967+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 175.5959949400276
+    },
+    {
+      "case_id": "re2ob-da48e150772a24fd",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:00:11.266867+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T11:57:36.121879+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 155.14493687800132
+    },
+    {
+      "case_id": "re2ob-fd67c49516fa2028",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:02:51.093376+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:00:05.559709+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 165.5336149490904
+    },
+    {
+      "case_id": "re2ob-f874f110aae8efa9",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T11:57:38.622885+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T11:55:00.437682+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 158.18515420495532
+    },
+    {
+      "case_id": "re2ob-40e1893e43abba5c",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:03:41.508416+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:00:57.839240+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 163.669122725958
+    },
+    {
+      "case_id": "re2ob-6aa36a4c6c99d55c",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:02:50.602824+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:00:11.585472+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 159.01730121299624
+    },
+    {
+      "case_id": "re2ob-5a4d1a4785969ab2",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:06:00.138749+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:02:51.370627+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 188.76806601812132
+    },
+    {
+      "case_id": "re2ob-eb8f50fda4f9095f",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:00:24.042162+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T11:57:38.671289+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 165.37082344386727
+    },
+    {
+      "case_id": "re2ob-42e80cf6bcd9400f",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:06:33.847758+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:03:41.595256+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 172.25243664206937
+    },
+    {
+      "case_id": "re2ob-a84cfdf477d8bf62",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:05:46.314403+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:02:50.937082+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 175.37726501794532
+    },
+    {
+      "case_id": "re2ob-3827c8c9ef1e8592",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:09:05.112834+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:06:00.392723+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 184.7200227191206
+    },
+    {
+      "case_id": "re2ob-acf69e21960f63d8",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:03:16.948563+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:00:24.107454+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 172.84109726687893
+    },
+    {
+      "case_id": "re2ob-0433b8cb47b1ec8e",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:09:27.988714+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:06:34.095516+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 173.893137057079
+    },
+    {
+      "case_id": "re2ob-5f261573c1b3bdc5",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:08:40.203382+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:05:46.786300+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 173.41705416119657
+    },
+    {
+      "case_id": "re2ob-af1b6a7e1667e3f5",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:11:58.279088+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:09:05.170557+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 173.10847418010235
+    },
+    {
+      "case_id": "re2ob-bd6f4fb8e84ccb69",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:05:56.828354+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:03:17.035400+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 159.7928979638964
+    },
+    {
+      "case_id": "re2ob-3e7e71a1c83dbc41",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:12:32.409884+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:09:28.044125+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 184.36566656897776
+    },
+    {
+      "case_id": "re2ob-e357bd8aec246cdb",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:11:30.630329+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:08:40.275741+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 170.35450821486302
+    },
+    {
+      "case_id": "re2ob-097a5d7ac0492007",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:14:28.972450+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:11:58.346535+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 150.62585517088883
+    },
+    {
+      "case_id": "re2ob-57b75da971aabed5",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:08:29.636032+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:05:56.902521+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 152.73344696196727
+    },
+    {
+      "case_id": "re2ob-e16e6de30ae75ccd",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:14:57.524393+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:12:32.489234+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 145.0351220839657
+    },
+    {
+      "case_id": "re2ob-4677d4ce6ef327e0",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:14:02.214561+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:11:30.857268+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 151.35723036713898
+    },
+    {
+      "case_id": "re2ob-d7f2f8eb2f0ad646",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:17:03.153143+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:14:29.056120+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 154.09696386707947
+    },
+    {
+      "case_id": "re2ob-df7e831dddfac76c",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:11:11.746728+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:08:29.902246+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 161.8444305479061
+    },
+    {
+      "case_id": "re2ob-1084f320d8584c61",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:17:46.776304+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:14:58.659082+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 168.11712469602935
+    },
+    {
+      "case_id": "re2ob-23213ee605c6b050",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:16:35.217085+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:14:02.334151+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 152.88287911587395
+    },
+    {
+      "case_id": "re2ob-48e5379f4903b1d2",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:19:40.571530+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:17:03.214579+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 157.35688484204002
+    },
+    {
+      "case_id": "re2ob-bb4a5b75716772f9",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:13:48.868456+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:11:11.806874+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 157.06153071508743
+    },
+    {
+      "case_id": "re2ob-8f991393cb9debdf",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:20:38.340506+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:17:47.041269+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 171.2991843901109
+    },
+    {
+      "case_id": "re2ob-7858d4d3815cf005",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:19:11.767551+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:16:35.319318+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 156.44817495392635
+    },
+    {
+      "case_id": "re2ob-97935dcb7cfd6e82",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:22:12.305367+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:19:40.623928+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 151.68136972398497
+    },
+    {
+      "case_id": "re2ob-f209212fc63ac713",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:16:21.460323+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:13:48.966602+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 152.49367360887118
+    },
+    {
+      "case_id": "re2ob-93de1fab2ca56e86",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:23:15.891247+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:20:38.709741+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 157.18144772807136
+    },
+    {
+      "case_id": "re2ob-435f42d94b785472",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:21:47.040159+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:19:12.418271+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 154.62183132208884
+    },
+    {
+      "case_id": "re2ob-048f2e7d7bfbc927",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:24:48.055850+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:22:12.383221+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 155.67256347998045
+    },
+    {
+      "case_id": "re2ob-4af0de56834334d2",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:18:58.076543+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:16:21.521504+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 156.55499219102785
+    },
+    {
+      "case_id": "re2ob-d3f1403a4a08a3b1",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:25:55.722244+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:23:16.141607+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 159.58056506491266
+    },
+    {
+      "case_id": "re2ob-7732042f2a190c79",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:24:25.431276+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:21:47.311189+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 158.12002836097963
+    },
+    {
+      "case_id": "re2ob-80bf4d093e6ab818",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:27:25.304994+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:24:48.104155+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 157.2007727078162
+    },
+    {
+      "case_id": "re2ob-08f3e5d7b11d1fa7",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:22:10.299173+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:18:58.137724+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 192.1613931520842
+    },
+    {
+      "case_id": "re2ob-b6db72fc58931786",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:29:04.637223+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:25:55.779590+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 188.85755477589555
+    },
+    {
+      "case_id": "re2ob-f30e2feeaa5218b8",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:27:07.101138+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:24:25.503051+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 161.5980318149086
+    },
+    {
+      "case_id": "re2ob-45687a171f241b04",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:30:04.100339+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:27:25.377984+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 158.72229232010432
+    },
+    {
+      "case_id": "re2ob-d0d93705e784491a",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:25:17.302141+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:22:10.554787+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 186.7472952180542
+    },
+    {
+      "case_id": "re2ob-c2ac02db4e3370a9",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:29:05.081787+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:29:04.685676+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "wall_time_seconds": 0.39603183092549443
+    },
+    {
+      "case_id": "re2ob-1bb2e75872fd9037",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:30:23.779631+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:27:07.171794+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 196.6077736769803
+    },
+    {
+      "case_id": "re2ob-feeaaba6c71377df",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:33:23.355264+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:30:04.406282+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 198.94894468598068
+    },
+    {
+      "case_id": "re2ob-4f85dadf2507c3ca",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:28:31.842850+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:25:17.355271+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 194.48752065002918
+    },
+    {
+      "case_id": "re2ob-784d7eb25137c3c9",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:32:28.065461+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:29:05.131841+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 202.93357083504088
+    },
+    {
+      "case_id": "re2ob-58eb5ae1a41b77e4",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:33:22.037055+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:30:23.909624+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 178.12737587606534
+    },
+    {
+      "case_id": "re2ob-d0382ea6cedfbd82",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:36:21.511107+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:33:23.898163+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 177.61290840106085
+    },
+    {
+      "case_id": "re2ob-f88fc943d724a354",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:31:15.236252+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:28:32.972326+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 162.2638345421292
+    },
+    {
+      "case_id": "re2ob-b84066a37ca0c417",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:35:11.185704+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:32:28.153171+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 163.03251969697885
+    },
+    {
+      "case_id": "re2ob-b78a14faa7ea7263",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:35:48.885155+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:33:22.227157+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 146.6579783479683
+    },
+    {
+      "case_id": "re2ob-84724d7aa2b9dabd",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:39:06.736684+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:36:21.912127+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 164.82447733404115
+    },
+    {
+      "case_id": "re2ob-fa8a8fae0fda7c42",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:33:51.220956+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:31:15.409285+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 155.81163119710982
+    },
+    {
+      "case_id": "re2ob-7b0a90583e047a88",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:37:46.008417+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:35:11.458927+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 154.54940225812607
+    },
+    {
+      "case_id": "re2ob-ca26cbb7c2cc0c87",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:38:23.334894+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:35:49.270243+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 154.06457386096008
+    },
+    {
+      "case_id": "re2ob-6521847c78ca06e9",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:41:43.265192+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:39:06.987464+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 156.27766628796235
+    },
+    {
+      "case_id": "re2ob-7890056e7915d551",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:36:24.090560+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:33:51.270441+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 152.82009172602557
+    },
+    {
+      "case_id": "re2ob-35bd9974d6b59069",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:40:28.380820+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:37:46.071088+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 162.3096701828763
+    },
+    {
+      "case_id": "re2ob-7a91adc6e16587c6",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:41:05.025435+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:38:23.387698+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 161.63770516682416
+    },
+    {
+      "case_id": "re2ob-f2b4cc2f87b35c03",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:44:19.929477+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:41:43.328128+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 156.60128574096598
+    },
+    {
+      "case_id": "re2ob-c9c8f348d3f5974b",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:39:57.279163+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:36:24.331465+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 212.9476248838473
+    },
+    {
+      "case_id": "re2ob-df7b6eca09a6c41f",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:43:48.080505+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:40:28.450103+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 199.6303142919205
+    },
+    {
+      "case_id": "re2ob-34c4e276dad53220",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:43:51.239227+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:41:05.175395+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 166.06375962402672
+    },
+    {
+      "case_id": "re2ob-3758cb8f0f1277f3",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:46:54.405300+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:44:20.058786+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 154.34643379994668
+    },
+    {
+      "case_id": "re2ob-ce3f410f61f739c2",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:42:51.678235+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:39:57.335236+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 174.34293443709612
+    },
+    {
+      "case_id": "re2ob-0c582795f6ae4798",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:46:32.197393+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:43:48.134748+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 164.06257271114737
+    },
+    {
+      "case_id": "re2ob-e849d2be7be5c713",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:46:40.053199+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:43:51.286656+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 168.76648785290308
+    },
+    {
+      "case_id": "re2ob-58cff4fc86081830",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:49:33.818571+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:46:54.510158+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 159.30832762108184
+    },
+    {
+      "case_id": "re2ob-ce93ebf8eb13a5ed",
+      "dataset": "re2ob",
+      "end_timestamp": "2026-09-01T12:45:24.237591+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:42:51.838856+00:00",
+      "terminal_status": "SUCCESS",
+      "wall_time_seconds": 152.39867431879975
+    },
+    {
+      "case_id": "re2tt-e44ccb97e7cc1570",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T13:46:32.449294+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T12:46:32.242362+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2068642389495
+    },
+    {
+      "case_id": "re2tt-a0c0a90c5448e7fa",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T13:46:40.866094+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T12:46:40.625142+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.240878880024
+    },
+    {
+      "case_id": "re2tt-0b529d9f6ca88d4b",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T13:49:34.118468+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T12:49:33.879684+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.238714003004
+    },
+    {
+      "case_id": "re2tt-783d045c8102f972",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T13:45:24.553891+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T12:45:24.332916+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.220909951022
+    },
+    {
+      "case_id": "re2tt-e76e500ff655313b",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T14:46:33.620053+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T13:46:33.376605+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2433899200987
+    },
+    {
+      "case_id": "re2tt-cc6c772d4116d054",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T14:46:41.419115+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T13:46:41.182853+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2362038719
+    },
+    {
+      "case_id": "re2tt-c1b234f6cc4acbee",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T14:49:34.439444+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T13:49:34.208963+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2304226921406
+    },
+    {
+      "case_id": "re2tt-2782358136a64e6c",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T14:45:25.970740+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T13:45:25.729961+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.240703554824
+    },
+    {
+      "case_id": "re2tt-1d48b3aec1ec4470",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T15:46:38.689148+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T14:46:38.455881+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.233188917162
+    },
+    {
+      "case_id": "re2tt-6a0d1ebf31fb52a6",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T15:46:42.134832+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T14:46:41.887146+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2476130570285
+    },
+    {
+      "case_id": "re2tt-14c6e1b70d0c21e5",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T15:49:39.449906+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T14:49:39.220878+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.228947153082
+    },
+    {
+      "case_id": "re2tt-01d0096e9a504ced",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T15:45:29.174179+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T14:45:28.955978+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.218120057136
+    },
+    {
+      "case_id": "re2tt-bbbcbf7787fa152c",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T16:46:39.430742+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T15:46:39.193042+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.237632775912
+    },
+    {
+      "case_id": "re2tt-ae09714023e727e1",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T16:46:44.049887+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T15:46:43.829496+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2203229898587
+    },
+    {
+      "case_id": "re2tt-653810995a9aa3db",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T16:49:40.951259+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T15:49:40.720693+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2305083819665
+    },
+    {
+      "case_id": "re2tt-c82529d65e13adc0",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T16:45:32.582734+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T15:45:32.357120+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2255400239956
+    },
+    {
+      "case_id": "re2tt-aa71e41ec8e7922d",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T17:46:39.670920+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T16:46:39.452207+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2186564030126
+    },
+    {
+      "case_id": "re2tt-cb1f1df38c99005a",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T17:46:44.392062+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T16:46:44.150804+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.241200342076
+    },
+    {
+      "case_id": "re2tt-fe28a6c0dbd7d892",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T17:49:41.292780+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T16:49:41.054461+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2382600791752
+    },
+    {
+      "case_id": "re2tt-d4b1d66aaaa1a728",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T17:45:32.957795+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T16:45:32.746835+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2108987991232
+    },
+    {
+      "case_id": "re2tt-5bb89b87741349d7",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T18:46:39.967244+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T17:46:39.710470+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2567169300746
+    },
+    {
+      "case_id": "re2tt-e4be9aa8e249ddf3",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T18:46:44.602693+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T17:46:44.425173+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.1774507539812
+    },
+    {
+      "case_id": "re2tt-426ec979883ae8dc",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T18:49:41.568811+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T17:49:41.327921+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2408320631366
+    },
+    {
+      "case_id": "re2tt-d0a74725c5d96362",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T18:45:33.198872+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T17:45:32.989616+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.209199483972
+    },
+    {
+      "case_id": "re2tt-cdf514b035f34990",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T19:46:40.260410+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T18:46:40.006891+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2534612140153
+    },
+    {
+      "case_id": "re2tt-7d84c0b80f7f0032",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T19:46:44.845051+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T18:46:44.630201+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2147924720775
+    },
+    {
+      "case_id": "re2tt-995607e863fb7731",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T19:49:41.854814+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T18:49:41.603970+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2507869000547
+    },
+    {
+      "case_id": "re2tt-afdac60e6b000d3c",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T19:45:33.442339+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T18:45:33.228810+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2134701481555
+    },
+    {
+      "case_id": "re2tt-ee2421859dfb0792",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T20:22:51.305589+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T19:46:40.310753+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "wall_time_seconds": 2170.9947849640157
+    },
+    {
+      "case_id": "re2tt-44604ef8713a5943",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T20:46:45.119901+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T19:46:44.909715+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2101271729916
+    },
+    {
+      "case_id": "re2tt-72822d018b0df53f",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T20:49:42.176213+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T19:49:41.928163+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.247991912067
+    },
+    {
+      "case_id": "re2tt-22292d58b67911fb",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T20:45:33.821482+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T19:45:33.606060+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.215362873161
+    },
+    {
+      "case_id": "re2tt-fc53b7fb52199fb7",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T21:22:51.660742+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T20:22:51.417592+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.243067974923
+    },
+    {
+      "case_id": "re2tt-5d2e4747cab0d818",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T21:46:45.367464+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T20:46:45.155224+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.212182236137
+    },
+    {
+      "case_id": "re2tt-2ae0e149b3ab15f1",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T21:49:42.412482+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T20:49:42.202869+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.20955611486
+    },
+    {
+      "case_id": "re2tt-0f6b6213169d6acc",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T20:45:36.986132+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T20:45:33.878274+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "wall_time_seconds": 3.1078181718476117
+    },
+    {
+      "case_id": "re2tt-93fbbdf23f58f440",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T22:22:51.914593+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T21:22:51.695856+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2186810600106
+    },
+    {
+      "case_id": "re2tt-714d157727edd2d0",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T22:46:45.599322+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T21:46:45.400739+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.1985270159785
+    },
+    {
+      "case_id": "re2tt-472c8339fd3703e9",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T22:49:42.682789+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T21:49:42.439282+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2434502888937
+    },
+    {
+      "case_id": "re2tt-606ef267348d40e5",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T21:45:37.279713+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T20:45:37.022904+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.25674192491
+    },
+    {
+      "case_id": "re2tt-35e803c63786ac4e",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T23:22:52.157739+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T22:22:51.950565+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.207123812055
+    },
+    {
+      "case_id": "re2tt-a141811c79edaa0b",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T23:46:45.872368+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T22:46:45.661035+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2112751479726
+    },
+    {
+      "case_id": "re2tt-b5173d4edf252af8",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T23:49:42.940087+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T22:49:42.721577+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2184535039123
+    },
+    {
+      "case_id": "re2tt-fd20b1f93a6ff4c0",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T22:26:13.096800+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T21:45:37.323115+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "wall_time_seconds": 2435.773649269948
+    },
+    {
+      "case_id": "re2tt-010695b192f8dbea",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T00:22:52.476014+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-01T23:22:52.224830+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2511239480227
+    },
+    {
+      "case_id": "re2tt-94bd05feab03461e",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T00:46:46.174079+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-01T23:46:45.962416+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.21160681895
+    },
+    {
+      "case_id": "re2tt-575015aa80c376c6",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T00:49:43.188359+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-01T23:49:42.975158+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2131429230794
+    },
+    {
+      "case_id": "re2tt-727331fee88d4ce7",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-01T23:26:13.389403+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T22:26:13.178710+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2106164621655
+    },
+    {
+      "case_id": "re2tt-420fff915c5f5bc5",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T01:22:52.789566+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T00:22:52.572813+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2166987292003
+    },
+    {
+      "case_id": "re2tt-f5512e2434f96386",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T01:46:46.447319+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T00:46:46.237839+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2094239559956
+    },
+    {
+      "case_id": "re2tt-a33887653c475d04",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T01:49:43.434965+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T00:49:43.221882+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2130226788577
+    },
+    {
+      "case_id": "re2tt-5f50dc54f6cb9fce",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T00:26:13.637964+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-01T23:26:13.426670+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2112342009787
+    },
+    {
+      "case_id": "re2tt-67172e499653d426",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T02:22:53.372062+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T01:22:53.147548+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.224436550867
+    },
+    {
+      "case_id": "re2tt-d14727a3c74e9768",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T02:46:46.717381+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T01:46:46.512009+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2053148290142
+    },
+    {
+      "case_id": "re2tt-2a03e4ad1a1d6f85",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T02:49:43.690160+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T01:49:43.484298+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2058022022247
+    },
+    {
+      "case_id": "re2tt-7d3fb265c1c0f9ed",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T01:26:13.879116+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T00:26:13.667983+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.211058720015
+    },
+    {
+      "case_id": "re2tt-2defd6e102bdaf53",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T03:04:12.333193+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T02:22:53.701767+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "wall_time_seconds": 2478.631335778162
+    },
+    {
+      "case_id": "re2tt-38941ca70beb687a",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T03:46:47.002369+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T02:46:46.763132+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2391786470544
+    },
+    {
+      "case_id": "re2tt-3bd96ed8cc02f613",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T03:49:44.011888+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T02:49:43.763170+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.248656581156
+    },
+    {
+      "case_id": "re2tt-5a65eea398ba8435",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T02:26:14.131603+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T01:26:13.918496+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2130469968542
+    },
+    {
+      "case_id": "re2tt-b2342b2478b249cb",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T04:04:13.295307+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T03:04:13.072436+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.222799958894
+    },
+    {
+      "case_id": "re2tt-c7f9112580bfde33",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T04:46:47.175868+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T03:46:47.042238+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.133574643871
+    },
+    {
+      "case_id": "re2tt-fa81461ebec56b42",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T04:49:44.334864+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T03:49:44.099940+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.234852708876
+    },
+    {
+      "case_id": "re2tt-877f6cbd0cb33e7c",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T03:26:14.458904+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T02:26:14.204597+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.254246185068
+    },
+    {
+      "case_id": "re2tt-7cff180e5ff1cc71",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T05:04:13.634783+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T04:04:13.388535+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.24618204101
+    },
+    {
+      "case_id": "re2tt-ffda523857bbf5c2",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T05:46:47.665932+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T04:46:47.446830+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.219045366859
+    },
+    {
+      "case_id": "re2tt-2fc3d2fb9c492b7c",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T05:49:44.570645+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T04:49:44.431368+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.139212280046
+    },
+    {
+      "case_id": "re2tt-04ce93a682b70df6",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T04:26:14.741980+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T03:26:14.514330+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.227589878021
+    },
+    {
+      "case_id": "re2tt-406c40ff0016fa9c",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T06:04:13.926644+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T05:04:13.683614+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.242973597022
+    },
+    {
+      "case_id": "re2tt-2ca7cff33586ca18",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T06:46:47.915061+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T05:46:47.704765+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2102357859258
+    },
+    {
+      "case_id": "re2tt-a7213c3da47edbd0",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T05:49:47.778513+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T05:49:44.623417+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "wall_time_seconds": 3.155028316890821
+    },
+    {
+      "case_id": "re2tt-f1aa29dd3ba2343f",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T05:26:15.431459+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T04:26:15.201760+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.229631796945
+    },
+    {
+      "case_id": "re2tt-56db4956167f9980",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T07:04:14.233561+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T06:04:13.986297+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2472066159826
+    },
+    {
+      "case_id": "re2tt-f09cbf3636ad02de",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T07:46:48.185869+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T06:46:47.962957+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2228529590648
+    },
+    {
+      "case_id": "re2tt-e3f89de859062727",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T06:49:48.029980+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T05:49:47.818404+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2115067809355
+    },
+    {
+      "case_id": "re2tt-1283c56ed7675282",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T06:26:15.716592+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T05:26:15.501814+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2146995041985
+    },
+    {
+      "case_id": "re2tt-739ad24f1e2d7c29",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T08:04:14.559040+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T07:04:14.305017+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.253960289061
+    },
+    {
+      "case_id": "re2tt-fb57d883cd727c81",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T08:46:48.431336+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T07:46:48.215188+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2160914090928
+    },
+    {
+      "case_id": "re2tt-c8fbd9a7d1e92284",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T07:49:48.391622+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T06:49:48.147650+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.243913316168
+    },
+    {
+      "case_id": "re2tt-d83931768111dc58",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T07:26:16.047874+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T06:26:15.801316+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2464981649537
+    },
+    {
+      "case_id": "re2tt-4780a4f90c190bf4",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T08:04:18.253016+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T08:04:14.595280+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "wall_time_seconds": 3.657650661887601
+    },
+    {
+      "case_id": "re2tt-20258ce8dbcd2300",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T09:46:48.891753+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T08:46:48.675991+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.215701470617
+    },
+    {
+      "case_id": "re2tt-cb3381bf9ed05034",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T08:49:48.588821+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T07:49:48.444405+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.1443571778946
+    },
+    {
+      "case_id": "re2tt-e9071bdee1904785",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T08:26:16.453204+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T07:26:16.226403+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.226742089959
+    },
+    {
+      "case_id": "re2tt-722f5f89a57be699",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T09:04:18.526699+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T08:04:18.294292+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2323386589997
+    },
+    {
+      "case_id": "re2tt-bc9cd2d131533d16",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T10:30:47.336796+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T09:46:48.965663+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "wall_time_seconds": 2638.371090359986
+    },
+    {
+      "case_id": "re2tt-f578fe138f6d4c7a",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T09:49:49.074114+00:00",
+      "execution_worker_slot": 0,
+      "start_timestamp": "2026-09-02T08:49:48.848201+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.225853901822
+    },
+    {
+      "case_id": "re2tt-bed634aec03e773f",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T09:26:16.694892+00:00",
+      "execution_worker_slot": 1,
+      "start_timestamp": "2026-09-02T08:26:16.488099+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2067340952344
+    },
+    {
+      "case_id": "re2tt-3fffa88dd3653f99",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T10:04:18.982677+00:00",
+      "execution_worker_slot": 2,
+      "start_timestamp": "2026-09-02T09:04:18.741058+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.241561944131
+    },
+    {
+      "case_id": "re2tt-3e24ca7f9747c84e",
+      "dataset": "re2tt",
+      "end_timestamp": "2026-09-02T11:30:47.619967+00:00",
+      "execution_worker_slot": 3,
+      "start_timestamp": "2026-09-02T10:30:47.405104+00:00",
+      "terminal_status": "TIMEOUT",
+      "wall_time_seconds": 3600.2147904550657
+    }
+  ],
+  "contains_evaluation": false,
+  "dataset_case_wall_time_seconds": {
+    "re2ob": 14403.55620258511,
+    "re2tt": 308552.2191019377
+  },
+  "execution_commit": "fdb8fdb9153bb222f764bdb9035323862bcef7c1",
+  "execution_worker_count": 4,
+  "method": "MicroCause",
+  "schema_version": "rca_baseline_attempt_runtime_v1",
+  "terminal_case_count": 180
+}
