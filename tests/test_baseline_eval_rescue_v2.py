@@ -50,6 +50,7 @@ from src.baseline_eval.rescue_v2 import (
     microcause_native_execution_parameters,
     parse_dataset_scope,
     pending_v2_cases,
+    protocol_preflight_v2,
     run_determinism_preflight,
     v2_record_relative,
     V2EvaluationBlocked,
@@ -274,6 +275,34 @@ class RescueV2ProtocolTest(unittest.TestCase):
                 )
 
             resolve.assert_not_called()
+
+    def test_18_v2_protocol_preflight_selects_new_environment_identity(self):
+        identity = {
+            "python_executable": "/env/bin/python",
+            "runtime_python_executable": "/base/bin/python",
+            "dependency_manifest_digest": "d" * 64,
+        }
+        synthetic = {"fingerprint": "f" * 64}
+        schema = [{"dataset": dataset, "status": "PASS"} for dataset in ("re2ob", "re2tt")]
+        with mock.patch("src.baseline_eval.rescue_v2.global_preflight"), mock.patch(
+            "src.baseline_eval.rescue_v2.verify_v2_protocol"
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2.v2_source_manifest_digest", return_value="i" * 64
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2._v2_native_module_digest", return_value="n" * 64
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2._environment_preflight_details",
+            return_value=(identity, synthetic, schema),
+        ) as details:
+            result = protocol_preflight_v2(ROOT, "MicroCause", Path("/env/bin/python"))
+
+        details.assert_called_once_with(
+            ROOT,
+            "MicroCause",
+            Path("/env/bin/python"),
+            reuse_historical_manifest=False,
+        )
+        self.assertFalse(result["real_execution_authorized"])
 
 
 class RescueV2FailureAndMetricTest(unittest.TestCase):
