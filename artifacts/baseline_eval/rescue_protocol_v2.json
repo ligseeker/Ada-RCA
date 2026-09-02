@@ -1,5 +1,6 @@
 {
   "schema_version": "rca_baseline_rescue_protocol_v2",
+  "protocol_revision": "V2.1",
   "status": "FROZEN_PERFORMANCE_BLIND_EXECUTION_RESCUE",
   "protocol_type": "INFRASTRUCTURE_AMENDMENT",
   "date": "2026-09-03",
@@ -91,6 +92,7 @@
     "requires_committed_global_lock": true
   },
   "adapter_decisions": {
+    "metric_timestamp_repair": "drop_nonfinite_existing_numeric_time_rows_before_canonical_window; fixed_label_free_rule",
     "trace_closure": "NOT_ADOPTED",
     "extended_normal_slo_history": "NOT_ADOPTED",
     "trace_diagnostic_basis": "label_free_operation_set_audit",

@@ -1,7 +1,7 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2 RESCUE PROTOCOL FROZEN — IMPLEMENTATION IN PROGRESS**
-State revision: `2026-09-03.2`
+Status: **V2.1 RESCUE PROTOCOL FROZEN — IMPLEMENTATION IN PROGRESS**
+State revision: `2026-09-03.3`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
 Last synchronized central commit: `2c14e63`
@@ -103,7 +103,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Frozen-environment/preflight stabilization | `c1c7a96` | complete; merged as `83e2df7` (CIRCA) and `60a346a` (MicroCause) |
 | Central integration of five method tracks | `d6ca33f` through `db78094` | complete; method-scoped artifacts merged and all five locks verified |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
-| V2 performance-blind rescue protocol | `2c14e63`; `d9bf2b7d00285cb3057eb5b077eef023f3ac0a65a59ede9029000a75938193fe` | frozen; V2 code and task-container execution pending |
+| V2.1 performance-blind rescue protocol and metric timestamp repair | pending protocol transition commit; `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen; V2 code and task-container execution pending |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -419,13 +419,22 @@ to this handoff.
 
 ## 10. V2 rescue transition
 
-The V2 performance-blind execution-rescue protocol and machine-readable freeze
-were committed in `2c14e63`. The V2 protocol digest is
-`d9bf2b7d00285cb3057eb5b077eef023f3ac0a65a59ede9029000a75938193fe`. It
+The V2.1 performance-blind execution-rescue protocol and machine-readable
+freeze extend the original V2 transition in `2c14e63`. The current V2.1
+protocol digest is
+`dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de`. It
 authorizes only CIRCA, MicroCause, MicroRank, TraceRCA, and mmBARO, with new
 method-scoped `*-a3-rescue-v2` attempts under `execution_v2/`. It cancels no
 historical evidence, changes no Ada-RCA or RCAEval source, and does not create
-or authorize a V2 global lock yet.
+or authorize a V2 global lock yet. The V2.1 role-level mmBARO audit found that
+both historical OB source bundles match the frozen manifest; only the metric
+adapter's non-finite timestamp validation failed. The pre-registered repair
+drops existing numeric non-finite timestamp rows by one fixed label-free rule
+before the canonical window. The diagnostic artifacts are
+`execution_v2/diagnostics/mmbaro_input_v2.json` and
+`execution_v2/diagnostics/operation_sets_v2.json`; the latter confirms equal
+15-case KeyError sets for MicroRank/TraceRCA and retains native trace/SLO
+semantics.
 
 No V2 real-case execution has started. The immediate next action is to finish
 the V2 no-timeout scheduler, resume and resource-monitoring contract,

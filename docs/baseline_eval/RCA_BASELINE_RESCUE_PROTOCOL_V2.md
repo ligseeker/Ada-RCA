@@ -1,6 +1,6 @@
 # RCAEval Five-Baseline Completion Rescue Protocol V2
 
-Status: **FROZEN — PERFORMANCE-BLIND EXECUTION RESCUE / INFRASTRUCTURE AMENDMENT**  
+Status: **FROZEN V2.1 — PERFORMANCE-BLIND EXECUTION RESCUE / INFRASTRUCTURE AMENDMENT**
 Date: 2026-09-03  
 Supersedes: none; V1 and all V1.x evidence remain immutable
 
@@ -40,7 +40,21 @@ headline score is prohibited.
 
 The source window remains the half-open `[t0-600s,t0+600s)` window. Existing
 V1 metric, raw-trace, timestamp, candidate, and service-projection semantics
-remain in force. Candidate completion is `NONE`.
+remain in force except for the V2.1 metric timestamp repair below. Candidate
+completion is `NONE`.
+
+### V2.1 metric timestamp repair
+
+The frozen RE2-OB simple-metrics sources for two historical mmBARO cases contain
+trailing rows with non-finite `time` values while their bytes still match the
+frozen input manifest. This is a project-side input-adapter validation defect,
+not a manifest regeneration opportunity. For V2 metric-role input only, the
+adapter deterministically drops rows whose existing numeric `time` is not
+finite before applying the unchanged canonical window and forward-fill rules.
+It never invents timestamps, uses labels/faults, changes source bytes, or
+changes native parameters. The same rule is applied to every V2 case and is
+covered by regression tests. A nonnumeric timestamp, an all-invalid timestamp
+column, or an empty canonical window remains `DATA_FAILURE`.
 
 ## 3. MicroCause non-modification freeze
 
@@ -117,7 +131,7 @@ Every scheduled case has exactly one terminal record. V2 distinguishes:
 |---|---|
 | `SUCCESS` | Valid native output, legal service projection, persisted record |
 | `METHOD_FAILURE` | Legal input reached pinned native method, which raised, returned invalid/empty output, or triggered an audited native fallback; contributes zero utility in the robustness-adjusted 90-case view |
-| `DATA_FAILURE` | Source is unreadable, malformed, schema-invalid, nonnumeric/nonfinite, or has an empty canonical window |
+| `DATA_FAILURE` | Source is unreadable, malformed, schema-invalid, has a nonnumeric/all-invalid timestamp, or has an empty canonical window after the frozen V2.1 timestamp repair |
 | `ADAPTER_FAILURE` | Native output is valid but cannot be legally projected/persisted under the frozen service adapter |
 | `ENVIRONMENT_FAILURE` | Runtime/dependency/deterministic-control/preflight environment failure |
 | `INPUT_INTEGRITY_FAILURE` | Case/source/manifest/provenance identity or digest mismatch |
@@ -137,7 +151,9 @@ The two historical mmBARO OB `DATA_FAILURE` cases are diagnosed using path,
 existence, byte size, SHA-256, frozen manifest expectation, parser, schema,
 dtype, numeric/finiteness, timestamp units, canonical-window, and derived
 telemetry checks. The source is not regenerated and the manifest is not
-rewritten. If a V2 run reports any remaining data/integrity defect, no global
+rewritten. The role-level audit found only non-finite simple-metrics timestamps;
+the V2.1 finite-row repair is therefore pre-registered for the rescue attempt.
+If a V2 run reports any remaining data/integrity defect, no global
 lock or metric evaluation is legal until the defect is repaired by a new
 protocol-preserving attempt.
 
