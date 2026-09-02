@@ -1,0 +1,1843 @@
+{
+  "actual_worker_count": 10,
+  "attempt_finish_timestamp": "2026-09-02T20:16:41.736937+00:00",
+  "attempt_id": "tracerca-a3-rescue-v2",
+  "attempt_start_timestamp": "2026-09-02T20:11:04.747995+00:00",
+  "attempt_wall_time_seconds": 336.9889384387061,
+  "available_cpu_count": 320,
+  "case_timings": [
+    {
+      "case_id": "re2ob-9e575f44de987a1a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.73733724001795,
+      "finish_timestamp": "2026-09-02T20:11:15.887872+00:00",
+      "pid": 428,
+      "start_timestamp": "2026-09-02T20:11:06.150474+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-505f802370635ec3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 3.528006501030177,
+      "finish_timestamp": "2026-09-02T20:11:09.737083+00:00",
+      "pid": 430,
+      "start_timestamp": "2026-09-02T20:11:06.208997+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-057fe49bd30d47c0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 10.844044796191156,
+      "finish_timestamp": "2026-09-02T20:11:16.997814+00:00",
+      "pid": 429,
+      "start_timestamp": "2026-09-02T20:11:06.153739+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-79fcefff48aef53b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.056897327769548,
+      "finish_timestamp": "2026-09-02T20:11:15.294106+00:00",
+      "pid": 432,
+      "start_timestamp": "2026-09-02T20:11:06.237154+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-4b9110d974bb1875",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.25355469994247,
+      "finish_timestamp": "2026-09-02T20:11:14.511253+00:00",
+      "pid": 437,
+      "start_timestamp": "2026-09-02T20:11:06.257632+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-428d5ecf570372b5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.444275979883969,
+      "finish_timestamp": "2026-09-02T20:11:15.686338+00:00",
+      "pid": 433,
+      "start_timestamp": "2026-09-02T20:11:06.242029+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-66c4b614046569c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.748549067880958,
+      "finish_timestamp": "2026-09-02T20:11:14.983212+00:00",
+      "pid": 431,
+      "start_timestamp": "2026-09-02T20:11:06.234605+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-7aec8ac514e0d064",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.261208583135158,
+      "finish_timestamp": "2026-09-02T20:11:14.515190+00:00",
+      "pid": 436,
+      "start_timestamp": "2026-09-02T20:11:06.253907+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-a6318b7e89546125",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.014794726856053,
+      "finish_timestamp": "2026-09-02T20:11:14.264517+00:00",
+      "pid": 435,
+      "start_timestamp": "2026-09-02T20:11:06.249625+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-7f2201e9884e818e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 10.052377855405211,
+      "finish_timestamp": "2026-09-02T20:11:16.298115+00:00",
+      "pid": 434,
+      "start_timestamp": "2026-09-02T20:11:06.245704+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2ob-7c278a568194196b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.108329880051315,
+      "finish_timestamp": "2026-09-02T20:11:25.130870+00:00",
+      "pid": 445,
+      "start_timestamp": "2026-09-02T20:11:16.022471+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-72b5d278f8908a0a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.579353101085871,
+      "finish_timestamp": "2026-09-02T20:11:18.387554+00:00",
+      "pid": 438,
+      "start_timestamp": "2026-09-02T20:11:09.808138+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-b17ce68eb2ce01ee",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.000513901002705,
+      "finish_timestamp": "2026-09-02T20:11:26.137969+00:00",
+      "pid": 447,
+      "start_timestamp": "2026-09-02T20:11:17.137399+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-1d9a0d1641171551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.136890390887856,
+      "finish_timestamp": "2026-09-02T20:11:23.549911+00:00",
+      "pid": 443,
+      "start_timestamp": "2026-09-02T20:11:15.412993+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-abc29368674e8298",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.445880155079067,
+      "finish_timestamp": "2026-09-02T20:11:23.077696+00:00",
+      "pid": 440,
+      "start_timestamp": "2026-09-02T20:11:14.631752+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-1d19cc60d7a6adc1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.714437145274132,
+      "finish_timestamp": "2026-09-02T20:11:25.525488+00:00",
+      "pid": 444,
+      "start_timestamp": "2026-09-02T20:11:15.810992+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-71c7f9be34b19754",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.93941762112081,
+      "finish_timestamp": "2026-09-02T20:11:24.047207+00:00",
+      "pid": 442,
+      "start_timestamp": "2026-09-02T20:11:15.107731+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-557d49794f937ec6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.529060930013657,
+      "finish_timestamp": "2026-09-02T20:11:23.167920+00:00",
+      "pid": 441,
+      "start_timestamp": "2026-09-02T20:11:14.638790+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-cec5183e3f5418cf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.058806238230318,
+      "finish_timestamp": "2026-09-02T20:11:23.444360+00:00",
+      "pid": 439,
+      "start_timestamp": "2026-09-02T20:11:14.385467+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-da48e150772a24fd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.819320413749665,
+      "finish_timestamp": "2026-09-02T20:11:26.251680+00:00",
+      "pid": 446,
+      "start_timestamp": "2026-09-02T20:11:16.432278+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2ob-fd67c49516fa2028",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.164007217623293,
+      "finish_timestamp": "2026-09-02T20:11:34.426818+00:00",
+      "pid": 454,
+      "start_timestamp": "2026-09-02T20:11:25.262733+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-f874f110aae8efa9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.777750202920288,
+      "finish_timestamp": "2026-09-02T20:11:26.287455+00:00",
+      "pid": 448,
+      "start_timestamp": "2026-09-02T20:11:18.509646+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-40e1893e43abba5c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.434204475022852,
+      "finish_timestamp": "2026-09-02T20:11:33.762172+00:00",
+      "pid": 456,
+      "start_timestamp": "2026-09-02T20:11:26.327874+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-6aa36a4c6c99d55c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.323445182293653,
+      "finish_timestamp": "2026-09-02T20:11:32.019696+00:00",
+      "pid": 452,
+      "start_timestamp": "2026-09-02T20:11:23.696170+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-5a4d1a4785969ab2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.373435250017792,
+      "finish_timestamp": "2026-09-02T20:11:30.875669+00:00",
+      "pid": 450,
+      "start_timestamp": "2026-09-02T20:11:23.502172+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-eb8f50fda4f9095f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.01614444795996,
+      "finish_timestamp": "2026-09-02T20:11:34.661318+00:00",
+      "pid": 455,
+      "start_timestamp": "2026-09-02T20:11:25.645079+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-42e80cf6bcd9400f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.696651932317764,
+      "finish_timestamp": "2026-09-02T20:11:32.875651+00:00",
+      "pid": 453,
+      "start_timestamp": "2026-09-02T20:11:24.178914+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-a84cfdf477d8bf62",
+      "dataset": "re2ob",
+      "elapsed_seconds": 5.663054920732975,
+      "finish_timestamp": "2026-09-02T20:11:28.945648+00:00",
+      "pid": 449,
+      "start_timestamp": "2026-09-02T20:11:23.282535+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-3827c8c9ef1e8592",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.797939599957317,
+      "finish_timestamp": "2026-09-02T20:11:32.385445+00:00",
+      "pid": 451,
+      "start_timestamp": "2026-09-02T20:11:23.587458+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-acf69e21960f63d8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.5021664700470865,
+      "finish_timestamp": "2026-09-02T20:11:33.900484+00:00",
+      "pid": 457,
+      "start_timestamp": "2026-09-02T20:11:26.398235+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2ob-0433b8cb47b1ec8e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.327343489974737,
+      "finish_timestamp": "2026-09-02T20:11:42.931052+00:00",
+      "pid": 466,
+      "start_timestamp": "2026-09-02T20:11:34.603621+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-5f261573c1b3bdc5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.27201490290463,
+      "finish_timestamp": "2026-09-02T20:11:34.680390+00:00",
+      "pid": 458,
+      "start_timestamp": "2026-09-02T20:11:26.408305+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-af1b6a7e1667e3f5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.471882167737931,
+      "finish_timestamp": "2026-09-02T20:11:41.351616+00:00",
+      "pid": 464,
+      "start_timestamp": "2026-09-02T20:11:33.879648+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-bd6f4fb8e84ccb69",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.775703320745379,
+      "finish_timestamp": "2026-09-02T20:11:40.934835+00:00",
+      "pid": 461,
+      "start_timestamp": "2026-09-02T20:11:32.159067+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-3e7e71a1c83dbc41",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.098136686254293,
+      "finish_timestamp": "2026-09-02T20:11:39.073409+00:00",
+      "pid": 460,
+      "start_timestamp": "2026-09-02T20:11:30.975225+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-e357bd8aec246cdb",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.640210628975183,
+      "finish_timestamp": "2026-09-02T20:11:43.425564+00:00",
+      "pid": 467,
+      "start_timestamp": "2026-09-02T20:11:34.785277+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-097a5d7ac0492007",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.641898489091545,
+      "finish_timestamp": "2026-09-02T20:11:42.679026+00:00",
+      "pid": 463,
+      "start_timestamp": "2026-09-02T20:11:33.037109+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-57b75da971aabed5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.373200702946633,
+      "finish_timestamp": "2026-09-02T20:11:37.418503+00:00",
+      "pid": 459,
+      "start_timestamp": "2026-09-02T20:11:29.045243+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-e16e6de30ae75ccd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.005493490025401,
+      "finish_timestamp": "2026-09-02T20:11:41.530739+00:00",
+      "pid": 462,
+      "start_timestamp": "2026-09-02T20:11:32.525171+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-4677d4ce6ef327e0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.892869415227324,
+      "finish_timestamp": "2026-09-02T20:11:42.906488+00:00",
+      "pid": 465,
+      "start_timestamp": "2026-09-02T20:11:34.013547+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2ob-d7f2f8eb2f0ad646",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.162496691569686,
+      "finish_timestamp": "2026-09-02T20:11:52.227828+00:00",
+      "pid": 476,
+      "start_timestamp": "2026-09-02T20:11:43.065288+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-df7e831dddfac76c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.736260368023068,
+      "finish_timestamp": "2026-09-02T20:11:43.566304+00:00",
+      "pid": 468,
+      "start_timestamp": "2026-09-02T20:11:34.829956+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-1084f320d8584c61",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.558484374079853,
+      "finish_timestamp": "2026-09-02T20:11:49.058139+00:00",
+      "pid": 472,
+      "start_timestamp": "2026-09-02T20:11:41.499557+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-23213ee605c6b050",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.883160629309714,
+      "finish_timestamp": "2026-09-02T20:11:49.948783+00:00",
+      "pid": 471,
+      "start_timestamp": "2026-09-02T20:11:41.065553+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-48e5379f4903b1d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.738411081954837,
+      "finish_timestamp": "2026-09-02T20:11:46.949670+00:00",
+      "pid": 470,
+      "start_timestamp": "2026-09-02T20:11:39.211186+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-bb4a5b75716772f9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.276103377807885,
+      "finish_timestamp": "2026-09-02T20:11:51.822896+00:00",
+      "pid": 477,
+      "start_timestamp": "2026-09-02T20:11:43.546718+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-8f991393cb9debdf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.687220124993473,
+      "finish_timestamp": "2026-09-02T20:11:51.509320+00:00",
+      "pid": 474,
+      "start_timestamp": "2026-09-02T20:11:42.822027+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-7858d4d3815cf005",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.06496820691973,
+      "finish_timestamp": "2026-09-02T20:11:45.594315+00:00",
+      "pid": 469,
+      "start_timestamp": "2026-09-02T20:11:37.529286+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-97935dcb7cfd6e82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.644202863797545,
+      "finish_timestamp": "2026-09-02T20:11:50.294223+00:00",
+      "pid": 473,
+      "start_timestamp": "2026-09-02T20:11:41.649928+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-f209212fc63ac713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.667375328950584,
+      "finish_timestamp": "2026-09-02T20:11:51.706297+00:00",
+      "pid": 475,
+      "start_timestamp": "2026-09-02T20:11:43.038861+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2ob-93de1fab2ca56e86",
+      "dataset": "re2ob",
+      "elapsed_seconds": 10.13896676292643,
+      "finish_timestamp": "2026-09-02T20:12:02.545977+00:00",
+      "pid": 487,
+      "start_timestamp": "2026-09-02T20:11:52.406959+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-435f42d94b785472",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.772488167043775,
+      "finish_timestamp": "2026-09-02T20:11:52.469738+00:00",
+      "pid": 478,
+      "start_timestamp": "2026-09-02T20:11:43.697161+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-048f2e7d7bfbc927",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.8641551048494875,
+      "finish_timestamp": "2026-09-02T20:11:57.035428+00:00",
+      "pid": 481,
+      "start_timestamp": "2026-09-02T20:11:49.171146+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-4af0de56834334d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.00506150489673,
+      "finish_timestamp": "2026-09-02T20:11:59.080730+00:00",
+      "pid": 482,
+      "start_timestamp": "2026-09-02T20:11:50.075609+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-d3f1403a4a08a3b1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.652680870145559,
+      "finish_timestamp": "2026-09-02T20:11:54.821931+00:00",
+      "pid": 480,
+      "start_timestamp": "2026-09-02T20:11:47.169184+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-7732042f2a190c79",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.751426856033504,
+      "finish_timestamp": "2026-09-02T20:12:00.706192+00:00",
+      "pid": 486,
+      "start_timestamp": "2026-09-02T20:11:51.954710+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-80bf4d093e6ab818",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.933224358130246,
+      "finish_timestamp": "2026-09-02T20:12:00.602518+00:00",
+      "pid": 484,
+      "start_timestamp": "2026-09-02T20:11:51.669218+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-08f3e5d7b11d1fa7",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.319795391988009,
+      "finish_timestamp": "2026-09-02T20:11:53.029091+00:00",
+      "pid": 479,
+      "start_timestamp": "2026-09-02T20:11:45.709233+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-b6db72fc58931786",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.848083096090704,
+      "finish_timestamp": "2026-09-02T20:11:58.277842+00:00",
+      "pid": 483,
+      "start_timestamp": "2026-09-02T20:11:50.429651+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-f30e2feeaa5218b8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.244590306654572,
+      "finish_timestamp": "2026-09-02T20:12:00.086689+00:00",
+      "pid": 485,
+      "start_timestamp": "2026-09-02T20:11:51.842027+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2ob-45687a171f241b04",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.000917390920222,
+      "finish_timestamp": "2026-09-02T20:12:10.686840+00:00",
+      "pid": 500,
+      "start_timestamp": "2026-09-02T20:12:02.685842+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-d0d93705e784491a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.424660736694932,
+      "finish_timestamp": "2026-09-02T20:12:01.025073+00:00",
+      "pid": 488,
+      "start_timestamp": "2026-09-02T20:11:52.600278+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-c2ac02db4e3370a9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.998390648048371,
+      "finish_timestamp": "2026-09-02T20:12:05.142722+00:00",
+      "pid": 491,
+      "start_timestamp": "2026-09-02T20:11:57.144235+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-1bb2e75872fd9037",
+      "dataset": "re2ob",
+      "elapsed_seconds": 5.230998021084815,
+      "finish_timestamp": "2026-09-02T20:12:04.440998+00:00",
+      "pid": 493,
+      "start_timestamp": "2026-09-02T20:11:59.209935+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-feeaaba6c71377df",
+      "dataset": "re2ob",
+      "elapsed_seconds": 4.98712791968137,
+      "finish_timestamp": "2026-09-02T20:11:59.925403+00:00",
+      "pid": 490,
+      "start_timestamp": "2026-09-02T20:11:54.938203+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-4f85dadf2507c3ca",
+      "dataset": "re2ob",
+      "elapsed_seconds": 6.734583325684071,
+      "finish_timestamp": "2026-09-02T20:12:07.580461+00:00",
+      "pid": 498,
+      "start_timestamp": "2026-09-02T20:12:00.845806+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-784d7eb25137c3c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 6.370477905031294,
+      "finish_timestamp": "2026-09-02T20:12:07.096778+00:00",
+      "pid": 497,
+      "start_timestamp": "2026-09-02T20:12:00.726194+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-58eb5ae1a41b77e4",
+      "dataset": "re2ob",
+      "elapsed_seconds": 6.168440712150186,
+      "finish_timestamp": "2026-09-02T20:11:59.309096+00:00",
+      "pid": 489,
+      "start_timestamp": "2026-09-02T20:11:53.140527+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-d0382ea6cedfbd82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 5.3847126653417945,
+      "finish_timestamp": "2026-09-02T20:12:03.799963+00:00",
+      "pid": 492,
+      "start_timestamp": "2026-09-02T20:11:58.415149+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-f88fc943d724a354",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.116997512057424,
+      "finish_timestamp": "2026-09-02T20:12:08.328224+00:00",
+      "pid": 496,
+      "start_timestamp": "2026-09-02T20:12:00.211160+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2ob-b84066a37ca0c417",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.274618704803288,
+      "finish_timestamp": "2026-09-02T20:12:19.100034+00:00",
+      "pid": 510,
+      "start_timestamp": "2026-09-02T20:12:10.825330+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-b78a14faa7ea7263",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.61756779300049,
+      "finish_timestamp": "2026-09-02T20:12:09.766535+00:00",
+      "pid": 499,
+      "start_timestamp": "2026-09-02T20:12:01.148861+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-84724d7aa2b9dabd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.391223923768848,
+      "finish_timestamp": "2026-09-02T20:12:12.645659+00:00",
+      "pid": 503,
+      "start_timestamp": "2026-09-02T20:12:05.254357+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-fa8a8fae0fda7c42",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.64538381807506,
+      "finish_timestamp": "2026-09-02T20:12:13.192341+00:00",
+      "pid": 502,
+      "start_timestamp": "2026-09-02T20:12:04.546864+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-7b0a90583e047a88",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.69333944702521,
+      "finish_timestamp": "2026-09-02T20:12:08.712601+00:00",
+      "pid": 495,
+      "start_timestamp": "2026-09-02T20:12:00.019172+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-ca26cbb7c2cc0c87",
+      "dataset": "re2ob",
+      "elapsed_seconds": 9.105863789096475,
+      "finish_timestamp": "2026-09-02T20:12:16.788524+00:00",
+      "pid": 505,
+      "start_timestamp": "2026-09-02T20:12:07.682636+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-6521847c78ca06e9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.578143896069378,
+      "finish_timestamp": "2026-09-02T20:12:15.780089+00:00",
+      "pid": 504,
+      "start_timestamp": "2026-09-02T20:12:07.201908+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-7890056e7915d551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.463444146793336,
+      "finish_timestamp": "2026-09-02T20:12:07.884431+00:00",
+      "pid": 494,
+      "start_timestamp": "2026-09-02T20:11:59.420919+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-35bd9974d6b59069",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.497059647925198,
+      "finish_timestamp": "2026-09-02T20:12:12.403932+00:00",
+      "pid": 501,
+      "start_timestamp": "2026-09-02T20:12:03.906765+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-7a91adc6e16587c6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.12577164825052,
+      "finish_timestamp": "2026-09-02T20:12:16.571344+00:00",
+      "pid": 507,
+      "start_timestamp": "2026-09-02T20:12:08.445521+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2ob-f2b4cc2f87b35c03",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.808156491722912,
+      "finish_timestamp": "2026-09-02T20:12:28.099419+00:00",
+      "pid": 520,
+      "start_timestamp": "2026-09-02T20:12:19.291178+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2ob-c9c8f348d3f5974b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 6.141690892633051,
+      "finish_timestamp": "2026-09-02T20:12:16.026674+00:00",
+      "pid": 509,
+      "start_timestamp": "2026-09-02T20:12:09.884905+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2ob-df7b6eca09a6c41f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 6.917477297596633,
+      "finish_timestamp": "2026-09-02T20:12:19.671929+00:00",
+      "pid": 512,
+      "start_timestamp": "2026-09-02T20:12:12.754373+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2ob-34c4e276dad53220",
+      "dataset": "re2ob",
+      "elapsed_seconds": 7.585161982104182,
+      "finish_timestamp": "2026-09-02T20:12:20.898418+00:00",
+      "pid": 513,
+      "start_timestamp": "2026-09-02T20:12:13.313203+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2ob-3758cb8f0f1277f3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.039254573173821,
+      "finish_timestamp": "2026-09-02T20:12:16.867162+00:00",
+      "pid": 508,
+      "start_timestamp": "2026-09-02T20:12:08.827840+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2ob-ce3f410f61f739c2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.350066193845123,
+      "finish_timestamp": "2026-09-02T20:12:25.279560+00:00",
+      "pid": 518,
+      "start_timestamp": "2026-09-02T20:12:16.929395+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2ob-0c582795f6ae4798",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.340699839871377,
+      "finish_timestamp": "2026-09-02T20:12:24.283760+00:00",
+      "pid": 515,
+      "start_timestamp": "2026-09-02T20:12:15.942987+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2ob-e849d2be7be5c713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 5.757785803172737,
+      "finish_timestamp": "2026-09-02T20:12:13.771900+00:00",
+      "pid": 506,
+      "start_timestamp": "2026-09-02T20:12:08.014051+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2ob-58cff4fc86081830",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.631410088855773,
+      "finish_timestamp": "2026-09-02T20:12:21.154907+00:00",
+      "pid": 511,
+      "start_timestamp": "2026-09-02T20:12:12.523417+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2ob-ce93ebf8eb13a5ed",
+      "dataset": "re2ob",
+      "elapsed_seconds": 8.59357237815857,
+      "finish_timestamp": "2026-09-02T20:12:25.286970+00:00",
+      "pid": 517,
+      "start_timestamp": "2026-09-02T20:12:16.693335+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-e44ccb97e7cc1570",
+      "dataset": "re2tt",
+      "elapsed_seconds": 40.658992680255324,
+      "finish_timestamp": "2026-09-02T20:13:08.895091+00:00",
+      "pid": 527,
+      "start_timestamp": "2026-09-02T20:12:28.236008+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-a0c0a90c5448e7fa",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.511883440893143,
+      "finish_timestamp": "2026-09-02T20:12:42.659599+00:00",
+      "pid": 516,
+      "start_timestamp": "2026-09-02T20:12:16.147654+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-0b529d9f6ca88d4b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 31.30175785627216,
+      "finish_timestamp": "2026-09-02T20:12:51.081775+00:00",
+      "pid": 521,
+      "start_timestamp": "2026-09-02T20:12:19.779929+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-783d045c8102f972",
+      "dataset": "re2tt",
+      "elapsed_seconds": 41.804924440104514,
+      "finish_timestamp": "2026-09-02T20:13:02.826654+00:00",
+      "pid": 522,
+      "start_timestamp": "2026-09-02T20:12:21.021666+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-e76e500ff655313b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 24.201807615347207,
+      "finish_timestamp": "2026-09-02T20:12:41.184035+00:00",
+      "pid": 519,
+      "start_timestamp": "2026-09-02T20:12:16.982164+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-cc6c772d4116d054",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.425587931182235,
+      "finish_timestamp": "2026-09-02T20:12:51.847210+00:00",
+      "pid": 525,
+      "start_timestamp": "2026-09-02T20:12:25.421588+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-c1b234f6cc4acbee",
+      "dataset": "re2tt",
+      "elapsed_seconds": 14.691061671357602,
+      "finish_timestamp": "2026-09-02T20:12:39.105188+00:00",
+      "pid": 524,
+      "start_timestamp": "2026-09-02T20:12:24.414055+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-2782358136a64e6c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 24.04235022282228,
+      "finish_timestamp": "2026-09-02T20:12:37.947859+00:00",
+      "pid": 514,
+      "start_timestamp": "2026-09-02T20:12:13.905443+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-1d48b3aec1ec4470",
+      "dataset": "re2tt",
+      "elapsed_seconds": 28.162031264044344,
+      "finish_timestamp": "2026-09-02T20:12:49.442133+00:00",
+      "pid": 523,
+      "start_timestamp": "2026-09-02T20:12:21.279971+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-6a0d1ebf31fb52a6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 33.689171958714724,
+      "finish_timestamp": "2026-09-02T20:12:59.115285+00:00",
+      "pid": 526,
+      "start_timestamp": "2026-09-02T20:12:25.426059+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-14c6e1b70d0c21e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 28.965753457974643,
+      "finish_timestamp": "2026-09-02T20:13:38.101139+00:00",
+      "pid": 541,
+      "start_timestamp": "2026-09-02T20:13:09.135321+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-01d0096e9a504ced",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20.70356299728155,
+      "finish_timestamp": "2026-09-02T20:13:03.531696+00:00",
+      "pid": 531,
+      "start_timestamp": "2026-09-02T20:12:42.828017+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-bbbcbf7787fa152c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 37.51205972908065,
+      "finish_timestamp": "2026-09-02T20:13:28.823129+00:00",
+      "pid": 533,
+      "start_timestamp": "2026-09-02T20:12:51.310990+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-ae09714023e727e1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 41.704391004983336,
+      "finish_timestamp": "2026-09-02T20:13:44.766672+00:00",
+      "pid": 536,
+      "start_timestamp": "2026-09-02T20:13:03.062211+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-653810995a9aa3db",
+      "dataset": "re2tt",
+      "elapsed_seconds": 23.38328722678125,
+      "finish_timestamp": "2026-09-02T20:13:04.723072+00:00",
+      "pid": 530,
+      "start_timestamp": "2026-09-02T20:12:41.339720+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-c82529d65e13adc0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 29.635495461989194,
+      "finish_timestamp": "2026-09-02T20:13:21.701044+00:00",
+      "pid": 534,
+      "start_timestamp": "2026-09-02T20:12:52.065478+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-aa71e41ec8e7922d",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.481976887211204,
+      "finish_timestamp": "2026-09-02T20:13:05.759696+00:00",
+      "pid": 529,
+      "start_timestamp": "2026-09-02T20:12:39.277664+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-cb1f1df38c99005a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 33.68724390398711,
+      "finish_timestamp": "2026-09-02T20:13:11.800443+00:00",
+      "pid": 528,
+      "start_timestamp": "2026-09-02T20:12:38.113142+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-fe28a6c0dbd7d892",
+      "dataset": "re2tt",
+      "elapsed_seconds": 23.981956482864916,
+      "finish_timestamp": "2026-09-02T20:13:13.659749+00:00",
+      "pid": 532,
+      "start_timestamp": "2026-09-02T20:12:49.677695+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-d4b1d66aaaa1a728",
+      "dataset": "re2tt",
+      "elapsed_seconds": 30.503858292941004,
+      "finish_timestamp": "2026-09-02T20:13:29.817220+00:00",
+      "pid": 535,
+      "start_timestamp": "2026-09-02T20:12:59.313310+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-5bb89b87741349d7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 31.76342914905399,
+      "finish_timestamp": "2026-09-02T20:14:10.033474+00:00",
+      "pid": 554,
+      "start_timestamp": "2026-09-02T20:13:38.269953+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-e4be9aa8e249ddf3",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.024471008218825,
+      "finish_timestamp": "2026-09-02T20:13:29.705788+00:00",
+      "pid": 537,
+      "start_timestamp": "2026-09-02T20:13:03.681242+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-426ec979883ae8dc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2.731121498160064,
+      "finish_timestamp": "2026-09-02T20:13:31.774182+00:00",
+      "pid": 548,
+      "start_timestamp": "2026-09-02T20:13:29.042975+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-d0a74725c5d96362",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2.8816453143954277,
+      "finish_timestamp": "2026-09-02T20:13:47.881264+00:00",
+      "pid": 558,
+      "start_timestamp": "2026-09-02T20:13:44.999535+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-cdf514b035f34990",
+      "dataset": "re2tt",
+      "elapsed_seconds": 38.64073582878336,
+      "finish_timestamp": "2026-09-02T20:13:43.522731+00:00",
+      "pid": 538,
+      "start_timestamp": "2026-09-02T20:13:04.881916+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-7d84c0b80f7f0032",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2.9212180846370757,
+      "finish_timestamp": "2026-09-02T20:13:24.811039+00:00",
+      "pid": 546,
+      "start_timestamp": "2026-09-02T20:13:21.889742+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-995607e863fb7731",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2.963918558321893,
+      "finish_timestamp": "2026-09-02T20:13:08.891880+00:00",
+      "pid": 539,
+      "start_timestamp": "2026-09-02T20:13:05.927887+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-afdac60e6b000d3c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 46.054587077815086,
+      "finish_timestamp": "2026-09-02T20:13:58.063956+00:00",
+      "pid": 542,
+      "start_timestamp": "2026-09-02T20:13:12.009314+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-ee2421859dfb0792",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2.959347272757441,
+      "finish_timestamp": "2026-09-02T20:13:16.799127+00:00",
+      "pid": 543,
+      "start_timestamp": "2026-09-02T20:13:13.839679+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-44604ef8713a5943",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3.0160541478544474,
+      "finish_timestamp": "2026-09-02T20:13:33.009583+00:00",
+      "pid": 550,
+      "start_timestamp": "2026-09-02T20:13:29.993463+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-72822d018b0df53f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.711364426184446,
+      "finish_timestamp": "2026-09-02T20:14:23.963405+00:00",
+      "pid": 569,
+      "start_timestamp": "2026-09-02T20:14:10.251942+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-22292d58b67911fb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.908203455153853,
+      "finish_timestamp": "2026-09-02T20:13:43.795287+00:00",
+      "pid": 549,
+      "start_timestamp": "2026-09-02T20:13:29.887033+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-fc53b7fb52199fb7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.868164827115834,
+      "finish_timestamp": "2026-09-02T20:13:45.722908+00:00",
+      "pid": 551,
+      "start_timestamp": "2026-09-02T20:13:31.854534+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-5d2e4747cab0d818",
+      "dataset": "re2tt",
+      "elapsed_seconds": 41.069043558090925,
+      "finish_timestamp": "2026-09-02T20:14:29.039373+00:00",
+      "pid": 561,
+      "start_timestamp": "2026-09-02T20:13:47.970272+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-2ae0e149b3ab15f1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2.930554020218551,
+      "finish_timestamp": "2026-09-02T20:13:46.684259+00:00",
+      "pid": 555,
+      "start_timestamp": "2026-09-02T20:13:43.753622+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-0f6b6213169d6acc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 34.07417558412999,
+      "finish_timestamp": "2026-09-02T20:13:58.987342+00:00",
+      "pid": 547,
+      "start_timestamp": "2026-09-02T20:13:24.913110+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-93fbbdf23f58f440",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.384771230164915,
+      "finish_timestamp": "2026-09-02T20:13:35.364014+00:00",
+      "pid": 540,
+      "start_timestamp": "2026-09-02T20:13:08.979179+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-714d157727edd2d0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2.92089886078611,
+      "finish_timestamp": "2026-09-02T20:14:01.234753+00:00",
+      "pid": 562,
+      "start_timestamp": "2026-09-02T20:13:58.313792+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-472c8339fd3703e9",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2.894923142157495,
+      "finish_timestamp": "2026-09-02T20:13:19.768407+00:00",
+      "pid": 544,
+      "start_timestamp": "2026-09-02T20:13:16.873402+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-606ef267348d40e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 27.701302980072796,
+      "finish_timestamp": "2026-09-02T20:14:00.804385+00:00",
+      "pid": 552,
+      "start_timestamp": "2026-09-02T20:13:33.103020+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-35e803c63786ac4e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.885866338852793,
+      "finish_timestamp": "2026-09-02T20:14:50.998069+00:00",
+      "pid": 573,
+      "start_timestamp": "2026-09-02T20:14:24.112103+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-a141811c79edaa0b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 29.0307464748621,
+      "finish_timestamp": "2026-09-02T20:14:13.000310+00:00",
+      "pid": 556,
+      "start_timestamp": "2026-09-02T20:13:43.969499+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-b5173d4edf252af8",
+      "dataset": "re2tt",
+      "elapsed_seconds": 45.41131474310532,
+      "finish_timestamp": "2026-09-02T20:14:31.292644+00:00",
+      "pid": 559,
+      "start_timestamp": "2026-09-02T20:13:45.881262+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-fd20b1f93a6ff4c0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 9.83990979893133,
+      "finish_timestamp": "2026-09-02T20:14:39.217581+00:00",
+      "pid": 575,
+      "start_timestamp": "2026-09-02T20:14:29.377593+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-010695b192f8dbea",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20.56176728894934,
+      "finish_timestamp": "2026-09-02T20:14:07.323705+00:00",
+      "pid": 560,
+      "start_timestamp": "2026-09-02T20:13:46.761855+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-94bd05feab03461e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 38.94342540809885,
+      "finish_timestamp": "2026-09-02T20:14:38.138292+00:00",
+      "pid": 563,
+      "start_timestamp": "2026-09-02T20:13:59.194783+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-575015aa80c376c6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 30.105477827135473,
+      "finish_timestamp": "2026-09-02T20:14:05.640781+00:00",
+      "pid": 553,
+      "start_timestamp": "2026-09-02T20:13:35.535226+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-727331fee88d4ce7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 23.431651573162526,
+      "finish_timestamp": "2026-09-02T20:14:24.738806+00:00",
+      "pid": 566,
+      "start_timestamp": "2026-09-02T20:14:01.307089+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-420fff915c5f5bc5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 24.0066244257614,
+      "finish_timestamp": "2026-09-02T20:13:43.844855+00:00",
+      "pid": 545,
+      "start_timestamp": "2026-09-02T20:13:19.838153+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-f5512e2434f96386",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.321221032645553,
+      "finish_timestamp": "2026-09-02T20:14:14.327855+00:00",
+      "pid": 565,
+      "start_timestamp": "2026-09-02T20:14:01.006572+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-a33887653c475d04",
+      "dataset": "re2tt",
+      "elapsed_seconds": 16.144552690908313,
+      "finish_timestamp": "2026-09-02T20:15:07.318737+00:00",
+      "pid": 585,
+      "start_timestamp": "2026-09-02T20:14:51.174101+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-5f50dc54f6cb9fce",
+      "dataset": "re2tt",
+      "elapsed_seconds": 52.847922556102276,
+      "finish_timestamp": "2026-09-02T20:15:06.031705+00:00",
+      "pid": 570,
+      "start_timestamp": "2026-09-02T20:14:13.183716+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-67172e499653d426",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.364478926640004,
+      "finish_timestamp": "2026-09-02T20:14:44.907344+00:00",
+      "pid": 576,
+      "start_timestamp": "2026-09-02T20:14:31.542796+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-d14727a3c74e9768",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17.560060441028327,
+      "finish_timestamp": "2026-09-02T20:14:56.885581+00:00",
+      "pid": 579,
+      "start_timestamp": "2026-09-02T20:14:39.325466+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-2a03e4ad1a1d6f85",
+      "dataset": "re2tt",
+      "elapsed_seconds": 38.36748337605968,
+      "finish_timestamp": "2026-09-02T20:14:45.849492+00:00",
+      "pid": 568,
+      "start_timestamp": "2026-09-02T20:14:07.481952+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-7d3fb265c1c0f9ed",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.913195666857064,
+      "finish_timestamp": "2026-09-02T20:15:05.287771+00:00",
+      "pid": 578,
+      "start_timestamp": "2026-09-02T20:14:38.374521+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-2defd6e102bdaf53",
+      "dataset": "re2tt",
+      "elapsed_seconds": 32.31091029802337,
+      "finish_timestamp": "2026-09-02T20:14:38.141990+00:00",
+      "pid": 567,
+      "start_timestamp": "2026-09-02T20:14:05.831021+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-38941ca70beb687a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 35.33644205285236,
+      "finish_timestamp": "2026-09-02T20:15:00.223196+00:00",
+      "pid": 574,
+      "start_timestamp": "2026-09-02T20:14:24.886691+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-3bd96ed8cc02f613",
+      "dataset": "re2tt",
+      "elapsed_seconds": 15.173226986080408,
+      "finish_timestamp": "2026-09-02T20:13:59.199582+00:00",
+      "pid": 557,
+      "start_timestamp": "2026-09-02T20:13:44.026289+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-5a65eea398ba8435",
+      "dataset": "re2tt",
+      "elapsed_seconds": 27.716425009071827,
+      "finish_timestamp": "2026-09-02T20:14:42.202703+00:00",
+      "pid": 571,
+      "start_timestamp": "2026-09-02T20:14:14.486256+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-b2342b2478b249cb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 28.56887851189822,
+      "finish_timestamp": "2026-09-02T20:15:36.058457+00:00",
+      "pid": 592,
+      "start_timestamp": "2026-09-02T20:15:07.489489+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-c7f9112580bfde33",
+      "dataset": "re2tt",
+      "elapsed_seconds": 27.792088316753507,
+      "finish_timestamp": "2026-09-02T20:15:34.110333+00:00",
+      "pid": 591,
+      "start_timestamp": "2026-09-02T20:15:06.318188+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-fa81461ebec56b42",
+      "dataset": "re2tt",
+      "elapsed_seconds": 32.950507562141865,
+      "finish_timestamp": "2026-09-02T20:15:18.188897+00:00",
+      "pid": 581,
+      "start_timestamp": "2026-09-02T20:14:45.238315+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-877f6cbd0cb33e7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 36.76293810876086,
+      "finish_timestamp": "2026-09-02T20:15:33.821794+00:00",
+      "pid": 587,
+      "start_timestamp": "2026-09-02T20:14:57.058779+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-7cff180e5ff1cc71",
+      "dataset": "re2tt",
+      "elapsed_seconds": 35.290338980033994,
+      "finish_timestamp": "2026-09-02T20:15:21.608402+00:00",
+      "pid": 582,
+      "start_timestamp": "2026-09-02T20:14:46.317994+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-ffda523857bbf5c2",
+      "dataset": "re2tt",
+      "elapsed_seconds": 33.63712637173012,
+      "finish_timestamp": "2026-09-02T20:15:39.146530+00:00",
+      "pid": 590,
+      "start_timestamp": "2026-09-02T20:15:05.509330+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-2fc3d2fb9c492b7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20.592326660174876,
+      "finish_timestamp": "2026-09-02T20:14:58.938244+00:00",
+      "pid": 577,
+      "start_timestamp": "2026-09-02T20:14:38.345846+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-04ce93a682b70df6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 23.156812492758036,
+      "finish_timestamp": "2026-09-02T20:15:23.578576+00:00",
+      "pid": 589,
+      "start_timestamp": "2026-09-02T20:15:00.421699+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-406c40ff0016fa9c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 16.01795130269602,
+      "finish_timestamp": "2026-09-02T20:14:15.376445+00:00",
+      "pid": 564,
+      "start_timestamp": "2026-09-02T20:13:59.358423+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-2ca7cff33586ca18",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4.653068873099983,
+      "finish_timestamp": "2026-09-02T20:14:47.250003+00:00",
+      "pid": 580,
+      "start_timestamp": "2026-09-02T20:14:42.596893+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-a7213c3da47edbd0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 24.311346288304776,
+      "finish_timestamp": "2026-09-02T20:16:00.571335+00:00",
+      "pid": 600,
+      "start_timestamp": "2026-09-02T20:15:36.259909+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-f1aa29dd3ba2343f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.099580372218043,
+      "finish_timestamp": "2026-09-02T20:15:47.405768+00:00",
+      "pid": 599,
+      "start_timestamp": "2026-09-02T20:15:34.306137+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-56db4956167f9980",
+      "dataset": "re2tt",
+      "elapsed_seconds": 14.251444988884032,
+      "finish_timestamp": "2026-09-02T20:15:32.682167+00:00",
+      "pid": 593,
+      "start_timestamp": "2026-09-02T20:15:18.430652+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-f09cbf3636ad02de",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.717511360067874,
+      "finish_timestamp": "2026-09-02T20:16:00.771166+00:00",
+      "pid": 598,
+      "start_timestamp": "2026-09-02T20:15:34.053586+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-e3f89de859062727",
+      "dataset": "re2tt",
+      "elapsed_seconds": 28.37822322221473,
+      "finish_timestamp": "2026-09-02T20:15:50.197746+00:00",
+      "pid": 594,
+      "start_timestamp": "2026-09-02T20:15:21.819450+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-1283c56ed7675282",
+      "dataset": "re2tt",
+      "elapsed_seconds": 33.468912643846124,
+      "finish_timestamp": "2026-09-02T20:16:12.830984+00:00",
+      "pid": 601,
+      "start_timestamp": "2026-09-02T20:15:39.362018+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-739ad24f1e2d7c29",
+      "dataset": "re2tt",
+      "elapsed_seconds": 29.22115648817271,
+      "finish_timestamp": "2026-09-02T20:15:28.314196+00:00",
+      "pid": 588,
+      "start_timestamp": "2026-09-02T20:14:59.092988+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-fb57d883cd727c81",
+      "dataset": "re2tt",
+      "elapsed_seconds": 32.79540990991518,
+      "finish_timestamp": "2026-09-02T20:15:56.525044+00:00",
+      "pid": 595,
+      "start_timestamp": "2026-09-02T20:15:23.729571+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-c8fbd9a7d1e92284",
+      "dataset": "re2tt",
+      "elapsed_seconds": 31.757346207275987,
+      "finish_timestamp": "2026-09-02T20:14:47.326565+00:00",
+      "pid": 572,
+      "start_timestamp": "2026-09-02T20:14:15.569147+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-d83931768111dc58",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3.726678343024105,
+      "finish_timestamp": "2026-09-02T20:14:51.304470+00:00",
+      "pid": 583,
+      "start_timestamp": "2026-09-02T20:14:47.577728+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    },
+    {
+      "case_id": "re2tt-4780a4f90c190bf4",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3.671852106228471,
+      "finish_timestamp": "2026-09-02T20:16:04.465948+00:00",
+      "pid": 605,
+      "start_timestamp": "2026-09-02T20:16:00.794008+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-0"
+    },
+    {
+      "case_id": "re2tt-20258ce8dbcd2300",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19.0088520469144,
+      "finish_timestamp": "2026-09-02T20:16:06.578356+00:00",
+      "pid": 602,
+      "start_timestamp": "2026-09-02T20:15:47.569443+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "tracerca-worker-1"
+    },
+    {
+      "case_id": "re2tt-cb3381bf9ed05034",
+      "dataset": "re2tt",
+      "elapsed_seconds": 39.679085564333946,
+      "finish_timestamp": "2026-09-02T20:16:12.525096+00:00",
+      "pid": 597,
+      "start_timestamp": "2026-09-02T20:15:32.845935+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-2"
+    },
+    {
+      "case_id": "re2tt-e9071bdee1904785",
+      "dataset": "re2tt",
+      "elapsed_seconds": 34.08457085583359,
+      "finish_timestamp": "2026-09-02T20:16:35.035270+00:00",
+      "pid": 606,
+      "start_timestamp": "2026-09-02T20:16:00.950644+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-3"
+    },
+    {
+      "case_id": "re2tt-722f5f89a57be699",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.97343329200521,
+      "finish_timestamp": "2026-09-02T20:16:17.354666+00:00",
+      "pid": 603,
+      "start_timestamp": "2026-09-02T20:15:50.381158+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-4"
+    },
+    {
+      "case_id": "re2tt-bc9cd2d131533d16",
+      "dataset": "re2tt",
+      "elapsed_seconds": 28.385642252862453,
+      "finish_timestamp": "2026-09-02T20:16:41.440331+00:00",
+      "pid": 607,
+      "start_timestamp": "2026-09-02T20:16:13.054609+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-5"
+    },
+    {
+      "case_id": "re2tt-f578fe138f6d4c7a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20.535441492218524,
+      "finish_timestamp": "2026-09-02T20:15:49.042155+00:00",
+      "pid": 596,
+      "start_timestamp": "2026-09-02T20:15:28.506654+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-6"
+    },
+    {
+      "case_id": "re2tt-bed634aec03e773f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3.5759148858487606,
+      "finish_timestamp": "2026-09-02T20:16:00.296563+00:00",
+      "pid": 604,
+      "start_timestamp": "2026-09-02T20:15:56.720526+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-7"
+    },
+    {
+      "case_id": "re2tt-3fffa88dd3653f99",
+      "dataset": "re2tt",
+      "elapsed_seconds": 23.47788033494726,
+      "finish_timestamp": "2026-09-02T20:15:11.089601+00:00",
+      "pid": 584,
+      "start_timestamp": "2026-09-02T20:14:47.611645+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-8"
+    },
+    {
+      "case_id": "re2tt-3e24ca7f9747c84e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 25.343715352006257,
+      "finish_timestamp": "2026-09-02T20:15:16.757138+00:00",
+      "pid": 586,
+      "start_timestamp": "2026-09-02T20:14:51.413366+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "tracerca-worker-9"
+    }
+  ],
+  "execution_commit": "f67712fad4bdfa9d6a4bdfab55bd5958d564eb2e",
+  "labels_joined": false,
+  "method": "TraceRCA",
+  "no_timeout": true,
+  "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "requested_worker_count": 10,
+  "runtime_digest": "7a7b4b96980e81a705363aed2368aa43ae3d4212549e094643b5df435a508e15",
+  "schema_version": "rca_baseline_rescue_runtime_v2",
+  "status_counts": {
+    "re2ob": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 0,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 90,
+      "TIMEOUT": 0
+    },
+    "re2tt": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 15,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 75,
+      "TIMEOUT": 0
+    }
+  },
+  "terminal_case_count": 180,
+  "timeout_seconds": null
+}

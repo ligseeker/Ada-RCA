@@ -1,0 +1,32 @@
+{
+  "actual_worker_count": 10,
+  "attempt_digest": "924fdd38ec826c2a6eb3e11ab5fa204f20feeb2dd342d8938edd86b2dfa73849",
+  "attempt_id": "tracerca-a3-rescue-v2",
+  "available_cpu_count": 320,
+  "candidate_registry_digests": {
+    "re2ob": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+    "re2tt": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a"
+  },
+  "created_at": "2026-09-02T20:11:04.674899+00:00",
+  "datasets": [
+    "re2ob",
+    "re2tt"
+  ],
+  "environment_digest": "6318af17a1cfeb3d40e8adf60d4bf76775f940439373f651f624514a10b6e8f5",
+  "execution_commit": "f67712fad4bdfa9d6a4bdfab55bd5958d564eb2e",
+  "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+  "labels_joined": false,
+  "method": "TraceRCA",
+  "native_module_digest": "1ef420e4430a7ad0379689c1d18eee9dd7fb0d15ac4371f6ff968900a22b0946",
+  "no_timeout": true,
+  "parallel_case_processes": true,
+  "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+  "requested_worker_count": 10,
+  "resume_policy": "missing-terminal-records-only",
+  "retry": false,
+  "schema_version": "rca_baseline_rescue_attempt_v2",
+  "seed": 20260830,
+  "timeout_seconds": null
+}
