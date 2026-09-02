@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2.1 RESCUE PROTOCOL FROZEN — IMPLEMENTATION IN PROGRESS**
-State revision: `2026-09-03.3`
+Status: **V2.1 RESCUE CODE READY — FIVE TASK-CONTAINER EXECUTIONS PENDING**
+State revision: `2026-09-03.5`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `2c14e63`
+Last synchronized central commit: `f60252c`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -36,7 +36,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | V1.3 acceleration is local | PENDING PUSH |
+| Push state for this revision | V2.1 rescue code is local | NOT PUSHED |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -103,7 +103,10 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Frozen-environment/preflight stabilization | `c1c7a96` | complete; merged as `83e2df7` (CIRCA) and `60a346a` (MicroCause) |
 | Central integration of five method tracks | `d6ca33f` through `db78094` | complete; method-scoped artifacts merged and all five locks verified |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
-| V2.1 performance-blind rescue protocol and metric timestamp repair | pending protocol transition commit; `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen; V2 code and task-container execution pending |
+| V2.1 performance-blind rescue protocol and metric timestamp repair | `3a27d0e`; `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen; V2 code and task-container execution pending |
+| V2 no-timeout scheduler, provenance, resume, and process monitoring | `26b1864`, `6f1df1a` | complete; five task-container runs pending |
+| V2 post-lock evaluator and failure semantics | `60b45b1` | complete; labels gated by committed V2 global lock |
+| V2 task-container runbook | `f60252c` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -155,6 +158,15 @@ TraceRCA `8ef492e`/`cbb4404`/`0c4d9a3`, and mmBARO
 path was merged; baseline orchestration remains under `src/baseline_eval`,
 and baseline execution evidence remains under `artifacts/baseline_eval`.
 
+The V2.1 implementation is complete through central commit `f60252c`. It adds
+the no-timeout case-process scheduler, fixed worker/thread controls, immutable
+resume semantics, non-killing heartbeat/resource fields, source-provenance
+binding, the failure-semantic repair, the post-lock evaluator, and the exact
+five-container runbook. The focused rescue/evaluator suite passed 70 tests and
+the full repository suite passed `232` tests. No V2 environment manifest,
+attempt record, runtime summary, method lock, global lock, or real-case V2
+execution has been created in this central worktree.
+
 ## 5. Confirmatory execution coverage
 
 Only operational state is recorded here. No prediction contents, labels, root
@@ -185,6 +197,11 @@ ranks, or metrics may be added before the global prediction lock.
 | mmBARO A2 | RE2-OB | 90/90 | 88 | 0 | 0 | 2 | 0 | valid centrally |
 | mmBARO A2 | RE2-TT | 90/90 | 89 | 1 | 0 | 0 | 0 | valid centrally |
 | CausalRCA | — | 0 | — | — | — | — | — | deferred |
+
+V2 rescue coverage is not started in this central worktree: CIRCA,
+MicroCause, MicroRank, TraceRCA, and mmBARO each have `0/180` V2 terminal
+records, no V2 environment manifest, no V2 runtime summary, and no V2 method
+lock. The five task containers are the next authorized execution boundary.
 
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
 both 90-case denominators valid, environment unchanged.
@@ -274,15 +291,37 @@ their frozen environment manifests, retained A1 evidence, complete A2
 records, runtime summaries where required, and method locks. CIRCA and
 MicroCause locks retain `execution_worker_count=4` and the V1.3 amendment
 digest. The merge did not touch the user method's `src/rca` or
-`artifacts/p6_*` paths. The global prediction lock remains intentionally
-pending until the CausalRCA withdrawal disposition is committed.
+`artifacts/p6_*` paths. Those V1 method locks are historical evidence; the V2
+global prediction lock is a separate future artifact and remains pending until
+the five V2 attempts are complete and integrity-valid.
 
-## 7. Remaining parallel plan
+## 7. Historical V1 plan and current V2 replacement
 
 MicroCause, MicroRank, TraceRCA, and mmBARO were independent worker tracks.
 CIRCA recovery was a fifth independent legacy track. All five tracks are now
-integrated and centrally verified; the global prediction lock remains the next
-barrier.
+integrated and centrally verified for V1. The P0–P8 entries below are retained
+as historical V1 handoff evidence and are not instructions to resume A1/A2 or
+to create a V1 lock.
+
+### Current V2 execution plan
+
+- V2.1 protocol and adapter amendment are frozen; digest is
+  `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de`.
+- V2 code is ready at `f60252c`; the runbook is
+  `docs/baseline_eval/RCA_BASELINE_RESCUE_RUNBOOK_V2.md`.
+- The five task containers must first freeze their method environment, run
+  the opaque 1/10/20-worker determinism preflight, and stop on any digest or
+  status mismatch.
+- Each container then chooses one of 10 or 20 requested workers for its
+  method's no-timeout OB+TT attempt. External interruption uses
+  `--resume --resume-policy missing-only` with the same worker configuration.
+- After each attempt reaches 180 terminal records, commit and verify its
+  method lock. Any DATA/ADAPTER/ENVIRONMENT/INPUT_INTEGRITY or PROCESS_CRASH/OOM
+  status blocks the global lock; METHOD_FAILURE remains a legal zero-utility
+  robustness observation.
+- Only after all five `INTEGRITY_VALID` method locks are centrally integrated
+  may the coordinator create and commit `execution_v2/prediction_lock_v2.json`.
+  Only then may `evaluate-v2` join labels and write Tables A–D/bootstrap.
 
 ### P0 — Resolve repository transition readiness
 
@@ -436,8 +475,14 @@ before the canonical window. The diagnostic artifacts are
 15-case KeyError sets for MicroRank/TraceRCA and retains native trace/SLO
 semantics.
 
-No V2 real-case execution has started. The immediate next action is to finish
-the V2 no-timeout scheduler, resume and resource-monitoring contract,
-integrity-aware evaluator, method diagnostics, tests, and task-container
-runbook. The required end state remains
-`V2_RESCUE_CODE_READY — FIVE TASK-CONTAINER EXECUTIONS PENDING`.
+No V2 real-case execution has started, by design. The final code-ready HEAD
+before this handoff is `f60252cbba8290a43d5e29f7f5b9370b41a120fe`; the full
+suite passed `232` tests, the focused V2/evaluator suite passed `70`, and the
+performance-firewall and V2.1 protocol checks passed. V2 supports requested
+workers `1, 4, 10, 20`, caps actual workers by container CPU availability,
+sets one thread for the audited numeric libraries, uses `timeout_seconds=null`,
+and resumes only missing terminal records. The five method environments,
+attempts, runtime summaries, method locks, global lock, and evaluation outputs
+remain pending. The exact next action is the five A preflights and then one
+chosen 10- or 20-core full run per method in the V2 runbook. The required end
+state remains `V2_RESCUE_CODE_READY — FIVE TASK-CONTAINER EXECUTIONS PENDING`.
