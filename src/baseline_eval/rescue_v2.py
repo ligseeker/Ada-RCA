@@ -322,7 +322,9 @@ def freeze_v2_environment(root: Path, method: str, python: Path) -> Path:
     if path.exists():
         raise PreflightError(f"V2 environment freeze already exists for {method}")
     python = _python_path(python)
-    identity, synthetic, schema = _environment_preflight_details(root, method, python)
+    identity, synthetic, schema = _environment_preflight_details(
+        root, method, python, reuse_historical_manifest=False
+    )
     stable = {
         "schema_version": V2_ENVIRONMENT_SCHEMA,
         "protocol_version": V2_PROTOCOL_VERSION,
@@ -398,7 +400,9 @@ def protocol_preflight_v2(root: Path, method: str, python: Path) -> dict[str, An
     python = _python_path(python)
     # This performs only synthetic native calls and schema validation.  It is
     # intentionally not a real-case authorization or prediction lock.
-    identity, synthetic, schema = _environment_preflight_details(root, method, python)
+    identity, synthetic, schema = _environment_preflight_details(
+        root, method, python, reuse_historical_manifest=False
+    )
     return {
         "schema_version": "rca_baseline_rescue_protocol_preflight_v2",
         "method": method,
@@ -1816,6 +1820,7 @@ def run_determinism_preflight(
         "input_manifest_digest": v2_source_manifest_digest(root),
         "candidate_registry_digests": _v2_candidate_digests(root),
         "execution_commit": git(root, "rev-parse", "HEAD").stdout.strip(),
+        "native_module_digest": _v2_native_module_digest(method),
     }
     cases = deterministic_case_subset(root, cases_per_dataset)
     env = resolve_frozen_worker_environment(root, environment)

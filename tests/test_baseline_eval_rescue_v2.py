@@ -10,6 +10,8 @@ import tempfile
 import unittest
 from unittest import mock
 
+import src.baseline_eval.confirmatory as confirmatory_module
+
 from src.baseline_eval import (
     CANONICAL_SEED,
 )
@@ -48,6 +50,7 @@ from src.baseline_eval.rescue_v2 import (
     microcause_native_execution_parameters,
     parse_dataset_scope,
     pending_v2_cases,
+    run_determinism_preflight,
     v2_record_relative,
     V2EvaluationBlocked,
 )
@@ -181,6 +184,96 @@ class RescueV2ProtocolTest(unittest.TestCase):
         )[0]
         with mock.patch("src.baseline_eval.rescue_v2.expected_case_ids", side_effect=lambda _root, dataset: (expected if dataset == "re2ob" else "re2tt-0000000000000000",)):
             self.assertEqual(deterministic_case_subset(ROOT, 1)[0], ("re2ob", expected))
+
+    def test_16_determinism_attempt_carries_native_module_digest(self):
+        cases = (("re2ob", "re2ob-opaque"),)
+        environment = {
+            "environment_digest": "e" * 64,
+            "identity": {"python_executable": "/usr/bin/python3"},
+        }
+        observed_attempts = []
+
+        def capture_group(**kwargs):
+            observed_attempts.append(kwargs["attempt"])
+            return {
+                cases[0]: {
+                    "status": "SUCCESS",
+                    "native_output_digest": "n" * 64,
+                    "adapted_output_digest": "a" * 64,
+                }
+            }
+
+        with mock.patch("src.baseline_eval.rescue_v2.global_preflight"), mock.patch(
+            "src.baseline_eval.rescue_v2.verify_v2_protocol"
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2.verify_v2_environment", return_value=environment
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2.v2_source_manifest_digest", return_value="i" * 64
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2._v2_candidate_digests",
+            return_value={"re2ob": "c" * 64, "re2tt": "d" * 64},
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2.git",
+            return_value=type("Completed", (), {"stdout": "x" * 40})(),
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2.deterministic_case_subset", return_value=cases
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2.resolve_frozen_worker_environment", return_value={}
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2.available_cpu_count", return_value=10
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2._v2_native_module_digest", return_value="n" * 64
+        ), mock.patch(
+            "src.baseline_eval.rescue_v2._run_determinism_group", side_effect=capture_group
+        ):
+            result = run_determinism_preflight(
+                ROOT,
+                "CIRCA",
+                python=Path("/usr/bin/python3"),
+                cases_per_dataset=1,
+                requested_workers=(1,),
+            )
+
+        self.assertEqual(result["requested_workers"], [1])
+        self.assertEqual(len(observed_attempts), 1)
+        self.assertEqual(observed_attempts[0]["native_module_digest"], "n" * 64)
+
+    def test_17_v2_preflight_does_not_reuse_historical_v1_environment(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "artifacts/baseline_eval/execution_v1/environments/microcause.json"
+            path.parent.mkdir(parents=True)
+            path.write_text(
+                '{"identity": {"python_executable": "/env/bin/python"}}',
+                encoding="utf-8",
+            )
+            identity = {
+                "python_executable": "/env/bin/python",
+                "runtime_python_executable": "/base/bin/python",
+                "dependency_manifest_digest": "d" * 64,
+            }
+            synthetic = {
+                "status": "PASS",
+                "fingerprint": "f" * 64,
+                "module_paths_within_clean_checkout": True,
+            }
+            with mock.patch.object(
+                confirmatory_module, "collect_environment_identity", return_value=identity
+            ), mock.patch.object(
+                confirmatory_module, "resolve_frozen_worker_environment"
+            ) as resolve, mock.patch.object(
+                confirmatory_module, "_run_synthetic_preflight", return_value=synthetic
+            ), mock.patch.object(
+                confirmatory_module, "schema_preflight", return_value={"status": "PASS"}
+            ):
+                confirmatory_module._environment_preflight_details(
+                    root,
+                    "MicroCause",
+                    Path("/env/bin/python"),
+                    reuse_historical_manifest=False,
+                )
+
+            resolve.assert_not_called()
 
 
 class RescueV2FailureAndMetricTest(unittest.TestCase):
