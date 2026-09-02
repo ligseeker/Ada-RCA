@@ -1,7 +1,7 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **V2.1 RESCUE CODE READY — PREFLIGHT RETRY PENDING**
-State revision: `2026-09-03.9`
+State revision: `2026-09-03.10`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
 Last synchronized central commit: `de70370`
@@ -319,6 +319,10 @@ to create a V1 lock.
   rerun after the metadata repair. MicroCause's V2 task worktree is at
   `318310d`; it has no V2 environment manifest because its protocol preflight
   stopped before the environment freeze.
+- MicroRank, TraceRCA, and mmBARO V2 task worktrees are each at `9c0e486`,
+  which cherry-picks the same preflight repair. Their legacy
+  `execution/*-a1-*` worktrees remain historical and are not V2 execution
+  targets.
 - The five task containers must first freeze their method environment, run
   the opaque 1/10/20-worker determinism preflight, and stop on any digest or
   status mismatch.
