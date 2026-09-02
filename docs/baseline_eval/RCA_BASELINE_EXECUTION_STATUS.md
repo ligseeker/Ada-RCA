@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **IN PROGRESS — CIRCA/MICROCAUSE A2 PREFLIGHTS REPAIRED; LAUNCH READY**
-State revision: `2026-09-01.4`
-Last operational audit: 2026-09-01 17:03, Asia/Shanghai
+Status: **INTEGRATED — FIVE BASELINE A2 LOCKS VERIFIED; GLOBAL LOCK PENDING**
+State revision: `2026-09-02.1`
+Last operational audit: 2026-09-02 23:25, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `c1c7a96`
+Last synchronized central commit: `db78094`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -61,11 +61,11 @@ project worktrees under `~/.venvs/`.
 | Method | Environment/interpreter | Python | Key dependency | Current state |
 |---|---|---|---|---|
 | BARO | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; execution complete |
-| CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | A1 retained; repaired A2 preflight passes; four-worker launch ready |
-| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | A1 retained; repaired A2 preflight passes; four-worker launch ready |
-| MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | frozen on task branch; A1 retained; repaired A2 ready |
-| TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | repaired A2 complete and method-locked on task branch |
-| mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | repaired A2 complete and method-locked on task branch |
+| CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | A1 retained; A2 complete; four-worker lock verified centrally |
+| MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | A1 retained; A2 complete; four-worker lock verified centrally |
+| MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | A1/A2 integrated; method lock verified centrally |
+| TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | A1/A2 integrated; method lock verified centrally |
+| mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | A1/A2 integrated; method lock verified centrally |
 | CausalRCA | no active confirmatory environment | — | saved GPU amendment only | explicitly deferred; do not freeze or run |
 
 Activation commands:
@@ -99,8 +99,9 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Later-baseline execution-integrity hardening | `c51d37a` | complete |
 | Later-baseline data/graph contract validation | `0d0efcf` | complete |
 | Raw-trace CSV parser repair and V1.2 amendment | `f072c2a` | complete; central and affected task branches integrated |
-| Four-way case scheduler, runtime summary, and V1.3 amendment | this revision | implementation complete; A1 stop and A2 launch pending |
+| Four-way case scheduler, runtime summary, and V1.3 amendment | this revision | implementation complete; all five A2 task commits integrated |
 | Frozen-environment/preflight stabilization | `c1c7a96` | complete; merged as `83e2df7` (CIRCA) and `60a346a` (MicroCause) |
+| Central integration of five method tracks | `d6ca33f` through `db78094` | complete; method-scoped artifacts merged and all five locks verified |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
 
 The read-only command below performs dependency identity collection, two
@@ -144,6 +145,15 @@ preflight completed in 12.1 seconds. CIRCA's exact two-run preflight completed
 in 9.0 seconds. Real case invocations retain the native 1,000-by-1,000
 MicroCause random walk.
 
+On 2026-09-02 the central coordinator cherry-picked only method-scoped
+environment, retained A1 evidence, and A2 record/runtime/lock commits. The
+central commits are CIRCA `d6ca33f`/`5a49b58`, MicroCause
+`9d2db42`/`60a0b87`, MicroRank `f634745`/`865cbdb`/`9ead45b`/`6136ba4`,
+TraceRCA `8ef492e`/`cbb4404`/`0c4d9a3`, and mmBARO
+`9719386`/`2b147cc`/`db78094`. No user-method source or `artifacts/p6_*`
+path was merged; baseline orchestration remains under `src/baseline_eval`,
+and baseline execution evidence remains under `artifacts/baseline_eval`.
+
 ## 5. Confirmatory execution coverage
 
 Only operational state is recorded here. No prediction contents, labels, root
@@ -155,32 +165,36 @@ ranks, or metrics may be added before the global prediction lock.
 | BARO | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
 | CIRCA A1 | RE2-OB | 90/90 | 86 | 4 | 0 | 0 | 0 | absent; retained |
 | CIRCA A1 | RE2-TT | 27/90 | 8 | 2 | 0 | 0 | 17 | absent; retained |
-| CIRCA A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
-| CIRCA A2 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
+| CIRCA A2 | RE2-OB | 90/90 | 85 | 3 | 0 | 2 | 0 | valid; 4 workers |
+| CIRCA A2 | RE2-TT | 90/90 | 7 | 10 | 0 | 0 | 73 | valid; 4 workers |
 | MicroCause A1 | RE2-OB | 90/90 | 87 | 1 | 0 | 2 | 0 | absent; retained |
 | MicroCause A1 | RE2-TT | 10/90 | 0 | 0 | 0 | 0 | 10 | absent; retained |
-| MicroCause A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
-| MicroCause A2 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; four-worker launch pending |
+| MicroCause A2 | RE2-OB | 90/90 | 87 | 1 | 0 | 2 | 0 | valid; 4 workers |
+| MicroCause A2 | RE2-TT | 90/90 | 0 | 7 | 0 | 0 | 83 | valid; 4 workers |
 | MicroRank A1 | RE2-OB | 59/90 | 59 | 0 | 0 | 0 | 0 | absent; retained |
 | MicroRank A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
-| MicroRank A2 | RE2-OB | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; ready |
-| MicroRank A2 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; ready |
+| MicroRank A2 | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid |
+| MicroRank A2 | RE2-TT | 90/90 | 75 | 15 | 0 | 0 | 0 | valid |
 | TraceRCA A1 | RE2-OB | 59/90 | 59 | 0 | 0 | 0 | 0 | absent; retain |
 | TraceRCA A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
-| TraceRCA A2 | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid on task branch |
-| TraceRCA A2 | RE2-TT | 90/90 | 75 | 15 | 0 | 0 | 0 | valid on task branch |
+| TraceRCA A2 | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid centrally |
+| TraceRCA A2 | RE2-TT | 90/90 | 75 | 15 | 0 | 0 | 0 | valid centrally |
 | mmBARO A1 | RE2-OB | 59/90 | 57 | 0 | 0 | 2 | 0 | absent; retain |
 | mmBARO A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
-| mmBARO A2 | RE2-OB | 90/90 | 87 | 1 | 0 | 2 | 0 | valid on task branch |
-| mmBARO A2 | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid on task branch |
+| mmBARO A2 | RE2-OB | 90/90 | 88 | 0 | 0 | 2 | 0 | valid centrally |
+| mmBARO A2 | RE2-TT | 90/90 | 89 | 1 | 0 | 0 | 0 | valid centrally |
 | CausalRCA | — | 0 | — | — | — | — | — | deferred |
 
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
 both 90-case denominators valid, environment unchanged.
 
 CIRCA A1 and MicroCause A1 are stopped and committed as immutable evidence in
-their assigned task worktrees. No A2 records or method locks exist, and no
-runner process was observed at the latest audit.
+their assigned task worktrees and are now also present centrally. The CIRCA
+and MicroCause A2 attempts were produced by the authorized four-worker case
+scheduler; their runtime summaries and method locks validate the full 180-case
+coverage. MicroRank, TraceRCA, and mmBARO A1/A2 artifacts are likewise
+integrated, and all five method locks pass `verify_method_lock` on the central
+worktree. No runner process was observed at the latest audit.
 
 ## 6. Current blockers and decisions required
 
@@ -249,14 +263,25 @@ MicroCause does not load the raw `traces` role; all 180 frozen
 `simple_metrics` CSVs loaded successfully with its isolated environment, so
 its active A1 is not restarted for V1.2.
 TraceRCA A2 commit `c7c8265` and mmBARO A2 commit `643cde4` each contain 180
-terminal records and a method lock that passes `verify_method_lock`; central
-integration remains pending.
+terminal records and a method lock that passes `verify_method_lock`; their
+method-scoped commits are now integrated centrally.
+
+### B6. Central method-result integration — resolved
+
+All five method tracks are present on `evaluation/rcaeval-baselines` with
+their frozen environment manifests, retained A1 evidence, complete A2
+records, runtime summaries where required, and method locks. CIRCA and
+MicroCause locks retain `execution_worker_count=4` and the V1.3 amendment
+digest. The merge did not touch the user method's `src/rca` or
+`artifacts/p6_*` paths. The global prediction lock remains intentionally
+pending until the CausalRCA withdrawal disposition is committed.
 
 ## 7. Remaining parallel plan
 
-MicroCause, MicroRank, TraceRCA, and mmBARO are independent worker tracks.
-CIRCA recovery is a fifth independent legacy track. Central integration and
-the global prediction lock remain a barrier after all tracks finish.
+MicroCause, MicroRank, TraceRCA, and mmBARO were independent worker tracks.
+CIRCA recovery was a fifth independent legacy track. All five tracks are now
+integrated and centrally verified; the global prediction lock remains the next
+barrier.
 
 ### P0 — Resolve repository transition readiness
 
@@ -285,8 +310,9 @@ the global prediction lock remain a barrier after all tracks finish.
 - Completed: A1 stopped and its 117 terminal records are committed without a
   method lock; V1.3 and `c1c7a96` are merged into the same worktree.
 - Completed: both preflights pass against the unchanged CIRCA environment.
-- Next: start `circa-a2-20260901 --workers 4` from case 1.
-- Commit all 180 records, the runtime summary, and method lock together.
+- Completed: central integration as `d6ca33f` (A1) and `5a49b58` (A2).
+- The A2 lock verifies 180 records, the runtime summary, and four-worker
+  provenance.
 
 ### P2 — Stop/archive MicroCause A1, then execute four-worker A2
 
@@ -294,31 +320,33 @@ the global prediction lock remain a barrier after all tracks finish.
   method lock; V1.3 and `c1c7a96` are merged into the same worktree.
 - Completed: both preflights pass against the unchanged MicroCause environment;
   the two-run synthetic fingerprint is unchanged.
-- Next: start `microcause-a2-20260901 --workers 4` from case 1.
-- Commit all 180 records, the runtime summary, and method lock together.
+- Completed: central integration as `9d2db42` (A1) and `60a0b87` (A2).
+- The A2 lock verifies 180 records, the runtime summary, and four-worker
+  provenance.
 
 ### P3 — Archive MicroRank A1, execute repaired A2, and lock
 
 - A1 is completely archived by `3c4c0d5` plus `8b1a15f`; never resume it.
 - V1.2 is integrated as `2a66e75`, the environment is unchanged, and both
   preflights pass.
-- Run preflight, then start `microrank-a2-20260901` from case 1 under the common
-  interpreter and fixed `PYTHONHASHSEED=20260830`.
-- Commit the complete A2 records and method lock.
+- Completed: central integration as `f634745` (environment), `865cbdb` and
+  `9ead45b` (A1), and `6136ba4` (A2); method lock verifies centrally.
 
 ### P4 — Archive TraceRCA A1, execute repaired A2, and lock
 
 - A1 remains immutable evidence and must not be resumed.
 - A2 is complete and method-locked in task commit `c7c8265`; preserve raw
   trace microseconds, span-end filtering, and `t0*1_000_000`.
-- Integrate the verified task commit centrally.
+- Completed: central integration as `8ef492e` (environment), `cbb4404` (A1),
+  and `0c4d9a3` (A2).
 
 ### P5 — Archive mmBARO A1, execute repaired A2, and lock
 
 - A1 remains immutable evidence and must not be resumed.
 - A2 is complete and method-locked in task commit `643cde4`; preserve the
   official `mm-ob` / `mm-tt` keys and frozen modality-specific preprocessing.
-- Integrate the verified task commit centrally.
+- Completed: central integration as `9719386` (environment), `2b147cc` (A1),
+  and `db78094` (A2).
 
 ### P6 — Record CausalRCA cancellation
 
@@ -330,8 +358,8 @@ the global prediction lock remain a barrier after all tracks finish.
 
 ### P7 — Global prediction lock
 
-- Integrate every worker's environment commit before its prediction commit;
-  worker-owned paths must remain disjoint.
+- Completed: every worker's environment and prediction commits are integrated;
+  worker-owned paths remain disjoint and all five method locks verify.
 - Require a committed, valid disposition for every method in the frozen order.
 - Verify all method locks and terminal record digests.
 - Create and commit `prediction_lock_v1.json`.
