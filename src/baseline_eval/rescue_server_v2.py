@@ -45,10 +45,12 @@ def _child(request: Mapping[str, Any]) -> None:
 def _process_failure_record(request: Mapping[str, Any], start_timestamp: str, elapsed: float) -> dict[str, Any]:
     method = str(request["method"])
     module_path = _native_module_path(method)
-    try:
-        module_digest: str | None = sha256_file(module_path)
-    except OSError:
-        module_digest = None
+    module_digest = request.get("native_module_digest")
+    if not isinstance(module_digest, str):
+        try:
+            module_digest = sha256_file(module_path)
+        except OSError:
+            module_digest = None
     payload: dict[str, Any] = {
         "schema_version": "rca_baseline_rescue_case_record_v2",
         "protocol_version": V2_PROTOCOL_VERSION,
@@ -69,7 +71,7 @@ def _process_failure_record(request: Mapping[str, Any], start_timestamp: str, el
         "environment_digest": request["environment_digest"],
         "input_manifest_digest": request["input_manifest_digest"],
         "candidate_registry_digest": request["candidate_registry_digest"],
-        "source_record_digests": [],
+        "source_record_digests": list(request.get("source_record_digests", [])),
         "method_source_digest": module_digest,
         "native_module_digest": module_digest,
         "seed_state": {

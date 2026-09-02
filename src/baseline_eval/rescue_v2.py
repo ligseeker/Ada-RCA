@@ -155,6 +155,14 @@ def _require_v2_method(method: str) -> None:
         raise SequenceError(f"method is outside the V2 rescue scope: {method}")
 
 
+def _require_v2_attempt(method: str, attempt_id: str) -> None:
+    if attempt_id != V2_ATTEMPT_IDS[method]:
+        raise SequenceError(
+            f"V2 {method} execution must use the frozen attempt ID "
+            f"{V2_ATTEMPT_IDS[method]}"
+        )
+
+
 def _require_dataset_scope(datasets: Sequence[str]) -> tuple[str, ...]:
     observed = tuple(datasets)
     if observed != DATASET_ORDER:
@@ -252,6 +260,36 @@ def v2_source_manifest_digest(root: Path) -> str:
     if observed != expected:
         raise PreflightError("V2 input manifest digest differs from the frozen manifest")
     return observed
+
+
+def _v2_source_record_digests(
+    root: Path, method: str, dataset: str, case_id: str
+) -> list[dict[str, Any]]:
+    """Return manifest-bound source identities for one opaque method case."""
+
+    _require_v2_method(method)
+    manifest = read_json(root / INPUT_MANIFEST_RELATIVE)
+    for case in manifest.get("cases", []):
+        if case.get("dataset") != dataset or case.get("case_id") != case_id:
+            continue
+        by_role = {
+            row.get("logical_source_role"): row
+            for row in case.get("sources", [])
+        }
+        try:
+            return [
+                {
+                    "logical_source_role": role,
+                    "byte_size": by_role[role]["byte_size"],
+                    "sha256": by_role[role]["sha256"],
+                }
+                for role in METHOD_INPUT_ROLES[method]
+            ]
+        except (KeyError, TypeError) as exc:
+            raise PreflightError(
+                f"V2 input manifest lacks a required source role for {method} {case_id}"
+            ) from exc
+    raise PreflightError(f"V2 input manifest lacks opaque case {dataset}/{case_id}")
 
 
 def _v2_candidate_digests(root: Path) -> dict[str, str]:
@@ -436,6 +474,10 @@ def validate_v2_record(
         raise PreflightError("V2 record native-module digest mismatch")
     if payload.get("native_module_digest") != payload.get("method_source_digest"):
         raise PreflightError("V2 record source digest fields disagree")
+    if payload.get("source_record_digests") != _v2_source_record_digests(
+        root, method, dataset, case_id
+    ):
+        raise PreflightError("V2 record source digest binding is invalid")
     if payload.get("seed_state", {}).get("canonical_seed") != CANONICAL_SEED:
         raise PreflightError("V2 record canonical seed mismatch")
     if payload.get("seed_state", {}).get("python_hash_seed") != CANONICAL_SEED:
@@ -484,6 +526,7 @@ def _attempt_payload(
     available: int,
     actual: int,
 ) -> dict[str, Any]:
+    _require_v2_attempt(method, attempt_id)
     execution_commit = git(root, "rev-parse", "HEAD").stdout.strip()
     stable = {
         "schema_version": V2_ATTEMPT_SCHEMA,
@@ -515,6 +558,7 @@ def _attempt_payload(
 
 def _verify_attempt_payload(root: Path, payload: Mapping[str, Any], method: str, attempt_id: str) -> None:
     _require_v2_method(method)
+    _require_v2_attempt(method, attempt_id)
     if payload.get("schema_version") != V2_ATTEMPT_SCHEMA or payload.get("method") != method:
         raise PreflightError("V2 attempt metadata schema/method mismatch")
     if payload.get("attempt_id") != attempt_id:
@@ -740,6 +784,10 @@ def _run_v2_shard(
                 "worker_id": f"{method.lower()}-worker-{worker_slot}",
                 "requested_worker_count": attempt["requested_worker_count"],
                 "available_cpu_count": attempt["available_cpu_count"],
+                "native_module_digest": attempt["native_module_digest"],
+                "source_record_digests": _v2_source_record_digests(
+                    root, method, dataset, case_id
+                ),
                 "output": str(path),
             }
             server.stdin.write(json.dumps(request, sort_keys=True) + "\n")
@@ -889,10 +937,12 @@ def _build_v2_method_lock(
         for dataset, case_id in _case_pairs(root)
     ]
     blocking = {
-        status: count
-        for dataset_counts in status_counts.values()
-        for status, count in dataset_counts.items()
-        if status in V2_BLOCKING_STATUSES and count
+        dataset: {
+            status: count
+            for status, count in dataset_counts.items()
+            if status in V2_BLOCKING_STATUSES and count
+        }
+        for dataset, dataset_counts in status_counts.items()
     }
     stable = {
         "schema_version": V2_METHOD_LOCK_SCHEMA,
@@ -1012,6 +1062,7 @@ def run_v2(
 
     _require_v2_method(method)
     require_attempt_id(attempt_id)
+    _require_v2_attempt(method, attempt_id)
     _require_dataset_scope(datasets)
     if not no_timeout:
         raise SequenceError("V2 real execution requires the explicit --no-timeout flag")
@@ -1058,9 +1109,7 @@ def run_v2(
             raise PreflightError("V2 resume environment digest differs from the attempt")
         if attempt["requested_worker_count"] != requested_workers or attempt["actual_worker_count"] != actual:
             raise SequenceError("V2 resume requires the original worker configuration")
-        existing = _load_v2_records(root, attempt)
-        if not existing:
-            raise SequenceError("V2 resume requested but no terminal records exist")
+        _load_v2_records(root, attempt)
     else:
         if attempt_path.exists():
             raise SequenceError("a fresh V2 attempt cannot reuse existing attempt metadata")
@@ -1145,6 +1194,7 @@ def verify_v2_method_lock(root: Path, method: str, *, require_committed: bool = 
         raise PreflightError(f"V2 method lock schema is invalid for {method}")
     if lock.get("method") != method:
         raise PreflightError(f"V2 method lock method identity is invalid for {method}")
+    _require_v2_attempt(method, str(lock.get("attempt_id")))
     stable = {key: value for key, value in lock.items() if key != "lock_digest"}
     if canonical_payload_digest(stable) != lock.get("lock_digest"):
         raise PreflightError(f"V2 method lock digest is invalid for {method}")
@@ -1194,6 +1244,16 @@ def verify_v2_method_lock(root: Path, method: str, *, require_committed: bool = 
     }
     if lock.get("status_counts") != observed_counts:
         raise PreflightError(f"V2 status counts are invalid for {method}")
+    observed_blocking = {
+        dataset: {
+            status: count
+            for status, count in dataset_counts.items()
+            if status in V2_BLOCKING_STATUSES and count
+        }
+        for dataset, dataset_counts in observed_counts.items()
+    }
+    if lock.get("blocking_status_counts") != observed_blocking:
+        raise PreflightError(f"V2 blocking status counts are invalid for {method}")
     if lock.get("record_counts") != {dataset: EXPECTED_CASES_PER_DATASET for dataset in DATASET_ORDER}:
         raise PreflightError(f"V2 record counts are invalid for {method}")
     if lock.get("timeout_seconds") is not None or lock.get("no_timeout") is not True:
@@ -1455,13 +1515,25 @@ def diagnose_mmbaro_input(
         for case in results
         for role in case["roles"]
     )
+    nonfinite_metric_time = any(
+        role["role"] == "simple_metrics"
+        and role["schema"].get("finite_numeric_columns", {}).get("time") is False
+        for case in results
+        for role in case["roles"]
+    )
+    if all_manifest_match and nonfinite_metric_time:
+        classification = "PROJECT_SIDE_VALIDATOR_ASYMMETRY_NONFINITE_METRIC_TIME"
+    elif all_manifest_match:
+        classification = "CURRENT_SOURCES_MATCH_FROZEN_MANIFEST"
+    else:
+        classification = "SOURCE_OR_MANIFEST_MISMATCH"
     return {
         "schema_version": "rca_baseline_rescue_mmbaro_input_diagnostic_v2",
         "protocol_digest": V2_PROTOCOL_DIGEST,
         "method": "mmBARO",
         "cases": results,
         "all_sources_match_frozen_manifest": all_manifest_match,
-        "classification": "CURRENT_SOURCES_MATCH_FROZEN_MANIFEST" if all_manifest_match else "REQUIRES_SOURCE_OR_ADAPTER_DIAGNOSIS",
+        "classification": classification,
         "source_recovery_action": "NONE_PERMITTED_WHILE_MATCHING" if all_manifest_match else "DO_NOT_REGENERATE_MANIFEST",
         "labels_joined": False,
     }
@@ -1619,10 +1691,12 @@ def _run_determinism_group(
     cases: Sequence[tuple[str, str]],
     python: Path,
     env: Mapping[str, str],
+    available: int | None = None,
 ) -> dict[tuple[str, str], dict[str, Any]]:
     """Run only opaque preflight cases in a scratch output directory."""
 
-    actual = min(requested_workers, available_cpu_count())
+    available = available_cpu_count() if available is None else max(1, int(available))
+    actual = min(requested_workers, available)
     # Keep idle slots in the preflight so workers=20 actually exercises the
     # requested scheduler configuration even when the opaque subset is small.
     shards = tuple(tuple(cases[index::actual]) for index in range(actual))
@@ -1658,7 +1732,11 @@ def _run_determinism_group(
                     "execution_worker_slot": slot,
                     "worker_id": f"determinism-{requested_workers}-{slot}",
                     "requested_worker_count": requested_workers,
-                    "available_cpu_count": available_cpu_count(),
+                    "available_cpu_count": available,
+                    "native_module_digest": attempt["native_module_digest"],
+                    "source_record_digests": _v2_source_record_digests(
+                        root, method, dataset, case_id
+                    ),
                     "output": str(output),
                 }
                 server.stdin.write(json.dumps(request, sort_keys=True) + "\n")
@@ -1741,6 +1819,7 @@ def run_determinism_preflight(
     }
     cases = deterministic_case_subset(root, cases_per_dataset)
     env = resolve_frozen_worker_environment(root, environment)
+    available = available_cpu_count()
     runs: dict[str, dict[tuple[str, str], dict[str, Any]]] = {}
     for requested in requested_workers:
         runs[str(requested)] = _run_determinism_group(
@@ -1751,6 +1830,7 @@ def run_determinism_preflight(
             cases=cases,
             python=python,
             env=env,
+            available=available,
         )
     baseline = runs[str(requested_workers[0])]
     comparisons = []
@@ -1775,7 +1855,7 @@ def run_determinism_preflight(
         "opaque_cases": [{"dataset": dataset, "case_id": case_id} for dataset, case_id in cases],
         "requested_workers": list(requested_workers),
         "actual_workers": {
-            str(requested): min(requested, available_cpu_count())
+            str(requested): min(requested, available)
             for requested in requested_workers
         },
         "runs": {
@@ -1923,6 +2003,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         })
         if lock["attempt_id"] != args.attempt_id:
             raise SequenceError("requested attempt ID does not match the method lock")
+        if lock["execution_validity"] != "INTEGRITY_VALID":
+            return 2
         return 0
     if args.command == "create-global-lock-v2":
         print(create_v2_global_prediction_lock(root))

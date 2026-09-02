@@ -1668,7 +1668,7 @@
       ]
     }
   ],
-  "classification": "CURRENT_SOURCES_MATCH_FROZEN_MANIFEST",
+  "classification": "PROJECT_SIDE_VALIDATOR_ASYMMETRY_NONFINITE_METRIC_TIME",
   "labels_joined": false,
   "method": "mmBARO",
   "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",

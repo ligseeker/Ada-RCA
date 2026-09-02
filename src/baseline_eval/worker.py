@@ -553,7 +553,10 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
     native_digest: str | None = None
     duplicate_items: list[str] = []
     unmapped_items: list[str] = []
-    source_provenance: list[dict[str, Any]] = []
+    source_provenance: list[dict[str, Any]] = [
+        dict(row)
+        for row in getattr(args, "source_record_digests", ())
+    ]
     candidates: tuple[str, ...] = ()
     captured = DigestSink()
     terminal_status_value = TerminalStatus.SUCCESS.value
@@ -641,6 +644,9 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
     if terminal_status_value != TerminalStatus.SUCCESS.value:
         native_ranking = []
         adapted_ranking = []
+        native_digest = None
+        duplicate_items = []
+        unmapped_items = []
     finish_timestamp = utc_now()
     elapsed_seconds = time.monotonic() - start
     cpu_end, peak_rss_bytes = _resource_snapshot()
