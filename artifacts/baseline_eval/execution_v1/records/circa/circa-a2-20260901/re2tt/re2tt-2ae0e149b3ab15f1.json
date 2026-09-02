@@ -1,0 +1,43 @@
+{
+  "ada_rca_commit": "54b403ff0441c318817818abeda13526652ae1d2",
+  "adapted_output_length": 0,
+  "adapted_ranking": [],
+  "attempt_id": "circa-a2-20260901",
+  "candidate_registry_digest": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+  "case_id": "re2tt-2ae0e149b3ab15f1",
+  "dataset": "re2tt",
+  "diagnostic_digest": null,
+  "duplicate_count": 0,
+  "duplicate_native_items": [],
+  "end_timestamp": "2026-09-01T19:54:03.069915+00:00",
+  "environment_digest": "54198b8ea981639b9ae4fd1a3da7d1a69e64a2f28f09e25876f4acfdbc31e3e1",
+  "error_type": "TIMEOUT",
+  "execution_commit": "3c8481b37b83913ba52bce4c2a8b25188f6d304a",
+  "execution_worker_count": 4,
+  "execution_worker_slot": 0,
+  "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+  "method": "CIRCA",
+  "missing_candidate_reasons": {
+    "EXECUTION_FAILURE": "ALL_LEGAL_CANDIDATES"
+  },
+  "native_output_digest": null,
+  "native_output_length": 0,
+  "native_output_type": "NONE",
+  "native_ranking": [],
+  "protocol_digest": "aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e",
+  "protocol_version": "RCA_BASELINE_PROTOCOL_FREEZE_V1",
+  "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+  "sanitized_error": "worker exceeded frozen 3600-second deadline",
+  "schema_version": "rca_baseline_case_record_v1",
+  "seed_state": {
+    "canonical_seed": 20260830,
+    "python_hash_seed": 20260830
+  },
+  "start_timestamp": "2026-09-01T18:54:02.755271+00:00",
+  "terminal_status": "TIMEOUT",
+  "timeout_seconds": 3600,
+  "unmapped_count": 0,
+  "unmapped_native_items": [],
+  "wall_time_seconds": 3600.3145825199317,
+  "window_semantics": "[t0-600s,t0+600s)"
+}
