@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2.1 RESCUE CODE READY — FIVE TASK-CONTAINER EXECUTIONS PENDING**
-State revision: `2026-09-03.7`
+Status: **V2.1 RESCUE CODE READY — PREFLIGHT RETRY PENDING**
+State revision: `2026-09-03.8`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `596f68b`
+Last synchronized central commit: `8ee08ed`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -108,6 +108,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 post-lock evaluator and failure semantics | `60b45b1` | complete; labels gated by committed V2 global lock |
 | V2 task-container runbook | `f60252c`; command-path sync `596f68b` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
 | V2 fault-level row regression test | `c226ff5` | complete; focused suite 70/70 |
+| V2 preflight metadata/environment-isolation repair | `8ee08ed` | complete; focused suite 72/72; task preflights pending |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -159,12 +160,14 @@ TraceRCA `8ef492e`/`cbb4404`/`0c4d9a3`, and mmBARO
 path was merged; baseline orchestration remains under `src/baseline_eval`,
 and baseline execution evidence remains under `artifacts/baseline_eval`.
 
-The V2.1 implementation is complete through central commit `c226ff5`. It adds
+The V2.1 implementation is complete through central commit `8ee08ed`. It adds
 the no-timeout case-process scheduler, fixed worker/thread controls, immutable
 resume semantics, non-killing heartbeat/resource fields, source-provenance
 binding, the failure-semantic repair, the post-lock evaluator, and the exact
-five-container runbook. The focused rescue/evaluator suite passed 70 tests and
-the full repository suite passed `232` tests. No V2 environment manifest,
+five-container runbook. The determinism preflight now carries the native module
+digest into its scratch attempt, and V2 environment preflight no longer reuses
+same-interpreter V1 manifests. The focused rescue/evaluator suite passed 72
+tests and the full repository suite passed `234` tests. No V2 environment manifest,
 attempt record, runtime summary, method lock, global lock, or real-case V2
 execution has been created in this central worktree.
 
@@ -308,8 +311,13 @@ to create a V1 lock.
 
 - V2.1 protocol and adapter amendment are frozen; digest is
   `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de`.
-- V2 code and tests are ready at `c226ff5`; the command-aligned runbook is
+- V2 code and tests are ready at `8ee08ed`; the command-aligned runbook is
   synchronized by `596f68b` at `docs/baseline_eval/RCA_BASELINE_RESCUE_RUNBOOK_V2.md`.
+- CIRCA's V2 task worktree is at `76830b2` and contains its committed V2
+  environment manifest from `066b7da`; its determinism preflight must be
+  rerun after the metadata repair. MicroCause's V2 task worktree is at
+  `318310d`; it has no V2 environment manifest because its protocol preflight
+  stopped before the environment freeze.
 - The five task containers must first freeze their method environment, run
   the opaque 1/10/20-worker determinism preflight, and stop on any digest or
   status mismatch.
@@ -477,13 +485,15 @@ before the canonical window. The diagnostic artifacts are
 semantics.
 
 No V2 real-case execution has started, by design. The final implementation/test
-HEAD before command-path documentation synchronization is `c226ff5`; the full
-suite passed `232` tests, the focused V2/evaluator suite passed `70`, and the
+HEAD is `8ee08ed`; the full suite passed `234` tests, the focused V2/evaluator
+suite passed `72`, and the
 performance-firewall and V2.1 protocol checks passed. V2 supports requested
 workers `1, 4, 10, 20`, caps actual workers by container CPU availability,
 sets one thread for the audited numeric libraries, uses `timeout_seconds=null`,
 and resumes only missing terminal records. The five method environments,
 attempts, runtime summaries, method locks, global lock, and evaluation outputs
-remain pending. The exact next action is the five A preflights and then one
-chosen 10- or 20-core full run per method in the V2 runbook. The required end
-state remains `V2_RESCUE_CODE_READY — FIVE TASK-CONTAINER EXECUTIONS PENDING`.
+remain pending. The exact next action is to rerun the CIRCA determinism
+preflight, complete MicroCause's protocol/environment freeze, then run the
+five A preflights and one chosen 10- or 20-core full run per method in the V2
+runbook. The required end state remains
+`V2.1 RESCUE CODE READY — PREFLIGHT RETRY PENDING`.
