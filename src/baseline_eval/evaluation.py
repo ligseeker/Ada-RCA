@@ -59,9 +59,25 @@ ADA_RCA_METRICS = {
 }
 
 
+class EvaluationBlocked(RuntimeError):
+    """Metric evaluation is not valid for the persisted execution evidence."""
+
+
 def failure_zero_top_k(status: str, ranking: Sequence[str], target: str) -> tuple[int, ...]:
-    if status != TerminalStatus.SUCCESS.value:
+    """Return legal utility for one case under the frozen failure policy.
+
+    A native method failure is a valid robustness observation and contributes
+    zero utility.  Input, adapter, environment, integrity, and process-level
+    failures invalidate the method-by-dataset denominator and must be repaired
+    or explicitly blocked before labels are joined.
+    """
+
+    if status == TerminalStatus.METHOD_FAILURE.value:
         return (0, 0, 0, 0, 0)
+    if status != TerminalStatus.SUCCESS.value:
+        raise EvaluationBlocked(
+            f"status {status} cannot enter formal performance evaluation"
+        )
     return tuple(int(target in ranking[:k]) for k in range(1, 6))
 
 

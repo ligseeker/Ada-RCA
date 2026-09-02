@@ -41,7 +41,7 @@ from src.baseline_eval.confirmatory import (
     validate_terminal_record,
     verify_rcaeval_clean,
 )
-from src.baseline_eval.evaluation import failure_zero_top_k
+from src.baseline_eval.evaluation import EvaluationBlocked, failure_zero_top_k
 from src.baseline_eval.worker import (
     DataInputError,
     _common_metric_adapter,
@@ -453,8 +453,13 @@ class ConfirmatoryFirewallTest(unittest.TestCase):
         self.assertEqual(result.services, ("a",))
 
     def test_12_failure_contributes_zero_top_k_utility(self):
-        for status in ("METHOD_FAILURE", "ADAPTER_FAILURE", "DATA_FAILURE", "TIMEOUT"):
-            self.assertEqual(failure_zero_top_k(status, ("target",), "target"), (0, 0, 0, 0, 0))
+        self.assertEqual(
+            failure_zero_top_k("METHOD_FAILURE", ("target",), "target"),
+            (0, 0, 0, 0, 0),
+        )
+        for status in ("ADAPTER_FAILURE", "DATA_FAILURE", "TIMEOUT"):
+            with self.subTest(status=status), self.assertRaises(EvaluationBlocked):
+                failure_zero_top_k(status, ("target",), "target")
 
     def test_13_success_top_k_is_nested_and_denominator_independent(self):
         self.assertEqual(
