@@ -21,6 +21,7 @@ from src.baseline_eval.confirmatory import (
 )
 from src.baseline_eval.evaluation_v2 import (
     _aggregate_hits,
+    _baseline_case_rows,
     _case_utility,
     _fault_rows,
     _bootstrap_delta,
@@ -205,6 +206,26 @@ class RescueV2FailureAndMetricTest(unittest.TestCase):
         loss = next(row for row in output if row["fault"] == "LOSS")
         self.assertEqual(cpu["Cases" if "Cases" in cpu else "cases"], 1)
         self.assertEqual(loss["AC@1"], "N/A")
+
+    def test_18b_baseline_case_rows_retain_all_fault_level_prefix_metrics(self):
+        case_ids = tuple(f"re2ob-{index:016x}" for index in range(90))
+        labels = {
+            case_id: {"root_service": "root", "fault_type": "cpu"}
+            for case_id in case_ids
+        }
+        with mock.patch(
+            "src.baseline_eval.evaluation_v2.expected_case_ids",
+            return_value=case_ids,
+        ), mock.patch(
+            "src.baseline_eval.evaluation_v2.read_json",
+            return_value={"terminal_status": "SUCCESS", "adapted_ranking": ["root"]},
+        ):
+            rows, metrics = _baseline_case_rows(
+                ROOT, "CIRCA", "circa-a3-rescue-v2", "re2ob", labels
+            )
+        self.assertEqual(rows[0]["AC@3"], 1)
+        self.assertEqual(rows[0]["AC@5"], 1)
+        self.assertEqual(metrics["AC@3"], 1.0)
 
     def test_19_fault_stratified_bootstrap_is_deterministic_and_seeded(self):
         ada = [{"case_id": f"c{i}", "fault_type": "cpu" if i < 2 else "mem", "AC@1": 1, "Avg@5": 1} for i in range(4)]
