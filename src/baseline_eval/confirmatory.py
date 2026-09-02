@@ -695,13 +695,23 @@ def _run_synthetic_preflight(
 
 
 def _environment_preflight_details(
-    root: Path, method: str, python: Path
+    root: Path,
+    method: str,
+    python: Path,
+    *,
+    reuse_historical_manifest: bool = True,
 ) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
-    """Resolve one environment with synthetic data only and without writing artifacts."""
+    """Resolve one environment with synthetic data only and without writing artifacts.
+
+    V1 preflight/freeze retains its historical manifest resolution.  V2 owns a
+    new environment manifest and must first characterize the active environment
+    directly; otherwise a same-path V1 manifest can reject a valid V2 freeze
+    before the V2 identity has been recorded.
+    """
 
     environment_path = root / environment_relative(method)
     worker_environment = fixed_worker_environment(root, user_site_enabled=False)
-    if environment_path.is_file():
+    if reuse_historical_manifest and environment_path.is_file():
         manifest = read_json(environment_path)
         if Path(manifest["identity"]["python_executable"]) == python:
             worker_environment = resolve_frozen_worker_environment(root, manifest)
