@@ -47,7 +47,7 @@ same worker count as the selected full run. Existing terminal records, including
 
 Attempt: `circa-a3-rescue-v2`
 Task branch: `eval/rescue-v2-circa`
-Interpreter: `/home/zhangll24/RCA_project/Ada-RCA-baselines/.venv/bin/python`
+Interpreter: `/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python`
 
 ### A. Environment / protocol / determinism preflight
 
@@ -57,7 +57,7 @@ test "$(git branch --show-current)" = "eval/rescue-v2-circa"
 test -z "$(git status --porcelain)"
 test "$(git -C /home/zhangll24/RCA_project/RCAEval-clean rev-parse HEAD)" = "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
 test -z "$(git -C /home/zhangll24/RCA_project/RCAEval-clean status --porcelain)"
-export RESCUE_PYTHON=/home/zhangll24/RCA_project/Ada-RCA-baselines/.venv/bin/python
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
 export CUDA_VISIBLE_DEVICES=""
@@ -78,7 +78,7 @@ git commit -m "env(CIRCA): freeze V2 rescue environment"
 
 ```bash
 cd <CIRCA_TASK_WORKTREE>
-export RESCUE_PYTHON=/home/zhangll24/RCA_project/Ada-RCA-baselines/.venv/bin/python
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
 export CUDA_VISIBLE_DEVICES=""
@@ -95,7 +95,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 
 ```bash
 cd <CIRCA_TASK_WORKTREE>
-export RESCUE_PYTHON=/home/zhangll24/RCA_project/Ada-RCA-baselines/.venv/bin/python
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
 export CUDA_VISIBLE_DEVICES=""
@@ -114,7 +114,7 @@ Use the command matching B or C; the worker count must not change.
 
 ```bash
 cd <CIRCA_TASK_WORKTREE>
-export RESCUE_PYTHON=/home/zhangll24/RCA_project/Ada-RCA-baselines/.venv/bin/python
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
 export CUDA_VISIBLE_DEVICES=""
