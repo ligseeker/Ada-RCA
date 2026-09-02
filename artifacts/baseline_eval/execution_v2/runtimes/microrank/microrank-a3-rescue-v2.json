@@ -1,0 +1,1843 @@
+{
+  "actual_worker_count": 10,
+  "attempt_finish_timestamp": "2026-09-02T21:10:37.600462+00:00",
+  "attempt_id": "microrank-a3-rescue-v2",
+  "attempt_start_timestamp": "2026-09-02T20:32:11.303798+00:00",
+  "attempt_wall_time_seconds": 2306.296661868226,
+  "available_cpu_count": 320,
+  "case_timings": [
+    {
+      "case_id": "re2ob-9e575f44de987a1a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 127.65100651187822,
+      "finish_timestamp": "2026-09-02T20:34:20.273735+00:00",
+      "pid": 463,
+      "start_timestamp": "2026-09-02T20:32:12.622656+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-505f802370635ec3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 59.99048994574696,
+      "finish_timestamp": "2026-09-02T20:33:12.612324+00:00",
+      "pid": 462,
+      "start_timestamp": "2026-09-02T20:32:12.621734+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-057fe49bd30d47c0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 139.39722881559283,
+      "finish_timestamp": "2026-09-02T20:34:32.027509+00:00",
+      "pid": 465,
+      "start_timestamp": "2026-09-02T20:32:12.630214+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-79fcefff48aef53b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 140.89970824914053,
+      "finish_timestamp": "2026-09-02T20:34:33.651223+00:00",
+      "pid": 469,
+      "start_timestamp": "2026-09-02T20:32:12.751430+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-4b9110d974bb1875",
+      "dataset": "re2ob",
+      "elapsed_seconds": 135.40639600902796,
+      "finish_timestamp": "2026-09-02T20:34:28.164042+00:00",
+      "pid": 471,
+      "start_timestamp": "2026-09-02T20:32:12.757608+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-428d5ecf570372b5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 129.17423378909007,
+      "finish_timestamp": "2026-09-02T20:34:21.801626+00:00",
+      "pid": 464,
+      "start_timestamp": "2026-09-02T20:32:12.627297+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-66c4b614046569c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 128.4747926099226,
+      "finish_timestamp": "2026-09-02T20:34:21.167600+00:00",
+      "pid": 467,
+      "start_timestamp": "2026-09-02T20:32:12.692751+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-7aec8ac514e0d064",
+      "dataset": "re2ob",
+      "elapsed_seconds": 130.56757861981168,
+      "finish_timestamp": "2026-09-02T20:34:23.321514+00:00",
+      "pid": 470,
+      "start_timestamp": "2026-09-02T20:32:12.753888+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-a6318b7e89546125",
+      "dataset": "re2ob",
+      "elapsed_seconds": 141.20601558825,
+      "finish_timestamp": "2026-09-02T20:34:33.902456+00:00",
+      "pid": 468,
+      "start_timestamp": "2026-09-02T20:32:12.696350+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-7f2201e9884e818e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 125.40947699407116,
+      "finish_timestamp": "2026-09-02T20:34:18.070788+00:00",
+      "pid": 466,
+      "start_timestamp": "2026-09-02T20:32:12.661258+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2ob-7c278a568194196b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 137.79999274993315,
+      "finish_timestamp": "2026-09-02T20:36:38.191303+00:00",
+      "pid": 485,
+      "start_timestamp": "2026-09-02T20:34:20.391278+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-72b5d278f8908a0a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 129.68401136714965,
+      "finish_timestamp": "2026-09-02T20:35:22.381891+00:00",
+      "pid": 482,
+      "start_timestamp": "2026-09-02T20:33:12.697801+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-b17ce68eb2ce01ee",
+      "dataset": "re2ob",
+      "elapsed_seconds": 140.19072397332639,
+      "finish_timestamp": "2026-09-02T20:36:52.340011+00:00",
+      "pid": 495,
+      "start_timestamp": "2026-09-02T20:34:32.149227+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-1d9a0d1641171551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 113.77235092408955,
+      "finish_timestamp": "2026-09-02T20:36:27.546861+00:00",
+      "pid": 496,
+      "start_timestamp": "2026-09-02T20:34:33.774459+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-abc29368674e8298",
+      "dataset": "re2ob",
+      "elapsed_seconds": 143.65239160088822,
+      "finish_timestamp": "2026-09-02T20:36:51.995541+00:00",
+      "pid": 491,
+      "start_timestamp": "2026-09-02T20:34:28.343086+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-1d19cc60d7a6adc1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 130.2510029510595,
+      "finish_timestamp": "2026-09-02T20:36:32.184353+00:00",
+      "pid": 487,
+      "start_timestamp": "2026-09-02T20:34:21.933280+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-71c7f9be34b19754",
+      "dataset": "re2ob",
+      "elapsed_seconds": 131.00727494526654,
+      "finish_timestamp": "2026-09-02T20:36:32.298641+00:00",
+      "pid": 486,
+      "start_timestamp": "2026-09-02T20:34:21.291318+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-557d49794f937ec6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 130.54233926115558,
+      "finish_timestamp": "2026-09-02T20:36:33.977792+00:00",
+      "pid": 488,
+      "start_timestamp": "2026-09-02T20:34:23.435383+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-cec5183e3f5418cf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 126.4420799780637,
+      "finish_timestamp": "2026-09-02T20:36:40.480882+00:00",
+      "pid": 497,
+      "start_timestamp": "2026-09-02T20:34:34.038719+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-da48e150772a24fd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 133.0830430937931,
+      "finish_timestamp": "2026-09-02T20:36:31.264606+00:00",
+      "pid": 484,
+      "start_timestamp": "2026-09-02T20:34:18.181509+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2ob-fd67c49516fa2028",
+      "dataset": "re2ob",
+      "elapsed_seconds": 132.36689814226702,
+      "finish_timestamp": "2026-09-02T20:38:50.698456+00:00",
+      "pid": 511,
+      "start_timestamp": "2026-09-02T20:36:38.331509+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-f874f110aae8efa9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 123.79119041422382,
+      "finish_timestamp": "2026-09-02T20:37:26.284871+00:00",
+      "pid": 502,
+      "start_timestamp": "2026-09-02T20:35:22.493632+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-40e1893e43abba5c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 124.82041338086128,
+      "finish_timestamp": "2026-09-02T20:38:57.297767+00:00",
+      "pid": 519,
+      "start_timestamp": "2026-09-02T20:36:52.477311+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-6aa36a4c6c99d55c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 125.50795836467296,
+      "finish_timestamp": "2026-09-02T20:38:33.182148+00:00",
+      "pid": 504,
+      "start_timestamp": "2026-09-02T20:36:27.674120+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-5a4d1a4785969ab2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 114.00694183493033,
+      "finish_timestamp": "2026-09-02T20:38:46.169036+00:00",
+      "pid": 518,
+      "start_timestamp": "2026-09-02T20:36:52.162023+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-eb8f50fda4f9095f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 131.77519774017856,
+      "finish_timestamp": "2026-09-02T20:38:44.081786+00:00",
+      "pid": 506,
+      "start_timestamp": "2026-09-02T20:36:32.306514+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-42e80cf6bcd9400f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 127.88139627501369,
+      "finish_timestamp": "2026-09-02T20:38:40.306640+00:00",
+      "pid": 507,
+      "start_timestamp": "2026-09-02T20:36:32.425206+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-a84cfdf477d8bf62",
+      "dataset": "re2ob",
+      "elapsed_seconds": 86.70360100921243,
+      "finish_timestamp": "2026-09-02T20:38:00.846547+00:00",
+      "pid": 508,
+      "start_timestamp": "2026-09-02T20:36:34.142864+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-3827c8c9ef1e8592",
+      "dataset": "re2ob",
+      "elapsed_seconds": 108.02715672785416,
+      "finish_timestamp": "2026-09-02T20:38:28.646176+00:00",
+      "pid": 515,
+      "start_timestamp": "2026-09-02T20:36:40.618957+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-acf69e21960f63d8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 107.64346472499892,
+      "finish_timestamp": "2026-09-02T20:38:19.025571+00:00",
+      "pid": 505,
+      "start_timestamp": "2026-09-02T20:36:31.382059+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2ob-0433b8cb47b1ec8e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 117.16785787511617,
+      "finish_timestamp": "2026-09-02T20:40:48.097887+00:00",
+      "pid": 536,
+      "start_timestamp": "2026-09-02T20:38:50.929977+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-5f261573c1b3bdc5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 118.64704384282231,
+      "finish_timestamp": "2026-09-02T20:39:25.056961+00:00",
+      "pid": 522,
+      "start_timestamp": "2026-09-02T20:37:26.409877+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-af1b6a7e1667e3f5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 119.42437047185376,
+      "finish_timestamp": "2026-09-02T20:40:56.847755+00:00",
+      "pid": 539,
+      "start_timestamp": "2026-09-02T20:38:57.423323+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-bd6f4fb8e84ccb69",
+      "dataset": "re2ob",
+      "elapsed_seconds": 131.290054874029,
+      "finish_timestamp": "2026-09-02T20:40:44.599525+00:00",
+      "pid": 529,
+      "start_timestamp": "2026-09-02T20:38:33.309397+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-3e7e71a1c83dbc41",
+      "dataset": "re2ob",
+      "elapsed_seconds": 131.22720594890416,
+      "finish_timestamp": "2026-09-02T20:40:57.520210+00:00",
+      "pid": 534,
+      "start_timestamp": "2026-09-02T20:38:46.292946+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-e357bd8aec246cdb",
+      "dataset": "re2ob",
+      "elapsed_seconds": 132.38163581117988,
+      "finish_timestamp": "2026-09-02T20:40:56.595843+00:00",
+      "pid": 533,
+      "start_timestamp": "2026-09-02T20:38:44.214158+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-097a5d7ac0492007",
+      "dataset": "re2ob",
+      "elapsed_seconds": 127.34188417717814,
+      "finish_timestamp": "2026-09-02T20:40:47.809184+00:00",
+      "pid": 532,
+      "start_timestamp": "2026-09-02T20:38:40.467250+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-57b75da971aabed5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 132.9987218948081,
+      "finish_timestamp": "2026-09-02T20:40:13.960865+00:00",
+      "pid": 524,
+      "start_timestamp": "2026-09-02T20:38:00.962081+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-e16e6de30ae75ccd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 133.70512515865266,
+      "finish_timestamp": "2026-09-02T20:40:42.460377+00:00",
+      "pid": 528,
+      "start_timestamp": "2026-09-02T20:38:28.755155+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-4677d4ce6ef327e0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 130.7600654521957,
+      "finish_timestamp": "2026-09-02T20:40:29.907133+00:00",
+      "pid": 526,
+      "start_timestamp": "2026-09-02T20:38:19.147012+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2ob-d7f2f8eb2f0ad646",
+      "dataset": "re2ob",
+      "elapsed_seconds": 134.43094138707966,
+      "finish_timestamp": "2026-09-02T20:43:02.649905+00:00",
+      "pid": 551,
+      "start_timestamp": "2026-09-02T20:40:48.218913+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-df7e831dddfac76c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 140.38458706066012,
+      "finish_timestamp": "2026-09-02T20:41:45.591951+00:00",
+      "pid": 542,
+      "start_timestamp": "2026-09-02T20:39:25.207311+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-1084f320d8584c61",
+      "dataset": "re2ob",
+      "elapsed_seconds": 121.92618224490434,
+      "finish_timestamp": "2026-09-02T20:42:58.901275+00:00",
+      "pid": 556,
+      "start_timestamp": "2026-09-02T20:40:56.975031+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-23213ee605c6b050",
+      "dataset": "re2ob",
+      "elapsed_seconds": 138.97309577884153,
+      "finish_timestamp": "2026-09-02T20:43:03.697983+00:00",
+      "pid": 549,
+      "start_timestamp": "2026-09-02T20:40:44.724782+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-48e5379f4903b1d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 128.79218903603032,
+      "finish_timestamp": "2026-09-02T20:43:06.532713+00:00",
+      "pid": 557,
+      "start_timestamp": "2026-09-02T20:40:57.740422+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-bb4a5b75716772f9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 126.2793490071781,
+      "finish_timestamp": "2026-09-02T20:43:04.217881+00:00",
+      "pid": 558,
+      "start_timestamp": "2026-09-02T20:40:57.938479+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-8f991393cb9debdf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 132.37117015896365,
+      "finish_timestamp": "2026-09-02T20:43:00.298290+00:00",
+      "pid": 550,
+      "start_timestamp": "2026-09-02T20:40:47.927058+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-7858d4d3815cf005",
+      "dataset": "re2ob",
+      "elapsed_seconds": 133.35445152875036,
+      "finish_timestamp": "2026-09-02T20:42:27.429610+00:00",
+      "pid": 544,
+      "start_timestamp": "2026-09-02T20:40:14.075094+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-97935dcb7cfd6e82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 134.97132516326383,
+      "finish_timestamp": "2026-09-02T20:42:57.597592+00:00",
+      "pid": 548,
+      "start_timestamp": "2026-09-02T20:40:42.626224+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-f209212fc63ac713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 129.07217150507495,
+      "finish_timestamp": "2026-09-02T20:42:39.098220+00:00",
+      "pid": 546,
+      "start_timestamp": "2026-09-02T20:40:30.025994+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2ob-93de1fab2ca56e86",
+      "dataset": "re2ob",
+      "elapsed_seconds": 134.10602223593742,
+      "finish_timestamp": "2026-09-02T20:45:16.877172+00:00",
+      "pid": 571,
+      "start_timestamp": "2026-09-02T20:43:02.771100+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-435f42d94b785472",
+      "dataset": "re2ob",
+      "elapsed_seconds": 139.87470729229972,
+      "finish_timestamp": "2026-09-02T20:44:05.628003+00:00",
+      "pid": 562,
+      "start_timestamp": "2026-09-02T20:41:45.753241+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-048f2e7d7bfbc927",
+      "dataset": "re2ob",
+      "elapsed_seconds": 138.5510987523012,
+      "finish_timestamp": "2026-09-02T20:45:17.572256+00:00",
+      "pid": 569,
+      "start_timestamp": "2026-09-02T20:42:59.021104+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-4af0de56834334d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 140.60807597031817,
+      "finish_timestamp": "2026-09-02T20:45:24.433205+00:00",
+      "pid": 572,
+      "start_timestamp": "2026-09-02T20:43:03.825078+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-d3f1403a4a08a3b1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 128.0047624851577,
+      "finish_timestamp": "2026-09-02T20:45:14.733961+00:00",
+      "pid": 576,
+      "start_timestamp": "2026-09-02T20:43:06.729126+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-7732042f2a190c79",
+      "dataset": "re2ob",
+      "elapsed_seconds": 128.50473289983347,
+      "finish_timestamp": "2026-09-02T20:45:12.851233+00:00",
+      "pid": 573,
+      "start_timestamp": "2026-09-02T20:43:04.346426+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-80bf4d093e6ab818",
+      "dataset": "re2ob",
+      "elapsed_seconds": 134.73330007307231,
+      "finish_timestamp": "2026-09-02T20:45:15.154399+00:00",
+      "pid": 570,
+      "start_timestamp": "2026-09-02T20:43:00.421057+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-08f3e5d7b11d1fa7",
+      "dataset": "re2ob",
+      "elapsed_seconds": 110.68367050914094,
+      "finish_timestamp": "2026-09-02T20:44:18.253620+00:00",
+      "pid": 564,
+      "start_timestamp": "2026-09-02T20:42:27.569887+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-b6db72fc58931786",
+      "dataset": "re2ob",
+      "elapsed_seconds": 117.58978378493339,
+      "finish_timestamp": "2026-09-02T20:44:55.316410+00:00",
+      "pid": 568,
+      "start_timestamp": "2026-09-02T20:42:57.726553+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-f30e2feeaa5218b8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 111.48491984372959,
+      "finish_timestamp": "2026-09-02T20:44:30.706122+00:00",
+      "pid": 566,
+      "start_timestamp": "2026-09-02T20:42:39.221142+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2ob-45687a171f241b04",
+      "dataset": "re2ob",
+      "elapsed_seconds": 123.21056234417483,
+      "finish_timestamp": "2026-09-02T20:47:20.213583+00:00",
+      "pid": 593,
+      "start_timestamp": "2026-09-02T20:45:17.002975+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-d0d93705e784491a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 133.4512625481002,
+      "finish_timestamp": "2026-09-02T20:46:19.225696+00:00",
+      "pid": 582,
+      "start_timestamp": "2026-09-02T20:44:05.774375+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-c2ac02db4e3370a9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 131.02556807920337,
+      "finish_timestamp": "2026-09-02T20:47:28.733382+00:00",
+      "pid": 594,
+      "start_timestamp": "2026-09-02T20:45:17.707766+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-1bb2e75872fd9037",
+      "dataset": "re2ob",
+      "elapsed_seconds": 74.00241466797888,
+      "finish_timestamp": "2026-09-02T20:46:38.584864+00:00",
+      "pid": 600,
+      "start_timestamp": "2026-09-02T20:45:24.582377+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-feeaaba6c71377df",
+      "dataset": "re2ob",
+      "elapsed_seconds": 77.42462785774842,
+      "finish_timestamp": "2026-09-02T20:46:32.269870+00:00",
+      "pid": 591,
+      "start_timestamp": "2026-09-02T20:45:14.845192+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-4f85dadf2507c3ca",
+      "dataset": "re2ob",
+      "elapsed_seconds": 96.62458312278613,
+      "finish_timestamp": "2026-09-02T20:46:49.590966+00:00",
+      "pid": 590,
+      "start_timestamp": "2026-09-02T20:45:12.966339+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-784d7eb25137c3c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 88.81767550203949,
+      "finish_timestamp": "2026-09-02T20:46:44.094758+00:00",
+      "pid": 592,
+      "start_timestamp": "2026-09-02T20:45:15.277038+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-58eb5ae1a41b77e4",
+      "dataset": "re2ob",
+      "elapsed_seconds": 89.73052967479452,
+      "finish_timestamp": "2026-09-02T20:45:48.103503+00:00",
+      "pid": 584,
+      "start_timestamp": "2026-09-02T20:44:18.372913+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-d0382ea6cedfbd82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 83.71234065387398,
+      "finish_timestamp": "2026-09-02T20:46:19.137715+00:00",
+      "pid": 588,
+      "start_timestamp": "2026-09-02T20:44:55.425324+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-f88fc943d724a354",
+      "dataset": "re2ob",
+      "elapsed_seconds": 122.80400954280049,
+      "finish_timestamp": "2026-09-02T20:46:33.623356+00:00",
+      "pid": 586,
+      "start_timestamp": "2026-09-02T20:44:30.819286+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2ob-b84066a37ca0c417",
+      "dataset": "re2ob",
+      "elapsed_seconds": 129.60458029434085,
+      "finish_timestamp": "2026-09-02T20:49:29.931819+00:00",
+      "pid": 618,
+      "start_timestamp": "2026-09-02T20:47:20.327192+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-b78a14faa7ea7263",
+      "dataset": "re2ob",
+      "elapsed_seconds": 137.5365421618335,
+      "finish_timestamp": "2026-09-02T20:48:36.887732+00:00",
+      "pid": 605,
+      "start_timestamp": "2026-09-02T20:46:19.351136+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-84724d7aa2b9dabd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 126.43304929789156,
+      "finish_timestamp": "2026-09-02T20:49:35.304614+00:00",
+      "pid": 620,
+      "start_timestamp": "2026-09-02T20:47:28.871504+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-fa8a8fae0fda7c42",
+      "dataset": "re2ob",
+      "elapsed_seconds": 135.04272420611233,
+      "finish_timestamp": "2026-09-02T20:48:53.727342+00:00",
+      "pid": 610,
+      "start_timestamp": "2026-09-02T20:46:38.684478+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-7b0a90583e047a88",
+      "dataset": "re2ob",
+      "elapsed_seconds": 139.9713428216055,
+      "finish_timestamp": "2026-09-02T20:48:52.337468+00:00",
+      "pid": 608,
+      "start_timestamp": "2026-09-02T20:46:32.366079+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-ca26cbb7c2cc0c87",
+      "dataset": "re2ob",
+      "elapsed_seconds": 132.03808567719534,
+      "finish_timestamp": "2026-09-02T20:49:01.744172+00:00",
+      "pid": 615,
+      "start_timestamp": "2026-09-02T20:46:49.706032+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-6521847c78ca06e9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 130.5504762418568,
+      "finish_timestamp": "2026-09-02T20:48:54.755877+00:00",
+      "pid": 613,
+      "start_timestamp": "2026-09-02T20:46:44.205352+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-7890056e7915d551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 123.0686610089615,
+      "finish_timestamp": "2026-09-02T20:47:51.363095+00:00",
+      "pid": 602,
+      "start_timestamp": "2026-09-02T20:45:48.294368+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-35bd9974d6b59069",
+      "dataset": "re2ob",
+      "elapsed_seconds": 127.51048474619165,
+      "finish_timestamp": "2026-09-02T20:48:26.743809+00:00",
+      "pid": 604,
+      "start_timestamp": "2026-09-02T20:46:19.233267+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-7a91adc6e16587c6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 132.14477963745594,
+      "finish_timestamp": "2026-09-02T20:48:45.888495+00:00",
+      "pid": 609,
+      "start_timestamp": "2026-09-02T20:46:33.743644+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2ob-f2b4cc2f87b35c03",
+      "dataset": "re2ob",
+      "elapsed_seconds": 135.71528511680663,
+      "finish_timestamp": "2026-09-02T20:51:45.769855+00:00",
+      "pid": 639,
+      "start_timestamp": "2026-09-02T20:49:30.054520+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2ob-c9c8f348d3f5974b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 92.37667173985392,
+      "finish_timestamp": "2026-09-02T20:50:09.392063+00:00",
+      "pid": 626,
+      "start_timestamp": "2026-09-02T20:48:37.015331+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2ob-df7b6eca09a6c41f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 116.3339604511857,
+      "finish_timestamp": "2026-09-02T20:51:31.756275+00:00",
+      "pid": 641,
+      "start_timestamp": "2026-09-02T20:49:35.422255+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2ob-34c4e276dad53220",
+      "dataset": "re2ob",
+      "elapsed_seconds": 113.13617115002126,
+      "finish_timestamp": "2026-09-02T20:50:46.995298+00:00",
+      "pid": 631,
+      "start_timestamp": "2026-09-02T20:48:53.859055+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2ob-3758cb8f0f1277f3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 127.28201153501868,
+      "finish_timestamp": "2026-09-02T20:50:59.751119+00:00",
+      "pid": 629,
+      "start_timestamp": "2026-09-02T20:48:52.469057+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2ob-ce3f410f61f739c2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 131.57053104089573,
+      "finish_timestamp": "2026-09-02T20:51:13.495525+00:00",
+      "pid": 636,
+      "start_timestamp": "2026-09-02T20:49:01.924939+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2ob-0c582795f6ae4798",
+      "dataset": "re2ob",
+      "elapsed_seconds": 129.51734967902303,
+      "finish_timestamp": "2026-09-02T20:51:04.396057+00:00",
+      "pid": 632,
+      "start_timestamp": "2026-09-02T20:48:54.878647+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2ob-e849d2be7be5c713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 87.30472623929381,
+      "finish_timestamp": "2026-09-02T20:49:18.794320+00:00",
+      "pid": 622,
+      "start_timestamp": "2026-09-02T20:47:51.489535+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2ob-58cff4fc86081830",
+      "dataset": "re2ob",
+      "elapsed_seconds": 137.99975339090452,
+      "finish_timestamp": "2026-09-02T20:50:44.866565+00:00",
+      "pid": 624,
+      "start_timestamp": "2026-09-02T20:48:26.866758+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2ob-ce93ebf8eb13a5ed",
+      "dataset": "re2ob",
+      "elapsed_seconds": 131.66144025605172,
+      "finish_timestamp": "2026-09-02T20:50:57.663744+00:00",
+      "pid": 628,
+      "start_timestamp": "2026-09-02T20:48:46.002253+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-e44ccb97e7cc1570",
+      "dataset": "re2tt",
+      "elapsed_seconds": 177.0101807960309,
+      "finish_timestamp": "2026-09-02T20:54:42.903813+00:00",
+      "pid": 662,
+      "start_timestamp": "2026-09-02T20:51:45.893582+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-a0c0a90c5448e7fa",
+      "dataset": "re2tt",
+      "elapsed_seconds": 131.3710183678195,
+      "finish_timestamp": "2026-09-02T20:52:20.870162+00:00",
+      "pid": 644,
+      "start_timestamp": "2026-09-02T20:50:09.499085+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-0b529d9f6ca88d4b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 147.36196549469605,
+      "finish_timestamp": "2026-09-02T20:53:59.244716+00:00",
+      "pid": 660,
+      "start_timestamp": "2026-09-02T20:51:31.882684+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-783d045c8102f972",
+      "dataset": "re2tt",
+      "elapsed_seconds": 183.8688397393562,
+      "finish_timestamp": "2026-09-02T20:53:51.087571+00:00",
+      "pid": 647,
+      "start_timestamp": "2026-09-02T20:50:47.218673+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-e76e500ff655313b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 109.53152197273448,
+      "finish_timestamp": "2026-09-02T20:52:49.410680+00:00",
+      "pid": 649,
+      "start_timestamp": "2026-09-02T20:50:59.879091+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-cc6c772d4116d054",
+      "dataset": "re2tt",
+      "elapsed_seconds": 115.63515733368695,
+      "finish_timestamp": "2026-09-02T20:53:09.249995+00:00",
+      "pid": 653,
+      "start_timestamp": "2026-09-02T20:51:13.614770+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-c1b234f6cc4acbee",
+      "dataset": "re2tt",
+      "elapsed_seconds": 16.356018603313714,
+      "finish_timestamp": "2026-09-02T20:51:20.890163+00:00",
+      "pid": 652,
+      "start_timestamp": "2026-09-02T20:51:04.534100+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-2782358136a64e6c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 103.62605493096635,
+      "finish_timestamp": "2026-09-02T20:51:02.607822+00:00",
+      "pid": 638,
+      "start_timestamp": "2026-09-02T20:49:18.981705+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-1d48b3aec1ec4470",
+      "dataset": "re2tt",
+      "elapsed_seconds": 117.53386477287859,
+      "finish_timestamp": "2026-09-02T20:52:42.559736+00:00",
+      "pid": 646,
+      "start_timestamp": "2026-09-02T20:50:45.025797+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-6a0d1ebf31fb52a6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 150.23069174634293,
+      "finish_timestamp": "2026-09-02T20:53:28.116902+00:00",
+      "pid": 648,
+      "start_timestamp": "2026-09-02T20:50:57.886144+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-14c6e1b70d0c21e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 122.66331201978028,
+      "finish_timestamp": "2026-09-02T20:56:45.826002+00:00",
+      "pid": 690,
+      "start_timestamp": "2026-09-02T20:54:43.162631+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-01d0096e9a504ced",
+      "dataset": "re2tt",
+      "elapsed_seconds": 108.41989756701514,
+      "finish_timestamp": "2026-09-02T20:54:09.486985+00:00",
+      "pid": 665,
+      "start_timestamp": "2026-09-02T20:52:21.067019+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-bbbcbf7787fa152c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 174.3840053267777,
+      "finish_timestamp": "2026-09-02T20:56:53.847655+00:00",
+      "pid": 682,
+      "start_timestamp": "2026-09-02T20:53:59.463575+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-ae09714023e727e1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 172.63284432468936,
+      "finish_timestamp": "2026-09-02T20:56:44.000185+00:00",
+      "pid": 679,
+      "start_timestamp": "2026-09-02T20:53:51.367248+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-653810995a9aa3db",
+      "dataset": "re2tt",
+      "elapsed_seconds": 98.33192460471764,
+      "finish_timestamp": "2026-09-02T20:54:27.903843+00:00",
+      "pid": 668,
+      "start_timestamp": "2026-09-02T20:52:49.571884+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-c82529d65e13adc0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 127.12846169481054,
+      "finish_timestamp": "2026-09-02T20:55:16.549770+00:00",
+      "pid": 671,
+      "start_timestamp": "2026-09-02T20:53:09.421256+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-aa71e41ec8e7922d",
+      "dataset": "re2tt",
+      "elapsed_seconds": 117.95009591523558,
+      "finish_timestamp": "2026-09-02T20:53:18.987493+00:00",
+      "pid": 657,
+      "start_timestamp": "2026-09-02T20:51:21.037354+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-cb1f1df38c99005a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 142.24541998375207,
+      "finish_timestamp": "2026-09-02T20:53:25.031897+00:00",
+      "pid": 651,
+      "start_timestamp": "2026-09-02T20:51:02.786390+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-fe28a6c0dbd7d892",
+      "dataset": "re2tt",
+      "elapsed_seconds": 99.6132492129691,
+      "finish_timestamp": "2026-09-02T20:54:22.354418+00:00",
+      "pid": 667,
+      "start_timestamp": "2026-09-02T20:52:42.741130+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-d4b1d66aaaa1a728",
+      "dataset": "re2tt",
+      "elapsed_seconds": 124.83034278685227,
+      "finish_timestamp": "2026-09-02T20:55:33.153191+00:00",
+      "pid": 676,
+      "start_timestamp": "2026-09-02T20:53:28.322784+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-5bb89b87741349d7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 141.68201953032985,
+      "finish_timestamp": "2026-09-02T20:59:07.697933+00:00",
+      "pid": 712,
+      "start_timestamp": "2026-09-02T20:56:46.015884+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-e4be9aa8e249ddf3",
+      "dataset": "re2tt",
+      "elapsed_seconds": 129.41923813987523,
+      "finish_timestamp": "2026-09-02T20:56:19.077434+00:00",
+      "pid": 683,
+      "start_timestamp": "2026-09-02T20:54:09.658131+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-426ec979883ae8dc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 22.14475083583966,
+      "finish_timestamp": "2026-09-02T20:57:16.228291+00:00",
+      "pid": 716,
+      "start_timestamp": "2026-09-02T20:56:54.083461+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-d0a74725c5d96362",
+      "dataset": "re2tt",
+      "elapsed_seconds": 22.532499074935913,
+      "finish_timestamp": "2026-09-02T20:57:06.746509+00:00",
+      "pid": 711,
+      "start_timestamp": "2026-09-02T20:56:44.213956+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-cdf514b035f34990",
+      "dataset": "re2tt",
+      "elapsed_seconds": 163.2814209861681,
+      "finish_timestamp": "2026-09-02T20:57:11.348314+00:00",
+      "pid": 688,
+      "start_timestamp": "2026-09-02T20:54:28.066834+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-7d84c0b80f7f0032",
+      "dataset": "re2tt",
+      "elapsed_seconds": 22.35097812395543,
+      "finish_timestamp": "2026-09-02T20:55:39.088477+00:00",
+      "pid": 696,
+      "start_timestamp": "2026-09-02T20:55:16.737422+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-995607e863fb7731",
+      "dataset": "re2tt",
+      "elapsed_seconds": 23.357072528917342,
+      "finish_timestamp": "2026-09-02T20:53:42.551536+00:00",
+      "pid": 672,
+      "start_timestamp": "2026-09-02T20:53:19.194404+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-afdac60e6b000d3c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 195.56981668900698,
+      "finish_timestamp": "2026-09-02T20:56:40.819849+00:00",
+      "pid": 674,
+      "start_timestamp": "2026-09-02T20:53:25.249965+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-ee2421859dfb0792",
+      "dataset": "re2tt",
+      "elapsed_seconds": 23.947436932008713,
+      "finish_timestamp": "2026-09-02T20:54:46.582597+00:00",
+      "pid": 685,
+      "start_timestamp": "2026-09-02T20:54:22.635094+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-44604ef8713a5943",
+      "dataset": "re2tt",
+      "elapsed_seconds": 22.61290824599564,
+      "finish_timestamp": "2026-09-02T20:55:55.971202+00:00",
+      "pid": 699,
+      "start_timestamp": "2026-09-02T20:55:33.358240+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-72822d018b0df53f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.30548103293404,
+      "finish_timestamp": "2026-09-02T20:59:21.230560+00:00",
+      "pid": 744,
+      "start_timestamp": "2026-09-02T20:59:07.924987+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-22292d58b67911fb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.189570871647447,
+      "finish_timestamp": "2026-09-02T20:56:32.452987+00:00",
+      "pid": 707,
+      "start_timestamp": "2026-09-02T20:56:19.263362+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-fc53b7fb52199fb7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 14.077882844954729,
+      "finish_timestamp": "2026-09-02T20:57:30.377602+00:00",
+      "pid": 724,
+      "start_timestamp": "2026-09-02T20:57:16.299661+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-5d2e4747cab0d818",
+      "dataset": "re2tt",
+      "elapsed_seconds": 181.08764774398878,
+      "finish_timestamp": "2026-09-02T21:00:07.918649+00:00",
+      "pid": 721,
+      "start_timestamp": "2026-09-02T20:57:06.830928+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-2ae0e149b3ab15f1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 21.763727949000895,
+      "finish_timestamp": "2026-09-02T20:57:33.343960+00:00",
+      "pid": 722,
+      "start_timestamp": "2026-09-02T20:57:11.580192+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-0f6b6213169d6acc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 150.85534585034475,
+      "finish_timestamp": "2026-09-02T20:58:10.008804+00:00",
+      "pid": 701,
+      "start_timestamp": "2026-09-02T20:55:39.153422+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-93fbbdf23f58f440",
+      "dataset": "re2tt",
+      "elapsed_seconds": 116.44543610420078,
+      "finish_timestamp": "2026-09-02T20:55:39.066269+00:00",
+      "pid": 677,
+      "start_timestamp": "2026-09-02T20:53:42.620783+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-714d157727edd2d0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 21.770770491100848,
+      "finish_timestamp": "2026-09-02T20:57:02.846128+00:00",
+      "pid": 709,
+      "start_timestamp": "2026-09-02T20:56:41.075293+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-472c8339fd3703e9",
+      "dataset": "re2tt",
+      "elapsed_seconds": 21.8289095191285,
+      "finish_timestamp": "2026-09-02T20:55:08.490322+00:00",
+      "pid": 691,
+      "start_timestamp": "2026-09-02T20:54:46.661362+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-606ef267348d40e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 117.98224724689499,
+      "finish_timestamp": "2026-09-02T20:57:54.025396+00:00",
+      "pid": 703,
+      "start_timestamp": "2026-09-02T20:55:56.043095+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-35e803c63786ac4e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 117.47023411374539,
+      "finish_timestamp": "2026-09-02T21:01:19.041382+00:00",
+      "pid": 747,
+      "start_timestamp": "2026-09-02T20:59:21.571104+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-a141811c79edaa0b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 132.452709893696,
+      "finish_timestamp": "2026-09-02T20:58:45.070131+00:00",
+      "pid": 708,
+      "start_timestamp": "2026-09-02T20:56:32.617360+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-b5173d4edf252af8",
+      "dataset": "re2tt",
+      "elapsed_seconds": 208.13773821108043,
+      "finish_timestamp": "2026-09-02T21:00:58.761583+00:00",
+      "pid": 727,
+      "start_timestamp": "2026-09-02T20:57:30.623785+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-fd20b1f93a6ff4c0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 66.09561668615788,
+      "finish_timestamp": "2026-09-02T21:01:14.254946+00:00",
+      "pid": 751,
+      "start_timestamp": "2026-09-02T21:00:08.159253+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-010695b192f8dbea",
+      "dataset": "re2tt",
+      "elapsed_seconds": 84.74989390932024,
+      "finish_timestamp": "2026-09-02T20:58:58.162674+00:00",
+      "pid": 729,
+      "start_timestamp": "2026-09-02T20:57:33.412677+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-94bd05feab03461e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 180.6305864066817,
+      "finish_timestamp": "2026-09-02T21:01:11.018166+00:00",
+      "pid": 736,
+      "start_timestamp": "2026-09-02T20:58:10.387500+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-575015aa80c376c6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 140.49225349305198,
+      "finish_timestamp": "2026-09-02T20:57:59.725472+00:00",
+      "pid": 702,
+      "start_timestamp": "2026-09-02T20:55:39.233172+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-727331fee88d4ce7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 100.4739392711781,
+      "finish_timestamp": "2026-09-02T20:58:43.443537+00:00",
+      "pid": 718,
+      "start_timestamp": "2026-09-02T20:57:02.969527+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-420fff915c5f5bc5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 102.73292591888458,
+      "finish_timestamp": "2026-09-02T20:56:51.360090+00:00",
+      "pid": 695,
+      "start_timestamp": "2026-09-02T20:55:08.627088+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-f5512e2434f96386",
+      "dataset": "re2tt",
+      "elapsed_seconds": 12.603059691842645,
+      "finish_timestamp": "2026-09-02T20:58:06.816866+00:00",
+      "pid": 732,
+      "start_timestamp": "2026-09-02T20:57:54.213751+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-a33887653c475d04",
+      "dataset": "re2tt",
+      "elapsed_seconds": 15.236812608782202,
+      "finish_timestamp": "2026-09-02T21:01:34.475952+00:00",
+      "pid": 765,
+      "start_timestamp": "2026-09-02T21:01:19.239063+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-5f50dc54f6cb9fce",
+      "dataset": "re2tt",
+      "elapsed_seconds": 232.0150067373179,
+      "finish_timestamp": "2026-09-02T21:02:37.304115+00:00",
+      "pid": 741,
+      "start_timestamp": "2026-09-02T20:58:45.289056+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-67172e499653d426",
+      "dataset": "re2tt",
+      "elapsed_seconds": 12.884558660909534,
+      "finish_timestamp": "2026-09-02T21:01:11.943485+00:00",
+      "pid": 760,
+      "start_timestamp": "2026-09-02T21:00:59.058871+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-d14727a3c74e9768",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17.297523777000606,
+      "finish_timestamp": "2026-09-02T21:01:31.665754+00:00",
+      "pid": 764,
+      "start_timestamp": "2026-09-02T21:01:14.368208+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-2a03e4ad1a1d6f85",
+      "dataset": "re2tt",
+      "elapsed_seconds": 159.03196378611028,
+      "finish_timestamp": "2026-09-02T21:01:37.334697+00:00",
+      "pid": 742,
+      "start_timestamp": "2026-09-02T20:58:58.302669+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-7d3fb265c1c0f9ed",
+      "dataset": "re2tt",
+      "elapsed_seconds": 124.81485836859792,
+      "finish_timestamp": "2026-09-02T21:03:16.161288+00:00",
+      "pid": 761,
+      "start_timestamp": "2026-09-02T21:01:11.346364+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-2defd6e102bdaf53",
+      "dataset": "re2tt",
+      "elapsed_seconds": 146.968776314985,
+      "finish_timestamp": "2026-09-02T21:00:26.989479+00:00",
+      "pid": 734,
+      "start_timestamp": "2026-09-02T20:58:00.020602+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-38941ca70beb687a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 148.98370642401278,
+      "finish_timestamp": "2026-09-02T21:01:12.585287+00:00",
+      "pid": 740,
+      "start_timestamp": "2026-09-02T20:58:43.601515+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-3bd96ed8cc02f613",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.861734593752772,
+      "finish_timestamp": "2026-09-02T20:57:05.392614+00:00",
+      "pid": 714,
+      "start_timestamp": "2026-09-02T20:56:51.530816+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-5a65eea398ba8435",
+      "dataset": "re2tt",
+      "elapsed_seconds": 121.02517224103212,
+      "finish_timestamp": "2026-09-02T21:00:07.990479+00:00",
+      "pid": 735,
+      "start_timestamp": "2026-09-02T20:58:06.965242+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-b2342b2478b249cb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 123.95557520212606,
+      "finish_timestamp": "2026-09-02T21:03:38.605355+00:00",
+      "pid": 770,
+      "start_timestamp": "2026-09-02T21:01:34.649728+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-c7f9112580bfde33",
+      "dataset": "re2tt",
+      "elapsed_seconds": 138.17346275039017,
+      "finish_timestamp": "2026-09-02T21:04:55.797204+00:00",
+      "pid": 777,
+      "start_timestamp": "2026-09-02T21:02:37.623685+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-fa81461ebec56b42",
+      "dataset": "re2tt",
+      "elapsed_seconds": 160.70593700092286,
+      "finish_timestamp": "2026-09-02T21:03:52.807405+00:00",
+      "pid": 762,
+      "start_timestamp": "2026-09-02T21:01:12.101421+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-877f6cbd0cb33e7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 164.4248133567162,
+      "finish_timestamp": "2026-09-02T21:04:16.256232+00:00",
+      "pid": 768,
+      "start_timestamp": "2026-09-02T21:01:31.831340+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-7cff180e5ff1cc71",
+      "dataset": "re2tt",
+      "elapsed_seconds": 153.37684823479503,
+      "finish_timestamp": "2026-09-02T21:04:10.940041+00:00",
+      "pid": 771,
+      "start_timestamp": "2026-09-02T21:01:37.563129+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-ffda523857bbf5c2",
+      "dataset": "re2tt",
+      "elapsed_seconds": 158.5747336228378,
+      "finish_timestamp": "2026-09-02T21:05:54.916109+00:00",
+      "pid": 781,
+      "start_timestamp": "2026-09-02T21:03:16.341316+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-2fc3d2fb9c492b7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 105.67594027798623,
+      "finish_timestamp": "2026-09-02T21:02:12.947158+00:00",
+      "pid": 756,
+      "start_timestamp": "2026-09-02T21:00:27.271163+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-04ce93a682b70df6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 102.47370747383684,
+      "finish_timestamp": "2026-09-02T21:02:55.267174+00:00",
+      "pid": 763,
+      "start_timestamp": "2026-09-02T21:01:12.793405+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-406c40ff0016fa9c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 14.798359439708292,
+      "finish_timestamp": "2026-09-02T20:57:20.412992+00:00",
+      "pid": 720,
+      "start_timestamp": "2026-09-02T20:57:05.614562+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-2ca7cff33586ca18",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4.614692316856235,
+      "finish_timestamp": "2026-09-02T21:00:12.792084+00:00",
+      "pid": 752,
+      "start_timestamp": "2026-09-02T21:00:08.177337+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-a7213c3da47edbd0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 23.262231591157615,
+      "finish_timestamp": "2026-09-02T21:04:02.055181+00:00",
+      "pid": 782,
+      "start_timestamp": "2026-09-02T21:03:38.792898+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-f1aa29dd3ba2343f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 14.101506575010717,
+      "finish_timestamp": "2026-09-02T21:05:10.116105+00:00",
+      "pid": 795,
+      "start_timestamp": "2026-09-02T21:04:56.014559+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-56db4956167f9980",
+      "dataset": "re2tt",
+      "elapsed_seconds": 14.494439033791423,
+      "finish_timestamp": "2026-09-02T21:04:07.657558+00:00",
+      "pid": 784,
+      "start_timestamp": "2026-09-02T21:03:53.163067+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-f09cbf3636ad02de",
+      "dataset": "re2tt",
+      "elapsed_seconds": 129.70707951392978,
+      "finish_timestamp": "2026-09-02T21:06:26.396472+00:00",
+      "pid": 789,
+      "start_timestamp": "2026-09-02T21:04:16.689337+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-e3f89de859062727",
+      "dataset": "re2tt",
+      "elapsed_seconds": 128.50951844779775,
+      "finish_timestamp": "2026-09-02T21:06:19.655502+00:00",
+      "pid": 788,
+      "start_timestamp": "2026-09-02T21:04:11.145934+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-1283c56ed7675282",
+      "dataset": "re2tt",
+      "elapsed_seconds": 147.57052722293884,
+      "finish_timestamp": "2026-09-02T21:08:22.796823+00:00",
+      "pid": 799,
+      "start_timestamp": "2026-09-02T21:05:55.226242+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-739ad24f1e2d7c29",
+      "dataset": "re2tt",
+      "elapsed_seconds": 133.32744447374716,
+      "finish_timestamp": "2026-09-02T21:04:26.438332+00:00",
+      "pid": 775,
+      "start_timestamp": "2026-09-02T21:02:13.110840+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-fb57d883cd727c81",
+      "dataset": "re2tt",
+      "elapsed_seconds": 145.53962734993547,
+      "finish_timestamp": "2026-09-02T21:05:20.977776+00:00",
+      "pid": 778,
+      "start_timestamp": "2026-09-02T21:02:55.438091+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-c8fbd9a7d1e92284",
+      "dataset": "re2tt",
+      "elapsed_seconds": 138.48602710710838,
+      "finish_timestamp": "2026-09-02T20:59:39.080766+00:00",
+      "pid": 726,
+      "start_timestamp": "2026-09-02T20:57:20.594673+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-d83931768111dc58",
+      "dataset": "re2tt",
+      "elapsed_seconds": 28.096862255129963,
+      "finish_timestamp": "2026-09-02T21:00:41.012096+00:00",
+      "pid": 753,
+      "start_timestamp": "2026-09-02T21:00:12.915178+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    },
+    {
+      "case_id": "re2tt-4780a4f90c190bf4",
+      "dataset": "re2tt",
+      "elapsed_seconds": 27.981759536080062,
+      "finish_timestamp": "2026-09-02T21:04:30.261087+00:00",
+      "pid": 785,
+      "start_timestamp": "2026-09-02T21:04:02.279281+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-0"
+    },
+    {
+      "case_id": "re2tt-20258ce8dbcd2300",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18.10565152997151,
+      "finish_timestamp": "2026-09-02T21:05:28.389182+00:00",
+      "pid": 796,
+      "start_timestamp": "2026-09-02T21:05:10.283447+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microrank-worker-1"
+    },
+    {
+      "case_id": "re2tt-cb3381bf9ed05034",
+      "dataset": "re2tt",
+      "elapsed_seconds": 188.25693270005286,
+      "finish_timestamp": "2026-09-02T21:07:16.082281+00:00",
+      "pid": 787,
+      "start_timestamp": "2026-09-02T21:04:07.825302+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-2"
+    },
+    {
+      "case_id": "re2tt-e9071bdee1904785",
+      "dataset": "re2tt",
+      "elapsed_seconds": 157.33097564987838,
+      "finish_timestamp": "2026-09-02T21:09:03.982095+00:00",
+      "pid": 802,
+      "start_timestamp": "2026-09-02T21:06:26.651056+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-3"
+    },
+    {
+      "case_id": "re2tt-722f5f89a57be699",
+      "dataset": "re2tt",
+      "elapsed_seconds": 127.48640956822783,
+      "finish_timestamp": "2026-09-02T21:08:27.340139+00:00",
+      "pid": 801,
+      "start_timestamp": "2026-09-02T21:06:19.853678+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-4"
+    },
+    {
+      "case_id": "re2tt-bc9cd2d131533d16",
+      "dataset": "re2tt",
+      "elapsed_seconds": 134.25239913119003,
+      "finish_timestamp": "2026-09-02T21:10:37.255913+00:00",
+      "pid": 805,
+      "start_timestamp": "2026-09-02T21:08:23.003454+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-5"
+    },
+    {
+      "case_id": "re2tt-f578fe138f6d4c7a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 95.05325859319419,
+      "finish_timestamp": "2026-09-02T21:06:01.707052+00:00",
+      "pid": 790,
+      "start_timestamp": "2026-09-02T21:04:26.653745+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-6"
+    },
+    {
+      "case_id": "re2tt-bed634aec03e773f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 26.404078089166433,
+      "finish_timestamp": "2026-09-02T21:05:47.592731+00:00",
+      "pid": 797,
+      "start_timestamp": "2026-09-02T21:05:21.188512+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-7"
+    },
+    {
+      "case_id": "re2tt-3fffa88dd3653f99",
+      "dataset": "re2tt",
+      "elapsed_seconds": 106.29803207423538,
+      "finish_timestamp": "2026-09-02T21:01:25.586726+00:00",
+      "pid": 749,
+      "start_timestamp": "2026-09-02T20:59:39.288638+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-8"
+    },
+    {
+      "case_id": "re2tt-3e24ca7f9747c84e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 125.12825192604214,
+      "finish_timestamp": "2026-09-02T21:02:46.234632+00:00",
+      "pid": 758,
+      "start_timestamp": "2026-09-02T21:00:41.106321+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microrank-worker-9"
+    }
+  ],
+  "execution_commit": "9039734dc3fb07121ca673d2a04aa31c24057f8f",
+  "labels_joined": false,
+  "method": "MicroRank",
+  "no_timeout": true,
+  "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "requested_worker_count": 10,
+  "runtime_digest": "3f3cdaef999fe0edb1ca78e7015d182f84869159a3e08245f9c330773ac96e19",
+  "schema_version": "rca_baseline_rescue_runtime_v2",
+  "status_counts": {
+    "re2ob": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 0,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 90,
+      "TIMEOUT": 0
+    },
+    "re2tt": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 15,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 75,
+      "TIMEOUT": 0
+    }
+  },
+  "terminal_case_count": 180,
+  "timeout_seconds": null
+}
