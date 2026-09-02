@@ -1,0 +1,101 @@
+{
+  "ada_rca_commit": "54b403ff0441c318817818abeda13526652ae1d2",
+  "adapted_output_digest": "a57dd1f640b507ea1f5d5588ff2484c646877dc33350d345d49b263f6d00ad4d",
+  "adapted_output_length": 4,
+  "adapted_ranking": [
+    "currencyservice",
+    "frontend",
+    "productcatalogservice",
+    "recommendationservice"
+  ],
+  "attempt_id": "microrank-a3-rescue-v2",
+  "available_cpu_count": 320,
+  "candidate_registry_digest": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+  "case_id": "re2ob-d0382ea6cedfbd82",
+  "cpu_time_seconds": 83.540344,
+  "dataset": "re2ob",
+  "diagnostic_digest": null,
+  "duplicate_count": 7,
+  "duplicate_native_items": [
+    "currencyservice_GetSupportedCurrencies",
+    "frontendservice_GetProduct",
+    "frontendservice_GetSupportedCurrencies",
+    "productcatalogservice_ListProducts",
+    "frontendservice_Convert",
+    "frontendservice_GetCart",
+    "recommendationservice_ListRecommendations"
+  ],
+  "elapsed_seconds": 83.71234065387398,
+  "end_timestamp": "2026-09-02T20:46:19.137715+00:00",
+  "environment_digest": "312f57a69937beaf0d0094f0408e1a0296d0e773d6bceab001a79ab9e945755d",
+  "error_type": null,
+  "execution_commit": "9039734dc3fb07121ca673d2a04aa31c24057f8f",
+  "execution_worker_count": 10,
+  "execution_worker_slot": 8,
+  "finish_timestamp": "2026-09-02T20:46:19.137715+00:00",
+  "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+  "method": "MicroRank",
+  "method_source_digest": "717be27e7fbe631c9606b8f917c0fb58484c49d37af5fdcd87bdc054660021f8",
+  "missing_candidate_reasons": {
+    "adservice": "NO_OBSERVED_TELEMETRY",
+    "cartservice": "NO_OBSERVED_TELEMETRY",
+    "checkoutservice": "NATIVE_TOP_K_TRUNCATION",
+    "emailservice": "NATIVE_TOP_K_TRUNCATION",
+    "paymentservice": "NATIVE_TOP_K_TRUNCATION",
+    "redis": "NO_OBSERVED_TELEMETRY",
+    "shippingservice": "NO_OBSERVED_TELEMETRY"
+  },
+  "native_console_character_count": 10446,
+  "native_console_digest": "9a26ce2aa3265de571f7019b5c511ab5686896919cc8a1d2e7b4473992dc3f91",
+  "native_module_digest": "717be27e7fbe631c9606b8f917c0fb58484c49d37af5fdcd87bdc054660021f8",
+  "native_output_digest": "99830715c179c5e1deb93dd0dc1808d54cc79c52d01a19f772cb16979c4e5703",
+  "native_output_length": 11,
+  "native_output_type": "OPERATION_RANKING_CAPPED_AT_11",
+  "native_ranking": [
+    "currencyservice_Convert",
+    "frontendservice_frontend",
+    "currencyservice_GetSupportedCurrencies",
+    "frontendservice_GetProduct",
+    "frontendservice_GetSupportedCurrencies",
+    "productcatalogservice_GetProduct",
+    "productcatalogservice_ListProducts",
+    "frontendservice_Convert",
+    "frontendservice_GetCart",
+    "recommendationservice_ListProducts",
+    "recommendationservice_ListRecommendations"
+  ],
+  "peak_rss_bytes": 417173504,
+  "pid": 588,
+  "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+  "requested_worker_count": 10,
+  "sanitized_error": null,
+  "schema_version": "rca_baseline_rescue_case_record_v2",
+  "seed_state": {
+    "canonical_seed": 20260830,
+    "numpy_seed": 20260830,
+    "python_hash_seed": 20260830,
+    "torch_seed": null
+  },
+  "source_record_digests": [
+    {
+      "byte_size": 10,
+      "logical_source_role": "inject_time",
+      "sha256": "bdcf06ace5882acbf895da1eda2b64990f2a60360489963f8ded4528575d1e6a"
+    },
+    {
+      "byte_size": 50473904,
+      "logical_source_role": "traces",
+      "sha256": "0779716cea4ed2c5061517a28f252517975a7abafe2dbc2348ace06c6e148026"
+    }
+  ],
+  "start_timestamp": "2026-09-02T20:44:55.425324+00:00",
+  "terminal_status": "SUCCESS",
+  "timeout_seconds": null,
+  "unmapped_count": 0,
+  "unmapped_native_items": [],
+  "wall_time_seconds": 83.71234065387398,
+  "window_semantics": "[t0-600s,t0+600s)",
+  "worker_id": "microrank-worker-8"
+}
