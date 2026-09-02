@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **V2.1 RESCUE CODE READY — PREFLIGHT RETRY PENDING**
-State revision: `2026-09-03.8`
+State revision: `2026-09-03.9`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `8ee08ed`
+Last synchronized central commit: `de70370`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -109,6 +109,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 task-container runbook | `f60252c`; command-path sync `596f68b` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
 | V2 fault-level row regression test | `c226ff5` | complete; focused suite 70/70 |
 | V2 preflight metadata/environment-isolation repair | `8ee08ed` | complete; focused suite 72/72; task preflights pending |
+| V2 preflight caller regression test | `de70370` | complete; focused suite 73/73 |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -166,8 +167,8 @@ resume semantics, non-killing heartbeat/resource fields, source-provenance
 binding, the failure-semantic repair, the post-lock evaluator, and the exact
 five-container runbook. The determinism preflight now carries the native module
 digest into its scratch attempt, and V2 environment preflight no longer reuses
-same-interpreter V1 manifests. The focused rescue/evaluator suite passed 72
-tests and the full repository suite passed `234` tests. No V2 environment manifest,
+same-interpreter V1 manifests. The focused rescue/evaluator suite passed 73
+tests and the full repository suite passed `235` tests. No V2 environment manifest,
 attempt record, runtime summary, method lock, global lock, or real-case V2
 execution has been created in this central worktree.
 
@@ -485,8 +486,8 @@ before the canonical window. The diagnostic artifacts are
 semantics.
 
 No V2 real-case execution has started, by design. The final implementation/test
-HEAD is `8ee08ed`; the full suite passed `234` tests, the focused V2/evaluator
-suite passed `72`, and the
+HEAD is `de70370`; the full suite passed `235` tests, the focused V2/evaluator
+suite passed `73`, and the
 performance-firewall and V2.1 protocol checks passed. V2 supports requested
 workers `1, 4, 10, 20`, caps actual workers by container CPU availability,
 sets one thread for the audited numeric libraries, uses `timeout_seconds=null`,
