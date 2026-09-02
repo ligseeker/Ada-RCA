@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **V2.1 RESCUE CODE READY — FIVE TASK-CONTAINER EXECUTIONS PENDING**
-State revision: `2026-09-03.6`
+State revision: `2026-09-03.7`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `c226ff5`
+Last synchronized central commit: `596f68b`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -61,7 +61,7 @@ project worktrees under `~/.venvs/`.
 | Method | Environment/interpreter | Python | Key dependency | Current state |
 |---|---|---|---|---|
 | BARO | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; execution complete |
-| CIRCA | project `.venv/bin/python` | 3.10.20 | historical frozen stack | A1 retained; A2 complete; four-worker lock verified centrally |
+| CIRCA | project `.venv/bin/python` (historical A1/A2); V2 `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | historical frozen stack; V2 common stack | A1/A2 retained; V2 environment/attempt pending |
 | MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | A1 retained; A2 complete; four-worker lock verified centrally |
 | MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | A1/A2 integrated; method lock verified centrally |
 | TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | A1/A2 integrated; method lock verified centrally |
@@ -106,7 +106,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2.1 performance-blind rescue protocol and metric timestamp repair | `3a27d0e`; `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen; V2 code and task-container execution pending |
 | V2 no-timeout scheduler, provenance, resume, and process monitoring | `26b1864`, `6f1df1a` | complete; five task-container runs pending |
 | V2 post-lock evaluator and failure semantics | `60b45b1` | complete; labels gated by committed V2 global lock |
-| V2 task-container runbook | `f60252c` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
+| V2 task-container runbook | `f60252c`; command-path sync `596f68b` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
 | V2 fault-level row regression test | `c226ff5` | complete; focused suite 70/70 |
 
 The read-only command below performs dependency identity collection, two
@@ -308,8 +308,8 @@ to create a V1 lock.
 
 - V2.1 protocol and adapter amendment are frozen; digest is
   `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de`.
-- V2 code and tests are ready at `c226ff5`; the runbook is
-  `docs/baseline_eval/RCA_BASELINE_RESCUE_RUNBOOK_V2.md`.
+- V2 code and tests are ready at `c226ff5`; the command-aligned runbook is
+  synchronized by `596f68b` at `docs/baseline_eval/RCA_BASELINE_RESCUE_RUNBOOK_V2.md`.
 - The five task containers must first freeze their method environment, run
   the opaque 1/10/20-worker determinism preflight, and stop on any digest or
   status mismatch.
@@ -476,8 +476,8 @@ before the canonical window. The diagnostic artifacts are
 15-case KeyError sets for MicroRank/TraceRCA and retains native trace/SLO
 semantics.
 
-No V2 real-case execution has started, by design. The final code-ready HEAD
-before this handoff is `c226ff5`; the full
+No V2 real-case execution has started, by design. The final implementation/test
+HEAD before command-path documentation synchronization is `c226ff5`; the full
 suite passed `232` tests, the focused V2/evaluator suite passed `70`, and the
 performance-firewall and V2.1 protocol checks passed. V2 supports requested
 workers `1, 4, 10, 20`, caps actual workers by container CPU availability,
