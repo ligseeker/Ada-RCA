@@ -467,6 +467,7 @@ def assert_performance_firewall_tree(root: Path) -> None:
         "protocol_freeze_v1.json",
         "provenance_v1.json",
         "timestamp_audit_v1.json",
+        "rescue_protocol_v2.json",
     }
     observed = {
         str(path.relative_to(artifact_root))
@@ -474,7 +475,11 @@ def assert_performance_firewall_tree(root: Path) -> None:
         if path.is_file()
     }
     missing = sorted(allowed.difference(observed))
-    execution_files = sorted(path for path in observed if path.startswith("execution_v1/"))
+    execution_files = sorted(
+        path
+        for path in observed
+        if path.startswith(("execution_v1/", "execution_v2/"))
+    )
     unexpected = sorted(observed.difference(allowed).difference(execution_files))
     allowed_execution_patterns = (
         re.compile(r"execution_v1/input_manifest_v1\.json"),
@@ -484,6 +489,15 @@ def assert_performance_firewall_tree(root: Path) -> None:
         re.compile(r"execution_v1/runtimes/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)/[A-Za-z0-9_.-]+\.json"),
         re.compile(r"execution_v1/prediction_lock_v1\.json"),
         re.compile(r"execution_v1/evaluation_v1\.json"),
+        re.compile(r"execution_v2/input_manifest_v2\.json"),
+        re.compile(r"execution_v2/environments/(?:circa|microcause|microrank|tracerca|mmbaro)\.json"),
+        re.compile(r"execution_v2/attempts/(?:circa|microcause|microrank|tracerca|mmbaro)/[A-Za-z0-9_.-]+\.json"),
+        re.compile(r"execution_v2/locks/(?:circa|microcause|microrank|tracerca|mmbaro)_prediction_lock\.json"),
+        re.compile(r"execution_v2/records/(?:circa|microcause|microrank|tracerca|mmbaro)/[A-Za-z0-9_.-]+/re2(?:ob|tt)/re2(?:ob|tt)-[0-9a-f]{16}\.json"),
+        re.compile(r"execution_v2/runtimes/(?:circa|microcause|microrank|tracerca|mmbaro)/[A-Za-z0-9_.-]+\.json"),
+        re.compile(r"execution_v2/prediction_lock_v2\.json"),
+        re.compile(r"execution_v2/diagnostics/(?:mmbaro_input|operation_sets)_v2\.json"),
+        re.compile(r"execution_v2/evaluation/(?:overall|fault_level|robustness|comparability|paired_bootstrap)_v2\.json"),
     )
     unexpected_execution = [
         path for path in execution_files if not any(pattern.fullmatch(path) for pattern in allowed_execution_patterns)
@@ -504,10 +518,14 @@ def assert_performance_firewall_tree(root: Path) -> None:
         raise FirewallBreach("protocol contains a performance firewall breach")
     global_lock = artifact_root / "execution_v1" / "prediction_lock_v1.json"
     evaluation = artifact_root / "execution_v1" / "evaluation_v1.json"
+    v2_global_lock = artifact_root / "execution_v2" / "prediction_lock_v2.json"
+    v2_evaluation = artifact_root / "execution_v2" / "evaluation"
     if evaluation.exists() and not global_lock.exists():
         raise FirewallBreach("post-lock evaluation exists without a global prediction lock")
+    if v2_evaluation.exists() and any(v2_evaluation.iterdir()) and not v2_global_lock.exists():
+        raise FirewallBreach("V2 post-lock evaluation exists without a global prediction lock")
     for relative in execution_files:
-        if relative == "execution_v1/evaluation_v1.json":
+        if relative == "execution_v1/evaluation_v1.json" or relative.startswith("execution_v2/evaluation/"):
             continue
         payload = json.loads((artifact_root / relative).read_text(encoding="utf-8"))
         assert_firewall_safe_record(payload)

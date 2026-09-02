@@ -10,8 +10,10 @@ import hashlib
 import importlib
 import io
 import json
+import os
 from pathlib import Path
 import random
+import resource
 import sys
 import time
 import types
@@ -100,6 +102,58 @@ MICROCAUSE_SYNTHETIC_RANDOM_WALK_STEPS = 100
 
 class DataInputError(ValueError):
     """A frozen case source is absent or does not match its manifest."""
+
+
+class InputIntegrityError(DataInputError):
+    """A case/source/manifest identity or digest does not match the freeze."""
+
+
+def _is_v2(args: argparse.Namespace) -> bool:
+    return getattr(args, "execution_profile", "v1") == "v2"
+
+
+def _record_schema(args: argparse.Namespace) -> str:
+    return (
+        "rca_baseline_rescue_case_record_v2"
+        if _is_v2(args)
+        else "rca_baseline_case_record_v1"
+    )
+
+
+def _record_protocol_version(args: argparse.Namespace) -> str:
+    return getattr(args, "record_protocol_version", PROTOCOL_VERSION)
+
+
+def _record_protocol_digest(args: argparse.Namespace) -> str:
+    return getattr(args, "record_protocol_digest", PROTOCOL_DIGEST)
+
+
+def _record_timeout(args: argparse.Namespace) -> int | None:
+    return None if _is_v2(args) else CASE_TIMEOUT_SECONDS
+
+
+def _native_module_path(method: str) -> Path:
+    filename = {
+        "BARO": "baro.py",
+        "CIRCA": "circa.py",
+        "MicroCause": "microcause.py",
+        "MicroRank": "microrank.py",
+        "TraceRCA": "tracerca.py",
+        "mmBARO": "baro.py",
+        "CausalRCA": "causalrca.py",
+    }[method]
+    return RCAEVAL_CLEAN / "RCAEval" / "e2e" / filename
+
+
+def _resource_snapshot() -> tuple[float | None, int | None]:
+    """Return child CPU seconds and peak RSS without adding a dependency."""
+
+    try:
+        usage = resource.getrusage(resource.RUSAGE_SELF)
+        # Linux reports ru_maxrss in KiB; keep the record unit explicit.
+        return float(usage.ru_utime + usage.ru_stime), int(usage.ru_maxrss * 1024)
+    except (AttributeError, OSError, ValueError):
+        return None, None
 
 
 class DigestSink(io.TextIOBase):
@@ -214,9 +268,20 @@ def synthetic_preflight_native_limits(method: str):
         module.randomwalk = native_randomwalk
 
 
-def _common_metric_adapter(raw: pd.DataFrame, dataset: str, anchor: int) -> pd.DataFrame:
+def _common_metric_adapter(
+    raw: pd.DataFrame,
+    dataset: str,
+    anchor: int,
+    *,
+    drop_nonfinite_time: bool = False,
+) -> pd.DataFrame:
     if "time" not in raw:
         raise DataInputError("simple metric input has no time column")
+    if drop_nonfinite_time and pd.api.types.is_numeric_dtype(raw["time"]):
+        finite_time = np.isfinite(raw["time"].to_numpy())
+        raw = raw.loc[finite_time].copy()
+        if raw.empty:
+            raise DataInputError("simple metric has no finite timestamp rows")
     _require_numeric(raw, ("time",), "simple metric time")
     data = raw.loc[:, ~raw.columns.str.endswith("_latency-50")].copy()
     if dataset == "re2tt":
@@ -293,7 +358,7 @@ def _case_rows(dataset: str, case_id: str) -> tuple[dict[str, Any], dict[str, An
     inputs = {row["case_id"]: row for row in read_jsonl(bundle / "inputs.jsonl")}
     sources = {row["case_id"]: row for row in read_jsonl(bundle / "sources.jsonl")}
     if case_id not in inputs or case_id not in sources:
-        raise DataInputError("opaque case ID is not in the frozen source index")
+        raise InputIntegrityError("opaque case ID is not in the frozen source index")
     return inputs[case_id], sources[case_id]
 
 
@@ -302,7 +367,7 @@ def _manifest_case(dataset: str, case_id: str) -> dict[str, Any]:
     for row in manifest["cases"]:
         if row["dataset"] == dataset and row["case_id"] == case_id:
             return row
-    raise DataInputError("opaque case ID is absent from the frozen input manifest")
+    raise InputIntegrityError("opaque case ID is absent from the frozen input manifest")
 
 
 def _verified_paths(
@@ -315,14 +380,17 @@ def _verified_paths(
     provenance: list[dict[str, Any]] = []
     for role in METHOD_INPUT_ROLES[method]:
         source_key = INPUT_ROLES[role]
-        path = Path(source[source_key])
+        try:
+            path = Path(source[source_key])
+        except (KeyError, TypeError, ValueError) as exc:
+            raise InputIntegrityError(f"frozen source role is malformed: {role}") from exc
         expected = manifest_sources.get(role)
         if expected is None or not path.is_file():
-            raise DataInputError(f"frozen source is unavailable for role {role}")
+            raise InputIntegrityError(f"frozen source is unavailable for role {role}")
         size = path.stat().st_size
         digest = sha256_file(path)
         if size != expected["byte_size"] or digest != expected["sha256"]:
-            raise DataInputError(f"frozen source digest mismatch for role {role}")
+            raise InputIntegrityError(f"frozen source digest mismatch for role {role}")
         paths[role] = path
         provenance.append({"logical_source_role": role, "byte_size": size, "sha256": digest})
     return case, paths, provenance
@@ -343,20 +411,23 @@ def _observed_trace_services(data: pd.DataFrame, candidates: Sequence[str]) -> s
 
 
 def load_legal_case_input(
-    method: str, dataset: str, case_id: str
+    method: str, dataset: str, case_id: str, *, drop_nonfinite_time: bool = False
 ) -> tuple[Any, int, tuple[str, ...], str | None, set[str], list[dict[str, Any]]]:
     """Trusted path resolution; returned predictive inputs contain no path/root fields."""
 
     case, paths, provenance = _verified_paths(method, dataset, case_id)
     anchor = int(case["anchor_time"])
     if int(paths["inject_time"].read_text(encoding="utf-8").strip()) != anchor:
-        raise DataInputError("inject-time contents differ from the canonical anchor")
+        raise InputIntegrityError("inject-time contents differ from the canonical anchor")
     candidates = tuple(case["candidates"])
     sli = None
     observed: set[str]
     if method in {"BARO", "CIRCA", "MicroCause", "CausalRCA"}:
         metric = _common_metric_adapter(
-            _read_csv_source(paths["simple_metrics"], "simple_metrics"), dataset, anchor
+            _read_csv_source(paths["simple_metrics"], "simple_metrics"),
+            dataset,
+            anchor,
+            drop_nonfinite_time=drop_nonfinite_time,
         )
         observed = _observed_metric_services(metric, candidates)
         if method == "MicroCause":
@@ -368,7 +439,10 @@ def load_legal_case_input(
         return traces, anchor, candidates, sli, observed, provenance
     if method == "mmBARO":
         metric = _common_metric_adapter(
-            _read_csv_source(paths["simple_metrics"], "simple_metrics"), dataset, anchor
+            _read_csv_source(paths["simple_metrics"], "simple_metrics"),
+            dataset,
+            anchor,
+            drop_nonfinite_time=drop_nonfinite_time,
         )
         traces = _trace_adapter(_read_csv_source(paths["traces"], "traces"), anchor)
         payload = {
@@ -473,6 +547,7 @@ def _generic_error(status: TerminalStatus, exc: BaseException) -> str:
 def execute_case(args: argparse.Namespace) -> dict[str, Any]:
     start_timestamp = utc_now()
     start = time.monotonic()
+    cpu_start, _ = _resource_snapshot()
     native_type = NATIVE_OUTPUT_TYPES[args.method]
     native_length = 0
     native_digest: str | None = None
@@ -481,17 +556,48 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
     source_provenance: list[dict[str, Any]] = []
     candidates: tuple[str, ...] = ()
     captured = DigestSink()
-    terminal_status = TerminalStatus.SUCCESS
+    terminal_status_value = TerminalStatus.SUCCESS.value
     error_type: str | None = None
     sanitized_error: str | None = None
     diagnostic_digest: str | None = None
     native_ranking: list[str] = []
     adapted_ranking: list[str] = []
     missing: dict[str, str] = {}
-    module_source_digest: str | None = None
+    try:
+        module_source_digest: str | None = sha256_file(_native_module_path(args.method))
+    except OSError:
+        module_source_digest = None
+
+    def set_failure(status: str, exc: BaseException) -> None:
+        nonlocal terminal_status_value, error_type, sanitized_error, diagnostic_digest
+        terminal_status_value = status
+        error_type = type(exc).__name__
+        if status == "DATA_FAILURE":
+            sanitized_error = "frozen case input failed schema, numeric, or window validation"
+        elif status == "INPUT_INTEGRITY_FAILURE":
+            sanitized_error = "frozen case identity, source digest, or manifest validation failed"
+        elif status == "ADAPTER_FAILURE":
+            sanitized_error = "native output could not be legally projected or persisted"
+        elif status == "ENVIRONMENT_FAILURE":
+            sanitized_error = "frozen runtime or deterministic environment failed"
+        else:
+            sanitized_error = f"native method failed with {type(exc).__name__}"
+        diagnostic_payload: dict[str, Any] = {
+            "exception_type": type(exc).__name__,
+            "captured_output_digest": captured.hexdigest,
+        }
+        # V1 records retain their historical diagnostic shape.  V2 deliberately
+        # excludes exception text because it can contain native item names.
+        if not _is_v2(args):
+            diagnostic_payload["detail"] = str(exc)
+        diagnostic_digest = canonical_payload_digest(diagnostic_payload)
+
     try:
         telemetry, anchor, candidates, sli, observed, source_provenance = load_legal_case_input(
-            args.method, args.dataset, args.case_id
+            args.method,
+            args.dataset,
+            args.case_id,
+            drop_nonfinite_time=_is_v2(args),
         )
         output, ranks, module_path, captured = invoke_predictive_method(
             args.method, args.dataset, args.case_id, anchor, telemetry, candidates, sli
@@ -503,14 +609,9 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
         try:
             adapted = adapt_native_ranking(ranks, candidates)
         except AdapterError as exc:
-            terminal_status = TerminalStatus.ADAPTER_FAILURE
+            set_failure("ADAPTER_FAILURE", exc)
             unmapped_items = list(ranks)
             missing = {candidate: "ADAPTER_MISMATCH" for candidate in candidates}
-            error_type = type(exc).__name__
-            sanitized_error = _generic_error(terminal_status, exc)
-            diagnostic_digest = canonical_payload_digest(
-                {"exception_type": type(exc).__name__, "native_output_digest": native_digest}
-            )
         else:
             native_ranking = list(ranks)
             adapted_ranking = list(adapted.services)
@@ -519,31 +620,42 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
             missing = _missing_reasons(
                 args.method, candidates, adapted.services, observed, native_length
             )
-    except DataInputError as exc:
-        terminal_status = TerminalStatus.DATA_FAILURE
-        error_type = type(exc).__name__
-        sanitized_error = _generic_error(terminal_status, exc)
-        diagnostic_digest = canonical_payload_digest({"exception_type": type(exc).__name__, "detail": str(exc)})
-        missing = {candidate: "EXECUTION_FAILURE" for candidate in candidates}
-    except (MethodOutputError, Exception) as exc:  # native exceptions are terminal METHOD_FAILURE
-        terminal_status = TerminalStatus.METHOD_FAILURE
-        error_type = type(exc).__name__
-        sanitized_error = _generic_error(terminal_status, exc)
-        diagnostic_digest = canonical_payload_digest(
-            {
-                "exception_type": type(exc).__name__,
-                "detail": str(exc),
-                "captured_output_digest": captured.hexdigest,
-            }
+    except InputIntegrityError as exc:
+        set_failure(
+            "INPUT_INTEGRITY_FAILURE" if _is_v2(args) else TerminalStatus.DATA_FAILURE.value,
+            exc,
         )
         missing = {candidate: "EXECUTION_FAILURE" for candidate in candidates}
-    if terminal_status is not TerminalStatus.SUCCESS:
+    except DataInputError as exc:
+        set_failure("DATA_FAILURE", exc)
+        missing = {candidate: "EXECUTION_FAILURE" for candidate in candidates}
+    except (ModuleNotFoundError, ImportError) as exc:
+        set_failure(
+            "ENVIRONMENT_FAILURE" if _is_v2(args) else TerminalStatus.METHOD_FAILURE.value,
+            exc,
+        )
+        missing = {candidate: "EXECUTION_FAILURE" for candidate in candidates}
+    except (MethodOutputError, Exception) as exc:  # native exceptions are terminal METHOD_FAILURE
+        set_failure("METHOD_FAILURE", exc)
+        missing = {candidate: "EXECUTION_FAILURE" for candidate in candidates}
+    if terminal_status_value != TerminalStatus.SUCCESS.value:
         native_ranking = []
         adapted_ranking = []
+    finish_timestamp = utc_now()
+    elapsed_seconds = time.monotonic() - start
+    cpu_end, peak_rss_bytes = _resource_snapshot()
+    cpu_time_seconds = (
+        max(cpu_end - cpu_start, 0.0)
+        if cpu_start is not None and cpu_end is not None
+        else None
+    )
+    adapted_digest = (
+        canonical_payload_digest(adapted_ranking) if adapted_ranking else None
+    )
     payload = {
-        "schema_version": "rca_baseline_case_record_v1",
-        "protocol_version": PROTOCOL_VERSION,
-        "protocol_digest": PROTOCOL_DIGEST,
+        "schema_version": _record_schema(args),
+        "protocol_version": _record_protocol_version(args),
+        "protocol_digest": _record_protocol_digest(args),
         "method": args.method,
         "dataset": args.dataset,
         "case_id": args.case_id,
@@ -552,35 +664,53 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
         "execution_commit": args.execution_commit,
         "execution_worker_count": getattr(args, "execution_worker_count", 1),
         "execution_worker_slot": getattr(args, "execution_worker_slot", 0),
+        "worker_id": getattr(
+            args,
+            "worker_id",
+            getattr(args, "execution_worker_slot", 0),
+        ),
+        "requested_worker_count": getattr(
+            args,
+            "requested_worker_count",
+            getattr(args, "execution_worker_count", 1),
+        ),
+        "available_cpu_count": getattr(args, "available_cpu_count", None),
+        "pid": os.getpid(),
         "rcaeval_commit": RCAEVAL_COMMIT,
         "environment_digest": args.environment_digest,
         "input_manifest_digest": args.input_manifest_digest,
         "candidate_registry_digest": args.candidate_registry_digest,
         "source_record_digests": source_provenance,
         "method_source_digest": module_source_digest,
+        "native_module_digest": module_source_digest,
         "seed_state": {
             "canonical_seed": CANONICAL_SEED,
             "python_hash_seed": CANONICAL_SEED,
             "numpy_seed": CANONICAL_SEED,
             "torch_seed": CANONICAL_SEED if args.method == "CausalRCA" else None,
         },
-        "timeout_seconds": CASE_TIMEOUT_SECONDS,
+        "timeout_seconds": _record_timeout(args),
         "start_timestamp": start_timestamp,
-        "end_timestamp": utc_now(),
-        "wall_time_seconds": time.monotonic() - start,
+        "finish_timestamp": finish_timestamp,
+        "end_timestamp": finish_timestamp,
+        "elapsed_seconds": elapsed_seconds,
+        "wall_time_seconds": elapsed_seconds,
+        "cpu_time_seconds": cpu_time_seconds,
+        "peak_rss_bytes": peak_rss_bytes,
         "window_semantics": "[t0-600s,t0+600s)",
-        "native_output_type": native_type if terminal_status is not TerminalStatus.DATA_FAILURE else "NONE",
+        "native_output_type": native_type if terminal_status_value == TerminalStatus.SUCCESS.value else "NONE",
         "native_output_length": native_length,
         "adapted_output_length": len(adapted_ranking),
         "native_ranking": native_ranking,
         "adapted_ranking": adapted_ranking,
         "native_output_digest": native_digest,
+        "adapted_output_digest": adapted_digest,
         "duplicate_native_items": duplicate_items,
         "duplicate_count": len(duplicate_items),
         "unmapped_native_items": unmapped_items,
         "unmapped_count": len(unmapped_items),
         "missing_candidate_reasons": missing,
-        "terminal_status": terminal_status.value,
+        "terminal_status": terminal_status_value,
         "error_type": error_type,
         "sanitized_error": sanitized_error,
         "diagnostic_digest": diagnostic_digest,
