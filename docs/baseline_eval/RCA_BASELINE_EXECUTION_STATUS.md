@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **V2.1 RESCUE CODE READY — FIVE TASK-CONTAINER EXECUTIONS PENDING**
-State revision: `2026-09-03.5`
+State revision: `2026-09-03.6`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `f60252c`
+Last synchronized central commit: `c226ff5`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -107,6 +107,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 no-timeout scheduler, provenance, resume, and process monitoring | `26b1864`, `6f1df1a` | complete; five task-container runs pending |
 | V2 post-lock evaluator and failure semantics | `60b45b1` | complete; labels gated by committed V2 global lock |
 | V2 task-container runbook | `f60252c` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
+| V2 fault-level row regression test | `c226ff5` | complete; focused suite 70/70 |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -158,7 +159,7 @@ TraceRCA `8ef492e`/`cbb4404`/`0c4d9a3`, and mmBARO
 path was merged; baseline orchestration remains under `src/baseline_eval`,
 and baseline execution evidence remains under `artifacts/baseline_eval`.
 
-The V2.1 implementation is complete through central commit `f60252c`. It adds
+The V2.1 implementation is complete through central commit `c226ff5`. It adds
 the no-timeout case-process scheduler, fixed worker/thread controls, immutable
 resume semantics, non-killing heartbeat/resource fields, source-provenance
 binding, the failure-semantic repair, the post-lock evaluator, and the exact
@@ -307,7 +308,7 @@ to create a V1 lock.
 
 - V2.1 protocol and adapter amendment are frozen; digest is
   `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de`.
-- V2 code is ready at `f60252c`; the runbook is
+- V2 code and tests are ready at `c226ff5`; the runbook is
   `docs/baseline_eval/RCA_BASELINE_RESCUE_RUNBOOK_V2.md`.
 - The five task containers must first freeze their method environment, run
   the opaque 1/10/20-worker determinism preflight, and stop on any digest or
@@ -476,7 +477,7 @@ before the canonical window. The diagnostic artifacts are
 semantics.
 
 No V2 real-case execution has started, by design. The final code-ready HEAD
-before this handoff is `f60252cbba8290a43d5e29f7f5b9370b41a120fe`; the full
+before this handoff is `c226ff5`; the full
 suite passed `232` tests, the focused V2/evaluator suite passed `70`, and the
 performance-firewall and V2.1 protocol checks passed. V2 supports requested
 workers `1, 4, 10, 20`, caps actual workers by container CPU availability,
