@@ -1,0 +1,113 @@
+{
+  "schema_version": "rca_baseline_rescue_protocol_v2",
+  "status": "FROZEN_PERFORMANCE_BLIND_EXECUTION_RESCUE",
+  "protocol_type": "INFRASTRUCTURE_AMENDMENT",
+  "date": "2026-09-03",
+  "supersedes": [],
+  "datasets": {
+    "re2ob": {"display": "RE2-OB", "case_count": 90},
+    "re2tt": {"display": "RE2-TT", "case_count": 90}
+  },
+  "methods": ["CIRCA", "MicroCause", "MicroRank", "TraceRCA", "mmBARO"],
+  "attempt_ids": {
+    "CIRCA": "circa-a3-rescue-v2",
+    "MicroCause": "microcause-a3-rescue-v2",
+    "MicroRank": "microrank-a3-rescue-v2",
+    "TraceRCA": "tracerca-a3-rescue-v2",
+    "mmBARO": "mmbaro-a3-rescue-v2"
+  },
+  "frozen_provenance": {
+    "ada_rca_scientific_v1": "bed295326e567395e725caa82840a534dcc0b1de",
+    "evidence_closure": "9342e06db91945be2e44703437229ba45b18bda8",
+    "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+    "v1_protocol_digest": "aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e",
+    "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec"
+  },
+  "execution": {
+    "case_order": ["re2ob", "re2tt"],
+    "requested_worker_counts": [1, 4, 10, 20],
+    "actual_worker_rule": "min(requested_workers, available_cpu_count)",
+    "case_process_isolation": true,
+    "round_robin_shards": true,
+    "no_timeout": true,
+    "timeout_seconds": null,
+    "automatic_retry": false,
+    "resume_policy": "missing_terminal_cases_only",
+    "seed": 20260830,
+    "thread_caps": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "microcause": {
+    "algorithm_unchanged": true,
+    "native_parameters": {
+      "tau_max": 10,
+      "pc_alpha": 0.1,
+      "alpha_level": 0.001,
+      "rho": 0.2,
+      "lambda": 0.5,
+      "random_walk_epochs": 1000,
+      "random_walk_steps": 1000
+    },
+    "synthetic_bounded_random_walk_allowed": true,
+    "real_case_bounded_random_walk_allowed": false
+  },
+  "failure_policy": {
+    "statuses": [
+      "SUCCESS",
+      "METHOD_FAILURE",
+      "DATA_FAILURE",
+      "ADAPTER_FAILURE",
+      "ENVIRONMENT_FAILURE",
+      "INPUT_INTEGRITY_FAILURE",
+      "PROCESS_CRASH/OOM",
+      "TIMEOUT"
+    ],
+    "method_failure_zero_utility": true,
+    "data_failure_blocks": true,
+    "adapter_failure_blocks": true,
+    "environment_failure_blocks": true,
+    "input_integrity_failure_blocks": true,
+    "process_crash_oom_blocks": true,
+    "timeout_blocks": true
+  },
+  "evaluation": {
+    "headline_metrics": ["AC@1", "AC@3", "AC@5", "Avg@5"],
+    "internal_metrics": ["AC@2", "AC@4"],
+    "baseline_mrr": "NOT-IDENTIFIABLE",
+    "candidate_completion": "NONE",
+    "faults": ["CPU", "MEM", "DISK", "SOCKET", "DELAY", "LOSS"],
+    "bootstrap": {
+      "resamples": 10000,
+      "seed": 20260827,
+      "stratification": "fault",
+      "primary": "delta Avg@5",
+      "secondary": "delta AC@1",
+      "datasets_separate": true
+    },
+    "requires_committed_global_lock": true
+  },
+  "adapter_decisions": {
+    "trace_closure": "NOT_ADOPTED",
+    "extended_normal_slo_history": "NOT_ADOPTED",
+    "trace_diagnostic_basis": "label_free_operation_set_audit",
+    "mmbaro_data_rescue": "rerun_against_immutable_frozen_manifest; never_regenerate_manifest"
+  },
+  "excluded_methods": {
+    "BARO": "historical_only_not_rerun",
+    "CausalRCA": "withdrawn_deferred_by_user",
+    "RCD": "blocked",
+    "mmRCD": "context_only",
+    "multi_source_CIRCA": "context_only",
+    "PDiagnose": "context_only"
+  },
+  "performance_firewall": {
+    "labels_joined_before_global_lock": false,
+    "metrics_computed_before_global_lock": false,
+    "prediction_contents_printed_before_global_lock": false,
+    "successful_subset_allowed": false
+  }
+}
