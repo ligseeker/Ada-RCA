@@ -55,6 +55,7 @@ from src.baseline_eval.rescue_v2 import (
     reissue_v2_method_lock,
     v2_method_lock_relative,
     v2_method_lock_reissued_relative,
+    v2_method_lock_reissued_v2_relative,
     v2_execution_validity,
     run_determinism_preflight,
     v2_record_relative,
@@ -398,6 +399,7 @@ class RescueV2FailureAndMetricTest(unittest.TestCase):
             root = Path(directory)
             canonical = root / v2_method_lock_relative("MicroRank")
             reissued = root / v2_method_lock_reissued_relative("MicroRank")
+            corrected = root / v2_method_lock_reissued_v2_relative("MicroRank")
             canonical.parent.mkdir(parents=True)
             canonical.write_text("old", encoding="utf-8")
             self.assertNotEqual(canonical, reissued)
@@ -409,6 +411,11 @@ class RescueV2FailureAndMetricTest(unittest.TestCase):
             self.assertEqual(
                 active_v2_method_lock_relative(root, "MicroRank"),
                 v2_method_lock_reissued_relative("MicroRank"),
+            )
+            corrected.write_text("corrected", encoding="utf-8")
+            self.assertEqual(
+                active_v2_method_lock_relative(root, "MicroRank"),
+                v2_method_lock_reissued_v2_relative("MicroRank"),
             )
 
     def test_22c_reissue_command_requires_method_and_attempt(self):
@@ -465,11 +472,21 @@ class RescueV2FailureAndMetricTest(unittest.TestCase):
             ), mock.patch("src.baseline_eval.rescue_v2.assert_firewall_safe_record"):
                 output = reissue_v2_method_lock(root, "MicroRank", "microrank-a3-rescue-v2")
 
-            self.assertEqual(output, root / v2_method_lock_reissued_relative("MicroRank"))
+            self.assertEqual(output, root / v2_method_lock_reissued_v2_relative("MicroRank"))
             self.assertEqual(canonical.read_text(encoding="utf-8"), "immutable-old-lock")
             payload = __import__("json").loads(output.read_text(encoding="utf-8"))
             self.assertEqual(payload["supersedes_lock_path"], v2_method_lock_relative("MicroRank").as_posix())
             self.assertEqual(payload["supersedes_lock_digest"], "o" * 64)
+            self.assertEqual(
+                payload["lock_digest"],
+                __import__("hashlib").sha256(
+                    (__import__("json").dumps(
+                        {key: value for key, value in payload.items() if key != "lock_digest"},
+                        indent=2,
+                        sort_keys=True,
+                    ) + "\n").encode("utf-8")
+                ).hexdigest(),
+            )
 
 
 class RescueV2WorkerAndFirewallTest(unittest.TestCase):
