@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **V2 RESCUE CODE READY — CIRCA RESUME AND MICROCAUSE FULL EXECUTION PENDING**
-State revision: `2026-09-03.13`
+State revision: `2026-09-03.14`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `ceac081`
+Last synchronized central commit: `6b7635a`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -115,6 +115,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 immutable method-lock re-attestation | `759f780`, `dfe48f1` | complete; corrected `_reissued_v2` sidecars preserve original locks |
 | V2 lock-sidecar firewall allowlist | `dd7ce3c` | complete; historical and corrected sidecars remain immutable and pre-lock safe |
 | V2.2 implementation amendment | `9f10742`; `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
+| V2 pre-lock interim unified tables | `RCA_BASELINE_INTERIM_UNIFIED_TABLES_V2.md` | recorded; RE2-OB operational snapshot only, metric cells intentionally blank |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -215,7 +216,7 @@ V2 rescue coverage, recorded without prediction inspection, is:
 | Method | Dataset | Records | SUCCESS | METHOD_FAILURE | Blocking statuses | Active method lock |
 |---|---|---:|---:|---:|---|---|
 | CIRCA | RE2-OB | 90/90 | 86 | 4 | none observed | pending; attempt interrupted |
-| CIRCA | RE2-TT | 1/90 | 0 | 1 | none observed | pending; 89 cases missing |
+| CIRCA | RE2-TT | 11/90 | 10 | 1 | none observed | pending; 79 cases missing |
 | MicroCause | RE2-OB | 0/90 | 0 | 0 | — | pending; environment frozen |
 | MicroCause | RE2-TT | 0/90 | 0 | 0 | — | pending; environment frozen |
 | MicroRank | RE2-OB | 90/90 | 90 | 0 | none | corrected V2 sidecar verified |
@@ -542,7 +543,7 @@ semantics.
 
 V2 real-case execution is partially complete in the isolated task worktrees.
 The current central implementation/test HEAD before this handoff update is
-`ceac081`; the focused rescue/evaluator suite passed `81` tests and the full
+`6b7635a`; the focused rescue/evaluator suite passed `81` tests and the full
 repository suite passed `241` tests after the no-timeout and lock-validity
 corrections. V2 supports requested workers
 `1, 4, 10, 20`, caps actual workers by container CPU availability, sets one
@@ -550,7 +551,7 @@ thread for the audited numeric libraries, uses `timeout_seconds=null`, and
 resumes only missing terminal records. MicroCause's synthetic preflight now
 passes with no timeout and its environment is frozen. MicroRank, TraceRCA, and
 mmBARO have complete integrity-valid corrected sidecars despite their original
-invalid lock attestations. CIRCA has an interrupted 10-worker attempt with 89
+invalid lock attestations. CIRCA has an interrupted 10-worker attempt with 79
 missing cases and must resume after its container memory is increased. No V2
 global lock, label join, or evaluation output exists. The exact next action is
 to resume CIRCA on its original execution commit, run MicroCause's deterministic
