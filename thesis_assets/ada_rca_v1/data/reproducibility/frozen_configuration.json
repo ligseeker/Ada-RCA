@@ -1,0 +1,31 @@
+{
+  "bin_seconds": 15.0,
+  "channels": [
+    "metric",
+    "log",
+    "trace-error",
+    "trace-latency"
+  ],
+  "confirmatory": true,
+  "dtype": "float64",
+  "event_window_post_seconds": 600,
+  "event_window_pre_seconds": 600,
+  "evidence_class": "CANONICAL",
+  "feature_order_sha256": "0acf244e629a5e62e3cca82f33f01cd25157ffaf2843f985b46755b615637dfa",
+  "gradient_tolerance": 1e-08,
+  "l2_lambda": 1.0,
+  "n_bins": 80,
+  "normalization_center": "pre-event median",
+  "normalization_scale": "1.4826 * pre-event MAD",
+  "onset_threshold": 3.0,
+  "outer_folds": 3,
+  "post_bins": 40,
+  "pre_bins": 40,
+  "q_percentile": 90,
+  "ranker": "event-level Conditional Logit",
+  "ranking_tiebreak": "descending score; ascending candidate name",
+  "representation_dimension": 68,
+  "scale_fallback": "pre-event IQR / 1.349 when MAD < 1e-6; valid scale >= 1e-6",
+  "scaler_scope": "train-fold candidate rows only",
+  "scope": "Ada-RCA V1 frozen configuration"
+}

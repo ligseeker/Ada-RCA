@@ -1,0 +1,814 @@
+{
+  "audit_type": "INDEPENDENT_FROZEN_RANK_METRIC_RECONSTRUCTION",
+  "evidence_levels": {
+    "GLOBAL-OPT": {
+      "datasets": {
+        "re2ob": {
+          "FULL_RANKING_INTEGRITY": {
+            "checks": {
+              "complete_candidate_scores_where_expected": "PASS",
+              "deterministic_tie_and_order_consistency": "PASS",
+              "every_legal_candidate_exactly_once": "PASS",
+              "immutable_complete_candidate_ranking": "PASS",
+              "no_duplicate_candidate": "PASS",
+              "root_present": "PASS",
+              "score_to_ranking_consistency": "PASS",
+              "valid_fold_and_case_provenance": "PASS"
+            },
+            "limitation": "None",
+            "status": "FULL_RANKING_INTEGRITY_PASS"
+          },
+          "RANK_METRIC_SUFFICIENT": {
+            "case_quantity_sha256": "12959a795a4f647ba04a810d27cd94068210c2f671901486a2aff68b6211cbf8",
+            "checks": {
+              "committed_immutable_root_rank_source": "PASS",
+              "exact_expected_90_cases": "PASS",
+              "fold_assignment_consistency": "PASS",
+              "no_model_refit_required": "PASS",
+              "no_post_audit_root_rank_modification": "PASS",
+              "root_belongs_to_legal_candidate_registry": "PASS",
+              "root_mapping_consistency": "PASS",
+              "root_rank_integer": "PASS",
+              "root_rank_range": "PASS",
+              "sha256_recorded": "PASS",
+              "traceable_to_frozen_optimization_commit": "PASS",
+              "unique_case_ids": "PASS",
+              "valid_folds": "PASS"
+            },
+            "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+            "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+            "source_file": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+            "source_kind": "complete_frozen_ranking_root_rank_derived",
+            "source_sha256": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+            "status": "RANK_METRIC_SUFFICIENT_PASS"
+          }
+        },
+        "re2tt": {
+          "FULL_RANKING_INTEGRITY": {
+            "checks": {
+              "complete_candidate_scores_where_expected": "PASS",
+              "deterministic_tie_and_order_consistency": "PASS",
+              "every_legal_candidate_exactly_once": "PASS",
+              "immutable_complete_candidate_ranking": "PASS",
+              "no_duplicate_candidate": "PASS",
+              "root_present": "PASS",
+              "score_to_ranking_consistency": "PASS",
+              "valid_fold_and_case_provenance": "PASS"
+            },
+            "limitation": "None",
+            "status": "FULL_RANKING_INTEGRITY_PASS"
+          },
+          "RANK_METRIC_SUFFICIENT": {
+            "case_quantity_sha256": "b565d6aba2b1251a6f26170bf34728d4909a1485b46fb439ea9dd6e58c590f6c",
+            "checks": {
+              "committed_immutable_root_rank_source": "PASS",
+              "exact_expected_90_cases": "PASS",
+              "fold_assignment_consistency": "PASS",
+              "no_model_refit_required": "PASS",
+              "no_post_audit_root_rank_modification": "PASS",
+              "root_belongs_to_legal_candidate_registry": "PASS",
+              "root_mapping_consistency": "PASS",
+              "root_rank_integer": "PASS",
+              "root_rank_range": "PASS",
+              "sha256_recorded": "PASS",
+              "traceable_to_frozen_optimization_commit": "PASS",
+              "unique_case_ids": "PASS",
+              "valid_folds": "PASS"
+            },
+            "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+            "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+            "source_file": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+            "source_kind": "complete_frozen_ranking_root_rank_derived",
+            "source_sha256": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+            "status": "RANK_METRIC_SUFFICIENT_PASS"
+          }
+        }
+      }
+    },
+    "PER-DATASET-OPT": {
+      "datasets": {
+        "re2ob": {
+          "FULL_RANKING_INTEGRITY": {
+            "checks": {
+              "complete_candidate_scores_where_expected": "FAIL",
+              "deterministic_tie_and_order_consistency": "FAIL",
+              "every_legal_candidate_exactly_once": "FAIL",
+              "immutable_complete_candidate_ranking": "FAIL",
+              "no_duplicate_candidate": "FAIL",
+              "root_present": "FAIL",
+              "score_to_ranking_consistency": "FAIL",
+              "valid_fold_and_case_provenance": "FAIL"
+            },
+            "limitation": "Complete candidate scores/rankings are absent; candidate-level integrity is not auditable.",
+            "status": "FULL_RANKING_INTEGRITY_NOT_AUDITABLE"
+          },
+          "RANK_METRIC_SUFFICIENT": {
+            "case_quantity_sha256": "46de3939f498d1902cf99ad2c06a48496d9c50c126aca2de77d633f9608098f1",
+            "checks": {
+              "committed_immutable_root_rank_source": "PASS",
+              "exact_expected_90_cases": "PASS",
+              "fold_assignment_consistency": "PASS",
+              "no_model_refit_required": "PASS",
+              "no_post_audit_root_rank_modification": "PASS",
+              "root_belongs_to_legal_candidate_registry": "PASS",
+              "root_mapping_consistency": "PASS",
+              "root_rank_integer": "PASS",
+              "root_rank_range": "PASS",
+              "sha256_recorded": "PASS",
+              "traceable_to_frozen_optimization_commit": "PASS",
+              "unique_case_ids": "PASS",
+              "valid_folds": "PASS"
+            },
+            "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+            "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+            "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+            "source_kind": "immutable_root_rank_artifact",
+            "source_sha256": "dd1d6ec06e96e627320f8978f4c2c9deb19c4c7a5b9226e624cb0349accaf7c7",
+            "status": "RANK_METRIC_SUFFICIENT_PASS"
+          }
+        },
+        "re2tt": {
+          "FULL_RANKING_INTEGRITY": {
+            "checks": {
+              "complete_candidate_scores_where_expected": "FAIL",
+              "deterministic_tie_and_order_consistency": "FAIL",
+              "every_legal_candidate_exactly_once": "FAIL",
+              "immutable_complete_candidate_ranking": "FAIL",
+              "no_duplicate_candidate": "FAIL",
+              "root_present": "FAIL",
+              "score_to_ranking_consistency": "FAIL",
+              "valid_fold_and_case_provenance": "FAIL"
+            },
+            "limitation": "Complete candidate scores/rankings are absent; candidate-level integrity is not auditable.",
+            "status": "FULL_RANKING_INTEGRITY_NOT_AUDITABLE"
+          },
+          "RANK_METRIC_SUFFICIENT": {
+            "case_quantity_sha256": "ee9e8a85728d00c074490c9e7a22c6555037c03a65509f25f0eafe25f09c005c",
+            "checks": {
+              "committed_immutable_root_rank_source": "PASS",
+              "exact_expected_90_cases": "PASS",
+              "fold_assignment_consistency": "PASS",
+              "no_model_refit_required": "PASS",
+              "no_post_audit_root_rank_modification": "PASS",
+              "root_belongs_to_legal_candidate_registry": "PASS",
+              "root_mapping_consistency": "PASS",
+              "root_rank_integer": "PASS",
+              "root_rank_range": "PASS",
+              "sha256_recorded": "PASS",
+              "traceable_to_frozen_optimization_commit": "PASS",
+              "unique_case_ids": "PASS",
+              "valid_folds": "PASS"
+            },
+            "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+            "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+            "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+            "source_kind": "immutable_root_rank_artifact",
+            "source_sha256": "8758769c66809804faf168b2a5e0a4601f0a40990b2c183dcff314780b52b700",
+            "status": "RANK_METRIC_SUFFICIENT_PASS"
+          }
+        }
+      }
+    },
+    "V1-SCIENTIFIC": {
+      "datasets": {
+        "re2ob": {
+          "FULL_RANKING_INTEGRITY": {
+            "checks": {
+              "complete_candidate_scores_where_expected": "PASS",
+              "deterministic_tie_and_order_consistency": "PASS",
+              "every_legal_candidate_exactly_once": "PASS",
+              "immutable_complete_candidate_ranking": "PASS",
+              "no_duplicate_candidate": "PASS",
+              "root_present": "PASS",
+              "score_to_ranking_consistency": "PASS",
+              "valid_fold_and_case_provenance": "PASS"
+            },
+            "limitation": "None",
+            "status": "FULL_RANKING_INTEGRITY_PASS"
+          },
+          "RANK_METRIC_SUFFICIENT": {
+            "case_quantity_sha256": "12959a795a4f647ba04a810d27cd94068210c2f671901486a2aff68b6211cbf8",
+            "checks": {
+              "committed_immutable_root_rank_source": "PASS",
+              "exact_expected_90_cases": "PASS",
+              "fold_assignment_consistency": "PASS",
+              "no_model_refit_required": "PASS",
+              "no_post_audit_root_rank_modification": "PASS",
+              "root_belongs_to_legal_candidate_registry": "PASS",
+              "root_mapping_consistency": "PASS",
+              "root_rank_integer": "PASS",
+              "root_rank_range": "PASS",
+              "sha256_recorded": "PASS",
+              "traceable_to_frozen_optimization_commit": "PASS",
+              "unique_case_ids": "PASS",
+              "valid_folds": "PASS"
+            },
+            "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+            "last_modifying_commit": "0e3987b63b941ab37ef922447f6ad2da60e64a3c",
+            "source_file": "artifacts/final_method/re2ob/predictions.jsonl",
+            "source_kind": "complete_frozen_ranking_root_rank_derived",
+            "source_sha256": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+            "status": "RANK_METRIC_SUFFICIENT_PASS"
+          }
+        },
+        "re2tt": {
+          "FULL_RANKING_INTEGRITY": {
+            "checks": {
+              "complete_candidate_scores_where_expected": "PASS",
+              "deterministic_tie_and_order_consistency": "PASS",
+              "every_legal_candidate_exactly_once": "PASS",
+              "immutable_complete_candidate_ranking": "PASS",
+              "no_duplicate_candidate": "PASS",
+              "root_present": "PASS",
+              "score_to_ranking_consistency": "PASS",
+              "valid_fold_and_case_provenance": "PASS"
+            },
+            "limitation": "None",
+            "status": "FULL_RANKING_INTEGRITY_PASS"
+          },
+          "RANK_METRIC_SUFFICIENT": {
+            "case_quantity_sha256": "b565d6aba2b1251a6f26170bf34728d4909a1485b46fb439ea9dd6e58c590f6c",
+            "checks": {
+              "committed_immutable_root_rank_source": "PASS",
+              "exact_expected_90_cases": "PASS",
+              "fold_assignment_consistency": "PASS",
+              "no_model_refit_required": "PASS",
+              "no_post_audit_root_rank_modification": "PASS",
+              "root_belongs_to_legal_candidate_registry": "PASS",
+              "root_mapping_consistency": "PASS",
+              "root_rank_integer": "PASS",
+              "root_rank_range": "PASS",
+              "sha256_recorded": "PASS",
+              "traceable_to_frozen_optimization_commit": "PASS",
+              "unique_case_ids": "PASS",
+              "valid_folds": "PASS"
+            },
+            "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+            "last_modifying_commit": "0e3987b63b941ab37ef922447f6ad2da60e64a3c",
+            "source_file": "artifacts/final_method/re2tt/predictions.jsonl",
+            "source_kind": "complete_frozen_ranking_root_rank_derived",
+            "source_sha256": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+            "status": "RANK_METRIC_SUFFICIENT_PASS"
+          }
+        }
+      }
+    }
+  },
+  "frozen_input_manifest": {
+    "path": "artifacts/evidence_closure/input_manifest.json",
+    "sha256": "3727b5e6d1c86f793b5b0e5a75a5ba94213474594b10fe3c845c5e40d232669d"
+  },
+  "gate_1": {
+    "bootstrap_authorization": "GATE_2_AUTHORIZED",
+    "legacy_metric_consistency": "PASS",
+    "rank_evidence_status": "PASS",
+    "status": "PASS",
+    "terminal_state_if_failed": null
+  },
+  "metric_definition_verification": {
+    "formulas": {
+      "AC@k": "AC@k = (1/N) * sum_i 1[root_rank_i <= k], for k in {1,3,5}",
+      "Avg@5": "Avg@5 = (1/N) * sum_i ((1/5) * sum_{k=1}^5 1[root_rank_i <= k])",
+      "MRR": "MRR = (1/N) * sum_i (1/root_rank_i)"
+    },
+    "implementation": "Independent root-rank implementation; no import or call to src.rca.evaluator",
+    "legacy_definition_source": "src/rca/evaluator.py",
+    "legacy_definition_source_sha256": "1002f10457c422560f27e22b30ccd7ef2c77d68352b750c14376b3bd8197b3fb",
+    "scientific_protocol": "docs/RCA_FINAL_EVALUATION_PROTOCOL_V1.0.md section 3"
+  },
+  "protocol_amendment": {
+    "commit": "775ec8034cad35a53c4bbe38a1093243b3050a15",
+    "commit_is_ancestor_of_execution_head": true,
+    "corrected_outputs_absent_at_amendment_commit": {
+      "artifacts/evidence_closure/bootstrap_corrected_v1_1.json": true,
+      "artifacts/evidence_closure/metric_reconstruction_v1_1.json": true
+    },
+    "path": "docs/RCA_EVIDENCE_CLOSURE_PROTOCOL_AMENDMENT_V1_1.md",
+    "status": "POST-AUDIT PROTOCOL CLARIFICATION"
+  },
+  "schema_version": "ada_rca_metric_reconstruction_v1_1",
+  "tracks": {
+    "GLOBAL-OPT": {
+      "datasets": {
+        "re2ob": {
+          "case_count": 90,
+          "evidence_levels": {
+            "FULL_RANKING_INTEGRITY": {
+              "checks": {
+                "complete_candidate_scores_where_expected": "PASS",
+                "deterministic_tie_and_order_consistency": "PASS",
+                "every_legal_candidate_exactly_once": "PASS",
+                "immutable_complete_candidate_ranking": "PASS",
+                "no_duplicate_candidate": "PASS",
+                "root_present": "PASS",
+                "score_to_ranking_consistency": "PASS",
+                "valid_fold_and_case_provenance": "PASS"
+              },
+              "limitation": "None",
+              "status": "FULL_RANKING_INTEGRITY_PASS"
+            },
+            "RANK_METRIC_SUFFICIENT": {
+              "case_quantity_sha256": "12959a795a4f647ba04a810d27cd94068210c2f671901486a2aff68b6211cbf8",
+              "checks": {
+                "committed_immutable_root_rank_source": "PASS",
+                "exact_expected_90_cases": "PASS",
+                "fold_assignment_consistency": "PASS",
+                "no_model_refit_required": "PASS",
+                "no_post_audit_root_rank_modification": "PASS",
+                "root_belongs_to_legal_candidate_registry": "PASS",
+                "root_mapping_consistency": "PASS",
+                "root_rank_integer": "PASS",
+                "root_rank_range": "PASS",
+                "sha256_recorded": "PASS",
+                "traceable_to_frozen_optimization_commit": "PASS",
+                "unique_case_ids": "PASS",
+                "valid_folds": "PASS"
+              },
+              "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "source_file": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "source_kind": "complete_frozen_ranking_root_rank_derived",
+              "source_sha256": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+              "status": "RANK_METRIC_SUFFICIENT_PASS"
+            }
+          },
+          "legacy_metric_source": {
+            "path": "artifacts/opt/final/GLOBAL-OPT/re2ob/metrics.json",
+            "sha256": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1"
+          },
+          "metric_comparison": {
+            "AC@1": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8777777777777778,
+              "legacy_metric": 0.8777777777777778,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@3": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9888888888888889,
+              "legacy_metric": 0.9888888888888889,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9888888888888889,
+              "legacy_metric": 0.9888888888888889,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9622222222222222,
+              "legacy_metric": 0.9622222222222222,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9314814814814816,
+              "legacy_metric": 0.9314814814814816,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "status": "PASS"
+        },
+        "re2tt": {
+          "case_count": 90,
+          "evidence_levels": {
+            "FULL_RANKING_INTEGRITY": {
+              "checks": {
+                "complete_candidate_scores_where_expected": "PASS",
+                "deterministic_tie_and_order_consistency": "PASS",
+                "every_legal_candidate_exactly_once": "PASS",
+                "immutable_complete_candidate_ranking": "PASS",
+                "no_duplicate_candidate": "PASS",
+                "root_present": "PASS",
+                "score_to_ranking_consistency": "PASS",
+                "valid_fold_and_case_provenance": "PASS"
+              },
+              "limitation": "None",
+              "status": "FULL_RANKING_INTEGRITY_PASS"
+            },
+            "RANK_METRIC_SUFFICIENT": {
+              "case_quantity_sha256": "b565d6aba2b1251a6f26170bf34728d4909a1485b46fb439ea9dd6e58c590f6c",
+              "checks": {
+                "committed_immutable_root_rank_source": "PASS",
+                "exact_expected_90_cases": "PASS",
+                "fold_assignment_consistency": "PASS",
+                "no_model_refit_required": "PASS",
+                "no_post_audit_root_rank_modification": "PASS",
+                "root_belongs_to_legal_candidate_registry": "PASS",
+                "root_mapping_consistency": "PASS",
+                "root_rank_integer": "PASS",
+                "root_rank_range": "PASS",
+                "sha256_recorded": "PASS",
+                "traceable_to_frozen_optimization_commit": "PASS",
+                "unique_case_ids": "PASS",
+                "valid_folds": "PASS"
+              },
+              "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "source_file": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "source_kind": "complete_frozen_ranking_root_rank_derived",
+              "source_sha256": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+              "status": "RANK_METRIC_SUFFICIENT_PASS"
+            }
+          },
+          "legacy_metric_source": {
+            "path": "artifacts/opt/final/GLOBAL-OPT/re2tt/metrics.json",
+            "sha256": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c"
+          },
+          "metric_comparison": {
+            "AC@1": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.7111111111111111,
+              "legacy_metric": 0.7111111111111111,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@3": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8666666666666667,
+              "legacy_metric": 0.8666666666666667,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9333333333333333,
+              "legacy_metric": 0.9333333333333333,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.851111111111111,
+              "legacy_metric": 0.851111111111111,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8034718881941106,
+              "legacy_metric": 0.8034718881941106,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "status": "PASS"
+        }
+      }
+    },
+    "PER-DATASET-OPT": {
+      "datasets": {
+        "re2ob": {
+          "case_count": 90,
+          "evidence_levels": {
+            "FULL_RANKING_INTEGRITY": {
+              "checks": {
+                "complete_candidate_scores_where_expected": "FAIL",
+                "deterministic_tie_and_order_consistency": "FAIL",
+                "every_legal_candidate_exactly_once": "FAIL",
+                "immutable_complete_candidate_ranking": "FAIL",
+                "no_duplicate_candidate": "FAIL",
+                "root_present": "FAIL",
+                "score_to_ranking_consistency": "FAIL",
+                "valid_fold_and_case_provenance": "FAIL"
+              },
+              "limitation": "Complete candidate scores/rankings are absent; candidate-level integrity is not auditable.",
+              "status": "FULL_RANKING_INTEGRITY_NOT_AUDITABLE"
+            },
+            "RANK_METRIC_SUFFICIENT": {
+              "case_quantity_sha256": "46de3939f498d1902cf99ad2c06a48496d9c50c126aca2de77d633f9608098f1",
+              "checks": {
+                "committed_immutable_root_rank_source": "PASS",
+                "exact_expected_90_cases": "PASS",
+                "fold_assignment_consistency": "PASS",
+                "no_model_refit_required": "PASS",
+                "no_post_audit_root_rank_modification": "PASS",
+                "root_belongs_to_legal_candidate_registry": "PASS",
+                "root_mapping_consistency": "PASS",
+                "root_rank_integer": "PASS",
+                "root_rank_range": "PASS",
+                "sha256_recorded": "PASS",
+                "traceable_to_frozen_optimization_commit": "PASS",
+                "unique_case_ids": "PASS",
+                "valid_folds": "PASS"
+              },
+              "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "source_kind": "immutable_root_rank_artifact",
+              "source_sha256": "dd1d6ec06e96e627320f8978f4c2c9deb19c4c7a5b9226e624cb0349accaf7c7",
+              "status": "RANK_METRIC_SUFFICIENT_PASS"
+            }
+          },
+          "legacy_metric_source": {
+            "path": "artifacts/opt/final/PER-DATASET-OPT/re2ob/metrics.json",
+            "sha256": "f11cea33636487eae7706f78ca71f6b6ac39d149e3bb6fce5f7acb5de43c5d87"
+          },
+          "metric_comparison": {
+            "AC@1": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8555555555555555,
+              "legacy_metric": 0.8555555555555555,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@3": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9777777777777777,
+              "legacy_metric": 0.9777777777777777,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9888888888888889,
+              "legacy_metric": 0.9888888888888889,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 1.1102230246251565e-16,
+              "independent_metric": 0.951111111111111,
+              "legacy_metric": 0.9511111111111109,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9157407407407407,
+              "legacy_metric": 0.9157407407407407,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "status": "PASS"
+        },
+        "re2tt": {
+          "case_count": 90,
+          "evidence_levels": {
+            "FULL_RANKING_INTEGRITY": {
+              "checks": {
+                "complete_candidate_scores_where_expected": "FAIL",
+                "deterministic_tie_and_order_consistency": "FAIL",
+                "every_legal_candidate_exactly_once": "FAIL",
+                "immutable_complete_candidate_ranking": "FAIL",
+                "no_duplicate_candidate": "FAIL",
+                "root_present": "FAIL",
+                "score_to_ranking_consistency": "FAIL",
+                "valid_fold_and_case_provenance": "FAIL"
+              },
+              "limitation": "Complete candidate scores/rankings are absent; candidate-level integrity is not auditable.",
+              "status": "FULL_RANKING_INTEGRITY_NOT_AUDITABLE"
+            },
+            "RANK_METRIC_SUFFICIENT": {
+              "case_quantity_sha256": "ee9e8a85728d00c074490c9e7a22c6555037c03a65509f25f0eafe25f09c005c",
+              "checks": {
+                "committed_immutable_root_rank_source": "PASS",
+                "exact_expected_90_cases": "PASS",
+                "fold_assignment_consistency": "PASS",
+                "no_model_refit_required": "PASS",
+                "no_post_audit_root_rank_modification": "PASS",
+                "root_belongs_to_legal_candidate_registry": "PASS",
+                "root_mapping_consistency": "PASS",
+                "root_rank_integer": "PASS",
+                "root_rank_range": "PASS",
+                "sha256_recorded": "PASS",
+                "traceable_to_frozen_optimization_commit": "PASS",
+                "unique_case_ids": "PASS",
+                "valid_folds": "PASS"
+              },
+              "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "source_kind": "immutable_root_rank_artifact",
+              "source_sha256": "8758769c66809804faf168b2a5e0a4601f0a40990b2c183dcff314780b52b700",
+              "status": "RANK_METRIC_SUFFICIENT_PASS"
+            }
+          },
+          "legacy_metric_source": {
+            "path": "artifacts/opt/final/PER-DATASET-OPT/re2tt/metrics.json",
+            "sha256": "5d691c9ebdd7c27d0183384704f50c7da3628d4cf91c9727a6d45dc2e101205e"
+          },
+          "metric_comparison": {
+            "AC@1": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.7888888888888889,
+              "legacy_metric": 0.7888888888888889,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@3": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8555555555555555,
+              "legacy_metric": 0.8555555555555555,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9,
+              "legacy_metric": 0.9,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8577777777777776,
+              "legacy_metric": 0.8577777777777776,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8392494433670905,
+              "legacy_metric": 0.8392494433670905,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "status": "PASS"
+        }
+      }
+    },
+    "V1-SCIENTIFIC": {
+      "datasets": {
+        "re2ob": {
+          "case_count": 90,
+          "evidence_levels": {
+            "FULL_RANKING_INTEGRITY": {
+              "checks": {
+                "complete_candidate_scores_where_expected": "PASS",
+                "deterministic_tie_and_order_consistency": "PASS",
+                "every_legal_candidate_exactly_once": "PASS",
+                "immutable_complete_candidate_ranking": "PASS",
+                "no_duplicate_candidate": "PASS",
+                "root_present": "PASS",
+                "score_to_ranking_consistency": "PASS",
+                "valid_fold_and_case_provenance": "PASS"
+              },
+              "limitation": "None",
+              "status": "FULL_RANKING_INTEGRITY_PASS"
+            },
+            "RANK_METRIC_SUFFICIENT": {
+              "case_quantity_sha256": "12959a795a4f647ba04a810d27cd94068210c2f671901486a2aff68b6211cbf8",
+              "checks": {
+                "committed_immutable_root_rank_source": "PASS",
+                "exact_expected_90_cases": "PASS",
+                "fold_assignment_consistency": "PASS",
+                "no_model_refit_required": "PASS",
+                "no_post_audit_root_rank_modification": "PASS",
+                "root_belongs_to_legal_candidate_registry": "PASS",
+                "root_mapping_consistency": "PASS",
+                "root_rank_integer": "PASS",
+                "root_rank_range": "PASS",
+                "sha256_recorded": "PASS",
+                "traceable_to_frozen_optimization_commit": "PASS",
+                "unique_case_ids": "PASS",
+                "valid_folds": "PASS"
+              },
+              "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "last_modifying_commit": "0e3987b63b941ab37ef922447f6ad2da60e64a3c",
+              "source_file": "artifacts/final_method/re2ob/predictions.jsonl",
+              "source_kind": "complete_frozen_ranking_root_rank_derived",
+              "source_sha256": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+              "status": "RANK_METRIC_SUFFICIENT_PASS"
+            }
+          },
+          "legacy_metric_source": {
+            "path": "artifacts/final_method/re2ob/metrics.json",
+            "sha256": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1"
+          },
+          "metric_comparison": {
+            "AC@1": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8777777777777778,
+              "legacy_metric": 0.8777777777777778,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@3": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9888888888888889,
+              "legacy_metric": 0.9888888888888889,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9888888888888889,
+              "legacy_metric": 0.9888888888888889,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9622222222222222,
+              "legacy_metric": 0.9622222222222222,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9314814814814816,
+              "legacy_metric": 0.9314814814814816,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "status": "PASS"
+        },
+        "re2tt": {
+          "case_count": 90,
+          "evidence_levels": {
+            "FULL_RANKING_INTEGRITY": {
+              "checks": {
+                "complete_candidate_scores_where_expected": "PASS",
+                "deterministic_tie_and_order_consistency": "PASS",
+                "every_legal_candidate_exactly_once": "PASS",
+                "immutable_complete_candidate_ranking": "PASS",
+                "no_duplicate_candidate": "PASS",
+                "root_present": "PASS",
+                "score_to_ranking_consistency": "PASS",
+                "valid_fold_and_case_provenance": "PASS"
+              },
+              "limitation": "None",
+              "status": "FULL_RANKING_INTEGRITY_PASS"
+            },
+            "RANK_METRIC_SUFFICIENT": {
+              "case_quantity_sha256": "b565d6aba2b1251a6f26170bf34728d4909a1485b46fb439ea9dd6e58c590f6c",
+              "checks": {
+                "committed_immutable_root_rank_source": "PASS",
+                "exact_expected_90_cases": "PASS",
+                "fold_assignment_consistency": "PASS",
+                "no_model_refit_required": "PASS",
+                "no_post_audit_root_rank_modification": "PASS",
+                "root_belongs_to_legal_candidate_registry": "PASS",
+                "root_mapping_consistency": "PASS",
+                "root_rank_integer": "PASS",
+                "root_rank_range": "PASS",
+                "sha256_recorded": "PASS",
+                "traceable_to_frozen_optimization_commit": "PASS",
+                "unique_case_ids": "PASS",
+                "valid_folds": "PASS"
+              },
+              "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "last_modifying_commit": "0e3987b63b941ab37ef922447f6ad2da60e64a3c",
+              "source_file": "artifacts/final_method/re2tt/predictions.jsonl",
+              "source_kind": "complete_frozen_ranking_root_rank_derived",
+              "source_sha256": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+              "status": "RANK_METRIC_SUFFICIENT_PASS"
+            }
+          },
+          "legacy_metric_source": {
+            "path": "artifacts/final_method/re2tt/metrics.json",
+            "sha256": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c"
+          },
+          "metric_comparison": {
+            "AC@1": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.7111111111111111,
+              "legacy_metric": 0.7111111111111111,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@3": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8666666666666667,
+              "legacy_metric": 0.8666666666666667,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "AC@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.9333333333333333,
+              "legacy_metric": 0.9333333333333333,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.851111111111111,
+              "legacy_metric": 0.851111111111111,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 0.0,
+              "independent_metric": 0.8034718881941106,
+              "legacy_metric": 0.8034718881941106,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "status": "PASS"
+        }
+      }
+    }
+  }
+}

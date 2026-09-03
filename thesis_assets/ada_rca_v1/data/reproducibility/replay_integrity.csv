@@ -1,0 +1,3 @@
+dataset,case_count,ranking_identical,max_abs_score_difference,checksum_status,integrity_status,all_folds_converged,metrics_exact,evidence_class,confirmatory
+re2ob,90,true,0.0,PASS,INTEGRITY_VALID,true,true,CANONICAL,true
+re2tt,90,true,0.0,PASS,INTEGRITY_VALID,true,true,CANONICAL,true

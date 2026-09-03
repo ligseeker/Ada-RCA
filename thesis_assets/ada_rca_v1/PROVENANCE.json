@@ -1,0 +1,39 @@
+{
+  "asset_counts": {
+    "documents_copied": 53,
+    "documents_scanned": 59,
+    "excluded_scope_rows": 9,
+    "registered_assets_before_manifest": 409,
+    "source_artifacts_indexed": 702,
+    "source_code_indexed": 42,
+    "superseded_artifacts_indexed": 6
+  },
+  "baseline_isolation": {
+    "baseline_metrics_not_computed": true,
+    "baseline_paths_not_read": [
+      "artifacts/baseline_eval/",
+      "docs/baseline_eval/",
+      "src/baseline_eval/"
+    ],
+    "baseline_predictions_not_included": true
+  },
+  "determinism": {
+    "ambient_timestamp": false,
+    "csv_line_terminator": "\\n",
+    "json_sort_keys": true,
+    "model_fit": false,
+    "network_access": false,
+    "optimization": false
+  },
+  "evidence_closure_decision_commit": "5957b465fac7351a6c55ab799a058ef66a60f9bc",
+  "exporter_commit": "ca5e092e021359fe10c3db543d507e8b6f49fbb9",
+  "exporter_path": "thesis_assets/ada_rca_v1/scripts/export_thesis_assets.py",
+  "frozen_optimization_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+  "manifest_boundary": "MANIFEST.csv is the only package file excluded from its own hash rows because it is self-referential; PROVENANCE.json is hashed and included.",
+  "package": "thesis_assets/ada_rca_v1",
+  "schema_version": "ada_rca_thesis_asset_package_v1",
+  "scientific_decision": "RCA_FREEZE_READY_WITH_LIMITATION",
+  "source_commit": "9342e06db91945be2e44703437229ba45b18bda8",
+  "source_ref": "research/evidence-closure",
+  "v1_reference_commit": "bed295326e567395e725caa82840a534dcc0b1de"
+}

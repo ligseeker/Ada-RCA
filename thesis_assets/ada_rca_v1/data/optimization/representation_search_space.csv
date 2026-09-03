@@ -1,0 +1,7 @@
+representation,channels,dimension,status,evidence_class,confirmatory
+Z1-M,"[""metric""]",17,FROZEN_SEARCH_SPACE,SUPPORTING,false
+M+L,"[""metric"",""log""]",34,FROZEN_SEARCH_SPACE,SUPPORTING,false
+M+TE,"[""metric"",""trace-error""]",34,FROZEN_SEARCH_SPACE,SUPPORTING,false
+M+TL,"[""metric"",""trace-latency""]",34,FROZEN_SEARCH_SPACE,SUPPORTING,false
+M+L+TL,"[""metric"",""log"",""trace-latency""]",51,FROZEN_SEARCH_SPACE,SUPPORTING,false
+FULL-Z2,"[""metric"",""log"",""trace-error"",""trace-latency""]",68,FROZEN_SEARCH_SPACE,SUPPORTING,false

@@ -1,0 +1,23 @@
+dataset,diagnostic,count,rate_of_eligible,definition,evidence_class,confirmatory
+re2ob,IQR_pre_zero,900,0.9090909090909091,All pre-observed mapped indicators have raw pre-event IQR equal to zero.,CANONICAL,false
+re2ob,MAD_pre_zero,900,0.9090909090909091,All pre-observed mapped indicators have raw pre-event MAD equal to zero.,CANONICAL,false
+re2ob,post_changed,31,0.031313131313131314,At least one mapped indicator has a post-event value different from its pre median.,CANONICAL,false
+re2ob,post_positive,31,0.031313131313131314,At least one mapped trace-error indicator has a positive post-event value.,CANONICAL,false
+re2ob,pre_all_zero,899,0.908080808080808,All pre-observed mapped trace-error indicator series are exactly zero.,CANONICAL,false
+re2ob,pre_all_zero_AND_post_positive,30,0.030303030303030304,,CANONICAL,false
+re2ob,pre_all_zero_AND_post_positive_AND_rejected_by_scale,30,0.030303030303030304,,CANONICAL,false
+re2ob,pre_constant,899,0.908080808080808,All pre-observed mapped trace-error indicator series are individually constant.,CANONICAL,false
+re2ob,pre_constant_AND_post_changed,30,0.030303030303030304,,CANONICAL,false
+re2ob,pre_constant_AND_post_changed_AND_rejected_by_scale,30,0.030303030303030304,,CANONICAL,false
+re2ob,rejected_by_scale,900,0.9090909090909091,Pre observations exist but no mapped indicator passes MAD or IQR scale threshold 1e-6.,CANONICAL,false
+re2tt,IQR_pre_zero,2340,0.38235294117647056,All pre-observed mapped indicators have raw pre-event IQR equal to zero.,CANONICAL,false
+re2tt,MAD_pre_zero,2340,0.38235294117647056,All pre-observed mapped indicators have raw pre-event MAD equal to zero.,CANONICAL,false
+re2tt,post_changed,0,0.0,At least one mapped indicator has a post-event value different from its pre median.,CANONICAL,false
+re2tt,post_positive,0,0.0,At least one mapped trace-error indicator has a positive post-event value.,CANONICAL,false
+re2tt,pre_all_zero,2340,0.38235294117647056,All pre-observed mapped trace-error indicator series are exactly zero.,CANONICAL,false
+re2tt,pre_all_zero_AND_post_positive,0,0.0,,CANONICAL,false
+re2tt,pre_all_zero_AND_post_positive_AND_rejected_by_scale,0,0.0,,CANONICAL,false
+re2tt,pre_constant,2340,0.38235294117647056,All pre-observed mapped trace-error indicator series are individually constant.,CANONICAL,false
+re2tt,pre_constant_AND_post_changed,0,0.0,,CANONICAL,false
+re2tt,pre_constant_AND_post_changed_AND_rejected_by_scale,0,0.0,,CANONICAL,false
+re2tt,rejected_by_scale,2340,0.38235294117647056,Pre observations exist but no mapped indicator passes MAD or IQR scale threshold 1e-6.,CANONICAL,false

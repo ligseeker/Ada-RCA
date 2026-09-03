@@ -1,0 +1,333 @@
+{
+  "audit_type": "CANDIDATE_CASE_TELEMETRY_INFORMATION_LOSS_AUDIT",
+  "auditability": {
+    "candidate_case_funnel": "AUDITABLE_FROM_HASH_BOUND_CANONICAL_DERIVED_INPUTS_AND_FROZEN_FEATURE_ARTIFACTS",
+    "raw_record_to_derived_cell_lineage": "NOT_FULLY_AUDITABLE_FROM_AVAILABLE_CANONICAL_ARTIFACTS",
+    "reason": "Raw and derived files are hash-bound, but no committed per-record lineage maps raw log/span/metric rows to each derived wide-series cell; no such rejection cause is inferred."
+  },
+  "datasets": {
+    "re2ob": {
+      "candidate_case_funnel": {
+        "Log": {
+          "counts": {
+            "eligible": 990,
+            "feature_active": 807,
+            "mapped": 812,
+            "post_observed": 812,
+            "pre_observed": 812,
+            "scale_valid": 807,
+            "window_observed": 812
+          },
+          "rates_of_eligible": {
+            "eligible": 1.0,
+            "feature_active": 0.8151515151515152,
+            "mapped": 0.8202020202020202,
+            "post_observed": 0.8202020202020202,
+            "pre_observed": 0.8202020202020202,
+            "scale_valid": 0.8151515151515152,
+            "window_observed": 0.8202020202020202
+          },
+          "statistical_unit": "candidate-case pair"
+        },
+        "Metric": {
+          "counts": {
+            "eligible": 990,
+            "feature_active": 990,
+            "mapped": 990,
+            "post_observed": 990,
+            "pre_observed": 990,
+            "scale_valid": 990,
+            "window_observed": 990
+          },
+          "rates_of_eligible": {
+            "eligible": 1.0,
+            "feature_active": 1.0,
+            "mapped": 1.0,
+            "post_observed": 1.0,
+            "pre_observed": 1.0,
+            "scale_valid": 1.0,
+            "window_observed": 1.0
+          },
+          "statistical_unit": "candidate-case pair"
+        },
+        "Trace Error": {
+          "counts": {
+            "eligible": 990,
+            "feature_active": 0,
+            "mapped": 900,
+            "post_observed": 900,
+            "pre_observed": 900,
+            "scale_valid": 0,
+            "window_observed": 900
+          },
+          "rates_of_eligible": {
+            "eligible": 1.0,
+            "feature_active": 0.0,
+            "mapped": 0.9090909090909091,
+            "post_observed": 0.9090909090909091,
+            "pre_observed": 0.9090909090909091,
+            "scale_valid": 0.0,
+            "window_observed": 0.9090909090909091
+          },
+          "statistical_unit": "candidate-case pair"
+        },
+        "Trace Latency": {
+          "counts": {
+            "eligible": 990,
+            "feature_active": 374,
+            "mapped": 900,
+            "post_observed": 900,
+            "pre_observed": 900,
+            "scale_valid": 374,
+            "window_observed": 900
+          },
+          "rates_of_eligible": {
+            "eligible": 1.0,
+            "feature_active": 0.37777777777777777,
+            "mapped": 0.9090909090909091,
+            "post_observed": 0.9090909090909091,
+            "pre_observed": 0.9090909090909091,
+            "scale_valid": 0.37777777777777777,
+            "window_observed": 0.9090909090909091
+          },
+          "statistical_unit": "candidate-case pair"
+        }
+      },
+      "invariants": {
+        "canonical_derived_file_identity": "PASS",
+        "feature_active_subset_of_scale_valid": "PASS",
+        "funnel_monotonic": "PASS"
+      },
+      "provenance": {
+        "all_used_files_match_recorded_size_and_sha256": true,
+        "dataset_manifest": "artifacts/source/re2ob_dataset_manifest.json",
+        "dataset_manifest_sha256": "7495df585e8a28a328fa8a956953af8ebffb01736702da7ee4ce51815be67bd0",
+        "dataset_tree_sha256": "ce48691243bcf4871abaedc49d5c7ffe45d51f66dcf669fec3da54e0aa60df8a",
+        "feature_artifacts_match_frozen_commit": true,
+        "feature_pair_record_sha256": {
+          "Log": "a235ea7ed483f6e2b4bb100718631fe95f9a397d8c0fe4d3b81110e49ad32e90",
+          "Metric": "ee36d8a7fb412db1180ae46ca911c64468572e98594921c88e7020545ea0224d",
+          "Trace Error": "75793550c89492a92b1308a40548de9a8f877e03e7b7dbadb21b4cbb5c1d01db",
+          "Trace Latency": "7c937c5623aa6805a520482b18a3d27a2fdf2081cbdfdd6979c798112e63ebb5"
+        },
+        "source_file_mismatches": [],
+        "source_manifests_match_frozen_commit": true,
+        "used_canonical_derived_files": 360
+      },
+      "trace_error_diagnostics": {
+        "counts": {
+          "IQR_pre_zero": 900,
+          "MAD_pre_zero": 900,
+          "post_changed": 31,
+          "post_positive": 31,
+          "pre_all_zero": 899,
+          "pre_all_zero_AND_post_positive": 30,
+          "pre_all_zero_AND_post_positive_AND_rejected_by_scale": 30,
+          "pre_constant": 899,
+          "pre_constant_AND_post_changed": 30,
+          "pre_constant_AND_post_changed_AND_rejected_by_scale": 30,
+          "rejected_by_scale": 900
+        },
+        "definitions": {
+          "IQR_pre_zero": "All pre-observed mapped indicators have raw pre-event IQR equal to zero.",
+          "MAD_pre_zero": "All pre-observed mapped indicators have raw pre-event MAD equal to zero.",
+          "post_changed": "At least one mapped indicator has a post-event value different from its pre median.",
+          "post_positive": "At least one mapped trace-error indicator has a positive post-event value.",
+          "pre_all_zero": "All pre-observed mapped trace-error indicator series are exactly zero.",
+          "pre_constant": "All pre-observed mapped trace-error indicator series are individually constant.",
+          "rejected_by_scale": "Pre observations exist but no mapped indicator passes MAD or IQR scale threshold 1e-6."
+        },
+        "eligible_pair_denominator": 990,
+        "rates_of_eligible": {
+          "IQR_pre_zero": 0.9090909090909091,
+          "MAD_pre_zero": 0.9090909090909091,
+          "post_changed": 0.031313131313131314,
+          "post_positive": 0.031313131313131314,
+          "pre_all_zero": 0.908080808080808,
+          "pre_all_zero_AND_post_positive": 0.030303030303030304,
+          "pre_all_zero_AND_post_positive_AND_rejected_by_scale": 0.030303030303030304,
+          "pre_constant": 0.908080808080808,
+          "pre_constant_AND_post_changed": 0.030303030303030304,
+          "pre_constant_AND_post_changed_AND_rejected_by_scale": 0.030303030303030304,
+          "rejected_by_scale": 0.9090909090909091
+        },
+        "statistical_unit": "candidate-case pair"
+      }
+    },
+    "re2tt": {
+      "candidate_case_funnel": {
+        "Log": {
+          "counts": {
+            "eligible": 6120,
+            "feature_active": 1707,
+            "mapped": 1787,
+            "post_observed": 1767,
+            "pre_observed": 1767,
+            "scale_valid": 1707,
+            "window_observed": 1787
+          },
+          "rates_of_eligible": {
+            "eligible": 1.0,
+            "feature_active": 0.278921568627451,
+            "mapped": 0.2919934640522876,
+            "post_observed": 0.2887254901960784,
+            "pre_observed": 0.2887254901960784,
+            "scale_valid": 0.278921568627451,
+            "window_observed": 0.2919934640522876
+          },
+          "statistical_unit": "candidate-case pair"
+        },
+        "Metric": {
+          "counts": {
+            "eligible": 6120,
+            "feature_active": 6120,
+            "mapped": 6120,
+            "post_observed": 6120,
+            "pre_observed": 6120,
+            "scale_valid": 6120,
+            "window_observed": 6120
+          },
+          "rates_of_eligible": {
+            "eligible": 1.0,
+            "feature_active": 1.0,
+            "mapped": 1.0,
+            "post_observed": 1.0,
+            "pre_observed": 1.0,
+            "scale_valid": 1.0,
+            "window_observed": 1.0
+          },
+          "statistical_unit": "candidate-case pair"
+        },
+        "Trace Error": {
+          "counts": {
+            "eligible": 6120,
+            "feature_active": 0,
+            "mapped": 2347,
+            "post_observed": 2339,
+            "pre_observed": 2340,
+            "scale_valid": 0,
+            "window_observed": 2347
+          },
+          "rates_of_eligible": {
+            "eligible": 1.0,
+            "feature_active": 0.0,
+            "mapped": 0.3834967320261438,
+            "post_observed": 0.3821895424836601,
+            "pre_observed": 0.38235294117647056,
+            "scale_valid": 0.0,
+            "window_observed": 0.3834967320261438
+          },
+          "statistical_unit": "candidate-case pair"
+        },
+        "Trace Latency": {
+          "counts": {
+            "eligible": 6120,
+            "feature_active": 847,
+            "mapped": 2347,
+            "post_observed": 2339,
+            "pre_observed": 2340,
+            "scale_valid": 847,
+            "window_observed": 2347
+          },
+          "rates_of_eligible": {
+            "eligible": 1.0,
+            "feature_active": 0.13839869281045752,
+            "mapped": 0.3834967320261438,
+            "post_observed": 0.3821895424836601,
+            "pre_observed": 0.38235294117647056,
+            "scale_valid": 0.13839869281045752,
+            "window_observed": 0.3834967320261438
+          },
+          "statistical_unit": "candidate-case pair"
+        }
+      },
+      "invariants": {
+        "canonical_derived_file_identity": "PASS",
+        "feature_active_subset_of_scale_valid": "PASS",
+        "funnel_monotonic": "PASS"
+      },
+      "provenance": {
+        "all_used_files_match_recorded_size_and_sha256": true,
+        "dataset_manifest": "artifacts/source/re2tt_dataset_manifest.json",
+        "dataset_manifest_sha256": "d35cf37a3b7c5f6fb0f5644241a01b328ad5daa029abe407e8d3ad3b759d5984",
+        "dataset_tree_sha256": "84b26bcd083cea2db5c7d46330974c23d9ef963ed586ec9325c663baa5dd0958",
+        "feature_artifacts_match_frozen_commit": true,
+        "feature_pair_record_sha256": {
+          "Log": "8a6f51ab560a5d863e4bb97f664b51988da901a0b55ee1483c81c262c91a19ae",
+          "Metric": "f74ea962501db52a7abc88fb02c7c2ca8061cd6b61fe8f8f33514df3d46b5547",
+          "Trace Error": "6adda0388abf565bec74d37c208bc47a078f612f3155433addfbf245a6fa7990",
+          "Trace Latency": "9888909305637c264902db5359a21e829a69a1114c5fb574c8efa7d6b542bcc3"
+        },
+        "source_file_mismatches": [],
+        "source_manifests_match_frozen_commit": true,
+        "used_canonical_derived_files": 360
+      },
+      "trace_error_diagnostics": {
+        "counts": {
+          "IQR_pre_zero": 2340,
+          "MAD_pre_zero": 2340,
+          "post_changed": 0,
+          "post_positive": 0,
+          "pre_all_zero": 2340,
+          "pre_all_zero_AND_post_positive": 0,
+          "pre_all_zero_AND_post_positive_AND_rejected_by_scale": 0,
+          "pre_constant": 2340,
+          "pre_constant_AND_post_changed": 0,
+          "pre_constant_AND_post_changed_AND_rejected_by_scale": 0,
+          "rejected_by_scale": 2340
+        },
+        "definitions": {
+          "IQR_pre_zero": "All pre-observed mapped indicators have raw pre-event IQR equal to zero.",
+          "MAD_pre_zero": "All pre-observed mapped indicators have raw pre-event MAD equal to zero.",
+          "post_changed": "At least one mapped indicator has a post-event value different from its pre median.",
+          "post_positive": "At least one mapped trace-error indicator has a positive post-event value.",
+          "pre_all_zero": "All pre-observed mapped trace-error indicator series are exactly zero.",
+          "pre_constant": "All pre-observed mapped trace-error indicator series are individually constant.",
+          "rejected_by_scale": "Pre observations exist but no mapped indicator passes MAD or IQR scale threshold 1e-6."
+        },
+        "eligible_pair_denominator": 6120,
+        "rates_of_eligible": {
+          "IQR_pre_zero": 0.38235294117647056,
+          "MAD_pre_zero": 0.38235294117647056,
+          "post_changed": 0.0,
+          "post_positive": 0.0,
+          "pre_all_zero": 0.38235294117647056,
+          "pre_all_zero_AND_post_positive": 0.0,
+          "pre_all_zero_AND_post_positive_AND_rejected_by_scale": 0.0,
+          "pre_constant": 0.38235294117647056,
+          "pre_constant_AND_post_changed": 0.0,
+          "pre_constant_AND_post_changed_AND_rejected_by_scale": 0.0,
+          "rejected_by_scale": 0.38235294117647056
+        },
+        "statistical_unit": "candidate-case pair"
+      }
+    }
+  },
+  "gate_3": {
+    "provenance_authorization": "GATE_4_AUTHORIZED",
+    "status": "PASS",
+    "terminal_state_if_failed": null
+  },
+  "schema_version": "ada_rca_telemetry_information_loss_v1_1",
+  "scope": {
+    "funnel": [
+      "eligible",
+      "mapped",
+      "window observed",
+      "pre observed",
+      "post observed",
+      "scale valid",
+      "feature active"
+    ],
+    "modalities": [
+      "Metric",
+      "Log",
+      "Trace Error",
+      "Trace Latency"
+    ],
+    "model_fit": "NOT EXECUTED",
+    "new_feature_or_sparse_optimization": "NOT EXECUTED",
+    "primary_statistical_unit": "candidate-case pair",
+    "raw_record_counts": "NOT_MIXED_WITH_CANDIDATE_CASE_FUNNEL"
+  }
+}

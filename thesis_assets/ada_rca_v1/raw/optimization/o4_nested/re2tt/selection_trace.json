@@ -1,0 +1,1079 @@
+[
+  {
+    "ensemble": null,
+    "gradient_norm": 7.227829446065925e-13,
+    "inner_selection_trace": {
+      "chosen": {
+        "AC@1_mean": 0.7666666666666666,
+        "fold_scores": [
+          0.8600000000000001,
+          0.8699999999999999,
+          0.8
+        ],
+        "lambda": 0.1,
+        "mean_Avg@5": 0.8433333333333334,
+        "ranker": "R0-ConditionalLogit",
+        "representation": "M+TL"
+      },
+      "ranker_grid": [
+        {
+          "AC@1_mean": 0.7666666666666666,
+          "fold_scores": [
+            0.8600000000000001,
+            0.8699999999999999,
+            0.8
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.8433333333333334,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.75,
+          "fold_scores": [
+            0.85,
+            0.8699999999999999,
+            0.79
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.8366666666666666,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.7666666666666666,
+          "fold_scores": [
+            0.8300000000000001,
+            0.89,
+            0.75
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.8233333333333334,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.75,
+          "fold_scores": [
+            0.8400000000000001,
+            0.8699999999999999,
+            0.76
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.8233333333333333,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TE"
+        },
+        {
+          "AC@1_mean": 0.75,
+          "fold_scores": [
+            0.8400000000000001,
+            0.8699999999999999,
+            0.76
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.8233333333333333,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "Z1-M"
+        },
+        {
+          "AC@1_mean": 0.75,
+          "fold_scores": [
+            0.8400000000000001,
+            0.8800000000000001,
+            0.74
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.82,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TE"
+        },
+        {
+          "AC@1_mean": 0.75,
+          "fold_scores": [
+            0.8400000000000001,
+            0.8800000000000001,
+            0.74
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.82,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "Z1-M"
+        },
+        {
+          "AC@1_mean": 0.7666666666666666,
+          "fold_scores": [
+            0.8,
+            0.89,
+            0.75
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.8133333333333334,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TE"
+        },
+        {
+          "AC@1_mean": 0.7666666666666666,
+          "fold_scores": [
+            0.8,
+            0.89,
+            0.75
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.8133333333333334,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "Z1-M"
+        }
+      ],
+      "representation_screen": [
+        {
+          "fold_scores": [
+            0.85,
+            0.8699999999999999,
+            0.79
+          ],
+          "mean_Avg@5": 0.8366666666666666,
+          "representation": "M+TL"
+        },
+        {
+          "fold_scores": [
+            0.8400000000000001,
+            0.8800000000000001,
+            0.74
+          ],
+          "mean_Avg@5": 0.82,
+          "representation": "M+TE"
+        },
+        {
+          "fold_scores": [
+            0.8400000000000001,
+            0.8800000000000001,
+            0.74
+          ],
+          "mean_Avg@5": 0.82,
+          "representation": "Z1-M"
+        },
+        {
+          "fold_scores": [
+            0.7499999999999999,
+            0.8800000000000001,
+            0.7100000000000001
+          ],
+          "mean_Avg@5": 0.7799999999999999,
+          "representation": "FULL-Z2"
+        },
+        {
+          "fold_scores": [
+            0.7499999999999999,
+            0.8800000000000001,
+            0.7100000000000001
+          ],
+          "mean_Avg@5": 0.7799999999999999,
+          "representation": "M+L+TL"
+        },
+        {
+          "fold_scores": [
+            0.7300000000000001,
+            0.89,
+            0.6599999999999999
+          ],
+          "mean_Avg@5": 0.7600000000000001,
+          "representation": "M+L"
+        }
+      ],
+      "top_k": [
+        "M+TL",
+        "M+TE",
+        "Z1-M"
+      ]
+    },
+    "outer_fold": 0,
+    "outer_test_event_ids": [
+      "re2tt-1283c56ed7675282",
+      "re2tt-20258ce8dbcd2300",
+      "re2tt-2a03e4ad1a1d6f85",
+      "re2tt-2ca7cff33586ca18",
+      "re2tt-2fc3d2fb9c492b7c",
+      "re2tt-38941ca70beb687a",
+      "re2tt-420fff915c5f5bc5",
+      "re2tt-56db4956167f9980",
+      "re2tt-5d2e4747cab0d818",
+      "re2tt-5f50dc54f6cb9fce",
+      "re2tt-606ef267348d40e5",
+      "re2tt-6a0d1ebf31fb52a6",
+      "re2tt-722f5f89a57be699",
+      "re2tt-72822d018b0df53f",
+      "re2tt-783d045c8102f972",
+      "re2tt-877f6cbd0cb33e7c",
+      "re2tt-93fbbdf23f58f440",
+      "re2tt-94bd05feab03461e",
+      "re2tt-afdac60e6b000d3c",
+      "re2tt-b2342b2478b249cb",
+      "re2tt-b5173d4edf252af8",
+      "re2tt-bbbcbf7787fa152c",
+      "re2tt-bed634aec03e773f",
+      "re2tt-c1b234f6cc4acbee",
+      "re2tt-c82529d65e13adc0",
+      "re2tt-c8fbd9a7d1e92284",
+      "re2tt-cdf514b035f34990",
+      "re2tt-e44ccb97e7cc1570",
+      "re2tt-e4be9aa8e249ddf3",
+      "re2tt-fe28a6c0dbd7d892"
+    ],
+    "outer_train_event_ids": [
+      "re2tt-010695b192f8dbea",
+      "re2tt-01d0096e9a504ced",
+      "re2tt-04ce93a682b70df6",
+      "re2tt-0b529d9f6ca88d4b",
+      "re2tt-0f6b6213169d6acc",
+      "re2tt-14c6e1b70d0c21e5",
+      "re2tt-1d48b3aec1ec4470",
+      "re2tt-22292d58b67911fb",
+      "re2tt-2782358136a64e6c",
+      "re2tt-2ae0e149b3ab15f1",
+      "re2tt-2defd6e102bdaf53",
+      "re2tt-35e803c63786ac4e",
+      "re2tt-3bd96ed8cc02f613",
+      "re2tt-3e24ca7f9747c84e",
+      "re2tt-3fffa88dd3653f99",
+      "re2tt-406c40ff0016fa9c",
+      "re2tt-426ec979883ae8dc",
+      "re2tt-44604ef8713a5943",
+      "re2tt-472c8339fd3703e9",
+      "re2tt-4780a4f90c190bf4",
+      "re2tt-575015aa80c376c6",
+      "re2tt-5a65eea398ba8435",
+      "re2tt-5bb89b87741349d7",
+      "re2tt-653810995a9aa3db",
+      "re2tt-67172e499653d426",
+      "re2tt-714d157727edd2d0",
+      "re2tt-727331fee88d4ce7",
+      "re2tt-739ad24f1e2d7c29",
+      "re2tt-7cff180e5ff1cc71",
+      "re2tt-7d3fb265c1c0f9ed",
+      "re2tt-7d84c0b80f7f0032",
+      "re2tt-995607e863fb7731",
+      "re2tt-a0c0a90c5448e7fa",
+      "re2tt-a141811c79edaa0b",
+      "re2tt-a33887653c475d04",
+      "re2tt-a7213c3da47edbd0",
+      "re2tt-aa71e41ec8e7922d",
+      "re2tt-ae09714023e727e1",
+      "re2tt-bc9cd2d131533d16",
+      "re2tt-c7f9112580bfde33",
+      "re2tt-cb1f1df38c99005a",
+      "re2tt-cb3381bf9ed05034",
+      "re2tt-cc6c772d4116d054",
+      "re2tt-d0a74725c5d96362",
+      "re2tt-d14727a3c74e9768",
+      "re2tt-d4b1d66aaaa1a728",
+      "re2tt-d83931768111dc58",
+      "re2tt-e3f89de859062727",
+      "re2tt-e76e500ff655313b",
+      "re2tt-e9071bdee1904785",
+      "re2tt-ee2421859dfb0792",
+      "re2tt-f09cbf3636ad02de",
+      "re2tt-f1aa29dd3ba2343f",
+      "re2tt-f5512e2434f96386",
+      "re2tt-f578fe138f6d4c7a",
+      "re2tt-fa81461ebec56b42",
+      "re2tt-fb57d883cd727c81",
+      "re2tt-fc53b7fb52199fb7",
+      "re2tt-fd20b1f93a6ff4c0",
+      "re2tt-ffda523857bbf5c2"
+    ],
+    "ranker": "R0-ConditionalLogit",
+    "selected": {
+      "AC@1_mean": 0.7666666666666666,
+      "fold_scores": [
+        0.8600000000000001,
+        0.8699999999999999,
+        0.8
+      ],
+      "lambda": 0.1,
+      "mean_Avg@5": 0.8433333333333334,
+      "ranker": "R0-ConditionalLogit",
+      "representation": "M+TL"
+    },
+    "selection_event_ids": [
+      "re2tt-010695b192f8dbea",
+      "re2tt-01d0096e9a504ced",
+      "re2tt-04ce93a682b70df6",
+      "re2tt-0b529d9f6ca88d4b",
+      "re2tt-0f6b6213169d6acc",
+      "re2tt-14c6e1b70d0c21e5",
+      "re2tt-1d48b3aec1ec4470",
+      "re2tt-22292d58b67911fb",
+      "re2tt-2782358136a64e6c",
+      "re2tt-2ae0e149b3ab15f1",
+      "re2tt-2defd6e102bdaf53",
+      "re2tt-35e803c63786ac4e",
+      "re2tt-3bd96ed8cc02f613",
+      "re2tt-3e24ca7f9747c84e",
+      "re2tt-3fffa88dd3653f99",
+      "re2tt-406c40ff0016fa9c",
+      "re2tt-426ec979883ae8dc",
+      "re2tt-44604ef8713a5943",
+      "re2tt-472c8339fd3703e9",
+      "re2tt-4780a4f90c190bf4",
+      "re2tt-575015aa80c376c6",
+      "re2tt-5a65eea398ba8435",
+      "re2tt-5bb89b87741349d7",
+      "re2tt-653810995a9aa3db",
+      "re2tt-67172e499653d426",
+      "re2tt-714d157727edd2d0",
+      "re2tt-727331fee88d4ce7",
+      "re2tt-739ad24f1e2d7c29",
+      "re2tt-7cff180e5ff1cc71",
+      "re2tt-7d3fb265c1c0f9ed",
+      "re2tt-7d84c0b80f7f0032",
+      "re2tt-995607e863fb7731",
+      "re2tt-a0c0a90c5448e7fa",
+      "re2tt-a141811c79edaa0b",
+      "re2tt-a33887653c475d04",
+      "re2tt-a7213c3da47edbd0",
+      "re2tt-aa71e41ec8e7922d",
+      "re2tt-ae09714023e727e1",
+      "re2tt-bc9cd2d131533d16",
+      "re2tt-c7f9112580bfde33",
+      "re2tt-cb1f1df38c99005a",
+      "re2tt-cb3381bf9ed05034",
+      "re2tt-cc6c772d4116d054",
+      "re2tt-d0a74725c5d96362",
+      "re2tt-d14727a3c74e9768",
+      "re2tt-d4b1d66aaaa1a728",
+      "re2tt-d83931768111dc58",
+      "re2tt-e3f89de859062727",
+      "re2tt-e76e500ff655313b",
+      "re2tt-e9071bdee1904785",
+      "re2tt-ee2421859dfb0792",
+      "re2tt-f09cbf3636ad02de",
+      "re2tt-f1aa29dd3ba2343f",
+      "re2tt-f5512e2434f96386",
+      "re2tt-f578fe138f6d4c7a",
+      "re2tt-fa81461ebec56b42",
+      "re2tt-fb57d883cd727c81",
+      "re2tt-fc53b7fb52199fb7",
+      "re2tt-fd20b1f93a6ff4c0",
+      "re2tt-ffda523857bbf5c2"
+    ]
+  },
+  {
+    "ensemble": null,
+    "gradient_norm": 2.6767477123712524e-13,
+    "inner_selection_trace": {
+      "chosen": {
+        "AC@1_mean": 0.7999999999999999,
+        "fold_scores": [
+          0.8300000000000001,
+          0.86,
+          0.95
+        ],
+        "lambda": 0.1,
+        "mean_Avg@5": 0.8799999999999999,
+        "ranker": "R0-ConditionalLogit",
+        "representation": "M+TL"
+      },
+      "ranker_grid": [
+        {
+          "AC@1_mean": 0.7999999999999999,
+          "fold_scores": [
+            0.8300000000000001,
+            0.86,
+            0.95
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.8799999999999999,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.75,
+          "fold_scores": [
+            0.8300000000000001,
+            0.8400000000000001,
+            0.95
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.8733333333333334,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.7833333333333333,
+          "fold_scores": [
+            0.8,
+            0.8400000000000001,
+            0.9400000000000001
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.86,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TE"
+        },
+        {
+          "AC@1_mean": 0.7833333333333333,
+          "fold_scores": [
+            0.8,
+            0.8400000000000001,
+            0.9400000000000001
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.86,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "Z1-M"
+        },
+        {
+          "AC@1_mean": 0.7166666666666667,
+          "fold_scores": [
+            0.7900000000000001,
+            0.82,
+            0.9400000000000001
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.8500000000000001,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TE"
+        },
+        {
+          "AC@1_mean": 0.7166666666666667,
+          "fold_scores": [
+            0.7900000000000001,
+            0.82,
+            0.9400000000000001
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.8500000000000001,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "Z1-M"
+        },
+        {
+          "AC@1_mean": 0.7333333333333333,
+          "fold_scores": [
+            0.79,
+            0.79,
+            0.9400000000000001
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.84,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.7000000000000001,
+          "fold_scores": [
+            0.78,
+            0.77,
+            0.9400000000000001
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.8300000000000001,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TE"
+        },
+        {
+          "AC@1_mean": 0.7000000000000001,
+          "fold_scores": [
+            0.78,
+            0.77,
+            0.9400000000000001
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.8300000000000001,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "Z1-M"
+        }
+      ],
+      "representation_screen": [
+        {
+          "fold_scores": [
+            0.8300000000000001,
+            0.8400000000000001,
+            0.95
+          ],
+          "mean_Avg@5": 0.8733333333333334,
+          "representation": "M+TL"
+        },
+        {
+          "fold_scores": [
+            0.7900000000000001,
+            0.82,
+            0.9400000000000001
+          ],
+          "mean_Avg@5": 0.8500000000000001,
+          "representation": "M+TE"
+        },
+        {
+          "fold_scores": [
+            0.7900000000000001,
+            0.82,
+            0.9400000000000001
+          ],
+          "mean_Avg@5": 0.8500000000000001,
+          "representation": "Z1-M"
+        },
+        {
+          "fold_scores": [
+            0.8,
+            0.7999999999999999,
+            0.9200000000000002
+          ],
+          "mean_Avg@5": 0.8400000000000002,
+          "representation": "FULL-Z2"
+        },
+        {
+          "fold_scores": [
+            0.8,
+            0.7999999999999999,
+            0.9200000000000002
+          ],
+          "mean_Avg@5": 0.8400000000000002,
+          "representation": "M+L+TL"
+        },
+        {
+          "fold_scores": [
+            0.8200000000000001,
+            0.76,
+            0.89
+          ],
+          "mean_Avg@5": 0.8233333333333334,
+          "representation": "M+L"
+        }
+      ],
+      "top_k": [
+        "M+TL",
+        "M+TE",
+        "Z1-M"
+      ]
+    },
+    "outer_fold": 1,
+    "outer_test_event_ids": [
+      "re2tt-04ce93a682b70df6",
+      "re2tt-14c6e1b70d0c21e5",
+      "re2tt-22292d58b67911fb",
+      "re2tt-2782358136a64e6c",
+      "re2tt-2ae0e149b3ab15f1",
+      "re2tt-35e803c63786ac4e",
+      "re2tt-3bd96ed8cc02f613",
+      "re2tt-3fffa88dd3653f99",
+      "re2tt-426ec979883ae8dc",
+      "re2tt-575015aa80c376c6",
+      "re2tt-67172e499653d426",
+      "re2tt-714d157727edd2d0",
+      "re2tt-739ad24f1e2d7c29",
+      "re2tt-7cff180e5ff1cc71",
+      "re2tt-7d3fb265c1c0f9ed",
+      "re2tt-7d84c0b80f7f0032",
+      "re2tt-a0c0a90c5448e7fa",
+      "re2tt-a7213c3da47edbd0",
+      "re2tt-aa71e41ec8e7922d",
+      "re2tt-ae09714023e727e1",
+      "re2tt-bc9cd2d131533d16",
+      "re2tt-c7f9112580bfde33",
+      "re2tt-cb3381bf9ed05034",
+      "re2tt-d4b1d66aaaa1a728",
+      "re2tt-d83931768111dc58",
+      "re2tt-e76e500ff655313b",
+      "re2tt-ee2421859dfb0792",
+      "re2tt-f09cbf3636ad02de",
+      "re2tt-f5512e2434f96386",
+      "re2tt-fd20b1f93a6ff4c0"
+    ],
+    "outer_train_event_ids": [
+      "re2tt-010695b192f8dbea",
+      "re2tt-01d0096e9a504ced",
+      "re2tt-0b529d9f6ca88d4b",
+      "re2tt-0f6b6213169d6acc",
+      "re2tt-1283c56ed7675282",
+      "re2tt-1d48b3aec1ec4470",
+      "re2tt-20258ce8dbcd2300",
+      "re2tt-2a03e4ad1a1d6f85",
+      "re2tt-2ca7cff33586ca18",
+      "re2tt-2defd6e102bdaf53",
+      "re2tt-2fc3d2fb9c492b7c",
+      "re2tt-38941ca70beb687a",
+      "re2tt-3e24ca7f9747c84e",
+      "re2tt-406c40ff0016fa9c",
+      "re2tt-420fff915c5f5bc5",
+      "re2tt-44604ef8713a5943",
+      "re2tt-472c8339fd3703e9",
+      "re2tt-4780a4f90c190bf4",
+      "re2tt-56db4956167f9980",
+      "re2tt-5a65eea398ba8435",
+      "re2tt-5bb89b87741349d7",
+      "re2tt-5d2e4747cab0d818",
+      "re2tt-5f50dc54f6cb9fce",
+      "re2tt-606ef267348d40e5",
+      "re2tt-653810995a9aa3db",
+      "re2tt-6a0d1ebf31fb52a6",
+      "re2tt-722f5f89a57be699",
+      "re2tt-727331fee88d4ce7",
+      "re2tt-72822d018b0df53f",
+      "re2tt-783d045c8102f972",
+      "re2tt-877f6cbd0cb33e7c",
+      "re2tt-93fbbdf23f58f440",
+      "re2tt-94bd05feab03461e",
+      "re2tt-995607e863fb7731",
+      "re2tt-a141811c79edaa0b",
+      "re2tt-a33887653c475d04",
+      "re2tt-afdac60e6b000d3c",
+      "re2tt-b2342b2478b249cb",
+      "re2tt-b5173d4edf252af8",
+      "re2tt-bbbcbf7787fa152c",
+      "re2tt-bed634aec03e773f",
+      "re2tt-c1b234f6cc4acbee",
+      "re2tt-c82529d65e13adc0",
+      "re2tt-c8fbd9a7d1e92284",
+      "re2tt-cb1f1df38c99005a",
+      "re2tt-cc6c772d4116d054",
+      "re2tt-cdf514b035f34990",
+      "re2tt-d0a74725c5d96362",
+      "re2tt-d14727a3c74e9768",
+      "re2tt-e3f89de859062727",
+      "re2tt-e44ccb97e7cc1570",
+      "re2tt-e4be9aa8e249ddf3",
+      "re2tt-e9071bdee1904785",
+      "re2tt-f1aa29dd3ba2343f",
+      "re2tt-f578fe138f6d4c7a",
+      "re2tt-fa81461ebec56b42",
+      "re2tt-fb57d883cd727c81",
+      "re2tt-fc53b7fb52199fb7",
+      "re2tt-fe28a6c0dbd7d892",
+      "re2tt-ffda523857bbf5c2"
+    ],
+    "ranker": "R0-ConditionalLogit",
+    "selected": {
+      "AC@1_mean": 0.7999999999999999,
+      "fold_scores": [
+        0.8300000000000001,
+        0.86,
+        0.95
+      ],
+      "lambda": 0.1,
+      "mean_Avg@5": 0.8799999999999999,
+      "ranker": "R0-ConditionalLogit",
+      "representation": "M+TL"
+    },
+    "selection_event_ids": [
+      "re2tt-010695b192f8dbea",
+      "re2tt-01d0096e9a504ced",
+      "re2tt-0b529d9f6ca88d4b",
+      "re2tt-0f6b6213169d6acc",
+      "re2tt-1283c56ed7675282",
+      "re2tt-1d48b3aec1ec4470",
+      "re2tt-20258ce8dbcd2300",
+      "re2tt-2a03e4ad1a1d6f85",
+      "re2tt-2ca7cff33586ca18",
+      "re2tt-2defd6e102bdaf53",
+      "re2tt-2fc3d2fb9c492b7c",
+      "re2tt-38941ca70beb687a",
+      "re2tt-3e24ca7f9747c84e",
+      "re2tt-406c40ff0016fa9c",
+      "re2tt-420fff915c5f5bc5",
+      "re2tt-44604ef8713a5943",
+      "re2tt-472c8339fd3703e9",
+      "re2tt-4780a4f90c190bf4",
+      "re2tt-56db4956167f9980",
+      "re2tt-5a65eea398ba8435",
+      "re2tt-5bb89b87741349d7",
+      "re2tt-5d2e4747cab0d818",
+      "re2tt-5f50dc54f6cb9fce",
+      "re2tt-606ef267348d40e5",
+      "re2tt-653810995a9aa3db",
+      "re2tt-6a0d1ebf31fb52a6",
+      "re2tt-722f5f89a57be699",
+      "re2tt-727331fee88d4ce7",
+      "re2tt-72822d018b0df53f",
+      "re2tt-783d045c8102f972",
+      "re2tt-877f6cbd0cb33e7c",
+      "re2tt-93fbbdf23f58f440",
+      "re2tt-94bd05feab03461e",
+      "re2tt-995607e863fb7731",
+      "re2tt-a141811c79edaa0b",
+      "re2tt-a33887653c475d04",
+      "re2tt-afdac60e6b000d3c",
+      "re2tt-b2342b2478b249cb",
+      "re2tt-b5173d4edf252af8",
+      "re2tt-bbbcbf7787fa152c",
+      "re2tt-bed634aec03e773f",
+      "re2tt-c1b234f6cc4acbee",
+      "re2tt-c82529d65e13adc0",
+      "re2tt-c8fbd9a7d1e92284",
+      "re2tt-cb1f1df38c99005a",
+      "re2tt-cc6c772d4116d054",
+      "re2tt-cdf514b035f34990",
+      "re2tt-d0a74725c5d96362",
+      "re2tt-d14727a3c74e9768",
+      "re2tt-e3f89de859062727",
+      "re2tt-e44ccb97e7cc1570",
+      "re2tt-e4be9aa8e249ddf3",
+      "re2tt-e9071bdee1904785",
+      "re2tt-f1aa29dd3ba2343f",
+      "re2tt-f578fe138f6d4c7a",
+      "re2tt-fa81461ebec56b42",
+      "re2tt-fb57d883cd727c81",
+      "re2tt-fc53b7fb52199fb7",
+      "re2tt-fe28a6c0dbd7d892",
+      "re2tt-ffda523857bbf5c2"
+    ]
+  },
+  {
+    "ensemble": null,
+    "gradient_norm": 5.5011550870176507e-14,
+    "inner_selection_trace": {
+      "chosen": {
+        "AC@1_mean": 0.7666666666666666,
+        "fold_scores": [
+          0.8400000000000001,
+          0.89,
+          0.82
+        ],
+        "lambda": 0.1,
+        "mean_Avg@5": 0.85,
+        "ranker": "R0-ConditionalLogit",
+        "representation": "M+TL"
+      },
+      "ranker_grid": [
+        {
+          "AC@1_mean": 0.7666666666666666,
+          "fold_scores": [
+            0.8400000000000001,
+            0.89,
+            0.82
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.85,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.75,
+          "fold_scores": [
+            0.8400000000000001,
+            0.86,
+            0.8099999999999999
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.8366666666666668,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.6999999999999998,
+          "fold_scores": [
+            0.77,
+            0.9000000000000001,
+            0.8200000000000001
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.8300000000000001,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "FULL-Z2"
+        },
+        {
+          "AC@1_mean": 0.6999999999999998,
+          "fold_scores": [
+            0.77,
+            0.9000000000000001,
+            0.8200000000000001
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.8300000000000001,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+L+TL"
+        },
+        {
+          "AC@1_mean": 0.7666666666666666,
+          "fold_scores": [
+            0.85,
+            0.8300000000000001,
+            0.8
+          ],
+          "lambda": 10.0,
+          "mean_Avg@5": 0.8266666666666668,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+TL"
+        },
+        {
+          "AC@1_mean": 0.7000000000000001,
+          "fold_scores": [
+            0.7100000000000001,
+            0.9100000000000001,
+            0.8300000000000001
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.8166666666666668,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "FULL-Z2"
+        },
+        {
+          "AC@1_mean": 0.7000000000000001,
+          "fold_scores": [
+            0.7100000000000001,
+            0.9100000000000001,
+            0.8300000000000001
+          ],
+          "lambda": 1.0,
+          "mean_Avg@5": 0.8166666666666668,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+L+TL"
+        },
+        {
+          "AC@1_mean": 0.6833333333333332,
+          "fold_scores": [
+            0.73,
+            0.9,
+            0.8099999999999999
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.8133333333333334,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "FULL-Z2"
+        },
+        {
+          "AC@1_mean": 0.6833333333333332,
+          "fold_scores": [
+            0.73,
+            0.9,
+            0.8099999999999999
+          ],
+          "lambda": 0.1,
+          "mean_Avg@5": 0.8133333333333334,
+          "ranker": "R0-ConditionalLogit",
+          "representation": "M+L+TL"
+        }
+      ],
+      "representation_screen": [
+        {
+          "fold_scores": [
+            0.8400000000000001,
+            0.86,
+            0.8099999999999999
+          ],
+          "mean_Avg@5": 0.8366666666666668,
+          "representation": "M+TL"
+        },
+        {
+          "fold_scores": [
+            0.7100000000000001,
+            0.9100000000000001,
+            0.8300000000000001
+          ],
+          "mean_Avg@5": 0.8166666666666668,
+          "representation": "FULL-Z2"
+        },
+        {
+          "fold_scores": [
+            0.7100000000000001,
+            0.9100000000000001,
+            0.8300000000000001
+          ],
+          "mean_Avg@5": 0.8166666666666668,
+          "representation": "M+L+TL"
+        },
+        {
+          "fold_scores": [
+            0.8400000000000001,
+            0.8400000000000001,
+            0.7500000000000001
+          ],
+          "mean_Avg@5": 0.81,
+          "representation": "M+TE"
+        },
+        {
+          "fold_scores": [
+            0.8400000000000001,
+            0.8400000000000001,
+            0.7500000000000001
+          ],
+          "mean_Avg@5": 0.81,
+          "representation": "Z1-M"
+        },
+        {
+          "fold_scores": [
+            0.7100000000000001,
+            0.8800000000000001,
+            0.8
+          ],
+          "mean_Avg@5": 0.7966666666666669,
+          "representation": "M+L"
+        }
+      ],
+      "top_k": [
+        "M+TL",
+        "FULL-Z2",
+        "M+L+TL"
+      ]
+    },
+    "outer_fold": 2,
+    "outer_test_event_ids": [
+      "re2tt-010695b192f8dbea",
+      "re2tt-01d0096e9a504ced",
+      "re2tt-0b529d9f6ca88d4b",
+      "re2tt-0f6b6213169d6acc",
+      "re2tt-1d48b3aec1ec4470",
+      "re2tt-2defd6e102bdaf53",
+      "re2tt-3e24ca7f9747c84e",
+      "re2tt-406c40ff0016fa9c",
+      "re2tt-44604ef8713a5943",
+      "re2tt-472c8339fd3703e9",
+      "re2tt-4780a4f90c190bf4",
+      "re2tt-5a65eea398ba8435",
+      "re2tt-5bb89b87741349d7",
+      "re2tt-653810995a9aa3db",
+      "re2tt-727331fee88d4ce7",
+      "re2tt-995607e863fb7731",
+      "re2tt-a141811c79edaa0b",
+      "re2tt-a33887653c475d04",
+      "re2tt-cb1f1df38c99005a",
+      "re2tt-cc6c772d4116d054",
+      "re2tt-d0a74725c5d96362",
+      "re2tt-d14727a3c74e9768",
+      "re2tt-e3f89de859062727",
+      "re2tt-e9071bdee1904785",
+      "re2tt-f1aa29dd3ba2343f",
+      "re2tt-f578fe138f6d4c7a",
+      "re2tt-fa81461ebec56b42",
+      "re2tt-fb57d883cd727c81",
+      "re2tt-fc53b7fb52199fb7",
+      "re2tt-ffda523857bbf5c2"
+    ],
+    "outer_train_event_ids": [
+      "re2tt-04ce93a682b70df6",
+      "re2tt-1283c56ed7675282",
+      "re2tt-14c6e1b70d0c21e5",
+      "re2tt-20258ce8dbcd2300",
+      "re2tt-22292d58b67911fb",
+      "re2tt-2782358136a64e6c",
+      "re2tt-2a03e4ad1a1d6f85",
+      "re2tt-2ae0e149b3ab15f1",
+      "re2tt-2ca7cff33586ca18",
+      "re2tt-2fc3d2fb9c492b7c",
+      "re2tt-35e803c63786ac4e",
+      "re2tt-38941ca70beb687a",
+      "re2tt-3bd96ed8cc02f613",
+      "re2tt-3fffa88dd3653f99",
+      "re2tt-420fff915c5f5bc5",
+      "re2tt-426ec979883ae8dc",
+      "re2tt-56db4956167f9980",
+      "re2tt-575015aa80c376c6",
+      "re2tt-5d2e4747cab0d818",
+      "re2tt-5f50dc54f6cb9fce",
+      "re2tt-606ef267348d40e5",
+      "re2tt-67172e499653d426",
+      "re2tt-6a0d1ebf31fb52a6",
+      "re2tt-714d157727edd2d0",
+      "re2tt-722f5f89a57be699",
+      "re2tt-72822d018b0df53f",
+      "re2tt-739ad24f1e2d7c29",
+      "re2tt-783d045c8102f972",
+      "re2tt-7cff180e5ff1cc71",
+      "re2tt-7d3fb265c1c0f9ed",
+      "re2tt-7d84c0b80f7f0032",
+      "re2tt-877f6cbd0cb33e7c",
+      "re2tt-93fbbdf23f58f440",
+      "re2tt-94bd05feab03461e",
+      "re2tt-a0c0a90c5448e7fa",
+      "re2tt-a7213c3da47edbd0",
+      "re2tt-aa71e41ec8e7922d",
+      "re2tt-ae09714023e727e1",
+      "re2tt-afdac60e6b000d3c",
+      "re2tt-b2342b2478b249cb",
+      "re2tt-b5173d4edf252af8",
+      "re2tt-bbbcbf7787fa152c",
+      "re2tt-bc9cd2d131533d16",
+      "re2tt-bed634aec03e773f",
+      "re2tt-c1b234f6cc4acbee",
+      "re2tt-c7f9112580bfde33",
+      "re2tt-c82529d65e13adc0",
+      "re2tt-c8fbd9a7d1e92284",
+      "re2tt-cb3381bf9ed05034",
+      "re2tt-cdf514b035f34990",
+      "re2tt-d4b1d66aaaa1a728",
+      "re2tt-d83931768111dc58",
+      "re2tt-e44ccb97e7cc1570",
+      "re2tt-e4be9aa8e249ddf3",
+      "re2tt-e76e500ff655313b",
+      "re2tt-ee2421859dfb0792",
+      "re2tt-f09cbf3636ad02de",
+      "re2tt-f5512e2434f96386",
+      "re2tt-fd20b1f93a6ff4c0",
+      "re2tt-fe28a6c0dbd7d892"
+    ],
+    "ranker": "R0-ConditionalLogit",
+    "selected": {
+      "AC@1_mean": 0.7666666666666666,
+      "fold_scores": [
+        0.8400000000000001,
+        0.89,
+        0.82
+      ],
+      "lambda": 0.1,
+      "mean_Avg@5": 0.85,
+      "ranker": "R0-ConditionalLogit",
+      "representation": "M+TL"
+    },
+    "selection_event_ids": [
+      "re2tt-04ce93a682b70df6",
+      "re2tt-1283c56ed7675282",
+      "re2tt-14c6e1b70d0c21e5",
+      "re2tt-20258ce8dbcd2300",
+      "re2tt-22292d58b67911fb",
+      "re2tt-2782358136a64e6c",
+      "re2tt-2a03e4ad1a1d6f85",
+      "re2tt-2ae0e149b3ab15f1",
+      "re2tt-2ca7cff33586ca18",
+      "re2tt-2fc3d2fb9c492b7c",
+      "re2tt-35e803c63786ac4e",
+      "re2tt-38941ca70beb687a",
+      "re2tt-3bd96ed8cc02f613",
+      "re2tt-3fffa88dd3653f99",
+      "re2tt-420fff915c5f5bc5",
+      "re2tt-426ec979883ae8dc",
+      "re2tt-56db4956167f9980",
+      "re2tt-575015aa80c376c6",
+      "re2tt-5d2e4747cab0d818",
+      "re2tt-5f50dc54f6cb9fce",
+      "re2tt-606ef267348d40e5",
+      "re2tt-67172e499653d426",
+      "re2tt-6a0d1ebf31fb52a6",
+      "re2tt-714d157727edd2d0",
+      "re2tt-722f5f89a57be699",
+      "re2tt-72822d018b0df53f",
+      "re2tt-739ad24f1e2d7c29",
+      "re2tt-783d045c8102f972",
+      "re2tt-7cff180e5ff1cc71",
+      "re2tt-7d3fb265c1c0f9ed",
+      "re2tt-7d84c0b80f7f0032",
+      "re2tt-877f6cbd0cb33e7c",
+      "re2tt-93fbbdf23f58f440",
+      "re2tt-94bd05feab03461e",
+      "re2tt-a0c0a90c5448e7fa",
+      "re2tt-a7213c3da47edbd0",
+      "re2tt-aa71e41ec8e7922d",
+      "re2tt-ae09714023e727e1",
+      "re2tt-afdac60e6b000d3c",
+      "re2tt-b2342b2478b249cb",
+      "re2tt-b5173d4edf252af8",
+      "re2tt-bbbcbf7787fa152c",
+      "re2tt-bc9cd2d131533d16",
+      "re2tt-bed634aec03e773f",
+      "re2tt-c1b234f6cc4acbee",
+      "re2tt-c7f9112580bfde33",
+      "re2tt-c82529d65e13adc0",
+      "re2tt-c8fbd9a7d1e92284",
+      "re2tt-cb3381bf9ed05034",
+      "re2tt-cdf514b035f34990",
+      "re2tt-d4b1d66aaaa1a728",
+      "re2tt-d83931768111dc58",
+      "re2tt-e44ccb97e7cc1570",
+      "re2tt-e4be9aa8e249ddf3",
+      "re2tt-e76e500ff655313b",
+      "re2tt-ee2421859dfb0792",
+      "re2tt-f09cbf3636ad02de",
+      "re2tt-f5512e2434f96386",
+      "re2tt-fd20b1f93a6ff4c0",
+      "re2tt-fe28a6c0dbd7d892"
+    ]
+  }
+]

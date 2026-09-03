@@ -1,0 +1,20 @@
+{
+  "dataset": "RCAEval-RE2-OB",
+  "dataset_key": "re2ob",
+  "derivation": "union of simple_metrics CPU/memory entity columns, excluding fixed auxiliary entities",
+  "label_free": true,
+  "schema_version": "p3_a0_service_registry_v1",
+  "services": [
+    "adservice",
+    "cartservice",
+    "checkoutservice",
+    "currencyservice",
+    "emailservice",
+    "frontend",
+    "paymentservice",
+    "productcatalogservice",
+    "recommendationservice",
+    "redis",
+    "shippingservice"
+  ]
+}

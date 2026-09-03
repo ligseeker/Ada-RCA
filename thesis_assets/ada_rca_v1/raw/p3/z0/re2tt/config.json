@@ -1,0 +1,13 @@
+{
+  "C": 1.0,
+  "folds": 3,
+  "learner": "sklearn.linear_model.LogisticRegression",
+  "max_iter": 5000,
+  "penalty": "l2",
+  "random_state": 0,
+  "scaler": "StandardScaler fit on train-fold candidate rows only",
+  "seed": 20260826,
+  "shuffle_policy": null,
+  "solver": "lbfgs",
+  "variant": "z0"
+}

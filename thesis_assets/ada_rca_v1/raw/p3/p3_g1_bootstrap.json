@@ -1,0 +1,144 @@
+{
+  "comparisons": {
+    "z3_minus_z1": {
+      "mean_ob_tt": {
+        "ci95": [
+          -0.07444444444444444,
+          0.031111111111111114
+        ],
+        "point_delta_avg5": -0.021111111111111105,
+        "resamples": 10000,
+        "seed": 20260826
+      },
+      "re2ob": {
+        "ci95": [
+          -0.01333333333333333,
+          0.042222222222222223
+        ],
+        "dataset": "re2ob",
+        "delta_by_fault": {
+          "cpu": -0.013333333333333338,
+          "delay": 0.053333333333333344,
+          "disk": 0.0,
+          "loss": 7.401486830834377e-18,
+          "mem": 0.01333333333333333,
+          "socket": 0.02666666666666667
+        },
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "left": "z3",
+        "point_delta_avg5": 0.013333333333333338,
+        "resamples": 10000,
+        "right": "z1",
+        "seed": 20260826
+      },
+      "re2tt": {
+        "ci95": [
+          -0.15777777777777777,
+          0.04666666666666666
+        ],
+        "dataset": "re2tt",
+        "delta_by_fault": {
+          "cpu": 0.08000000000000002,
+          "delay": -0.06666666666666667,
+          "disk": 0.0,
+          "loss": 0.06666666666666667,
+          "mem": -0.32,
+          "socket": -0.09333333333333332
+        },
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "left": "z3",
+        "point_delta_avg5": -0.055555555555555546,
+        "resamples": 10000,
+        "right": "z1",
+        "seed": 20260826
+      }
+    },
+    "z3_minus_z3_shuffle": {
+      "mean_ob_tt": {
+        "ci95": [
+          0.16333333333333333,
+          0.2833333333333333
+        ],
+        "point_delta_avg5": 0.22333333333333336,
+        "resamples": 10000,
+        "seed": 20260826
+      },
+      "re2ob": {
+        "ci95": [
+          0.12444444444444444,
+          0.24666666666666665
+        ],
+        "dataset": "re2ob",
+        "delta_by_fault": {
+          "cpu": 0.16,
+          "delay": 0.06666666666666667,
+          "disk": 0.1733333333333333,
+          "loss": 0.17333333333333334,
+          "mem": 0.14666666666666664,
+          "socket": 0.3866666666666667
+        },
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "left": "z3",
+        "point_delta_avg5": 0.18444444444444447,
+        "resamples": 10000,
+        "right": "z3_shuffle",
+        "seed": 20260826
+      },
+      "re2tt": {
+        "ci95": [
+          0.1577777777777778,
+          0.3644444444444444
+        ],
+        "dataset": "re2tt",
+        "delta_by_fault": {
+          "cpu": 0.5333333333333333,
+          "delay": 0.2,
+          "disk": 0.0,
+          "loss": 0.37333333333333324,
+          "mem": 0.13333333333333333,
+          "socket": 0.3333333333333333
+        },
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "left": "z3",
+        "point_delta_avg5": 0.26222222222222225,
+        "resamples": 10000,
+        "right": "z3_shuffle",
+        "seed": 20260826
+      }
+    }
+  },
+  "git_commit": "092e4f37ad15b3cd6b9e01e16ed184035c258cb2",
+  "python": "3.8.20",
+  "resamples": 10000,
+  "sampling": "fault-stratified paired case bootstrap; 15 cases per fault sampled with replacement",
+  "schema_version": "p3_g1_bootstrap_v1",
+  "seed": 20260826
+}

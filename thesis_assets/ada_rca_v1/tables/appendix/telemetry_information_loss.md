@@ -1,0 +1,10 @@
+| dataset | modality | statistical_unit | eligible | mapped | window_observed | pre_observed | post_observed | scale_valid | feature_active | eligible_rate | mapped_rate | window_observed_rate | pre_observed_rate | post_observed_rate | scale_valid_rate | feature_active_rate | evidence_class | confirmatory |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| re2ob | Metric | candidate-case pair | 990 | 990 | 990 | 990 | 990 | 990 | 990 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | CANONICAL | false |
+| re2ob | Log | candidate-case pair | 990 | 812 | 812 | 812 | 812 | 807 | 807 | 1.0 | 0.8202020202020202 | 0.8202020202020202 | 0.8202020202020202 | 0.8202020202020202 | 0.8151515151515152 | 0.8151515151515152 | CANONICAL | false |
+| re2ob | Trace Error | candidate-case pair | 990 | 900 | 900 | 900 | 900 | 0 | 0 | 1.0 | 0.9090909090909091 | 0.9090909090909091 | 0.9090909090909091 | 0.9090909090909091 | 0.0 | 0.0 | CANONICAL | false |
+| re2ob | Trace Latency | candidate-case pair | 990 | 900 | 900 | 900 | 900 | 374 | 374 | 1.0 | 0.9090909090909091 | 0.9090909090909091 | 0.9090909090909091 | 0.9090909090909091 | 0.37777777777777777 | 0.37777777777777777 | CANONICAL | false |
+| re2tt | Metric | candidate-case pair | 6120 | 6120 | 6120 | 6120 | 6120 | 6120 | 6120 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | CANONICAL | false |
+| re2tt | Log | candidate-case pair | 6120 | 1787 | 1787 | 1767 | 1767 | 1707 | 1707 | 1.0 | 0.2919934640522876 | 0.2919934640522876 | 0.2887254901960784 | 0.2887254901960784 | 0.278921568627451 | 0.278921568627451 | CANONICAL | false |
+| re2tt | Trace Error | candidate-case pair | 6120 | 2347 | 2347 | 2340 | 2339 | 0 | 0 | 1.0 | 0.3834967320261438 | 0.3834967320261438 | 0.38235294117647056 | 0.3821895424836601 | 0.0 | 0.0 | CANONICAL | false |
+| re2tt | Trace Latency | candidate-case pair | 6120 | 2347 | 2347 | 2340 | 2339 | 847 | 847 | 1.0 | 0.3834967320261438 | 0.3834967320261438 | 0.38235294117647056 | 0.3821895424836601 | 0.13839869281045752 | 0.13839869281045752 | CANONICAL | false |

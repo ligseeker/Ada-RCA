@@ -1,0 +1,3 @@
+dataset,dataset_name,candidate_count,n_cases,registry_sha256,evidence_class,confirmatory
+re2ob,RCAEval-RE2-OB,11,90,9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19,CANONICAL,true
+re2tt,RCAEval-RE2-TT,68,90,67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a,CANONICAL,true

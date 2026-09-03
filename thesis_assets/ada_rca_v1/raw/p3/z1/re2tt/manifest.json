@@ -1,0 +1,22 @@
+{
+  "RCAEval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+  "RCAEval_dirty_diff_sha256": "24fd630537aee9daec7ca907e68360b6616046989b79d6c25d32e83021291320",
+  "command": "PYTHONPATH=. python3 -u scripts/p3_a2_zero_models.py --output-root artifacts/runs",
+  "dataset": "re2tt",
+  "dataset_checksum": "84b26bcd083cea2db5c7d46330974c23d9ef963ed586ec9325c663baa5dd0958",
+  "dataset_version": "Zenodo record 14590730",
+  "dependencies": {
+    "numpy": "1.24.1",
+    "pandas": "1.5.3",
+    "scikit-learn": "1.2.1"
+  },
+  "experiment_id": "p3-a2-z1-re2tt-seed20260826",
+  "feature_artifact_commit": "4fdea9da691ca738ffb706d3cc2141c7cca6f796",
+  "git_commit": "f974c8c0bb6fe487ebcbe54b33d28276846a0708",
+  "oof": true,
+  "python_version": "3.8.20",
+  "representation_commit": "7cd6d418a114978b33838e788346febbeae71818",
+  "seed": 20260826,
+  "split_commit": "bc414e62687043d7e91b114a86d11d066e497e7b",
+  "timestamp": "2026-08-26T11:04:27.603375+00:00"
+}

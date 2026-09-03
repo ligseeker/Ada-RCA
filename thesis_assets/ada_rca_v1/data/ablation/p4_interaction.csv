@@ -1,0 +1,5 @@
+dataset,metric,interaction,formula,evidence_class,confirmatory,gate_status
+re2ob,AC@1,-0.04444444444444451,(A3-A2) - (A1-A0),DEVELOPMENT,false,P4-G0 NO-GO / CLOSED
+re2ob,Avg@5,-0.008888888888889057,(A3-A2) - (A1-A0),DEVELOPMENT,false,P4-G0 NO-GO / CLOSED
+re2tt,AC@1,-0.10000000000000009,(A3-A2) - (A1-A0),DEVELOPMENT,false,P4-G0 NO-GO / CLOSED
+re2tt,Avg@5,-0.06222222222222229,(A3-A2) - (A1-A0),DEVELOPMENT,false,P4-G0 NO-GO / CLOSED

@@ -1,0 +1,4 @@
+| dataset | cases | candidates | folds | test_cases_per_fold | representation | ranker | scope | evidence_class |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| RE2-OB | 90 | 11 | 3 | 30 | 68D Z2 | Conditional Logit | known-system benchmark; not untouched external | CANONICAL |
+| RE2-TT | 90 | 68 | 3 | 30 | 68D Z2 | Conditional Logit | known-system benchmark; not untouched external | CANONICAL |

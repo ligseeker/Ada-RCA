@@ -1,0 +1,1381 @@
+{
+  "audit_type": "PAIRED_BOOTSTRAP_FORENSIC_AUDIT",
+  "comparisons": {
+    "GLOBAL-OPT_minus_V1": {
+      "datasets": {
+        "re2ob": {
+          "baseline": "V1-SCIENTIFIC",
+          "candidate": "GLOBAL-OPT",
+          "direction": "Candidate - V1",
+          "metrics": {
+            "AC@1": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.0,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": 0.0
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "AC@1",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.0,
+              "sample_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            },
+            "Avg@5": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.0,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": 0.0
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "Avg@5",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.0,
+              "sample_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            },
+            "MRR": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.0,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": 0.0
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "MRR",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.0,
+              "sample_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            }
+          }
+        },
+        "re2tt": {
+          "baseline": "V1-SCIENTIFIC",
+          "candidate": "GLOBAL-OPT",
+          "direction": "Candidate - V1",
+          "metrics": {
+            "AC@1": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.0,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": 0.0
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "AC@1",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.0,
+              "sample_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            },
+            "Avg@5": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.0,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": 0.0
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "Avg@5",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.0,
+              "sample_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            },
+            "MRR": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.0,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": 0.0
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "MRR",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.0,
+              "sample_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            }
+          }
+        }
+      }
+    },
+    "PER-DATASET-OPT_minus_V1": {
+      "datasets": {
+        "re2ob": {
+          "baseline": "V1-SCIENTIFIC",
+          "candidate": "PER-DATASET-OPT",
+          "direction": "Candidate - V1",
+          "metrics": {
+            "AC@1": {
+              "ci95": [
+                -0.05555555555555555,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": -0.06666666666666667,
+                "delay": -0.06666666666666667,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": 0.0
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "AC@1",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": -0.022222222222222223,
+              "sample_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            },
+            "Avg@5": {
+              "ci95": [
+                -0.026666666666666665,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": -0.04,
+                "delay": -0.01333333333333333,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": -0.013333333333333338
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "Avg@5",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": -0.011111111111111112,
+              "sample_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            },
+            "MRR": {
+              "ci95": [
+                -0.03796296296296297,
+                0.0
+              ],
+              "delta_by_fault": {
+                "cpu": -0.05,
+                "delay": -0.03333333333333333,
+                "disk": 0.0,
+                "loss": 0.0,
+                "mem": 0.0,
+                "socket": -0.011111111111111112
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "MRR",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": -0.015740740740740743,
+              "sample_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            }
+          }
+        },
+        "re2tt": {
+          "baseline": "V1-SCIENTIFIC",
+          "candidate": "PER-DATASET-OPT",
+          "direction": "Candidate - V1",
+          "metrics": {
+            "AC@1": {
+              "ci95": [
+                0.0,
+                0.15555555555555556
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.2,
+                "disk": 0.0,
+                "loss": 0.2,
+                "mem": 0.06666666666666667,
+                "socket": 0.0
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "AC@1",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.07777777777777778,
+              "sample_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            },
+            "Avg@5": {
+              "ci95": [
+                -0.03333333333333334,
+                0.04666666666666667
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.02666666666666666,
+                "disk": 0.0,
+                "loss": -7.401486830834377e-18,
+                "mem": 0.06666666666666668,
+                "socket": -0.05333333333333334
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "Avg@5",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.006666666666666665,
+              "sample_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            },
+            "MRR": {
+              "ci95": [
+                -0.013265047709492146,
+                0.08708927613175976
+              ],
+              "delta_by_fault": {
+                "cpu": 0.0,
+                "delay": 0.10106948244203147,
+                "disk": 0.0,
+                "loss": 0.07507733007733007,
+                "mem": 0.06444444444444446,
+                "socket": -0.02592592592592592
+              },
+              "direction": "Candidate - V1",
+              "fault_stratified": true,
+              "iterations": 10000,
+              "metric": "MRR",
+              "pair_alignment": {
+                "case_count": 90,
+                "fault_counts": {
+                  "cpu": 15,
+                  "delay": 15,
+                  "disk": 15,
+                  "loss": 15,
+                  "mem": 15,
+                  "socket": 15
+                },
+                "identical_case_ids": true,
+                "identical_fault_assignments": true,
+                "sampled_case_ids_shared_by_construction": true,
+                "status": "PASS"
+              },
+              "point_delta": 0.03577755517298001,
+              "sample_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+              "sampling_unit": "failure case",
+              "seed": 20260829
+            }
+          }
+        }
+      }
+    }
+  },
+  "gate_1_input": {
+    "path": "artifacts/evidence_closure/metric_reconstruction_v1_1.json",
+    "sha256": "0cfc89c2bf48abeabb931a668522a80ba7cf7121f30fed3344fae866202e78c3",
+    "status": "PASS"
+  },
+  "gate_2": {
+    "invariants_status": "PASS",
+    "legacy_source_immutability": "PASS",
+    "status": "PASS",
+    "telemetry_authorization": "GATE_3_AUTHORIZED",
+    "terminal_state_if_failed": null
+  },
+  "invariants": {
+    "GLOBAL-OPT_minus_V1": {
+      "datasets": {
+        "re2ob": {
+          "antisymmetry": {
+            "AC@1": {
+              "forward_ci95": [
+                0.0,
+                0.0
+              ],
+              "forward_point": 0.0,
+              "reverse_ci95": [
+                0.0,
+                0.0
+              ],
+              "reverse_point": 0.0,
+              "status": "PASS"
+            },
+            "Avg@5": {
+              "forward_ci95": [
+                0.0,
+                0.0
+              ],
+              "forward_point": 0.0,
+              "reverse_ci95": [
+                0.0,
+                0.0
+              ],
+              "reverse_point": 0.0,
+              "status": "PASS"
+            },
+            "MRR": {
+              "forward_ci95": [
+                0.0,
+                0.0
+              ],
+              "forward_point": 0.0,
+              "reverse_ci95": [
+                0.0,
+                0.0
+              ],
+              "reverse_point": 0.0,
+              "status": "PASS"
+            }
+          },
+          "checks": {
+            "antisymmetry": "PASS",
+            "deterministic_seed": "PASS",
+            "direct_point_consistency": "PASS",
+            "fault_stratum_accounting": "PASS",
+            "identity": "PASS",
+            "pair_alignment": "PASS"
+          },
+          "deterministic_seed": {
+            "first_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+            "repeat_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+            "seed": 20260829,
+            "status": "PASS"
+          },
+          "direct_point_consistency": {
+            "AC@1": {
+              "absolute_difference": 0.0,
+              "bootstrap_point": 0.0,
+              "direct_candidate_minus_v1": 0.0,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 0.0,
+              "bootstrap_point": 0.0,
+              "direct_candidate_minus_v1": 0.0,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 0.0,
+              "bootstrap_point": 0.0,
+              "direct_candidate_minus_v1": 0.0,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "fault_stratum_accounting": {
+            "bootstrap_size_by_stratum_per_iteration": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "original_size_by_stratum": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "sample_plan_shape": [
+              10000,
+              6,
+              15
+            ],
+            "status": "PASS",
+            "total_cases_per_iteration": 90
+          },
+          "identity": {
+            "AC@1": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            },
+            "Avg@5": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            },
+            "MRR": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            }
+          },
+          "pair_alignment": {
+            "case_count": 90,
+            "fault_counts": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "identical_case_ids": true,
+            "identical_fault_assignments": true,
+            "sampled_case_ids_shared_by_construction": true,
+            "status": "PASS"
+          },
+          "status": "PASS"
+        },
+        "re2tt": {
+          "antisymmetry": {
+            "AC@1": {
+              "forward_ci95": [
+                0.0,
+                0.0
+              ],
+              "forward_point": 0.0,
+              "reverse_ci95": [
+                0.0,
+                0.0
+              ],
+              "reverse_point": 0.0,
+              "status": "PASS"
+            },
+            "Avg@5": {
+              "forward_ci95": [
+                0.0,
+                0.0
+              ],
+              "forward_point": 0.0,
+              "reverse_ci95": [
+                0.0,
+                0.0
+              ],
+              "reverse_point": 0.0,
+              "status": "PASS"
+            },
+            "MRR": {
+              "forward_ci95": [
+                0.0,
+                0.0
+              ],
+              "forward_point": 0.0,
+              "reverse_ci95": [
+                0.0,
+                0.0
+              ],
+              "reverse_point": 0.0,
+              "status": "PASS"
+            }
+          },
+          "checks": {
+            "antisymmetry": "PASS",
+            "deterministic_seed": "PASS",
+            "direct_point_consistency": "PASS",
+            "fault_stratum_accounting": "PASS",
+            "identity": "PASS",
+            "pair_alignment": "PASS"
+          },
+          "deterministic_seed": {
+            "first_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+            "repeat_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+            "seed": 20260829,
+            "status": "PASS"
+          },
+          "direct_point_consistency": {
+            "AC@1": {
+              "absolute_difference": 0.0,
+              "bootstrap_point": 0.0,
+              "direct_candidate_minus_v1": 0.0,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 0.0,
+              "bootstrap_point": 0.0,
+              "direct_candidate_minus_v1": 0.0,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 0.0,
+              "bootstrap_point": 0.0,
+              "direct_candidate_minus_v1": 0.0,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "fault_stratum_accounting": {
+            "bootstrap_size_by_stratum_per_iteration": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "original_size_by_stratum": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "sample_plan_shape": [
+              10000,
+              6,
+              15
+            ],
+            "status": "PASS",
+            "total_cases_per_iteration": 90
+          },
+          "identity": {
+            "AC@1": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            },
+            "Avg@5": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            },
+            "MRR": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            }
+          },
+          "pair_alignment": {
+            "case_count": 90,
+            "fault_counts": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "identical_case_ids": true,
+            "identical_fault_assignments": true,
+            "sampled_case_ids_shared_by_construction": true,
+            "status": "PASS"
+          },
+          "status": "PASS"
+        }
+      }
+    },
+    "PER-DATASET-OPT_minus_V1": {
+      "datasets": {
+        "re2ob": {
+          "antisymmetry": {
+            "AC@1": {
+              "forward_ci95": [
+                -0.05555555555555555,
+                0.0
+              ],
+              "forward_point": -0.022222222222222223,
+              "reverse_ci95": [
+                0.0,
+                0.05555555555555555
+              ],
+              "reverse_point": 0.022222222222222223,
+              "status": "PASS"
+            },
+            "Avg@5": {
+              "forward_ci95": [
+                -0.026666666666666665,
+                0.0
+              ],
+              "forward_point": -0.011111111111111112,
+              "reverse_ci95": [
+                0.0,
+                0.026666666666666665
+              ],
+              "reverse_point": 0.011111111111111112,
+              "status": "PASS"
+            },
+            "MRR": {
+              "forward_ci95": [
+                -0.03796296296296297,
+                0.0
+              ],
+              "forward_point": -0.015740740740740743,
+              "reverse_ci95": [
+                0.0,
+                0.03796296296296297
+              ],
+              "reverse_point": 0.015740740740740743,
+              "status": "PASS"
+            }
+          },
+          "checks": {
+            "antisymmetry": "PASS",
+            "deterministic_seed": "PASS",
+            "direct_point_consistency": "PASS",
+            "fault_stratum_accounting": "PASS",
+            "identity": "PASS",
+            "pair_alignment": "PASS"
+          },
+          "deterministic_seed": {
+            "first_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+            "repeat_plan_sha256": "582d8866baf08d1678ed3dbf2bcde6f2b5096ebe8f4b4b9228db43af41340503",
+            "seed": 20260829,
+            "status": "PASS"
+          },
+          "direct_point_consistency": {
+            "AC@1": {
+              "absolute_difference": 3.122502256758253e-17,
+              "bootstrap_point": -0.022222222222222223,
+              "direct_candidate_minus_v1": -0.022222222222222254,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 7.112366251504909e-17,
+              "bootstrap_point": -0.011111111111111112,
+              "direct_candidate_minus_v1": -0.011111111111111183,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 9.020562075079397e-17,
+              "bootstrap_point": -0.015740740740740743,
+              "direct_candidate_minus_v1": -0.015740740740740833,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "fault_stratum_accounting": {
+            "bootstrap_size_by_stratum_per_iteration": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "original_size_by_stratum": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "sample_plan_shape": [
+              10000,
+              6,
+              15
+            ],
+            "status": "PASS",
+            "total_cases_per_iteration": 90
+          },
+          "identity": {
+            "AC@1": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            },
+            "Avg@5": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            },
+            "MRR": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            }
+          },
+          "pair_alignment": {
+            "case_count": 90,
+            "fault_counts": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "identical_case_ids": true,
+            "identical_fault_assignments": true,
+            "sampled_case_ids_shared_by_construction": true,
+            "status": "PASS"
+          },
+          "status": "PASS"
+        },
+        "re2tt": {
+          "antisymmetry": {
+            "AC@1": {
+              "forward_ci95": [
+                0.0,
+                0.15555555555555556
+              ],
+              "forward_point": 0.07777777777777778,
+              "reverse_ci95": [
+                -0.15555555555555556,
+                0.0
+              ],
+              "reverse_point": -0.07777777777777778,
+              "status": "PASS"
+            },
+            "Avg@5": {
+              "forward_ci95": [
+                -0.03333333333333334,
+                0.04666666666666667
+              ],
+              "forward_point": 0.006666666666666665,
+              "reverse_ci95": [
+                -0.04666666666666667,
+                0.03333333333333334
+              ],
+              "reverse_point": -0.006666666666666665,
+              "status": "PASS"
+            },
+            "MRR": {
+              "forward_ci95": [
+                -0.013265047709492146,
+                0.08708927613175976
+              ],
+              "forward_point": 0.03577755517298001,
+              "reverse_ci95": [
+                -0.08708927613175979,
+                0.013265047709492118
+              ],
+              "reverse_point": -0.03577755517298001,
+              "status": "PASS"
+            }
+          },
+          "checks": {
+            "antisymmetry": "PASS",
+            "deterministic_seed": "PASS",
+            "direct_point_consistency": "PASS",
+            "fault_stratum_accounting": "PASS",
+            "identity": "PASS",
+            "pair_alignment": "PASS"
+          },
+          "deterministic_seed": {
+            "first_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+            "repeat_plan_sha256": "c45eadf566561710bb116bb572268838c6bed20cfe0bb3b38ac550bc35a1af44",
+            "seed": 20260829,
+            "status": "PASS"
+          },
+          "direct_point_consistency": {
+            "AC@1": {
+              "absolute_difference": 5.551115123125783e-17,
+              "bootstrap_point": 0.07777777777777778,
+              "direct_candidate_minus_v1": 0.07777777777777772,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "Avg@5": {
+              "absolute_difference": 6.678685382510707e-17,
+              "bootstrap_point": 0.006666666666666665,
+              "direct_candidate_minus_v1": 0.006666666666666599,
+              "status": "PASS",
+              "tolerance": 1e-12
+            },
+            "MRR": {
+              "absolute_difference": 1.3877787807814457e-16,
+              "bootstrap_point": 0.03577755517298001,
+              "direct_candidate_minus_v1": 0.03577755517297987,
+              "status": "PASS",
+              "tolerance": 1e-12
+            }
+          },
+          "fault_stratum_accounting": {
+            "bootstrap_size_by_stratum_per_iteration": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "original_size_by_stratum": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "sample_plan_shape": [
+              10000,
+              6,
+              15
+            ],
+            "status": "PASS",
+            "total_cases_per_iteration": 90
+          },
+          "identity": {
+            "AC@1": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            },
+            "Avg@5": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            },
+            "MRR": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "point_delta": 0.0,
+              "status": "PASS"
+            }
+          },
+          "pair_alignment": {
+            "case_count": 90,
+            "fault_counts": {
+              "cpu": 15,
+              "delay": 15,
+              "disk": 15,
+              "loss": 15,
+              "mem": 15,
+              "socket": 15
+            },
+            "identical_case_ids": true,
+            "identical_fault_assignments": true,
+            "sampled_case_ids_shared_by_construction": true,
+            "status": "PASS"
+          },
+          "status": "PASS"
+        }
+      }
+    }
+  },
+  "legacy_forensic": {
+    "causes": {
+      "DOCUMENTATION_DIRECTION_ERROR": "CONFIRMED: prose labels V1 minus PER-DATASET while all stored point values equal PER-DATASET minus V1",
+      "ESTIMATOR_MISMATCH": "CONFIRMED: legacy CIs match neither direction of the specified paired case-ID estimator",
+      "EXPECTED_BOOTSTRAP_BEHAVIOR": "REJECTED: deterministic reconstruction under the frozen estimator does not reproduce the legacy CIs",
+      "IMPLEMENTATION_ERROR": "UNRESOLVED: the legacy generator source was not committed, so no low-level bug is asserted"
+    },
+    "comparison": {
+      "GLOBAL-OPT": {
+        "datasets": {
+          "re2ob": {
+            "metrics": {
+              "AC@1": {
+                "corrected_candidate_minus_v1_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": 0.0,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  -0.0
+                ],
+                "legacy_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": true,
+                "legacy_ci_matches_v1_minus_candidate_estimator": true,
+                "legacy_point": 0.0,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              },
+              "Avg@5": {
+                "corrected_candidate_minus_v1_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": 0.0,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  -0.0
+                ],
+                "legacy_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": true,
+                "legacy_ci_matches_v1_minus_candidate_estimator": true,
+                "legacy_point": 0.0,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              },
+              "MRR": {
+                "corrected_candidate_minus_v1_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": 0.0,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  -0.0
+                ],
+                "legacy_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": true,
+                "legacy_ci_matches_v1_minus_candidate_estimator": true,
+                "legacy_point": 0.0,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              }
+            }
+          },
+          "re2tt": {
+            "metrics": {
+              "AC@1": {
+                "corrected_candidate_minus_v1_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": 0.0,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  -0.0
+                ],
+                "legacy_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": true,
+                "legacy_ci_matches_v1_minus_candidate_estimator": true,
+                "legacy_point": 0.0,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              },
+              "Avg@5": {
+                "corrected_candidate_minus_v1_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": 0.0,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  -0.0
+                ],
+                "legacy_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": true,
+                "legacy_ci_matches_v1_minus_candidate_estimator": true,
+                "legacy_point": 0.0,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              },
+              "MRR": {
+                "corrected_candidate_minus_v1_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": 0.0,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  -0.0
+                ],
+                "legacy_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": true,
+                "legacy_ci_matches_v1_minus_candidate_estimator": true,
+                "legacy_point": 0.0,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              }
+            }
+          }
+        }
+      },
+      "PER-DATASET-OPT": {
+        "datasets": {
+          "re2ob": {
+            "metrics": {
+              "AC@1": {
+                "corrected_candidate_minus_v1_ci95": [
+                  -0.05555555555555555,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": -0.022222222222222223,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  0.05555555555555555
+                ],
+                "legacy_ci95": [
+                  -0.12222222222222222,
+                  -0.022222222222222223
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": false,
+                "legacy_ci_matches_v1_minus_candidate_estimator": false,
+                "legacy_point": -0.022222222222222223,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              },
+              "Avg@5": {
+                "corrected_candidate_minus_v1_ci95": [
+                  -0.026666666666666665,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": -0.011111111111111112,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  0.026666666666666665
+                ],
+                "legacy_ci95": [
+                  -0.048888888888888885,
+                  -0.008888888888888889
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": false,
+                "legacy_ci_matches_v1_minus_candidate_estimator": false,
+                "legacy_point": -0.011111111111111108,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              },
+              "MRR": {
+                "corrected_candidate_minus_v1_ci95": [
+                  -0.03796296296296297,
+                  0.0
+                ],
+                "corrected_candidate_minus_v1_point": -0.015740740740740743,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.0,
+                  0.03796296296296297
+                ],
+                "legacy_ci95": [
+                  -0.0814814814814815,
+                  -0.014814814814814817
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": false,
+                "legacy_ci_matches_v1_minus_candidate_estimator": false,
+                "legacy_point": -0.01574074074074074,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              }
+            }
+          },
+          "re2tt": {
+            "metrics": {
+              "AC@1": {
+                "corrected_candidate_minus_v1_ci95": [
+                  0.0,
+                  0.15555555555555556
+                ],
+                "corrected_candidate_minus_v1_point": 0.07777777777777778,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.15555555555555556,
+                  -0.0
+                ],
+                "legacy_ci95": [
+                  -0.1111111111111111,
+                  0.1111111111111111
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": false,
+                "legacy_ci_matches_v1_minus_candidate_estimator": false,
+                "legacy_point": 0.07777777777777778,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              },
+              "Avg@5": {
+                "corrected_candidate_minus_v1_ci95": [
+                  -0.03333333333333334,
+                  0.04666666666666667
+                ],
+                "corrected_candidate_minus_v1_point": 0.006666666666666665,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.04666666666666667,
+                  0.03333333333333334
+                ],
+                "legacy_ci95": [
+                  -0.14000000000000004,
+                  -0.024444444444444446
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": false,
+                "legacy_ci_matches_v1_minus_candidate_estimator": false,
+                "legacy_point": 0.006666666666666653,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              },
+              "MRR": {
+                "corrected_candidate_minus_v1_ci95": [
+                  -0.013265047709492146,
+                  0.08708927613175976
+                ],
+                "corrected_candidate_minus_v1_point": 0.03577755517298001,
+                "corrected_v1_minus_candidate_ci95": [
+                  -0.08708927613175976,
+                  0.013265047709492146
+                ],
+                "legacy_ci95": [
+                  -0.11081018518518519,
+                  0.02314814814814815
+                ],
+                "legacy_ci_matches_candidate_minus_v1_estimator": false,
+                "legacy_ci_matches_v1_minus_candidate_estimator": false,
+                "legacy_point": 0.03577755517298001,
+                "legacy_point_direction_status": "MATCHES_CANDIDATE_MINUS_V1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "discrepancy_classification": "MULTIPLE_CAUSES",
+    "documented_direction": "V1 - PER-DATASET-OPT",
+    "expected_frozen_sha256": "23cd9e27592746191f116a163341f5b8d241ad290a7572aef2ea882f711d927e",
+    "generator_source": "NOT_COMMITTED_WITH_LEGACY_ARTIFACT",
+    "point_value_direction": "PER-DATASET-OPT - V1",
+    "sha256": "23cd9e27592746191f116a163341f5b8d241ad290a7572aef2ea882f711d927e",
+    "source": "artifacts/opt/final/bootstrap.json",
+    "source_unchanged": true
+  },
+  "schema_version": "ada_rca_bootstrap_corrected_v1_1",
+  "statistical_contract": {
+    "conditionality": "fixed frozen root ranks only",
+    "direction": "Candidate - V1",
+    "interval": "95% percentile interval",
+    "iterations": 10000,
+    "pairing": "identical sampled case IDs for Candidate and V1",
+    "sampling_unit": "failure case",
+    "scientific_input_fields": [
+      "case_id",
+      "fault_type",
+      "root_rank"
+    ],
+    "seed": 20260829,
+    "stratification": "within fault type, 15 draws with replacement from 15 cases"
+  }
+}

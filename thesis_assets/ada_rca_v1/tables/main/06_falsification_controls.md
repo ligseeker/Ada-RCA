@@ -1,0 +1,36 @@
+| row_kind | dataset | control | n_cases | AC@1 | AC@3 | AC@5 | Avg@5 | MRR | metric | point_delta | ci_lower | ci_upper | direction | state | evidence_class | confirmatory |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| absolute | re2ob | FINAL-Z2 | 90 | 0.8777777777777778 | 0.9888888888888889 | 0.9888888888888889 | 0.9622222222222222 | 0.9314814814814816 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2ob | S0-A | 90 | 0.2 | 0.6 | 1.0 | 0.6 | 0.4566666666666668 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2ob | S0-B | 90 | 0.19999999999999996 | 0.5999999999999999 | 1.0 | 0.5999999999999999 | 0.4566666666666666 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2ob | S1 | 90 | 0.2111111111111111 | 0.4444444444444444 | 0.7888888888888889 | 0.49111111111111116 | 0.41173721340388 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2ob | S2 | 90 | 0.32222222222222224 | 0.6444444444444445 | 0.9222222222222223 | 0.6422222222222221 | 0.5364021164021164 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2tt | FINAL-Z2 | 90 | 0.7111111111111111 | 0.8666666666666667 | 0.9333333333333333 | 0.851111111111111 | 0.8034718881941106 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2tt | S0-A | 90 | 0.2 | 0.6 | 1.0 | 0.6 | 0.4566666666666668 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2tt | S0-B | 90 | 0.19999999999999996 | 0.5999999999999999 | 1.0 | 0.5999999999999999 | 0.4566666666666666 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2tt | S1 | 90 | 0.0 | 0.0 | 0.12222222222222222 | 0.048888888888888885 | 0.0924265437410352 |  |  |  |  |  |  | SUPPORTING | false |
+| absolute | re2tt | S2 | 90 | 0.022222222222222223 | 0.2222222222222222 | 0.34444444444444444 | 0.21111111111111114 | 0.1947907598115588 |  |  |  |  |  |  | SUPPORTING | false |
+| bootstrap | re2ob | S0-A |  |  |  |  |  |  | AC@1 | 0.6777777777777778 | 0.5666666666666667 | 0.7888888888888889 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | re2tt | S0-A |  |  |  |  |  |  | AC@1 | 0.5111111111111111 | 0.4 | 0.6222222222222222 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | equal_dataset_mean | S0-A |  |  |  |  |  |  | AC@1 | 0.5944444444444444 | 0.5111111111111111 | 0.6722222222222223 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | re2ob | S0-A |  |  |  |  |  |  | Avg@5 | 0.3622222222222222 | 0.29333333333333333 | 0.43111111111111106 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | re2tt | S0-A |  |  |  |  |  |  | Avg@5 | 0.2511111111111111 | 0.1711111111111111 | 0.32888888888888884 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | equal_dataset_mean | S0-A |  |  |  |  |  |  | Avg@5 | 0.30666666666666664 | 0.2544444444444445 | 0.3588888888888888 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | re2ob | S0-B |  |  |  |  |  |  | AC@1 | 0.6777777777777776 | 0.6111111111111109 | 0.7444444444444442 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | re2tt | S0-B |  |  |  |  |  |  | AC@1 | 0.511111111111111 | 0.4333333333333332 | 0.5888888888888887 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | equal_dataset_mean | S0-B |  |  |  |  |  |  | AC@1 | 0.5944444444444443 | 0.5444444444444443 | 0.6444444444444443 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | re2ob | S0-B |  |  |  |  |  |  | Avg@5 | 0.36222222222222217 | 0.3333333333333333 | 0.38444444444444437 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | re2tt | S0-B |  |  |  |  |  |  | Avg@5 | 0.25111111111111106 | 0.20222222222222216 | 0.29999999999999993 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | equal_dataset_mean | S0-B |  |  |  |  |  |  | Avg@5 | 0.30666666666666664 | 0.27888888888888885 | 0.3344444444444444 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | re2ob | S1 |  |  |  |  |  |  | AC@1 | 0.6666666666666666 | 0.5666666666666667 | 0.7666666666666667 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | re2tt | S1 |  |  |  |  |  |  | AC@1 | 0.7111111111111111 | 0.6333333333333333 | 0.7888888888888889 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | equal_dataset_mean | S1 |  |  |  |  |  |  | AC@1 | 0.6888888888888889 | 0.6277777777777778 | 0.75 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | re2ob | S1 |  |  |  |  |  |  | Avg@5 | 0.47111111111111115 | 0.39777777777777773 | 0.5466666666666666 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | re2tt | S1 |  |  |  |  |  |  | Avg@5 | 0.8022222222222221 | 0.74 | 0.8622222222222223 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | equal_dataset_mean | S1 |  |  |  |  |  |  | Avg@5 | 0.6366666666666666 | 0.588888888888889 | 0.6844444444444444 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | re2ob | S2 |  |  |  |  |  |  | AC@1 | 0.5555555555555556 | 0.4444444444444444 | 0.6666666666666666 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | re2tt | S2 |  |  |  |  |  |  | AC@1 | 0.6888888888888889 | 0.6111111111111112 | 0.7666666666666667 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | equal_dataset_mean | S2 |  |  |  |  |  |  | AC@1 | 0.6222222222222222 | 0.5555555555555556 | 0.6888888888888889 | FINAL-Z2 - CONTROL |  | SUPPORTING | false |
+| bootstrap | re2ob | S2 |  |  |  |  |  |  | Avg@5 | 0.31999999999999995 | 0.2533333333333333 | 0.3888888888888889 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | re2tt | S2 |  |  |  |  |  |  | Avg@5 | 0.64 | 0.551111111111111 | 0.7266666666666667 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |
+| bootstrap | equal_dataset_mean | S2 |  |  |  |  |  |  | Avg@5 | 0.48 | 0.4255555555555556 | 0.5366666666666666 | FINAL-Z2 - CONTROL | CONTROL_SEPARATED | SUPPORTING | false |

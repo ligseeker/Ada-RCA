@@ -1,0 +1,11 @@
+scope,statistic,value,evidence_class,confirmatory
+overall,status,ANCHOR_AUDIT_NOT_FEASIBLE_UNDER_FROZEN_PIPELINE,DIAGNOSTIC,false
+overall,performance_computed,false,DIAGNOSTIC,false
+overall,unsupported_count,77,DIAGNOSTIC,false
+overall,all_180_cases_supported,false,DIAGNOSTIC,false
+overall,anchor_performance_authorized_by_feasibility,false,DIAGNOSTIC,false
+overall,window_width_seconds,1200,DIAGNOSTIC,false
+re2ob,unsupported_combinations_in_dataset,49,DIAGNOSTIC,false
+re2ob,affected_cases_in_dataset,3,DIAGNOSTIC,false
+re2tt,unsupported_combinations_in_dataset,28,DIAGNOSTIC,false
+re2tt,affected_cases_in_dataset,2,DIAGNOSTIC,false

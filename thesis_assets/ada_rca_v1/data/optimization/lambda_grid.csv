@@ -1,0 +1,6 @@
+ranker,lambda,status,reason,evidence_class,confirmatory
+R0-ConditionalLogit,0.1,EXECUTED_GRID,frozen Conditional-Logit lambda grid,SUPPORTING,false
+R0-ConditionalLogit,1.0,EXECUTED_GRID,frozen Conditional-Logit lambda grid,SUPPORTING,false
+R0-ConditionalLogit,10.0,EXECUTED_GRID,frozen Conditional-Logit lambda grid,SUPPORTING,false
+R1-XGBoost,,NOT EXECUTED — DEPENDENCY UNAVAILABLE,dependency unavailable,SUPPORTING,false
+R2-LightGBM,,NOT EXECUTED — DEPENDENCY UNAVAILABLE,dependency unavailable,SUPPORTING,false

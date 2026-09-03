@@ -1,0 +1,9 @@
+row_type,dataset,outer_fold,representation,ranker,lambda,inner_mean_Avg@5,inner_AC@1_mean,outer_test_case_count,selection_status,evidence_class,confirmatory
+outer_fold_selection,re2ob,0,FULL-Z2,R0-ConditionalLogit,1.0,0.9366666666666666,0.8666666666666667,30,SELECTED,DEVELOPMENT,false
+outer_fold_selection,re2ob,1,FULL-Z2,R0-ConditionalLogit,0.1,0.9700000000000001,0.8666666666666667,30,SELECTED,DEVELOPMENT,false
+outer_fold_selection,re2ob,2,FULL-Z2,R0-ConditionalLogit,1.0,0.9466666666666667,0.8333333333333334,30,SELECTED,DEVELOPMENT,false
+outer_fold_selection,re2tt,0,M+TL,R0-ConditionalLogit,0.1,0.8433333333333334,0.7666666666666666,30,SELECTED,DEVELOPMENT,false
+outer_fold_selection,re2tt,1,M+TL,R0-ConditionalLogit,0.1,0.8799999999999999,0.7999999999999999,30,SELECTED,DEVELOPMENT,false
+outer_fold_selection,re2tt,2,M+TL,R0-ConditionalLogit,0.1,0.85,0.7666666666666666,30,SELECTED,DEVELOPMENT,false
+ranker_status,all,,,R1-XGBoost,,,,,NOT EXECUTED — DEPENDENCY UNAVAILABLE,DEVELOPMENT,false
+ranker_status,all,,,R2-LightGBM,,,,,NOT EXECUTED — DEPENDENCY UNAVAILABLE,DEVELOPMENT,false

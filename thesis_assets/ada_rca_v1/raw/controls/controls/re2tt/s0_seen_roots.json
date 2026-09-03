@@ -1,0 +1,32 @@
+{
+  "0": {
+    "services": [
+      "ts-auth-service",
+      "ts-order-service",
+      "ts-route-service",
+      "ts-train-service",
+      "ts-travel-service"
+    ],
+    "size": 5
+  },
+  "1": {
+    "services": [
+      "ts-auth-service",
+      "ts-order-service",
+      "ts-route-service",
+      "ts-train-service",
+      "ts-travel-service"
+    ],
+    "size": 5
+  },
+  "2": {
+    "services": [
+      "ts-auth-service",
+      "ts-order-service",
+      "ts-route-service",
+      "ts-train-service",
+      "ts-travel-service"
+    ],
+    "size": 5
+  }
+}

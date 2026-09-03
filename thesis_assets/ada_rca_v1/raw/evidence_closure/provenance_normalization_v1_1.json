@@ -1,0 +1,80 @@
+{
+  "audit_type": "PROVENANCE_AND_CLAIM_NORMALIZATION",
+  "claim_boundary": {
+    "historical_reference": "POST-HOC DESCRIPTIVE CONTEXT ONLY",
+    "optimization_scope": "LIMITED TO ACTUALLY EXECUTED CONDITIONAL-LOGIT SEARCH",
+    "unavailable_rankers": "ABSENCE OF EXECUTION IS NOT A NEGATIVE PERFORMANCE RESULT"
+  },
+  "gate_4": {
+    "final_decision_authorization": "GATE_5_AUTHORIZED",
+    "status": "PASS",
+    "terminal_state_if_failed": null
+  },
+  "historical_reference": {
+    "evidence": {
+      "byte_level_canonical_replay_unavailable": true,
+      "no_direct_class_a_replay": true,
+      "replay_capable_historical_files": [],
+      "summaries_copied_read_only": true
+    },
+    "legacy_artifacts_match_frozen_commit": true,
+    "legacy_term": "HIST-BEST-REPLAYED-REFERENCE",
+    "normalized_term": "HIST-BEST-RECOVERED-REFERENCE",
+    "required_qualifier": "Recovered legacy result; not canonically replayed; not an unbiased comparator.",
+    "source_records": [
+      {
+        "path": "artifacts/opt/o1_historical/c0_m_summary.json",
+        "sha256": "74a39bfbc447c1c7711e52c2b1e297b146f4be4e06c860a545bb5951c175936b"
+      },
+      {
+        "path": "artifacts/opt/o1_historical/c1_i_bootstrap.json",
+        "sha256": "f7399673340d7af540af2336e997ef5fffb4ca7495247a72e36597a95ca77212"
+      },
+      {
+        "path": "artifacts/opt/o1_historical/m1_s_bootstrap.json",
+        "sha256": "65788c2dd7f8c79d82c4494255cf2b2295e64ab8f983f9ea48b33ca84f0b323a"
+      },
+      {
+        "path": "artifacts/opt/o1_historical/m1_s_summary.json",
+        "sha256": "d77b31436e1eb0c0ec6dac61ad917d31418d82988e1b819b61c84be17a5dc495"
+      }
+    ],
+    "status": "PASS"
+  },
+  "ranker_execution": {
+    "canonical_status": {
+      "Conditional Logit": "EXECUTED",
+      "LightGBM": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE",
+      "XGBoost": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE"
+    },
+    "dataset_records": {
+      "re2ob": {
+        "config_path": "artifacts/opt/o4_nested/re2ob/config.json",
+        "config_sha256": "a275eebe8449b94a025abc5fb60df75b886be3cb137ad02270ed7f6a1813a4dc",
+        "selection_trace_path": "artifacts/opt/o4_nested/re2ob/selection_trace.json",
+        "selection_trace_sha256": "5094e8abf88673dea07678df569d7abac9a3b804ad7c729277633cff35f3319a",
+        "status": {
+          "Conditional Logit": "EXECUTED",
+          "LightGBM": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE",
+          "XGBoost": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE"
+        }
+      },
+      "re2tt": {
+        "config_path": "artifacts/opt/o4_nested/re2tt/config.json",
+        "config_sha256": "02ab2f5222b98f0c5a26d5873a99228b0592cebfccac5ec510cba5217205c7c2",
+        "selection_trace_path": "artifacts/opt/o4_nested/re2tt/selection_trace.json",
+        "selection_trace_sha256": "f94c1c1b82b47daaf78f8d3baac6808928bb6ee100c7ec981c480b9e1576e2b0",
+        "status": {
+          "Conditional Logit": "EXECUTED",
+          "LightGBM": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE",
+          "XGBoost": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE"
+        }
+      }
+    },
+    "only_conditional_logit_in_selection_trace": true,
+    "selection_trace_rankers": [
+      "R0-ConditionalLogit"
+    ]
+  },
+  "schema_version": "ada_rca_provenance_normalization_v1_1"
+}

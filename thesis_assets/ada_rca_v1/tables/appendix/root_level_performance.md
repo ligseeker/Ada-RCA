@@ -1,0 +1,12 @@
+| dataset | root_service | n_cases | AC@1 | AC@3 | AC@5 | Avg@5 | MRR | evidence_class | confirmatory |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| re2ob | checkoutservice | 18 | 0.7777777777777778 | 1.0 | 1.0 | 0.9444444444444444 | 0.8796296296296297 | CANONICAL | true |
+| re2ob | currencyservice | 18 | 0.6111111111111112 | 0.9444444444444444 | 0.9444444444444444 | 0.8666666666666667 | 0.7777777777777778 | CANONICAL | true |
+| re2ob | emailservice | 18 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | CANONICAL | true |
+| re2ob | productcatalogservice | 18 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | CANONICAL | true |
+| re2ob | recommendationservice | 18 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | CANONICAL | true |
+| re2tt | ts-auth-service | 18 | 0.7222222222222222 | 0.7777777777777778 | 0.7777777777777778 | 0.7666666666666667 | 0.7645155256266367 | CANONICAL | true |
+| re2tt | ts-order-service | 18 | 0.7777777777777778 | 0.8888888888888888 | 0.9444444444444444 | 0.8777777777777778 | 0.8458994708994709 | CANONICAL | true |
+| re2tt | ts-route-service | 18 | 0.8333333333333334 | 0.9444444444444444 | 1.0 | 0.9333333333333331 | 0.8935185185185185 | CANONICAL | true |
+| re2tt | ts-train-service | 18 | 0.6111111111111112 | 0.9444444444444444 | 1.0 | 0.8777777777777778 | 0.7796296296296297 | CANONICAL | true |
+| re2tt | ts-travel-service | 18 | 0.6111111111111112 | 0.7777777777777778 | 0.9444444444444444 | 0.8000000000000002 | 0.7337962962962963 | CANONICAL | true |

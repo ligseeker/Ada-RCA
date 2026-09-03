@@ -1,0 +1,164 @@
+{
+  "audit_type": "LIMITATION_QUALIFIED_SCIENTIFIC_FREEZE_DECISION",
+  "conditions": {
+    "all_downstream_gates_pass": true,
+    "bootstrap_valid": true,
+    "corrected_evidence_does_not_materially_overturn_v1_selection": true,
+    "evidence_semantic_correction_valid": true,
+    "frozen_predictive_artifacts_and_search_space_unchanged": true,
+    "no_explicit_root_or_fault_leakage_detected": true,
+    "per_dataset_full_ranking_unverifiable": true,
+    "per_dataset_rank_metric_sufficient": true,
+    "performance_optimization_branch_unchanged": true,
+    "post_audit_amendment_transparent_and_prior": true,
+    "trace_error_classification_valid": true,
+    "trace_error_feature_integrity_valid": true,
+    "v1_full_ranking_evidence_valid": true,
+    "v1_metrics_independently_reconstructed": true,
+    "v1_provenance_valid": true
+  },
+  "final_decision": "RCA_FREEZE_READY_WITH_LIMITATION",
+  "gate_artifacts": {
+    "gate_1": {
+      "path": "artifacts/evidence_closure/metric_reconstruction_v1_1.json",
+      "sha256": "0cfc89c2bf48abeabb931a668522a80ba7cf7121f30fed3344fae866202e78c3",
+      "status": "PASS"
+    },
+    "gate_2": {
+      "path": "artifacts/evidence_closure/bootstrap_corrected_v1_1.json",
+      "sha256": "172ea8c2e2d2103a1e50635ed9681e6a35e4c763e630ae0a7a192555169caaf2",
+      "status": "PASS"
+    },
+    "gate_3": {
+      "path": "artifacts/evidence_closure/telemetry_information_loss_v1_1.json",
+      "sha256": "5c553845b3527247649bffa40c7685278a23a0467895103c2f11b4c569f42898",
+      "status": "PASS"
+    },
+    "gate_4": {
+      "path": "artifacts/evidence_closure/provenance_normalization_v1_1.json",
+      "sha256": "c4e33556ee4fb271b79c27ce626123f59eb54da41adacac5f1940dcc51d418bb",
+      "status": "PASS"
+    }
+  },
+  "historical_and_ranker_semantics": {
+    "historical_qualifier": "Recovered legacy result; not canonically replayed; not an unbiased comparator.",
+    "historical_reference": "HIST-BEST-RECOVERED-REFERENCE",
+    "rankers": {
+      "Conditional Logit": "EXECUTED",
+      "LightGBM": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE",
+      "XGBoost": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE"
+    }
+  },
+  "immutability": {
+    "changed_frozen_predictive_paths": [],
+    "frozen_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+    "performance_optimization_branch_head": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+    "v1_scientific_reference_commit": "bed295326e567395e725caa82840a534dcc0b1de"
+  },
+  "integrity_conditions_pass": true,
+  "interpretation_artifacts": {
+    "evidence_semantic_correction": {
+      "path": "artifacts/evidence_closure/evidence_semantic_correction_v1_1.json",
+      "sha256": "2fe3811996508a3bd79dd7cbd620da54a10e04c7a570d39b9d8303e06cf52419"
+    },
+    "trace_error_representation_invariant": {
+      "path": "artifacts/evidence_closure/trace_error_representation_invariant.json",
+      "sha256": "f191b068fb1a38d72f85e847db2e65bb5739aba72f3b01b586b89acfc950f8b6"
+    }
+  },
+  "limitations": [
+    "POST-AUDIT PROTOCOL CLARIFICATION; not the original preregistration",
+    "PER-DATASET complete candidate scores/rankings are unavailable",
+    "PER-DATASET FULL_RANKING_INTEGRITY_NOT_AUDITABLE",
+    "development benchmarks were reused; no untouched external test was run",
+    "Trace Error is globally nonzero but candidate-nondiscriminative in frozen Z2",
+    "RE2-OB zero-baseline/post-positive Trace Error can be lost at robust scaling",
+    "raw-record to derived-cell lineage is not fully auditable",
+    "service/telemetry fingerprints remain possible",
+    "XGBoost and LightGBM rankers were not executed",
+    "fixed-prediction bootstrap excludes search, reuse, and system-sampling uncertainty"
+  ],
+  "maximum_protocol_allowed_state": "RCA_FREEZE_READY_WITH_LIMITATION",
+  "optimization_post_study_integrity": {
+    "corrected_avg5_candidate_minus_v1": {
+      "re2ob": {
+        "ci95": [
+          -0.026666666666666665,
+          0.0
+        ],
+        "point": -0.011111111111111112
+      },
+      "re2tt": {
+        "ci95": [
+          -0.03333333333333334,
+          0.04666666666666667
+        ],
+        "point": 0.006666666666666665
+      }
+    },
+    "executed_scope": "Conditional Logit, six frozen representation combinations, and lambda grid {0.1, 1.0, 10.0}",
+    "fully_reproducible_candidate_score_ranking_experiment": false,
+    "global_opt_byte_identical_to_v1": true,
+    "method_selection_interpretation": "NO_CLEAR_OPTIMIZATION_GAIN",
+    "per_dataset_full_ranking_integrity": "FULL_RANKING_INTEGRITY_NOT_AUDITABLE",
+    "per_dataset_rank_metric_sufficiency": "RANK_METRIC_SUFFICIENT_PASS",
+    "shared_gain": false,
+    "tree_rankers": {
+      "Conditional Logit": "EXECUTED",
+      "LightGBM": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE",
+      "XGBoost": "NOT EXECUTED \u2014 DEPENDENCY UNAVAILABLE"
+    },
+    "tt_ac1_candidate_minus_v1": {
+      "ci95": [
+        0.0,
+        0.15555555555555556
+      ],
+      "interpretation": "DATASET_SPECIFIC_POSITIVE_SIGNAL",
+      "point": 0.07777777777777778
+    }
+  },
+  "schema_version": "ada_rca_evidence_closure_final_v1_1",
+  "telemetry_boundary": {
+    "candidate_case_funnel": "AUDITABLE_FROM_HASH_BOUND_CANONICAL_DERIVED_INPUTS_AND_FROZEN_FEATURE_ARTIFACTS",
+    "raw_record_to_derived_cell_lineage": "NOT_FULLY_AUDITABLE_FROM_AVAILABLE_CANONICAL_ARTIFACTS",
+    "reason": "Raw and derived files are hash-bound, but no committed per-record lineage maps raw log/span/metric rows to each derived wide-series cell; no such rejection cause is inferred."
+  },
+  "trace_error_representation": {
+    "datasets": {
+      "re2ob": {
+        "all_zero_rows": 0,
+        "candidate_discriminative_cases": 0,
+        "dimensions_with_nonzero_variance": 0,
+        "nonzero_rows": 990,
+        "rows": 990,
+        "unique_vectors": 1
+      },
+      "re2tt": {
+        "all_zero_rows": 0,
+        "candidate_discriminative_cases": 0,
+        "dimensions_with_nonzero_variance": 0,
+        "nonzero_rows": 6120,
+        "rows": 6120,
+        "unique_vectors": 1
+      }
+    },
+    "final_classification": "TRACE_ERROR_EFFECTIVELY_NONDISCRIMINATIVE_IN_FROZEN_Z2",
+    "optimization_trace_cross_check": "CONSISTENT_WITH_TE_NONDISCRIMINATIVE"
+  },
+  "unconditional_scientific_freeze_ready": false,
+  "v1_scientific_integrity": {
+    "full_ranking_integrity": "FULL_RANKING_INTEGRITY_PASS",
+    "independent_rank_metrics": "PASS",
+    "leakage_boundary": "NO_EXPLICIT_LABEL_LEAKAGE_DETECTED",
+    "no_fatal_evidence_defect_discovered_in_gate_5": true,
+    "provenance": {
+      "re2ob": "INTEGRITY_VALID",
+      "re2tt": "INTEGRITY_VALID"
+    },
+    "service_fingerprint": {
+      "coverage_and_availability_present": true,
+      "interpretation": "stable service-specific telemetry fingerprints may be exploited",
+      "status": "ADVISORY"
+    }
+  }
+}

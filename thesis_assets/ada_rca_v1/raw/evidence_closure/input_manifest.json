@@ -1,0 +1,664 @@
+{
+  "audit_type": "READ_ONLY_FROZEN_EVIDENCE_INVENTORY",
+  "evidence": {
+    "GLOBAL-OPT": {
+      "datasets": {
+        "re2ob": {
+          "fatal_defects": [],
+          "integrity": {
+            "candidate_coverage": {
+              "expected_candidate_case_pairs": 990,
+              "mismatched_case_ids": [],
+              "observed_ranking_entries": 990,
+              "status": "PASS"
+            },
+            "candidate_registry_consistency": "PASS",
+            "candidate_registry_count": 11,
+            "duplicate_event_ids": [],
+            "duplicate_ranking_case_ids": [],
+            "duplicate_ranking_entries": "PASS",
+            "event_count": 90,
+            "event_id_uniqueness": "PASS",
+            "expected_case_coverage": "PASS",
+            "expected_event_count": 90,
+            "fold_assignment_mismatches": [],
+            "fold_assignments_valid": "PASS",
+            "fold_coverage": {
+              "0": 30,
+              "1": 30,
+              "2": 30
+            },
+            "frozen_prediction_status": "AVAILABLE",
+            "full_prediction_ranking_evidence_exists": true,
+            "missing_case_ids": [],
+            "nondeterministic_case_ids": [],
+            "ranking_completeness": "PASS",
+            "ranking_deterministic": "PASS",
+            "root_absent_case_ids": [],
+            "root_mapping_consistency": "PASS",
+            "root_mapping_mismatches": [],
+            "root_presence": "PASS",
+            "unexpected_case_ids": []
+          },
+          "source_files": [
+            {
+              "bytes": 66819,
+              "git_blob_sha256_at_frozen_commit": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "frozen_prediction_or_rank",
+              "row_count": 90,
+              "sha256": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+              "source_file": "artifacts/opt/final/GLOBAL-OPT/re2ob/predictions.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 23819,
+              "git_blob_sha256_at_frozen_commit": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "legacy_final_metrics",
+              "row_count": null,
+              "sha256": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1",
+              "source_file": "artifacts/opt/final/GLOBAL-OPT/re2ob/metrics.json",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 86940,
+              "git_blob_sha256_at_frozen_commit": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "case_and_candidate_registry",
+              "row_count": 90,
+              "sha256": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb",
+              "source_file": "artifacts/source/re2ob/inputs.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 8277,
+              "git_blob_sha256_at_frozen_commit": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "root_and_fault_sidecar",
+              "row_count": 90,
+              "sha256": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7",
+              "source_file": "artifacts/source/re2ob/labels.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 490,
+              "git_blob_sha256_at_frozen_commit": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "candidate_registry",
+              "row_count": null,
+              "sha256": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+              "source_file": "artifacts/source/re2ob/service_registry.json",
+              "working_copy_matches_frozen_commit": true
+            }
+          ]
+        },
+        "re2tt": {
+          "fatal_defects": [],
+          "integrity": {
+            "candidate_coverage": {
+              "expected_candidate_case_pairs": 6120,
+              "mismatched_case_ids": [],
+              "observed_ranking_entries": 6120,
+              "status": "PASS"
+            },
+            "candidate_registry_consistency": "PASS",
+            "candidate_registry_count": 68,
+            "duplicate_event_ids": [],
+            "duplicate_ranking_case_ids": [],
+            "duplicate_ranking_entries": "PASS",
+            "event_count": 90,
+            "event_id_uniqueness": "PASS",
+            "expected_case_coverage": "PASS",
+            "expected_event_count": 90,
+            "fold_assignment_mismatches": [],
+            "fold_assignments_valid": "PASS",
+            "fold_coverage": {
+              "0": 30,
+              "1": 30,
+              "2": 30
+            },
+            "frozen_prediction_status": "AVAILABLE",
+            "full_prediction_ranking_evidence_exists": true,
+            "missing_case_ids": [],
+            "nondeterministic_case_ids": [],
+            "ranking_completeness": "PASS",
+            "ranking_deterministic": "PASS",
+            "root_absent_case_ids": [],
+            "root_mapping_consistency": "PASS",
+            "root_mapping_mismatches": [],
+            "root_presence": "PASS",
+            "unexpected_case_ids": []
+          },
+          "source_files": [
+            {
+              "bytes": 408722,
+              "git_blob_sha256_at_frozen_commit": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "frozen_prediction_or_rank",
+              "row_count": 90,
+              "sha256": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+              "source_file": "artifacts/opt/final/GLOBAL-OPT/re2tt/predictions.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 24205,
+              "git_blob_sha256_at_frozen_commit": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "legacy_final_metrics",
+              "row_count": null,
+              "sha256": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c",
+              "source_file": "artifacts/opt/final/GLOBAL-OPT/re2tt/metrics.json",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 201150,
+              "git_blob_sha256_at_frozen_commit": "1ca5e91387641c891e75a6e26bc3979f2398dae93e46147e97864cd503c7655d",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "case_and_candidate_registry",
+              "row_count": 90,
+              "sha256": "1ca5e91387641c891e75a6e26bc3979f2398dae93e46147e97864cd503c7655d",
+              "source_file": "artifacts/source/re2tt/inputs.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 8205,
+              "git_blob_sha256_at_frozen_commit": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "root_and_fault_sidecar",
+              "row_count": 90,
+              "sha256": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca",
+              "source_file": "artifacts/source/re2tt/labels.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 2044,
+              "git_blob_sha256_at_frozen_commit": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "candidate_registry",
+              "row_count": null,
+              "sha256": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+              "source_file": "artifacts/source/re2tt/service_registry.json",
+              "working_copy_matches_frozen_commit": true
+            }
+          ]
+        }
+      }
+    },
+    "PER-DATASET-OPT": {
+      "datasets": {
+        "re2ob": {
+          "fatal_defects": [
+            "FROZEN_PREDICTION_EVIDENCE_UNAVAILABLE",
+            "RANKING_COMPLETENESS_FAILURE"
+          ],
+          "integrity": {
+            "candidate_coverage": {
+              "expected_candidate_case_pairs": 990,
+              "mismatched_case_ids": [],
+              "observed_ranking_entries": 0,
+              "status": "NOT_AUDITABLE_FROM_ROOT_RANK_ONLY"
+            },
+            "candidate_registry_consistency": "PASS",
+            "candidate_registry_count": 11,
+            "duplicate_event_ids": [],
+            "duplicate_ranking_case_ids": [],
+            "duplicate_ranking_entries": "NOT_AUDITABLE_FROM_ROOT_RANK_ONLY",
+            "event_count": 90,
+            "event_id_uniqueness": "PASS",
+            "expected_case_coverage": "PASS",
+            "expected_event_count": 90,
+            "fold_assignment_mismatches": [],
+            "fold_assignments_valid": "PASS",
+            "fold_coverage": {
+              "0": 30,
+              "1": 30,
+              "2": 30
+            },
+            "frozen_prediction_status": "FROZEN_PREDICTION_EVIDENCE_UNAVAILABLE",
+            "full_prediction_ranking_evidence_exists": false,
+            "invalid_root_rank_case_ids": [],
+            "missing_case_ids": [],
+            "ranking_completeness": "FAIL",
+            "ranking_deterministic": "NOT_AUDITABLE_FROM_ROOT_RANK_ONLY",
+            "root_absent_case_ids": [],
+            "root_mapping_consistency": "PASS",
+            "root_mapping_mismatches": [],
+            "root_presence": "PASS",
+            "root_rank_range": "PASS",
+            "root_rank_replica_byte_identical": true,
+            "unexpected_case_ids": []
+          },
+          "source_files": [
+            {
+              "bytes": 4544,
+              "git_blob_sha256_at_frozen_commit": "dd1d6ec06e96e627320f8978f4c2c9deb19c4c7a5b9226e624cb0349accaf7c7",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "frozen_prediction_or_rank",
+              "row_count": 90,
+              "sha256": "dd1d6ec06e96e627320f8978f4c2c9deb19c4c7a5b9226e624cb0349accaf7c7",
+              "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2ob/case_ranks.csv",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 23984,
+              "git_blob_sha256_at_frozen_commit": "f11cea33636487eae7706f78ca71f6b6ac39d149e3bb6fce5f7acb5de43c5d87",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "legacy_final_metrics",
+              "row_count": null,
+              "sha256": "f11cea33636487eae7706f78ca71f6b6ac39d149e3bb6fce5f7acb5de43c5d87",
+              "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2ob/metrics.json",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 86940,
+              "git_blob_sha256_at_frozen_commit": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "case_and_candidate_registry",
+              "row_count": 90,
+              "sha256": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb",
+              "source_file": "artifacts/source/re2ob/inputs.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 8277,
+              "git_blob_sha256_at_frozen_commit": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "root_and_fault_sidecar",
+              "row_count": 90,
+              "sha256": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7",
+              "source_file": "artifacts/source/re2ob/labels.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 490,
+              "git_blob_sha256_at_frozen_commit": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "candidate_registry",
+              "row_count": null,
+              "sha256": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+              "source_file": "artifacts/source/re2ob/service_registry.json",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 4544,
+              "git_blob_sha256_at_frozen_commit": "dd1d6ec06e96e627320f8978f4c2c9deb19c4c7a5b9226e624cb0349accaf7c7",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "root_rank_replica",
+              "row_count": 90,
+              "sha256": "dd1d6ec06e96e627320f8978f4c2c9deb19c4c7a5b9226e624cb0349accaf7c7",
+              "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2ob/outer_predictions.csv",
+              "working_copy_matches_frozen_commit": true
+            }
+          ]
+        },
+        "re2tt": {
+          "fatal_defects": [
+            "FROZEN_PREDICTION_EVIDENCE_UNAVAILABLE",
+            "RANKING_COMPLETENESS_FAILURE"
+          ],
+          "integrity": {
+            "candidate_coverage": {
+              "expected_candidate_case_pairs": 6120,
+              "mismatched_case_ids": [],
+              "observed_ranking_entries": 0,
+              "status": "NOT_AUDITABLE_FROM_ROOT_RANK_ONLY"
+            },
+            "candidate_registry_consistency": "PASS",
+            "candidate_registry_count": 68,
+            "duplicate_event_ids": [],
+            "duplicate_ranking_case_ids": [],
+            "duplicate_ranking_entries": "NOT_AUDITABLE_FROM_ROOT_RANK_ONLY",
+            "event_count": 90,
+            "event_id_uniqueness": "PASS",
+            "expected_case_coverage": "PASS",
+            "expected_event_count": 90,
+            "fold_assignment_mismatches": [],
+            "fold_assignments_valid": "PASS",
+            "fold_coverage": {
+              "0": 30,
+              "1": 30,
+              "2": 30
+            },
+            "frozen_prediction_status": "FROZEN_PREDICTION_EVIDENCE_UNAVAILABLE",
+            "full_prediction_ranking_evidence_exists": false,
+            "invalid_root_rank_case_ids": [],
+            "missing_case_ids": [],
+            "ranking_completeness": "FAIL",
+            "ranking_deterministic": "NOT_AUDITABLE_FROM_ROOT_RANK_ONLY",
+            "root_absent_case_ids": [],
+            "root_mapping_consistency": "PASS",
+            "root_mapping_mismatches": [],
+            "root_presence": "PASS",
+            "root_rank_range": "PASS",
+            "root_rank_replica_byte_identical": true,
+            "unexpected_case_ids": []
+          },
+          "source_files": [
+            {
+              "bytes": 4479,
+              "git_blob_sha256_at_frozen_commit": "8758769c66809804faf168b2a5e0a4601f0a40990b2c183dcff314780b52b700",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "frozen_prediction_or_rank",
+              "row_count": 90,
+              "sha256": "8758769c66809804faf168b2a5e0a4601f0a40990b2c183dcff314780b52b700",
+              "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2tt/case_ranks.csv",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 24087,
+              "git_blob_sha256_at_frozen_commit": "5d691c9ebdd7c27d0183384704f50c7da3628d4cf91c9727a6d45dc2e101205e",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "legacy_final_metrics",
+              "row_count": null,
+              "sha256": "5d691c9ebdd7c27d0183384704f50c7da3628d4cf91c9727a6d45dc2e101205e",
+              "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2tt/metrics.json",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 201150,
+              "git_blob_sha256_at_frozen_commit": "1ca5e91387641c891e75a6e26bc3979f2398dae93e46147e97864cd503c7655d",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "case_and_candidate_registry",
+              "row_count": 90,
+              "sha256": "1ca5e91387641c891e75a6e26bc3979f2398dae93e46147e97864cd503c7655d",
+              "source_file": "artifacts/source/re2tt/inputs.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 8205,
+              "git_blob_sha256_at_frozen_commit": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "root_and_fault_sidecar",
+              "row_count": 90,
+              "sha256": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca",
+              "source_file": "artifacts/source/re2tt/labels.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 2044,
+              "git_blob_sha256_at_frozen_commit": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "candidate_registry",
+              "row_count": null,
+              "sha256": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+              "source_file": "artifacts/source/re2tt/service_registry.json",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 4479,
+              "git_blob_sha256_at_frozen_commit": "8758769c66809804faf168b2a5e0a4601f0a40990b2c183dcff314780b52b700",
+              "last_modifying_commit": "bbb5ef9c177b42ae575c4f4e60dbab16dbfb3e24",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "root_rank_replica",
+              "row_count": 90,
+              "sha256": "8758769c66809804faf168b2a5e0a4601f0a40990b2c183dcff314780b52b700",
+              "source_file": "artifacts/opt/final/PER-DATASET-OPT/re2tt/outer_predictions.csv",
+              "working_copy_matches_frozen_commit": true
+            }
+          ]
+        }
+      }
+    },
+    "V1-SCIENTIFIC": {
+      "datasets": {
+        "re2ob": {
+          "fatal_defects": [],
+          "integrity": {
+            "candidate_coverage": {
+              "expected_candidate_case_pairs": 990,
+              "mismatched_case_ids": [],
+              "observed_ranking_entries": 990,
+              "status": "PASS"
+            },
+            "candidate_registry_consistency": "PASS",
+            "candidate_registry_count": 11,
+            "duplicate_event_ids": [],
+            "duplicate_ranking_case_ids": [],
+            "duplicate_ranking_entries": "PASS",
+            "event_count": 90,
+            "event_id_uniqueness": "PASS",
+            "expected_case_coverage": "PASS",
+            "expected_event_count": 90,
+            "fold_assignment_mismatches": [],
+            "fold_assignments_valid": "PASS",
+            "fold_coverage": {
+              "0": 30,
+              "1": 30,
+              "2": 30
+            },
+            "frozen_prediction_status": "AVAILABLE",
+            "full_prediction_ranking_evidence_exists": true,
+            "missing_case_ids": [],
+            "nondeterministic_case_ids": [],
+            "ranking_completeness": "PASS",
+            "ranking_deterministic": "PASS",
+            "root_absent_case_ids": [],
+            "root_mapping_consistency": "PASS",
+            "root_mapping_mismatches": [],
+            "root_presence": "PASS",
+            "unexpected_case_ids": []
+          },
+          "source_files": [
+            {
+              "bytes": 66819,
+              "git_blob_sha256_at_frozen_commit": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+              "last_modifying_commit": "0e3987b63b941ab37ef922447f6ad2da60e64a3c",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "frozen_prediction_or_rank",
+              "row_count": 90,
+              "sha256": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+              "source_file": "artifacts/final_method/re2ob/predictions.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 23819,
+              "git_blob_sha256_at_frozen_commit": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1",
+              "last_modifying_commit": "0e3987b63b941ab37ef922447f6ad2da60e64a3c",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "legacy_final_metrics",
+              "row_count": null,
+              "sha256": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1",
+              "source_file": "artifacts/final_method/re2ob/metrics.json",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 86940,
+              "git_blob_sha256_at_frozen_commit": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "case_and_candidate_registry",
+              "row_count": 90,
+              "sha256": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb",
+              "source_file": "artifacts/source/re2ob/inputs.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 8277,
+              "git_blob_sha256_at_frozen_commit": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "root_and_fault_sidecar",
+              "row_count": 90,
+              "sha256": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7",
+              "source_file": "artifacts/source/re2ob/labels.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 490,
+              "git_blob_sha256_at_frozen_commit": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "candidate_registry",
+              "row_count": null,
+              "sha256": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+              "source_file": "artifacts/source/re2ob/service_registry.json",
+              "working_copy_matches_frozen_commit": true
+            }
+          ]
+        },
+        "re2tt": {
+          "fatal_defects": [],
+          "integrity": {
+            "candidate_coverage": {
+              "expected_candidate_case_pairs": 6120,
+              "mismatched_case_ids": [],
+              "observed_ranking_entries": 6120,
+              "status": "PASS"
+            },
+            "candidate_registry_consistency": "PASS",
+            "candidate_registry_count": 68,
+            "duplicate_event_ids": [],
+            "duplicate_ranking_case_ids": [],
+            "duplicate_ranking_entries": "PASS",
+            "event_count": 90,
+            "event_id_uniqueness": "PASS",
+            "expected_case_coverage": "PASS",
+            "expected_event_count": 90,
+            "fold_assignment_mismatches": [],
+            "fold_assignments_valid": "PASS",
+            "fold_coverage": {
+              "0": 30,
+              "1": 30,
+              "2": 30
+            },
+            "frozen_prediction_status": "AVAILABLE",
+            "full_prediction_ranking_evidence_exists": true,
+            "missing_case_ids": [],
+            "nondeterministic_case_ids": [],
+            "ranking_completeness": "PASS",
+            "ranking_deterministic": "PASS",
+            "root_absent_case_ids": [],
+            "root_mapping_consistency": "PASS",
+            "root_mapping_mismatches": [],
+            "root_presence": "PASS",
+            "unexpected_case_ids": []
+          },
+          "source_files": [
+            {
+              "bytes": 408722,
+              "git_blob_sha256_at_frozen_commit": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+              "last_modifying_commit": "0e3987b63b941ab37ef922447f6ad2da60e64a3c",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "frozen_prediction_or_rank",
+              "row_count": 90,
+              "sha256": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+              "source_file": "artifacts/final_method/re2tt/predictions.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 24205,
+              "git_blob_sha256_at_frozen_commit": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c",
+              "last_modifying_commit": "0e3987b63b941ab37ef922447f6ad2da60e64a3c",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "legacy_final_metrics",
+              "row_count": null,
+              "sha256": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c",
+              "source_file": "artifacts/final_method/re2tt/metrics.json",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 201150,
+              "git_blob_sha256_at_frozen_commit": "1ca5e91387641c891e75a6e26bc3979f2398dae93e46147e97864cd503c7655d",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "case_and_candidate_registry",
+              "row_count": 90,
+              "sha256": "1ca5e91387641c891e75a6e26bc3979f2398dae93e46147e97864cd503c7655d",
+              "source_file": "artifacts/source/re2tt/inputs.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 8205,
+              "git_blob_sha256_at_frozen_commit": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "root_and_fault_sidecar",
+              "row_count": 90,
+              "sha256": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca",
+              "source_file": "artifacts/source/re2tt/labels.jsonl",
+              "working_copy_matches_frozen_commit": true
+            },
+            {
+              "bytes": 2044,
+              "git_blob_sha256_at_frozen_commit": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+              "last_modifying_commit": "1b0c295c99c3629976a0c767b56e851c4bcf7d57",
+              "repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+              "role": "candidate_registry",
+              "row_count": null,
+              "sha256": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+              "source_file": "artifacts/source/re2tt/service_registry.json",
+              "working_copy_matches_frozen_commit": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "frozen_repository_commit": "53c9face2c96761c9114edb558eb6d8666a38dc6",
+  "gate_0": {
+    "downstream_gate_authorization": "STOP",
+    "fatal_defects": [
+      {
+        "dataset": "re2ob",
+        "defect": "FROZEN_PREDICTION_EVIDENCE_UNAVAILABLE",
+        "track": "PER-DATASET-OPT"
+      },
+      {
+        "dataset": "re2ob",
+        "defect": "RANKING_COMPLETENESS_FAILURE",
+        "track": "PER-DATASET-OPT"
+      },
+      {
+        "dataset": "re2tt",
+        "defect": "FROZEN_PREDICTION_EVIDENCE_UNAVAILABLE",
+        "track": "PER-DATASET-OPT"
+      },
+      {
+        "dataset": "re2tt",
+        "defect": "RANKING_COMPLETENESS_FAILURE",
+        "track": "PER-DATASET-OPT"
+      }
+    ],
+    "status": "FAIL",
+    "terminal_state_if_unresolved": "RCA_EVIDENCE_NOT_CLOSED"
+  },
+  "schema_version": "ada_rca_evidence_closure_input_manifest_v1",
+  "v1_reference_traceability": {
+    "prediction_artifact_identity": {
+      "re2ob": {
+        "byte_identical": true,
+        "current_sha256": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5",
+        "v1_reference_commit_sha256": "1d3bbc30869062c30569bd7b752cc2520d8e1337b8861bf11e55bbd69eaf5ff5"
+      },
+      "re2tt": {
+        "byte_identical": true,
+        "current_sha256": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d",
+        "v1_reference_commit_sha256": "e937897d182735651959ad9449a7d6837ac71b029bec0fe90e143395009dd57d"
+      }
+    },
+    "reference_is_ancestor_of_frozen_commit": true
+  },
+  "v1_scientific_reference_commit": "bed295326e567395e725caa82840a534dcc0b1de"
+}

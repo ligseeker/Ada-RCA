@@ -1,0 +1,16 @@
+{
+  "feature_manifests": {
+    "re2ob": "cc171f32c7642c6ddbe59b5b52bb6f8351dd8d8a35289144277900bbbb1da4ed",
+    "re2tt": "ac0424a4018624a61e993649e2b94c678838a2d02dfc4bf8f5c1b0694a145256"
+  },
+  "generated_at": "2026-08-27T07:38:29.698242+00:00",
+  "protocol": "docs/RCA_FINAL_METHOD_FREEZE_V1.0.md",
+  "resamples": 10000,
+  "schema_version": "ada_rca_final_controls_v1",
+  "seed": 20260827,
+  "source_commit": "dcd1f14ebaa5b34281a04222e20ebec2e85c2a7a",
+  "split_manifests": {
+    "re2ob": "a672d12be89e91efd7fe69cdf81713b3d18482bba6b46620b0bfd0b4ff7bfd62",
+    "re2tt": "3c3947d6377433507ca1ea6b69d88f6d8f359b42937bbcff1a7ac98422f05d7e"
+  }
+}

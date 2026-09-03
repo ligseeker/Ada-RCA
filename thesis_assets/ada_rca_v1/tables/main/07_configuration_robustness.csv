@@ -1,0 +1,19 @@
+row_kind,track,dataset,representation,channels,dimension,n_cases,AC@1,AC@3,AC@5,Avg@5,MRR,inner_mean_Avg@5,inner_AC@1_mean,ranker,lambda,selection_status,full_ranking_integrity,rank_metric_sufficient,identical_to_v1,evidence_class,confirmatory
+search_space,,,Z1-M,"[""metric""]",17,,,,,,,,,,,,,,,SUPPORTING,false
+search_space,,,M+L,"[""metric"",""log""]",34,,,,,,,,,,,,,,,SUPPORTING,false
+search_space,,,M+TE,"[""metric"",""trace-error""]",34,,,,,,,,,,,,,,,SUPPORTING,false
+search_space,,,M+TL,"[""metric"",""trace-latency""]",34,,,,,,,,,,,,,,,SUPPORTING,false
+search_space,,,M+L+TL,"[""metric"",""log"",""trace-latency""]",51,,,,,,,,,,,,,,,SUPPORTING,false
+search_space,,,FULL-Z2,"[""metric"",""log"",""trace-error"",""trace-latency""]",68,,,,,,,,,,,,,,,SUPPORTING,false
+nested_selection,,re2ob,FULL-Z2,,,,,,,,,0.9366666666666666,0.8666666666666667,R0-ConditionalLogit,1.0,SELECTED,,,,DEVELOPMENT,false
+nested_selection,,re2ob,FULL-Z2,,,,,,,,,0.9700000000000001,0.8666666666666667,R0-ConditionalLogit,0.1,SELECTED,,,,DEVELOPMENT,false
+nested_selection,,re2ob,FULL-Z2,,,,,,,,,0.9466666666666667,0.8333333333333334,R0-ConditionalLogit,1.0,SELECTED,,,,DEVELOPMENT,false
+nested_selection,,re2tt,M+TL,,,,,,,,,0.8433333333333334,0.7666666666666666,R0-ConditionalLogit,0.1,SELECTED,,,,DEVELOPMENT,false
+nested_selection,,re2tt,M+TL,,,,,,,,,0.8799999999999999,0.7999999999999999,R0-ConditionalLogit,0.1,SELECTED,,,,DEVELOPMENT,false
+nested_selection,,re2tt,M+TL,,,,,,,,,0.85,0.7666666666666666,R0-ConditionalLogit,0.1,SELECTED,,,,DEVELOPMENT,false
+nested_selection,,all,,,,,,,,,,,,R1-XGBoost,,NOT EXECUTED — DEPENDENCY UNAVAILABLE,,,,DEVELOPMENT,false
+nested_selection,,all,,,,,,,,,,,,R2-LightGBM,,NOT EXECUTED — DEPENDENCY UNAVAILABLE,,,,DEVELOPMENT,false
+global_opt,GLOBAL-OPT,re2ob,,,,90,0.8777777777777778,0.9888888888888889,0.9888888888888889,0.9622222222222222,0.9314814814814816,,,,,,FULL_RANKING_INTEGRITY_PASS,RANK_METRIC_SUFFICIENT_PASS,true,SUPPORTING,false
+global_opt,GLOBAL-OPT,re2tt,,,,90,0.7111111111111111,0.8666666666666667,0.9333333333333333,0.851111111111111,0.8034718881941106,,,,,,FULL_RANKING_INTEGRITY_PASS,RANK_METRIC_SUFFICIENT_PASS,true,SUPPORTING,false
+per_dataset_opt,PER-DATASET-OPT,re2ob,,,,90,0.8555555555555555,0.9777777777777777,0.9888888888888889,0.9511111111111109,0.9157407407407407,,,,,,FULL_RANKING_INTEGRITY_NOT_AUDITABLE,RANK_METRIC_SUFFICIENT_PASS,false,DEVELOPMENT,false
+per_dataset_opt,PER-DATASET-OPT,re2tt,,,,90,0.7888888888888889,0.8555555555555555,0.9,0.8577777777777776,0.8392494433670905,,,,,,FULL_RANKING_INTEGRITY_NOT_AUDITABLE,RANK_METRIC_SUFFICIENT_PASS,false,DEVELOPMENT,false

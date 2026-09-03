@@ -1,0 +1,10 @@
+path,scope,exists_in_source,status,reason
+docs/BASELINE_COMPATIBILITY_MATRIX.md,external-baseline context,true,EXCLUDED_BY_SCOPE,This package contains Ada-RCA frozen evidence only; no baseline result or comparison is exported.
+docs/BENCHMARK_COMPATIBILITY.md,external-baseline context,true,EXCLUDED_BY_SCOPE,This package contains Ada-RCA frozen evidence only; no baseline result or comparison is exported.
+docs/P6_G0_BASELINE_MATRIX_DECISION.md,external-baseline context,true,EXCLUDED_BY_SCOPE,This package contains Ada-RCA frozen evidence only; no baseline result or comparison is exported.
+docs/RCAEVAL_RE2_TT_PUBLISHED_CONTEXT_AUDIT.md,external-baseline context,true,EXCLUDED_BY_SCOPE,This package contains Ada-RCA frozen evidence only; no baseline result or comparison is exported.
+docs/RCAEVAL_RE2_TT_TABLE6_PUBLISHED_REFERENCE.md,external-baseline context,true,EXCLUDED_BY_SCOPE,This package contains Ada-RCA frozen evidence only; no baseline result or comparison is exported.
+docs/RCA_FINAL_EVALUATION_PROTOCOL_V1.0.md,external-baseline context,true,EXCLUDED_BY_SCOPE,This package contains Ada-RCA frozen evidence only; no baseline result or comparison is exported.
+artifacts/baseline_eval/,external baseline artifacts,false,EXCLUDED_BY_SCOPE,"Never inspected, copied, or included."
+docs/baseline_eval/,external baseline documents,false,EXCLUDED_BY_SCOPE,"Never inspected, copied, or included."
+src/baseline_eval/,external baseline code,false,EXCLUDED_BY_SCOPE,"Never inspected, copied, or included."

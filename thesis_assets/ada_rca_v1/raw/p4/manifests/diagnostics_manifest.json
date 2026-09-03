@@ -1,0 +1,6 @@
+{
+  "git_commit": "4d754f6759ca5b25ae2d8abaeba57247c9f22e29",
+  "protocol_deviation": "docs/P4_PROTOCOL_DEVIATIONS.md#deviation-1-deterministic-model-state-reconstruction-for-foreign-context",
+  "resamples": 10000,
+  "seed": 20260826
+}

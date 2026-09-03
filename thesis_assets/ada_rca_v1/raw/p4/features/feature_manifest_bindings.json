@@ -1,0 +1,10 @@
+{
+  "re2ob": {
+    "feature_manifest": "/home/zhangll24/RCA_project/Ada-RCA/artifacts/features/re2ob/manifest.json",
+    "split_manifest": "/home/zhangll24/RCA_project/Ada-RCA/artifacts/splits/re2ob/split_manifest.json"
+  },
+  "re2tt": {
+    "feature_manifest": "/home/zhangll24/RCA_project/Ada-RCA/artifacts/features/re2tt/manifest.json",
+    "split_manifest": "/home/zhangll24/RCA_project/Ada-RCA/artifacts/splits/re2tt/split_manifest.json"
+  }
+}

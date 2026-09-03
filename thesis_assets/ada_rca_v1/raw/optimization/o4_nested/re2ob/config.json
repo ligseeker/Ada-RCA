@@ -1,0 +1,37 @@
+{
+  "dataset": "re2ob",
+  "ensemble": {
+    "allowed": true,
+    "alphas": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "selected": false
+  },
+  "inner_folds": 3,
+  "outer_folds": 3,
+  "protocol": "OPT-DEVELOPMENT-NESTED-OOF",
+  "rankers": {
+    "R0-ConditionalLogit": {
+      "available": true,
+      "lambda": [
+        0.1,
+        1.0,
+        10.0
+      ]
+    },
+    "R1-XGBoost": {
+      "available": false,
+      "reason": "dependency unavailable"
+    },
+    "R2-LightGBM": {
+      "available": false,
+      "reason": "dependency unavailable"
+    }
+  },
+  "seed": 20260829,
+  "top_k_representations": 3
+}
