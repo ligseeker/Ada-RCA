@@ -1461,7 +1461,8 @@ def run_export(repo: Path) -> Path:
     code_files = ["thesis_assets/ada_rca_v1/scripts/export_thesis_assets.py", "thesis_assets/ada_rca_v1/scripts/validate_thesis_assets.py", "thesis_assets/ada_rca_v1/tests/test_thesis_assets.py"]
     for relative in code_files:
         if (repo / relative).is_file():
-            make_manifest_record(repo, package, assets, relative[len("thesis_assets/ada_rca_v1/"):], [relative], exp_commit, "SUPPORTING", "export/validation reproducibility", True, "COPIED", "committed package exporter/validator/test source", "The package test is a lightweight validator smoke test.")
+            code_commit = run_git(repo, "log", "-1", "--format=%H", "--", relative)
+            make_manifest_record(repo, package, assets, relative[len("thesis_assets/ada_rca_v1/"):], [relative], code_commit, "SUPPORTING", "export/validation reproducibility", True, "COPIED", "committed package exporter/validator/test source", "The package test is a lightweight validator smoke test.")
     provenance_and_manifest(repo, package, assets, exp_commit, document_rows, source_artifacts, source_code, superseded, excluded)
     return package
 

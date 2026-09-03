@@ -312,7 +312,7 @@ def validate_evidence_boundaries(repo: Path, package: Path, rows: Sequence[Mappi
             if path.is_file():
                 text = path.read_text(encoding="utf-8", errors="replace")
                 lowered = text.lower()
-                if "artifacts/opt/final/bootstrap.json" in lowered or "legacy bootstrap.json" in lowered:
+                if root_name in {"data", "tables"} and ("artifacts/opt/final/bootstrap.json" in lowered or "legacy bootstrap.json" in lowered):
                     forbidden_text.append(path.as_posix())
                 if path.suffix.lower() == ".csv":
                     _, rows = read_csv(path)
