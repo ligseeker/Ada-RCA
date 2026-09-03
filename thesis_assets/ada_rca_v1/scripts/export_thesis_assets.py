@@ -1230,10 +1230,10 @@ def table_assets(repo: Path, package: Path, assets: MutableMapping[str, Dict[str
         "01_dataset_and_protocol": ["docs/RCA_FINAL_SCIENTIFIC_FREEZE_V1.md", "docs/RCA_THESIS_RESULTS_PACKAGE.md", "data/reproducibility/frozen_configuration.csv"],
         "02_ada_rca_overall_performance": ["artifacts/evidence_closure/metric_reconstruction_v1_1.json", "artifacts/final_method/re2ob/metrics.json", "artifacts/final_method/re2tt/metrics.json", "docs/RCA_THESIS_RESULTS_PACKAGE.md"],
         "03_ada_rca_fault_level_performance": ["artifacts/final_method/re2ob/predictions.jsonl", "artifacts/final_method/re2tt/predictions.jsonl", "artifacts/source/re2ob/labels.jsonl", "artifacts/source/re2tt/labels.jsonl", "docs/RCA_THESIS_RESULTS_PACKAGE.md"],
-        "04_p4_ablation": ["data/ablation/p4_a0_a1_a2_a3_metrics.csv", "data/ablation/p4_main_effects.csv", "data/ablation/p4_interaction.csv"],
-        "05_p3_representation_evidence": ["data/ablation/p3_representation_metrics.csv", "data/ablation/p3_temporal_comparisons.csv"],
-        "06_falsification_controls": ["data/controls/control_absolute_metrics.csv", "data/controls/control_bootstrap.csv"],
-        "07_configuration_robustness": ["data/optimization/representation_search_space.csv", "data/optimization/nested_selection_summary.csv", "data/optimization/global_opt_metrics.csv", "data/optimization/per_dataset_opt_metrics.csv", "data/optimization/corrected_optimization_bootstrap.csv"],
+        "04_p4_ablation": ["artifacts/p4_g0/metrics/summary.json", "artifacts/p4_g0/bootstrap/p4_g0_bootstrap.json", "docs/P4_G0_RESULTS.md", "docs/P4_G0_DECISION.md"],
+        "05_p3_representation_evidence": ["artifacts/runs/p3_a2_summary.json", "artifacts/bootstrap/p3_g1_bootstrap.json", "docs/P3_G1_DECISION.md"],
+        "06_falsification_controls": ["artifacts/final_audit/summary.json", "artifacts/final_audit/control_comparisons.json", "docs/FINAL_RCA_CONTROL_AUDIT.md"],
+        "07_configuration_robustness": ["artifacts/opt/o4_nested/re2ob/selection_trace.json", "artifacts/opt/o4_nested/re2tt/selection_trace.json", "artifacts/evidence_closure/bootstrap_corrected_v1_1.json", "docs/OPT_NESTED_SELECTION_RESULTS.md", "docs/BOOTSTRAP_FORENSIC_AUDIT.md"],
     }
     main_rows: Dict[str, List[Dict[str, Any]]] = {}
     # Dataset/protocol table is intentionally compact and claim-safe.
