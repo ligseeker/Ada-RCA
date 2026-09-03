@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **V2 RESCUE CODE READY — CIRCA RESUME AND MICROCAUSE FULL EXECUTION PENDING**
-State revision: `2026-09-03.11`
+State revision: `2026-09-03.12`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `1d6677e`
+Last synchronized central commit: `9f10742`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -113,7 +113,8 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 preflight caller regression test | `de70370` | complete; focused suite 73/73 |
 | V2 no-timeout preflight/server-startup and validity repair | `41badec` | complete; V2 synthetic preflight uses `timeout=None`; nested blocking counts fixed |
 | V2 immutable method-lock re-attestation | `759f780`, `dfe48f1` | complete; corrected `_reissued_v2` sidecars preserve original locks |
-| V2.2 implementation amendment | `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
+| V2 lock-sidecar firewall allowlist | `dd7ce3c` | complete; historical and corrected sidecars remain immutable and pre-lock safe |
+| V2.2 implementation amendment | `9f10742`; `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -171,7 +172,8 @@ startup now wait without a wall-clock timeout; real-case execution remains
 explicitly `--no-timeout`. Lock validity now inspects nonzero nested blocking
 counts, and an invalid pre-correction lock can only be superseded by an
 immutable, fully verified `_prediction_lock_reissued_v2.json` sidecar. The
-focused rescue/evaluator suite passed 78 tests after the correction. Current
+focused rescue/evaluator suite passed 81 tests after the correction; the full
+repository suite passed 241 tests. Current
 V2 operational evidence is split across the five task worktrees: CIRCA has a
 partial interrupted attempt, MicroCause has a frozen environment but no real
 records, and MicroRank/TraceRCA/mmBARO have complete attempts with corrected
@@ -540,8 +542,9 @@ semantics.
 
 V2 real-case execution is partially complete in the isolated task worktrees.
 The current central implementation/test HEAD before this handoff update is
-`1d6677e`; the focused rescue/evaluator suite passed `78` tests after the
-no-timeout and lock-validity corrections. V2 supports requested workers
+`9f10742`; the focused rescue/evaluator suite passed `81` tests and the full
+repository suite passed `241` tests after the no-timeout and lock-validity
+corrections. V2 supports requested workers
 `1, 4, 10, 20`, caps actual workers by container CPU availability, sets one
 thread for the audited numeric libraries, uses `timeout_seconds=null`, and
 resumes only missing terminal records. MicroCause's synthetic preflight now
