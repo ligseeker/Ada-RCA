@@ -46,6 +46,7 @@ from src.baseline_eval.rescue_v2 import (
     active_v2_method_lock_relative,
     actual_worker_count,
     assert_determinism_equal,
+    canonical_payload_digest,
     command_parser,
     deterministic_case_subset,
     microcause_native_execution_parameters,
@@ -53,6 +54,7 @@ from src.baseline_eval.rescue_v2 import (
     pending_v2_cases,
     protocol_preflight_v2,
     reissue_v2_method_lock,
+    verify_v2_method_lock,
     v2_method_lock_relative,
     v2_method_lock_reissued_relative,
     v2_method_lock_reissued_v2_relative,
@@ -486,6 +488,105 @@ class RescueV2FailureAndMetricTest(unittest.TestCase):
                     ) + "\n").encode("utf-8")
                 ).hexdigest(),
             )
+
+    def test_22e_reissued_lock_binds_the_original_lock_digest(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            canonical = root / v2_method_lock_relative("MicroRank")
+            reissued = root / v2_method_lock_reissued_v2_relative("MicroRank")
+            record = root / v2_record_relative(
+                "MicroRank", "microrank-a3-rescue-v2", "re2ob", "re2ob-0000000000000000"
+            )
+            runtime = root / "artifacts/baseline_eval/execution_v2/runtimes/microrank/microrank-a3-rescue-v2.json"
+            canonical.parent.mkdir(parents=True)
+            record.parent.mkdir(parents=True)
+            runtime.parent.mkdir(parents=True)
+            canonical.write_text('{"lock_digest": "old-lock"}', encoding="utf-8")
+            record.write_text('{"terminal_status": "SUCCESS"}', encoding="utf-8")
+            runtime.write_text("runtime", encoding="utf-8")
+            statuses = {
+                dataset: {status: 0 for status in __import__("src.baseline_eval.rescue_v2", fromlist=["x"]).V2_STATUS_VALUES}
+                for dataset in ("re2ob", "re2tt")
+            }
+            statuses["re2ob"]["SUCCESS"] = 1
+            stable = {
+                "schema_version": "rca_baseline_rescue_method_prediction_lock_v2",
+                "protocol_version": V2_PROTOCOL_VERSION,
+                "protocol_digest": V2_PROTOCOL_DIGEST,
+                "method": "MicroRank",
+                "attempt_id": "microrank-a3-rescue-v2",
+                "execution_commit": "e" * 40,
+                "environment_digest": "env",
+                "input_manifest_digest": "input",
+                "candidate_registry_digests": {},
+                "native_module_digest": "native",
+                "rcaeval_commit": "rcaeval",
+                "datasets": ["re2ob", "re2tt"],
+                "expected_case_ids": {},
+                "record_counts": {"re2ob": 1, "re2tt": 1},
+                "status_counts": statuses,
+                "blocking_status_counts": {"re2ob": {}, "re2tt": {}},
+                "execution_validity": "INTEGRITY_VALID",
+                "requested_worker_count": 10,
+                "actual_worker_count": 10,
+                "available_cpu_count": 10,
+                "timeout_seconds": None,
+                "no_timeout": True,
+                "retry": False,
+                "terminal_record_digests": [{
+                    "dataset": "re2ob",
+                    "case_id": "re2ob-0000000000000000",
+                    "sha256": __import__("hashlib").sha256(record.read_bytes()).hexdigest(),
+                }],
+                "runtime_summary": {
+                    "path": str(runtime.relative_to(root)),
+                    "sha256": __import__("hashlib").sha256(runtime.read_bytes()).hexdigest(),
+                },
+                "contains_evaluation": False,
+                "labels_joined": False,
+                "locked_at": "new",
+                "supersedes_lock_path": v2_method_lock_relative("MicroRank").as_posix(),
+                "supersedes_lock_digest": "old-lock",
+                "lock_reissue_reason": "test",
+                "lock_reissue_commit": "a" * 40,
+            }
+            reissued.write_text(
+                __import__("json").dumps(
+                    {**stable, "lock_digest": canonical_payload_digest(stable)},
+                    indent=2,
+                    sort_keys=True,
+                ) + "\n",
+                encoding="utf-8",
+            )
+            attempt = {
+                "method": "MicroRank",
+                "attempt_id": "microrank-a3-rescue-v2",
+                "execution_commit": "e" * 40,
+                "environment_digest": "env",
+                "input_manifest_digest": "input",
+                "candidate_registry_digests": {},
+            }
+            with mock.patch("src.baseline_eval.rescue_v2.require_committed_file"), mock.patch(
+                "src.baseline_eval.rescue_v2._load_v2_attempt", return_value=attempt
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2._case_pairs",
+                return_value=(("re2ob", "re2ob-0000000000000000"),),
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2._v2_candidate_digests", return_value={}
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2.v2_source_manifest_digest", return_value="input"
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2.validate_v2_record"
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2.EXPECTED_CASES_PER_DATASET", 1
+            ):
+                verified = verify_v2_method_lock(
+                    root,
+                    "MicroRank",
+                    require_committed=False,
+                    lock_relative=v2_method_lock_reissued_v2_relative("MicroRank"),
+                )
+            self.assertEqual(verified["execution_validity"], "INTEGRITY_VALID")
 
 
 class RescueV2WorkerAndFirewallTest(unittest.TestCase):
