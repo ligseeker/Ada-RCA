@@ -21,7 +21,7 @@ import subprocess
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
-from statistics import mean, median
+from statistics import median
 from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
 
@@ -446,7 +446,10 @@ def load_final_case_rows(repo: Path) -> Dict[str, List[Dict[str, Any]]]:
 def aggregate(rows: Sequence[Mapping[str, Any]]) -> Dict[str, float]:
     if not rows:
         raise ExportError("cannot aggregate an empty subgroup")
-    return {metric: float(mean(float(row[metric]) for row in rows)) for metric in METRICS}
+    # Match the frozen evaluator's explicit arithmetic definition exactly:
+    # sum_i(metric_i) / N.  This preserves the committed full-precision MRR
+    # representation instead of delegating summation order to statistics.mean.
+    return {metric: float(sum(float(row[metric]) for row in rows) / len(rows)) for metric in METRICS}
 
 
 def grouped_metric_rows(case_rows: Mapping[str, Sequence[Mapping[str, Any]]], dimension: str) -> List[Dict[str, Any]]:
