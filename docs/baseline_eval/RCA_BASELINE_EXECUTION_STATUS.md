@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **V2 RESCUE CODE READY — CIRCA RESUME AND MICROCAUSE FULL EXECUTION PENDING**
-State revision: `2026-09-03.12`
+State revision: `2026-09-03.13`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `9f10742`
+Last synchronized central commit: `ceac081`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -107,7 +107,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2.1 performance-blind rescue protocol and metric timestamp repair | `3a27d0e`; `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen; V2 code and task-container execution pending |
 | V2 no-timeout scheduler, provenance, resume, and process monitoring | `26b1864`, `6f1df1a` | complete; five task-container runs pending |
 | V2 post-lock evaluator and failure semantics | `60b45b1` | complete; labels gated by committed V2 global lock |
-| V2 task-container runbook | `f60252c`; command-path sync `596f68b` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
+| V2 task-container runbook | `f60252c`; command-path sync `596f68b`; current recovery `ceac081` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
 | V2 fault-level row regression test | `c226ff5` | complete; focused suite 70/70 |
 | V2 preflight metadata/environment-isolation repair | `8ee08ed` | complete; focused suite 72/72; task preflights pending |
 | V2 preflight caller regression test | `de70370` | complete; focused suite 73/73 |
@@ -542,7 +542,7 @@ semantics.
 
 V2 real-case execution is partially complete in the isolated task worktrees.
 The current central implementation/test HEAD before this handoff update is
-`9f10742`; the focused rescue/evaluator suite passed `81` tests and the full
+`ceac081`; the focused rescue/evaluator suite passed `81` tests and the full
 repository suite passed `241` tests after the no-timeout and lock-validity
 corrections. V2 supports requested workers
 `1, 4, 10, 20`, caps actual workers by container CPU availability, sets one
