@@ -663,6 +663,7 @@ def _run_synthetic_preflight(
     method: str,
     *,
     worker_environment: Mapping[str, str] | None = None,
+    timeout_seconds: float | None = 900,
 ) -> dict[str, Any]:
     try:
         completed = subprocess.run(
@@ -672,11 +673,11 @@ def _run_synthetic_preflight(
             check=False,
             text=True,
             capture_output=True,
-            timeout=900,
+            timeout=timeout_seconds,
         )
     except subprocess.TimeoutExpired as exc:
         raise PreflightError(
-            f"{method} synthetic preflight exceeded 900 seconds"
+            f"{method} synthetic preflight exceeded {timeout_seconds:g} seconds"
         ) from exc
     if completed.returncode != 0:
         raise PreflightError(f"{method} synthetic preflight failed with exit {completed.returncode}")
@@ -700,6 +701,7 @@ def _environment_preflight_details(
     python: Path,
     *,
     reuse_historical_manifest: bool = True,
+    synthetic_timeout_seconds: float | None = 900,
 ) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
     """Resolve one environment with synthetic data only and without writing artifacts.
 
@@ -719,10 +721,18 @@ def _environment_preflight_details(
         root, python, worker_environment=worker_environment
     )
     first = _run_synthetic_preflight(
-        root, python, method, worker_environment=worker_environment
+        root,
+        python,
+        method,
+        worker_environment=worker_environment,
+        timeout_seconds=synthetic_timeout_seconds,
     )
     second = _run_synthetic_preflight(
-        root, python, method, worker_environment=worker_environment
+        root,
+        python,
+        method,
+        worker_environment=worker_environment,
+        timeout_seconds=synthetic_timeout_seconds,
     )
     if first["fingerprint"] != second["fingerprint"]:
         raise PreflightError(f"{method} synthetic executions are not deterministic")

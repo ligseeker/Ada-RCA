@@ -142,6 +142,36 @@ def microcause_native_execution_parameters() -> dict[str, int]:
     }
 
 
+def v2_execution_validity(
+    blocking_status_counts: Mapping[str, Mapping[str, int]],
+) -> str:
+    """Classify a V2 attempt from nonzero blocking statuses.
+
+    The dataset keys themselves are always present, so checking the outer
+    mapping's truthiness would incorrectly invalidate every complete attempt.
+    """
+
+    has_blocking_status = any(
+        count
+        for dataset_counts in blocking_status_counts.values()
+        for count in dataset_counts.values()
+    )
+    return "INTEGRITY_INVALID" if has_blocking_status else "INTEGRITY_VALID"
+
+
+def _v2_blocking_status_counts(
+    status_counts: Mapping[str, Mapping[str, int]],
+) -> dict[str, dict[str, int]]:
+    return {
+        dataset: {
+            status: count
+            for status, count in dataset_counts.items()
+            if status in V2_BLOCKING_STATUSES and count
+        }
+        for dataset, dataset_counts in status_counts.items()
+    }
+
+
 class RescueV2Error(RuntimeError):
     """A V2 protocol, scheduler, or evidence-integrity transition failed."""
 
@@ -227,6 +257,22 @@ def v2_runtime_relative(method: str, attempt_id: str) -> Path:
 def v2_method_lock_relative(method: str) -> Path:
     _require_v2_method(method)
     return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock.json"
+
+
+def v2_method_lock_reissued_relative(method: str) -> Path:
+    """Return the immutable sidecar path used to re-attest a V2 method lock."""
+
+    _require_v2_method(method)
+    return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock_reissued.json"
+
+
+def active_v2_method_lock_relative(root: Path, method: str) -> Path:
+    """Select a reissued lock when one exists, otherwise the original lock."""
+
+    reissued = root / v2_method_lock_reissued_relative(method)
+    if reissued.is_file():
+        return v2_method_lock_reissued_relative(method)
+    return v2_method_lock_relative(method)
 
 
 def _v2_protocol(root: Path = PROJECT_ROOT) -> dict[str, Any]:
@@ -323,7 +369,11 @@ def freeze_v2_environment(root: Path, method: str, python: Path) -> Path:
         raise PreflightError(f"V2 environment freeze already exists for {method}")
     python = _python_path(python)
     identity, synthetic, schema = _environment_preflight_details(
-        root, method, python, reuse_historical_manifest=False
+        root,
+        method,
+        python,
+        reuse_historical_manifest=False,
+        synthetic_timeout_seconds=None,
     )
     stable = {
         "schema_version": V2_ENVIRONMENT_SCHEMA,
@@ -401,7 +451,11 @@ def protocol_preflight_v2(root: Path, method: str, python: Path) -> dict[str, An
     # This performs only synthetic native calls and schema validation.  It is
     # intentionally not a real-case authorization or prediction lock.
     identity, synthetic, schema = _environment_preflight_details(
-        root, method, python, reuse_historical_manifest=False
+        root,
+        method,
+        python,
+        reuse_historical_manifest=False,
+        synthetic_timeout_seconds=None,
     )
     return {
         "schema_version": "rca_baseline_rescue_protocol_preflight_v2",
@@ -692,7 +746,7 @@ def _start_v2_server(root: Path, python: Path, method: str, env: Mapping[str, st
     try:
         if server.stdout is None:
             raise RescueV2Error("V2 server stdout pipe is unavailable")
-        ready, _, _ = select.select([server.stdout], [], [], 900)
+        ready, _, _ = select.select([server.stdout], [], [], None)
         if not ready:
             raise RescueV2Error("V2 server did not finish native import preflight")
         handshake = json.loads(server.stdout.readline())
@@ -940,14 +994,7 @@ def _build_v2_method_lock(
         }
         for dataset, case_id in _case_pairs(root)
     ]
-    blocking = {
-        dataset: {
-            status: count
-            for status, count in dataset_counts.items()
-            if status in V2_BLOCKING_STATUSES and count
-        }
-        for dataset, dataset_counts in status_counts.items()
-    }
+    blocking = _v2_blocking_status_counts(status_counts)
     stable = {
         "schema_version": V2_METHOD_LOCK_SCHEMA,
         "protocol_version": V2_PROTOCOL_VERSION,
@@ -967,7 +1014,7 @@ def _build_v2_method_lock(
         "record_counts": {dataset: EXPECTED_CASES_PER_DATASET for dataset in DATASET_ORDER},
         "status_counts": status_counts,
         "blocking_status_counts": blocking,
-        "execution_validity": "INTEGRITY_VALID" if not blocking else "INTEGRITY_INVALID",
+        "execution_validity": v2_execution_validity(blocking),
         "requested_worker_count": attempt["requested_worker_count"],
         "actual_worker_count": attempt["actual_worker_count"],
         "available_cpu_count": attempt["available_cpu_count"],
@@ -1103,7 +1150,8 @@ def run_v2(
     actual = actual_worker_count(requested_workers, available=available)
     attempt_path = root / v2_attempt_relative(method, attempt_id)
     method_lock = root / v2_method_lock_relative(method)
-    if method_lock.exists():
+    reissued_method_lock = root / v2_method_lock_reissued_relative(method)
+    if method_lock.exists() or reissued_method_lock.exists():
         raise SequenceError(f"V2 method lock already exists for {method}")
     if resume:
         attempt = _load_v2_attempt(root, method, attempt_id)
@@ -1185,9 +1233,16 @@ def run_v2(
         return lock_path
 
 
-def verify_v2_method_lock(root: Path, method: str, *, require_committed: bool = True) -> dict[str, Any]:
+def verify_v2_method_lock(
+    root: Path,
+    method: str,
+    *,
+    require_committed: bool = True,
+    lock_relative: Path | None = None,
+    enforce_validity: bool = True,
+) -> dict[str, Any]:
     _require_v2_method(method)
-    relative = v2_method_lock_relative(method)
+    relative = lock_relative or active_v2_method_lock_relative(root, method)
     if require_committed:
         require_committed_file(root, relative)
     path = root / relative
@@ -1248,16 +1303,12 @@ def verify_v2_method_lock(root: Path, method: str, *, require_committed: bool = 
     }
     if lock.get("status_counts") != observed_counts:
         raise PreflightError(f"V2 status counts are invalid for {method}")
-    observed_blocking = {
-        dataset: {
-            status: count
-            for status, count in dataset_counts.items()
-            if status in V2_BLOCKING_STATUSES and count
-        }
-        for dataset, dataset_counts in observed_counts.items()
-    }
+    observed_blocking = _v2_blocking_status_counts(observed_counts)
     if lock.get("blocking_status_counts") != observed_blocking:
         raise PreflightError(f"V2 blocking status counts are invalid for {method}")
+    expected_validity = v2_execution_validity(observed_blocking)
+    if enforce_validity and lock.get("execution_validity") != expected_validity:
+        raise PreflightError(f"V2 execution validity is inconsistent for {method}")
     if lock.get("record_counts") != {dataset: EXPECTED_CASES_PER_DATASET for dataset in DATASET_ORDER}:
         raise PreflightError(f"V2 record counts are invalid for {method}")
     if lock.get("timeout_seconds") is not None or lock.get("no_timeout") is not True:
@@ -1270,7 +1321,72 @@ def verify_v2_method_lock(root: Path, method: str, *, require_committed: bool = 
         require_committed_file(root, Path(runtime_binding["path"]))
     if sha256_file(runtime_path) != runtime_binding.get("sha256"):
         raise PreflightError(f"V2 runtime summary digest mismatch for {method}")
+    if relative == v2_method_lock_reissued_relative(method):
+        if lock.get("supersedes_lock_path") != v2_method_lock_relative(method).as_posix():
+            raise PreflightError(f"V2 reissued lock supersession path is invalid for {method}")
+        superseded = root / v2_method_lock_relative(method)
+        if not superseded.is_file() or sha256_file(superseded) != lock.get("supersedes_lock_digest"):
+            raise PreflightError(f"V2 reissued lock no longer binds the original lock for {method}")
     return lock
+
+
+def reissue_v2_method_lock(root: Path, method: str, attempt_id: str) -> Path:
+    """Create a new lock attestation without changing an existing lock file."""
+
+    _require_v2_method(method)
+    _require_v2_attempt(method, attempt_id)
+    require_clean_git(root)
+    global_preflight(root)
+    verify_v2_protocol(root)
+    verify_rcaeval_clean()
+    assert_ada_rca_frozen_unchanged(root)
+    canonical_relative = v2_method_lock_relative(method)
+    reissued_relative = v2_method_lock_reissued_relative(method)
+    canonical = root / canonical_relative
+    reissued = root / reissued_relative
+    if not canonical.is_file():
+        raise PreflightError(f"original V2 method lock is missing for {method}")
+    if reissued.exists():
+        raise SequenceError(f"V2 reissued method lock already exists for {method}")
+    old = verify_v2_method_lock(
+        root,
+        method,
+        require_committed=True,
+        lock_relative=canonical_relative,
+        enforce_validity=False,
+    )
+    if old.get("attempt_id") != attempt_id:
+        raise SequenceError(f"original V2 method lock attempt mismatch for {method}")
+    if old.get("execution_validity") == "INTEGRITY_VALID":
+        raise SequenceError(f"V2 method lock is already integrity-valid for {method}")
+    attempt = _load_v2_attempt(root, method, attempt_id)
+    records = _load_v2_records(root, attempt)
+    expected_count = len(_case_pairs(root))
+    if len(records) != expected_count:
+        raise PreflightError(f"V2 method lock reissue requires all {expected_count} records for {method}")
+    runtime_path = root / v2_runtime_relative(method, attempt_id)
+    if not runtime_path.is_file():
+        raise PreflightError(f"V2 runtime summary is missing for {method}")
+    candidate = _build_v2_method_lock(root, attempt, records, runtime_path)
+    if candidate["execution_validity"] != "INTEGRITY_VALID":
+        raise V2EvaluationBlocked(f"cannot reissue {method}: blocking terminal status remains")
+    ignored = {"execution_validity", "locked_at", "lock_digest"}
+    old_comparable = {key: value for key, value in old.items() if key not in ignored}
+    candidate_comparable = {key: value for key, value in candidate.items() if key not in ignored}
+    if old_comparable != candidate_comparable:
+        raise PreflightError(f"V2 reissue would change immutable execution evidence for {method}")
+    stable = {
+        **candidate,
+        "supersedes_lock_path": canonical_relative.as_posix(),
+        "supersedes_lock_digest": old["lock_digest"],
+        "lock_reissue_reason": "repair outer-dictionary truthiness in execution-validity classification",
+        "lock_reissue_commit": git(root, "rev-parse", "HEAD").stdout.strip(),
+        "locked_at": utc_now(),
+    }
+    payload = {**stable, "lock_digest": canonical_payload_digest(stable)}
+    assert_firewall_safe_record(payload)
+    atomic_write_json(reissued, payload)
+    return reissued
 
 
 def create_v2_global_prediction_lock(root: Path) -> Path:
@@ -1285,7 +1401,10 @@ def create_v2_global_prediction_lock(root: Path) -> Path:
         raise PreflightError("V2 global prediction lock already exists")
     method_rows = []
     for method in V2_METHODS:
-        lock = verify_v2_method_lock(root, method, require_committed=True)
+        lock_relative = active_v2_method_lock_relative(root, method)
+        lock = verify_v2_method_lock(
+            root, method, require_committed=True, lock_relative=lock_relative
+        )
         if lock.get("execution_validity") != "INTEGRITY_VALID":
             raise V2EvaluationBlocked(
                 f"cannot create V2 global lock: {method} has invalid execution evidence"
@@ -1297,8 +1416,8 @@ def create_v2_global_prediction_lock(root: Path) -> Path:
         method_rows.append({
             "method": method,
             "attempt_id": lock["attempt_id"],
-            "method_lock_path": v2_method_lock_relative(method).as_posix(),
-            "method_lock_sha256": sha256_file(root / v2_method_lock_relative(method)),
+            "method_lock_path": lock_relative.as_posix(),
+            "method_lock_sha256": sha256_file(root / lock_relative),
             "record_digest": canonical_payload_digest(lock["terminal_record_digests"]),
             "environment_digest": lock["environment_digest"],
             "status_counts": lock["status_counts"],
@@ -1366,10 +1485,24 @@ def verify_v2_global_prediction_lock(root: Path, *, require_committed: bool = Tr
         method_row = next((row for row in lock.get("methods", []) if row.get("method") == method), None)
         if method_row is None:
             raise PreflightError(f"V2 global lock is missing {method}")
-        method_lock = verify_v2_method_lock(root, method, require_committed=True)
+        lock_path_value = method_row.get("method_lock_path")
+        if not isinstance(lock_path_value, str):
+            raise PreflightError(f"V2 global lock method-lock path is missing for {method}")
+        lock_relative = Path(lock_path_value)
+        if lock_relative not in {
+            v2_method_lock_relative(method),
+            v2_method_lock_reissued_relative(method),
+        }:
+            raise PreflightError(f"V2 global lock method-lock path is invalid for {method}")
+        method_lock = verify_v2_method_lock(
+            root,
+            method,
+            require_committed=True,
+            lock_relative=lock_relative,
+        )
         if method_lock.get("execution_validity") != "INTEGRITY_VALID":
             raise PreflightError(f"V2 global lock binds invalid {method} evidence")
-        if method_row.get("method_lock_sha256") != sha256_file(root / v2_method_lock_relative(method)):
+        if method_row.get("method_lock_sha256") != sha256_file(root / lock_relative):
             raise PreflightError(f"V2 global lock method-lock digest mismatch for {method}")
         if method_row.get("record_digest") != canonical_payload_digest(method_lock["terminal_record_digests"]):
             raise PreflightError(f"V2 global lock record digest mismatch for {method}")
@@ -1937,6 +2070,10 @@ def command_parser() -> argparse.ArgumentParser:
     verify_method.add_argument("--attempt-id", required=True)
     verify_method.add_argument("--allow-uncommitted", action="store_true")
 
+    reissue_method = sub.add_parser("reissue-method-lock")
+    reissue_method.add_argument("--method", choices=V2_METHODS, required=True)
+    reissue_method.add_argument("--attempt-id", required=True)
+
     sub.add_parser("create-global-lock-v2")
     sub.add_parser("verify-global-lock-v2")
     return parser
@@ -2010,6 +2147,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             raise SequenceError("requested attempt ID does not match the method lock")
         if lock["execution_validity"] != "INTEGRITY_VALID":
             return 2
+        return 0
+    if args.command == "reissue-method-lock":
+        print(reissue_v2_method_lock(root, args.method, args.attempt_id))
         return 0
     if args.command == "create-global-lock-v2":
         print(create_v2_global_prediction_lock(root))
