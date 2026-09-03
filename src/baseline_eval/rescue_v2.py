@@ -266,9 +266,19 @@ def v2_method_lock_reissued_relative(method: str) -> Path:
     return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock_reissued.json"
 
 
+def v2_method_lock_reissued_v2_relative(method: str) -> Path:
+    """Return the corrected re-attestation path for a V2 method lock."""
+
+    _require_v2_method(method)
+    return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock_reissued_v2.json"
+
+
 def active_v2_method_lock_relative(root: Path, method: str) -> Path:
     """Select a reissued lock when one exists, otherwise the original lock."""
 
+    corrected = root / v2_method_lock_reissued_v2_relative(method)
+    if corrected.is_file():
+        return v2_method_lock_reissued_v2_relative(method)
     reissued = root / v2_method_lock_reissued_relative(method)
     if reissued.is_file():
         return v2_method_lock_reissued_relative(method)
@@ -1321,7 +1331,10 @@ def verify_v2_method_lock(
         require_committed_file(root, Path(runtime_binding["path"]))
     if sha256_file(runtime_path) != runtime_binding.get("sha256"):
         raise PreflightError(f"V2 runtime summary digest mismatch for {method}")
-    if relative == v2_method_lock_reissued_relative(method):
+    if relative in {
+        v2_method_lock_reissued_relative(method),
+        v2_method_lock_reissued_v2_relative(method),
+    }:
         if lock.get("supersedes_lock_path") != v2_method_lock_relative(method).as_posix():
             raise PreflightError(f"V2 reissued lock supersession path is invalid for {method}")
         superseded = root / v2_method_lock_relative(method)
@@ -1341,7 +1354,7 @@ def reissue_v2_method_lock(root: Path, method: str, attempt_id: str) -> Path:
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     canonical_relative = v2_method_lock_relative(method)
-    reissued_relative = v2_method_lock_reissued_relative(method)
+    reissued_relative = v2_method_lock_reissued_v2_relative(method)
     canonical = root / canonical_relative
     reissued = root / reissued_relative
     if not canonical.is_file():
@@ -1376,7 +1389,7 @@ def reissue_v2_method_lock(root: Path, method: str, attempt_id: str) -> Path:
     if old_comparable != candidate_comparable:
         raise PreflightError(f"V2 reissue would change immutable execution evidence for {method}")
     stable = {
-        **candidate,
+        **{key: value for key, value in candidate.items() if key != "lock_digest"},
         "supersedes_lock_path": canonical_relative.as_posix(),
         "supersedes_lock_digest": old["lock_digest"],
         "lock_reissue_reason": "repair outer-dictionary truthiness in execution-validity classification",
@@ -1492,6 +1505,7 @@ def verify_v2_global_prediction_lock(root: Path, *, require_committed: bool = Tr
         if lock_relative not in {
             v2_method_lock_relative(method),
             v2_method_lock_reissued_relative(method),
+            v2_method_lock_reissued_v2_relative(method),
         }:
             raise PreflightError(f"V2 global lock method-lock path is invalid for {method}")
         method_lock = verify_v2_method_lock(
