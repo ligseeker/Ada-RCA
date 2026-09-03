@@ -43,6 +43,7 @@ from src.baseline_eval.rescue_v2 import (
     V2_PROTOCOL_DIGEST,
     V2_PROTOCOL_VERSION,
     V2_TRACE_CLOSURE_ADOPTED,
+    active_v2_method_lock_relative,
     actual_worker_count,
     assert_determinism_equal,
     command_parser,
@@ -51,6 +52,10 @@ from src.baseline_eval.rescue_v2 import (
     parse_dataset_scope,
     pending_v2_cases,
     protocol_preflight_v2,
+    reissue_v2_method_lock,
+    v2_method_lock_relative,
+    v2_method_lock_reissued_relative,
+    v2_execution_validity,
     run_determinism_preflight,
     v2_record_relative,
     V2EvaluationBlocked,
@@ -301,6 +306,7 @@ class RescueV2ProtocolTest(unittest.TestCase):
             "MicroCause",
             Path("/env/bin/python"),
             reuse_historical_manifest=False,
+            synthetic_timeout_seconds=None,
         )
         self.assertFalse(result["real_execution_authorized"])
 
@@ -376,6 +382,94 @@ class RescueV2FailureAndMetricTest(unittest.TestCase):
     def test_22_process_crash_is_not_method_failure(self):
         self.assertIn("PROCESS_CRASH/OOM", V2_BLOCKING_STATUSES)
         self.assertNotEqual("PROCESS_CRASH/OOM", "METHOD_FAILURE")
+
+    def test_22a_empty_dataset_blocking_maps_to_integrity_valid(self):
+        self.assertEqual(
+            v2_execution_validity({"re2ob": {}, "re2tt": {}}),
+            "INTEGRITY_VALID",
+        )
+        self.assertEqual(
+            v2_execution_validity({"re2ob": {}, "re2tt": {"PROCESS_CRASH/OOM": 1}}),
+            "INTEGRITY_INVALID",
+        )
+
+    def test_22b_reissued_lock_path_is_distinct_and_selected_as_active(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            canonical = root / v2_method_lock_relative("MicroRank")
+            reissued = root / v2_method_lock_reissued_relative("MicroRank")
+            canonical.parent.mkdir(parents=True)
+            canonical.write_text("old", encoding="utf-8")
+            self.assertNotEqual(canonical, reissued)
+            self.assertEqual(
+                active_v2_method_lock_relative(root, "MicroRank"),
+                v2_method_lock_relative("MicroRank"),
+            )
+            reissued.write_text("new", encoding="utf-8")
+            self.assertEqual(
+                active_v2_method_lock_relative(root, "MicroRank"),
+                v2_method_lock_reissued_relative("MicroRank"),
+            )
+
+    def test_22c_reissue_command_requires_method_and_attempt(self):
+        parser = command_parser()
+        args = parser.parse_args([
+            "reissue-method-lock",
+            "--method", "MicroRank",
+            "--attempt-id", "microrank-a3-rescue-v2",
+        ])
+        self.assertEqual(args.method, "MicroRank")
+        self.assertEqual(args.attempt_id, "microrank-a3-rescue-v2")
+
+    def test_22d_reissue_writes_sidecar_without_overwriting_original_lock(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            canonical = root / v2_method_lock_relative("MicroRank")
+            canonical.parent.mkdir(parents=True)
+            canonical.write_text("immutable-old-lock", encoding="utf-8")
+            runtime = root / "artifacts/baseline_eval/execution_v2/runtimes/microrank/microrank-a3-rescue-v2.json"
+            runtime.parent.mkdir(parents=True)
+            runtime.write_text("runtime", encoding="utf-8")
+            old = {
+                "schema_version": "rca_baseline_rescue_method_prediction_lock_v2",
+                "method": "MicroRank",
+                "attempt_id": "microrank-a3-rescue-v2",
+                "execution_validity": "INTEGRITY_INVALID",
+                "marker": "same-evidence",
+                "locked_at": "old",
+                "lock_digest": "o" * 64,
+            }
+            candidate = {
+                **old,
+                "execution_validity": "INTEGRITY_VALID",
+                "locked_at": "new",
+                "lock_digest": "c" * 64,
+            }
+            with mock.patch("src.baseline_eval.rescue_v2.require_clean_git"), mock.patch(
+                "src.baseline_eval.rescue_v2.global_preflight"
+            ), mock.patch("src.baseline_eval.rescue_v2.verify_v2_protocol"), mock.patch(
+                "src.baseline_eval.rescue_v2.verify_rcaeval_clean"
+            ), mock.patch("src.baseline_eval.rescue_v2.assert_ada_rca_frozen_unchanged"), mock.patch(
+                "src.baseline_eval.rescue_v2.verify_v2_method_lock", return_value=old
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2._load_v2_attempt",
+                return_value={"method": "MicroRank", "attempt_id": "microrank-a3-rescue-v2"},
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2._load_v2_records", return_value={("re2ob", "case"): {}}
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2._case_pairs", return_value=(("re2ob", "case"),)
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2._build_v2_method_lock", return_value=candidate
+            ), mock.patch(
+                "src.baseline_eval.rescue_v2.git", return_value=mock.Mock(stdout="a" * 40)
+            ), mock.patch("src.baseline_eval.rescue_v2.assert_firewall_safe_record"):
+                output = reissue_v2_method_lock(root, "MicroRank", "microrank-a3-rescue-v2")
+
+            self.assertEqual(output, root / v2_method_lock_reissued_relative("MicroRank"))
+            self.assertEqual(canonical.read_text(encoding="utf-8"), "immutable-old-lock")
+            payload = __import__("json").loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(payload["supersedes_lock_path"], v2_method_lock_relative("MicroRank").as_posix())
+            self.assertEqual(payload["supersedes_lock_digest"], "o" * 64)
 
 
 class RescueV2WorkerAndFirewallTest(unittest.TestCase):

@@ -309,6 +309,28 @@ class ConfirmatoryParallelExecutionTest(unittest.TestCase):
                     ROOT, Path("/external/env/bin/python"), "MicroCause"
                 )
 
+    def test_06c1_v2_synthetic_preflight_can_wait_without_timeout(self):
+        payload = {
+            "status": "PASS",
+            "method": "MicroCause",
+            "fingerprint": "f" * 64,
+            "native_output_kind": "GRAPH_AND_RETAINED_INDICATOR_RANKING",
+            "module_paths_within_clean_checkout": True,
+        }
+        completed = subprocess.CompletedProcess(
+            args=(), returncode=0, stdout=json.dumps(payload), stderr=""
+        )
+        with mock.patch(
+            "src.baseline_eval.confirmatory.subprocess.run", return_value=completed
+        ) as run:
+            _run_synthetic_preflight(
+                ROOT,
+                Path("/external/env/bin/python"),
+                "MicroCause",
+                timeout_seconds=None,
+            )
+        self.assertIsNone(run.call_args.kwargs["timeout"])
+
     def test_06ca_frozen_environment_resolution_is_independent_of_ambient_user_site(self):
         expected = {"profile": "frozen"}
         manifest = {
