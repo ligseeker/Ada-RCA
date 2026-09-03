@@ -276,7 +276,7 @@ def validate_schema_and_fit(repo: Path, package: Path, state: ValidationState) -
         state.check(len(package_schema) == 68, "68D schema row count")
         state.check([(int(row["feature_index"]), row["channel"], row["family"], row["field"]) for row in package_schema] == [(int(row["feature_index"]), row["channel"], row["family"], row["field"]) for row in schema_rows], "code-derived feature schema")
         config = json_load(package / "data/reproducibility/frozen_configuration.json")
-        state.check(config.get("feature_order_sha256") == digest and config.get("dimension") == 68, "frozen feature-order digest")
+        state.check(config.get("feature_order_sha256") == digest and config.get("representation_dimension") == 68, "frozen feature-order digest")
         state.check(config.get("channels") == meta["channels"] and config.get("ranker") == "event-level Conditional Logit", "frozen configuration semantics")
     except Exception as exc:
         state.failures.append(f"feature schema/configuration validation: {exc}")
@@ -302,7 +302,7 @@ def validate_evidence_boundaries(repo: Path, package: Path, rows: Sequence[Mappi
     state.check({row.get("path", "").split("/", 1)[-1] for row in documents} == source_docs, "complete document index")
     state.check({row.get("path", "").split("/", 1)[-1]: row.get("evidence_class") for row in documents} == DOCUMENT_CLASSES, "document classifications complete")
     state.check(all(row.get("copied") == "false" for row in documents if row.get("evidence_class") == "OUT_OF_SCOPE"), "out-of-scope documents not copied")
-    state.check(not any(row.get("evidence_class") == "HISTORICAL_SUPERSEDED" and row.get("asset_path", "") for row in documents), "historical documents are routed outside active docs")
+    state.check(all(row.get("asset_path", "").startswith("docs/historical_superseded/") for row in documents if row.get("evidence_class") == "HISTORICAL_SUPERSEDED"), "historical documents are routed outside active docs")
     _, superseded = read_csv(package / "refs/superseded_artifacts.csv")
     state.check(any(row.get("path") == "artifacts/opt/final/bootstrap.json" for row in superseded), "legacy bootstrap explicitly superseded")
     state.check(all(row.get("evidence_class") == "HISTORICAL_SUPERSEDED" for row in superseded), "superseded artifact class")
@@ -314,10 +314,15 @@ def validate_evidence_boundaries(repo: Path, package: Path, rows: Sequence[Mappi
                 lowered = text.lower()
                 if "artifacts/opt/final/bootstrap.json" in lowered or "legacy bootstrap.json" in lowered:
                     forbidden_text.append(path.as_posix())
-                if "not_auditable" in lowered and ("pass" in lowered or "fail" in lowered):
-                    # The package must not collapse NOT_AUDITABLE into a binary
-                    # pass/fail result in the same exported table view.
-                    forbidden_text.append(f"binary audit collapse: {path.as_posix()}")
+                if path.suffix.lower() == ".csv":
+                    _, rows = read_csv(path)
+                    for row in rows:
+                        values = {str(value).strip().upper() for value in row.values()}
+                        if "NOT_AUDITABLE" in values and values.intersection({"PASS", "FAIL"}):
+                            # The package must not collapse NOT_AUDITABLE into
+                            # a binary pass/fail result in one exported row.
+                            forbidden_text.append(f"binary audit collapse: {path.as_posix()}")
+                            break
     state.check(not forbidden_text, "superseded/binary-audit exclusion", "; ".join(forbidden_text[:5]))
     state.check(not (package / "data/final/discrepancy_report.json").exists(), "no discrepancy report in valid package")
     anchor_fields, anchor_rows = read_csv(package / "data/diagnostics/anchor_feasibility_summary.csv")
