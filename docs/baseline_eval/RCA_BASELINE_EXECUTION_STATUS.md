@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2.1 RESCUE CODE READY — PREFLIGHT RETRY PENDING**
-State revision: `2026-09-03.10`
+Status: **V2 RESCUE CODE READY — CIRCA RESUME AND MICROCAUSE FULL EXECUTION PENDING**
+State revision: `2026-09-03.11`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `de70370`
+Last synchronized central commit: `1d6677e`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -36,7 +36,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | V2.1 rescue code is local | NOT PUSHED |
+| Push state for this revision | V2 rescue corrections and current handoff are local | NOT PUSHED |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -44,6 +44,7 @@ contents, and update this document.
 | RCAEval commit | `5e96b700445bfb5c599e505ecf37d53bf847bbeb` | PASS |
 | Protocol digest | `aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e` | frozen |
 | Input-manifest digest | `b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec` | frozen |
+| V2.1 rescue protocol digest | `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen |
 
 The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
 only removes the final newline from the existing `artifacts/cache/` line. On
@@ -110,6 +111,9 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 fault-level row regression test | `c226ff5` | complete; focused suite 70/70 |
 | V2 preflight metadata/environment-isolation repair | `8ee08ed` | complete; focused suite 72/72; task preflights pending |
 | V2 preflight caller regression test | `de70370` | complete; focused suite 73/73 |
+| V2 no-timeout preflight/server-startup and validity repair | `41badec` | complete; V2 synthetic preflight uses `timeout=None`; nested blocking counts fixed |
+| V2 immutable method-lock re-attestation | `759f780`, `dfe48f1` | complete; corrected `_reissued_v2` sidecars preserve original locks |
+| V2.2 implementation amendment | `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -161,16 +165,17 @@ TraceRCA `8ef492e`/`cbb4404`/`0c4d9a3`, and mmBARO
 path was merged; baseline orchestration remains under `src/baseline_eval`,
 and baseline execution evidence remains under `artifacts/baseline_eval`.
 
-The V2.1 implementation is complete through central commit `8ee08ed`. It adds
-the no-timeout case-process scheduler, fixed worker/thread controls, immutable
-resume semantics, non-killing heartbeat/resource fields, source-provenance
-binding, the failure-semantic repair, the post-lock evaluator, and the exact
-five-container runbook. The determinism preflight now carries the native module
-digest into its scratch attempt, and V2 environment preflight no longer reuses
-same-interpreter V1 manifests. The focused rescue/evaluator suite passed 73
-tests and the full repository suite passed `235` tests. No V2 environment manifest,
-attempt record, runtime summary, method lock, global lock, or real-case V2
-execution has been created in this central worktree.
+The V2.1 implementation is extended by the performance-blind V2.2 correction
+in `41badec`, `759f780`, and `dfe48f1`. V2 synthetic preflight and server
+startup now wait without a wall-clock timeout; real-case execution remains
+explicitly `--no-timeout`. Lock validity now inspects nonzero nested blocking
+counts, and an invalid pre-correction lock can only be superseded by an
+immutable, fully verified `_prediction_lock_reissued_v2.json` sidecar. The
+focused rescue/evaluator suite passed 78 tests after the correction. Current
+V2 operational evidence is split across the five task worktrees: CIRCA has a
+partial interrupted attempt, MicroCause has a frozen environment but no real
+records, and MicroRank/TraceRCA/mmBARO have complete attempts with corrected
+active lock sidecars. No V2 global lock or label evaluation has been created.
 
 ## 5. Confirmatory execution coverage
 
@@ -203,13 +208,38 @@ ranks, or metrics may be added before the global prediction lock.
 | mmBARO A2 | RE2-TT | 90/90 | 89 | 1 | 0 | 0 | 0 | valid centrally |
 | CausalRCA | — | 0 | — | — | — | — | — | deferred |
 
-V2 rescue coverage is not started in this central worktree: CIRCA,
-MicroCause, MicroRank, TraceRCA, and mmBARO each have `0/180` V2 terminal
-records, no V2 environment manifest, no V2 runtime summary, and no V2 method
-lock. The five task containers are the next authorized execution boundary.
+V2 rescue coverage, recorded without prediction inspection, is:
+
+| Method | Dataset | Records | SUCCESS | METHOD_FAILURE | Blocking statuses | Active method lock |
+|---|---|---:|---:|---:|---|---|
+| CIRCA | RE2-OB | 90/90 | 86 | 4 | none observed | pending; attempt interrupted |
+| CIRCA | RE2-TT | 1/90 | 0 | 1 | none observed | pending; 89 cases missing |
+| MicroCause | RE2-OB | 0/90 | 0 | 0 | — | pending; environment frozen |
+| MicroCause | RE2-TT | 0/90 | 0 | 0 | — | pending; environment frozen |
+| MicroRank | RE2-OB | 90/90 | 90 | 0 | none | corrected V2 sidecar verified |
+| MicroRank | RE2-TT | 90/90 | 75 | 15 | none | corrected V2 sidecar verified |
+| TraceRCA | RE2-OB | 90/90 | 90 | 0 | none | corrected V2 sidecar verified |
+| TraceRCA | RE2-TT | 90/90 | 75 | 15 | none | corrected V2 sidecar verified |
+| mmBARO | RE2-OB | 90/90 | 90 | 0 | none | corrected V2 sidecar verified |
+| mmBARO | RE2-TT | 90/90 | 89 | 1 | none | corrected V2 sidecar verified |
+
+The three complete methods originally printed `INTEGRITY_INVALID` because
+their first V2 lock used the defective outer-dictionary truthiness check. Their
+original locks and the first failed reissue sidecars remain unchanged; the
+corrected V2 sidecars were verified against the same 180 records and runtime
+summaries. This is a lock-attestation repair, not a method rerun. CIRCA's
+container interruption did not leave a terminal `PROCESS_CRASH/OOM` record in
+the inspected partial attempt; its missing cases remain pending.
 
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
 both 90-case denominators valid, environment unchanged.
+
+The CIRCA V2 attempt is interrupted and its newly written records remain
+uncommitted in the CIRCA task worktree until resume completes; those records
+are not part of the central branch yet. CIRCA's attempt metadata binds exact
+execution commit `76830b2cbfe6e67a8dab7f91dfb7fa0f044c663f`, requested/actual
+workers 10, and `timeout_seconds=null`. After memory is increased, resume must
+run on that exact task branch/commit and may process only missing cases.
 
 CIRCA A1 and MicroCause A1 are stopped and committed as immutable evidence in
 their assigned task worktrees and are now also present centrally. The CIRCA
@@ -299,6 +329,25 @@ digest. The merge did not touch the user method's `src/rca` or
 `artifacts/p6_*` paths. Those V1 method locks are historical evidence; the V2
 global prediction lock is a separate future artifact and remains pending until
 the five V2 attempts are complete and integrity-valid.
+
+### B7. V2 post-launch rescue state — active
+
+- CIRCA's partial V2 attempt was interrupted by container memory exhaustion.
+  Increase the task-container memory and use the exact missing-only resume
+  command in the V2 runbook. Do not cherry-pick the newer lock-repair commits
+  into the CIRCA task branch before that resume, because the attempt is bound
+  to `76830b2cbfe6e67a8dab7f91dfb7fa0f044c663f`.
+- MicroCause's earlier 900-second synthetic preflight was a cold-import
+  timeout. V2 now uses `timeout=None`; the isolated preflight passed and its
+  environment manifest is frozen in task commit `113b9c6`. Its real native
+  call remains the pinned 1000-by-1000 random walk.
+- MicroRank, TraceRCA, and mmBARO have no blocking terminal statuses in their
+  complete V2 records. Their old invalid locks are retained and their
+  corrected `_prediction_lock_reissued_v2.json` sidecars are verified. They
+  must not be rerun.
+- The V2 global prediction lock and all metric/evaluation commands remain
+  blocked until CIRCA and MicroCause produce complete integrity-valid method
+  locks and all five locks are centrally integrated.
 
 ## 7. Historical V1 plan and current V2 replacement
 
@@ -489,16 +538,19 @@ before the canonical window. The diagnostic artifacts are
 15-case KeyError sets for MicroRank/TraceRCA and retains native trace/SLO
 semantics.
 
-No V2 real-case execution has started, by design. The final implementation/test
-HEAD is `de70370`; the full suite passed `235` tests, the focused V2/evaluator
-suite passed `73`, and the
-performance-firewall and V2.1 protocol checks passed. V2 supports requested
-workers `1, 4, 10, 20`, caps actual workers by container CPU availability,
-sets one thread for the audited numeric libraries, uses `timeout_seconds=null`,
-and resumes only missing terminal records. The five method environments,
-attempts, runtime summaries, method locks, global lock, and evaluation outputs
-remain pending. The exact next action is to rerun the CIRCA determinism
-preflight, complete MicroCause's protocol/environment freeze, then run the
-five A preflights and one chosen 10- or 20-core full run per method in the V2
-runbook. The required end state remains
-`V2.1 RESCUE CODE READY — PREFLIGHT RETRY PENDING`.
+V2 real-case execution is partially complete in the isolated task worktrees.
+The current central implementation/test HEAD before this handoff update is
+`1d6677e`; the focused rescue/evaluator suite passed `78` tests after the
+no-timeout and lock-validity corrections. V2 supports requested workers
+`1, 4, 10, 20`, caps actual workers by container CPU availability, sets one
+thread for the audited numeric libraries, uses `timeout_seconds=null`, and
+resumes only missing terminal records. MicroCause's synthetic preflight now
+passes with no timeout and its environment is frozen. MicroRank, TraceRCA, and
+mmBARO have complete integrity-valid corrected sidecars despite their original
+invalid lock attestations. CIRCA has an interrupted 10-worker attempt with 89
+missing cases and must resume after its container memory is increased. No V2
+global lock, label join, or evaluation output exists. The exact next action is
+to resume CIRCA on its original execution commit, run MicroCause's deterministic
+preflight and no-timeout attempt, then centrally integrate and verify the five
+method locks. The required end state remains
+`V2 RESCUE CODE READY — CIRCA RESUME AND MICROCAUSE FULL EXECUTION PENDING`.

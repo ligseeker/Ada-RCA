@@ -1,6 +1,6 @@
 # RCAEval Five-Baseline Rescue V2 Runbook
 
-Status: `V2_RESCUE_CODE_READY — FIVE TASK-CONTAINER EXECUTIONS PENDING`
+Status: `V2_RESCUE_CODE_READY — CIRCA RESUME AND MICROCAUSE EXECUTION PENDING`
 
 This runbook is the operational companion to
 `RCA_BASELINE_RESCUE_PROTOCOL_V2.md`. It is performance-blind. Do not
@@ -20,11 +20,11 @@ containers must not create worktrees or switch branches.
 
 ```bash
 cd /home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin
-git worktree add <CIRCA_TASK_WORKTREE> -b eval/rescue-v2-circa evaluation/rcaeval-baselines
-git worktree add <MICROCAUSE_TASK_WORKTREE> -b eval/rescue-v2-microcause evaluation/rcaeval-baselines
-git worktree add <MICRORANK_TASK_WORKTREE> -b eval/rescue-v2-microrank evaluation/rcaeval-baselines
-git worktree add <TRACERCA_TASK_WORKTREE> -b eval/rescue-v2-tracerca evaluation/rcaeval-baselines
-git worktree add <MMBARO_TASK_WORKTREE> -b eval/rescue-v2-mmbaro evaluation/rcaeval-baselines
+git worktree add /home/zhangll24/RCA_project/Ada-RCA-v2-circa -b eval/rescue-v2-circa evaluation/rcaeval-baselines
+git worktree add /home/zhangll24/RCA_project/Ada-RCA-v2-microcause -b eval/rescue-v2-microcause evaluation/rcaeval-baselines
+git worktree add /home/zhangll24/RCA_project/Ada-RCA-v2-microrank -b eval/rescue-v2-microrank evaluation/rcaeval-baselines
+git worktree add /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca -b eval/rescue-v2-tracerca evaluation/rcaeval-baselines
+git worktree add /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro -b eval/rescue-v2-mmbaro evaluation/rcaeval-baselines
 ```
 
 All five paths must be distinct. The only values to fill are the task-worktree
@@ -43,6 +43,108 @@ for the same attempt: the attempt freezes worker configuration. D must use the
 same worker count as the selected full run. Existing terminal records, including
 `METHOD_FAILURE`, are never retried.
 
+## 2.1 Current post-launch recovery commands
+
+The task worktrees already exist and contain post-launch evidence. Use these
+commands for the current state; do not restart a completed method.
+
+### CIRCA: continue the interrupted attempt after increasing container memory
+
+The CIRCA attempt is bound to commit
+`76830b2cbfe6e67a8dab7f91dfb7fa0f044c663f`. Keep that task worktree at this
+commit until the missing-only resume finishes. This command runs only cases
+without a terminal record:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-circa
+source /home/zhangll24/.venvs/ada-rca-baselines-common/bin/activate
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
+export PYTHONHASHSEED=20260830
+export PYTHONDONTWRITEBYTECODE=1
+export CUDA_VISIBLE_DEVICES=""
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
+test "$(git branch --show-current)" = "eval/rescue-v2-circa"
+test "$(git rev-parse HEAD)" = "76830b2cbfe6e67a8dab7f91dfb7fa0f044c663f"
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py run --method CIRCA --python "$RESCUE_PYTHON" --attempt-id circa-a3-rescue-v2 --workers 10 --datasets re2ob,re2tt --no-timeout --resume --resume-policy missing-only --log-file /tmp/ada-rca-rescue-v2-circa-heartbeat.jsonl --heartbeat-seconds 30
+```
+
+After the resume reaches 180 terminal records, commit only the CIRCA V2
+attempt evidence. The central coordinator will re-attest the old lock with the
+corrected V2 lock builder; do not overwrite the original lock:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-circa
+git add artifacts/baseline_eval/execution_v2/attempts/circa/circa-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/records/circa/circa-a3-rescue-v2 artifacts/baseline_eval/execution_v2/runtimes/circa/circa-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/locks/circa_prediction_lock.json
+git commit -m "eval(CIRCA): complete V2 rescue attempt"
+```
+
+### MicroCause: retry preflight, then start the fresh V2 attempt
+
+MicroCause's environment is already frozen at task commit `113b9c6`. The V2
+protocol preflight now has no subprocess timeout. Run the deterministic
+preflight, then the fresh full attempt:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microcause
+source /home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/activate
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/python
+export PYTHONHASHSEED=20260830
+export PYTHONDONTWRITEBYTECODE=1
+export CUDA_VISIBLE_DEVICES=""
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
+test "$(git branch --show-current)" = "eval/rescue-v2-microcause"
+test "$(git rev-parse HEAD)" = "113b9c6c2d778f984284573aa2c07c1a7848de75"
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py determinism-preflight --method MicroCause --python "$RESCUE_PYTHON" --cases-per-dataset 5 --worker-counts 1,10,20
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py run --method MicroCause --python "$RESCUE_PYTHON" --attempt-id microcause-a3-rescue-v2 --workers 10 --datasets re2ob,re2tt --no-timeout --resume-policy fresh --log-file /tmp/ada-rca-rescue-v2-microcause-heartbeat.jsonl --heartbeat-seconds 30
+```
+
+For an interrupted MicroCause container, use the same interpreter and worker
+configuration with this missing-only resume command:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microcause
+source /home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/activate
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/python
+export PYTHONHASHSEED=20260830
+export PYTHONDONTWRITEBYTECODE=1
+export CUDA_VISIBLE_DEVICES=""
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
+test "$(git branch --show-current)" = "eval/rescue-v2-microcause"
+test "$(git rev-parse HEAD)" = "113b9c6c2d778f984284573aa2c07c1a7848de75"
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py run --method MicroCause --python "$RESCUE_PYTHON" --attempt-id microcause-a3-rescue-v2 --workers 10 --datasets re2ob,re2tt --no-timeout --resume --resume-policy missing-only --log-file /tmp/ada-rca-rescue-v2-microcause-heartbeat.jsonl --heartbeat-seconds 30
+```
+
+### MicroRank, TraceRCA, and mmBARO: verify only
+
+These three attempts already have 180 terminal records and corrected immutable
+lock sidecars. Do not run a fresh or resume execution. Verify their active
+sidecars from their task worktrees:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microrank
+source /home/zhangll24/.venvs/ada-rca-baselines-common/bin/activate
+/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method MicroRank --attempt-id microrank-a3-rescue-v2
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca
+/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method TraceRCA --attempt-id tracerca-a3-rescue-v2
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro
+/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method mmBARO --attempt-id mmbaro-a3-rescue-v2
+```
+
 ## 3.1 CIRCA
 
 Attempt: `circa-a3-rescue-v2`
@@ -52,7 +154,7 @@ Interpreter: `/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python`
 ### A. Environment / protocol / determinism preflight
 
 ```bash
-cd <CIRCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-circa
 test "$(git branch --show-current)" = "eval/rescue-v2-circa"
 test -z "$(git status --porcelain)"
 test "$(git -C /home/zhangll24/RCA_project/RCAEval-clean rev-parse HEAD)" = "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
@@ -77,7 +179,7 @@ git commit -m "env(CIRCA): freeze V2 rescue environment"
 ### B. 10-core full run
 
 ```bash
-cd <CIRCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-circa
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -94,7 +196,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 ### C. 20-core full run
 
 ```bash
-cd <CIRCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-circa
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -113,7 +215,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 Use the command matching B or C; the worker count must not change.
 
 ```bash
-cd <CIRCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-circa
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -133,7 +235,7 @@ For a 20-core initial run, replace only `--workers 10` with
 ### E. Commit and verify method lock
 
 ```bash
-cd <CIRCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-circa
 git add artifacts/baseline_eval/execution_v2/attempts/circa/circa-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/records/circa/circa-a3-rescue-v2 artifacts/baseline_eval/execution_v2/runtimes/circa/circa-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/locks/circa_prediction_lock.json
 git commit -m "eval(CIRCA): complete V2 rescue attempt"
 /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method CIRCA --attempt-id circa-a3-rescue-v2
@@ -150,7 +252,7 @@ Interpreter: `/home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/python`
 ### A. Environment / protocol / determinism preflight
 
 ```bash
-cd <MICROCAUSE_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microcause
 test "$(git branch --show-current)" = "eval/rescue-v2-microcause"
 test -z "$(git status --porcelain)"
 test "$(git -C /home/zhangll24/RCA_project/RCAEval-clean rev-parse HEAD)" = "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
@@ -175,7 +277,7 @@ git commit -m "env(MicroCause): freeze V2 rescue environment"
 ### B. 10-core full run
 
 ```bash
-cd <MICROCAUSE_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microcause
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -192,7 +294,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 ### C. 20-core full run
 
 ```bash
-cd <MICROCAUSE_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microcause
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -211,7 +313,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 Use the command matching B or C; the worker count must not change.
 
 ```bash
-cd <MICROCAUSE_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microcause
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-microcause/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -231,7 +333,7 @@ For a 20-core initial run, replace only `--workers 10` with
 ### E. Commit and verify method lock
 
 ```bash
-cd <MICROCAUSE_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microcause
 git add artifacts/baseline_eval/execution_v2/attempts/microcause/microcause-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/records/microcause/microcause-a3-rescue-v2 artifacts/baseline_eval/execution_v2/runtimes/microcause/microcause-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/locks/microcause_prediction_lock.json
 git commit -m "eval(MicroCause): complete V2 rescue attempt"
 /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method MicroCause --attempt-id microcause-a3-rescue-v2
@@ -248,7 +350,7 @@ Interpreter: `/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python`
 ### A. Environment / protocol / determinism preflight
 
 ```bash
-cd <MICRORANK_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microrank
 test "$(git branch --show-current)" = "eval/rescue-v2-microrank"
 test -z "$(git status --porcelain)"
 test "$(git -C /home/zhangll24/RCA_project/RCAEval-clean rev-parse HEAD)" = "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
@@ -273,7 +375,7 @@ git commit -m "env(MicroRank): freeze V2 rescue environment"
 ### B. 10-core full run
 
 ```bash
-cd <MICRORANK_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microrank
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -290,7 +392,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 ### C. 20-core full run
 
 ```bash
-cd <MICRORANK_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microrank
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -309,7 +411,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 Use the command matching B or C; the worker count must not change.
 
 ```bash
-cd <MICRORANK_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microrank
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -329,7 +431,7 @@ For a 20-core initial run, replace only `--workers 10` with
 ### E. Commit and verify method lock
 
 ```bash
-cd <MICRORANK_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-microrank
 git add artifacts/baseline_eval/execution_v2/attempts/microrank/microrank-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/records/microrank/microrank-a3-rescue-v2 artifacts/baseline_eval/execution_v2/runtimes/microrank/microrank-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/locks/microrank_prediction_lock.json
 git commit -m "eval(MicroRank): complete V2 rescue attempt"
 /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method MicroRank --attempt-id microrank-a3-rescue-v2
@@ -346,7 +448,7 @@ Interpreter: `/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python`
 ### A. Environment / protocol / determinism preflight
 
 ```bash
-cd <TRACERCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca
 test "$(git branch --show-current)" = "eval/rescue-v2-tracerca"
 test -z "$(git status --porcelain)"
 test "$(git -C /home/zhangll24/RCA_project/RCAEval-clean rev-parse HEAD)" = "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
@@ -371,7 +473,7 @@ git commit -m "env(TraceRCA): freeze V2 rescue environment"
 ### B. 10-core full run
 
 ```bash
-cd <TRACERCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -388,7 +490,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 ### C. 20-core full run
 
 ```bash
-cd <TRACERCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -407,7 +509,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 Use the command matching B or C; the worker count must not change.
 
 ```bash
-cd <TRACERCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -427,7 +529,7 @@ For a 20-core initial run, replace only `--workers 10` with
 ### E. Commit and verify method lock
 
 ```bash
-cd <TRACERCA_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca
 git add artifacts/baseline_eval/execution_v2/attempts/tracerca/tracerca-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/records/tracerca/tracerca-a3-rescue-v2 artifacts/baseline_eval/execution_v2/runtimes/tracerca/tracerca-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/locks/tracerca_prediction_lock.json
 git commit -m "eval(TraceRCA): complete V2 rescue attempt"
 /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method TraceRCA --attempt-id tracerca-a3-rescue-v2
@@ -444,7 +546,7 @@ Interpreter: `/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python`
 ### A. Environment / protocol / determinism preflight
 
 ```bash
-cd <MMBARO_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro
 test "$(git branch --show-current)" = "eval/rescue-v2-mmbaro"
 test -z "$(git status --porcelain)"
 test "$(git -C /home/zhangll24/RCA_project/RCAEval-clean rev-parse HEAD)" = "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
@@ -469,7 +571,7 @@ git commit -m "env(mmBARO): freeze V2 rescue environment"
 ### B. 10-core full run
 
 ```bash
-cd <MMBARO_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -486,7 +588,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 ### C. 20-core full run
 
 ```bash
-cd <MMBARO_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -505,7 +607,7 @@ export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
 Use the command matching B or C; the worker count must not change.
 
 ```bash
-cd <MMBARO_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro
 export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 export PYTHONHASHSEED=20260830
 export PYTHONDONTWRITEBYTECODE=1
@@ -525,7 +627,7 @@ For a 20-core initial run, replace only `--workers 10` with
 ### E. Commit and verify method lock
 
 ```bash
-cd <MMBARO_TASK_WORKTREE>
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro
 git add artifacts/baseline_eval/execution_v2/attempts/mmbaro/mmbaro-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/records/mmbaro/mmbaro-a3-rescue-v2 artifacts/baseline_eval/execution_v2/runtimes/mmbaro/mmbaro-a3-rescue-v2.json artifacts/baseline_eval/execution_v2/locks/mmbaro_prediction_lock.json
 git commit -m "eval(mmBARO): complete V2 rescue attempt"
 /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method mmBARO --attempt-id mmbaro-a3-rescue-v2
@@ -543,16 +645,16 @@ commits from the task worktrees; no Git index is shared.
 ```bash
 cd /home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin
 test -z "$(git status --porcelain)"
-git cherry-pick "$(git -C <CIRCA_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/circa.json)"
-git cherry-pick "$(git -C <CIRCA_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/circa_prediction_lock.json)"
-git cherry-pick "$(git -C <MICROCAUSE_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/microcause.json)"
-git cherry-pick "$(git -C <MICROCAUSE_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/microcause_prediction_lock.json)"
-git cherry-pick "$(git -C <MICRORANK_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/microrank.json)"
-git cherry-pick "$(git -C <MICRORANK_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/microrank_prediction_lock.json)"
-git cherry-pick "$(git -C <TRACERCA_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/tracerca.json)"
-git cherry-pick "$(git -C <TRACERCA_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/tracerca_prediction_lock.json)"
-git cherry-pick "$(git -C <MMBARO_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/mmbaro.json)"
-git cherry-pick "$(git -C <MMBARO_TASK_WORKTREE> log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/mmbaro_prediction_lock.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-circa log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/circa.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-circa log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/circa_prediction_lock.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-microcause log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/microcause.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-microcause log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/microcause_prediction_lock.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-microrank log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/microrank.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-microrank log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/microrank_prediction_lock.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/tracerca.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/tracerca_prediction_lock.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro log -1 --format=%H -- artifacts/baseline_eval/execution_v2/environments/mmbaro.json)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro log -1 --format=%H -- artifacts/baseline_eval/execution_v2/locks/mmbaro_prediction_lock.json)"
 ```
 
 Verify every lock before creating the global lock:
