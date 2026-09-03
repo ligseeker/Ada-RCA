@@ -4,7 +4,7 @@ Status: **V2 RESCUE CODE READY — CAUSALRCA CPU EXTENSION AUTHORIZED**
 State revision: `2026-09-03.15`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `6b7635a`
+Last synchronized central commit: `088b044`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -116,7 +116,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 lock-sidecar firewall allowlist | `dd7ce3c` | complete; historical and corrected sidecars remain immutable and pre-lock safe |
 | V2.2 implementation amendment | `9f10742`; `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
 | V2 pre-lock interim unified tables | `RCA_BASELINE_INTERIM_UNIFIED_TABLES_V2.md` | recorded; RE2-OB operational snapshot only, metric cells intentionally blank |
-| CausalRCA CPU case-level V2 extension | this revision; `RCA_BASELINE_CAUSALRCA_CPU_CASE_PARALLELISM_AMENDMENT_V1.md`; `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | user-authorized; no environment, records, or lock yet |
+| CausalRCA CPU case-level V2 extension | `088b044`; `RCA_BASELINE_CAUSALRCA_CPU_CASE_PARALLELISM_AMENDMENT_V1.md`; `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | user-authorized; no environment, records, or lock yet |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
