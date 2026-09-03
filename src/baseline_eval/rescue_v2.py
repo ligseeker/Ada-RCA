@@ -1338,7 +1338,8 @@ def verify_v2_method_lock(
         if lock.get("supersedes_lock_path") != v2_method_lock_relative(method).as_posix():
             raise PreflightError(f"V2 reissued lock supersession path is invalid for {method}")
         superseded = root / v2_method_lock_relative(method)
-        if not superseded.is_file() or sha256_file(superseded) != lock.get("supersedes_lock_digest"):
+        superseded_payload = read_json(superseded) if superseded.is_file() else {}
+        if superseded_payload.get("lock_digest") != lock.get("supersedes_lock_digest"):
             raise PreflightError(f"V2 reissued lock no longer binds the original lock for {method}")
     return lock
 
