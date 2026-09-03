@@ -124,6 +124,9 @@ class RescueV2ProtocolTest(unittest.TestCase):
         self.assertIn("process.join()", source)
         self.assertNotIn("process.join(CASE_TIMEOUT_SECONDS)", source)
         self.assertIn('"timeout_seconds": None', inspect.getsource(__import__("src.baseline_eval.rescue_server_v2", fromlist=["x"])._process_failure_record))
+        startup_source = inspect.getsource(__import__("src.baseline_eval.rescue_v2", fromlist=["x"])._start_v2_server)
+        self.assertIn("select.select([server.stdout], [], [], None)", startup_source)
+        self.assertNotIn("select.select([server.stdout], [], [], 900)", startup_source)
 
     def test_07_microcause_native_parameters_remain_1000_by_1000(self):
         self.assertEqual(microcause_native_execution_parameters(), {"random_walk_epochs": 1000, "random_walk_steps": 1000})
