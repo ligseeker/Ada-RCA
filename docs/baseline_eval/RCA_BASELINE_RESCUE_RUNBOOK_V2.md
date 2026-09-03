@@ -1,6 +1,6 @@
-# RCAEval Five-Baseline Rescue V2 Runbook
+# RCAEval Five-Baseline Rescue V2 Runbook and CausalRCA CPU Extension
 
-Status: `V2_RESCUE_CODE_READY — CIRCA RESUME AND MICROCAUSE EXECUTION PENDING`
+Status: `V2_RESCUE_CODE_READY — CAUSALRCA CPU EXTENSION AUTHORIZED`
 
 This runbook is the operational companion to
 `RCA_BASELINE_RESCUE_PROTOCOL_V2.md`. It is performance-blind. Do not
@@ -12,6 +12,13 @@ commit `5e96b700445bfb5c599e505ecf37d53bf847bbeb`. Frozen input-manifest
 digest: `b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec`.
 V2.1 protocol digest:
 `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de`.
+
+CausalRCA is restored only through the additive CPU extension
+`docs/baseline_eval/RCA_BASELINE_CAUSALRCA_CPU_CASE_PARALLELISM_AMENDMENT_V1.md`.
+Its machine-readable digest is
+`fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b`.
+The extension has its own method-scoped execution root and does not alter the
+five-method V2 protocol or its existing evidence.
 
 ## 1. Coordinator creates isolated task worktrees
 
@@ -144,6 +151,96 @@ cd /home/zhangll24/RCA_project/Ada-RCA-v2-tracerca
 cd /home/zhangll24/RCA_project/Ada-RCA-v2-mmbaro
 /home/zhangll24/.venvs/ada-rca-baselines-common/bin/python scripts/run_baseline_rescue_v2.py verify-method-lock --method mmBARO --attempt-id mmbaro-a3-rescue-v2
 ```
+
+## 2.2 CausalRCA CPU case-level extension
+
+Attempt: `causalrca-cpu-a1-rescue-v2`<br>
+Task branch: `eval/rescue-v2-causalrca`<br>
+Interpreter: `/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python`
+
+The coordinator creates this new worktree once from the committed extension
+implementation; the worker container must not create or switch worktrees:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin
+git worktree add /home/zhangll24/RCA_project/Ada-RCA-v2-causalrca -b eval/rescue-v2-causalrca evaluation/rcaeval-baselines
+```
+
+### A. Environment / protocol / determinism preflight
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-causalrca
+test "$(git branch --show-current)" = "eval/rescue-v2-causalrca"
+test -z "$(git status --porcelain)"
+test "$(git -C /home/zhangll24/RCA_project/RCAEval-clean rev-parse HEAD)" = "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
+test -z "$(git -C /home/zhangll24/RCA_project/RCAEval-clean status --porcelain)"
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
+export PYTHONHASHSEED=20260830
+export PYTHONDONTWRITEBYTECODE=1
+export CUDA_VISIBLE_DEVICES=""
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py protocol-preflight --method CausalRCA --python "$RESCUE_PYTHON" > /tmp/ada-rca-rescue-v2-causalrca-cpu-protocol.json
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py freeze-environment --method CausalRCA --python "$RESCUE_PYTHON"
+git add artifacts/baseline_eval/execution_v2_causalrca_cpu/environments/causalrca.json
+git commit -m "env(CausalRCA): freeze CPU V2 extension environment"
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py determinism-preflight --method CausalRCA --python "$RESCUE_PYTHON" --cases-per-dataset 5 --worker-counts 1,10,20 > /tmp/ada-rca-rescue-v2-causalrca-cpu-determinism.json
+```
+
+### B. 10-core full run
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-causalrca
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
+export PYTHONHASHSEED=20260830
+export PYTHONDONTWRITEBYTECODE=1
+export CUDA_VISIBLE_DEVICES=""
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py run --method CausalRCA --python "$RESCUE_PYTHON" --attempt-id causalrca-cpu-a1-rescue-v2 --workers 10 --datasets re2ob,re2tt --no-timeout --resume-policy fresh --log-file /tmp/ada-rca-rescue-v2-causalrca-cpu-heartbeat.jsonl --heartbeat-seconds 30
+```
+
+### C. Interrupted-container resume
+
+Keep the same commit, environment, and `--workers 10` value. Only missing
+terminal records are scheduled:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-causalrca
+export RESCUE_PYTHON=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
+export PYTHONHASHSEED=20260830
+export PYTHONDONTWRITEBYTECODE=1
+export CUDA_VISIBLE_DEVICES=""
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export PYTHONPATH="$PWD:/home/zhangll24/RCA_project/RCAEval-clean"
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py run --method CausalRCA --python "$RESCUE_PYTHON" --attempt-id causalrca-cpu-a1-rescue-v2 --workers 10 --datasets re2ob,re2tt --no-timeout --resume --resume-policy missing-only --log-file /tmp/ada-rca-rescue-v2-causalrca-cpu-heartbeat.jsonl --heartbeat-seconds 30
+```
+
+### D. Commit and verify the method lock
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-v2-causalrca
+git add artifacts/baseline_eval/execution_v2_causalrca_cpu/attempts/causalrca/causalrca-cpu-a1-rescue-v2.json artifacts/baseline_eval/execution_v2_causalrca_cpu/records/causalrca/causalrca-cpu-a1-rescue-v2 artifacts/baseline_eval/execution_v2_causalrca_cpu/runtimes/causalrca/causalrca-cpu-a1-rescue-v2.json artifacts/baseline_eval/execution_v2_causalrca_cpu/locks/causalrca_prediction_lock.json
+git commit -m "eval(CausalRCA): complete CPU V2 extension attempt"
+"$RESCUE_PYTHON" scripts/run_baseline_rescue_v2.py verify-method-lock --method CausalRCA --attempt-id causalrca-cpu-a1-rescue-v2
+```
+
+This method lock is an additive execution artifact. The existing
+`create-global-lock-v2` command still creates the frozen five-method global
+lock; CausalRCA requires a later explicit combined-lock integration before it
+can be included in any label-join or metric command.
 
 ## 3.1 CIRCA
 

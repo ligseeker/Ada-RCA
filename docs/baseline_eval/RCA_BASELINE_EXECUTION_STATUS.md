@@ -1,7 +1,7 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2 RESCUE CODE READY — CIRCA RESUME AND MICROCAUSE FULL EXECUTION PENDING**
-State revision: `2026-09-03.14`
+Status: **V2 RESCUE CODE READY — CAUSALRCA CPU EXTENSION AUTHORIZED**
+State revision: `2026-09-03.15`
 Last operational audit: 2026-09-03, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
 Last synchronized central commit: `6b7635a`
@@ -67,7 +67,7 @@ project worktrees under `~/.venvs/`.
 | MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | A1/A2 integrated; method lock verified centrally |
 | TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | A1/A2 integrated; method lock verified centrally |
 | mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | A1/A2 integrated; method lock verified centrally |
-| CausalRCA | no active confirmatory environment | — | saved GPU amendment only | explicitly deferred; do not freeze or run |
+| CausalRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | additive CPU case-level extension | authorized; environment freeze and execution pending |
 
 Activation commands:
 
@@ -116,6 +116,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 lock-sidecar firewall allowlist | `dd7ce3c` | complete; historical and corrected sidecars remain immutable and pre-lock safe |
 | V2.2 implementation amendment | `9f10742`; `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
 | V2 pre-lock interim unified tables | `RCA_BASELINE_INTERIM_UNIFIED_TABLES_V2.md` | recorded; RE2-OB operational snapshot only, metric cells intentionally blank |
+| CausalRCA CPU case-level V2 extension | this revision; `RCA_BASELINE_CAUSALRCA_CPU_CASE_PARALLELISM_AMENDMENT_V1.md`; `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | user-authorized; no environment, records, or lock yet |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -209,7 +210,7 @@ ranks, or metrics may be added before the global prediction lock.
 | mmBARO A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
 | mmBARO A2 | RE2-OB | 90/90 | 88 | 0 | 0 | 2 | 0 | valid centrally |
 | mmBARO A2 | RE2-TT | 90/90 | 89 | 1 | 0 | 0 | 0 | valid centrally |
-| CausalRCA | — | 0 | — | — | — | — | — | deferred |
+| CausalRCA CPU extension | — | 0 | — | — | — | — | — | authorized; not started |
 
 V2 rescue coverage, recorded without prediction inspection, is:
 
@@ -225,6 +226,8 @@ V2 rescue coverage, recorded without prediction inspection, is:
 | TraceRCA | RE2-TT | 90/90 | 75 | 15 | none | corrected V2 sidecar verified |
 | mmBARO | RE2-OB | 90/90 | 90 | 0 | none | corrected V2 sidecar verified |
 | mmBARO | RE2-TT | 90/90 | 89 | 1 | none | corrected V2 sidecar verified |
+| CausalRCA CPU extension | RE2-OB | 0/90 | — | — | — | pending |
+| CausalRCA CPU extension | RE2-TT | 0/90 | — | — | — | pending |
 
 The three complete methods originally printed `INTEGRITY_INVALID` because
 their first V2 lock used the defective outer-dictionary truthiness check. Their
@@ -269,14 +272,17 @@ execution artifact tree. Future ignore rules may be added selectively only for
 non-evidence files; terminal records, locks, manifests, and execution logs must
 remain visible to Git and the integrity workflow.
 
-### B3. CausalRCA disposition — user decision recorded
+### B3. CausalRCA disposition — restored by explicit user authorization
 
-On 2026-08-31 the user explicitly cancelled CausalRCA from the current
-confirmatory baseline execution. Do not freeze or run it. Before the global
-lock, encode this decision in a dedicated performance-blind protocol amendment
-or equivalent protocol-level disposition. It must not be represented as a
-technical method failure. The saved GPU implementation remains isolated on
-`wip/causalrca-gpu-amendment` at `89db7ec` and is not part of this execution.
+On 2026-09-03 the user explicitly restored CausalRCA and authorized the CPU
+case-level parallel protocol. The additive extension is bound to
+`RCA_BASELINE_CAUSALRCA_CPU_CASE_PARALLELISM_AMENDMENT_V1.md` and machine
+readable digest
+`fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b`.
+It uses the common Python environment, hides CUDA, preserves the pinned
+`RCAEval/e2e/causalrca.py`, and isolates every case in a fresh child process.
+The saved GPU branch `wip/causalrca-gpu-amendment` at `89db7ec` remains
+separate and is not used. No real CausalRCA case has started in this revision.
 
 ### B4. Cross-method concurrency — authorized
 
@@ -350,7 +356,9 @@ the five V2 attempts are complete and integrity-valid.
   must not be rerun.
 - The V2 global prediction lock and all metric/evaluation commands remain
   blocked until CIRCA and MicroCause produce complete integrity-valid method
-  locks and all five locks are centrally integrated.
+  locks and all five base V2 locks are centrally integrated. CausalRCA has a
+  separate extension lock and needs a later explicit combined-lock step before
+  it can enter a label-join or metric evaluation.
 
 ## 7. Historical V1 plan and current V2 replacement
 
@@ -385,6 +393,10 @@ to create a V1 lock.
   method lock. Any DATA/ADAPTER/ENVIRONMENT/INPUT_INTEGRITY or PROCESS_CRASH/OOM
   status blocks the global lock; METHOD_FAILURE remains a legal zero-utility
   robustness observation.
+- CausalRCA uses the additive CPU extension runbook section and attempt
+  `causalrca-cpu-a1-rescue-v2`; its environment freeze and case-level run are
+  pending. Its method lock must remain separate from the existing five-method
+  V2 lock set until a combined-lock amendment is explicitly recorded.
 - Only after all five `INTEGRITY_VALID` method locks are centrally integrated
   may the coordinator create and commit `execution_v2/prediction_lock_v2.json`.
   Only then may `evaluate-v2` join labels and write Tables A–D/bootstrap.
@@ -454,13 +466,13 @@ to create a V1 lock.
 - Completed: central integration as `9719386` (environment), `2b147cc` (A1),
   and `db78094` (A2).
 
-### P6 — Record CausalRCA cancellation
+### P6 — Historical CausalRCA cancellation (superseded)
 
-- Do not freeze or execute CausalRCA in the current confirmatory baseline.
-- Add a dedicated performance-blind protocol amendment or protocol-level
-  withdrawal disposition before the global lock.
-- Keep the saved GPU branch and commit as non-executed context only.
-- Update this document with the amendment path and commit.
+- The 2026-08-31 cancellation remains historical evidence only.
+- It is superseded for the current work by the explicit 2026-09-03 CPU
+  extension authorization recorded in B3.
+- The saved GPU branch remains non-executed context; it must not be reused for
+  the CPU track.
 
 ### P7 — Global prediction lock
 

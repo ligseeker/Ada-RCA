@@ -723,6 +723,12 @@ def execute_case(args: argparse.Namespace) -> dict[str, Any]:
         "native_console_digest": captured.hexdigest,
         "native_console_character_count": captured.character_count,
     }
+    if _is_v2(args) and args.method == "CausalRCA":
+        payload.update({
+            "protocol_base_digest": getattr(args, "protocol_base_digest", None),
+            "execution_device": getattr(args, "execution_device", None),
+            "case_parallelism": getattr(args, "case_parallelism", None),
+        })
     assert_firewall_safe_record(payload)
     return payload
 

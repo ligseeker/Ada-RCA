@@ -468,6 +468,7 @@ def assert_performance_firewall_tree(root: Path) -> None:
         "provenance_v1.json",
         "timestamp_audit_v1.json",
         "rescue_protocol_v2.json",
+        "rescue_protocol_v2_causalrca_cpu.json",
     }
     observed = {
         str(path.relative_to(artifact_root))
@@ -478,7 +479,7 @@ def assert_performance_firewall_tree(root: Path) -> None:
     execution_files = sorted(
         path
         for path in observed
-        if path.startswith(("execution_v1/", "execution_v2/"))
+        if path.startswith(("execution_v1/", "execution_v2/", "execution_v2_causalrca_cpu/"))
     )
     unexpected = sorted(observed.difference(allowed).difference(execution_files))
     allowed_execution_patterns = (
@@ -498,6 +499,12 @@ def assert_performance_firewall_tree(root: Path) -> None:
         re.compile(r"execution_v2/prediction_lock_v2\.json"),
         re.compile(r"execution_v2/diagnostics/(?:mmbaro_input|operation_sets)_v2\.json"),
         re.compile(r"execution_v2/evaluation/(?:overall|fault_level|robustness|comparability|paired_bootstrap)_v2\.json"),
+        re.compile(r"execution_v2_causalrca_cpu/environments/causalrca\.json"),
+        re.compile(r"execution_v2_causalrca_cpu/attempts/causalrca/[A-Za-z0-9_.-]+\.json"),
+        re.compile(r"execution_v2_causalrca_cpu/locks/causalrca_prediction_lock(?:_reissued(?:_v2)?)?\.json"),
+        re.compile(r"execution_v2_causalrca_cpu/records/causalrca/[A-Za-z0-9_.-]+/re2(?:ob|tt)/re2(?:ob|tt)-[0-9a-f]{16}\.json"),
+        re.compile(r"execution_v2_causalrca_cpu/runtimes/causalrca/[A-Za-z0-9_.-]+\.json"),
+        re.compile(r"execution_v2_causalrca_cpu/prediction_lock_causalrca_cpu_v2\.json"),
     )
     unexpected_execution = [
         path for path in execution_files if not any(pattern.fullmatch(path) for pattern in allowed_execution_patterns)

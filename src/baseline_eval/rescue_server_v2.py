@@ -30,7 +30,6 @@ from src.baseline_eval.confirmatory import (
 from src.baseline_eval.worker import _module_callable, execute_case, _native_module_path
 
 
-V2_PROTOCOL_VERSION = "RCA_BASELINE_RESCUE_PROTOCOL_V2"
 V2_PROCESS_FAILURE_STATUS = "PROCESS_CRASH/OOM"
 
 
@@ -53,7 +52,7 @@ def _process_failure_record(request: Mapping[str, Any], start_timestamp: str, el
             module_digest = None
     payload: dict[str, Any] = {
         "schema_version": "rca_baseline_rescue_case_record_v2",
-        "protocol_version": V2_PROTOCOL_VERSION,
+        "protocol_version": request.get("protocol_version", "RCA_BASELINE_RESCUE_PROTOCOL_V2"),
         "protocol_digest": request["protocol_digest"],
         "method": method,
         "dataset": request["dataset"],
@@ -78,7 +77,7 @@ def _process_failure_record(request: Mapping[str, Any], start_timestamp: str, el
             "canonical_seed": CANONICAL_SEED,
             "python_hash_seed": CANONICAL_SEED,
             "numpy_seed": CANONICAL_SEED,
-            "torch_seed": None,
+            "torch_seed": CANONICAL_SEED if method == "CausalRCA" else None,
         },
         "timeout_seconds": None,
         "start_timestamp": start_timestamp,
@@ -111,6 +110,12 @@ def _process_failure_record(request: Mapping[str, Any], start_timestamp: str, el
         "native_console_digest": None,
         "native_console_character_count": 0,
     }
+    if method == "CausalRCA":
+        payload.update({
+            "protocol_base_digest": request.get("protocol_base_digest"),
+            "execution_device": request.get("execution_device"),
+            "case_parallelism": request.get("case_parallelism"),
+        })
     assert_firewall_safe_record(payload)
     return payload
 

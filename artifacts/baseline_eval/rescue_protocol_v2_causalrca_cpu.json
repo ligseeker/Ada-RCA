@@ -1,0 +1,69 @@
+{
+  "authorization": {
+    "date": "2026-09-03",
+    "scope": "restore CausalRCA for CPU case-level parallel execution",
+    "status": "USER_AUTHORIZED"
+  },
+  "base_protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "base_protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "datasets": [
+    "re2ob",
+    "re2tt"
+  ],
+  "deterministic_controls": {
+    "canonical_seed": 20260830,
+    "cublas_workspace_config": ":4096:8",
+    "python_hash_seed": 20260830,
+    "torch_deterministic_algorithms": true,
+    "torch_threads_per_case": 1
+  },
+  "execution": {
+    "allowed_requested_workers": [
+      1,
+      4,
+      10,
+      20
+    ],
+    "case_level_process_isolation": true,
+    "case_order": [
+      "re2ob",
+      "re2tt"
+    ],
+    "device": "CPU",
+    "no_timeout": true,
+    "retry": false,
+    "round_robin_shards": true,
+    "thread_caps": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "timeout_seconds": null,
+    "worker_count_rule": "min(requested_workers, available_cpu_count)"
+  },
+  "failure_policy": {
+    "method_failure_is_zero_utility": true,
+    "no_retry": true,
+    "process_crash_oom_blocks": true,
+    "other_blocking_statuses": [
+      "DATA_FAILURE",
+      "ADAPTER_FAILURE",
+      "ENVIRONMENT_FAILURE",
+      "INPUT_INTEGRITY_FAILURE",
+      "TIMEOUT"
+    ]
+  },
+  "method": "CausalRCA",
+  "methods": [
+    "CausalRCA"
+  ],
+  "native_algorithm": {
+    "algorithm_source": "RCAEval/e2e/causalrca.py::causalrca",
+    "algorithm_source_digest": "74aebfb9f8211db3a48385a73ae577e9673a432d719f859771bbf66dc2a008f0",
+    "source_semantics_modified": false
+  },
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_CPU",
+  "schema_version": "rca_baseline_rescue_protocol_v2_extension",
+  "status": "AUTHORIZED_CPU_CASE_LEVEL_EXTENSION"
+}

@@ -95,6 +95,24 @@ V2_ATTEMPT_IDS = {
     "TraceRCA": "tracerca-a3-rescue-v2",
     "mmBARO": "mmbaro-a3-rescue-v2",
 }
+# CausalRCA is an additive execution track.  The frozen five-method V2
+# protocol, its records, and its global-lock verifier intentionally remain
+# unchanged; this profile binds CausalRCA to a separate CPU amendment instead
+# of silently changing the provenance of existing V2 evidence.
+CAUSALRCA_CPU_PROTOCOL_VERSION = "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_CPU"
+CAUSALRCA_CPU_PROTOCOL_RELATIVE = Path(
+    "artifacts/baseline_eval/rescue_protocol_v2_causalrca_cpu.json"
+)
+CAUSALRCA_CPU_PROTOCOL_DIGEST = "fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b"
+CAUSALRCA_CPU_EXECUTION_ROOT_RELATIVE = Path(
+    "artifacts/baseline_eval/execution_v2_causalrca_cpu"
+)
+CAUSALRCA_CPU_GLOBAL_LOCK_RELATIVE = (
+    CAUSALRCA_CPU_EXECUTION_ROOT_RELATIVE / "prediction_lock_causalrca_cpu_v2.json"
+)
+CAUSALRCA_CPU_ATTEMPT_ID = "causalrca-cpu-a1-rescue-v2"
+V2_EXTENSION_METHODS = ("CausalRCA",)
+V2_RUNNABLE_METHODS = V2_METHODS + V2_EXTENSION_METHODS
 V2_ALLOWED_WORKERS = (1, 4, 10, 20)
 V2_NO_TIMEOUT_SECONDS = None
 V2_CASE_SCHEMA = "rca_baseline_rescue_case_record_v2"
@@ -180,16 +198,44 @@ class V2EvaluationBlocked(RescueV2Error):
     """A method-by-dataset result cannot be joined to labels yet."""
 
 
+def _v2_profile(method: str) -> dict[str, Any]:
+    """Return the immutable execution profile selected by ``method``."""
+
+    if method in V2_METHODS:
+        return {
+            "protocol_version": V2_PROTOCOL_VERSION,
+            "protocol_digest": V2_PROTOCOL_DIGEST,
+            "protocol_relative": V2_PROTOCOL_RELATIVE,
+            "execution_root_relative": V2_EXECUTION_ROOT_RELATIVE,
+            "global_lock_relative": V2_GLOBAL_LOCK_RELATIVE,
+            "attempt_ids": V2_ATTEMPT_IDS,
+            "device": "CPU",
+            "amendment": None,
+        }
+    if method == "CausalRCA":
+        return {
+            "protocol_version": CAUSALRCA_CPU_PROTOCOL_VERSION,
+            "protocol_digest": CAUSALRCA_CPU_PROTOCOL_DIGEST,
+            "protocol_relative": CAUSALRCA_CPU_PROTOCOL_RELATIVE,
+            "execution_root_relative": CAUSALRCA_CPU_EXECUTION_ROOT_RELATIVE,
+            "global_lock_relative": CAUSALRCA_CPU_GLOBAL_LOCK_RELATIVE,
+            "attempt_ids": {"CausalRCA": CAUSALRCA_CPU_ATTEMPT_ID},
+            "device": "CPU",
+            "amendment": CAUSALRCA_CPU_PROTOCOL_RELATIVE.as_posix(),
+        }
+    raise SequenceError(f"method is outside the V2 rescue scope: {method}")
+
+
 def _require_v2_method(method: str) -> None:
-    if method not in V2_METHODS:
+    if method not in V2_RUNNABLE_METHODS:
         raise SequenceError(f"method is outside the V2 rescue scope: {method}")
 
 
 def _require_v2_attempt(method: str, attempt_id: str) -> None:
-    if attempt_id != V2_ATTEMPT_IDS[method]:
+    expected = _v2_profile(method)["attempt_ids"][method]
+    if attempt_id != expected:
         raise SequenceError(
-            f"V2 {method} execution must use the frozen attempt ID "
-            f"{V2_ATTEMPT_IDS[method]}"
+            f"V2 {method} execution must use the frozen attempt ID {expected}"
         )
 
 
@@ -221,25 +267,25 @@ def parse_dataset_scope(value: str) -> tuple[str, ...]:
 
 
 def v2_environment_relative(method: str) -> Path:
-    _require_v2_method(method)
-    return V2_EXECUTION_ROOT_RELATIVE / "environments" / f"{method.lower()}.json"
+    profile = _v2_profile(method)
+    return profile["execution_root_relative"] / "environments" / f"{method.lower()}.json"
 
 
 def v2_attempt_relative(method: str, attempt_id: str) -> Path:
-    _require_v2_method(method)
+    profile = _v2_profile(method)
     require_attempt_id(attempt_id)
-    return V2_EXECUTION_ROOT_RELATIVE / "attempts" / method.lower() / f"{attempt_id}.json"
+    return profile["execution_root_relative"] / "attempts" / method.lower() / f"{attempt_id}.json"
 
 
 def v2_record_relative(method: str, attempt_id: str, dataset: str, case_id: str) -> Path:
-    _require_v2_method(method)
+    profile = _v2_profile(method)
     require_attempt_id(attempt_id)
     if dataset not in DATASET_ORDER:
         raise SequenceError(f"unsupported V2 dataset: {dataset}")
     if not re.fullmatch(r"re2(?:ob|tt)-[0-9a-f]{16}", case_id):
         raise SequenceError("case ID is not a frozen opaque identifier")
     return (
-        V2_EXECUTION_ROOT_RELATIVE
+        profile["execution_root_relative"]
         / "records"
         / method.lower()
         / attempt_id
@@ -249,28 +295,28 @@ def v2_record_relative(method: str, attempt_id: str, dataset: str, case_id: str)
 
 
 def v2_runtime_relative(method: str, attempt_id: str) -> Path:
-    _require_v2_method(method)
+    profile = _v2_profile(method)
     require_attempt_id(attempt_id)
-    return V2_EXECUTION_ROOT_RELATIVE / "runtimes" / method.lower() / f"{attempt_id}.json"
+    return profile["execution_root_relative"] / "runtimes" / method.lower() / f"{attempt_id}.json"
 
 
 def v2_method_lock_relative(method: str) -> Path:
-    _require_v2_method(method)
-    return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock.json"
+    profile = _v2_profile(method)
+    return profile["execution_root_relative"] / "locks" / f"{method.lower()}_prediction_lock.json"
 
 
 def v2_method_lock_reissued_relative(method: str) -> Path:
     """Return the immutable sidecar path used to re-attest a V2 method lock."""
 
-    _require_v2_method(method)
-    return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock_reissued.json"
+    profile = _v2_profile(method)
+    return profile["execution_root_relative"] / "locks" / f"{method.lower()}_prediction_lock_reissued.json"
 
 
 def v2_method_lock_reissued_v2_relative(method: str) -> Path:
     """Return the corrected re-attestation path for a V2 method lock."""
 
-    _require_v2_method(method)
-    return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock_reissued_v2.json"
+    profile = _v2_profile(method)
+    return profile["execution_root_relative"] / "locks" / f"{method.lower()}_prediction_lock_reissued_v2.json"
 
 
 def active_v2_method_lock_relative(root: Path, method: str) -> Path:
@@ -300,7 +346,46 @@ def _v2_protocol(root: Path = PROJECT_ROOT) -> dict[str, Any]:
     return payload
 
 
-def verify_v2_protocol(root: Path, *, require_committed: bool = True) -> dict[str, Any]:
+def _causalrca_cpu_protocol(root: Path = PROJECT_ROOT) -> dict[str, Any]:
+    path = root / CAUSALRCA_CPU_PROTOCOL_RELATIVE
+    if not path.is_file() or sha256_file(path) != CAUSALRCA_CPU_PROTOCOL_DIGEST:
+        raise PreflightError("CausalRCA CPU protocol digest or file is invalid")
+    payload = read_json(path)
+    if payload.get("schema_version") != "rca_baseline_rescue_protocol_v2_extension":
+        raise PreflightError("CausalRCA CPU protocol schema is invalid")
+    if payload.get("protocol_version") != CAUSALRCA_CPU_PROTOCOL_VERSION:
+        raise PreflightError("CausalRCA CPU protocol version is invalid")
+    if payload.get("base_protocol_digest") != V2_PROTOCOL_DIGEST:
+        raise PreflightError("CausalRCA CPU protocol is not bound to V2")
+    if payload.get("method") != "CausalRCA" or tuple(payload.get("methods", ())) != ("CausalRCA",):
+        raise PreflightError("CausalRCA CPU protocol method scope is invalid")
+    execution = payload.get("execution", {})
+    if execution.get("device") != "CPU" or execution.get("case_level_process_isolation") is not True:
+        raise PreflightError("CausalRCA CPU protocol is not case-process isolated")
+    if tuple(execution.get("allowed_requested_workers", ())) != V2_ALLOWED_WORKERS:
+        raise PreflightError("CausalRCA CPU protocol worker registry is invalid")
+    if execution.get("no_timeout") is not True or execution.get("timeout_seconds") is not None:
+        raise PreflightError("CausalRCA CPU protocol timeout policy is invalid")
+    if payload.get("authorization", {}).get("status") != "USER_AUTHORIZED":
+        raise PreflightError("CausalRCA CPU protocol lacks explicit user authorization")
+    return payload
+
+
+def verify_v2_protocol(
+    root: Path,
+    *,
+    method: str | None = None,
+    require_committed: bool = True,
+) -> dict[str, Any]:
+    if method == "CausalRCA":
+        if require_committed:
+            require_committed_file(root, CAUSALRCA_CPU_PROTOCOL_RELATIVE)
+        # The extension is additive and cannot weaken the frozen five-method
+        # V2 protocol it extends.
+        verify_v2_protocol(root, require_committed=require_committed)
+        return _causalrca_cpu_protocol(root)
+    if method is not None:
+        _require_v2_method(method)
     path = root / V2_PROTOCOL_RELATIVE
     if require_committed:
         require_committed_file(root, V2_PROTOCOL_RELATIVE)
@@ -308,6 +393,16 @@ def verify_v2_protocol(root: Path, *, require_committed: bool = True) -> dict[st
     if observed != V2_PROTOCOL_DIGEST:
         raise PreflightError("V2 protocol bytes differ from the frozen rescue amendment")
     return _v2_protocol(root)
+
+
+def _verify_method_protocol(
+    root: Path, method: str, *, require_committed: bool = True
+) -> dict[str, Any]:
+    _require_v2_method(method)
+    return verify_v2_protocol(
+        root, method=method if method == "CausalRCA" else None,
+        require_committed=require_committed,
+    )
 
 
 def v2_source_manifest_digest(root: Path) -> str:
@@ -367,10 +462,11 @@ def _python_path(value: Path) -> Path:
 def freeze_v2_environment(root: Path, method: str, python: Path) -> Path:
     """Freeze one V2 method environment after synthetic-only preflight."""
 
+    profile = _v2_profile(method)
     _require_v2_method(method)
     require_clean_git(root)
     global_preflight(root)
-    verify_v2_protocol(root)
+    _verify_method_protocol(root, method)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     v2_source_manifest_digest(root)
@@ -387,8 +483,8 @@ def freeze_v2_environment(root: Path, method: str, python: Path) -> Path:
     )
     stable = {
         "schema_version": V2_ENVIRONMENT_SCHEMA,
-        "protocol_version": V2_PROTOCOL_VERSION,
-        "protocol_digest": V2_PROTOCOL_DIGEST,
+        "protocol_version": profile["protocol_version"],
+        "protocol_digest": profile["protocol_digest"],
         "method": method,
         "datasets": list(DATASET_ORDER),
         "identity": identity,
@@ -421,6 +517,12 @@ def freeze_v2_environment(root: Path, method: str, python: Path) -> Path:
             "resume": "missing-terminal-records-only",
         },
     }
+    if method == "CausalRCA":
+        if identity.get("worker_environment", {}).get("CUDA_VISIBLE_DEVICES") != "":
+            raise PreflightError("CausalRCA CPU environment exposes a CUDA device")
+        stable["execution_device"] = "CPU"
+        stable["case_parallelism"] = "case-level-process-isolated"
+        stable["protocol_base_digest"] = V2_PROTOCOL_DIGEST
     payload = {
         **stable,
         "environment_digest": canonical_payload_digest(stable),
@@ -431,6 +533,7 @@ def freeze_v2_environment(root: Path, method: str, python: Path) -> Path:
 
 
 def verify_v2_environment(root: Path, method: str) -> dict[str, Any]:
+    profile = _v2_profile(method)
     _require_v2_method(method)
     path = root / v2_environment_relative(method)
     require_committed_file(root, v2_environment_relative(method))
@@ -444,8 +547,15 @@ def verify_v2_environment(root: Path, method: str) -> dict[str, Any]:
         raise PreflightError(f"invalid V2 environment schema for {method}")
     if canonical_payload_digest(stable) != manifest.get("environment_digest"):
         raise PreflightError(f"V2 environment digest is invalid for {method}")
-    if manifest.get("protocol_digest") != V2_PROTOCOL_DIGEST:
+    if manifest.get("protocol_digest") != profile["protocol_digest"]:
         raise PreflightError(f"V2 environment protocol mismatch for {method}")
+    if method == "CausalRCA":
+        if manifest.get("execution_device") != "CPU" or manifest.get("case_parallelism") != "case-level-process-isolated":
+            raise PreflightError("CausalRCA environment is not CPU case-process isolated")
+        if manifest.get("protocol_base_digest") != V2_PROTOCOL_DIGEST:
+            raise PreflightError("CausalRCA environment base-protocol binding is invalid")
+        if manifest.get("identity", {}).get("worker_environment", {}).get("CUDA_VISIBLE_DEVICES") != "":
+            raise PreflightError("CausalRCA frozen environment exposes a CUDA device")
     if manifest.get("input_manifest_digest") != v2_source_manifest_digest(root):
         raise PreflightError(f"V2 environment input-manifest mismatch for {method}")
     resolve_frozen_worker_environment(root, manifest)
@@ -453,9 +563,10 @@ def verify_v2_environment(root: Path, method: str) -> dict[str, Any]:
 
 
 def protocol_preflight_v2(root: Path, method: str, python: Path) -> dict[str, Any]:
+    profile = _v2_profile(method)
     _require_v2_method(method)
     global_preflight(root)
-    protocol = verify_v2_protocol(root)
+    protocol = _verify_method_protocol(root, method)
     manifest_digest = v2_source_manifest_digest(root)
     python = _python_path(python)
     # This performs only synthetic native calls and schema validation.  It is
@@ -471,7 +582,8 @@ def protocol_preflight_v2(root: Path, method: str, python: Path) -> dict[str, An
         "schema_version": "rca_baseline_rescue_protocol_preflight_v2",
         "method": method,
         "datasets": list(DATASET_ORDER),
-        "protocol_digest": V2_PROTOCOL_DIGEST,
+        "protocol_version": profile["protocol_version"],
+        "protocol_digest": profile["protocol_digest"],
         "input_manifest_digest": manifest_digest,
         "rcaeval_commit": RCAEVAL_COMMIT,
         "native_module_digest": _v2_native_module_digest(method),
@@ -514,12 +626,13 @@ def validate_v2_record(
 ) -> None:
     """Validate a terminal V2 record without using labels or correctness."""
 
+    profile = _v2_profile(method)
     _require_v2_method(method)
     assert_firewall_safe_record(payload)
     expected = {
         "schema_version": V2_CASE_SCHEMA,
-        "protocol_version": V2_PROTOCOL_VERSION,
-        "protocol_digest": V2_PROTOCOL_DIGEST,
+        "protocol_version": profile["protocol_version"],
+        "protocol_digest": profile["protocol_digest"],
         "method": method,
         "dataset": dataset,
         "case_id": case_id,
@@ -536,6 +649,11 @@ def validate_v2_record(
     for key, expected_value in expected.items():
         if payload.get(key) != expected_value:
             raise PreflightError(f"V2 record provenance mismatch: {key}")
+    if method == "CausalRCA":
+        if payload.get("protocol_base_digest") != V2_PROTOCOL_DIGEST:
+            raise PreflightError("CausalRCA record base-protocol binding is invalid")
+        if payload.get("execution_device") != "CPU" or payload.get("case_parallelism") != "case-level-process-isolated":
+            raise PreflightError("CausalRCA record execution profile is invalid")
     if payload.get("terminal_status") not in V2_STATUS_VALUES:
         raise PreflightError("V2 record has an invalid terminal status")
     if payload.get("native_module_digest") != attempt["native_module_digest"]:
@@ -594,12 +712,13 @@ def _attempt_payload(
     available: int,
     actual: int,
 ) -> dict[str, Any]:
+    profile = _v2_profile(method)
     _require_v2_attempt(method, attempt_id)
     execution_commit = git(root, "rev-parse", "HEAD").stdout.strip()
     stable = {
         "schema_version": V2_ATTEMPT_SCHEMA,
-        "protocol_version": V2_PROTOCOL_VERSION,
-        "protocol_digest": V2_PROTOCOL_DIGEST,
+        "protocol_version": profile["protocol_version"],
+        "protocol_digest": profile["protocol_digest"],
         "method": method,
         "attempt_id": attempt_id,
         "datasets": list(DATASET_ORDER),
@@ -621,10 +740,17 @@ def _attempt_payload(
         "created_at": utc_now(),
         "labels_joined": False,
     }
+    if method == "CausalRCA":
+        stable.update({
+            "protocol_base_digest": V2_PROTOCOL_DIGEST,
+            "execution_device": "CPU",
+            "case_parallelism": "case-level-process-isolated",
+        })
     return {**stable, "attempt_digest": canonical_payload_digest(stable)}
 
 
 def _verify_attempt_payload(root: Path, payload: Mapping[str, Any], method: str, attempt_id: str) -> None:
+    profile = _v2_profile(method)
     _require_v2_method(method)
     _require_v2_attempt(method, attempt_id)
     if payload.get("schema_version") != V2_ATTEMPT_SCHEMA or payload.get("method") != method:
@@ -634,8 +760,13 @@ def _verify_attempt_payload(root: Path, payload: Mapping[str, Any], method: str,
     stable = {key: value for key, value in payload.items() if key != "attempt_digest"}
     if canonical_payload_digest(stable) != payload.get("attempt_digest"):
         raise PreflightError("V2 attempt metadata digest is invalid")
-    if payload.get("protocol_digest") != V2_PROTOCOL_DIGEST or payload.get("timeout_seconds") is not None:
+    if payload.get("protocol_digest") != profile["protocol_digest"] or payload.get("timeout_seconds") is not None:
         raise PreflightError("V2 attempt violates protocol provenance")
+    if method == "CausalRCA":
+        if payload.get("protocol_base_digest") != V2_PROTOCOL_DIGEST:
+            raise PreflightError("CausalRCA attempt base-protocol binding is invalid")
+        if payload.get("execution_device") != "CPU" or payload.get("case_parallelism") != "case-level-process-isolated":
+            raise PreflightError("CausalRCA attempt execution profile is invalid")
     if tuple(payload.get("datasets", ())) != DATASET_ORDER:
         raise PreflightError("V2 attempt dataset scope is invalid")
     if payload.get("input_manifest_digest") != v2_source_manifest_digest(root):
@@ -822,6 +953,7 @@ def _run_v2_shard(
     heartbeat: _Heartbeat,
     stop_event: threading.Event,
 ) -> int:
+    profile = _v2_profile(method)
     server = _start_v2_server(root, python, method, env)
     processed = 0
     try:
@@ -837,8 +969,8 @@ def _run_v2_shard(
             request = {
                 "command": "case",
                 "execution_profile": "v2",
-                "record_protocol_version": V2_PROTOCOL_VERSION,
-                "record_protocol_digest": V2_PROTOCOL_DIGEST,
+                "record_protocol_version": profile["protocol_version"],
+                "record_protocol_digest": profile["protocol_digest"],
                 "method": method,
                 "dataset": dataset,
                 "case_id": case_id,
@@ -853,6 +985,9 @@ def _run_v2_shard(
                 "requested_worker_count": attempt["requested_worker_count"],
                 "available_cpu_count": attempt["available_cpu_count"],
                 "native_module_digest": attempt["native_module_digest"],
+                "protocol_base_digest": attempt.get("protocol_base_digest"),
+                "execution_device": attempt.get("execution_device", profile["device"]),
+                "case_parallelism": attempt.get("case_parallelism", "case-level-process-isolated"),
                 "source_record_digests": _v2_source_record_digests(
                     root, method, dataset, case_id
                 ),
@@ -939,6 +1074,7 @@ def _runtime_summary(
     finished_at: str,
     wall: float,
 ) -> dict[str, Any]:
+    profile = _v2_profile(attempt["method"])
     ordered = _case_pairs(root)
     timings = []
     status_counts = {dataset: {status: 0 for status in V2_STATUS_VALUES} for dataset in DATASET_ORDER}
@@ -958,8 +1094,8 @@ def _runtime_summary(
         })
     stable = {
         "schema_version": V2_RUNTIME_SCHEMA,
-        "protocol_version": V2_PROTOCOL_VERSION,
-        "protocol_digest": V2_PROTOCOL_DIGEST,
+        "protocol_version": profile["protocol_version"],
+        "protocol_digest": profile["protocol_digest"],
         "method": attempt["method"],
         "attempt_id": attempt["attempt_id"],
         "execution_commit": attempt["execution_commit"],
@@ -985,6 +1121,7 @@ def _build_v2_method_lock(
     records: Mapping[tuple[str, str], Mapping[str, Any]],
     runtime_path: Path,
 ) -> dict[str, Any]:
+    profile = _v2_profile(attempt["method"])
     status_counts = {
         dataset: {
             status: Counter(
@@ -1007,8 +1144,8 @@ def _build_v2_method_lock(
     blocking = _v2_blocking_status_counts(status_counts)
     stable = {
         "schema_version": V2_METHOD_LOCK_SCHEMA,
-        "protocol_version": V2_PROTOCOL_VERSION,
-        "protocol_digest": V2_PROTOCOL_DIGEST,
+        "protocol_version": profile["protocol_version"],
+        "protocol_digest": profile["protocol_digest"],
         "method": attempt["method"],
         "attempt_id": attempt["attempt_id"],
         "execution_commit": attempt["execution_commit"],
@@ -1040,6 +1177,12 @@ def _build_v2_method_lock(
         "labels_joined": False,
         "locked_at": utc_now(),
     }
+    if attempt["method"] == "CausalRCA":
+        stable.update({
+            "protocol_base_digest": V2_PROTOCOL_DIGEST,
+            "execution_device": "CPU",
+            "case_parallelism": "case-level-process-isolated",
+        })
     payload = {**stable, "lock_digest": canonical_payload_digest(stable)}
     assert_firewall_safe_record(payload)
     return payload
@@ -1121,6 +1264,7 @@ def run_v2(
 ) -> Path | None:
     """Run one method across both datasets, resuming only missing records."""
 
+    profile = _v2_profile(method)
     _require_v2_method(method)
     require_attempt_id(attempt_id)
     _require_v2_attempt(method, attempt_id)
@@ -1133,8 +1277,8 @@ def run_v2(
         raise SequenceError("--resume requires --resume-policy missing-only")
     if not resume and resume_policy != "fresh":
         raise SequenceError("a new V2 attempt requires --resume-policy fresh")
-    if (root / V2_GLOBAL_LOCK_RELATIVE).exists():
-        raise SequenceError("V2 global prediction lock already exists")
+    if (root / profile["global_lock_relative"]).exists():
+        raise SequenceError(f"V2 global prediction lock already exists for {method}")
     require_clean_git(root) if not resume else None
     if not resume:
         global_preflight(root)
@@ -1142,10 +1286,10 @@ def run_v2(
         # An interrupted container necessarily leaves its newly written V2
         # records uncommitted. Resume audits the frozen external state and the
         # exact attempt commit below without requiring a clean worktree.
-        verify_v2_protocol(root)
+        _verify_method_protocol(root, method)
         verify_rcaeval_clean()
         assert_ada_rca_frozen_unchanged(root)
-    verify_v2_protocol(root)
+    _verify_method_protocol(root, method)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     manifest_digest = v2_source_manifest_digest(root)
@@ -1251,6 +1395,7 @@ def verify_v2_method_lock(
     lock_relative: Path | None = None,
     enforce_validity: bool = True,
 ) -> dict[str, Any]:
+    profile = _v2_profile(method)
     _require_v2_method(method)
     relative = lock_relative or active_v2_method_lock_relative(root, method)
     if require_committed:
@@ -1263,6 +1408,13 @@ def verify_v2_method_lock(
         raise PreflightError(f"V2 method lock schema is invalid for {method}")
     if lock.get("method") != method:
         raise PreflightError(f"V2 method lock method identity is invalid for {method}")
+    if lock.get("protocol_version") != profile["protocol_version"] or lock.get("protocol_digest") != profile["protocol_digest"]:
+        raise PreflightError(f"V2 method lock protocol provenance is invalid for {method}")
+    if method == "CausalRCA":
+        if lock.get("protocol_base_digest") != V2_PROTOCOL_DIGEST:
+            raise PreflightError("CausalRCA method lock base-protocol binding is invalid")
+        if lock.get("execution_device") != "CPU" or lock.get("case_parallelism") != "case-level-process-isolated":
+            raise PreflightError("CausalRCA method lock execution profile is invalid")
     _require_v2_attempt(method, str(lock.get("attempt_id")))
     stable = {key: value for key, value in lock.items() if key != "lock_digest"}
     if canonical_payload_digest(stable) != lock.get("lock_digest"):
@@ -1351,7 +1503,7 @@ def reissue_v2_method_lock(root: Path, method: str, attempt_id: str) -> Path:
     _require_v2_attempt(method, attempt_id)
     require_clean_git(root)
     global_preflight(root)
-    verify_v2_protocol(root)
+    _verify_method_protocol(root, method)
     verify_rcaeval_clean()
     assert_ada_rca_frozen_unchanged(root)
     canonical_relative = v2_method_lock_relative(method)
@@ -1847,6 +1999,7 @@ def _run_determinism_group(
 ) -> dict[tuple[str, str], dict[str, Any]]:
     """Run only opaque preflight cases in a scratch output directory."""
 
+    profile = _v2_profile(method)
     available = available_cpu_count() if available is None else max(1, int(available))
     actual = min(requested_workers, available)
     # Keep idle slots in the preflight so workers=20 actually exercises the
@@ -1870,8 +2023,8 @@ def _run_determinism_group(
                 request = {
                     "command": "case",
                     "execution_profile": "v2",
-                    "record_protocol_version": V2_PROTOCOL_VERSION,
-                    "record_protocol_digest": V2_PROTOCOL_DIGEST,
+                    "record_protocol_version": profile["protocol_version"],
+                    "record_protocol_digest": profile["protocol_digest"],
                     "method": method,
                     "dataset": dataset,
                     "case_id": case_id,
@@ -1886,6 +2039,9 @@ def _run_determinism_group(
                     "requested_worker_count": requested_workers,
                     "available_cpu_count": available,
                     "native_module_digest": attempt["native_module_digest"],
+                    "protocol_base_digest": attempt.get("protocol_base_digest"),
+                    "execution_device": attempt.get("execution_device", profile["device"]),
+                    "case_parallelism": attempt.get("case_parallelism", "case-level-process-isolated"),
                     "source_record_digests": _v2_source_record_digests(
                         root, method, dataset, case_id
                     ),
@@ -1953,12 +2109,13 @@ def run_determinism_preflight(
 ) -> dict[str, Any]:
     """Check status/native/adapted digests at worker counts 1/10/20."""
 
+    profile = _v2_profile(method)
     _require_v2_method(method)
     requested_workers = tuple(requested_workers)
     if not requested_workers or any(value not in V2_ALLOWED_WORKERS for value in requested_workers):
         raise SequenceError(f"determinism worker counts must be selected from {V2_ALLOWED_WORKERS}")
     global_preflight(root)
-    verify_v2_protocol(root)
+    _verify_method_protocol(root, method)
     environment = verify_v2_environment(root, method)
     python = _python_path(python)
     if python != _python_path(Path(environment["identity"]["python_executable"])):
@@ -1970,6 +2127,12 @@ def run_determinism_preflight(
         "execution_commit": git(root, "rev-parse", "HEAD").stdout.strip(),
         "native_module_digest": _v2_native_module_digest(method),
     }
+    if method == "CausalRCA":
+        attempt.update({
+            "protocol_base_digest": V2_PROTOCOL_DIGEST,
+            "execution_device": "CPU",
+            "case_parallelism": "case-level-process-isolated",
+        })
     cases = deterministic_case_subset(root, cases_per_dataset)
     env = resolve_frozen_worker_environment(root, environment)
     available = available_cpu_count()
@@ -2003,7 +2166,8 @@ def run_determinism_preflight(
     return {
         "schema_version": "rca_baseline_rescue_determinism_preflight_v2",
         "method": method,
-        "protocol_digest": V2_PROTOCOL_DIGEST,
+        "protocol_version": profile["protocol_version"],
+        "protocol_digest": profile["protocol_digest"],
         "cases_per_dataset": cases_per_dataset,
         "opaque_cases": [{"dataset": dataset, "case_id": case_id} for dataset, case_id in cases],
         "requested_workers": list(requested_workers),
@@ -2043,7 +2207,7 @@ def command_parser() -> argparse.ArgumentParser:
 
     for name in ("protocol-preflight", "freeze-environment"):
         command = sub.add_parser(name)
-        command.add_argument("--method", choices=V2_METHODS, required=True)
+        command.add_argument("--method", choices=V2_RUNNABLE_METHODS, required=True)
         command.add_argument("--python", type=Path, required=True)
 
     mmbaro = sub.add_parser("diagnose-mmbaro-input")
@@ -2054,7 +2218,7 @@ def command_parser() -> argparse.ArgumentParser:
     operation.add_argument("--output", type=Path)
 
     deterministic = sub.add_parser("determinism-preflight")
-    deterministic.add_argument("--method", choices=V2_METHODS, required=True)
+    deterministic.add_argument("--method", choices=V2_RUNNABLE_METHODS, required=True)
     deterministic.add_argument("--python", type=Path, required=True)
     deterministic.add_argument("--cases-per-dataset", type=int, default=5)
     deterministic.add_argument(
@@ -2062,7 +2226,7 @@ def command_parser() -> argparse.ArgumentParser:
     )
 
     run = sub.add_parser("run")
-    run.add_argument("--method", choices=V2_METHODS, required=True)
+    run.add_argument("--method", choices=V2_RUNNABLE_METHODS, required=True)
     run.add_argument("--python", type=Path, required=True)
     run.add_argument("--attempt-id", required=True)
     run.add_argument("--workers", type=int, choices=V2_ALLOWED_WORKERS, required=True)
@@ -2081,12 +2245,12 @@ def command_parser() -> argparse.ArgumentParser:
     run.add_argument("--heartbeat-seconds", type=float, default=30.0)
 
     verify_method = sub.add_parser("verify-method-lock")
-    verify_method.add_argument("--method", choices=V2_METHODS, required=True)
+    verify_method.add_argument("--method", choices=V2_RUNNABLE_METHODS, required=True)
     verify_method.add_argument("--attempt-id", required=True)
     verify_method.add_argument("--allow-uncommitted", action="store_true")
 
     reissue_method = sub.add_parser("reissue-method-lock")
-    reissue_method.add_argument("--method", choices=V2_METHODS, required=True)
+    reissue_method.add_argument("--method", choices=V2_RUNNABLE_METHODS, required=True)
     reissue_method.add_argument("--attempt-id", required=True)
 
     sub.add_parser("create-global-lock-v2")

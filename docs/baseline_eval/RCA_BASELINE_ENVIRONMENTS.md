@@ -27,7 +27,7 @@ environments and requires a new preflight and environment freeze.
 | MicroRank | Common RCAEval | Fixed `PYTHONHASHSEED=20260830` through the runner | Authorized for an isolated parallel task |
 | TraceRCA | Common RCAEval | None beyond the frozen worker controls | Authorized for an isolated parallel task |
 | mmBARO | Common RCAEval | Official `mm-ob` / `mm-tt` dataset keys are enforced by the adapter | Authorized for an isolated parallel task |
-| CausalRCA | Common RCAEval if re-authorized | CUDA availability plus the saved GPU amendment | Deferred; do not freeze or run unless the method is explicitly restored |
+| CausalRCA | Common RCAEval | `CUDA_VISIBLE_DEVICES=""`; Torch deterministic CPU case workers | Restored by the additive CPU case-level extension; environment freeze pending |
 
 RCD and the context-only methods are not part of this environment map because
 they are not authorized for the current confirmatory execution.
@@ -149,7 +149,7 @@ Synthetic checks completed from the external environments:
 
 Every synthetic result reported that its native module path was inside the
 clean pinned RCAEval checkout. CIRCA was not re-run during this check because
-its formal attempt was already running. CausalRCA imported from the clean
-checkout and the common environment contains the CUDA-enabled Torch build, but
-no CUDA device was available at verification time. CUDA availability must be
-checked again before any future CausalRCA environment freeze.
+its formal attempt was already running. The CausalRCA CPU extension requires a
+new environment freeze under the common environment with
+`CUDA_VISIBLE_DEVICES=""`; its synthetic and determinism preflights are still
+pending. The saved GPU amendment is not used by this CPU track.

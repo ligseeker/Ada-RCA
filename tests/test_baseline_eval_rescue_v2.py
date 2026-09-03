@@ -31,8 +31,13 @@ from src.baseline_eval.evaluation_v2 import (
     evaluate_v2,
     require_v2_metric_unlock,
 )
-from src.baseline_eval.rescue_server_v2 import serve
+from src.baseline_eval.rescue_server_v2 import _process_failure_record, serve
 from src.baseline_eval.rescue_v2 import (
+    CAUSALRCA_CPU_ATTEMPT_ID,
+    CAUSALRCA_CPU_EXECUTION_ROOT_RELATIVE,
+    CAUSALRCA_CPU_PROTOCOL_DIGEST,
+    CAUSALRCA_CPU_PROTOCOL_RELATIVE,
+    CAUSALRCA_CPU_PROTOCOL_VERSION,
     PROJECT_ROOT,
     V2_ALLOWED_WORKERS,
     V2_ATTEMPT_IDS,
@@ -42,6 +47,7 @@ from src.baseline_eval.rescue_v2 import (
     V2_METHODS,
     V2_PROTOCOL_DIGEST,
     V2_PROTOCOL_VERSION,
+    V2_RUNNABLE_METHODS,
     V2_TRACE_CLOSURE_ADOPTED,
     active_v2_method_lock_relative,
     actual_worker_count,
@@ -180,6 +186,69 @@ class RescueV2ProtocolTest(unittest.TestCase):
     def test_13_protocol_digest_and_version_are_frozen(self):
         self.assertEqual(V2_PROTOCOL_VERSION, "RCA_BASELINE_RESCUE_PROTOCOL_V2")
         self.assertEqual(len(V2_PROTOCOL_DIGEST), 64)
+
+    def test_13a_causalrca_cpu_extension_is_additive_and_bound(self):
+        self.assertEqual(V2_METHODS, ("CIRCA", "MicroCause", "MicroRank", "TraceRCA", "mmBARO"))
+        self.assertEqual(V2_RUNNABLE_METHODS, (*V2_METHODS, "CausalRCA"))
+        self.assertEqual(CAUSALRCA_CPU_PROTOCOL_VERSION, "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_CPU")
+        self.assertEqual(len(CAUSALRCA_CPU_PROTOCOL_DIGEST), 64)
+        self.assertEqual(CAUSALRCA_CPU_PROTOCOL_RELATIVE.as_posix(), "artifacts/baseline_eval/rescue_protocol_v2_causalrca_cpu.json")
+        self.assertEqual(CAUSALRCA_CPU_EXECUTION_ROOT_RELATIVE, Path("artifacts/baseline_eval/execution_v2_causalrca_cpu"))
+        extension = __import__("src.baseline_eval.rescue_v2", fromlist=["x"]).verify_v2_protocol(
+            ROOT, method="CausalRCA", require_committed=False
+        )
+        self.assertEqual(extension["base_protocol_digest"], V2_PROTOCOL_DIGEST)
+        self.assertEqual(extension["execution"]["device"], "CPU")
+        self.assertEqual(extension["authorization"]["status"], "USER_AUTHORIZED")
+
+    def test_13b_causalrca_cpu_cli_and_paths_are_isolated(self):
+        parser = command_parser()
+        args = parser.parse_args([
+            "run", "--method", "CausalRCA", "--python", "/usr/bin/python3",
+            "--attempt-id", CAUSALRCA_CPU_ATTEMPT_ID, "--workers", "10",
+            "--datasets", "re2ob,re2tt", "--no-timeout", "--log-file", "/tmp/causalrca-v2.jsonl",
+        ])
+        self.assertEqual(args.method, "CausalRCA")
+        self.assertEqual(args.workers, 10)
+        from src.baseline_eval.rescue_v2 import v2_record_relative
+
+        path = v2_record_relative("CausalRCA", CAUSALRCA_CPU_ATTEMPT_ID, "re2ob", "re2ob-0000000000000000")
+        self.assertTrue(path.as_posix().startswith("artifacts/baseline_eval/execution_v2_causalrca_cpu/"))
+        self.assertNotIn("execution_v2/records/causalrca", path.as_posix())
+
+    def test_13c_causalrca_process_failure_keeps_extension_provenance(self):
+        payload = _process_failure_record(
+            {
+                "method": "CausalRCA",
+                "protocol_version": CAUSALRCA_CPU_PROTOCOL_VERSION,
+                "protocol_digest": CAUSALRCA_CPU_PROTOCOL_DIGEST,
+                "dataset": "re2ob",
+                "case_id": "re2ob-0000000000000000",
+                "attempt_id": CAUSALRCA_CPU_ATTEMPT_ID,
+                "execution_commit": "e" * 40,
+                "execution_worker_count": 10,
+                "execution_worker_slot": 0,
+                "worker_id": "causalrca-worker-0",
+                "requested_worker_count": 10,
+                "available_cpu_count": 10,
+                "child_pid": 123,
+                "environment_digest": "v" * 64,
+                "input_manifest_digest": "i" * 64,
+                "candidate_registry_digest": "c" * 64,
+                "native_module_digest": "n" * 64,
+                "protocol_base_digest": V2_PROTOCOL_DIGEST,
+                "execution_device": "CPU",
+                "case_parallelism": "case-level-process-isolated",
+                "source_record_digests": [],
+            },
+            "2026-09-03T00:00:00+00:00",
+            1.0,
+        )
+        self.assertEqual(payload["protocol_version"], CAUSALRCA_CPU_PROTOCOL_VERSION)
+        self.assertEqual(payload["protocol_digest"], CAUSALRCA_CPU_PROTOCOL_DIGEST)
+        self.assertEqual(payload["protocol_base_digest"], V2_PROTOCOL_DIGEST)
+        self.assertEqual(payload["execution_device"], "CPU")
+        self.assertEqual(payload["seed_state"]["torch_seed"], CANONICAL_SEED)
 
     def test_14_determinism_comparator_is_performance_blind(self):
         baseline = {("re2ob", "re2ob-a"): {"status": "SUCCESS", "native_output_digest": "a", "adapted_output_digest": "b"}}
