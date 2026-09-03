@@ -669,6 +669,36 @@ COMMON_PY=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
 "$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-method-lock --method mmBARO --attempt-id mmbaro-a3-rescue-v2
 ```
 
+The active lock for MicroRank, TraceRCA, and mmBARO is currently the corrected
+`*_prediction_lock_reissued_v2.json` sidecar. Their original
+`*_prediction_lock.json` files and earlier reissue sidecars are retained as
+immutable evidence and may continue to show the historical invalid attestation;
+do not replace or delete them. `verify-method-lock` selects the corrected active
+sidecar automatically.
+
+For the remaining methods after their task commits arrive, use the following
+current-state integration sequence. CIRCA's old task runner may create an
+invalid original lock even when all terminal statuses are non-blocking; in that
+case central re-attestation writes a distinct sidecar. MicroCause's corrected
+task runner should produce a valid original lock.
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin
+test -z "$(git status --porcelain)"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-circa log -1 --format=%H -- artifacts/baseline_eval/execution_v2/attempts/circa/circa-a3-rescue-v2.json)"
+COMMON_PY=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py reissue-method-lock --method CIRCA --attempt-id circa-a3-rescue-v2
+git add artifacts/baseline_eval/execution_v2/locks/circa_prediction_lock_reissued_v2.json
+git commit -m "eval(CIRCA): re-attest V2 method lock"
+git cherry-pick "$(git -C /home/zhangll24/RCA_project/Ada-RCA-v2-microcause log -1 --format=%H -- artifacts/baseline_eval/execution_v2/attempts/microcause/microcause-a3-rescue-v2.json)"
+```
+
+The CIRCA re-attestation command must run after the CIRCA attempt commit is
+integrated and before the MicroCause attempt is cherry-picked, so the central
+worktree is clean at the required transition. If the CIRCA task branch is
+updated to the corrected V2 code after its resume, the central re-attestation
+still remains the authoritative immutable sidecar step.
+
 Create, commit, and verify the global lock:
 
 ```bash
