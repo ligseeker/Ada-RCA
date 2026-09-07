@@ -1,0 +1,1843 @@
+{
+  "actual_worker_count": 10,
+  "attempt_finish_timestamp": "2026-09-03T19:47:01.208297+00:00",
+  "attempt_id": "circa-a3-rescue-v2",
+  "attempt_start_timestamp": "2026-09-03T06:22:30.176359+00:00",
+  "attempt_wall_time_seconds": 48271.031991872005,
+  "available_cpu_count": 320,
+  "case_timings": [
+    {
+      "case_id": "re2ob-9e575f44de987a1a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 25.30144603876397,
+      "finish_timestamp": "2026-09-03T04:16:36.559414+00:00",
+      "pid": 288,
+      "start_timestamp": "2026-09-03T04:16:11.257895+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-505f802370635ec3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 0.3756699087098241,
+      "finish_timestamp": "2026-09-03T04:16:11.613535+00:00",
+      "pid": 286,
+      "start_timestamp": "2026-09-03T04:16:11.237787+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-057fe49bd30d47c0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.585722027812153,
+      "finish_timestamp": "2026-09-03T04:16:30.005407+00:00",
+      "pid": 292,
+      "start_timestamp": "2026-09-03T04:16:11.419589+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-79fcefff48aef53b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 19.42463022796437,
+      "finish_timestamp": "2026-09-03T04:16:30.679111+00:00",
+      "pid": 287,
+      "start_timestamp": "2026-09-03T04:16:11.254399+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-4b9110d974bb1875",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.24296385096386,
+      "finish_timestamp": "2026-09-03T04:16:29.504450+00:00",
+      "pid": 289,
+      "start_timestamp": "2026-09-03T04:16:11.261415+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-428d5ecf570372b5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 14.905228887218982,
+      "finish_timestamp": "2026-09-03T04:16:25.896376+00:00",
+      "pid": 284,
+      "start_timestamp": "2026-09-03T04:16:10.991021+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-66c4b614046569c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.43956223502755,
+      "finish_timestamp": "2026-09-03T04:16:29.585104+00:00",
+      "pid": 285,
+      "start_timestamp": "2026-09-03T04:16:11.145458+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-7aec8ac514e0d064",
+      "dataset": "re2ob",
+      "elapsed_seconds": 19.228180875070393,
+      "finish_timestamp": "2026-09-03T04:16:30.490429+00:00",
+      "pid": 290,
+      "start_timestamp": "2026-09-03T04:16:11.262187+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-a6318b7e89546125",
+      "dataset": "re2ob",
+      "elapsed_seconds": 15.863706381060183,
+      "finish_timestamp": "2026-09-03T04:16:27.144349+00:00",
+      "pid": 291,
+      "start_timestamp": "2026-09-03T04:16:11.280520+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-7f2201e9884e818e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 24.606961593963206,
+      "finish_timestamp": "2026-09-03T04:16:35.550331+00:00",
+      "pid": 283,
+      "start_timestamp": "2026-09-03T04:16:10.943259+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2ob-7c278a568194196b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 22.401240257080644,
+      "finish_timestamp": "2026-09-03T04:16:59.064099+00:00",
+      "pid": 303,
+      "start_timestamp": "2026-09-03T04:16:36.662763+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-72b5d278f8908a0a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 21.66834624717012,
+      "finish_timestamp": "2026-09-03T04:16:33.323737+00:00",
+      "pid": 293,
+      "start_timestamp": "2026-09-03T04:16:11.655324+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-b17ce68eb2ce01ee",
+      "dataset": "re2ob",
+      "elapsed_seconds": 13.61191559303552,
+      "finish_timestamp": "2026-09-03T04:16:43.725953+00:00",
+      "pid": 298,
+      "start_timestamp": "2026-09-03T04:16:30.113943+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-1d9a0d1641171551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.43105174973607,
+      "finish_timestamp": "2026-09-03T04:16:47.215624+00:00",
+      "pid": 300,
+      "start_timestamp": "2026-09-03T04:16:30.784455+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-abc29368674e8298",
+      "dataset": "re2ob",
+      "elapsed_seconds": 22.954821365885437,
+      "finish_timestamp": "2026-09-03T04:16:52.505134+00:00",
+      "pid": 296,
+      "start_timestamp": "2026-09-03T04:16:29.550202+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-1d19cc60d7a6adc1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 15.143401479814202,
+      "finish_timestamp": "2026-09-03T04:16:41.115782+00:00",
+      "pid": 294,
+      "start_timestamp": "2026-09-03T04:16:25.972288+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-71c7f9be34b19754",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.620419636834413,
+      "finish_timestamp": "2026-09-03T04:16:48.274417+00:00",
+      "pid": 297,
+      "start_timestamp": "2026-09-03T04:16:29.653914+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-557d49794f937ec6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.986597822979093,
+      "finish_timestamp": "2026-09-03T04:16:49.544773+00:00",
+      "pid": 299,
+      "start_timestamp": "2026-09-03T04:16:30.558107+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-cec5183e3f5418cf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 20.00767896603793,
+      "finish_timestamp": "2026-09-03T04:16:47.218034+00:00",
+      "pid": 295,
+      "start_timestamp": "2026-09-03T04:16:27.210285+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-da48e150772a24fd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 14.263342884834856,
+      "finish_timestamp": "2026-09-03T04:16:49.871227+00:00",
+      "pid": 302,
+      "start_timestamp": "2026-09-03T04:16:35.607782+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2ob-fd67c49516fa2028",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.836590223945677,
+      "finish_timestamp": "2026-09-03T04:17:16.969934+00:00",
+      "pid": 313,
+      "start_timestamp": "2026-09-03T04:16:59.133282+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-f874f110aae8efa9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.093655372038484,
+      "finish_timestamp": "2026-09-03T04:16:50.473254+00:00",
+      "pid": 301,
+      "start_timestamp": "2026-09-03T04:16:33.379533+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-40e1893e43abba5c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 15.559147603809834,
+      "finish_timestamp": "2026-09-03T04:16:59.342060+00:00",
+      "pid": 305,
+      "start_timestamp": "2026-09-03T04:16:43.782799+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-6aa36a4c6c99d55c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 15.533852328080684,
+      "finish_timestamp": "2026-09-03T04:17:02.807543+00:00",
+      "pid": 306,
+      "start_timestamp": "2026-09-03T04:16:47.273609+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-5a4d1a4785969ab2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 26.54434278095141,
+      "finish_timestamp": "2026-09-03T04:17:19.158744+00:00",
+      "pid": 312,
+      "start_timestamp": "2026-09-03T04:16:52.614315+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-eb8f50fda4f9095f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 23.046631708741188,
+      "finish_timestamp": "2026-09-03T04:17:04.224352+00:00",
+      "pid": 304,
+      "start_timestamp": "2026-09-03T04:16:41.177627+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-42e80cf6bcd9400f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.8119978569448,
+      "finish_timestamp": "2026-09-03T04:17:06.171494+00:00",
+      "pid": 308,
+      "start_timestamp": "2026-09-03T04:16:48.359415+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-a84cfdf477d8bf62",
+      "dataset": "re2ob",
+      "elapsed_seconds": 28.081839533988386,
+      "finish_timestamp": "2026-09-03T04:17:17.682800+00:00",
+      "pid": 309,
+      "start_timestamp": "2026-09-03T04:16:49.600871+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-3827c8c9ef1e8592",
+      "dataset": "re2ob",
+      "elapsed_seconds": 26.439781781751662,
+      "finish_timestamp": "2026-09-03T04:17:13.720705+00:00",
+      "pid": 307,
+      "start_timestamp": "2026-09-03T04:16:47.280864+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-acf69e21960f63d8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.92709817085415,
+      "finish_timestamp": "2026-09-03T04:17:08.888769+00:00",
+      "pid": 310,
+      "start_timestamp": "2026-09-03T04:16:49.961587+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2ob-0433b8cb47b1ec8e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 21.83385160472244,
+      "finish_timestamp": "2026-09-03T04:17:38.864296+00:00",
+      "pid": 322,
+      "start_timestamp": "2026-09-03T04:17:17.030356+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-5f261573c1b3bdc5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 14.64989283401519,
+      "finish_timestamp": "2026-09-03T04:17:05.193643+00:00",
+      "pid": 311,
+      "start_timestamp": "2026-09-03T04:16:50.543676+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-af1b6a7e1667e3f5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.37774391938001,
+      "finish_timestamp": "2026-09-03T04:17:15.921309+00:00",
+      "pid": 314,
+      "start_timestamp": "2026-09-03T04:16:59.543467+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-bd6f4fb8e84ccb69",
+      "dataset": "re2ob",
+      "elapsed_seconds": 22.345910055097193,
+      "finish_timestamp": "2026-09-03T04:17:25.252093+00:00",
+      "pid": 315,
+      "start_timestamp": "2026-09-03T04:17:02.906101+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-3e7e71a1c83dbc41",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.6808702792041,
+      "finish_timestamp": "2026-09-03T04:17:35.915258+00:00",
+      "pid": 324,
+      "start_timestamp": "2026-09-03T04:17:19.234297+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-e357bd8aec246cdb",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.873299567960203,
+      "finish_timestamp": "2026-09-03T04:17:22.169302+00:00",
+      "pid": 316,
+      "start_timestamp": "2026-09-03T04:17:04.295897+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-097a5d7ac0492007",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.169666119851172,
+      "finish_timestamp": "2026-09-03T04:17:23.399511+00:00",
+      "pid": 318,
+      "start_timestamp": "2026-09-03T04:17:06.229759+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-57b75da971aabed5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 24.368109908420593,
+      "finish_timestamp": "2026-09-03T04:17:42.106012+00:00",
+      "pid": 323,
+      "start_timestamp": "2026-09-03T04:17:17.737805+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-e16e6de30ae75ccd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.81538519496098,
+      "finish_timestamp": "2026-09-03T04:17:30.622163+00:00",
+      "pid": 320,
+      "start_timestamp": "2026-09-03T04:17:13.806701+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-4677d4ce6ef327e0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.05577770061791,
+      "finish_timestamp": "2026-09-03T04:17:25.995079+00:00",
+      "pid": 319,
+      "start_timestamp": "2026-09-03T04:17:08.939251+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2ob-d7f2f8eb2f0ad646",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.987205882091075,
+      "finish_timestamp": "2026-09-03T04:17:56.921744+00:00",
+      "pid": 333,
+      "start_timestamp": "2026-09-03T04:17:38.934468+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-df7e831dddfac76c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 21.500809988938272,
+      "finish_timestamp": "2026-09-03T04:17:26.762000+00:00",
+      "pid": 317,
+      "start_timestamp": "2026-09-03T04:17:05.261123+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-1084f320d8584c61",
+      "dataset": "re2ob",
+      "elapsed_seconds": 21.93102415604517,
+      "finish_timestamp": "2026-09-03T04:17:37.918915+00:00",
+      "pid": 321,
+      "start_timestamp": "2026-09-03T04:17:15.987782+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-23213ee605c6b050",
+      "dataset": "re2ob",
+      "elapsed_seconds": 20.862448547035456,
+      "finish_timestamp": "2026-09-03T04:17:46.173199+00:00",
+      "pid": 327,
+      "start_timestamp": "2026-09-03T04:17:25.310680+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-48e5379f4903b1d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 15.301996693015099,
+      "finish_timestamp": "2026-09-03T04:17:51.277407+00:00",
+      "pid": 331,
+      "start_timestamp": "2026-09-03T04:17:35.975324+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-bb4a5b75716772f9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 20.72121223062277,
+      "finish_timestamp": "2026-09-03T04:17:42.956418+00:00",
+      "pid": 325,
+      "start_timestamp": "2026-09-03T04:17:22.235110+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-8f991393cb9debdf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 20.2708017998375,
+      "finish_timestamp": "2026-09-03T04:17:43.860762+00:00",
+      "pid": 326,
+      "start_timestamp": "2026-09-03T04:17:23.589875+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-7858d4d3815cf005",
+      "dataset": "re2ob",
+      "elapsed_seconds": 24.744261316023767,
+      "finish_timestamp": "2026-09-03T04:18:06.907675+00:00",
+      "pid": 336,
+      "start_timestamp": "2026-09-03T04:17:42.163343+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-97935dcb7cfd6e82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.088495342060924,
+      "finish_timestamp": "2026-09-03T04:17:48.780045+00:00",
+      "pid": 330,
+      "start_timestamp": "2026-09-03T04:17:30.691482+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-f209212fc63ac713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 14.061561217997223,
+      "finish_timestamp": "2026-09-03T04:17:40.119297+00:00",
+      "pid": 328,
+      "start_timestamp": "2026-09-03T04:17:26.057646+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2ob-93de1fab2ca56e86",
+      "dataset": "re2ob",
+      "elapsed_seconds": 21.213437598664314,
+      "finish_timestamp": "2026-09-03T04:18:18.195387+00:00",
+      "pid": 348,
+      "start_timestamp": "2026-09-03T04:17:56.981882+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-435f42d94b785472",
+      "dataset": "re2ob",
+      "elapsed_seconds": 13.10667503112927,
+      "finish_timestamp": "2026-09-03T04:17:39.921140+00:00",
+      "pid": 329,
+      "start_timestamp": "2026-09-03T04:17:26.814399+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-048f2e7d7bfbc927",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.728958376683295,
+      "finish_timestamp": "2026-09-03T04:17:54.744998+00:00",
+      "pid": 332,
+      "start_timestamp": "2026-09-03T04:17:38.015947+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-4af0de56834334d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.580190278124064,
+      "finish_timestamp": "2026-09-03T04:18:02.808701+00:00",
+      "pid": 339,
+      "start_timestamp": "2026-09-03T04:17:46.228401+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-d3f1403a4a08a3b1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 21.73813617695123,
+      "finish_timestamp": "2026-09-03T04:18:13.082494+00:00",
+      "pid": 341,
+      "start_timestamp": "2026-09-03T04:17:51.344277+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-7732042f2a190c79",
+      "dataset": "re2ob",
+      "elapsed_seconds": 13.42426877701655,
+      "finish_timestamp": "2026-09-03T04:17:56.447565+00:00",
+      "pid": 337,
+      "start_timestamp": "2026-09-03T04:17:43.023201+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-80bf4d093e6ab818",
+      "dataset": "re2ob",
+      "elapsed_seconds": 11.440583586227149,
+      "finish_timestamp": "2026-09-03T04:17:55.367595+00:00",
+      "pid": 338,
+      "start_timestamp": "2026-09-03T04:17:43.926928+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-08f3e5d7b11d1fa7",
+      "dataset": "re2ob",
+      "elapsed_seconds": 0.3821167657151818,
+      "finish_timestamp": "2026-09-03T04:18:07.359619+00:00",
+      "pid": 351,
+      "start_timestamp": "2026-09-03T04:18:06.977420+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-b6db72fc58931786",
+      "dataset": "re2ob",
+      "elapsed_seconds": 15.203220339026302,
+      "finish_timestamp": "2026-09-03T04:18:04.039659+00:00",
+      "pid": 340,
+      "start_timestamp": "2026-09-03T04:17:48.836366+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-f30e2feeaa5218b8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 14.264699263963848,
+      "finish_timestamp": "2026-09-03T04:17:54.443115+00:00",
+      "pid": 335,
+      "start_timestamp": "2026-09-03T04:17:40.178320+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2ob-45687a171f241b04",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.59939386602491,
+      "finish_timestamp": "2026-09-03T04:18:34.850837+00:00",
+      "pid": 358,
+      "start_timestamp": "2026-09-03T04:18:18.251368+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-d0d93705e784491a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 14.645945531781763,
+      "finish_timestamp": "2026-09-03T04:17:54.615842+00:00",
+      "pid": 334,
+      "start_timestamp": "2026-09-03T04:17:39.969828+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-c2ac02db4e3370a9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 0.44771323911845684,
+      "finish_timestamp": "2026-09-03T04:17:55.258670+00:00",
+      "pid": 344,
+      "start_timestamp": "2026-09-03T04:17:54.810860+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-1bb2e75872fd9037",
+      "dataset": "re2ob",
+      "elapsed_seconds": 33.62228420516476,
+      "finish_timestamp": "2026-09-03T04:18:36.500812+00:00",
+      "pid": 349,
+      "start_timestamp": "2026-09-03T04:18:02.878451+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-feeaaba6c71377df",
+      "dataset": "re2ob",
+      "elapsed_seconds": 26.92683961521834,
+      "finish_timestamp": "2026-09-03T04:18:40.142836+00:00",
+      "pid": 355,
+      "start_timestamp": "2026-09-03T04:18:13.215904+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-4f85dadf2507c3ca",
+      "dataset": "re2ob",
+      "elapsed_seconds": 28.781092470977455,
+      "finish_timestamp": "2026-09-03T04:18:25.287864+00:00",
+      "pid": 347,
+      "start_timestamp": "2026-09-03T04:17:56.506702+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-784d7eb25137c3c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.711145089007914,
+      "finish_timestamp": "2026-09-03T04:18:13.158807+00:00",
+      "pid": 346,
+      "start_timestamp": "2026-09-03T04:17:55.447576+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-58eb5ae1a41b77e4",
+      "dataset": "re2ob",
+      "elapsed_seconds": 23.88265841593966,
+      "finish_timestamp": "2026-09-03T04:18:31.318735+00:00",
+      "pid": 352,
+      "start_timestamp": "2026-09-03T04:18:07.436001+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-d0382ea6cedfbd82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 22.12249008519575,
+      "finish_timestamp": "2026-09-03T04:18:26.226312+00:00",
+      "pid": 350,
+      "start_timestamp": "2026-09-03T04:18:04.103750+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-f88fc943d724a354",
+      "dataset": "re2ob",
+      "elapsed_seconds": 14.57704995945096,
+      "finish_timestamp": "2026-09-03T04:18:09.076487+00:00",
+      "pid": 342,
+      "start_timestamp": "2026-09-03T04:17:54.499367+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2ob-b84066a37ca0c417",
+      "dataset": "re2ob",
+      "elapsed_seconds": 13.621377213858068,
+      "finish_timestamp": "2026-09-03T04:18:48.528926+00:00",
+      "pid": 365,
+      "start_timestamp": "2026-09-03T04:18:34.907476+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-b78a14faa7ea7263",
+      "dataset": "re2ob",
+      "elapsed_seconds": 12.745053092949092,
+      "finish_timestamp": "2026-09-03T04:18:07.436596+00:00",
+      "pid": 343,
+      "start_timestamp": "2026-09-03T04:17:54.691471+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-84724d7aa2b9dabd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 21.365813206415623,
+      "finish_timestamp": "2026-09-03T04:18:16.685355+00:00",
+      "pid": 345,
+      "start_timestamp": "2026-09-03T04:17:55.319463+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-fa8a8fae0fda7c42",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.300021523144096,
+      "finish_timestamp": "2026-09-03T04:18:54.858068+00:00",
+      "pid": 368,
+      "start_timestamp": "2026-09-03T04:18:36.557982+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-7b0a90583e047a88",
+      "dataset": "re2ob",
+      "elapsed_seconds": 19.8106784732081,
+      "finish_timestamp": "2026-09-03T04:19:00.015064+00:00",
+      "pid": 369,
+      "start_timestamp": "2026-09-03T04:18:40.204298+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-ca26cbb7c2cc0c87",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.77240234706551,
+      "finish_timestamp": "2026-09-03T04:18:42.128397+00:00",
+      "pid": 360,
+      "start_timestamp": "2026-09-03T04:18:25.355903+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-6521847c78ca06e9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 17.222004861105233,
+      "finish_timestamp": "2026-09-03T04:18:30.449565+00:00",
+      "pid": 356,
+      "start_timestamp": "2026-09-03T04:18:13.227465+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-7890056e7915d551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 24.91851268708706,
+      "finish_timestamp": "2026-09-03T04:18:56.370877+00:00",
+      "pid": 364,
+      "start_timestamp": "2026-09-03T04:18:31.452286+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-35bd9974d6b59069",
+      "dataset": "re2ob",
+      "elapsed_seconds": 0.4055809499695897,
+      "finish_timestamp": "2026-09-03T04:18:26.700246+00:00",
+      "pid": 361,
+      "start_timestamp": "2026-09-03T04:18:26.294590+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-7a91adc6e16587c6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 15.500787692144513,
+      "finish_timestamp": "2026-09-03T04:18:24.902692+00:00",
+      "pid": 354,
+      "start_timestamp": "2026-09-03T04:18:09.401820+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2ob-f2b4cc2f87b35c03",
+      "dataset": "re2ob",
+      "elapsed_seconds": 21.77798438165337,
+      "finish_timestamp": "2026-09-03T04:19:10.364816+00:00",
+      "pid": 372,
+      "start_timestamp": "2026-09-03T04:18:48.586754+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2ob-c9c8f348d3f5974b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 28.46808746503666,
+      "finish_timestamp": "2026-09-03T04:18:36.178255+00:00",
+      "pid": 353,
+      "start_timestamp": "2026-09-03T04:18:07.710112+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2ob-df7b6eca09a6c41f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 19.18227774789557,
+      "finish_timestamp": "2026-09-03T04:18:35.923771+00:00",
+      "pid": 357,
+      "start_timestamp": "2026-09-03T04:18:16.741435+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2ob-34c4e276dad53220",
+      "dataset": "re2ob",
+      "elapsed_seconds": 19.560657633002847,
+      "finish_timestamp": "2026-09-03T04:19:14.477857+00:00",
+      "pid": 375,
+      "start_timestamp": "2026-09-03T04:18:54.917135+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2ob-3758cb8f0f1277f3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 15.260334491729736,
+      "finish_timestamp": "2026-09-03T04:19:15.376556+00:00",
+      "pid": 377,
+      "start_timestamp": "2026-09-03T04:19:00.116140+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2ob-ce3f410f61f739c2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 24.453819597139955,
+      "finish_timestamp": "2026-09-03T04:19:06.635580+00:00",
+      "pid": 370,
+      "start_timestamp": "2026-09-03T04:18:42.181692+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2ob-0c582795f6ae4798",
+      "dataset": "re2ob",
+      "elapsed_seconds": 24.28582720598206,
+      "finish_timestamp": "2026-09-03T04:18:54.802571+00:00",
+      "pid": 363,
+      "start_timestamp": "2026-09-03T04:18:30.516631+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2ob-e849d2be7be5c713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 16.504030788782984,
+      "finish_timestamp": "2026-09-03T04:19:12.959479+00:00",
+      "pid": 376,
+      "start_timestamp": "2026-09-03T04:18:56.455373+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2ob-58cff4fc86081830",
+      "dataset": "re2ob",
+      "elapsed_seconds": 25.194792832247913,
+      "finish_timestamp": "2026-09-03T04:18:51.945157+00:00",
+      "pid": 362,
+      "start_timestamp": "2026-09-03T04:18:26.750302+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2ob-ce93ebf8eb13a5ed",
+      "dataset": "re2ob",
+      "elapsed_seconds": 18.61193581763655,
+      "finish_timestamp": "2026-09-03T04:18:43.562286+00:00",
+      "pid": 359,
+      "start_timestamp": "2026-09-03T04:18:24.950285+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-e44ccb97e7cc1570",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17.871257649268955,
+      "finish_timestamp": "2026-09-03T04:19:28.558209+00:00",
+      "pid": 379,
+      "start_timestamp": "2026-09-03T04:19:10.686880+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-a0c0a90c5448e7fa",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5862.710147320293,
+      "finish_timestamp": "2026-09-03T08:00:50.544607+00:00",
+      "pid": 75,
+      "start_timestamp": "2026-09-03T06:23:07.834370+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-0b529d9f6ca88d4b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6657.764963107649,
+      "finish_timestamp": "2026-09-03T08:14:05.598370+00:00",
+      "pid": 72,
+      "start_timestamp": "2026-09-03T06:23:07.833333+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-783d045c8102f972",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5896.835891551338,
+      "finish_timestamp": "2026-09-03T08:01:24.670759+00:00",
+      "pid": 77,
+      "start_timestamp": "2026-09-03T06:23:07.834784+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-e76e500ff655313b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5802.145029177889,
+      "finish_timestamp": "2026-09-03T07:59:49.978371+00:00",
+      "pid": 71,
+      "start_timestamp": "2026-09-03T06:23:07.833151+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-cc6c772d4116d054",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4187.705639994703,
+      "finish_timestamp": "2026-09-03T07:32:55.539689+00:00",
+      "pid": 73,
+      "start_timestamp": "2026-09-03T06:23:07.833955+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-c1b234f6cc4acbee",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4127.273567263968,
+      "finish_timestamp": "2026-09-03T07:31:55.109390+00:00",
+      "pid": 78,
+      "start_timestamp": "2026-09-03T06:23:07.835751+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-2782358136a64e6c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4004.1654443792067,
+      "finish_timestamp": "2026-09-03T07:29:51.998148+00:00",
+      "pid": 70,
+      "start_timestamp": "2026-09-03T06:23:07.832621+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-1d48b3aec1ec4470",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4307.461097529158,
+      "finish_timestamp": "2026-09-03T07:34:55.292559+00:00",
+      "pid": 69,
+      "start_timestamp": "2026-09-03T06:23:07.831405+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-6a0d1ebf31fb52a6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6046.10157968523,
+      "finish_timestamp": "2026-09-03T08:03:53.935622+00:00",
+      "pid": 74,
+      "start_timestamp": "2026-09-03T06:23:07.833962+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2tt-14c6e1b70d0c21e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6370.017592892051,
+      "finish_timestamp": "2026-09-03T08:09:17.852301+00:00",
+      "pid": 76,
+      "start_timestamp": "2026-09-03T06:23:07.834635+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-01d0096e9a504ced",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5769.567131622694,
+      "finish_timestamp": "2026-09-03T09:37:00.216041+00:00",
+      "pid": 84,
+      "start_timestamp": "2026-09-03T08:00:50.648817+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-bbbcbf7787fa152c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5081.0921037402,
+      "finish_timestamp": "2026-09-03T09:38:46.835222+00:00",
+      "pid": 88,
+      "start_timestamp": "2026-09-03T08:14:05.742984+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-ae09714023e727e1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4270.668958179187,
+      "finish_timestamp": "2026-09-03T09:12:35.477906+00:00",
+      "pid": 85,
+      "start_timestamp": "2026-09-03T08:01:24.808826+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-653810995a9aa3db",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3756.9747244967148,
+      "finish_timestamp": "2026-09-03T09:02:27.233267+00:00",
+      "pid": 83,
+      "start_timestamp": "2026-09-03T07:59:50.258456+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-c82529d65e13adc0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6143.5636861771345,
+      "finish_timestamp": "2026-09-03T09:15:19.240464+00:00",
+      "pid": 81,
+      "start_timestamp": "2026-09-03T07:32:55.676677+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-aa71e41ec8e7922d",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5773.23236867087,
+      "finish_timestamp": "2026-09-03T09:08:08.473226+00:00",
+      "pid": 80,
+      "start_timestamp": "2026-09-03T07:31:55.240771+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-cb1f1df38c99005a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5258.706508767325,
+      "finish_timestamp": "2026-09-03T08:57:31.178166+00:00",
+      "pid": 79,
+      "start_timestamp": "2026-09-03T07:29:52.471561+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-fe28a6c0dbd7d892",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4040.3982153460383,
+      "finish_timestamp": "2026-09-03T08:42:15.859389+00:00",
+      "pid": 82,
+      "start_timestamp": "2026-09-03T07:34:55.461076+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-d4b1d66aaaa1a728",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5564.057694502175,
+      "finish_timestamp": "2026-09-03T09:36:38.148729+00:00",
+      "pid": 86,
+      "start_timestamp": "2026-09-03T08:03:54.090944+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2tt-5bb89b87741349d7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 7367.20628934307,
+      "finish_timestamp": "2026-09-03T10:12:05.240883+00:00",
+      "pid": 87,
+      "start_timestamp": "2026-09-03T08:09:18.034495+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-e4be9aa8e249ddf3",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4837.391486193985,
+      "finish_timestamp": "2026-09-03T10:57:37.764989+00:00",
+      "pid": 98,
+      "start_timestamp": "2026-09-03T09:37:00.373399+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-426ec979883ae8dc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4130.3115660129115,
+      "finish_timestamp": "2026-09-03T10:47:37.239444+00:00",
+      "pid": 99,
+      "start_timestamp": "2026-09-03T09:38:46.927772+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-d0a74725c5d96362",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4868.206201233901,
+      "finish_timestamp": "2026-09-03T10:33:43.945364+00:00",
+      "pid": 95,
+      "start_timestamp": "2026-09-03T09:12:35.739039+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-cdf514b035f34990",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6438.342686906923,
+      "finish_timestamp": "2026-09-03T10:49:45.739992+00:00",
+      "pid": 91,
+      "start_timestamp": "2026-09-03T09:02:27.397221+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-7d84c0b80f7f0032",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3575.371380188968,
+      "finish_timestamp": "2026-09-03T10:14:54.760526+00:00",
+      "pid": 96,
+      "start_timestamp": "2026-09-03T09:15:19.389042+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-995607e863fb7731",
+      "dataset": "re2tt",
+      "elapsed_seconds": 11.747914599254727,
+      "finish_timestamp": "2026-09-03T09:08:20.389895+00:00",
+      "pid": 92,
+      "start_timestamp": "2026-09-03T09:08:08.641883+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-afdac60e6b000d3c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6259.322769260965,
+      "finish_timestamp": "2026-09-03T10:41:50.648252+00:00",
+      "pid": 90,
+      "start_timestamp": "2026-09-03T08:57:31.325376+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-ee2421859dfb0792",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6619.26559227379,
+      "finish_timestamp": "2026-09-03T10:32:35.293750+00:00",
+      "pid": 89,
+      "start_timestamp": "2026-09-03T08:42:16.027993+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-44604ef8713a5943",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6135.169789736625,
+      "finish_timestamp": "2026-09-03T11:18:53.478983+00:00",
+      "pid": 97,
+      "start_timestamp": "2026-09-03T09:36:38.309076+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2tt-72822d018b0df53f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4227.041611118242,
+      "finish_timestamp": "2026-09-03T11:22:32.406634+00:00",
+      "pid": 100,
+      "start_timestamp": "2026-09-03T10:12:05.364916+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-22292d58b67911fb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4108.271870588884,
+      "finish_timestamp": "2026-09-03T12:06:06.191372+00:00",
+      "pid": 107,
+      "start_timestamp": "2026-09-03T10:57:37.919408+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-fc53b7fb52199fb7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4176.1563153723255,
+      "finish_timestamp": "2026-09-03T11:57:13.538126+00:00",
+      "pid": 105,
+      "start_timestamp": "2026-09-03T10:47:37.381705+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-5d2e4747cab0d818",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6255.024175642058,
+      "finish_timestamp": "2026-09-03T12:17:59.106556+00:00",
+      "pid": 103,
+      "start_timestamp": "2026-09-03T10:33:44.082285+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-2ae0e149b3ab15f1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5645.9586729016155,
+      "finish_timestamp": "2026-09-03T12:23:51.788294+00:00",
+      "pid": 106,
+      "start_timestamp": "2026-09-03T10:49:45.829549+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-0f6b6213169d6acc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5143.346494121011,
+      "finish_timestamp": "2026-09-03T11:40:38.301429+00:00",
+      "pid": 101,
+      "start_timestamp": "2026-09-03T10:14:54.954833+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-93fbbdf23f58f440",
+      "dataset": "re2tt",
+      "elapsed_seconds": 14.577008733060211,
+      "finish_timestamp": "2026-09-03T09:08:35.048121+00:00",
+      "pid": 93,
+      "start_timestamp": "2026-09-03T09:08:20.471017+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-714d157727edd2d0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4876.042317800224,
+      "finish_timestamp": "2026-09-03T12:03:06.830087+00:00",
+      "pid": 104,
+      "start_timestamp": "2026-09-03T10:41:50.787664+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-472c8339fd3703e9",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5602.781464510132,
+      "finish_timestamp": "2026-09-03T12:05:58.209659+00:00",
+      "pid": 102,
+      "start_timestamp": "2026-09-03T10:32:35.428110+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-606ef267348d40e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 12.3056860268116,
+      "finish_timestamp": "2026-09-03T11:19:05.918422+00:00",
+      "pid": 109,
+      "start_timestamp": "2026-09-03T11:18:53.612642+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2tt-35e803c63786ac4e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5215.082629321609,
+      "finish_timestamp": "2026-09-03T12:49:27.633375+00:00",
+      "pid": 111,
+      "start_timestamp": "2026-09-03T11:22:32.550644+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-a141811c79edaa0b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5134.9483232269995,
+      "finish_timestamp": "2026-09-03T13:31:41.283715+00:00",
+      "pid": 116,
+      "start_timestamp": "2026-09-03T12:06:06.335307+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-b5173d4edf252af8",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5128.222941842396,
+      "finish_timestamp": "2026-09-03T13:22:41.888606+00:00",
+      "pid": 113,
+      "start_timestamp": "2026-09-03T11:57:13.665567+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-fd20b1f93a6ff4c0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5125.743042695802,
+      "finish_timestamp": "2026-09-03T13:43:25.006635+00:00",
+      "pid": 119,
+      "start_timestamp": "2026-09-03T12:17:59.263513+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-010695b192f8dbea",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4216.912728610914,
+      "finish_timestamp": "2026-09-03T13:34:09.692953+00:00",
+      "pid": 120,
+      "start_timestamp": "2026-09-03T12:23:52.780156+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-94bd05feab03461e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6798.679634572938,
+      "finish_timestamp": "2026-09-03T13:33:57.146099+00:00",
+      "pid": 112,
+      "start_timestamp": "2026-09-03T11:40:38.466361+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-575015aa80c376c6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 7299.487273755949,
+      "finish_timestamp": "2026-09-03T11:10:14.638487+00:00",
+      "pid": 94,
+      "start_timestamp": "2026-09-03T09:08:35.151120+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-727331fee88d4ce7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4208.524397993926,
+      "finish_timestamp": "2026-09-03T13:13:15.449676+00:00",
+      "pid": 114,
+      "start_timestamp": "2026-09-03T12:03:06.925184+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-420fff915c5f5bc5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4025.255922728218,
+      "finish_timestamp": "2026-09-03T13:13:03.564515+00:00",
+      "pid": 115,
+      "start_timestamp": "2026-09-03T12:05:58.308518+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-f5512e2434f96386",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3039.6838383721188,
+      "finish_timestamp": "2026-09-03T12:09:45.672790+00:00",
+      "pid": 110,
+      "start_timestamp": "2026-09-03T11:19:05.988870+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2tt-a33887653c475d04",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3866.110057043843,
+      "finish_timestamp": "2026-09-03T13:53:53.921249+00:00",
+      "pid": 122,
+      "start_timestamp": "2026-09-03T12:49:27.811104+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-5f50dc54f6cb9fce",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6875.501201846171,
+      "finish_timestamp": "2026-09-03T15:26:16.972906+00:00",
+      "pid": 126,
+      "start_timestamp": "2026-09-03T13:31:41.471599+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-67172e499653d426",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4622.971387058031,
+      "finish_timestamp": "2026-09-03T14:39:45.015893+00:00",
+      "pid": 125,
+      "start_timestamp": "2026-09-03T13:22:42.044409+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-d14727a3c74e9768",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5089.0648622429,
+      "finish_timestamp": "2026-09-03T15:08:14.329648+00:00",
+      "pid": 130,
+      "start_timestamp": "2026-09-03T13:43:25.264687+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-2a03e4ad1a1d6f85",
+      "dataset": "re2tt",
+      "elapsed_seconds": 13.878799108788371,
+      "finish_timestamp": "2026-09-03T13:34:23.856294+00:00",
+      "pid": 128,
+      "start_timestamp": "2026-09-03T13:34:09.977379+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-7d3fb265c1c0f9ed",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5988.847476081923,
+      "finish_timestamp": "2026-09-03T15:13:46.279665+00:00",
+      "pid": 127,
+      "start_timestamp": "2026-09-03T13:33:57.432096+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-2defd6e102bdaf53",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5658.861424739007,
+      "finish_timestamp": "2026-09-03T12:44:33.642987+00:00",
+      "pid": 108,
+      "start_timestamp": "2026-09-03T11:10:14.781465+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-38941ca70beb687a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5486.860021081287,
+      "finish_timestamp": "2026-09-03T14:44:42.443995+00:00",
+      "pid": 124,
+      "start_timestamp": "2026-09-03T13:13:15.583884+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-3bd96ed8cc02f613",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4201.588604915887,
+      "finish_timestamp": "2026-09-03T14:23:05.592319+00:00",
+      "pid": 123,
+      "start_timestamp": "2026-09-03T13:13:04.003603+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-5a65eea398ba8435",
+      "dataset": "re2tt",
+      "elapsed_seconds": 11.401096584275365,
+      "finish_timestamp": "2026-09-03T12:09:57.237959+00:00",
+      "pid": 117,
+      "start_timestamp": "2026-09-03T12:09:45.836762+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2tt-b2342b2478b249cb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4836.539386131801,
+      "finish_timestamp": "2026-09-03T15:14:30.614877+00:00",
+      "pid": 132,
+      "start_timestamp": "2026-09-03T13:53:54.075397+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-c7f9112580bfde33",
+      "dataset": "re2tt",
+      "elapsed_seconds": 11.919969027861953,
+      "finish_timestamp": "2026-09-03T15:26:29.032775+00:00",
+      "pid": 144,
+      "start_timestamp": "2026-09-03T15:26:17.112695+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-fa81461ebec56b42",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4191.4302737829275,
+      "finish_timestamp": "2026-09-03T15:49:36.608418+00:00",
+      "pid": 135,
+      "start_timestamp": "2026-09-03T14:39:45.178030+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-877f6cbd0cb33e7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6280.511255518999,
+      "finish_timestamp": "2026-09-03T16:52:54.974596+00:00",
+      "pid": 138,
+      "start_timestamp": "2026-09-03T15:08:14.463263+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-7cff180e5ff1cc71",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6377.5807900438085,
+      "finish_timestamp": "2026-09-03T15:20:41.669806+00:00",
+      "pid": 129,
+      "start_timestamp": "2026-09-03T13:34:24.088888+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-ffda523857bbf5c2",
+      "dataset": "re2tt",
+      "elapsed_seconds": 7271.735502316151,
+      "finish_timestamp": "2026-09-03T17:14:58.149056+00:00",
+      "pid": 139,
+      "start_timestamp": "2026-09-03T15:13:46.413446+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-2fc3d2fb9c492b7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3780.1786744962446,
+      "finish_timestamp": "2026-09-03T13:47:34.179623+00:00",
+      "pid": 121,
+      "start_timestamp": "2026-09-03T12:44:34.000874+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-04ce93a682b70df6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3490.1471115169115,
+      "finish_timestamp": "2026-09-03T15:42:52.757846+00:00",
+      "pid": 136,
+      "start_timestamp": "2026-09-03T14:44:42.610636+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-406c40ff0016fa9c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3615.001460039988,
+      "finish_timestamp": "2026-09-03T15:23:20.757065+00:00",
+      "pid": 134,
+      "start_timestamp": "2026-09-03T14:23:05.755378+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-2ca7cff33586ca18",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6304.314047073945,
+      "finish_timestamp": "2026-09-03T13:55:01.639782+00:00",
+      "pid": 118,
+      "start_timestamp": "2026-09-03T12:09:57.325655+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2tt-a7213c3da47edbd0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6888.672074594069,
+      "finish_timestamp": "2026-09-03T17:09:19.420054+00:00",
+      "pid": 140,
+      "start_timestamp": "2026-09-03T15:14:30.747894+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-f1aa29dd3ba2343f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4229.781532234978,
+      "finish_timestamp": "2026-09-03T16:36:58.902736+00:00",
+      "pid": 145,
+      "start_timestamp": "2026-09-03T15:26:29.121102+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-56db4956167f9980",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5178.893267243635,
+      "finish_timestamp": "2026-09-03T17:15:55.622683+00:00",
+      "pid": 147,
+      "start_timestamp": "2026-09-03T15:49:36.729324+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-f09cbf3636ad02de",
+      "dataset": "re2tt",
+      "elapsed_seconds": 12.90143294306472,
+      "finish_timestamp": "2026-09-03T16:53:08.020778+00:00",
+      "pid": 150,
+      "start_timestamp": "2026-09-03T16:52:55.119245+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-e3f89de859062727",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5666.625695655122,
+      "finish_timestamp": "2026-09-03T16:55:08.499431+00:00",
+      "pid": 141,
+      "start_timestamp": "2026-09-03T15:20:41.873628+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-1283c56ed7675282",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4674.234491374344,
+      "finish_timestamp": "2026-09-03T18:32:52.546332+00:00",
+      "pid": 155,
+      "start_timestamp": "2026-09-03T17:14:58.311754+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-739ad24f1e2d7c29",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5636.0285346289165,
+      "finish_timestamp": "2026-09-03T15:21:30.388971+00:00",
+      "pid": 131,
+      "start_timestamp": "2026-09-03T13:47:34.360351+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-fb57d883cd727c81",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4997.950231947005,
+      "finish_timestamp": "2026-09-03T17:06:10.798787+00:00",
+      "pid": 146,
+      "start_timestamp": "2026-09-03T15:42:52.848442+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-c8fbd9a7d1e92284",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4850.409693884198,
+      "finish_timestamp": "2026-09-03T16:44:11.332775+00:00",
+      "pid": 143,
+      "start_timestamp": "2026-09-03T15:23:20.922995+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-d83931768111dc58",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4169.62860112777,
+      "finish_timestamp": "2026-09-03T15:04:31.453307+00:00",
+      "pid": 133,
+      "start_timestamp": "2026-09-03T13:55:01.824642+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    },
+    {
+      "case_id": "re2tt-4780a4f90c190bf4",
+      "dataset": "re2tt",
+      "elapsed_seconds": 12.527533949818462,
+      "finish_timestamp": "2026-09-03T17:09:32.098908+00:00",
+      "pid": 154,
+      "start_timestamp": "2026-09-03T17:09:19.571270+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-9"
+    },
+    {
+      "case_id": "re2tt-20258ce8dbcd2300",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5693.252287451178,
+      "finish_timestamp": "2026-09-03T18:11:52.308176+00:00",
+      "pid": 148,
+      "start_timestamp": "2026-09-03T16:36:59.055793+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-0"
+    },
+    {
+      "case_id": "re2tt-cb3381bf9ed05034",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6648.960704621859,
+      "finish_timestamp": "2026-09-03T19:06:44.705342+00:00",
+      "pid": 156,
+      "start_timestamp": "2026-09-03T17:15:55.744511+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-1"
+    },
+    {
+      "case_id": "re2tt-e9071bdee1904785",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6277.954670347273,
+      "finish_timestamp": "2026-09-03T18:37:46.045887+00:00",
+      "pid": 151,
+      "start_timestamp": "2026-09-03T16:53:08.091140+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-2"
+    },
+    {
+      "case_id": "re2tt-722f5f89a57be699",
+      "dataset": "re2tt",
+      "elapsed_seconds": 12.281790615990758,
+      "finish_timestamp": "2026-09-03T16:55:20.922384+00:00",
+      "pid": 152,
+      "start_timestamp": "2026-09-03T16:55:08.640469+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "circa-worker-3"
+    },
+    {
+      "case_id": "re2tt-bc9cd2d131533d16",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4447.290671119932,
+      "finish_timestamp": "2026-09-03T19:47:00.032104+00:00",
+      "pid": 157,
+      "start_timestamp": "2026-09-03T18:32:52.741350+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-4"
+    },
+    {
+      "case_id": "re2tt-f578fe138f6d4c7a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4038.1661842581816,
+      "finish_timestamp": "2026-09-03T16:28:48.730499+00:00",
+      "pid": 142,
+      "start_timestamp": "2026-09-03T15:21:30.564229+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-5"
+    },
+    {
+      "case_id": "re2tt-bed634aec03e773f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5764.830619905144,
+      "finish_timestamp": "2026-09-03T18:42:15.719935+00:00",
+      "pid": 153,
+      "start_timestamp": "2026-09-03T17:06:10.889226+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-6"
+    },
+    {
+      "case_id": "re2tt-3fffa88dd3653f99",
+      "dataset": "re2tt",
+      "elapsed_seconds": 4785.184731017798,
+      "finish_timestamp": "2026-09-03T18:03:56.674833+00:00",
+      "pid": 149,
+      "start_timestamp": "2026-09-03T16:44:11.490004+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-7"
+    },
+    {
+      "case_id": "re2tt-3e24ca7f9747c84e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5202.059898927808,
+      "finish_timestamp": "2026-09-03T16:31:13.670587+00:00",
+      "pid": 137,
+      "start_timestamp": "2026-09-03T15:04:31.610600+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "circa-worker-8"
+    }
+  ],
+  "execution_commit": "76830b2cbfe6e67a8dab7f91dfb7fa0f044c663f",
+  "labels_joined": false,
+  "method": "CIRCA",
+  "no_timeout": true,
+  "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "requested_worker_count": 10,
+  "runtime_digest": "c9e949f7818ac792aff0334f4f77d9e1f020147247bca630f6d79bcf8b6ea98a",
+  "schema_version": "rca_baseline_rescue_runtime_v2",
+  "status_counts": {
+    "re2ob": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 4,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 86,
+      "TIMEOUT": 0
+    },
+    "re2tt": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 10,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 80,
+      "TIMEOUT": 0
+    }
+  },
+  "terminal_case_count": 180,
+  "timeout_seconds": null
+}
