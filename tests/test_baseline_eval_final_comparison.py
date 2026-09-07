@@ -171,6 +171,7 @@ class PublishedFinalComparisonRegressionTest(unittest.TestCase):
 
     def test_final_report_contains_baro_and_composite_wording(self):
         report = (ROOT / FINAL_REPORT_RELATIVE).read_text(encoding="utf-8")
+        normalized_report = " ".join(report.split())
         for text in (
             "BARO",
             "Seven-Baseline Final Composite Comparison",
@@ -180,7 +181,7 @@ class PublishedFinalComparisonRegressionTest(unittest.TestCase):
             "NOT-IDENTIFIABLE",
             "does not support an SOTA",
         ):
-            self.assertIn(text, report)
+            self.assertIn(text, normalized_report)
 
     def test_old_v2_evaluation_files_retain_frozen_sha256(self):
         for name, relative in V2_EVALUATION_RELATIVES.items():
