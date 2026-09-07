@@ -1,7 +1,7 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **FINAL COMPOSITE EVALUATION COMPLETE — SEVEN-BASELINE TABLE PUBLISHED**
-State revision: `2026-09-07.7`
+State revision: `2026-09-07.8`
 Last operational audit: 2026-09-07, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
 Last synchronized central commit: this final handoff revision
@@ -41,7 +41,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | final composite commits are local pending final audit push | PENDING |
+| Push state for this revision | `origin/evaluation/rcaeval-baselines` contains the final composite through `a22cda0` | PUSHED |
 | This task Starting HEAD | `a0aebe29f7e568b6aa523fb259f2bbd62002a57c` | recorded |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
