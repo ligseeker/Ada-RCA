@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2 RESCUE CODE READY — CAUSALRCA CPU EXTENSION AUTHORIZED**
-State revision: `2026-09-03.15`
-Last operational audit: 2026-09-03, Asia/Shanghai
+Status: **V2 RESCUE EXECUTION COMPLETE — SIX METHOD LOCKS VERIFIED**
+State revision: `2026-09-07.1`
+Last operational audit: 2026-09-07, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `088b044`
+Last synchronized central commit: `8dd793c`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -67,7 +67,7 @@ project worktrees under `~/.venvs/`.
 | MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | A1/A2 integrated; method lock verified centrally |
 | TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | A1/A2 integrated; method lock verified centrally |
 | mmBARO | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | A1/A2 integrated; method lock verified centrally |
-| CausalRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | additive CPU case-level extension | authorized; environment freeze and execution pending |
+| CausalRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | additive CPU case-level extension | environment frozen; execution complete; lock valid |
 
 Activation commands:
 
@@ -116,7 +116,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2 lock-sidecar firewall allowlist | `dd7ce3c` | complete; historical and corrected sidecars remain immutable and pre-lock safe |
 | V2.2 implementation amendment | `9f10742`; `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
 | V2 pre-lock interim unified tables | `RCA_BASELINE_INTERIM_UNIFIED_TABLES_V2.md` | recorded; RE2-OB operational snapshot only, metric cells intentionally blank |
-| CausalRCA CPU case-level V2 extension | `088b044`; `RCA_BASELINE_CAUSALRCA_CPU_CASE_PARALLELISM_AMENDMENT_V1.md`; `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | user-authorized; no environment, records, or lock yet |
+| CausalRCA CPU case-level V2 extension | `088b044`; merged evidence `ed4026f`; protocol digest `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | complete; 180 records; lock valid |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -210,50 +210,40 @@ ranks, or metrics may be added before the global prediction lock.
 | mmBARO A1 | RE2-TT | 0/90 | 0 | 0 | 0 | 0 | 0 | absent; retain |
 | mmBARO A2 | RE2-OB | 90/90 | 88 | 0 | 0 | 2 | 0 | valid centrally |
 | mmBARO A2 | RE2-TT | 90/90 | 89 | 1 | 0 | 0 | 0 | valid centrally |
-| CausalRCA CPU extension | — | 0 | — | — | — | — | — | authorized; not started |
+| CausalRCA CPU extension | RE2-OB | 90/90 | 90 | 0 | 0 | 0 | 0 | valid; 20 workers |
+| CausalRCA CPU extension | RE2-TT | 90/90 | 90 | 0 | 0 | 0 | 0 | valid; 20 workers |
 
 V2 rescue coverage, recorded without prediction inspection, is:
 
 | Method | Dataset | Records | SUCCESS | METHOD_FAILURE | Blocking statuses | Active method lock |
 |---|---|---:|---:|---:|---|---|
-| CIRCA | RE2-OB | 90/90 | 86 | 4 | none observed | pending; attempt interrupted |
-| CIRCA | RE2-TT | 11/90 | 10 | 1 | none observed | pending; 79 cases missing |
-| MicroCause | RE2-OB | 0/90 | 0 | 0 | — | pending; environment frozen |
-| MicroCause | RE2-TT | 0/90 | 0 | 0 | — | pending; environment frozen |
+| CIRCA | RE2-OB | 90/90 | 86 | 4 | none | valid; reissued V2 sidecar |
+| CIRCA | RE2-TT | 90/90 | 80 | 10 | none | valid; reissued V2 sidecar |
+| MicroCause | RE2-OB | 90/90 | 89 | 1 | none | valid |
+| MicroCause | RE2-TT | 90/90 | 83 | 7 | none | valid |
 | MicroRank | RE2-OB | 90/90 | 90 | 0 | none | corrected V2 sidecar verified |
 | MicroRank | RE2-TT | 90/90 | 75 | 15 | none | corrected V2 sidecar verified |
 | TraceRCA | RE2-OB | 90/90 | 90 | 0 | none | corrected V2 sidecar verified |
 | TraceRCA | RE2-TT | 90/90 | 75 | 15 | none | corrected V2 sidecar verified |
 | mmBARO | RE2-OB | 90/90 | 90 | 0 | none | corrected V2 sidecar verified |
 | mmBARO | RE2-TT | 90/90 | 89 | 1 | none | corrected V2 sidecar verified |
-| CausalRCA CPU extension | RE2-OB | 0/90 | — | — | — | pending |
-| CausalRCA CPU extension | RE2-TT | 0/90 | — | — | — | pending |
+| CausalRCA CPU extension | RE2-OB | 90/90 | 90 | 0 | none | valid; CPU extension lock |
+| CausalRCA CPU extension | RE2-TT | 90/90 | 90 | 0 | none | valid; CPU extension lock |
 
-The three complete methods originally printed `INTEGRITY_INVALID` because
+The original invalid locks for CIRCA, MicroRank, TraceRCA, and mmBARO printed
+`INTEGRITY_INVALID` because
 their first V2 lock used the defective outer-dictionary truthiness check. Their
-original locks and the first failed reissue sidecars remain unchanged; the
-corrected V2 sidecars were verified against the same 180 records and runtime
-summaries. This is a lock-attestation repair, not a method rerun. CIRCA's
-container interruption did not leave a terminal `PROCESS_CRASH/OOM` record in
-the inspected partial attempt; its missing cases remain pending.
+original locks remain unchanged; the corrected V2 sidecars were verified against
+the same 180 records and runtime summaries. CIRCA's corrected sidecar was
+created after its completed attempt was integrated. These are lock-attestation
+repairs, not method reruns.
 
 BARO lock verification: `EXECUTION_COMPLETE`, 180 terminal record digests,
 both 90-case denominators valid, environment unchanged.
 
-The CIRCA V2 attempt is interrupted and its newly written records remain
-uncommitted in the CIRCA task worktree until resume completes; those records
-are not part of the central branch yet. CIRCA's attempt metadata binds exact
-execution commit `76830b2cbfe6e67a8dab7f91dfb7fa0f044c663f`, requested/actual
-workers 10, and `timeout_seconds=null`. After memory is increased, resume must
-run on that exact task branch/commit and may process only missing cases.
-
-CIRCA A1 and MicroCause A1 are stopped and committed as immutable evidence in
-their assigned task worktrees and are now also present centrally. The CIRCA
-and MicroCause A2 attempts were produced by the authorized four-worker case
-scheduler; their runtime summaries and method locks validate the full 180-case
-coverage. MicroRank, TraceRCA, and mmBARO A1/A2 artifacts are likewise
-integrated, and all five method locks pass `verify_method_lock` on the central
-worktree. No runner process was observed at the latest audit.
+CIRCA, MicroCause, MicroRank, TraceRCA, mmBARO, and CausalRCA V2 evidence are
+now committed centrally. All six active method locks pass
+`verify-method-lock`; no runner process was observed at the latest audit.
 
 ## 6. Current blockers and decisions required
 
@@ -282,7 +272,8 @@ readable digest
 It uses the common Python environment, hides CUDA, preserves the pinned
 `RCAEval/e2e/causalrca.py`, and isolates every case in a fresh child process.
 The saved GPU branch `wip/causalrca-gpu-amendment` at `89db7ec` remains
-separate and is not used. No real CausalRCA case has started in this revision.
+separate and is not used. The CPU extension completed 180/180 cases with a
+valid method lock and no blocking terminal statuses.
 
 ### B4. Cross-method concurrency — authorized
 
@@ -330,35 +321,27 @@ method-scoped commits are now integrated centrally.
 
 ### B6. Central method-result integration — resolved
 
-All five method tracks are present on `evaluation/rcaeval-baselines` with
-their frozen environment manifests, retained A1 evidence, complete A2
-records, runtime summaries where required, and method locks. CIRCA and
-MicroCause locks retain `execution_worker_count=4` and the V1.3 amendment
-digest. The merge did not touch the user method's `src/rca` or
-`artifacts/p6_*` paths. Those V1 method locks are historical evidence; the V2
-global prediction lock is a separate future artifact and remains pending until
-the five V2 attempts are complete and integrity-valid.
+All five base V2 method tracks plus the authorized CausalRCA CPU extension are
+present on `evaluation/rcaeval-baselines` with frozen environment manifests,
+complete records, runtime summaries, and method locks. CIRCA, MicroCause,
+MicroRank, TraceRCA, and mmBARO use the base V2 execution root; CausalRCA uses
+its separate CPU-extension root. The merge did not touch the user method's
+`src/rca` or `artifacts/p6_*` paths. All five base V2 locks and the independent
+CausalRCA extension lock verify centrally.
 
-### B7. V2 post-launch rescue state — active
+### B7. V2 post-launch rescue state — complete; evaluation pending
 
-- CIRCA's partial V2 attempt was interrupted by container memory exhaustion.
-  Increase the task-container memory and use the exact missing-only resume
-  command in the V2 runbook. Do not cherry-pick the newer lock-repair commits
-  into the CIRCA task branch before that resume, because the attempt is bound
-  to `76830b2cbfe6e67a8dab7f91dfb7fa0f044c663f`.
-- MicroCause's earlier 900-second synthetic preflight was a cold-import
-  timeout. V2 now uses `timeout=None`; the isolated preflight passed and its
-  environment manifest is frozen in task commit `113b9c6`. Its real native
-  call remains the pinned 1000-by-1000 random walk.
-- MicroRank, TraceRCA, and mmBARO have no blocking terminal statuses in their
-  complete V2 records. Their old invalid locks are retained and their
-  corrected `_prediction_lock_reissued_v2.json` sidecars are verified. They
-  must not be rerun.
-- The V2 global prediction lock and all metric/evaluation commands remain
-  blocked until CIRCA and MicroCause produce complete integrity-valid method
-  locks and all five base V2 locks are centrally integrated. CausalRCA has a
-  separate extension lock and needs a later explicit combined-lock step before
-  it can enter a label-join or metric evaluation.
+- CIRCA, MicroCause, MicroRank, TraceRCA, and mmBARO each have 180/180
+  terminal records, no blocking terminal statuses, and a centrally verified
+  active method lock. CIRCA's valid lock is the immutable
+  `circa_prediction_lock_reissued_v2.json` sidecar; its original invalid lock
+  remains preserved.
+- CausalRCA has 180/180 CPU case-level records, no blocking terminal statuses,
+  and a valid independent extension lock. Its run used 20 requested/actual
+  workers, as recorded in the lock; no rerun is authorized or needed.
+- The five-method V2 global prediction lock and all metric/evaluation commands
+  remain pending. CausalRCA requires an explicitly recorded combined-lock step
+  before it can enter a label-join or metric evaluation.
 
 ## 7. Historical V1 plan and current V2 replacement
 
@@ -372,34 +355,21 @@ to create a V1 lock.
 
 - V2.1 protocol and adapter amendment are frozen; digest is
   `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de`.
-- V2 code and tests are ready at `8ee08ed`; the command-aligned runbook is
+- V2 code and tests are integrated through the method worktree merge commits;
+  the command-aligned runbook is
   synchronized by `596f68b` at `docs/baseline_eval/RCA_BASELINE_RESCUE_RUNBOOK_V2.md`.
-- CIRCA's V2 task worktree is at `76830b2` and contains its committed V2
-  environment manifest from `066b7da`; its determinism preflight must be
-  rerun after the metadata repair. MicroCause's V2 task worktree is at
-  `318310d`; it has no V2 environment manifest because its protocol preflight
-  stopped before the environment freeze.
-- MicroRank, TraceRCA, and mmBARO V2 task worktrees are each at `9c0e486`,
-  which cherry-picks the same preflight repair. Their legacy
-  `execution/*-a1-*` worktrees remain historical and are not V2 execution
-  targets.
-- The five task containers must first freeze their method environment, run
-  the opaque 1/10/20-worker determinism preflight, and stop on any digest or
-  status mismatch.
-- Each container then chooses one of 10 or 20 requested workers for its
-  method's no-timeout OB+TT attempt. External interruption uses
-  `--resume --resume-policy missing-only` with the same worker configuration.
-- After each attempt reaches 180 terminal records, commit and verify its
-  method lock. Any DATA/ADAPTER/ENVIRONMENT/INPUT_INTEGRITY or PROCESS_CRASH/OOM
-  status blocks the global lock; METHOD_FAILURE remains a legal zero-utility
+- CIRCA, MicroCause, MicroRank, TraceRCA, mmBARO, and CausalRCA now each have
+  a frozen environment, 180 terminal records, runtime summary, and an active
+  centrally verified method lock. Their legacy `execution/*-a1-*` worktrees
+  remain historical and are not execution targets.
+- The original five-method V2 lock set and the CausalRCA CPU extension lock
+  remain separate. All six active locks are integrity-valid and contain no
+  blocking terminal statuses; METHOD_FAILURE remains a legal zero-utility
   robustness observation.
-- CausalRCA uses the additive CPU extension runbook section and attempt
-  `causalrca-cpu-a1-rescue-v2`; its environment freeze and case-level run are
-  pending. Its method lock must remain separate from the existing five-method
-  V2 lock set until a combined-lock amendment is explicitly recorded.
-- Only after all five `INTEGRITY_VALID` method locks are centrally integrated
-  may the coordinator create and commit `execution_v2/prediction_lock_v2.json`.
-  Only then may `evaluate-v2` join labels and write Tables A–D/bootstrap.
+- The coordinator may separately create and commit the five-method V2 global
+  prediction lock. CausalRCA requires an explicitly recorded combined-lock
+  amendment before entering any label-join or metric evaluation. No labels or
+  metrics have been inspected in this merge task.
 
 ### P0 — Resolve repository transition readiness
 
@@ -474,15 +444,18 @@ to create a V1 lock.
 - The saved GPU branch remains non-executed context; it must not be reused for
   the CPU track.
 
-### P7 — Global prediction lock
+### P7 — Global prediction lock — pending explicit coordinator action
 
-- Completed: every worker's environment and prediction commits are integrated;
-  worker-owned paths remain disjoint and all five method locks verify.
-- Require a committed, valid disposition for every method in the frozen order.
-- Verify all method locks and terminal record digests.
-- Create and commit `prediction_lock_v1.json`.
-- Suggested commit: `eval: freeze complete label-free RCAEval baseline execution`.
-- No label join is legal before this commit.
+- Complete: all five base V2 method environments and prediction commits are
+  integrated; worker-owned paths remain disjoint and all five active locks
+  verify. The CausalRCA CPU extension is also integrated under its separate
+  execution root and lock.
+- Pending: create and commit the five-method V2 global prediction lock after
+  the coordinator explicitly authorizes that lock transition.
+- CausalRCA must be included only through a separately recorded combined-lock
+  amendment; its valid extension lock is not silently folded into the existing
+  five-method lock.
+- No label join or metric computation has occurred in this merge task.
 
 ### P8 — Post-lock evaluation and reporting
 
