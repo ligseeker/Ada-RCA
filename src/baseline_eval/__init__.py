@@ -459,7 +459,13 @@ def assert_firewall_safe_record(record: Mapping[str, Any]) -> None:
 
 
 def assert_performance_firewall_tree(root: Path) -> None:
-    """Fail closed on unauthorized B0/B1 or label-free B2 artifacts."""
+    """Fail closed on unauthorized pre-lock or post-scope artifacts.
+
+    The V3 final-comparison directory is the one explicitly authorized
+    post-scope exception.  It is accepted only as the exact committed output
+    set, with its committed scope lock; arbitrary new result files remain a
+    firewall breach.
+    """
 
     artifact_root = root / "artifacts" / "baseline_eval"
     allowed = {
@@ -470,6 +476,14 @@ def assert_performance_firewall_tree(root: Path) -> None:
         "rescue_protocol_v2.json",
         "rescue_protocol_v2_causalrca_cpu.json",
         "rescue_protocol_v2_causalrca_combined.json",
+        "baro_final_integration_amendment_v1.json",
+        "final_comparison_v3/scope_lock_v3.json",
+        "final_comparison_v3/provenance_v3.json",
+        "final_comparison_v3/overall_v3.json",
+        "final_comparison_v3/fault_level_v3.json",
+        "final_comparison_v3/robustness_v3.json",
+        "final_comparison_v3/comparability_v3.json",
+        "final_comparison_v3/paired_bootstrap_v3.json",
     }
     observed = {
         str(path.relative_to(artifact_root))
@@ -518,6 +532,43 @@ def assert_performance_firewall_tree(root: Path) -> None:
                 missing, unexpected + unexpected_execution
             )
         )
+    final_output_relatives = {
+        "final_comparison_v3/provenance_v3.json",
+        "final_comparison_v3/overall_v3.json",
+        "final_comparison_v3/fault_level_v3.json",
+        "final_comparison_v3/robustness_v3.json",
+        "final_comparison_v3/comparability_v3.json",
+        "final_comparison_v3/paired_bootstrap_v3.json",
+    }
+    observed_final_outputs = observed.intersection(final_output_relatives)
+    if observed_final_outputs:
+        if observed_final_outputs != final_output_relatives:
+            raise FirewallBreach("V3 final-comparison output set is incomplete")
+        scope_relative = "final_comparison_v3/scope_lock_v3.json"
+        scope_path = artifact_root / scope_relative
+        scope = json.loads(scope_path.read_text(encoding="utf-8"))
+        if (
+            scope.get("schema_version") != "rca_baseline_final_composite_scope_lock_v3"
+            or scope.get("status") != "SCOPE_FROZEN_BEFORE_BARO_METRIC_EVALUATION"
+            or scope.get("seven_method_original_global_prelabel_lock") is not False
+        ):
+            raise FirewallBreach("V3 final-comparison scope lock is not a valid pre-label freeze")
+        for relative in (
+            "baro_final_integration_amendment_v1.json",
+            scope_relative,
+            *sorted(final_output_relatives),
+        ):
+            committed = subprocess.run(
+                ("git", "show", f"HEAD:artifacts/baseline_eval/{relative}"),
+                cwd=root,
+                check=False,
+                capture_output=True,
+            )
+            path = artifact_root / relative
+            if committed.returncode != 0 or committed.stdout != path.read_bytes():
+                raise FirewallBreach(
+                    f"V3 final-comparison artifact is not committed: {relative}"
+                )
     protocol = json.loads((artifact_root / "protocol_freeze_v1.json").read_text(encoding="utf-8"))
     provenance = json.loads((artifact_root / "provenance_v1.json").read_text(encoding="utf-8"))
     if protocol["performance_firewall"]["baseline_performance_exposed"]:
