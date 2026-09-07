@@ -1,15 +1,20 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2 COMBINED EVALUATION COMPLETE — SIX-METHOD TABLE PUBLISHED**
-State revision: `2026-09-07.5`
+Status: **FINAL COMPOSITE EVALUATION COMPLETE — SEVEN-BASELINE TABLE PUBLISHED**
+State revision: `2026-09-07.7`
 Last operational audit: 2026-09-07, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `c990c0e`
+Last synchronized central commit: this final handoff revision
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
 every completed task that changes code, environments, artifacts, execution
 coverage, locks, blockers, or the next plan.
+
+The historical six-method V2 evaluation remains immutable. The current
+canonical thesis-facing comparison is the independent seven-baseline V3
+composite documented in
+`RCA_BASELINE_FINAL_COMPARISON_V3.md`.
 
 The frozen protocol documents remain authoritative for scientific semantics.
 If this status document conflicts with committed artifacts or a fresh read-only
@@ -36,7 +41,8 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | V2 rescue corrections and current handoff are local | NOT PUSHED |
+| Push state for this revision | final composite commits are local pending final audit push | PENDING |
+| This task Starting HEAD | `a0aebe29f7e568b6aa523fb259f2bbd62002a57c` | recorded |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
 | Evidence-closure reference | `9342e06db91945be2e44703437229ba45b18bda8` | frozen |
@@ -46,6 +52,14 @@ contents, and update this document.
 | Input-manifest digest | `b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec` | frozen |
 | V2.1 rescue protocol digest | `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen |
 | V2 combined CausalRCA protocol digest | `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | additive; lock/evaluation complete |
+| BARO V1 prediction lock | `artifacts/baseline_eval/execution_v1/locks/baro_prediction_lock.json`; SHA-256 `75cd1020aaaced22eef445856e4e73842ed4949fef4fd2fe85ffb278bcc08e65`; commit `fbfb6e6e1f112f93fe544f8b6c71aca4f5b336f7` | PASS; inherited immutable evidence |
+| Six-method V2 combined prediction lock | `artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json`; SHA-256 `935d0a3e57e27cf3b8c0d267e6d114499846f7abbce1ffec3c34ad34a63f2200`; commit `2778c64f137601f307e21e735e2ad23a3e14eda6` | PASS; inherited immutable evidence |
+| BARO scope-freeze commit | `bf6349e342fa2e1ffbb1348bccbf852821503bec` | PASS; committed before BARO label join |
+| Final comparison code | `60770dab33b22dc27f862c5aa9405b8bf608b613`; firewall compatibility `1fed561` | complete |
+| Final comparison regression tests | `badefd4` | focused `15/15` PASS |
+| V3 final metrics artifacts | `ad6b03ca794df30a2e83adb26344f689ad9282f9` | complete; six inherited rows identity-checked |
+| V3 canonical report | `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md` | generated; report/handoff commit pending |
+| Final validation | common-env unittest `262 tests`, pytest `262 passed`; old V2 SHA identity audit PASS | complete |
 
 The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
 only removes the final newline from the existing `artifacts/cache/` line. On
@@ -120,6 +134,10 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | CausalRCA CPU case-level V2 extension | `088b044`; merged evidence `ed4026f`; protocol digest `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | complete; 180 records; lock valid |
 | Six-method V2 combined lock/evaluation amendment | `RCA_BASELINE_V2_CAUSALRCA_COMBINED_LOCK_AMENDMENT_V1.md`; machine digest `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | authorized; lock `2778c64`, metrics `8da9b44`, report `c990c0e` |
 | V2 final Table C/D presentation refresh | `ce673c9`; report `c990c0e` | complete; no lock or metric JSON changes; full suite 247/247 |
+| BARO final integration amendment and scope lock | `bf6349e342fa2e1ffbb1348bccbf852821503bec`; `RCA_BASELINE_BARO_FINAL_INTEGRATION_AMENDMENT_V1.md`; `final_comparison_v3/scope_lock_v3.json` | complete before post-scope BARO evaluation |
+| Seven-baseline final comparison implementation | `60770da`; `badefd4`; `1fed561` | complete; no baseline rerun |
+| Seven-baseline final comparison artifacts | `ad6b03c` at `artifacts/baseline_eval/final_comparison_v3/` | complete; independent BARO evaluation plus inherited V2 identity |
+| Seven-baseline canonical report | `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md` | generated; included in final documentation commit |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -186,7 +204,12 @@ repository suite passed 241 tests. At that historical checkpoint, V2
 operational evidence was split across the five task worktrees and no V2 global
 lock or label evaluation had been created.
 
-## 5. Confirmatory execution coverage
+## 5. Confirmatory execution coverage (operational evidence)
+
+This section intentionally records execution counts and status taxonomy only.
+The post-scope BARO evaluation and final composite result tables are recorded
+in B8 and the V3 canonical report; this section is not retroactively converted
+into a label-free seven-method lock claim.
 
 Only operational state is recorded here. No prediction contents, labels, root
 ranks, or metrics may be added before the global prediction lock.
@@ -355,7 +378,53 @@ CausalRCA extension lock verify centrally.
   CausalRCA, is committed as `c990c0e` at
   `docs/baseline_eval/RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md`.
 
-## 7. Historical V1 plan and current V2 replacement
+### B8 — Final composite V3 comparison — complete
+
+- Scope completeness was frozen before any BARO label join in commit
+  `bf6349e342fa2e1ffbb1348bccbf852821503bec`. The amendment is
+  `docs/baseline_eval/RCA_BASELINE_BARO_FINAL_INTEGRATION_AMENDMENT_V1.md`,
+  its machine-readable companion is
+  `artifacts/baseline_eval/baro_final_integration_amendment_v1.json`, and the
+  committed gate is `artifacts/baseline_eval/final_comparison_v3/scope_lock_v3.json`.
+- The decision was scope completeness: BARO was already an original RCAEval
+  confirmatory baseline with a complete V1 label-free prediction lock, and
+  V2 rescue did not rerun a method that was already complete. BARO metrics were
+  not inspected before the scope freeze; six-method performance was not used
+  to decide inclusion.
+- BARO V1 audit passed: `EXECUTION_COMPLETE`, `contains_evaluation=false`,
+  90/90 records on both RE2-OB and RE2-TT, 90 `SUCCESS` on each dataset, no
+  `METHOD_FAILURE`, `DATA_FAILURE`, `ADAPTER_FAILURE`, or `TIMEOUT`, exact
+  record digests, environment/input/RCAEval identities, and exact frozen case
+  universes. Its historical environment is bound by the lock/manifest digest;
+  live environment re-resolution is not required for inherited evidence.
+- The final set is exactly `BARO`, `CIRCA`, `MicroCause`, `MicroRank`,
+  `TraceRCA`, `mmBARO`, and `CausalRCA`; Ada-RCA remains the separate user
+  method. RE2-OB and RE2-TT remain separate and are never pooled. Baseline MRR
+  remains `NOT-IDENTIFIABLE`, with no candidate completion.
+- V3 outputs are under
+  `artifacts/baseline_eval/final_comparison_v3/`: `scope_lock_v3.json`,
+  `provenance_v3.json`, `overall_v3.json`, `fault_level_v3.json`,
+  `robustness_v3.json`, `comparability_v3.json`, and
+  `paired_bootstrap_v3.json`. Only BARO rows were newly evaluated; the six
+  inherited baseline rows are copied from the immutable V2 JSON files with
+  exact identity assertions, and frozen Ada-RCA identity is asserted.
+- The final comparison is explicitly
+  `FINAL_COMPOSITE_SEVEN_BASELINE_COMPARISON`, not
+  `SEVEN_METHOD_ORIGINAL_PRELABEL_GLOBAL_LOCK`. BARO is V1 locked complete;
+  CIRCA/MicroCause/MicroRank/TraceRCA/mmBARO are V2 rescue evidence; and
+  CausalRCA is the V2 CPU additive extension. No BARO rerun, six-baseline
+  rerun, Ada-RCA retraining, algorithm change, adapter search, or candidate
+  completion occurred.
+- The canonical current report is
+  `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md`. The prior
+  `RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md` remains the historical immutable
+  six-method V2 report.
+- Focused V3 regression tests passed `15/15`. The full common-environment
+  unittest suite passed `262 tests` with `failed=0`, `skipped=0` in 94.716 s;
+  the independent `pytest -q` run passed `262` tests in 38.40 s. The five
+  historical V2 evaluation JSON SHA-256 identity checks also passed.
+
+## 7. Historical V1 plan and completed V2 replacement
 
 MicroCause, MicroRank, TraceRCA, and mmBARO were independent worker tracks.
 CIRCA recovery was a fifth independent legacy track. All five tracks are now
@@ -363,7 +432,7 @@ integrated and centrally verified for V1. The P0–P8 entries below are retained
 as historical V1 handoff evidence and are not instructions to resume A1/A2 or
 to create a V1 lock.
 
-### Current V2 execution plan
+### V2 execution/evaluation plan (completed historical state)
 
 - V2.1 protocol and adapter amendment are frozen; digest is
   `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de`.

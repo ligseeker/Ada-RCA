@@ -158,9 +158,10 @@ Container isolation must include adequate CPU and memory allocation. If
 physical-resource throttling occurs, reduce task concurrency; do not change
 timeouts or rerun based on observed results.
 
-CausalRCA is currently deferred by explicit user decision. Do not freeze or
-run it unless the user explicitly restores it as a baseline. Its saved GPU
-work is isolated on branch `wip/causalrca-gpu-amendment` at commit `89db7ec`.
+CausalRCA was explicitly restored as the additive CPU V2 baseline and is now
+complete under its frozen extension lock. Do not rerun it or reuse the saved
+GPU work, which remains isolated on branch `wip/causalrca-gpu-amendment` at
+commit `89db7ec`.
 RCD remains blocked, and PDiagnose, multi-source CIRCA, and mmRCD remain
 context-only; do not execute them as confirmatory baselines without a new,
 committed protocol authorization.
@@ -189,9 +190,12 @@ complete remaining plan are maintained in
 conversation summary when that committed handoff and fresh read-only evidence
 are available.
 
-As of the latest 2026-09-01 read-only audit, BARO has a valid frozen prediction
-lock and CIRCA has 100 of 180 terminal records but no lock. A CIRCA recovery
-process was observed, so never launch a duplicate without a fresh process
-audit. TraceRCA and mmBARO A1 both stopped after 59 records at the same native
-CSV-parser crash; V1.2 authorizes repaired A2 attempts and also requires
-MicroRank to restart prospectively under the same repaired commit.
+As of the latest 2026-09-07 handoff, the final composite comparison is
+complete: BARO is inherited from its immutable V1 locked execution, the six
+method V2 evidence remains byte-immutable, and the independent V3 layer
+publishes the seven-baseline comparison. No baseline rerun, Ada-RCA retraining,
+algorithm change, adapter search, or candidate completion was performed.
+The canonical report is
+`docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md`; the historical
+six-method V2 report remains
+`docs/baseline_eval/RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md`.

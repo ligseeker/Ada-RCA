@@ -10,8 +10,11 @@ Ada-RCA performance search is part of this scientific freeze.
 
 The documents below are retained as historical research execution context.
 
-The canonical live RCAEval baseline progress, blockers, resumption checklist,
-and remaining plan are maintained in
+The current canonical RCAEval baseline comparison is
+[`baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md`](baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md).
+It is a composite seven-baseline comparison across frozen V1/V2 evidence
+tracks. The prior six-method V2 report is historical and remains immutable.
+Operational progress, blockers, and audit handoff are maintained in
 [`baseline_eval/RCA_BASELINE_EXECUTION_STATUS.md`](baseline_eval/RCA_BASELINE_EXECUTION_STATUS.md).
 
 Cross-method parallel execution is governed by
