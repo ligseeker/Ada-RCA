@@ -4,7 +4,7 @@ Status: **V2 RESCUE EXECUTION COMPLETE — SIX METHOD LOCKS VERIFIED**
 State revision: `2026-09-07.1`
 Last operational audit: 2026-09-07, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `8dd793c`
+Last synchronized central commit: `f92d732`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
