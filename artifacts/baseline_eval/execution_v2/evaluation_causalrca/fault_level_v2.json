@@ -1,0 +1,889 @@
+{
+  "absent_fault_policy": "N/A",
+  "faults": [
+    "cpu",
+    "mem",
+    "disk",
+    "socket",
+    "delay",
+    "loss"
+  ],
+  "provenance": {
+    "ada_rca_reference": {
+      "re2ob": {
+        "AC@1": 0.8777777778,
+        "AC@3": 0.9888888889,
+        "AC@5": 0.9888888889,
+        "Avg@5": 0.9622222222,
+        "MRR": 0.9314814815
+      },
+      "re2tt": {
+        "AC@1": 0.7111111111,
+        "AC@3": 0.8666666667,
+        "AC@5": 0.9333333333,
+        "Avg@5": 0.8511111111,
+        "MRR": 0.8034718882
+      }
+    },
+    "evaluation_scope": "V2_SIX_BASELINES_WITH_CAUSALRCA_CPU_EXTENSION",
+    "global_prediction_lock": {
+      "commit": "2778c64f137601f307e21e735e2ad23a3e14eda6",
+      "path": "artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json",
+      "sha256": "935d0a3e57e27cf3b8c0d267e6d114499846f7abbce1ffec3c34ad34a63f2200"
+    },
+    "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+    "method_order": [
+      "CIRCA",
+      "MicroCause",
+      "MicroRank",
+      "TraceRCA",
+      "mmBARO",
+      "CausalRCA"
+    ],
+    "protocol_digest": "24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54",
+    "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
+  },
+  "rows": [
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "CPU",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.8666666666666667,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9733333333333333,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "MEM",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DISK",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.8,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9600000000000001,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "SOCKET",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.8,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9466666666666667,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DELAY",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.8,
+      "AC@3": 0.9333333333333333,
+      "AC@5": 0.9333333333333333,
+      "Avg@5": 0.8933333333333333,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "LOSS",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.6,
+      "AC@3": 0.8,
+      "AC@5": 0.8,
+      "Avg@5": 0.76,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "CPU",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.8,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9600000000000002,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "MEM",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.8666666666666667,
+      "AC@3": 0.8666666666666667,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.8666666666666667,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DISK",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.6,
+      "AC@3": 0.9333333333333333,
+      "AC@5": 0.9333333333333333,
+      "Avg@5": 0.8533333333333334,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "SOCKET",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.4666666666666667,
+      "AC@3": 0.8,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.7066666666666668,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DELAY",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.6666666666666666,
+      "AC@3": 0.8666666666666667,
+      "AC@5": 0.9333333333333333,
+      "Avg@5": 0.8533333333333335,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "LOSS",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.3333333333333333,
+      "AC@3": 0.4666666666666667,
+      "AC@5": 0.5333333333333333,
+      "Avg@5": 0.44000000000000006,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "CPU",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.3333333333333333,
+      "AC@3": 0.5333333333333333,
+      "AC@5": 0.6,
+      "Avg@5": 0.48000000000000004,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "MEM",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.4,
+      "AC@3": 0.7333333333333333,
+      "AC@5": 0.8,
+      "Avg@5": 0.6933333333333334,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DISK",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.2,
+      "AC@3": 0.3333333333333333,
+      "AC@5": 0.6666666666666666,
+      "Avg@5": 0.4,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "SOCKET",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.4,
+      "AC@3": 0.6666666666666666,
+      "AC@5": 0.7333333333333333,
+      "Avg@5": 0.6133333333333333,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DELAY",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.3333333333333333,
+      "AC@3": 0.4666666666666667,
+      "AC@5": 0.6,
+      "Avg@5": 0.45333333333333337,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "LOSS",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.4,
+      "AC@5": 0.6,
+      "Avg@5": 0.3600000000000001,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "CPU",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.4,
+      "AC@5": 0.6,
+      "Avg@5": 0.3600000000000001,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "MEM",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.4,
+      "AC@5": 0.6,
+      "Avg@5": 0.3600000000000001,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DISK",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.4,
+      "AC@5": 0.6,
+      "Avg@5": 0.3600000000000001,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "SOCKET",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.4,
+      "AC@5": 0.6,
+      "Avg@5": 0.3600000000000001,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DELAY",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.26666666666666666,
+      "AC@5": 0.26666666666666666,
+      "Avg@5": 0.18666666666666668,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "LOSS",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.06666666666666667,
+      "AC@3": 0.8,
+      "AC@5": 1.0,
+      "Avg@5": 0.6933333333333335,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "CPU",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.5333333333333333,
+      "AC@5": 1.0,
+      "Avg@5": 0.5733333333333335,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "MEM",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.2,
+      "AC@3": 0.7333333333333333,
+      "AC@5": 1.0,
+      "Avg@5": 0.6933333333333335,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DISK",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.13333333333333333,
+      "AC@3": 0.7333333333333333,
+      "AC@5": 1.0,
+      "Avg@5": 0.68,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "SOCKET",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.4,
+      "AC@3": 0.5333333333333333,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.6,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DELAY",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.13333333333333333,
+      "AC@3": 0.5333333333333333,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.52,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "LOSS",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.8,
+      "AC@5": 0.9333333333333333,
+      "Avg@5": 0.6666666666666667,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "CPU",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.4666666666666667,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8933333333333334,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "MEM",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.06666666666666667,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8000000000000003,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DISK",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.8666666666666667,
+      "AC@5": 1.0,
+      "Avg@5": 0.7200000000000002,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "SOCKET",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.7333333333333333,
+      "AC@5": 1.0,
+      "Avg@5": 0.68,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DELAY",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.4666666666666667,
+      "AC@3": 0.8666666666666667,
+      "AC@5": 1.0,
+      "Avg@5": 0.8133333333333332,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "LOSS",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.2,
+      "AC@5": 0.6,
+      "Avg@5": 0.24000000000000002,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "CPU",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.2,
+      "AC@5": 0.6,
+      "Avg@5": 0.24000000000000002,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "MEM",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.2,
+      "AC@5": 0.6,
+      "Avg@5": 0.24000000000000002,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DISK",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.2,
+      "AC@5": 0.6,
+      "Avg@5": 0.24000000000000002,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "SOCKET",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.2,
+      "AC@5": 0.6,
+      "Avg@5": 0.24000000000000002,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "DELAY",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.2,
+      "AC@5": 0.6,
+      "Avg@5": 0.24000000000000002,
+      "cases": 15,
+      "dataset": "re2ob",
+      "fault": "LOSS",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.8,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9600000000000001,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "CPU",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.8666666666666667,
+      "AC@3": 0.9333333333333333,
+      "AC@5": 1.0,
+      "Avg@5": 0.92,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "MEM",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DISK",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.8666666666666667,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9733333333333333,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "SOCKET",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.4,
+      "AC@3": 0.6666666666666666,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.6666666666666667,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DELAY",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.3333333333333333,
+      "AC@3": 0.6,
+      "AC@5": 0.7333333333333333,
+      "Avg@5": 0.5866666666666667,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "LOSS",
+      "method": "Ada-RCA"
+    },
+    {
+      "AC@1": 0.4,
+      "AC@3": 0.6,
+      "AC@5": 0.6,
+      "Avg@5": 0.5333333333333333,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "CPU",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.8,
+      "AC@3": 0.9333333333333333,
+      "AC@5": 0.9333333333333333,
+      "Avg@5": 0.8933333333333332,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "MEM",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.8,
+      "AC@3": 0.8,
+      "AC@5": 0.8,
+      "Avg@5": 0.8,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DISK",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.8,
+      "AC@3": 0.8666666666666667,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.84,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "SOCKET",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.2,
+      "AC@3": 0.4,
+      "AC@5": 0.4666666666666667,
+      "Avg@5": 0.36000000000000004,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DELAY",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.3333333333333333,
+      "AC@3": 0.6,
+      "AC@5": 0.6666666666666666,
+      "Avg@5": 0.5599999999999999,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "LOSS",
+      "method": "CIRCA"
+    },
+    {
+      "AC@1": 0.06666666666666667,
+      "AC@3": 0.2,
+      "AC@5": 0.2,
+      "Avg@5": 0.17333333333333334,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "CPU",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.06666666666666667,
+      "AC@3": 0.13333333333333333,
+      "AC@5": 0.26666666666666666,
+      "Avg@5": 0.13333333333333333,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "MEM",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.2,
+      "AC@3": 0.26666666666666666,
+      "AC@5": 0.4,
+      "Avg@5": 0.26666666666666666,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DISK",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.3333333333333333,
+      "AC@3": 0.4,
+      "AC@5": 0.4666666666666667,
+      "Avg@5": 0.41333333333333333,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "SOCKET",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.13333333333333333,
+      "AC@3": 0.2,
+      "AC@5": 0.3333333333333333,
+      "Avg@5": 0.23999999999999996,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DELAY",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.06666666666666667,
+      "AC@3": 0.2,
+      "AC@5": 0.2,
+      "Avg@5": 0.16,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "LOSS",
+      "method": "MicroCause"
+    },
+    {
+      "AC@1": 0.06666666666666667,
+      "AC@3": 0.4,
+      "AC@5": 0.4,
+      "Avg@5": 0.29333333333333333,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "CPU",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.13333333333333333,
+      "AC@3": 0.26666666666666666,
+      "AC@5": 0.26666666666666666,
+      "Avg@5": 0.22666666666666666,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "MEM",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.3333333333333333,
+      "AC@5": 0.3333333333333333,
+      "Avg@5": 0.21333333333333332,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DISK",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.06666666666666667,
+      "AC@3": 0.26666666666666666,
+      "AC@5": 0.26666666666666666,
+      "Avg@5": 0.21333333333333335,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "SOCKET",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.06666666666666667,
+      "AC@3": 0.3333333333333333,
+      "AC@5": 0.3333333333333333,
+      "Avg@5": 0.28,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DELAY",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.13333333333333333,
+      "AC@3": 0.3333333333333333,
+      "AC@5": 0.3333333333333333,
+      "Avg@5": 0.27999999999999997,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "LOSS",
+      "method": "MicroRank"
+    },
+    {
+      "AC@1": 0.6,
+      "AC@3": 0.6666666666666666,
+      "AC@5": 0.6666666666666666,
+      "Avg@5": 0.6533333333333334,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "CPU",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.4,
+      "AC@3": 0.5333333333333333,
+      "AC@5": 0.5333333333333333,
+      "Avg@5": 0.5066666666666666,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "MEM",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.7333333333333333,
+      "AC@3": 0.8666666666666667,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.8400000000000001,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DISK",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.4,
+      "AC@3": 0.5333333333333333,
+      "AC@5": 0.6,
+      "Avg@5": 0.52,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "SOCKET",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.7333333333333333,
+      "AC@3": 0.8,
+      "AC@5": 0.9333333333333333,
+      "Avg@5": 0.8266666666666667,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DELAY",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.5333333333333333,
+      "AC@3": 0.6,
+      "AC@5": 0.6,
+      "Avg@5": 0.5866666666666667,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "LOSS",
+      "method": "TraceRCA"
+    },
+    {
+      "AC@1": 0.4666666666666667,
+      "AC@3": 0.8,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.7466666666666666,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "CPU",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.9333333333333333,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9866666666666667,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "MEM",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DISK",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.6,
+      "AC@3": 0.7333333333333333,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.7333333333333333,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "SOCKET",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.4666666666666667,
+      "AC@3": 0.6666666666666666,
+      "AC@5": 0.6666666666666666,
+      "Avg@5": 0.6133333333333333,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DELAY",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.6666666666666666,
+      "AC@3": 0.6666666666666666,
+      "AC@5": 0.8,
+      "Avg@5": 0.7066666666666667,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "LOSS",
+      "method": "mmBARO"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "CPU",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "MEM",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DISK",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "SOCKET",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "DELAY",
+      "method": "CausalRCA"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "cases": 15,
+      "dataset": "re2tt",
+      "fault": "LOSS",
+      "method": "CausalRCA"
+    }
+  ],
+  "schema_version": "rca_baseline_rescue_fault_level_evaluation_v2"
+}

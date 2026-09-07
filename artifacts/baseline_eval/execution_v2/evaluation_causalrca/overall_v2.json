@@ -1,0 +1,458 @@
+{
+  "baseline_mrr": "NOT-IDENTIFIABLE",
+  "evaluated_at": "2026-09-07T05:28:03.004642+00:00",
+  "labels_joined_after_global_lock": true,
+  "method_dataset_metrics": {
+    "Ada-RCA__re2ob": {
+      "AC@1": 0.8777777778,
+      "AC@3": 0.9888888889,
+      "AC@5": 0.9888888889,
+      "Avg@5": 0.9622222222,
+      "MRR": 0.9314814815,
+      "cases": 90,
+      "source": "/home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin/artifacts/final_method/re2ob/metrics.json",
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 0,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 90,
+        "TIMEOUT": 0
+      }
+    },
+    "Ada-RCA__re2tt": {
+      "AC@1": 0.7111111111,
+      "AC@3": 0.8666666667,
+      "AC@5": 0.9333333333,
+      "Avg@5": 0.8511111111,
+      "MRR": 0.8034718882,
+      "cases": 90,
+      "source": "/home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin/artifacts/final_method/re2tt/metrics.json",
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 0,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 90,
+        "TIMEOUT": 0
+      }
+    },
+    "CIRCA__re2ob": {
+      "AC@1": 0.6666666666666666,
+      "AC@2": 0.8333333333333334,
+      "AC@3": 0.8777777777777778,
+      "AC@4": 0.8888888888888888,
+      "AC@5": 0.9,
+      "Avg@5": 0.8333333333333334,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 4,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 4,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 86,
+        "TIMEOUT": 0
+      },
+      "success_cases": 86
+    },
+    "CIRCA__re2tt": {
+      "AC@1": 0.5555555555555556,
+      "AC@2": 0.6444444444444445,
+      "AC@3": 0.7,
+      "AC@4": 0.7,
+      "AC@5": 0.7222222222222222,
+      "Avg@5": 0.6644444444444445,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 10,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 10,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 80,
+        "TIMEOUT": 0
+      },
+      "success_cases": 80
+    },
+    "CausalRCA__re2ob": {
+      "AC@1": 0.0,
+      "AC@2": 0.0,
+      "AC@3": 0.2,
+      "AC@4": 0.4,
+      "AC@5": 0.6,
+      "Avg@5": 0.24000000000000005,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 0,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 0,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 90,
+        "TIMEOUT": 0
+      },
+      "success_cases": 90
+    },
+    "CausalRCA__re2tt": {
+      "AC@1": 0.0,
+      "AC@2": 0.0,
+      "AC@3": 0.0,
+      "AC@4": 0.0,
+      "AC@5": 0.0,
+      "Avg@5": 0.0,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 0,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 0,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 90,
+        "TIMEOUT": 0
+      },
+      "success_cases": 90
+    },
+    "MicroCause__re2ob": {
+      "AC@1": 0.3333333333333333,
+      "AC@2": 0.4666666666666667,
+      "AC@3": 0.5333333333333333,
+      "AC@4": 0.5777777777777777,
+      "AC@5": 0.6555555555555556,
+      "Avg@5": 0.5133333333333334,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 1,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 1,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 89,
+        "TIMEOUT": 0
+      },
+      "success_cases": 89
+    },
+    "MicroCause__re2tt": {
+      "AC@1": 0.14444444444444443,
+      "AC@2": 0.2,
+      "AC@3": 0.23333333333333334,
+      "AC@4": 0.26666666666666666,
+      "AC@5": 0.3111111111111111,
+      "Avg@5": 0.2311111111111111,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 7,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 7,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 83,
+        "TIMEOUT": 0
+      },
+      "success_cases": 83
+    },
+    "MicroRank__re2ob": {
+      "AC@1": 0.0,
+      "AC@2": 0.18888888888888888,
+      "AC@3": 0.37777777777777777,
+      "AC@4": 0.5444444444444444,
+      "AC@5": 0.5444444444444444,
+      "Avg@5": 0.3311111111111111,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 0,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 0,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 90,
+        "TIMEOUT": 0
+      },
+      "success_cases": 90
+    },
+    "MicroRank__re2tt": {
+      "AC@1": 0.07777777777777778,
+      "AC@2": 0.2111111111111111,
+      "AC@3": 0.32222222222222224,
+      "AC@4": 0.32222222222222224,
+      "AC@5": 0.32222222222222224,
+      "Avg@5": 0.2511111111111111,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 15,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 15,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 75,
+        "TIMEOUT": 0
+      },
+      "success_cases": 75
+    },
+    "TraceRCA__re2ob": {
+      "AC@1": 0.15555555555555556,
+      "AC@2": 0.5,
+      "AC@3": 0.6444444444444445,
+      "AC@4": 0.8777777777777778,
+      "AC@5": 0.9555555555555556,
+      "Avg@5": 0.6266666666666667,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 0,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 0,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 90,
+        "TIMEOUT": 0
+      },
+      "success_cases": 90
+    },
+    "TraceRCA__re2tt": {
+      "AC@1": 0.5666666666666667,
+      "AC@2": 0.6666666666666666,
+      "AC@3": 0.6666666666666666,
+      "AC@4": 0.6777777777777778,
+      "AC@5": 0.7,
+      "Avg@5": 0.6555555555555556,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 15,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 15,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 75,
+        "TIMEOUT": 0
+      },
+      "success_cases": 75
+    },
+    "mmBARO__re2ob": {
+      "AC@1": 0.16666666666666666,
+      "AC@2": 0.8222222222222222,
+      "AC@3": 0.8777777777777778,
+      "AC@4": 0.9555555555555556,
+      "AC@5": 0.9888888888888889,
+      "Avg@5": 0.7622222222222222,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 0,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 0,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 90,
+        "TIMEOUT": 0
+      },
+      "success_cases": 90
+    },
+    "mmBARO__re2tt": {
+      "AC@1": 0.6888888888888889,
+      "AC@2": 0.7888888888888889,
+      "AC@3": 0.8111111111111111,
+      "AC@4": 0.8333333333333334,
+      "AC@5": 0.8666666666666667,
+      "Avg@5": 0.7977777777777778,
+      "MRR": "NOT-IDENTIFIABLE",
+      "MRR_legality": "NOT-IDENTIFIABLE",
+      "cases": 90,
+      "robustness_zero_method_failures": 1,
+      "status_counts": {
+        "ADAPTER_FAILURE": 0,
+        "DATA_FAILURE": 0,
+        "ENVIRONMENT_FAILURE": 0,
+        "INPUT_INTEGRITY_FAILURE": 0,
+        "METHOD_FAILURE": 1,
+        "PROCESS_CRASH/OOM": 0,
+        "SUCCESS": 89,
+        "TIMEOUT": 0
+      },
+      "success_cases": 89
+    }
+  },
+  "method_scope": [
+    "CIRCA",
+    "MicroCause",
+    "MicroRank",
+    "TraceRCA",
+    "mmBARO",
+    "CausalRCA"
+  ],
+  "provenance": {
+    "ada_rca_reference": {
+      "re2ob": {
+        "AC@1": 0.8777777778,
+        "AC@3": 0.9888888889,
+        "AC@5": 0.9888888889,
+        "Avg@5": 0.9622222222,
+        "MRR": 0.9314814815
+      },
+      "re2tt": {
+        "AC@1": 0.7111111111,
+        "AC@3": 0.8666666667,
+        "AC@5": 0.9333333333,
+        "Avg@5": 0.8511111111,
+        "MRR": 0.8034718882
+      }
+    },
+    "evaluation_scope": "V2_SIX_BASELINES_WITH_CAUSALRCA_CPU_EXTENSION",
+    "global_prediction_lock": {
+      "commit": "2778c64f137601f307e21e735e2ad23a3e14eda6",
+      "path": "artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json",
+      "sha256": "935d0a3e57e27cf3b8c0d267e6d114499846f7abbce1ffec3c34ad34a63f2200"
+    },
+    "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+    "method_order": [
+      "CIRCA",
+      "MicroCause",
+      "MicroRank",
+      "TraceRCA",
+      "mmBARO",
+      "CausalRCA"
+    ],
+    "protocol_digest": "24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54",
+    "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
+  },
+  "schema_version": "rca_baseline_rescue_overall_evaluation_v2",
+  "table_a": {
+    "columns": [
+      "Method",
+      "OB AC@1",
+      "OB AC@3",
+      "OB AC@5",
+      "OB Avg@5",
+      "TT AC@1",
+      "TT AC@3",
+      "TT AC@5",
+      "TT Avg@5"
+    ],
+    "pooling": "FORBIDDEN; RE2-OB and RE2-TT remain separate",
+    "rows": [
+      {
+        "Method": "CIRCA",
+        "OB AC@1": 0.6666666666666666,
+        "OB AC@3": 0.8777777777777778,
+        "OB AC@5": 0.9,
+        "OB Avg@5": 0.8333333333333334,
+        "TT AC@1": 0.5555555555555556,
+        "TT AC@3": 0.7,
+        "TT AC@5": 0.7222222222222222,
+        "TT Avg@5": 0.6644444444444445
+      },
+      {
+        "Method": "MicroCause",
+        "OB AC@1": 0.3333333333333333,
+        "OB AC@3": 0.5333333333333333,
+        "OB AC@5": 0.6555555555555556,
+        "OB Avg@5": 0.5133333333333334,
+        "TT AC@1": 0.14444444444444443,
+        "TT AC@3": 0.23333333333333334,
+        "TT AC@5": 0.3111111111111111,
+        "TT Avg@5": 0.2311111111111111
+      },
+      {
+        "Method": "MicroRank",
+        "OB AC@1": 0.0,
+        "OB AC@3": 0.37777777777777777,
+        "OB AC@5": 0.5444444444444444,
+        "OB Avg@5": 0.3311111111111111,
+        "TT AC@1": 0.07777777777777778,
+        "TT AC@3": 0.32222222222222224,
+        "TT AC@5": 0.32222222222222224,
+        "TT Avg@5": 0.2511111111111111
+      },
+      {
+        "Method": "TraceRCA",
+        "OB AC@1": 0.15555555555555556,
+        "OB AC@3": 0.6444444444444445,
+        "OB AC@5": 0.9555555555555556,
+        "OB Avg@5": 0.6266666666666667,
+        "TT AC@1": 0.5666666666666667,
+        "TT AC@3": 0.6666666666666666,
+        "TT AC@5": 0.7,
+        "TT Avg@5": 0.6555555555555556
+      },
+      {
+        "Method": "mmBARO",
+        "OB AC@1": 0.16666666666666666,
+        "OB AC@3": 0.8777777777777778,
+        "OB AC@5": 0.9888888888888889,
+        "OB Avg@5": 0.7622222222222222,
+        "TT AC@1": 0.6888888888888889,
+        "TT AC@3": 0.8111111111111111,
+        "TT AC@5": 0.8666666666666667,
+        "TT Avg@5": 0.7977777777777778
+      },
+      {
+        "Method": "CausalRCA",
+        "OB AC@1": 0.0,
+        "OB AC@3": 0.2,
+        "OB AC@5": 0.6,
+        "OB Avg@5": 0.24000000000000005,
+        "TT AC@1": 0.0,
+        "TT AC@3": 0.0,
+        "TT AC@5": 0.0,
+        "TT Avg@5": 0.0
+      },
+      {
+        "Method": "Ada-RCA",
+        "OB AC@1": 0.8777777778,
+        "OB AC@3": 0.9888888889,
+        "OB AC@5": 0.9888888889,
+        "OB Avg@5": 0.9622222222,
+        "TT AC@1": 0.7111111111,
+        "TT AC@3": 0.8666666667,
+        "TT AC@5": 0.9333333333,
+        "TT Avg@5": 0.8511111111
+      }
+    ]
+  }
+}

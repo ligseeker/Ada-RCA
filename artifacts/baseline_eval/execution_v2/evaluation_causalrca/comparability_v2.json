@@ -1,0 +1,114 @@
+{
+  "provenance": {
+    "ada_rca_reference": {
+      "re2ob": {
+        "AC@1": 0.8777777778,
+        "AC@3": 0.9888888889,
+        "AC@5": 0.9888888889,
+        "Avg@5": 0.9622222222,
+        "MRR": 0.9314814815
+      },
+      "re2tt": {
+        "AC@1": 0.7111111111,
+        "AC@3": 0.8666666667,
+        "AC@5": 0.9333333333,
+        "Avg@5": 0.8511111111,
+        "MRR": 0.8034718882
+      }
+    },
+    "evaluation_scope": "V2_SIX_BASELINES_WITH_CAUSALRCA_CPU_EXTENSION",
+    "global_prediction_lock": {
+      "commit": "2778c64f137601f307e21e735e2ad23a3e14eda6",
+      "path": "artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json",
+      "sha256": "935d0a3e57e27cf3b8c0d267e6d114499846f7abbce1ffec3c34ad34a63f2200"
+    },
+    "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+    "method_order": [
+      "CIRCA",
+      "MicroCause",
+      "MicroRank",
+      "TraceRCA",
+      "mmBARO",
+      "CausalRCA"
+    ],
+    "protocol_digest": "24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54",
+    "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
+  },
+  "schema_version": "rca_baseline_rescue_comparability_v2",
+  "table_d": {
+    "columns": [
+      "Method",
+      "Input",
+      "Supervision",
+      "Native granularity",
+      "Service projection",
+      "Complete service ranking",
+      "MRR legality"
+    ],
+    "rows": [
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "input": "metric",
+        "method": "CIRCA",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "input": "metric",
+        "method": "MicroCause",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "input": "raw trace",
+        "method": "MicroRank",
+        "native_granularity": "operation",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "input": "raw trace",
+        "method": "TraceRCA",
+        "native_granularity": "operation",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "input": "multi-source",
+        "method": "mmBARO",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "input": "metric",
+        "method": "CausalRCA",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "FROZEN/NATIVE",
+        "complete_service_ranking": "YES",
+        "input": "Metrics + Logs + Traces",
+        "method": "Ada-RCA",
+        "native_granularity": "native service ranking",
+        "service_projection": "native service ranking",
+        "supervision": "root-supervised cross-case training"
+      }
+    ]
+  }
+}

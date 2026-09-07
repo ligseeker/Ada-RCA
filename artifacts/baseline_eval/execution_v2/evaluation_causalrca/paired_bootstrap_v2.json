@@ -1,0 +1,594 @@
+{
+  "provenance": {
+    "ada_rca_reference": {
+      "re2ob": {
+        "AC@1": 0.8777777778,
+        "AC@3": 0.9888888889,
+        "AC@5": 0.9888888889,
+        "Avg@5": 0.9622222222,
+        "MRR": 0.9314814815
+      },
+      "re2tt": {
+        "AC@1": 0.7111111111,
+        "AC@3": 0.8666666667,
+        "AC@5": 0.9333333333,
+        "Avg@5": 0.8511111111,
+        "MRR": 0.8034718882
+      }
+    },
+    "evaluation_scope": "V2_SIX_BASELINES_WITH_CAUSALRCA_CPU_EXTENSION",
+    "global_prediction_lock": {
+      "commit": "2778c64f137601f307e21e735e2ad23a3e14eda6",
+      "path": "artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json",
+      "sha256": "935d0a3e57e27cf3b8c0d267e6d114499846f7abbce1ffec3c34ad34a63f2200"
+    },
+    "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+    "method_order": [
+      "CIRCA",
+      "MicroCause",
+      "MicroRank",
+      "TraceRCA",
+      "mmBARO",
+      "CausalRCA"
+    ],
+    "protocol_digest": "24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54",
+    "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
+  },
+  "resamples": 10000,
+  "rows": [
+    {
+      "dataset": "re2ob",
+      "method": "CIRCA",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.06666666666666668,
+          0.19555555555555554
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.12888888888888886,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.1111111111111111,
+          0.32222222222222224
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.2111111111111111,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2ob",
+      "method": "MicroCause",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.3577777777777778,
+          0.5422222222222219
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.4488888888888889,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.4222222222222222,
+          0.6555555555555556
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.5444444444444444,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2ob",
+      "method": "MicroRank",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.5533333333333332,
+          0.7066666666666666
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.6311111111111112,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.8111111111111111,
+          0.9444444444444444
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.8777777777777778,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2ob",
+      "method": "TraceRCA",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.2733333333333334,
+          0.39555555555555566
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.3355555555555556,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.6111111111111112,
+          0.8222222222222222
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.7222222222222222,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2ob",
+      "method": "mmBARO",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.16222222222222196,
+          0.23777777777777745
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.2,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.6333333333333333,
+          0.7888888888888889
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.7111111111111111,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2ob",
+      "method": "CausalRCA",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.6599999999999997,
+          0.78
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.7222222222222222,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.8111111111111111,
+          0.9444444444444444
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.8777777777777778,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2tt",
+      "method": "CIRCA",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.11111111111111117,
+          0.2644444444444444
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.18666666666666668,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.044444444444444446,
+          0.26666666666666666
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.15555555555555556,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2tt",
+      "method": "MicroCause",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.52,
+          0.7177777777777775
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.62,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.4666666666666667,
+          0.6666666666666666
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.5666666666666667,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2tt",
+      "method": "MicroRank",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.5066666666666667,
+          0.691111111111111
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.6,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.5333333333333333,
+          0.7333333333333333
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.6333333333333333,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2tt",
+      "method": "TraceRCA",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.09555555555555553,
+          0.29555555555555557
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.19555555555555557,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.011111111111111112,
+          0.2777777777777778
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.14444444444444443,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2tt",
+      "method": "mmBARO",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          -0.008888888888888882,
+          0.11555555555555558
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.053333333333333344,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          -0.08888888888888889,
+          0.12222222222222222
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.022222222222222223,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    },
+    {
+      "dataset": "re2tt",
+      "method": "CausalRCA",
+      "primary_delta_avg5": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.8022222222222221,
+          0.8999999999999997
+        ],
+        "estimand": "Ada-RCA minus Avg@5 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "Avg@5",
+        "point_estimate": 0.851111111111111,
+        "resamples": 10000,
+        "seed": 20260827
+      },
+      "secondary_delta_ac1": {
+        "cases": 90,
+        "ci_95_percent": [
+          0.6333333333333333,
+          0.7888888888888889
+        ],
+        "estimand": "Ada-RCA minus AC@1 baseline",
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "fault_stratified": true,
+        "metric": "AC@1",
+        "point_estimate": 0.7111111111111111,
+        "resamples": 10000,
+        "seed": 20260827
+      }
+    }
+  ],
+  "schema_version": "rca_baseline_rescue_paired_fault_stratified_bootstrap_v2",
+  "seed": 20260827
+}
