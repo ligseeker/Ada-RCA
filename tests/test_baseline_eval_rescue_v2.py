@@ -385,7 +385,6 @@ class RescueV2ProtocolTest(unittest.TestCase):
         )
         self.assertFalse(result["real_execution_authorized"])
 
-
 class RescueV2FailureAndMetricTest(unittest.TestCase):
     def test_16_only_method_failure_gets_zero_utility(self):
         self.assertEqual(_case_utility("METHOD_FAILURE", ("root",), "root"), (0, 0, 0, 0, 0))
