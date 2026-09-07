@@ -1,0 +1,309 @@
+{
+  "ada_rca_frozen_starting_commit": "54b403ff0441c318817818abeda13526652ae1d2",
+  "attempt_ids": {
+    "CIRCA": "circa-a3-rescue-v2",
+    "CausalRCA": "causalrca-cpu-a1-rescue-v2",
+    "MicroCause": "microcause-a3-rescue-v2",
+    "MicroRank": "microrank-a3-rescue-v2",
+    "TraceRCA": "tracerca-a3-rescue-v2",
+    "mmBARO": "mmbaro-a3-rescue-v2"
+  },
+  "base_protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "base_protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "candidate_registry_digests": {
+    "re2ob": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+    "re2tt": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a"
+  },
+  "causalrca_extension_protocol_digest": "fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b",
+  "causalrca_extension_protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_CPU",
+  "contains_evaluation": false,
+  "dataset_order": [
+    "re2ob",
+    "re2tt"
+  ],
+  "datasets_case_counts": {
+    "re2ob": 90,
+    "re2tt": 90
+  },
+  "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+  "labels_joined": false,
+  "lock_digest": "8e88edaf71129725a5c4fb9842261d63508fa5625cbd76edf2cbe8bfba27eecf",
+  "locked_at": "2026-09-07T05:25:38.344711+00:00",
+  "method_lock_binding": {
+    "CIRCA": {
+      "execution_root": "artifacts/baseline_eval/execution_v2",
+      "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+      "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2"
+    },
+    "CausalRCA": {
+      "execution_root": "artifacts/baseline_eval/execution_v2_causalrca_cpu",
+      "protocol_digest": "fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b",
+      "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_CPU"
+    },
+    "MicroCause": {
+      "execution_root": "artifacts/baseline_eval/execution_v2",
+      "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+      "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2"
+    },
+    "MicroRank": {
+      "execution_root": "artifacts/baseline_eval/execution_v2",
+      "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+      "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2"
+    },
+    "TraceRCA": {
+      "execution_root": "artifacts/baseline_eval/execution_v2",
+      "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+      "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2"
+    },
+    "mmBARO": {
+      "execution_root": "artifacts/baseline_eval/execution_v2",
+      "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+      "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2"
+    }
+  },
+  "method_order": [
+    "CIRCA",
+    "MicroCause",
+    "MicroRank",
+    "TraceRCA",
+    "mmBARO",
+    "CausalRCA"
+  ],
+  "methods": [
+    {
+      "actual_worker_count": 10,
+      "attempt_id": "circa-a3-rescue-v2",
+      "environment_digest": "e5a821162c9a17ea236e9e8e2674f75fe96a8c29c3d094f6efc3d744fae04307",
+      "method": "CIRCA",
+      "method_lock_path": "artifacts/baseline_eval/execution_v2/locks/circa_prediction_lock_reissued_v2.json",
+      "method_lock_sha256": "9af205d9c53d04ccea577fe9b9ab545668fd6208b29a90291799438c6de03810",
+      "record_digest": "872b809203767f1e457c3c71ff9dd9a3a11b8eb09d05dc0f0fb6ee61ff7a6794",
+      "requested_worker_count": 10,
+      "status_counts": {
+        "re2ob": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 4,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 86,
+          "TIMEOUT": 0
+        },
+        "re2tt": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 10,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 80,
+          "TIMEOUT": 0
+        }
+      }
+    },
+    {
+      "actual_worker_count": 10,
+      "attempt_id": "microcause-a3-rescue-v2",
+      "environment_digest": "759fed011af9648be0c96b05a5627f089df7471910f2ff7ed103d1acc5f2e1b2",
+      "method": "MicroCause",
+      "method_lock_path": "artifacts/baseline_eval/execution_v2/locks/microcause_prediction_lock.json",
+      "method_lock_sha256": "7075783d02906c3a92c8ba1ed537175ecb5c7c9ea0b4fad6b91ed161b7618ee8",
+      "record_digest": "5f7387e7ecbf4fce16c4619aae1d19a4e4f025796bec32e9f41785b79861d0b8",
+      "requested_worker_count": 10,
+      "status_counts": {
+        "re2ob": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 1,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 89,
+          "TIMEOUT": 0
+        },
+        "re2tt": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 7,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 83,
+          "TIMEOUT": 0
+        }
+      }
+    },
+    {
+      "actual_worker_count": 10,
+      "attempt_id": "microrank-a3-rescue-v2",
+      "environment_digest": "312f57a69937beaf0d0094f0408e1a0296d0e773d6bceab001a79ab9e945755d",
+      "method": "MicroRank",
+      "method_lock_path": "artifacts/baseline_eval/execution_v2/locks/microrank_prediction_lock_reissued_v2.json",
+      "method_lock_sha256": "6059b9b615f7465677dc4b3527ea5b428813f3ae061af6f07fe8479c986b2300",
+      "record_digest": "74293c27fc9ce3e801490a69bddc23602e6c4e1ba73ff91cbc93fdda0cd8133c",
+      "requested_worker_count": 10,
+      "status_counts": {
+        "re2ob": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 0,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 90,
+          "TIMEOUT": 0
+        },
+        "re2tt": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 15,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 75,
+          "TIMEOUT": 0
+        }
+      }
+    },
+    {
+      "actual_worker_count": 10,
+      "attempt_id": "tracerca-a3-rescue-v2",
+      "environment_digest": "6318af17a1cfeb3d40e8adf60d4bf76775f940439373f651f624514a10b6e8f5",
+      "method": "TraceRCA",
+      "method_lock_path": "artifacts/baseline_eval/execution_v2/locks/tracerca_prediction_lock_reissued_v2.json",
+      "method_lock_sha256": "1c7dd3c791e4bede471f16179d75dfde14ae5f7d5cdcfacee7503ee95882689a",
+      "record_digest": "38c606482d8192fd0ef6a02170147ef7f88b85acaa0e10dbd42ed08a0e0b1c50",
+      "requested_worker_count": 10,
+      "status_counts": {
+        "re2ob": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 0,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 90,
+          "TIMEOUT": 0
+        },
+        "re2tt": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 15,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 75,
+          "TIMEOUT": 0
+        }
+      }
+    },
+    {
+      "actual_worker_count": 10,
+      "attempt_id": "mmbaro-a3-rescue-v2",
+      "environment_digest": "8600fc4e61f109e4ac0b22795268d27deedc03d593b9b6c0de7ef02498a97450",
+      "method": "mmBARO",
+      "method_lock_path": "artifacts/baseline_eval/execution_v2/locks/mmbaro_prediction_lock_reissued_v2.json",
+      "method_lock_sha256": "8c1a6f527269d033f95845575fc3d7ae2eac095c247ed94feaa2d5e1be1db650",
+      "record_digest": "88565081955470aa16122c29633192b7cf870b03edbd8f4596956c8e7d94138c",
+      "requested_worker_count": 10,
+      "status_counts": {
+        "re2ob": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 0,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 90,
+          "TIMEOUT": 0
+        },
+        "re2tt": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 1,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 89,
+          "TIMEOUT": 0
+        }
+      }
+    },
+    {
+      "actual_worker_count": 20,
+      "attempt_id": "causalrca-cpu-a1-rescue-v2",
+      "environment_digest": "9a7a308354979812f796d66904f2bdfba6ceb66063ad5ac70830ebdf8ac487ab",
+      "method": "CausalRCA",
+      "method_lock_path": "artifacts/baseline_eval/execution_v2_causalrca_cpu/locks/causalrca_prediction_lock.json",
+      "method_lock_sha256": "636e96292f39b56c3fda30f064adc9880b04e551ecd9f562e951cea0edaad8d5",
+      "record_digest": "2a7df18f1fed28615d54dcee9877c155bee6bf5dc838e5c976d87e989d9f1d24",
+      "requested_worker_count": 20,
+      "status_counts": {
+        "re2ob": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 0,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 90,
+          "TIMEOUT": 0
+        },
+        "re2tt": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "ENVIRONMENT_FAILURE": 0,
+          "INPUT_INTEGRITY_FAILURE": 0,
+          "METHOD_FAILURE": 0,
+          "PROCESS_CRASH/OOM": 0,
+          "SUCCESS": 90,
+          "TIMEOUT": 0
+        }
+      }
+    }
+  ],
+  "parallel_worker_configuration": {
+    "allowed_requested_workers": [
+      1,
+      4,
+      10,
+      20
+    ],
+    "per_method": {
+      "CIRCA": {
+        "actual": 10,
+        "requested": 10
+      },
+      "CausalRCA": {
+        "actual": 20,
+        "requested": 20
+      },
+      "MicroCause": {
+        "actual": 10,
+        "requested": 10
+      },
+      "MicroRank": {
+        "actual": 10,
+        "requested": 10
+      },
+      "TraceRCA": {
+        "actual": 10,
+        "requested": 10
+      },
+      "mmBARO": {
+        "actual": 10,
+        "requested": 10
+      }
+    }
+  },
+  "protocol_digest": "24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_COMBINED",
+  "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+  "schema_version": "rca_baseline_rescue_global_prediction_lock_v2_combined",
+  "timeout_policy": {
+    "no_timeout": true,
+    "retry": false,
+    "timeout_seconds": null
+  }
+}
