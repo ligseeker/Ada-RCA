@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2 COMBINED GLOBAL LOCK VERIFIED — SIX-METHOD EVALUATION PENDING**
-State revision: `2026-09-07.3`
+Status: **V2 COMBINED EVALUATION COMPLETE — SIX-METHOD TABLE PUBLISHED**
+State revision: `2026-09-07.4`
 Last operational audit: 2026-09-07, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `2778c64`
+Last synchronized central commit: `0176694`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -45,7 +45,7 @@ contents, and update this document.
 | Protocol digest | `aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e` | frozen |
 | Input-manifest digest | `b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec` | frozen |
 | V2.1 rescue protocol digest | `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen |
-| V2 combined CausalRCA protocol digest | `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | additive; lock committed as `2778c64` |
+| V2 combined CausalRCA protocol digest | `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | additive; lock/evaluation complete |
 
 The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
 only removes the final newline from the existing `artifacts/cache/` line. On
@@ -63,7 +63,7 @@ project worktrees under `~/.venvs/`.
 | Method | Environment/interpreter | Python | Key dependency | Current state |
 |---|---|---|---|---|
 | BARO | project `.venv/bin/python` | 3.10.20 | historical frozen stack | environment valid; execution complete |
-| CIRCA | project `.venv/bin/python` (historical A1/A2); V2 `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | historical frozen stack; V2 common stack | A1/A2 retained; V2 environment/attempt pending |
+| CIRCA | project `.venv/bin/python` (historical A1/A2); V2 `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | historical frozen stack; V2 common stack | A1/A2 retained; V2 execution complete; lock verified centrally |
 | MicroCause | `~/.venvs/ada-rca-baselines-microcause/bin/python` | 3.10.20 | `tigramite==4.2.2.1` | A1 retained; A2 complete; four-worker lock verified centrally |
 | MicroRank | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | Tigramite 5.2.10.1 in common stack | A1/A2 integrated; method lock verified centrally |
 | TraceRCA | `~/.venvs/ada-rca-baselines-common/bin/python` | 3.10.20 | common stack | A1/A2 integrated; method lock verified centrally |
@@ -88,7 +88,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Frozen adapter/protocol audit | `b777f15` through `f7dcd8d` | complete |
 | Performance firewall | `54b403f`, `2d9e96e` | complete |
 | Original sequential execution harness | `e056958` | superseded for cross-method scheduling only |
-| Parallel execution amendment and method-isolated harness | this revision | complete; task launch pending |
+| Parallel execution amendment and method-isolated harness | this revision | complete; all task runs integrated |
 | Frozen input manifest | `5b3d944` | complete |
 | BARO environment freeze | `5018f5d` | complete |
 | BARO label-free prediction lock | `fbfb6e6` | complete |
@@ -105,12 +105,12 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Frozen-environment/preflight stabilization | `c1c7a96` | complete; merged as `83e2df7` (CIRCA) and `60a346a` (MicroCause) |
 | Central integration of five method tracks | `d6ca33f` through `db78094` | complete; method-scoped artifacts merged and all five locks verified |
 | Deferred CausalRCA GPU work | branch `wip/causalrca-gpu-amendment`, commit `89db7ec` | saved only; not authorized for execution |
-| V2.1 performance-blind rescue protocol and metric timestamp repair | `3a27d0e`; `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen; V2 code and task-container execution pending |
-| V2 no-timeout scheduler, provenance, resume, and process monitoring | `26b1864`, `6f1df1a` | complete; five task-container runs pending |
+| V2.1 performance-blind rescue protocol and metric timestamp repair | `3a27d0e`; `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen; V2 execution complete |
+| V2 no-timeout scheduler, provenance, resume, and process monitoring | `26b1864`, `6f1df1a` | complete; all six task tracks integrated |
 | V2 post-lock evaluator and failure semantics | `60b45b1` | complete; labels gated by committed V2 global lock |
 | V2 task-container runbook | `f60252c`; command-path sync `596f68b`; current recovery `ceac081` | complete; exact commands in `RCA_BASELINE_RESCUE_RUNBOOK_V2.md` |
 | V2 fault-level row regression test | `c226ff5` | complete; focused suite 70/70 |
-| V2 preflight metadata/environment-isolation repair | `8ee08ed` | complete; focused suite 72/72; task preflights pending |
+| V2 preflight metadata/environment-isolation repair | `8ee08ed` | complete; focused suite 72/72; task preflights passed |
 | V2 preflight caller regression test | `de70370` | complete; focused suite 73/73 |
 | V2 no-timeout preflight/server-startup and validity repair | `41badec` | complete; V2 synthetic preflight uses `timeout=None`; nested blocking counts fixed |
 | V2 immutable method-lock re-attestation | `759f780`, `dfe48f1` | complete; corrected `_reissued_v2` sidecars preserve original locks |
@@ -118,7 +118,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2.2 implementation amendment | `9f10742`; `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
 | V2 pre-lock interim unified tables | `RCA_BASELINE_INTERIM_UNIFIED_TABLES_V2.md` | recorded; RE2-OB operational snapshot only, metric cells intentionally blank |
 | CausalRCA CPU case-level V2 extension | `088b044`; merged evidence `ed4026f`; protocol digest `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | complete; 180 records; lock valid |
-| Six-method V2 combined lock/evaluation amendment | `RCA_BASELINE_V2_CAUSALRCA_COMBINED_LOCK_AMENDMENT_V1.md`; machine digest `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | authorized; combined lock committed as `2778c64`; metrics pending |
+| Six-method V2 combined lock/evaluation amendment | `RCA_BASELINE_V2_CAUSALRCA_COMBINED_LOCK_AMENDMENT_V1.md`; machine digest `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | authorized; lock `2778c64`, metrics `8da9b44`, report `0176694` |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -333,7 +333,7 @@ its separate CPU-extension root. The merge did not touch the user method's
 `src/rca` or `artifacts/p6_*` paths. All five base V2 locks and the independent
 CausalRCA extension lock verify centrally.
 
-### B7. V2 post-launch rescue state — complete; combined evaluation pending
+### B7. V2 post-launch rescue state — complete; six-method evaluation published
 
 - CIRCA, MicroCause, MicroRank, TraceRCA, and mmBARO each have 180/180
   terminal records, no blocking terminal statuses, and a centrally verified
@@ -346,7 +346,13 @@ CausalRCA extension lock verify centrally.
 - The independent method locks and the additive six-method combined global
   prediction lock are complete. The lock is committed as `2778c64` at
   `execution_v2/prediction_lock_v2_causalrca.json`; it records
-  `labels_joined=false` and `contains_evaluation=false`.
+  `labels_joined=false` and `contains_evaluation=false` before the post-lock
+  stage. Committed-lock verification and the performance firewall passed.
+- Post-lock evaluation joined labels only after the combined lock and completed
+  as `8da9b44`; the five JSON tables are under
+  `execution_v2/evaluation_causalrca/`. The final Markdown table, including
+  CausalRCA, is committed as `0176694` at
+  `docs/baseline_eval/RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md`.
 
 ## 7. Historical V1 plan and current V2 replacement
 
@@ -371,13 +377,12 @@ to create a V1 lock.
   remain separate. All six active locks are integrity-valid and contain no
   blocking terminal statuses; METHOD_FAILURE remains a legal zero-utility
   robustness observation.
-- The coordinator may create and commit the additive six-method combined V2
-  prediction lock at
+- The additive six-method combined V2 prediction lock is committed at
   `artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json`.
   The combined protocol is
   `artifacts/baseline_eval/rescue_protocol_v2_causalrca_combined.json` with
   digest `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54`.
-  No labels or metrics have been inspected before that lock.
+  Labels and metrics were read only after that lock; no method was rerun.
 
 ### P0 — Resolve repository transition readiness
 
@@ -462,19 +467,21 @@ to create a V1 lock.
   authorized by the user. The six-method lock was created and committed as
   `2778c64`, and committed-lock verification plus the performance firewall
   passed.
-- No label join or metric computation has occurred in this merge task.
+- Complete: the committed combined lock was the gate for the label join and
+  metric computation; no method rerun occurred.
 
-### P8 — Post-lock evaluation and reporting — next action
+### P8 — Post-lock evaluation and reporting — complete
 
 - Join labels only after the committed global prediction lock.
 - Never rerun a baseline during evaluation.
 - Keep every failure in the 90-case dataset denominator with zero top-k utility.
 - Report AC@1, AC@3, AC@5, and Avg@5; baseline MRR remains
   `NOT-IDENTIFIABLE`.
-- Next: generate the six-method overall, fault-level, robustness,
+- Complete: generated the six-method overall, fault-level, robustness,
   comparability, and paired-bootstrap tables under
-  `execution_v2/evaluation_causalrca/`, then publish
-  `RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md`.
+  `execution_v2/evaluation_causalrca/` in `8da9b44`, then published
+  `RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md` in `0176694`. The full suite passed
+  `247` tests; the performance firewall and committed combined-lock audit pass.
 - Commit evaluation and reporting separately.
 - Update this document with final artifact paths, commits, tests, push state,
   limitations, and final decision.

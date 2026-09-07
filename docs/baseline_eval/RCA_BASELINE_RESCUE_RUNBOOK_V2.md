@@ -1,6 +1,6 @@
 # RCAEval V2 Rescue Runbook: Five Baselines and CausalRCA CPU Extension
 
-Status: `V2_RESCUE_CODE_READY — CAUSALRCA CPU EXTENSION AUTHORIZED`
+Status: `V2_COMBINED_EVALUATION_COMPLETE — SIX-METHOD TABLE PUBLISHED`
 
 This runbook is the operational companion to
 `RCA_BASELINE_RESCUE_PROTOCOL_V2.md`. It is performance-blind. Do not
