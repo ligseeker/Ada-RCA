@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **V2 COMBINED EVALUATION COMPLETE — SIX-METHOD TABLE PUBLISHED**
-State revision: `2026-09-07.4`
+State revision: `2026-09-07.5`
 Last operational audit: 2026-09-07, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `d876603`
+Last synchronized central commit: `c990c0e`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -118,7 +118,8 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2.2 implementation amendment | `9f10742`; `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
 | V2 pre-lock interim unified tables | `RCA_BASELINE_INTERIM_UNIFIED_TABLES_V2.md` | recorded; RE2-OB operational snapshot only, metric cells intentionally blank |
 | CausalRCA CPU case-level V2 extension | `088b044`; merged evidence `ed4026f`; protocol digest `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | complete; 180 records; lock valid |
-| Six-method V2 combined lock/evaluation amendment | `RCA_BASELINE_V2_CAUSALRCA_COMBINED_LOCK_AMENDMENT_V1.md`; machine digest `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | authorized; lock `2778c64`, metrics `8da9b44`, report `0176694` |
+| Six-method V2 combined lock/evaluation amendment | `RCA_BASELINE_V2_CAUSALRCA_COMBINED_LOCK_AMENDMENT_V1.md`; machine digest `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | authorized; lock `2778c64`, metrics `8da9b44`, report `c990c0e` |
+| V2 final Table C/D presentation refresh | `ce673c9`; report `c990c0e` | complete; no lock or metric JSON changes; full suite 247/247 |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -351,7 +352,7 @@ CausalRCA extension lock verify centrally.
 - Post-lock evaluation joined labels only after the combined lock and completed
   as `8da9b44`; the five JSON tables are under
   `execution_v2/evaluation_causalrca/`. The final Markdown table, including
-  CausalRCA, is committed as `0176694` at
+  CausalRCA, is committed as `c990c0e` at
   `docs/baseline_eval/RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md`.
 
 ## 7. Historical V1 plan and current V2 replacement
@@ -479,9 +480,10 @@ to create a V1 lock.
   `NOT-IDENTIFIABLE`.
 - Complete: generated the six-method overall, fault-level, robustness,
   comparability, and paired-bootstrap tables under
-  `execution_v2/evaluation_causalrca/` in `8da9b44`, then published
-  `RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md` in `0176694`. The full suite passed
-  `247` tests; the performance firewall and committed combined-lock audit pass.
+  `execution_v2/evaluation_causalrca/` in `8da9b44`, then published and
+  refreshed `RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md` in `c990c0e` (renderer
+  clarification in `ce673c9`). The full suite passed `247` tests; the
+  performance firewall and committed combined-lock audit pass.
 - Commit evaluation and reporting separately.
 - Update this document with final artifact paths, commits, tests, push state,
   limitations, and final decision.
