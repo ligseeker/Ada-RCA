@@ -1,0 +1,35 @@
+{
+  "actual_worker_count": 20,
+  "attempt_digest": "ef74db883a6e6388018accd3242bc76dde75a5048429e13f16fdfd3a9236ef29",
+  "attempt_id": "causalrca-cpu-a1-rescue-v2",
+  "available_cpu_count": 80,
+  "candidate_registry_digests": {
+    "re2ob": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+    "re2tt": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a"
+  },
+  "case_parallelism": "case-level-process-isolated",
+  "created_at": "2026-09-04T14:30:30.967675+00:00",
+  "datasets": [
+    "re2ob",
+    "re2tt"
+  ],
+  "environment_digest": "9a7a308354979812f796d66904f2bdfba6ceb66063ad5ac70830ebdf8ac487ab",
+  "execution_commit": "5b20c7f4846266f1aea9d83e3502b817e4aaf5a8",
+  "execution_device": "CPU",
+  "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+  "labels_joined": false,
+  "method": "CausalRCA",
+  "native_module_digest": "74aebfb9f8211db3a48385a73ae577e9673a432d719f859771bbf66dc2a008f0",
+  "no_timeout": true,
+  "parallel_case_processes": true,
+  "protocol_base_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "protocol_digest": "fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_CPU",
+  "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+  "requested_worker_count": 20,
+  "resume_policy": "missing-terminal-records-only",
+  "retry": false,
+  "schema_version": "rca_baseline_rescue_attempt_v2",
+  "seed": 20260830,
+  "timeout_seconds": null
+}

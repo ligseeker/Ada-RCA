@@ -1,0 +1,1843 @@
+{
+  "actual_worker_count": 20,
+  "attempt_finish_timestamp": "2026-09-05T19:48:53.067390+00:00",
+  "attempt_id": "causalrca-cpu-a1-rescue-v2",
+  "attempt_start_timestamp": "2026-09-04T14:30:31.067545+00:00",
+  "attempt_wall_time_seconds": 105501.99983830808,
+  "available_cpu_count": 80,
+  "case_timings": [
+    {
+      "case_id": "re2ob-9e575f44de987a1a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2472.105562004959,
+      "finish_timestamp": "2026-09-04T15:12:37.245955+00:00",
+      "pid": 394,
+      "start_timestamp": "2026-09-04T14:31:25.140308+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2ob-505f802370635ec3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1649.803029633942,
+      "finish_timestamp": "2026-09-04T14:58:54.945842+00:00",
+      "pid": 395,
+      "start_timestamp": "2026-09-04T14:31:25.142741+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2ob-057fe49bd30d47c0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1861.9711519130506,
+      "finish_timestamp": "2026-09-04T15:02:27.148032+00:00",
+      "pid": 403,
+      "start_timestamp": "2026-09-04T14:31:25.176805+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2ob-79fcefff48aef53b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2110.6144000630593,
+      "finish_timestamp": "2026-09-04T15:06:35.770488+00:00",
+      "pid": 399,
+      "start_timestamp": "2026-09-04T14:31:25.156007+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2ob-4b9110d974bb1875",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2063.7281010999577,
+      "finish_timestamp": "2026-09-04T15:05:48.835178+00:00",
+      "pid": 390,
+      "start_timestamp": "2026-09-04T14:31:25.106993+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2ob-428d5ecf570372b5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1944.2123542010086,
+      "finish_timestamp": "2026-09-04T15:03:49.332563+00:00",
+      "pid": 393,
+      "start_timestamp": "2026-09-04T14:31:25.120136+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2ob-66c4b614046569c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2062.3078711079434,
+      "finish_timestamp": "2026-09-04T15:05:47.474175+00:00",
+      "pid": 401,
+      "start_timestamp": "2026-09-04T14:31:25.166226+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2ob-7aec8ac514e0d064",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2262.9197510880185,
+      "finish_timestamp": "2026-09-04T15:09:08.064512+00:00",
+      "pid": 398,
+      "start_timestamp": "2026-09-04T14:31:25.144681+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2ob-a6318b7e89546125",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2174.8487985989777,
+      "finish_timestamp": "2026-09-04T15:07:39.991924+00:00",
+      "pid": 397,
+      "start_timestamp": "2026-09-04T14:31:25.143040+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2ob-7f2201e9884e818e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2154.153451676946,
+      "finish_timestamp": "2026-09-04T15:07:19.333594+00:00",
+      "pid": 404,
+      "start_timestamp": "2026-09-04T14:31:25.180059+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2ob-7c278a568194196b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2013.2629038019804,
+      "finish_timestamp": "2026-09-04T15:04:58.339468+00:00",
+      "pid": 387,
+      "start_timestamp": "2026-09-04T14:31:25.076470+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2ob-72b5d278f8908a0a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2652.2713266001083,
+      "finish_timestamp": "2026-09-04T15:15:37.434841+00:00",
+      "pid": 400,
+      "start_timestamp": "2026-09-04T14:31:25.163436+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2ob-b17ce68eb2ce01ee",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2014.6815771710826,
+      "finish_timestamp": "2026-09-04T15:04:59.760538+00:00",
+      "pid": 388,
+      "start_timestamp": "2026-09-04T14:31:25.078881+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2ob-1d9a0d1641171551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1686.3109726600815,
+      "finish_timestamp": "2026-09-04T14:59:31.387619+00:00",
+      "pid": 386,
+      "start_timestamp": "2026-09-04T14:31:25.076563+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2ob-abc29368674e8298",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2192.8686500779586,
+      "finish_timestamp": "2026-09-04T15:07:58.038559+00:00",
+      "pid": 402,
+      "start_timestamp": "2026-09-04T14:31:25.169825+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2ob-1d19cc60d7a6adc1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1989.1532600460341,
+      "finish_timestamp": "2026-09-04T15:04:34.229718+00:00",
+      "pid": 385,
+      "start_timestamp": "2026-09-04T14:31:25.076369+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2ob-71c7f9be34b19754",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1776.087620564038,
+      "finish_timestamp": "2026-09-04T15:01:01.171049+00:00",
+      "pid": 389,
+      "start_timestamp": "2026-09-04T14:31:25.083341+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2ob-557d49794f937ec6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2093.8079634320457,
+      "finish_timestamp": "2026-09-04T15:06:18.951677+00:00",
+      "pid": 396,
+      "start_timestamp": "2026-09-04T14:31:25.143633+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2ob-cec5183e3f5418cf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1985.7987864459865,
+      "finish_timestamp": "2026-09-04T15:04:30.910446+00:00",
+      "pid": 392,
+      "start_timestamp": "2026-09-04T14:31:25.111574+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2ob-da48e150772a24fd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1914.6995963649824,
+      "finish_timestamp": "2026-09-04T15:03:19.806814+00:00",
+      "pid": 391,
+      "start_timestamp": "2026-09-04T14:31:25.107163+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    },
+    {
+      "case_id": "re2ob-fd67c49516fa2028",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1742.24141504406,
+      "finish_timestamp": "2026-09-04T15:41:39.569811+00:00",
+      "pid": 423,
+      "start_timestamp": "2026-09-04T15:12:37.328304+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2ob-f874f110aae8efa9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2135.638029214926,
+      "finish_timestamp": "2026-09-04T15:34:30.677865+00:00",
+      "pid": 405,
+      "start_timestamp": "2026-09-04T14:58:55.039754+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2ob-40e1893e43abba5c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2243.982482991996,
+      "finish_timestamp": "2026-09-04T15:39:51.227092+00:00",
+      "pid": 408,
+      "start_timestamp": "2026-09-04T15:02:27.244519+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2ob-6aa36a4c6c99d55c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1857.6908886089223,
+      "finish_timestamp": "2026-09-04T15:37:33.557853+00:00",
+      "pid": 418,
+      "start_timestamp": "2026-09-04T15:06:35.866875+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2ob-5a4d1a4785969ab2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2138.6834926969605,
+      "finish_timestamp": "2026-09-04T15:41:27.600236+00:00",
+      "pid": 416,
+      "start_timestamp": "2026-09-04T15:05:48.916654+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2ob-eb8f50fda4f9095f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2061.622699704021,
+      "finish_timestamp": "2026-09-04T15:38:11.051835+00:00",
+      "pid": 410,
+      "start_timestamp": "2026-09-04T15:03:49.429031+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2ob-42e80cf6bcd9400f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2235.5910633839667,
+      "finish_timestamp": "2026-09-04T15:43:03.157555+00:00",
+      "pid": 415,
+      "start_timestamp": "2026-09-04T15:05:47.566392+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2ob-a84cfdf477d8bf62",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1993.7553003319772,
+      "finish_timestamp": "2026-09-04T15:42:21.917926+00:00",
+      "pid": 422,
+      "start_timestamp": "2026-09-04T15:09:08.162525+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2ob-3827c8c9ef1e8592",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1806.335953345988,
+      "finish_timestamp": "2026-09-04T15:37:46.416316+00:00",
+      "pid": 420,
+      "start_timestamp": "2026-09-04T15:07:40.080264+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2ob-acf69e21960f63d8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1767.072614841978,
+      "finish_timestamp": "2026-09-04T15:36:46.505063+00:00",
+      "pid": 419,
+      "start_timestamp": "2026-09-04T15:07:19.432392+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2ob-0433b8cb47b1ec8e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1463.2971767530544,
+      "finish_timestamp": "2026-09-04T15:29:21.720783+00:00",
+      "pid": 413,
+      "start_timestamp": "2026-09-04T15:04:58.423521+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2ob-5f261573c1b3bdc5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2220.3862071679905,
+      "finish_timestamp": "2026-09-04T15:52:37.927955+00:00",
+      "pid": 424,
+      "start_timestamp": "2026-09-04T15:15:37.541652+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2ob-af1b6a7e1667e3f5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2066.3204340030206,
+      "finish_timestamp": "2026-09-04T15:39:26.171934+00:00",
+      "pid": 414,
+      "start_timestamp": "2026-09-04T15:04:59.851406+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2ob-bd6f4fb8e84ccb69",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1784.6998143319506,
+      "finish_timestamp": "2026-09-04T15:29:16.168989+00:00",
+      "pid": 406,
+      "start_timestamp": "2026-09-04T14:59:31.469077+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2ob-3e7e71a1c83dbc41",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2162.4234760369873,
+      "finish_timestamp": "2026-09-04T15:44:00.566911+00:00",
+      "pid": 421,
+      "start_timestamp": "2026-09-04T15:07:58.143343+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2ob-e357bd8aec246cdb",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1879.2456498950487,
+      "finish_timestamp": "2026-09-04T15:35:53.565725+00:00",
+      "pid": 412,
+      "start_timestamp": "2026-09-04T15:04:34.319990+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2ob-097a5d7ac0492007",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1927.4755521529587,
+      "finish_timestamp": "2026-09-04T15:33:08.746373+00:00",
+      "pid": 407,
+      "start_timestamp": "2026-09-04T15:01:01.270721+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2ob-57b75da971aabed5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1735.3389647810254,
+      "finish_timestamp": "2026-09-04T15:35:14.430519+00:00",
+      "pid": 417,
+      "start_timestamp": "2026-09-04T15:06:19.091458+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2ob-e16e6de30ae75ccd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1916.0840874330606,
+      "finish_timestamp": "2026-09-04T15:36:27.164331+00:00",
+      "pid": 411,
+      "start_timestamp": "2026-09-04T15:04:31.080144+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2ob-4677d4ce6ef327e0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1855.3406388390576,
+      "finish_timestamp": "2026-09-04T15:34:15.252663+00:00",
+      "pid": 409,
+      "start_timestamp": "2026-09-04T15:03:19.911938+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    },
+    {
+      "case_id": "re2ob-d7f2f8eb2f0ad646",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1751.905322512961,
+      "finish_timestamp": "2026-09-04T16:10:51.603168+00:00",
+      "pid": 440,
+      "start_timestamp": "2026-09-04T15:41:39.697760+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2ob-df7e831dddfac76c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1979.605651092017,
+      "finish_timestamp": "2026-09-04T16:07:30.369745+00:00",
+      "pid": 429,
+      "start_timestamp": "2026-09-04T15:34:30.764013+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2ob-1084f320d8584c61",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2593.0795966630103,
+      "finish_timestamp": "2026-09-04T16:23:04.410267+00:00",
+      "pid": 438,
+      "start_timestamp": "2026-09-04T15:39:51.330575+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2ob-23213ee605c6b050",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2054.244827994029,
+      "finish_timestamp": "2026-09-04T16:11:47.878800+00:00",
+      "pid": 434,
+      "start_timestamp": "2026-09-04T15:37:33.633886+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2ob-48e5379f4903b1d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2435.8720929150004,
+      "finish_timestamp": "2026-09-04T16:22:03.805092+00:00",
+      "pid": 439,
+      "start_timestamp": "2026-09-04T15:41:27.932908+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2ob-bb4a5b75716772f9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2215.876772988937,
+      "finish_timestamp": "2026-09-04T16:15:07.013616+00:00",
+      "pid": 436,
+      "start_timestamp": "2026-09-04T15:38:11.136758+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2ob-8f991393cb9debdf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2218.064386663027,
+      "finish_timestamp": "2026-09-04T16:20:01.333718+00:00",
+      "pid": 442,
+      "start_timestamp": "2026-09-04T15:43:03.269239+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2ob-7858d4d3815cf005",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2334.3155041469727,
+      "finish_timestamp": "2026-09-04T16:21:16.316215+00:00",
+      "pid": 441,
+      "start_timestamp": "2026-09-04T15:42:22.000621+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2ob-97935dcb7cfd6e82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1950.4302808969514,
+      "finish_timestamp": "2026-09-04T16:10:16.940086+00:00",
+      "pid": 435,
+      "start_timestamp": "2026-09-04T15:37:46.509715+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2ob-f209212fc63ac713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1932.467314543901,
+      "finish_timestamp": "2026-09-04T16:08:59.091209+00:00",
+      "pid": 433,
+      "start_timestamp": "2026-09-04T15:36:46.623807+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2ob-93de1fab2ca56e86",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2279.7237422000617,
+      "finish_timestamp": "2026-09-04T16:07:21.558255+00:00",
+      "pid": 426,
+      "start_timestamp": "2026-09-04T15:29:21.834404+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2ob-435f42d94b785472",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1975.397747775074,
+      "finish_timestamp": "2026-09-04T16:25:33.429804+00:00",
+      "pid": 444,
+      "start_timestamp": "2026-09-04T15:52:38.031972+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2ob-048f2e7d7bfbc927",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2110.206200147979,
+      "finish_timestamp": "2026-09-04T16:14:36.483078+00:00",
+      "pid": 437,
+      "start_timestamp": "2026-09-04T15:39:26.276777+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2ob-4af0de56834334d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2119.9491035320098,
+      "finish_timestamp": "2026-09-04T16:04:36.210355+00:00",
+      "pid": 425,
+      "start_timestamp": "2026-09-04T15:29:16.261153+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2ob-d3f1403a4a08a3b1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2270.451075132005,
+      "finish_timestamp": "2026-09-04T16:21:51.104230+00:00",
+      "pid": 443,
+      "start_timestamp": "2026-09-04T15:44:00.653041+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2ob-7732042f2a190c79",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1926.84645284398,
+      "finish_timestamp": "2026-09-04T16:08:00.504007+00:00",
+      "pid": 431,
+      "start_timestamp": "2026-09-04T15:35:53.657442+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2ob-80bf4d093e6ab818",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1979.779699480976,
+      "finish_timestamp": "2026-09-04T16:06:08.635499+00:00",
+      "pid": 427,
+      "start_timestamp": "2026-09-04T15:33:08.855695+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2ob-08f3e5d7b11d1fa7",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1935.423540426069,
+      "finish_timestamp": "2026-09-04T16:07:29.948955+00:00",
+      "pid": 430,
+      "start_timestamp": "2026-09-04T15:35:14.525323+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2ob-b6db72fc58931786",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1761.0249812569236,
+      "finish_timestamp": "2026-09-04T16:05:48.292970+00:00",
+      "pid": 432,
+      "start_timestamp": "2026-09-04T15:36:27.267892+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2ob-f30e2feeaa5218b8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2220.5666271010414,
+      "finish_timestamp": "2026-09-04T16:11:15.927709+00:00",
+      "pid": 428,
+      "start_timestamp": "2026-09-04T15:34:15.360987+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    },
+    {
+      "case_id": "re2ob-45687a171f241b04",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2033.119433610933,
+      "finish_timestamp": "2026-09-04T16:44:44.815636+00:00",
+      "pid": 454,
+      "start_timestamp": "2026-09-04T16:10:51.696123+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2ob-d0d93705e784491a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2040.396711686044,
+      "finish_timestamp": "2026-09-04T16:41:30.858459+00:00",
+      "pid": 450,
+      "start_timestamp": "2026-09-04T16:07:30.461655+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2ob-c2ac02db4e3370a9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 3513.002027723007,
+      "finish_timestamp": "2026-09-04T17:21:37.510759+00:00",
+      "pid": 463,
+      "start_timestamp": "2026-09-04T16:23:04.508643+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2ob-1bb2e75872fd9037",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1983.1184499670053,
+      "finish_timestamp": "2026-09-04T16:44:51.234893+00:00",
+      "pid": 456,
+      "start_timestamp": "2026-09-04T16:11:48.116351+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2ob-feeaaba6c71377df",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2199.7675041760085,
+      "finish_timestamp": "2026-09-04T16:58:43.684875+00:00",
+      "pid": 462,
+      "start_timestamp": "2026-09-04T16:22:03.917277+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2ob-4f85dadf2507c3ca",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2209.4200688699493,
+      "finish_timestamp": "2026-09-04T16:51:56.524954+00:00",
+      "pid": 458,
+      "start_timestamp": "2026-09-04T16:15:07.104799+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2ob-784d7eb25137c3c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2303.4178713269066,
+      "finish_timestamp": "2026-09-04T16:58:24.838844+00:00",
+      "pid": 459,
+      "start_timestamp": "2026-09-04T16:20:01.420874+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2ob-58eb5ae1a41b77e4",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2005.4977833710145,
+      "finish_timestamp": "2026-09-04T16:54:41.918193+00:00",
+      "pid": 460,
+      "start_timestamp": "2026-09-04T16:21:16.420313+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2ob-d0382ea6cedfbd82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1982.6550486329943,
+      "finish_timestamp": "2026-09-04T16:43:19.692280+00:00",
+      "pid": 453,
+      "start_timestamp": "2026-09-04T16:10:17.037140+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2ob-f88fc943d724a354",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2000.8717782050371,
+      "finish_timestamp": "2026-09-04T16:42:20.073653+00:00",
+      "pid": 452,
+      "start_timestamp": "2026-09-04T16:08:59.201774+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2ob-b84066a37ca0c417",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2066.0483707170933,
+      "finish_timestamp": "2026-09-04T16:41:47.705871+00:00",
+      "pid": 448,
+      "start_timestamp": "2026-09-04T16:07:21.657404+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2ob-b78a14faa7ea7263",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1992.5922768000746,
+      "finish_timestamp": "2026-09-04T16:58:46.132581+00:00",
+      "pid": 464,
+      "start_timestamp": "2026-09-04T16:25:33.540207+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2ob-84724d7aa2b9dabd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2065.236073686043,
+      "finish_timestamp": "2026-09-04T16:49:01.816353+00:00",
+      "pid": 457,
+      "start_timestamp": "2026-09-04T16:14:36.580172+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2ob-fa8a8fae0fda7c42",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1892.5757664690027,
+      "finish_timestamp": "2026-09-04T16:36:08.887873+00:00",
+      "pid": 445,
+      "start_timestamp": "2026-09-04T16:04:36.312014+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2ob-7b0a90583e047a88",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1902.624068428995,
+      "finish_timestamp": "2026-09-04T16:53:33.848259+00:00",
+      "pid": 461,
+      "start_timestamp": "2026-09-04T16:21:51.224085+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2ob-ca26cbb7c2cc0c87",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2055.0550483090337,
+      "finish_timestamp": "2026-09-04T16:42:15.652665+00:00",
+      "pid": 451,
+      "start_timestamp": "2026-09-04T16:08:00.597466+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2ob-6521847c78ca06e9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1932.5349904949544,
+      "finish_timestamp": "2026-09-04T16:38:21.270860+00:00",
+      "pid": 447,
+      "start_timestamp": "2026-09-04T16:06:08.735770+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2ob-7890056e7915d551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1914.8797345999628,
+      "finish_timestamp": "2026-09-04T16:39:24.928500+00:00",
+      "pid": 449,
+      "start_timestamp": "2026-09-04T16:07:30.048669+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2ob-35bd9974d6b59069",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2112.1610779099865,
+      "finish_timestamp": "2026-09-04T16:41:00.565295+00:00",
+      "pid": 446,
+      "start_timestamp": "2026-09-04T16:05:48.404119+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2ob-7a91adc6e16587c6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1919.7782438111026,
+      "finish_timestamp": "2026-09-04T16:43:15.807936+00:00",
+      "pid": 455,
+      "start_timestamp": "2026-09-04T16:11:16.029603+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    },
+    {
+      "case_id": "re2ob-f2b4cc2f87b35c03",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1934.8290026970208,
+      "finish_timestamp": "2026-09-04T17:16:59.741722+00:00",
+      "pid": 475,
+      "start_timestamp": "2026-09-04T16:44:44.912671+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2ob-c9c8f348d3f5974b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2050.9714979429264,
+      "finish_timestamp": "2026-09-04T17:15:41.919564+00:00",
+      "pid": 469,
+      "start_timestamp": "2026-09-04T16:41:30.947979+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2ob-df7b6eca09a6c41f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1988.531764521962,
+      "finish_timestamp": "2026-09-04T17:54:46.145088+00:00",
+      "pid": 489,
+      "start_timestamp": "2026-09-04T17:21:37.613239+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2ob-34c4e276dad53220",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1894.497042809031,
+      "finish_timestamp": "2026-09-04T17:16:25.821413+00:00",
+      "pid": 476,
+      "start_timestamp": "2026-09-04T16:44:51.324280+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2ob-3758cb8f0f1277f3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2016.1131817470305,
+      "finish_timestamp": "2026-09-04T17:32:19.918888+00:00",
+      "pid": 482,
+      "start_timestamp": "2026-09-04T16:58:43.805468+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2ob-ce3f410f61f739c2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2303.674709210987,
+      "finish_timestamp": "2026-09-04T17:30:20.300956+00:00",
+      "pid": 478,
+      "start_timestamp": "2026-09-04T16:51:56.626177+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2ob-0c582795f6ae4798",
+      "dataset": "re2ob",
+      "elapsed_seconds": 1976.3488187069306,
+      "finish_timestamp": "2026-09-04T17:31:21.274525+00:00",
+      "pid": 481,
+      "start_timestamp": "2026-09-04T16:58:24.925613+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2ob-e849d2be7be5c713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2039.332391479984,
+      "finish_timestamp": "2026-09-04T17:28:41.344876+00:00",
+      "pid": 480,
+      "start_timestamp": "2026-09-04T16:54:42.012389+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2ob-58cff4fc86081830",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2058.3529252810404,
+      "finish_timestamp": "2026-09-04T17:17:38.142385+00:00",
+      "pid": 474,
+      "start_timestamp": "2026-09-04T16:43:19.789364+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2ob-ce93ebf8eb13a5ed",
+      "dataset": "re2ob",
+      "elapsed_seconds": 2263.891029580962,
+      "finish_timestamp": "2026-09-04T17:20:04.135575+00:00",
+      "pid": 472,
+      "start_timestamp": "2026-09-04T16:42:20.244455+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2tt-e44ccb97e7cc1570",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18120.213409987045,
+      "finish_timestamp": "2026-09-04T21:43:48.013445+00:00",
+      "pid": 470,
+      "start_timestamp": "2026-09-04T16:41:47.799945+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2tt-a0c0a90c5448e7fa",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19361.088586929953,
+      "finish_timestamp": "2026-09-04T22:21:27.320991+00:00",
+      "pid": 483,
+      "start_timestamp": "2026-09-04T16:58:46.232321+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2tt-0b529d9f6ca88d4b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18929.248185090022,
+      "finish_timestamp": "2026-09-04T22:04:31.177527+00:00",
+      "pid": 477,
+      "start_timestamp": "2026-09-04T16:49:01.929241+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2tt-783d045c8102f972",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20428.40517471498,
+      "finish_timestamp": "2026-09-04T22:16:37.499737+00:00",
+      "pid": 465,
+      "start_timestamp": "2026-09-04T16:36:09.094468+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2tt-e76e500ff655313b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20443.096323768026,
+      "finish_timestamp": "2026-09-04T22:34:17.060955+00:00",
+      "pid": 479,
+      "start_timestamp": "2026-09-04T16:53:33.964536+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2tt-cc6c772d4116d054",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18142.394737473922,
+      "finish_timestamp": "2026-09-04T21:44:38.138814+00:00",
+      "pid": 471,
+      "start_timestamp": "2026-09-04T16:42:15.743976+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2tt-c1b234f6cc4acbee",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18914.360563191003,
+      "finish_timestamp": "2026-09-04T21:53:35.729615+00:00",
+      "pid": 466,
+      "start_timestamp": "2026-09-04T16:38:21.368951+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2tt-2782358136a64e6c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17994.79491132195,
+      "finish_timestamp": "2026-09-04T21:39:19.808778+00:00",
+      "pid": 467,
+      "start_timestamp": "2026-09-04T16:39:25.013791+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2tt-1d48b3aec1ec4470",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17122.62878805003,
+      "finish_timestamp": "2026-09-04T21:26:23.292180+00:00",
+      "pid": 468,
+      "start_timestamp": "2026-09-04T16:41:00.663300+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2tt-6a0d1ebf31fb52a6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18146.030693836045,
+      "finish_timestamp": "2026-09-04T21:45:41.998477+00:00",
+      "pid": 473,
+      "start_timestamp": "2026-09-04T16:43:15.967683+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    },
+    {
+      "case_id": "re2tt-14c6e1b70d0c21e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17803.395116306958,
+      "finish_timestamp": "2026-09-04T22:13:43.247903+00:00",
+      "pid": 486,
+      "start_timestamp": "2026-09-04T17:16:59.852706+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2tt-01d0096e9a504ced",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20312.588718283107,
+      "finish_timestamp": "2026-09-04T22:54:14.588984+00:00",
+      "pid": 484,
+      "start_timestamp": "2026-09-04T17:15:42.000189+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2tt-bbbcbf7787fa152c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19803.631050619995,
+      "finish_timestamp": "2026-09-04T23:24:49.964189+00:00",
+      "pid": 494,
+      "start_timestamp": "2026-09-04T17:54:46.333040+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2tt-ae09714023e727e1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18436.19364819501,
+      "finish_timestamp": "2026-09-04T22:23:42.118339+00:00",
+      "pid": 485,
+      "start_timestamp": "2026-09-04T17:16:25.924606+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2tt-653810995a9aa3db",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18152.10679910204,
+      "finish_timestamp": "2026-09-04T22:34:52.142510+00:00",
+      "pid": 493,
+      "start_timestamp": "2026-09-04T17:32:20.035616+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2tt-c82529d65e13adc0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19379.180349609,
+      "finish_timestamp": "2026-09-04T22:53:19.568606+00:00",
+      "pid": 491,
+      "start_timestamp": "2026-09-04T17:30:20.388180+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2tt-aa71e41ec8e7922d",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17789.110069282935,
+      "finish_timestamp": "2026-09-04T22:27:50.471701+00:00",
+      "pid": 492,
+      "start_timestamp": "2026-09-04T17:31:21.361560+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2tt-cb1f1df38c99005a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18033.67239181802,
+      "finish_timestamp": "2026-09-04T22:29:15.481289+00:00",
+      "pid": 490,
+      "start_timestamp": "2026-09-04T17:28:41.808810+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2tt-fe28a6c0dbd7d892",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18045.95284683199,
+      "finish_timestamp": "2026-09-04T22:18:24.193616+00:00",
+      "pid": 487,
+      "start_timestamp": "2026-09-04T17:17:38.240696+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2tt-d4b1d66aaaa1a728",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18650.688892844017,
+      "finish_timestamp": "2026-09-04T22:30:54.933054+00:00",
+      "pid": 488,
+      "start_timestamp": "2026-09-04T17:20:04.244072+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2tt-5bb89b87741349d7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19105.248016459984,
+      "finish_timestamp": "2026-09-05T03:02:13.384911+00:00",
+      "pid": 497,
+      "start_timestamp": "2026-09-04T21:43:48.136808+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2tt-e4be9aa8e249ddf3",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18009.32543566299,
+      "finish_timestamp": "2026-09-05T03:21:36.761387+00:00",
+      "pid": 505,
+      "start_timestamp": "2026-09-04T22:21:27.435866+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2tt-426ec979883ae8dc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18845.548730467097,
+      "finish_timestamp": "2026-09-05T03:18:36.815614+00:00",
+      "pid": 501,
+      "start_timestamp": "2026-09-04T22:04:31.266792+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2tt-d0a74725c5d96362",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17878.276034380076,
+      "finish_timestamp": "2026-09-05T03:14:35.889842+00:00",
+      "pid": 503,
+      "start_timestamp": "2026-09-04T22:16:37.613710+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2tt-cdf514b035f34990",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17954.65351087798,
+      "finish_timestamp": "2026-09-05T03:33:31.869522+00:00",
+      "pid": 510,
+      "start_timestamp": "2026-09-04T22:34:17.215915+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2tt-7d84c0b80f7f0032",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17905.937571306014,
+      "finish_timestamp": "2026-09-05T02:43:04.183123+00:00",
+      "pid": 498,
+      "start_timestamp": "2026-09-04T21:44:38.245447+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2tt-995607e863fb7731",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18840.257595208008,
+      "finish_timestamp": "2026-09-05T03:07:36.114904+00:00",
+      "pid": 500,
+      "start_timestamp": "2026-09-04T21:53:35.857226+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2tt-afdac60e6b000d3c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18913.733297589002,
+      "finish_timestamp": "2026-09-05T02:54:33.657527+00:00",
+      "pid": 496,
+      "start_timestamp": "2026-09-04T21:39:19.924136+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2tt-ee2421859dfb0792",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17779.776657074108,
+      "finish_timestamp": "2026-09-05T02:22:43.305424+00:00",
+      "pid": 495,
+      "start_timestamp": "2026-09-04T21:26:23.528671+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2tt-44604ef8713a5943",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17778.87373387895,
+      "finish_timestamp": "2026-09-05T02:42:00.995315+00:00",
+      "pid": 499,
+      "start_timestamp": "2026-09-04T21:45:42.121493+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    },
+    {
+      "case_id": "re2tt-72822d018b0df53f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18100.41612636298,
+      "finish_timestamp": "2026-09-05T03:15:23.789084+00:00",
+      "pid": 502,
+      "start_timestamp": "2026-09-04T22:13:43.372874+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2tt-22292d58b67911fb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18081.738091074978,
+      "finish_timestamp": "2026-09-05T03:55:36.430484+00:00",
+      "pid": 513,
+      "start_timestamp": "2026-09-04T22:54:14.692314+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2tt-fc53b7fb52199fb7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18035.691106476006,
+      "finish_timestamp": "2026-09-05T04:25:25.786913+00:00",
+      "pid": 514,
+      "start_timestamp": "2026-09-04T23:24:50.095740+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2tt-5d2e4747cab0d818",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18326.830504802056,
+      "finish_timestamp": "2026-09-05T03:29:09.062364+00:00",
+      "pid": 506,
+      "start_timestamp": "2026-09-04T22:23:42.231769+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2tt-2ae0e149b3ab15f1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17941.430053999997,
+      "finish_timestamp": "2026-09-05T03:33:53.683206+00:00",
+      "pid": 511,
+      "start_timestamp": "2026-09-04T22:34:52.253052+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2tt-0f6b6213169d6acc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18473.385313833016,
+      "finish_timestamp": "2026-09-05T04:01:13.098092+00:00",
+      "pid": 512,
+      "start_timestamp": "2026-09-04T22:53:19.712701+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2tt-93fbbdf23f58f440",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19116.086768403067,
+      "finish_timestamp": "2026-09-05T03:46:26.654296+00:00",
+      "pid": 507,
+      "start_timestamp": "2026-09-04T22:27:50.567435+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2tt-714d157727edd2d0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17904.103274833993,
+      "finish_timestamp": "2026-09-05T03:27:39.696429+00:00",
+      "pid": 508,
+      "start_timestamp": "2026-09-04T22:29:15.593049+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2tt-472c8339fd3703e9",
+      "dataset": "re2tt",
+      "elapsed_seconds": 16864.81450930005,
+      "finish_timestamp": "2026-09-05T02:59:29.179499+00:00",
+      "pid": 504,
+      "start_timestamp": "2026-09-04T22:18:24.364899+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2tt-606ef267348d40e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18250.247724205023,
+      "finish_timestamp": "2026-09-05T03:35:05.293173+00:00",
+      "pid": 509,
+      "start_timestamp": "2026-09-04T22:30:55.045363+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2tt-35e803c63786ac4e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19207.121854951023,
+      "finish_timestamp": "2026-09-05T08:22:20.906848+00:00",
+      "pid": 520,
+      "start_timestamp": "2026-09-05T03:02:13.784891+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2tt-a141811c79edaa0b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17893.936195837916,
+      "finish_timestamp": "2026-09-05T08:19:50.808868+00:00",
+      "pid": 525,
+      "start_timestamp": "2026-09-05T03:21:36.872589+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2tt-b5173d4edf252af8",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18448.64207697101,
+      "finish_timestamp": "2026-09-05T08:26:05.559747+00:00",
+      "pid": 524,
+      "start_timestamp": "2026-09-05T03:18:36.917586+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2tt-fd20b1f93a6ff4c0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18384.545194723993,
+      "finish_timestamp": "2026-09-05T08:21:00.540739+00:00",
+      "pid": 522,
+      "start_timestamp": "2026-09-05T03:14:35.995454+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2tt-010695b192f8dbea",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18002.68048147799,
+      "finish_timestamp": "2026-09-05T08:33:34.790138+00:00",
+      "pid": 528,
+      "start_timestamp": "2026-09-05T03:33:32.109573+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2tt-94bd05feab03461e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19043.68764740799,
+      "finish_timestamp": "2026-09-05T08:00:27.981063+00:00",
+      "pid": 517,
+      "start_timestamp": "2026-09-05T02:43:04.293311+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2tt-575015aa80c376c6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18897.846517206053,
+      "finish_timestamp": "2026-09-05T08:22:34.366296+00:00",
+      "pid": 521,
+      "start_timestamp": "2026-09-05T03:07:36.519679+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2tt-727331fee88d4ce7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17993.77194901195,
+      "finish_timestamp": "2026-09-05T07:54:27.545164+00:00",
+      "pid": 518,
+      "start_timestamp": "2026-09-05T02:54:33.773115+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2tt-420fff915c5f5bc5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18534.912965464056,
+      "finish_timestamp": "2026-09-05T07:31:38.468976+00:00",
+      "pid": 515,
+      "start_timestamp": "2026-09-05T02:22:43.555916+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2tt-f5512e2434f96386",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18221.439066751976,
+      "finish_timestamp": "2026-09-05T07:45:42.563933+00:00",
+      "pid": 516,
+      "start_timestamp": "2026-09-05T02:42:01.124778+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    },
+    {
+      "case_id": "re2tt-a33887653c475d04",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18829.45664810401,
+      "finish_timestamp": "2026-09-05T08:29:13.352583+00:00",
+      "pid": 523,
+      "start_timestamp": "2026-09-05T03:15:23.895852+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2tt-5f50dc54f6cb9fce",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18934.533848362975,
+      "finish_timestamp": "2026-09-05T09:11:11.094411+00:00",
+      "pid": 532,
+      "start_timestamp": "2026-09-05T03:55:36.560494+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2tt-67172e499653d426",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18557.598608536064,
+      "finish_timestamp": "2026-09-05T09:34:43.546645+00:00",
+      "pid": 534,
+      "start_timestamp": "2026-09-05T04:25:25.947952+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2tt-d14727a3c74e9768",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18095.26264971099,
+      "finish_timestamp": "2026-09-05T08:30:44.432025+00:00",
+      "pid": 527,
+      "start_timestamp": "2026-09-05T03:29:09.169292+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2tt-2a03e4ad1a1d6f85",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19444.59735582501,
+      "finish_timestamp": "2026-09-05T08:57:58.394096+00:00",
+      "pid": 529,
+      "start_timestamp": "2026-09-05T03:33:53.796657+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2tt-7d3fb265c1c0f9ed",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19654.54694226908,
+      "finish_timestamp": "2026-09-05T09:28:47.739474+00:00",
+      "pid": 533,
+      "start_timestamp": "2026-09-05T04:01:13.192454+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2tt-2defd6e102bdaf53",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18305.184260261944,
+      "finish_timestamp": "2026-09-05T08:51:31.992276+00:00",
+      "pid": 531,
+      "start_timestamp": "2026-09-05T03:46:26.807935+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2tt-38941ca70beb687a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19041.644365604036,
+      "finish_timestamp": "2026-09-05T08:45:01.459617+00:00",
+      "pid": 526,
+      "start_timestamp": "2026-09-05T03:27:39.815162+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2tt-3bd96ed8cc02f613",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17949.96028069104,
+      "finish_timestamp": "2026-09-05T07:58:39.261534+00:00",
+      "pid": 519,
+      "start_timestamp": "2026-09-05T02:59:29.301162+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2tt-5a65eea398ba8435",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19545.949325570953,
+      "finish_timestamp": "2026-09-05T09:00:51.349569+00:00",
+      "pid": 530,
+      "start_timestamp": "2026-09-05T03:35:05.400152+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2tt-b2342b2478b249cb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17701.81461713102,
+      "finish_timestamp": "2026-09-05T13:17:22.864446+00:00",
+      "pid": 542,
+      "start_timestamp": "2026-09-05T08:22:21.049744+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2tt-c7f9112580bfde33",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18765.047061022953,
+      "finish_timestamp": "2026-09-05T13:32:35.967477+00:00",
+      "pid": 540,
+      "start_timestamp": "2026-09-05T08:19:50.920350+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2tt-fa81461ebec56b42",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19235.241571736988,
+      "finish_timestamp": "2026-09-05T13:46:40.934836+00:00",
+      "pid": 545,
+      "start_timestamp": "2026-09-05T08:26:05.693192+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2tt-877f6cbd0cb33e7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19395.54269262799,
+      "finish_timestamp": "2026-09-05T13:44:16.172478+00:00",
+      "pid": 541,
+      "start_timestamp": "2026-09-05T08:21:00.629698+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2tt-7cff180e5ff1cc71",
+      "dataset": "re2tt",
+      "elapsed_seconds": 21529.444927779958,
+      "finish_timestamp": "2026-09-05T14:32:24.397822+00:00",
+      "pid": 549,
+      "start_timestamp": "2026-09-05T08:33:34.952795+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2tt-ffda523857bbf5c2",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18722.801324728993,
+      "finish_timestamp": "2026-09-05T13:12:30.882871+00:00",
+      "pid": 539,
+      "start_timestamp": "2026-09-05T08:00:28.081443+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2tt-2fc3d2fb9c492b7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18131.83764632896,
+      "finish_timestamp": "2026-09-05T13:24:46.317856+00:00",
+      "pid": 544,
+      "start_timestamp": "2026-09-05T08:22:34.480105+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2tt-04ce93a682b70df6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18180.80896807299,
+      "finish_timestamp": "2026-09-05T12:57:28.501665+00:00",
+      "pid": 537,
+      "start_timestamp": "2026-09-05T07:54:27.692606+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2tt-406c40ff0016fa9c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17927.210323243053,
+      "finish_timestamp": "2026-09-05T12:30:26.115235+00:00",
+      "pid": 535,
+      "start_timestamp": "2026-09-05T07:31:38.904813+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2tt-2ca7cff33586ca18",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19613.094977874076,
+      "finish_timestamp": "2026-09-05T13:12:35.808320+00:00",
+      "pid": 536,
+      "start_timestamp": "2026-09-05T07:45:42.713242+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    },
+    {
+      "case_id": "re2tt-a7213c3da47edbd0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18278.56810838601,
+      "finish_timestamp": "2026-09-05T13:33:52.468890+00:00",
+      "pid": 547,
+      "start_timestamp": "2026-09-05T08:29:13.900688+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-0"
+    },
+    {
+      "case_id": "re2tt-f1aa29dd3ba2343f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18023.316434193985,
+      "finish_timestamp": "2026-09-05T14:11:34.525306+00:00",
+      "pid": 554,
+      "start_timestamp": "2026-09-05T09:11:11.208792+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-1"
+    },
+    {
+      "case_id": "re2tt-56db4956167f9980",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18653.82141006796,
+      "finish_timestamp": "2026-09-05T14:45:37.854123+00:00",
+      "pid": 556,
+      "start_timestamp": "2026-09-05T09:34:44.032596+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-2"
+    },
+    {
+      "case_id": "re2tt-f09cbf3636ad02de",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20598.921976177953,
+      "finish_timestamp": "2026-09-05T14:14:03.482103+00:00",
+      "pid": 548,
+      "start_timestamp": "2026-09-05T08:30:44.560056+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-3"
+    },
+    {
+      "case_id": "re2tt-e3f89de859062727",
+      "dataset": "re2tt",
+      "elapsed_seconds": 20011.50367775606,
+      "finish_timestamp": "2026-09-05T14:31:31.929153+00:00",
+      "pid": 552,
+      "start_timestamp": "2026-09-05T08:58:00.425388+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-4"
+    },
+    {
+      "case_id": "re2tt-1283c56ed7675282",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18096.237958744052,
+      "finish_timestamp": "2026-09-05T14:30:24.086278+00:00",
+      "pid": 555,
+      "start_timestamp": "2026-09-05T09:28:47.848241+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-5"
+    },
+    {
+      "case_id": "re2tt-739ad24f1e2d7c29",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19476.965421867906,
+      "finish_timestamp": "2026-09-05T14:16:09.226116+00:00",
+      "pid": 551,
+      "start_timestamp": "2026-09-05T08:51:32.260608+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-6"
+    },
+    {
+      "case_id": "re2tt-fb57d883cd727c81",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19126.43800670607,
+      "finish_timestamp": "2026-09-05T14:03:48.076467+00:00",
+      "pid": 550,
+      "start_timestamp": "2026-09-05T08:45:01.638371+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-7"
+    },
+    {
+      "case_id": "re2tt-c8fbd9a7d1e92284",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19504.122068555094,
+      "finish_timestamp": "2026-09-05T13:23:43.509954+00:00",
+      "pid": 538,
+      "start_timestamp": "2026-09-05T07:58:39.387793+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-8"
+    },
+    {
+      "case_id": "re2tt-d83931768111dc58",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17154.853115406004,
+      "finish_timestamp": "2026-09-05T13:46:46.306017+00:00",
+      "pid": 553,
+      "start_timestamp": "2026-09-05T09:00:51.452815+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-9"
+    },
+    {
+      "case_id": "re2tt-4780a4f90c190bf4",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18804.28998522798,
+      "finish_timestamp": "2026-09-05T18:30:47.250984+00:00",
+      "pid": 563,
+      "start_timestamp": "2026-09-05T13:17:22.960908+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-10"
+    },
+    {
+      "case_id": "re2tt-20258ce8dbcd2300",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17397.656150190975,
+      "finish_timestamp": "2026-09-05T18:22:33.724999+00:00",
+      "pid": 565,
+      "start_timestamp": "2026-09-05T13:32:36.068752+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-11"
+    },
+    {
+      "case_id": "re2tt-cb3381bf9ed05034",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18580.172060373938,
+      "finish_timestamp": "2026-09-05T18:56:21.212602+00:00",
+      "pid": 567,
+      "start_timestamp": "2026-09-05T13:46:41.040442+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-12"
+    },
+    {
+      "case_id": "re2tt-e9071bdee1904785",
+      "dataset": "re2tt",
+      "elapsed_seconds": 19991.724872856983,
+      "finish_timestamp": "2026-09-05T19:17:28.009378+00:00",
+      "pid": 566,
+      "start_timestamp": "2026-09-05T13:44:16.284408+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-13"
+    },
+    {
+      "case_id": "re2tt-722f5f89a57be699",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18987.74342972203,
+      "finish_timestamp": "2026-09-05T19:48:52.283810+00:00",
+      "pid": 568,
+      "start_timestamp": "2026-09-05T14:32:24.540274+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-14"
+    },
+    {
+      "case_id": "re2tt-bc9cd2d131533d16",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18421.88863774191,
+      "finish_timestamp": "2026-09-05T18:19:33.110445+00:00",
+      "pid": 561,
+      "start_timestamp": "2026-09-05T13:12:31.221702+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-15"
+    },
+    {
+      "case_id": "re2tt-f578fe138f6d4c7a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17488.072586682043,
+      "finish_timestamp": "2026-09-05T18:16:14.500672+00:00",
+      "pid": 564,
+      "start_timestamp": "2026-09-05T13:24:46.427981+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-16"
+    },
+    {
+      "case_id": "re2tt-bed634aec03e773f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17742.771840729984,
+      "finish_timestamp": "2026-09-05T17:53:11.384090+00:00",
+      "pid": 559,
+      "start_timestamp": "2026-09-05T12:57:28.612157+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-17"
+    },
+    {
+      "case_id": "re2tt-3fffa88dd3653f99",
+      "dataset": "re2tt",
+      "elapsed_seconds": 17675.436244803946,
+      "finish_timestamp": "2026-09-05T17:25:01.689134+00:00",
+      "pid": 557,
+      "start_timestamp": "2026-09-05T12:30:26.252805+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-18"
+    },
+    {
+      "case_id": "re2tt-3e24ca7f9747c84e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 18228.158318694914,
+      "finish_timestamp": "2026-09-05T18:16:24.236188+00:00",
+      "pid": 562,
+      "start_timestamp": "2026-09-05T13:12:36.077770+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "causalrca-worker-19"
+    }
+  ],
+  "execution_commit": "5b20c7f4846266f1aea9d83e3502b817e4aaf5a8",
+  "labels_joined": false,
+  "method": "CausalRCA",
+  "no_timeout": true,
+  "protocol_digest": "fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_CPU",
+  "requested_worker_count": 20,
+  "runtime_digest": "449d05cd7061fad667a55026e8e91e851c0fedbf38ce28d31f03b1fa01dc77ff",
+  "schema_version": "rca_baseline_rescue_runtime_v2",
+  "status_counts": {
+    "re2ob": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 0,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 90,
+      "TIMEOUT": 0
+    },
+    "re2tt": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 0,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 90,
+      "TIMEOUT": 0
+    }
+  },
+  "terminal_case_count": 180,
+  "timeout_seconds": null
+}
