@@ -1,0 +1,107 @@
+{
+  "authorization": {
+    "date": "2026-09-07",
+    "scope": "create one combined V2 prediction lock and evaluate the five frozen V2 baselines together with the authorized CausalRCA CPU extension",
+    "status": "USER_AUTHORIZED"
+  },
+  "base_protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "base_protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "causalrca_extension_protocol_digest": "fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b",
+  "causalrca_extension_protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_CPU",
+  "datasets": {
+    "re2ob": {
+      "case_count": 90,
+      "display": "RE2-OB"
+    },
+    "re2tt": {
+      "case_count": 90,
+      "display": "RE2-TT"
+    }
+  },
+  "evaluation": {
+    "baseline_mrr": "NOT-IDENTIFIABLE",
+    "bootstrap": {
+      "datasets_separate": true,
+      "primary": "delta Avg@5",
+      "resamples": 10000,
+      "secondary": "delta AC@1",
+      "seed": 20260827,
+      "stratification": "fault"
+    },
+    "candidate_completion": "NONE",
+    "faults": [
+      "CPU",
+      "MEM",
+      "DISK",
+      "SOCKET",
+      "DELAY",
+      "LOSS"
+    ],
+    "headline_metrics": [
+      "AC@1",
+      "AC@3",
+      "AC@5",
+      "Avg@5"
+    ],
+    "internal_metrics": [
+      "AC@2",
+      "AC@4"
+    ],
+    "requires_committed_combined_global_lock": true
+  },
+  "execution": {
+    "method_scopes": {
+      "base_v2": [
+        "CIRCA",
+        "MicroCause",
+        "MicroRank",
+        "TraceRCA",
+        "mmBARO"
+      ],
+      "causalrca_extension": [
+        "CausalRCA"
+      ]
+    },
+    "method_lock_binding": "each method lock is verified independently and then bound by this single six-method global lock",
+    "prediction_contents_read_after_lock_only": true,
+    "labels_joined_after_lock_only": true,
+    "metrics_computed_after_lock_only": true
+  },
+  "failure_policy": {
+    "method_failure_zero_utility": true,
+    "blocking_statuses": [
+      "DATA_FAILURE",
+      "ADAPTER_FAILURE",
+      "ENVIRONMENT_FAILURE",
+      "INPUT_INTEGRITY_FAILURE",
+      "PROCESS_CRASH/OOM",
+      "TIMEOUT"
+    ],
+    "no_retry": true
+  },
+  "method_order": [
+    "CIRCA",
+    "MicroCause",
+    "MicroRank",
+    "TraceRCA",
+    "mmBARO",
+    "CausalRCA"
+  ],
+  "methods": [
+    "CIRCA",
+    "MicroCause",
+    "MicroRank",
+    "TraceRCA",
+    "mmBARO",
+    "CausalRCA"
+  ],
+  "provenance": {
+    "input_manifest_digest": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec",
+    "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+    "ada_rca_scientific_v1": "bed295326e567395e725caa82840a534dcc0b1de"
+  },
+  "protocol_type": "ADDITIVE_COMBINED_GLOBAL_LOCK_AMENDMENT",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_COMBINED",
+  "schema_version": "rca_baseline_rescue_protocol_v2_combined",
+  "status": "FROZEN_COMBINED_GLOBAL_LOCK_AND_POST_LOCK_EVALUATION"
+}

@@ -113,6 +113,16 @@ CAUSALRCA_CPU_GLOBAL_LOCK_RELATIVE = (
 CAUSALRCA_CPU_ATTEMPT_ID = "causalrca-cpu-a1-rescue-v2"
 V2_EXTENSION_METHODS = ("CausalRCA",)
 V2_RUNNABLE_METHODS = V2_METHODS + V2_EXTENSION_METHODS
+V2_COMBINED_METHODS = V2_METHODS + V2_EXTENSION_METHODS
+V2_COMBINED_PROTOCOL_VERSION = "RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_COMBINED"
+V2_COMBINED_PROTOCOL_RELATIVE = Path(
+    "artifacts/baseline_eval/rescue_protocol_v2_causalrca_combined.json"
+)
+V2_COMBINED_PROTOCOL_DIGEST = "24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54"
+V2_COMBINED_GLOBAL_LOCK_RELATIVE = (
+    V2_EXECUTION_ROOT_RELATIVE / "prediction_lock_v2_causalrca.json"
+)
+V2_COMBINED_EVALUATION_ROOT_RELATIVE = V2_EXECUTION_ROOT_RELATIVE / "evaluation_causalrca"
 V2_ALLOWED_WORKERS = (1, 4, 10, 20)
 V2_NO_TIMEOUT_SECONDS = None
 V2_CASE_SCHEMA = "rca_baseline_rescue_case_record_v2"
@@ -121,6 +131,7 @@ V2_ENVIRONMENT_SCHEMA = "rca_baseline_rescue_environment_v2"
 V2_RUNTIME_SCHEMA = "rca_baseline_rescue_runtime_v2"
 V2_METHOD_LOCK_SCHEMA = "rca_baseline_rescue_method_prediction_lock_v2"
 V2_GLOBAL_LOCK_SCHEMA = "rca_baseline_rescue_global_prediction_lock_v2"
+V2_COMBINED_GLOBAL_LOCK_SCHEMA = "rca_baseline_rescue_global_prediction_lock_v2_combined"
 V2_STATUS_VALUES = (
     "SUCCESS",
     "METHOD_FAILURE",
@@ -423,6 +434,43 @@ def _causalrca_cpu_protocol(root: Path = PROJECT_ROOT) -> dict[str, Any]:
     return payload
 
 
+def _v2_combined_protocol(root: Path = PROJECT_ROOT) -> dict[str, Any]:
+    path = root / V2_COMBINED_PROTOCOL_RELATIVE
+    if not path.is_file() or sha256_file(path) != V2_COMBINED_PROTOCOL_DIGEST:
+        raise PreflightError("combined V2 protocol digest or file is invalid")
+    payload = read_json(path)
+    if payload.get("schema_version") != "rca_baseline_rescue_protocol_v2_combined":
+        raise PreflightError("combined V2 protocol schema is invalid")
+    if payload.get("protocol_version") != V2_COMBINED_PROTOCOL_VERSION:
+        raise PreflightError("combined V2 protocol version is invalid")
+    if payload.get("base_protocol_version") != V2_PROTOCOL_VERSION:
+        raise PreflightError("combined V2 protocol base version is invalid")
+    if payload.get("base_protocol_digest") != V2_PROTOCOL_DIGEST:
+        raise PreflightError("combined V2 protocol base digest is invalid")
+    if payload.get("causalrca_extension_protocol_version") != CAUSALRCA_CPU_PROTOCOL_VERSION:
+        raise PreflightError("combined V2 protocol CausalRCA extension version is invalid")
+    if payload.get("causalrca_extension_protocol_digest") != CAUSALRCA_CPU_PROTOCOL_DIGEST:
+        raise PreflightError("combined V2 protocol CausalRCA extension digest is invalid")
+    if tuple(payload.get("method_order", ())) != V2_COMBINED_METHODS:
+        raise PreflightError("combined V2 protocol method order is invalid")
+    if tuple(payload.get("methods", ())) != V2_COMBINED_METHODS:
+        raise PreflightError("combined V2 protocol method registry is invalid")
+    datasets = payload.get("datasets", {})
+    if tuple(datasets) != DATASET_ORDER or any(
+        datasets[dataset].get("case_count") != EXPECTED_CASES_PER_DATASET
+        for dataset in DATASET_ORDER
+    ):
+        raise PreflightError("combined V2 protocol dataset registry is invalid")
+    if payload.get("authorization", {}).get("status") != "USER_AUTHORIZED":
+        raise PreflightError("combined V2 protocol lacks explicit user authorization")
+    execution = payload.get("execution", {})
+    if execution.get("labels_joined_after_lock_only") is not True:
+        raise PreflightError("combined V2 protocol label gate is invalid")
+    if execution.get("metrics_computed_after_lock_only") is not True:
+        raise PreflightError("combined V2 protocol metric gate is invalid")
+    return payload
+
+
 def verify_v2_protocol(
     root: Path,
     *,
@@ -445,6 +493,18 @@ def verify_v2_protocol(
     if observed != V2_PROTOCOL_DIGEST:
         raise PreflightError("V2 protocol bytes differ from the frozen rescue amendment")
     return _v2_protocol(root)
+
+
+def verify_v2_combined_protocol(
+    root: Path, *, require_committed: bool = True
+) -> dict[str, Any]:
+    """Verify the additive six-method binding without changing base V2."""
+
+    if require_committed:
+        require_committed_file(root, V2_COMBINED_PROTOCOL_RELATIVE)
+    verify_v2_protocol(root, require_committed=require_committed)
+    verify_v2_protocol(root, method="CausalRCA", require_committed=require_committed)
+    return _v2_combined_protocol(root)
 
 
 def _verify_method_protocol(
@@ -1607,6 +1667,36 @@ def reissue_v2_method_lock(root: Path, method: str, attempt_id: str) -> Path:
     return reissued
 
 
+def _v2_global_method_row(root: Path, method: str) -> dict[str, Any]:
+    lock_relative = active_v2_method_lock_relative(root, method)
+    lock = verify_v2_method_lock(
+        root, method, require_committed=True, lock_relative=lock_relative
+    )
+    if lock.get("execution_validity") != "INTEGRITY_VALID":
+        raise V2EvaluationBlocked(
+            f"cannot create V2 global lock: {method} has invalid execution evidence"
+        )
+    if any(
+        count
+        for dataset_counts in lock.get("blocking_status_counts", {}).values()
+        for count in dataset_counts.values()
+    ):
+        raise V2EvaluationBlocked(
+            f"cannot create V2 global lock: {method} has blocking terminal statuses"
+        )
+    return {
+        "method": method,
+        "attempt_id": lock["attempt_id"],
+        "method_lock_path": lock_relative.as_posix(),
+        "method_lock_sha256": sha256_file(root / lock_relative),
+        "record_digest": canonical_payload_digest(lock["terminal_record_digests"]),
+        "environment_digest": lock["environment_digest"],
+        "status_counts": lock["status_counts"],
+        "requested_worker_count": lock["requested_worker_count"],
+        "actual_worker_count": lock["actual_worker_count"],
+    }
+
+
 def create_v2_global_prediction_lock(root: Path) -> Path:
     require_clean_git(root)
     global_preflight(root)
@@ -1725,6 +1815,141 @@ def verify_v2_global_prediction_lock(root: Path, *, require_committed: bool = Tr
             raise PreflightError(f"V2 global lock method-lock digest mismatch for {method}")
         if method_row.get("record_digest") != canonical_payload_digest(method_lock["terminal_record_digests"]):
             raise PreflightError(f"V2 global lock record digest mismatch for {method}")
+    return lock
+
+
+def create_v2_combined_global_prediction_lock(root: Path) -> Path:
+    """Bind all six completed method locks before any unified label join."""
+
+    require_clean_git(root)
+    global_preflight(root)
+    verify_v2_combined_protocol(root)
+    verify_rcaeval_clean()
+    assert_ada_rca_frozen_unchanged(root)
+    manifest_digest = v2_source_manifest_digest(root)
+    path = root / V2_COMBINED_GLOBAL_LOCK_RELATIVE
+    if path.exists():
+        raise PreflightError("combined V2 global prediction lock already exists")
+    method_rows = [_v2_global_method_row(root, method) for method in V2_COMBINED_METHODS]
+    stable = {
+        "schema_version": V2_COMBINED_GLOBAL_LOCK_SCHEMA,
+        "protocol_version": V2_COMBINED_PROTOCOL_VERSION,
+        "protocol_digest": V2_COMBINED_PROTOCOL_DIGEST,
+        "base_protocol_version": V2_PROTOCOL_VERSION,
+        "base_protocol_digest": V2_PROTOCOL_DIGEST,
+        "causalrca_extension_protocol_version": CAUSALRCA_CPU_PROTOCOL_VERSION,
+        "causalrca_extension_protocol_digest": CAUSALRCA_CPU_PROTOCOL_DIGEST,
+        "method_order": list(V2_COMBINED_METHODS),
+        "dataset_order": list(DATASET_ORDER),
+        "datasets_case_counts": {
+            dataset: EXPECTED_CASES_PER_DATASET for dataset in DATASET_ORDER
+        },
+        "attempt_ids": {row["method"]: row["attempt_id"] for row in method_rows},
+        "methods": method_rows,
+        "input_manifest_digest": manifest_digest,
+        "candidate_registry_digests": _v2_candidate_digests(root),
+        "rcaeval_commit": RCAEVAL_COMMIT,
+        "ada_rca_frozen_starting_commit": REQUIRED_STARTING_HEAD,
+        "method_lock_binding": {
+            method: {
+                "protocol_version": _v2_profile(method)["protocol_version"],
+                "protocol_digest": _v2_profile(method)["protocol_digest"],
+                "execution_root": _v2_profile(method)["execution_root_relative"].as_posix(),
+            }
+            for method in V2_COMBINED_METHODS
+        },
+        "parallel_worker_configuration": {
+            "allowed_requested_workers": list(V2_ALLOWED_WORKERS),
+            "per_method": {
+                row["method"]: {
+                    "requested": row["requested_worker_count"],
+                    "actual": row["actual_worker_count"],
+                }
+                for row in method_rows
+            },
+        },
+        "timeout_policy": {"no_timeout": True, "timeout_seconds": None, "retry": False},
+        "labels_joined": False,
+        "contains_evaluation": False,
+        "locked_at": utc_now(),
+    }
+    payload = {**stable, "lock_digest": canonical_payload_digest(stable)}
+    assert_firewall_safe_record(payload)
+    atomic_write_json(path, payload)
+    return path
+
+
+def verify_v2_combined_global_prediction_lock(
+    root: Path, *, require_committed: bool = True
+) -> dict[str, Any]:
+    """Verify the one six-method lock and every method lock it binds."""
+
+    verify_v2_combined_protocol(root, require_committed=require_committed)
+    verify_rcaeval_clean()
+    path = root / V2_COMBINED_GLOBAL_LOCK_RELATIVE
+    if require_committed:
+        require_committed_file(root, V2_COMBINED_GLOBAL_LOCK_RELATIVE)
+    if not path.is_file():
+        raise PreflightError("combined V2 global prediction lock is missing")
+    lock = read_json(path)
+    stable = {key: value for key, value in lock.items() if key != "lock_digest"}
+    if canonical_payload_digest(stable) != lock.get("lock_digest"):
+        raise PreflightError("combined V2 global prediction lock digest is invalid")
+    if lock.get("schema_version") != V2_COMBINED_GLOBAL_LOCK_SCHEMA:
+        raise PreflightError("combined V2 global prediction lock schema is invalid")
+    if tuple(lock.get("method_order", ())) != V2_COMBINED_METHODS:
+        raise PreflightError("combined V2 global prediction lock method order is invalid")
+    if tuple(lock.get("dataset_order", ())) != DATASET_ORDER:
+        raise PreflightError("combined V2 global prediction lock dataset order is invalid")
+    if lock.get("labels_joined") is not False or lock.get("contains_evaluation") is not False:
+        raise PreflightError("combined V2 global prediction lock is not pre-evaluation")
+    if (
+        lock.get("protocol_version") != V2_COMBINED_PROTOCOL_VERSION
+        or lock.get("protocol_digest") != V2_COMBINED_PROTOCOL_DIGEST
+        or lock.get("base_protocol_digest") != V2_PROTOCOL_DIGEST
+        or lock.get("causalrca_extension_protocol_digest") != CAUSALRCA_CPU_PROTOCOL_DIGEST
+        or lock.get("rcaeval_commit") != RCAEVAL_COMMIT
+    ):
+        raise PreflightError("combined V2 global prediction lock provenance is invalid")
+    if lock.get("input_manifest_digest") != v2_source_manifest_digest(root):
+        raise PreflightError("combined V2 global prediction lock input manifest mismatch")
+    if lock.get("candidate_registry_digests") != _v2_candidate_digests(root):
+        raise PreflightError("combined V2 global prediction lock candidate registry mismatch")
+    rows_by_method = {
+        row.get("method"): row for row in lock.get("methods", [])
+    }
+    if set(rows_by_method) != set(V2_COMBINED_METHODS) or len(rows_by_method) != len(V2_COMBINED_METHODS):
+        raise PreflightError("combined V2 global prediction lock method rows are invalid")
+    for method in V2_COMBINED_METHODS:
+        method_row = rows_by_method[method]
+        lock_path_value = method_row.get("method_lock_path")
+        if not isinstance(lock_path_value, str):
+            raise PreflightError(f"combined V2 global lock method-lock path is missing for {method}")
+        lock_relative = Path(lock_path_value)
+        if lock_relative not in {
+            v2_method_lock_relative(method),
+            v2_method_lock_reissued_relative(method),
+            v2_method_lock_reissued_v2_relative(method),
+        }:
+            raise PreflightError(f"combined V2 global lock method-lock path is invalid for {method}")
+        method_lock = verify_v2_method_lock(
+            root,
+            method,
+            require_committed=require_committed,
+            lock_relative=lock_relative,
+        )
+        if method_lock.get("execution_validity") != "INTEGRITY_VALID":
+            raise PreflightError(f"combined V2 global lock binds invalid {method} evidence")
+        if method_row.get("attempt_id") != method_lock.get("attempt_id"):
+            raise PreflightError(f"combined V2 global lock attempt mismatch for {method}")
+        if method_row.get("method_lock_sha256") != sha256_file(root / lock_relative):
+            raise PreflightError(f"combined V2 global lock method-lock digest mismatch for {method}")
+        if method_row.get("record_digest") != canonical_payload_digest(method_lock["terminal_record_digests"]):
+            raise PreflightError(f"combined V2 global lock record digest mismatch for {method}")
+        if method_row.get("environment_digest") != method_lock.get("environment_digest"):
+            raise PreflightError(f"combined V2 global lock environment mismatch for {method}")
+        if method_row.get("status_counts") != method_lock.get("status_counts"):
+            raise PreflightError(f"combined V2 global lock status-count mismatch for {method}")
     return lock
 
 
@@ -2307,6 +2532,8 @@ def command_parser() -> argparse.ArgumentParser:
 
     sub.add_parser("create-global-lock-v2")
     sub.add_parser("verify-global-lock-v2")
+    sub.add_parser("create-global-lock-v2-causalrca")
+    sub.add_parser("verify-global-lock-v2-causalrca")
     return parser
 
 
@@ -2387,6 +2614,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 0
     if args.command == "verify-global-lock-v2":
         _write_stdout_json(verify_v2_global_prediction_lock(root))
+        return 0
+    if args.command == "create-global-lock-v2-causalrca":
+        print(create_v2_combined_global_prediction_lock(root))
+        return 0
+    if args.command == "verify-global-lock-v2-causalrca":
+        _write_stdout_json(verify_v2_combined_global_prediction_lock(root))
         return 0
     raise AssertionError(f"unhandled command: {args.command}")
 

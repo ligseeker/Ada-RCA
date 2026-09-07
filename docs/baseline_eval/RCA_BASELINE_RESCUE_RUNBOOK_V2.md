@@ -1,4 +1,4 @@
-# RCAEval Five-Baseline Rescue V2 Runbook and CausalRCA CPU Extension
+# RCAEval V2 Rescue Runbook: Five Baselines and CausalRCA CPU Extension
 
 Status: `V2_RESCUE_CODE_READY — CAUSALRCA CPU EXTENSION AUTHORIZED`
 
@@ -19,6 +19,12 @@ Its machine-readable digest is
 `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b`.
 The extension has its own method-scoped execution root and does not alter the
 five-method V2 protocol or its existing evidence.
+
+The final unified table uses the additive combined protocol
+`RCA_BASELINE_RESCUE_PROTOCOL_V2_CAUSALRCA_COMBINED`, digest
+`24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54`, and
+binds all six method locks before evaluation. Its dedicated procedure is also
+recorded in `RCA_BASELINE_V2_CAUSALRCA_COMBINED_LOCK_AMENDMENT_V1.md`.
 
 ## 1. Coordinator creates isolated task worktrees
 
@@ -807,6 +813,27 @@ git commit -m "eval: create V2 global prediction lock"
 "$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-global-lock-v2
 ```
 
+### 4.1 Final six-method combined global lock
+
+The five-method lock above remains an optional base-scope artifact. The final
+unified table must use the explicit combined lock below, which verifies the
+five base locks and the independent CausalRCA CPU lock together:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin
+COMMON_PY=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-method-lock --method CIRCA --attempt-id circa-a3-rescue-v2
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-method-lock --method MicroCause --attempt-id microcause-a3-rescue-v2
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-method-lock --method MicroRank --attempt-id microrank-a3-rescue-v2
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-method-lock --method TraceRCA --attempt-id tracerca-a3-rescue-v2
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-method-lock --method mmBARO --attempt-id mmbaro-a3-rescue-v2
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-method-lock --method CausalRCA --attempt-id causalrca-cpu-a1-rescue-v2
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py create-global-lock-v2-causalrca
+git add artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json
+git commit -m "eval: create combined V2 global prediction lock"
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-global-lock-v2-causalrca
+```
+
 ## 5. Metric-unlock commands
 
 The following are **ONLY RUN AFTER GLOBAL PREDICTION LOCK IS COMMITTED**. They
@@ -843,3 +870,24 @@ Paired bootstrap defaults are 10,000 fault-stratified resamples with seed
 `20260827`, primary `Ada-RCA minus baseline Avg@5`, and secondary
 `Ada-RCA minus baseline AC@1`. Baseline MRR remains
 `NOT-IDENTIFIABLE`; no candidate completion is legal.
+
+### 5.1 Final six-method metric-unlock commands
+
+Run these only after the combined lock commit above. They generate the final
+six-baseline tables, including CausalRCA, under the combined evaluation root:
+
+```bash
+cd /home/zhangll24/RCA_project/Ada-RCA-baselines-eval-admin
+COMMON_PY=/home/zhangll24/.venvs/ada-rca-baselines-common/bin/python
+"$COMMON_PY" scripts/run_baseline_rescue_v2.py verify-global-lock-v2-causalrca
+"$COMMON_PY" -m src.baseline_eval.evaluation_v2 evaluate-v2-causalrca
+git add artifacts/baseline_eval/execution_v2/evaluation_causalrca
+git commit -m "eval: compute combined six-method V2 metrics"
+"$COMMON_PY" -m src.baseline_eval.evaluation_v2 fault-level-v2-causalrca
+"$COMMON_PY" -m src.baseline_eval.evaluation_v2 robustness-v2-causalrca
+"$COMMON_PY" -m src.baseline_eval.evaluation_v2 comparability-v2-causalrca
+"$COMMON_PY" -m src.baseline_eval.evaluation_v2 paired-bootstrap-v2-causalrca
+"$COMMON_PY" -m src.baseline_eval.evaluation_v2 render-report-v2-causalrca
+git add docs/baseline_eval/RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md
+git commit -m "docs: publish combined six-method V2 baseline table"
+```

@@ -25,6 +25,11 @@ from src.baseline_eval.confirmatory import (
 from src.baseline_eval import EXPECTED_CASES_PER_DATASET
 from src.baseline_eval.rescue_v2 import (
     PROJECT_ROOT,
+    V2_COMBINED_EVALUATION_ROOT_RELATIVE,
+    V2_COMBINED_GLOBAL_LOCK_RELATIVE,
+    V2_COMBINED_GLOBAL_LOCK_SCHEMA,
+    V2_COMBINED_METHODS,
+    V2_COMBINED_PROTOCOL_DIGEST,
     V2_EVALUATION_ROOT_RELATIVE,
     V2_GLOBAL_LOCK_RELATIVE,
     V2_METHODS,
@@ -34,6 +39,8 @@ from src.baseline_eval.rescue_v2 import (
     V2_METHOD_ZERO_STATUS,
     V2_STATUS_VALUES,
     v2_record_relative,
+    verify_v2_combined_global_prediction_lock,
+    verify_v2_combined_protocol,
     verify_v2_global_prediction_lock,
     verify_v2_protocol,
     v2_source_manifest_digest,
@@ -45,6 +52,11 @@ FAULT_RELATIVE = V2_EVALUATION_ROOT_RELATIVE / "fault_level_v2.json"
 ROBUSTNESS_RELATIVE = V2_EVALUATION_ROOT_RELATIVE / "robustness_v2.json"
 COMPARABILITY_RELATIVE = V2_EVALUATION_ROOT_RELATIVE / "comparability_v2.json"
 BOOTSTRAP_RELATIVE = V2_EVALUATION_ROOT_RELATIVE / "paired_bootstrap_v2.json"
+COMBINED_OVERALL_RELATIVE = V2_COMBINED_EVALUATION_ROOT_RELATIVE / "overall_v2.json"
+COMBINED_FAULT_RELATIVE = V2_COMBINED_EVALUATION_ROOT_RELATIVE / "fault_level_v2.json"
+COMBINED_ROBUSTNESS_RELATIVE = V2_COMBINED_EVALUATION_ROOT_RELATIVE / "robustness_v2.json"
+COMBINED_COMPARABILITY_RELATIVE = V2_COMBINED_EVALUATION_ROOT_RELATIVE / "comparability_v2.json"
+COMBINED_BOOTSTRAP_RELATIVE = V2_COMBINED_EVALUATION_ROOT_RELATIVE / "paired_bootstrap_v2.json"
 REPORT_RELATIVE = Path("docs/baseline_eval/RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md")
 
 FROZEN_ADA_METRICS = {
@@ -99,6 +111,28 @@ def require_v2_metric_unlock(root: Path) -> dict[str, Any]:
     return lock
 
 
+def require_v2_combined_metric_unlock(root: Path) -> dict[str, Any]:
+    """Require the committed six-method lock before joining labels."""
+
+    require_clean_git(root)
+    verify_v2_combined_protocol(root)
+    lock = verify_v2_combined_global_prediction_lock(root, require_committed=True)
+    if lock.get("schema_version") != V2_COMBINED_GLOBAL_LOCK_SCHEMA:
+        raise V2EvaluationBlocked("combined V2 global lock is not metric-unlockable")
+    if any(
+        (root / relative).exists()
+        for relative in (
+            COMBINED_OVERALL_RELATIVE,
+            COMBINED_FAULT_RELATIVE,
+            COMBINED_ROBUSTNESS_RELATIVE,
+            COMBINED_COMPARABILITY_RELATIVE,
+            COMBINED_BOOTSTRAP_RELATIVE,
+        )
+    ):
+        raise V2EvaluationBlocked("combined V2 evaluation output already exists and is immutable")
+    return lock
+
+
 def require_v2_evaluation_outputs(root: Path) -> dict[str, Any]:
     """Require the same committed lock while reading immutable post-lock files."""
 
@@ -112,6 +146,30 @@ def require_v2_evaluation_outputs(root: Path) -> dict[str, Any]:
     ]
     if missing:
         raise V2EvaluationBlocked("V2 evaluation outputs are incomplete: " + ", ".join(missing))
+    return lock
+
+
+def require_v2_combined_evaluation_outputs(root: Path) -> dict[str, Any]:
+    """Require the same committed six-method lock for report projections."""
+
+    require_clean_git(root)
+    verify_v2_combined_protocol(root)
+    lock = verify_v2_combined_global_prediction_lock(root, require_committed=True)
+    missing = [
+        relative.as_posix()
+        for relative in (
+            COMBINED_OVERALL_RELATIVE,
+            COMBINED_FAULT_RELATIVE,
+            COMBINED_ROBUSTNESS_RELATIVE,
+            COMBINED_COMPARABILITY_RELATIVE,
+            COMBINED_BOOTSTRAP_RELATIVE,
+        )
+        if not (root / relative).is_file()
+    ]
+    if missing:
+        raise V2EvaluationBlocked(
+            "combined V2 evaluation outputs are incomplete: " + ", ".join(missing)
+        )
     return lock
 
 
@@ -258,13 +316,14 @@ def _fault_rows(
     return output
 
 
-def _comparability_rows() -> list[dict[str, Any]]:
+def _comparability_rows(methods: Sequence[str] = (*V2_METHODS, "Ada-RCA")) -> list[dict[str, Any]]:
     specs = {
         "CIRCA": ("metric", "case-wise unsupervised", "indicator", "partial service projection", "NO", "NOT-IDENTIFIABLE"),
         "MicroCause": ("metric", "case-wise unsupervised", "indicator", "partial service projection", "NO", "NOT-IDENTIFIABLE"),
         "MicroRank": ("raw trace", "case-wise unsupervised", "operation", "partial service projection", "NO", "NOT-IDENTIFIABLE"),
         "TraceRCA": ("raw trace", "case-wise unsupervised", "operation", "partial service projection", "NO", "NOT-IDENTIFIABLE"),
         "mmBARO": ("multi-source", "case-wise unsupervised", "indicator", "partial service projection", "NO", "NOT-IDENTIFIABLE"),
+        "CausalRCA": ("metric", "case-wise unsupervised", "indicator", "partial service projection", "NO", "NOT-IDENTIFIABLE"),
         "Ada-RCA": ("Metrics + Logs + Traces", "root-supervised cross-case training", "native service ranking", "native service ranking", "YES", "FROZEN/NATIVE"),
     }
     return [
@@ -277,7 +336,8 @@ def _comparability_rows() -> list[dict[str, Any]]:
             "complete_service_ranking": values[4],
             "MRR_legality": values[5],
         }
-        for method, values in specs.items()
+        for method in methods
+        for values in (specs[method],)
     ]
 
 
@@ -322,10 +382,18 @@ def _bootstrap_delta(
     }
 
 
-def evaluate_v2(root: Path) -> dict[str, Path]:
-    """Join labels and compute all four tables only after the V2 global lock."""
+def _evaluate_locked_scope(
+    root: Path,
+    *,
+    lock: Mapping[str, Any],
+    methods: Sequence[str],
+    output_relatives: Mapping[str, Path],
+    global_lock_relative: Path,
+    protocol_digest: str,
+    evaluation_scope: str,
+) -> dict[str, Path]:
+    """Evaluate one already-unlocked method scope without changing its lock."""
 
-    lock = require_v2_metric_unlock(root)
     labels = {dataset: _labels_after_unlock(root, dataset) for dataset in DATASET_ORDER}
     ada_case_rows: dict[str, list[dict[str, Any]]] = {}
     ada_metrics: dict[str, dict[str, Any]] = {}
@@ -351,7 +419,7 @@ def evaluate_v2(root: Path) -> dict[str, Path]:
         ada_metrics[dataset]["status_counts"] = {status: (90 if status == "SUCCESS" else 0) for status in V2_STATUS_VALUES}
         overall_values[("Ada-RCA", dataset)] = ada_metrics[dataset]
         fault_rows.extend(_fault_rows("Ada-RCA", dataset, ada_case_rows[dataset]))
-        for method in V2_METHODS:
+        for method in methods:
             attempt_id = lock["attempt_ids"][method]
             rows, metrics = _baseline_case_rows(root, method, attempt_id, dataset, labels[dataset])
             baseline_case_rows[(method, dataset)] = rows
@@ -373,7 +441,7 @@ def evaluate_v2(root: Path) -> dict[str, Path]:
                 "TIMEOUT": counts["TIMEOUT"],
             })
     table_a_rows = []
-    for method in (*V2_METHODS, "Ada-RCA"):
+    for method in (*methods, "Ada-RCA"):
         row = {"Method": method}
         for dataset, display in (("re2ob", "OB"), ("re2tt", "TT")):
             metrics = overall_values[(method, dataset)]
@@ -390,14 +458,19 @@ def evaluate_v2(root: Path) -> dict[str, Path]:
         "rows": robustness_rows,
         "process_crash_policy": "execution invalid/incomplete; never silently converted to METHOD_FAILURE",
     }
-    table_d = {"columns": ["Method", "Input", "Supervision", "Native granularity", "Service projection", "Complete service ranking", "MRR legality"], "rows": _comparability_rows()}
+    table_d = {
+        "columns": ["Method", "Input", "Supervision", "Native granularity", "Service projection", "Complete service ranking", "MRR legality"],
+        "rows": _comparability_rows((*methods, "Ada-RCA")),
+    }
     provenance = {
         "global_prediction_lock": {
-            "path": V2_GLOBAL_LOCK_RELATIVE.as_posix(),
-            "sha256": sha256_file(root / V2_GLOBAL_LOCK_RELATIVE),
-            "commit": git(root, "log", "-1", "--format=%H", "--", V2_GLOBAL_LOCK_RELATIVE.as_posix()).stdout.strip(),
+            "path": global_lock_relative.as_posix(),
+            "sha256": sha256_file(root / global_lock_relative),
+            "commit": git(root, "log", "-1", "--format=%H", "--", global_lock_relative.as_posix()).stdout.strip(),
         },
-        "protocol_digest": V2_PROTOCOL_DIGEST,
+        "protocol_digest": protocol_digest,
+        "method_order": list(methods),
+        "evaluation_scope": evaluation_scope,
         "input_manifest_digest": v2_source_manifest_digest(root),
         "rcaeval_commit": RCAEVAL_COMMIT,
         "ada_rca_reference": FROZEN_ADA_METRICS,
@@ -413,6 +486,7 @@ def evaluate_v2(root: Path) -> dict[str, Path]:
         },
         "baseline_mrr": "NOT-IDENTIFIABLE",
         "labels_joined_after_global_lock": True,
+        "method_scope": list(methods),
     }
     fault_payload = {
         "schema_version": "rca_baseline_rescue_fault_level_evaluation_v2",
@@ -433,7 +507,7 @@ def evaluate_v2(root: Path) -> dict[str, Path]:
     }
     bootstrap_rows = []
     for dataset in DATASET_ORDER:
-        for method in V2_METHODS:
+        for method in methods:
             baseline = baseline_case_rows[(method, dataset)]
             bootstrap_rows.append({
                 "method": method,
@@ -449,11 +523,8 @@ def evaluate_v2(root: Path) -> dict[str, Path]:
         "rows": bootstrap_rows,
     }
     outputs = {
-        "overall": root / OVERALL_RELATIVE,
-        "fault_level": root / FAULT_RELATIVE,
-        "robustness": root / ROBUSTNESS_RELATIVE,
-        "comparability": root / COMPARABILITY_RELATIVE,
-        "paired_bootstrap": root / BOOTSTRAP_RELATIVE,
+        key: root / output_relatives[key]
+        for key in ("overall", "fault_level", "robustness", "comparability", "paired_bootstrap")
     }
     for key, payload in (
         ("overall", overall_payload),
@@ -464,6 +535,48 @@ def evaluate_v2(root: Path) -> dict[str, Path]:
     ):
         atomic_write_json(outputs[key], payload)
     return outputs
+
+
+def evaluate_v2(root: Path) -> dict[str, Path]:
+    """Evaluate the original frozen five-method V2 scope."""
+
+    lock = require_v2_metric_unlock(root)
+    return _evaluate_locked_scope(
+        root,
+        lock=lock,
+        methods=V2_METHODS,
+        output_relatives={
+            "overall": OVERALL_RELATIVE,
+            "fault_level": FAULT_RELATIVE,
+            "robustness": ROBUSTNESS_RELATIVE,
+            "comparability": COMPARABILITY_RELATIVE,
+            "paired_bootstrap": BOOTSTRAP_RELATIVE,
+        },
+        global_lock_relative=V2_GLOBAL_LOCK_RELATIVE,
+        protocol_digest=V2_PROTOCOL_DIGEST,
+        evaluation_scope="V2_FIVE_BASELINES",
+    )
+
+
+def evaluate_v2_causalrca(root: Path) -> dict[str, Path]:
+    """Evaluate all six baselines after the additive combined V2 lock."""
+
+    lock = require_v2_combined_metric_unlock(root)
+    return _evaluate_locked_scope(
+        root,
+        lock=lock,
+        methods=V2_COMBINED_METHODS,
+        output_relatives={
+            "overall": COMBINED_OVERALL_RELATIVE,
+            "fault_level": COMBINED_FAULT_RELATIVE,
+            "robustness": COMBINED_ROBUSTNESS_RELATIVE,
+            "comparability": COMBINED_COMPARABILITY_RELATIVE,
+            "paired_bootstrap": COMBINED_BOOTSTRAP_RELATIVE,
+        },
+        global_lock_relative=V2_COMBINED_GLOBAL_LOCK_RELATIVE,
+        protocol_digest=V2_COMBINED_PROTOCOL_DIGEST,
+        evaluation_scope="V2_SIX_BASELINES_WITH_CAUSALRCA_CPU_EXTENSION",
+    )
 
 
 def _fmt(value: Any) -> str:
@@ -486,18 +599,26 @@ def _markdown_table(columns: Sequence[str], rows: Sequence[Mapping[str, Any]]) -
     return "\n".join(lines)
 
 
-def render_report_v2(root: Path) -> Path:
-    require_v2_evaluation_outputs(root)
-    overall = read_json(root / OVERALL_RELATIVE)
-    fault = read_json(root / FAULT_RELATIVE)
-    robustness = read_json(root / ROBUSTNESS_RELATIVE)
-    comparability = read_json(root / COMPARABILITY_RELATIVE)
-    bootstrap = read_json(root / BOOTSTRAP_RELATIVE)
-    report = f"""# Ada-RCA — RCAEval Five-Baseline Rescue & Unified Evaluation V2
+def _render_report(
+    root: Path,
+    *,
+    output_relatives: Mapping[str, Path],
+    require_outputs: Any,
+    title: str,
+    methods: Sequence[str],
+) -> Path:
+    require_outputs(root)
+    overall = read_json(root / output_relatives["overall"])
+    fault = read_json(root / output_relatives["fault_level"])
+    robustness = read_json(root / output_relatives["robustness"])
+    comparability = read_json(root / output_relatives["comparability"])
+    bootstrap = read_json(root / output_relatives["paired_bootstrap"])
+    report = f"""# {title}
 
 Performance-blind rescue execution was frozen before this post-lock report.
 Ada-RCA values are read from identity-asserted frozen evidence; no retraining is
-performed. RE2-OB and RE2-TT are reported separately and are never pooled.
+performed. The baseline scope is `{', '.join(methods)}`. RE2-OB and RE2-TT are
+reported separately and are never pooled.
 
 ## Table A — Overall RCA Performance
 
@@ -530,15 +651,53 @@ are partial service projections and no candidate completion is legal.
     return path
 
 
+def render_report_v2(root: Path) -> Path:
+    return _render_report(
+        root,
+        output_relatives={
+            "overall": OVERALL_RELATIVE,
+            "fault_level": FAULT_RELATIVE,
+            "robustness": ROBUSTNESS_RELATIVE,
+            "comparability": COMPARABILITY_RELATIVE,
+            "paired_bootstrap": BOOTSTRAP_RELATIVE,
+        },
+        require_outputs=require_v2_evaluation_outputs,
+        title="Ada-RCA — RCAEval Five-Baseline Rescue & Unified Evaluation V2",
+        methods=V2_METHODS,
+    )
+
+
+def render_report_v2_causalrca(root: Path) -> Path:
+    return _render_report(
+        root,
+        output_relatives={
+            "overall": COMBINED_OVERALL_RELATIVE,
+            "fault_level": COMBINED_FAULT_RELATIVE,
+            "robustness": COMBINED_ROBUSTNESS_RELATIVE,
+            "comparability": COMBINED_COMPARABILITY_RELATIVE,
+            "paired_bootstrap": COMBINED_BOOTSTRAP_RELATIVE,
+        },
+        require_outputs=require_v2_combined_evaluation_outputs,
+        title="Ada-RCA — RCAEval Six-Baseline Rescue & Unified Evaluation V2",
+        methods=V2_COMBINED_METHODS,
+    )
+
+
 def command_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("evaluate-v2")
+    sub.add_parser("evaluate-v2-causalrca")
     sub.add_parser("render-report-v2")
+    sub.add_parser("render-report-v2-causalrca")
     sub.add_parser("fault-level-v2")
+    sub.add_parser("fault-level-v2-causalrca")
     sub.add_parser("robustness-v2")
+    sub.add_parser("robustness-v2-causalrca")
     sub.add_parser("comparability-v2")
+    sub.add_parser("comparability-v2-causalrca")
     sub.add_parser("paired-bootstrap-v2")
+    sub.add_parser("paired-bootstrap-v2-causalrca")
     return parser
 
 
@@ -548,21 +707,38 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.command == "evaluate-v2":
         for path in evaluate_v2(root).values():
             print(path)
+    elif args.command == "evaluate-v2-causalrca":
+        for path in evaluate_v2_causalrca(root).values():
+            print(path)
     elif args.command == "render-report-v2":
         print(render_report_v2(root))
+    elif args.command == "render-report-v2-causalrca":
+        print(render_report_v2_causalrca(root))
     else:
-        output_map = {
+        base_output_map = {
             "fault-level-v2": FAULT_RELATIVE,
             "robustness-v2": ROBUSTNESS_RELATIVE,
             "comparability-v2": COMPARABILITY_RELATIVE,
             "paired-bootstrap-v2": BOOTSTRAP_RELATIVE,
         }
+        combined_output_map = {
+            "fault-level-v2-causalrca": COMBINED_FAULT_RELATIVE,
+            "robustness-v2-causalrca": COMBINED_ROBUSTNESS_RELATIVE,
+            "comparability-v2-causalrca": COMBINED_COMPARABILITY_RELATIVE,
+            "paired-bootstrap-v2-causalrca": COMBINED_BOOTSTRAP_RELATIVE,
+        }
         # These commands are intentionally read-only projections of the one
-        # atomic evaluate-v2 stage; they never bypass the metric-unlock gate.
-        require_v2_evaluation_outputs(root)
-        path = root / output_map[args.command]
+        # atomic evaluate stage; they never bypass the metric-unlock gate.
+        if args.command in base_output_map:
+            require_v2_evaluation_outputs(root)
+            path = root / base_output_map[args.command]
+        elif args.command in combined_output_map:
+            require_v2_combined_evaluation_outputs(root)
+            path = root / combined_output_map[args.command]
+        else:
+            raise AssertionError(f"unhandled evaluation command: {args.command}")
         if not path.is_file():
-            raise V2EvaluationBlocked("run evaluate-v2 first after the global lock commit")
+            raise V2EvaluationBlocked("run the corresponding evaluate command first after the global lock commit")
         print(path)
     return 0
 

@@ -43,6 +43,9 @@ from src.baseline_eval.rescue_v2 import (
     V2_ATTEMPT_IDS,
     V2_BLOCKING_STATUSES,
     V2_CASE_SCHEMA,
+    V2_COMBINED_METHODS,
+    V2_COMBINED_PROTOCOL_DIGEST,
+    V2_COMBINED_PROTOCOL_VERSION,
     V2_EXECUTION_ROOT_RELATIVE,
     V2_METHODS,
     V2_PROTOCOL_DIGEST,
@@ -65,6 +68,7 @@ from src.baseline_eval.rescue_v2 import (
     v2_method_lock_reissued_relative,
     v2_method_lock_reissued_v2_relative,
     v2_execution_validity,
+    verify_v2_combined_protocol,
     run_determinism_preflight,
     v2_record_relative,
     V2EvaluationBlocked,
@@ -215,6 +219,24 @@ class RescueV2ProtocolTest(unittest.TestCase):
         path = v2_record_relative("CausalRCA", CAUSALRCA_CPU_ATTEMPT_ID, "re2ob", "re2ob-0000000000000000")
         self.assertTrue(path.as_posix().startswith("artifacts/baseline_eval/execution_v2_causalrca_cpu/"))
         self.assertNotIn("execution_v2/records/causalrca", path.as_posix())
+
+    def test_13d_combined_protocol_binds_six_methods_additively(self):
+        payload = verify_v2_combined_protocol(ROOT, require_committed=False)
+        self.assertEqual(V2_COMBINED_METHODS, (*V2_METHODS, "CausalRCA"))
+        self.assertEqual(payload["protocol_version"], V2_COMBINED_PROTOCOL_VERSION)
+        self.assertEqual(payload["method_order"], list(V2_COMBINED_METHODS))
+        self.assertEqual(len(V2_COMBINED_PROTOCOL_DIGEST), 64)
+
+    def test_13e_combined_lock_commands_are_explicit(self):
+        parser = command_parser()
+        self.assertEqual(
+            parser.parse_args(["create-global-lock-v2-causalrca"]).command,
+            "create-global-lock-v2-causalrca",
+        )
+        self.assertEqual(
+            parser.parse_args(["verify-global-lock-v2-causalrca"]).command,
+            "verify-global-lock-v2-causalrca",
+        )
 
     def test_13c_causalrca_process_failure_keeps_extension_provenance(self):
         payload = _process_failure_record(

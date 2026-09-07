@@ -1,7 +1,7 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **V2 RESCUE EXECUTION COMPLETE — SIX METHOD LOCKS VERIFIED**
-State revision: `2026-09-07.1`
+Status: **V2 COMBINED EVALUATION AUTHORIZED — SIX METHOD LOCKS VERIFIED; COMBINED LOCK PENDING**
+State revision: `2026-09-07.2`
 Last operational audit: 2026-09-07, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
 Last synchronized central commit: `f92d732`
@@ -45,6 +45,7 @@ contents, and update this document.
 | Protocol digest | `aa4f03363e1347a4b4e3c6427fd846be80452f025c3a6d08042ed6f6de0a849e` | frozen |
 | Input-manifest digest | `b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec` | frozen |
 | V2.1 rescue protocol digest | `dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de` | frozen |
+| V2 combined CausalRCA protocol digest | `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | additive; lock pending |
 
 The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
 only removes the final newline from the existing `artifacts/cache/` line. On
@@ -117,6 +118,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | V2.2 implementation amendment | `9f10742`; `RCA_BASELINE_RESCUE_IMPLEMENTATION_AMENDMENT_V2_2.md` | recorded; performance-blind execution correction |
 | V2 pre-lock interim unified tables | `RCA_BASELINE_INTERIM_UNIFIED_TABLES_V2.md` | recorded; RE2-OB operational snapshot only, metric cells intentionally blank |
 | CausalRCA CPU case-level V2 extension | `088b044`; merged evidence `ed4026f`; protocol digest `fe46fc498507370563452aa3b31fa65938f5a23c6850586a22afcafa0787551b` | complete; 180 records; lock valid |
+| Six-method V2 combined lock/evaluation amendment | `RCA_BASELINE_V2_CAUSALRCA_COMBINED_LOCK_AMENDMENT_V1.md`; machine digest `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54` | authorized; combined lock and metrics pending |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -329,7 +331,7 @@ its separate CPU-extension root. The merge did not touch the user method's
 `src/rca` or `artifacts/p6_*` paths. All five base V2 locks and the independent
 CausalRCA extension lock verify centrally.
 
-### B7. V2 post-launch rescue state — complete; evaluation pending
+### B7. V2 post-launch rescue state — complete; combined evaluation pending
 
 - CIRCA, MicroCause, MicroRank, TraceRCA, and mmBARO each have 180/180
   terminal records, no blocking terminal statuses, and a centrally verified
@@ -339,9 +341,10 @@ CausalRCA extension lock verify centrally.
 - CausalRCA has 180/180 CPU case-level records, no blocking terminal statuses,
   and a valid independent extension lock. Its run used 20 requested/actual
   workers, as recorded in the lock; no rerun is authorized or needed.
-- The five-method V2 global prediction lock and all metric/evaluation commands
-  remain pending. CausalRCA requires an explicitly recorded combined-lock step
-  before it can enter a label-join or metric evaluation.
+- The independent method locks are complete. The additive six-method combined
+  protocol is now recorded and authorized; its combined global prediction lock
+  must be created and committed before any six-method label join or metric
+  evaluation.
 
 ## 7. Historical V1 plan and current V2 replacement
 
@@ -366,10 +369,13 @@ to create a V1 lock.
   remain separate. All six active locks are integrity-valid and contain no
   blocking terminal statuses; METHOD_FAILURE remains a legal zero-utility
   robustness observation.
-- The coordinator may separately create and commit the five-method V2 global
-  prediction lock. CausalRCA requires an explicitly recorded combined-lock
-  amendment before entering any label-join or metric evaluation. No labels or
-  metrics have been inspected in this merge task.
+- The coordinator may create and commit the additive six-method combined V2
+  prediction lock at
+  `artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json`.
+  The combined protocol is
+  `artifacts/baseline_eval/rescue_protocol_v2_causalrca_combined.json` with
+  digest `24419f179d44ee09f082a23173a0d35c5ec2d3d5592cd93ff9a2afe1d0591e54`.
+  No labels or metrics have been inspected before that lock.
 
 ### P0 — Resolve repository transition readiness
 
@@ -444,27 +450,29 @@ to create a V1 lock.
 - The saved GPU branch remains non-executed context; it must not be reused for
   the CPU track.
 
-### P7 — Global prediction lock — pending explicit coordinator action
+### P7 — Six-method combined global prediction lock — authorized, pending execution
 
 - Complete: all five base V2 method environments and prediction commits are
   integrated; worker-owned paths remain disjoint and all five active locks
   verify. The CausalRCA CPU extension is also integrated under its separate
   execution root and lock.
-- Pending: create and commit the five-method V2 global prediction lock after
-  the coordinator explicitly authorizes that lock transition.
-- CausalRCA must be included only through a separately recorded combined-lock
-  amendment; its valid extension lock is not silently folded into the existing
-  five-method lock.
+- Complete: the additive combined-lock amendment is recorded and explicitly
+  authorized by the user.
+- Pending: create and commit
+  `execution_v2/prediction_lock_v2_causalrca.json`, binding all six active
+  method locks without modifying the frozen five-method lock semantics.
 - No label join or metric computation has occurred in this merge task.
 
-### P8 — Post-lock evaluation and reporting
+### P8 — Post-lock evaluation and reporting — next action
 
 - Join labels only after the committed global prediction lock.
 - Never rerun a baseline during evaluation.
 - Keep every failure in the 90-case dataset denominator with zero top-k utility.
 - Report AC@1, AC@3, AC@5, and Avg@5; baseline MRR remains
   `NOT-IDENTIFIABLE`.
-- Generate diagnostics and the P1/P2 scientific-disclosure report.
+- Generate the six-method overall, fault-level, robustness, comparability, and
+  paired-bootstrap tables under `execution_v2/evaluation_causalrca/`, then
+  publish `RCA_BASELINE_CONFIRMATORY_RESULTS_V2.md`.
 - Commit evaluation and reporting separately.
 - Update this document with final artifact paths, commits, tests, push state,
   limitations, and final decision.
