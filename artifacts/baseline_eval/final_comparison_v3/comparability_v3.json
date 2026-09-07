@@ -1,0 +1,329 @@
+{
+  "provenance": {
+    "ada_rca_frozen_identity": {
+      "evidence_closure_reference": "9342e06db91945be2e44703437229ba45b18bda8",
+      "metrics": {
+        "re2ob": {
+          "path": "artifacts/final_method/re2ob/metrics.json",
+          "sha256": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1"
+        },
+        "re2tt": {
+          "path": "artifacts/final_method/re2tt/metrics.json",
+          "sha256": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c"
+        }
+      },
+      "provenance": {
+        "re2ob": {
+          "path": "artifacts/final_method/re2ob/provenance.json",
+          "sha256": "34c0628c090b8fedaa6da3d6544d591cf541f3904bbed809ed06c21922ef3232"
+        },
+        "re2tt": {
+          "path": "artifacts/final_method/re2tt/provenance.json",
+          "sha256": "24c25d1cb6fe1a3f76b878ba6a396cfa310072a4e52ec1b669447afc5dbaaa3b"
+        }
+      },
+      "retraining": false,
+      "scientific_v1_reference": "bed295326e567395e725caa82840a534dcc0b1de"
+    },
+    "adapter_contract": {
+      "alias_policy": "frontendservice[_...] -> frontend[_...]",
+      "candidate_completion": "NONE",
+      "implementation": "src/baseline_eval/__init__.py::adapt_native_ranking",
+      "implementation_sha256": "a36a1a1644ef68d4a1083fbe9d308630d448c65287de4c9ff756fad5bd893984",
+      "metric_legality": {
+        "AC@1": "ADAPTED-BUT-VALID",
+        "AC@3": "ADAPTED-BUT-VALID",
+        "AC@5": "ADAPTED-BUT-VALID",
+        "Avg@5": "ADAPTED-BUT-VALID",
+        "MRR": "NOT-IDENTIFIABLE"
+      },
+      "projection_policy": "longest legal prefix; first occurrence retained; duplicates and unmapped entries omitted",
+      "protocol_artifacts": {
+        "docs/baseline_eval/RCA_BASELINE_ADAPTER_SPEC_V1.md": "51ce1d706e6c4108d6b07f6cc43d1fad51e773ed95061ea5f4ccdf022c5d60cd",
+        "docs/baseline_eval/RCA_BASELINE_PROTOCOL_FREEZE_V1.md": "f16ad5778a4df3c772461e06cb8f9aa59a750298364bf6b97af286466a71202f"
+      }
+    },
+    "baro_v1_evidence": {
+      "attempt_id": "baro-a1-20260830",
+      "environment_digest": "3a25de908e2b08290f0db636528e6cc9bfaebe3c1f4adfff2dee8c34ac565371",
+      "environment_manifest_path": "artifacts/baseline_eval/execution_v1/environments/baro.json",
+      "environment_manifest_sha256": "4aa7bb9dcc72bc5788b6961d06072d2dbd39a8d684372f630d9155e37cac5d3e",
+      "evaluation_source": "frozen V1 case records after committed V3 scope lock",
+      "evidence_track": "V1_LOCKED_COMPLETE",
+      "execution_commit": "5018f5d721b4323c5e9fb112d8479c6408a41cd6",
+      "live_environment_re_resolution": "NOT_REQUIRED_FOR_INHERITED_FROZEN_EVIDENCE",
+      "lock_environment_digest_identity": "PASS",
+      "method": "BARO",
+      "prediction_lock_commit": "fbfb6e6e1f112f93fe544f8b6c71aca4f5b336f7",
+      "prediction_lock_path": "artifacts/baseline_eval/execution_v1/locks/baro_prediction_lock.json",
+      "prediction_lock_sha256": "75cd1020aaaced22eef445856e4e73842ed4949fef4fd2fe85ffb278bcc08e65",
+      "record_counts": {
+        "re2ob": 90,
+        "re2tt": 90
+      },
+      "rerun": false,
+      "status_counts": {
+        "re2ob": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "METHOD_FAILURE": 0,
+          "SUCCESS": 90,
+          "TIMEOUT": 0
+        },
+        "re2tt": {
+          "ADAPTER_FAILURE": 0,
+          "DATA_FAILURE": 0,
+          "METHOD_FAILURE": 0,
+          "SUCCESS": 90,
+          "TIMEOUT": 0
+        }
+      }
+    },
+    "candidate_registry_digests": {
+      "re2ob": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+      "re2tt": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a"
+    },
+    "claim_boundary": {
+      "causal_superiority_claim": false,
+      "same_protocol_superiority_claim": false,
+      "sota_claim": false,
+      "unseen_root_generalization_claim": false,
+      "unseen_system_generalization_claim": false
+    },
+    "evidence_tracks": {
+      "Ada-RCA": "FROZEN_ADA_SCIENTIFIC_V1",
+      "BARO": "V1_LOCKED_COMPLETE",
+      "CIRCA": "V2_RESCUE_LOCKED",
+      "CausalRCA": "V2_CPU_EXTENSION_LOCKED",
+      "MicroCause": "V2_RESCUE_LOCKED",
+      "MicroRank": "V2_RESCUE_LOCKED",
+      "TraceRCA": "V2_RESCUE_LOCKED",
+      "mmBARO": "V2_RESCUE_LOCKED"
+    },
+    "existing_six_method_values_identity_asserted": true,
+    "final_output_paths": {
+      "comparability": "artifacts/baseline_eval/final_comparison_v3/comparability_v3.json",
+      "fault_level": "artifacts/baseline_eval/final_comparison_v3/fault_level_v3.json",
+      "overall": "artifacts/baseline_eval/final_comparison_v3/overall_v3.json",
+      "paired_bootstrap": "artifacts/baseline_eval/final_comparison_v3/paired_bootstrap_v3.json",
+      "robustness": "artifacts/baseline_eval/final_comparison_v3/robustness_v3.json"
+    },
+    "final_report_order": [
+      "BARO",
+      "CIRCA",
+      "MicroCause",
+      "MicroRank",
+      "TraceRCA",
+      "mmBARO",
+      "CausalRCA",
+      "Ada-RCA"
+    ],
+    "generated_at": "2026-09-07T08:24:31.584853+00:00",
+    "historical_v2_evidence_byte_immutable": true,
+    "input_manifest": {
+      "path": "artifacts/baseline_eval/execution_v1/input_manifest_v1.json",
+      "sha256": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec"
+    },
+    "integration_amendment": {
+      "commit": "bf6349e342fa2e1ffbb1348bccbf852821503bec",
+      "machine_readable_path": "artifacts/baseline_eval/baro_final_integration_amendment_v1.json",
+      "path": "docs/baseline_eval/RCA_BASELINE_BARO_FINAL_INTEGRATION_AMENDMENT_V1.md",
+      "sha256": "0c38c3042a886ccff087beced50c0f671ca0b52832041c45385288fe2561d334"
+    },
+    "labels_after_scope": {
+      "re2ob": {
+        "case_count": 90,
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "path": "artifacts/source/re2ob/labels.jsonl",
+        "sha256": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7"
+      },
+      "re2tt": {
+        "case_count": 90,
+        "fault_case_counts": {
+          "cpu": 15,
+          "delay": 15,
+          "disk": 15,
+          "loss": 15,
+          "mem": 15,
+          "socket": 15
+        },
+        "path": "artifacts/source/re2tt/labels.jsonl",
+        "sha256": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca"
+      }
+    },
+    "labels_joined_after_scope_lock": true,
+    "method_order": [
+      "BARO",
+      "CIRCA",
+      "MicroCause",
+      "MicroRank",
+      "TraceRCA",
+      "mmBARO",
+      "CausalRCA"
+    ],
+    "newly_evaluated_methods": [
+      "BARO"
+    ],
+    "pooling": "FORBIDDEN",
+    "rcaeval": {
+      "checkout": "/home/zhangll24/RCA_project/RCAEval-clean",
+      "clean": true,
+      "commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb"
+    },
+    "schema_version": "rca_baseline_final_composite_provenance_v3",
+    "scope": {
+      "baro_metrics_inspected_before_scope_freeze": false,
+      "commit": "bf6349e342fa2e1ffbb1348bccbf852821503bec",
+      "freeze_commit": "bf6349e342fa2e1ffbb1348bccbf852821503bec",
+      "id": "FINAL_COMPOSITE_SEVEN_BASELINE_COMPARISON",
+      "path": "artifacts/baseline_eval/final_comparison_v3/scope_lock_v3.json",
+      "sha256": "f8d2a3e9044a5885f8bdbaf5906e5bd51b8db90616387c496bb4acaf45d69501"
+    },
+    "six_method_v2_evidence": {
+      "byte_identity_checked": true,
+      "evaluation_source_paths": {
+        "comparability": {
+          "commit": "8da9b44a495b83d4c6ecdfc3b4e919a0734490bb",
+          "path": "artifacts/baseline_eval/execution_v2/evaluation_causalrca/comparability_v2.json",
+          "sha256": "ac56c630d4ed110d1647051e47c9705bdaa3a1a183e37dc988ed3181598114da"
+        },
+        "fault_level": {
+          "commit": "8da9b44a495b83d4c6ecdfc3b4e919a0734490bb",
+          "path": "artifacts/baseline_eval/execution_v2/evaluation_causalrca/fault_level_v2.json",
+          "sha256": "13f74e2fba61a69e3c0e652a2e93fa980daa005c5f90a624300a48716ac36c6f"
+        },
+        "overall": {
+          "commit": "8da9b44a495b83d4c6ecdfc3b4e919a0734490bb",
+          "path": "artifacts/baseline_eval/execution_v2/evaluation_causalrca/overall_v2.json",
+          "sha256": "6d782df0878ca1790085da6f9bbd5570ee11ba74ce2bcd26a263225f37631aad"
+        },
+        "paired_bootstrap": {
+          "commit": "8da9b44a495b83d4c6ecdfc3b4e919a0734490bb",
+          "path": "artifacts/baseline_eval/execution_v2/evaluation_causalrca/paired_bootstrap_v2.json",
+          "sha256": "0591b84f3ef3489c18ac7da92c718456f3d3160c7a42151502f0ea9f0117b8c1"
+        },
+        "robustness": {
+          "commit": "8da9b44a495b83d4c6ecdfc3b4e919a0734490bb",
+          "path": "artifacts/baseline_eval/execution_v2/evaluation_causalrca/robustness_v2.json",
+          "sha256": "ca499f6e9a79fc4a3963b00c0ef0c85596b8fbaab4919bbef2cebef5f01ea605"
+        }
+      },
+      "evidence_track": "V2_COMBINED_LOCKED",
+      "metrics_preexisting": true,
+      "prediction_lock_commit": "2778c64f137601f307e21e735e2ad23a3e14eda6",
+      "prediction_lock_path": "artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json",
+      "prediction_lock_sha256": "935d0a3e57e27cf3b8c0d267e6d114499846f7abbce1ffec3c34ad34a63f2200",
+      "rerun": false
+    },
+    "statistical_design": {
+      "datasets_separate": true,
+      "primary": "Ada-RCA - BARO Avg@5",
+      "resamples": 10000,
+      "secondary": "Ada-RCA - BARO AC@1",
+      "seed": 20260827,
+      "stratification": "fault"
+    }
+  },
+  "schema_version": "rca_baseline_final_composite_comparability_v3",
+  "table_d": {
+    "columns": [
+      "Method",
+      "Input",
+      "Supervision",
+      "Native granularity",
+      "Service projection",
+      "Complete service ranking",
+      "MRR legality",
+      "Evidence track"
+    ],
+    "rows": [
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "evidence_track": "V1_LOCKED_COMPLETE",
+        "input": "metric",
+        "method": "BARO",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "evidence_track": "V2_RESCUE_LOCKED",
+        "input": "metric",
+        "method": "CIRCA",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "evidence_track": "V2_RESCUE_LOCKED",
+        "input": "metric",
+        "method": "MicroCause",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "evidence_track": "V2_RESCUE_LOCKED",
+        "input": "raw trace",
+        "method": "MicroRank",
+        "native_granularity": "operation",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "evidence_track": "V2_RESCUE_LOCKED",
+        "input": "raw trace",
+        "method": "TraceRCA",
+        "native_granularity": "operation",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "evidence_track": "V2_RESCUE_LOCKED",
+        "input": "multi-source",
+        "method": "mmBARO",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "NOT-IDENTIFIABLE",
+        "complete_service_ranking": "NO",
+        "evidence_track": "V2_CPU_EXTENSION_LOCKED",
+        "input": "metric",
+        "method": "CausalRCA",
+        "native_granularity": "indicator",
+        "service_projection": "partial service projection",
+        "supervision": "case-wise unsupervised"
+      },
+      {
+        "MRR_legality": "FROZEN/NATIVE",
+        "complete_service_ranking": "YES",
+        "evidence_track": "FROZEN_ADA_SCIENTIFIC_V1",
+        "input": "Metrics + Logs + Traces",
+        "method": "Ada-RCA",
+        "native_granularity": "native service ranking",
+        "service_projection": "native service ranking",
+        "supervision": "root-supervised cross-case training"
+      }
+    ]
+  }
+}
