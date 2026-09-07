@@ -1,0 +1,84 @@
+{
+  "schema_version": "rca_baseline_baro_final_integration_amendment_v1",
+  "amendment_id": "BARO_FINAL_COMPARISON_INTEGRATION_V1",
+  "date": "2026-09-07",
+  "status": "FROZEN_SCOPE_COMPLETENESS_DECISION",
+  "rationale": "scope completeness",
+  "motivation": {
+    "baro_original_confirmatory_registry": true,
+    "baro_v1_execution_complete": true,
+    "baro_omitted_from_v2_rescue_because_already_complete": true,
+    "baro_scientifically_excluded": false,
+    "performance_based_inclusion": false
+  },
+  "final_baseline_method_order": [
+    "BARO",
+    "CIRCA",
+    "MicroCause",
+    "MicroRank",
+    "TraceRCA",
+    "mmBARO",
+    "CausalRCA"
+  ],
+  "final_report_order": [
+    "BARO",
+    "CIRCA",
+    "MicroCause",
+    "MicroRank",
+    "TraceRCA",
+    "mmBARO",
+    "CausalRCA",
+    "Ada-RCA"
+  ],
+  "datasets": {
+    "re2ob": {"case_count": 90},
+    "re2tt": {"case_count": 90},
+    "pooling": "FORBIDDEN"
+  },
+  "baro_v1_method_lock": {
+    "path": "artifacts/baseline_eval/execution_v1/locks/baro_prediction_lock.json",
+    "sha256": "75cd1020aaaced22eef445856e4e73842ed4949fef4fd2fe85ffb278bcc08e65",
+    "commit": "fbfb6e6e1f112f93fe544f8b6c71aca4f5b336f7",
+    "method": "BARO",
+    "disposition": "EXECUTION_COMPLETE",
+    "contains_evaluation": false
+  },
+  "six_method_v2_combined_global_lock": {
+    "path": "artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json",
+    "sha256": "935d0a3e57e27cf3b8c0d267e6d114499846f7abbce1ffec3c34ad34a63f2200",
+    "commit": "2778c64f137601f307e21e735e2ad23a3e14eda6",
+    "method_order": [
+      "CIRCA",
+      "MicroCause",
+      "MicroRank",
+      "TraceRCA",
+      "mmBARO",
+      "CausalRCA"
+    ],
+    "contains_evaluation": false,
+    "labels_joined": false
+  },
+  "input_manifest": {
+    "path": "artifacts/baseline_eval/execution_v1/input_manifest_v1.json",
+    "sha256": "b8280866432cdd494825cf831d2a73d2fe157de0ecd8801347953172e1ab43ec"
+  },
+  "rcaeval_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+  "provenance_tracks": {
+    "BARO": "V1_LOCKED_COMPLETE",
+    "CIRCA": "V2_RESCUE_LOCKED",
+    "MicroCause": "V2_RESCUE_LOCKED",
+    "MicroRank": "V2_RESCUE_LOCKED",
+    "TraceRCA": "V2_RESCUE_LOCKED",
+    "mmBARO": "V2_RESCUE_LOCKED",
+    "CausalRCA": "V2_CPU_EXTENSION_LOCKED"
+  },
+  "baro_rerun": false,
+  "six_baseline_rerun": false,
+  "ada_rca_retraining": false,
+  "baro_metrics_inspected_before_scope_freeze": false,
+  "six_method_metrics_preexisting": true,
+  "seven_method_original_global_prelabel_lock": false,
+  "historical_v2_evaluation_immutable": true,
+  "adapter_search": false,
+  "algorithm_change": false
+}
