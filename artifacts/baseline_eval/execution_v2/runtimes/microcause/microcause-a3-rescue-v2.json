@@ -1,0 +1,1843 @@
+{
+  "actual_worker_count": 10,
+  "attempt_finish_timestamp": "2026-09-04T02:28:34.543841+00:00",
+  "attempt_id": "microcause-a3-rescue-v2",
+  "attempt_start_timestamp": "2026-09-03T09:58:18.906424+00:00",
+  "attempt_wall_time_seconds": 59415.63741419895,
+  "available_cpu_count": 48,
+  "case_timings": [
+    {
+      "case_id": "re2ob-9e575f44de987a1a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 166.91112290893216,
+      "finish_timestamp": "2026-09-03T10:01:42.404950+00:00",
+      "pid": 149,
+      "start_timestamp": "2026-09-03T09:58:55.493773+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-505f802370635ec3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 182.0820504979929,
+      "finish_timestamp": "2026-09-03T10:01:57.609195+00:00",
+      "pid": 157,
+      "start_timestamp": "2026-09-03T09:58:55.527071+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-057fe49bd30d47c0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 160.78731275396422,
+      "finish_timestamp": "2026-09-03T10:01:36.280528+00:00",
+      "pid": 148,
+      "start_timestamp": "2026-09-03T09:58:55.493163+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-79fcefff48aef53b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 160.56843774800655,
+      "finish_timestamp": "2026-09-03T10:01:36.082310+00:00",
+      "pid": 154,
+      "start_timestamp": "2026-09-03T09:58:55.513816+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-4b9110d974bb1875",
+      "dataset": "re2ob",
+      "elapsed_seconds": 167.72575292002875,
+      "finish_timestamp": "2026-09-03T10:01:43.224969+00:00",
+      "pid": 150,
+      "start_timestamp": "2026-09-03T09:58:55.499148+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-428d5ecf570372b5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 153.68649042199831,
+      "finish_timestamp": "2026-09-03T10:01:29.188659+00:00",
+      "pid": 152,
+      "start_timestamp": "2026-09-03T09:58:55.502114+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-66c4b614046569c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 163.81873524095863,
+      "finish_timestamp": "2026-09-03T10:01:39.336223+00:00",
+      "pid": 155,
+      "start_timestamp": "2026-09-03T09:58:55.517415+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-7aec8ac514e0d064",
+      "dataset": "re2ob",
+      "elapsed_seconds": 163.9130804660963,
+      "finish_timestamp": "2026-09-03T10:01:39.412805+00:00",
+      "pid": 151,
+      "start_timestamp": "2026-09-03T09:58:55.499666+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-a6318b7e89546125",
+      "dataset": "re2ob",
+      "elapsed_seconds": 155.21517622692045,
+      "finish_timestamp": "2026-09-03T10:01:30.737441+00:00",
+      "pid": 156,
+      "start_timestamp": "2026-09-03T09:58:55.522216+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-7f2201e9884e818e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 166.0499237329932,
+      "finish_timestamp": "2026-09-03T10:01:41.558771+00:00",
+      "pid": 153,
+      "start_timestamp": "2026-09-03T09:58:55.508780+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2ob-7c278a568194196b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 152.7484908089973,
+      "finish_timestamp": "2026-09-03T10:04:15.211571+00:00",
+      "pid": 165,
+      "start_timestamp": "2026-09-03T10:01:42.463030+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-72b5d278f8908a0a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 164.71603113296442,
+      "finish_timestamp": "2026-09-03T10:04:42.445446+00:00",
+      "pid": 167,
+      "start_timestamp": "2026-09-03T10:01:57.729345+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-b17ce68eb2ce01ee",
+      "dataset": "re2ob",
+      "elapsed_seconds": 157.1314676689217,
+      "finish_timestamp": "2026-09-03T10:04:13.502579+00:00",
+      "pid": 161,
+      "start_timestamp": "2026-09-03T10:01:36.371061+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-1d9a0d1641171551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 171.29782040091231,
+      "finish_timestamp": "2026-09-03T10:04:27.458614+00:00",
+      "pid": 160,
+      "start_timestamp": "2026-09-03T10:01:36.160749+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-abc29368674e8298",
+      "dataset": "re2ob",
+      "elapsed_seconds": 161.2654098169878,
+      "finish_timestamp": "2026-09-03T10:04:24.629169+00:00",
+      "pid": 166,
+      "start_timestamp": "2026-09-03T10:01:43.363706+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-1d19cc60d7a6adc1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 164.80751364293974,
+      "finish_timestamp": "2026-09-03T10:04:14.102035+00:00",
+      "pid": 158,
+      "start_timestamp": "2026-09-03T10:01:29.294478+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-71c7f9be34b19754",
+      "dataset": "re2ob",
+      "elapsed_seconds": 154.01307058194652,
+      "finish_timestamp": "2026-09-03T10:04:13.403931+00:00",
+      "pid": 162,
+      "start_timestamp": "2026-09-03T10:01:39.390786+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-557d49794f937ec6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 165.41209344402887,
+      "finish_timestamp": "2026-09-03T10:04:24.897990+00:00",
+      "pid": 163,
+      "start_timestamp": "2026-09-03T10:01:39.485853+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-cec5183e3f5418cf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 174.38351465994492,
+      "finish_timestamp": "2026-09-03T10:04:25.177801+00:00",
+      "pid": 159,
+      "start_timestamp": "2026-09-03T10:01:30.794240+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-da48e150772a24fd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 161.8243922330439,
+      "finish_timestamp": "2026-09-03T10:04:23.690093+00:00",
+      "pid": 164,
+      "start_timestamp": "2026-09-03T10:01:41.865659+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2ob-fd67c49516fa2028",
+      "dataset": "re2ob",
+      "elapsed_seconds": 165.8868607840268,
+      "finish_timestamp": "2026-09-03T10:07:01.153471+00:00",
+      "pid": 171,
+      "start_timestamp": "2026-09-03T10:04:15.266550+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-f874f110aae8efa9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 155.85324394796044,
+      "finish_timestamp": "2026-09-03T10:07:18.371980+00:00",
+      "pid": 177,
+      "start_timestamp": "2026-09-03T10:04:42.518679+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-40e1893e43abba5c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 165.45084714097902,
+      "finish_timestamp": "2026-09-03T10:06:59.009492+00:00",
+      "pid": 169,
+      "start_timestamp": "2026-09-03T10:04:13.558597+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-6aa36a4c6c99d55c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 160.90971255896147,
+      "finish_timestamp": "2026-09-03T10:07:08.442925+00:00",
+      "pid": 176,
+      "start_timestamp": "2026-09-03T10:04:27.533165+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-5a4d1a4785969ab2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 184.37760229897685,
+      "finish_timestamp": "2026-09-03T10:07:29.063458+00:00",
+      "pid": 173,
+      "start_timestamp": "2026-09-03T10:04:24.685797+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-eb8f50fda4f9095f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 169.22928750608116,
+      "finish_timestamp": "2026-09-03T10:07:03.396807+00:00",
+      "pid": 170,
+      "start_timestamp": "2026-09-03T10:04:14.167463+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-42e80cf6bcd9400f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 174.493106692913,
+      "finish_timestamp": "2026-09-03T10:07:07.969369+00:00",
+      "pid": 168,
+      "start_timestamp": "2026-09-03T10:04:13.476216+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-a84cfdf477d8bf62",
+      "dataset": "re2ob",
+      "elapsed_seconds": 192.85067209403496,
+      "finish_timestamp": "2026-09-03T10:07:37.803585+00:00",
+      "pid": 174,
+      "start_timestamp": "2026-09-03T10:04:24.952875+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-3827c8c9ef1e8592",
+      "dataset": "re2ob",
+      "elapsed_seconds": 186.5735172079876,
+      "finish_timestamp": "2026-09-03T10:07:31.830534+00:00",
+      "pid": 175,
+      "start_timestamp": "2026-09-03T10:04:25.256966+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-acf69e21960f63d8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 180.45368302601855,
+      "finish_timestamp": "2026-09-03T10:07:24.199284+00:00",
+      "pid": 172,
+      "start_timestamp": "2026-09-03T10:04:23.745531+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2ob-0433b8cb47b1ec8e",
+      "dataset": "re2ob",
+      "elapsed_seconds": 175.99882110697217,
+      "finish_timestamp": "2026-09-03T10:09:57.261538+00:00",
+      "pid": 179,
+      "start_timestamp": "2026-09-03T10:07:01.262669+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-5f261573c1b3bdc5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 173.62421908904798,
+      "finish_timestamp": "2026-09-03T10:10:12.066393+00:00",
+      "pid": 183,
+      "start_timestamp": "2026-09-03T10:07:18.442118+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-af1b6a7e1667e3f5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 178.54268594202586,
+      "finish_timestamp": "2026-09-03T10:09:58.104313+00:00",
+      "pid": 178,
+      "start_timestamp": "2026-09-03T10:06:59.561594+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-bd6f4fb8e84ccb69",
+      "dataset": "re2ob",
+      "elapsed_seconds": 161.14259158808272,
+      "finish_timestamp": "2026-09-03T10:09:49.654952+00:00",
+      "pid": 182,
+      "start_timestamp": "2026-09-03T10:07:08.512318+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-3e7e71a1c83dbc41",
+      "dataset": "re2ob",
+      "elapsed_seconds": 162.9794649569085,
+      "finish_timestamp": "2026-09-03T10:10:12.101153+00:00",
+      "pid": 185,
+      "start_timestamp": "2026-09-03T10:07:29.121633+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-e357bd8aec246cdb",
+      "dataset": "re2ob",
+      "elapsed_seconds": 171.22083800204564,
+      "finish_timestamp": "2026-09-03T10:09:54.736522+00:00",
+      "pid": 180,
+      "start_timestamp": "2026-09-03T10:07:03.515609+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-097a5d7ac0492007",
+      "dataset": "re2ob",
+      "elapsed_seconds": 149.57217002590187,
+      "finish_timestamp": "2026-09-03T10:09:37.770844+00:00",
+      "pid": 181,
+      "start_timestamp": "2026-09-03T10:07:08.198608+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-57b75da971aabed5",
+      "dataset": "re2ob",
+      "elapsed_seconds": 152.7657266909955,
+      "finish_timestamp": "2026-09-03T10:10:10.632202+00:00",
+      "pid": 187,
+      "start_timestamp": "2026-09-03T10:07:37.866425+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-e16e6de30ae75ccd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 143.1945804900024,
+      "finish_timestamp": "2026-09-03T10:09:55.091759+00:00",
+      "pid": 186,
+      "start_timestamp": "2026-09-03T10:07:31.897140+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-4677d4ce6ef327e0",
+      "dataset": "re2ob",
+      "elapsed_seconds": 163.60697481501848,
+      "finish_timestamp": "2026-09-03T10:10:07.874271+00:00",
+      "pid": 184,
+      "start_timestamp": "2026-09-03T10:07:24.267262+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2ob-d7f2f8eb2f0ad646",
+      "dataset": "re2ob",
+      "elapsed_seconds": 154.88266959204338,
+      "finish_timestamp": "2026-09-03T10:12:32.240545+00:00",
+      "pid": 192,
+      "start_timestamp": "2026-09-03T10:09:57.357824+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-df7e831dddfac76c",
+      "dataset": "re2ob",
+      "elapsed_seconds": 160.78344165801536,
+      "finish_timestamp": "2026-09-03T10:12:52.922965+00:00",
+      "pid": 196,
+      "start_timestamp": "2026-09-03T10:10:12.139466+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-1084f320d8584c61",
+      "dataset": "re2ob",
+      "elapsed_seconds": 151.76946174900513,
+      "finish_timestamp": "2026-09-03T10:12:29.937381+00:00",
+      "pid": 193,
+      "start_timestamp": "2026-09-03T10:09:58.167871+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-23213ee605c6b050",
+      "dataset": "re2ob",
+      "elapsed_seconds": 155.08039685699623,
+      "finish_timestamp": "2026-09-03T10:12:24.806533+00:00",
+      "pid": 189,
+      "start_timestamp": "2026-09-03T10:09:49.726101+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-48e5379f4903b1d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 154.96434760000557,
+      "finish_timestamp": "2026-09-03T10:12:47.203751+00:00",
+      "pid": 197,
+      "start_timestamp": "2026-09-03T10:10:12.239354+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-bb4a5b75716772f9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 157.7916206989903,
+      "finish_timestamp": "2026-09-03T10:12:32.583713+00:00",
+      "pid": 190,
+      "start_timestamp": "2026-09-03T10:09:54.792037+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-8f991393cb9debdf",
+      "dataset": "re2ob",
+      "elapsed_seconds": 150.69552566099446,
+      "finish_timestamp": "2026-09-03T10:12:08.534045+00:00",
+      "pid": 188,
+      "start_timestamp": "2026-09-03T10:09:37.838457+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-7858d4d3815cf005",
+      "dataset": "re2ob",
+      "elapsed_seconds": 157.3246167190373,
+      "finish_timestamp": "2026-09-03T10:12:48.034516+00:00",
+      "pid": 195,
+      "start_timestamp": "2026-09-03T10:10:10.709864+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-97935dcb7cfd6e82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 152.09393747895956,
+      "finish_timestamp": "2026-09-03T10:12:27.252537+00:00",
+      "pid": 191,
+      "start_timestamp": "2026-09-03T10:09:55.158556+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-f209212fc63ac713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 157.82641267601866,
+      "finish_timestamp": "2026-09-03T10:12:45.776761+00:00",
+      "pid": 194,
+      "start_timestamp": "2026-09-03T10:10:07.950290+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2ob-93de1fab2ca56e86",
+      "dataset": "re2ob",
+      "elapsed_seconds": 161.01744406390935,
+      "finish_timestamp": "2026-09-03T10:15:13.315913+00:00",
+      "pid": 202,
+      "start_timestamp": "2026-09-03T10:12:32.298420+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-435f42d94b785472",
+      "dataset": "re2ob",
+      "elapsed_seconds": 156.0972301879665,
+      "finish_timestamp": "2026-09-03T10:15:29.079844+00:00",
+      "pid": 207,
+      "start_timestamp": "2026-09-03T10:12:52.982561+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-048f2e7d7bfbc927",
+      "dataset": "re2ob",
+      "elapsed_seconds": 158.4794916959945,
+      "finish_timestamp": "2026-09-03T10:15:08.491066+00:00",
+      "pid": 201,
+      "start_timestamp": "2026-09-03T10:12:30.011540+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-4af0de56834334d2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 156.6699326209491,
+      "finish_timestamp": "2026-09-03T10:15:01.764675+00:00",
+      "pid": 199,
+      "start_timestamp": "2026-09-03T10:12:25.094691+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-d3f1403a4a08a3b1",
+      "dataset": "re2ob",
+      "elapsed_seconds": 159.24897536705248,
+      "finish_timestamp": "2026-09-03T10:15:26.531452+00:00",
+      "pid": 205,
+      "start_timestamp": "2026-09-03T10:12:47.282437+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-7732042f2a190c79",
+      "dataset": "re2ob",
+      "elapsed_seconds": 160.29872265900485,
+      "finish_timestamp": "2026-09-03T10:15:12.946119+00:00",
+      "pid": 203,
+      "start_timestamp": "2026-09-03T10:12:32.647349+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-80bf4d093e6ab818",
+      "dataset": "re2ob",
+      "elapsed_seconds": 157.59960806800518,
+      "finish_timestamp": "2026-09-03T10:14:46.208112+00:00",
+      "pid": 198,
+      "start_timestamp": "2026-09-03T10:12:08.608443+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-08f3e5d7b11d1fa7",
+      "dataset": "re2ob",
+      "elapsed_seconds": 213.0609296039911,
+      "finish_timestamp": "2026-09-03T10:16:21.153111+00:00",
+      "pid": 206,
+      "start_timestamp": "2026-09-03T10:12:48.092136+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-b6db72fc58931786",
+      "dataset": "re2ob",
+      "elapsed_seconds": 168.98993302695453,
+      "finish_timestamp": "2026-09-03T10:15:16.464707+00:00",
+      "pid": 200,
+      "start_timestamp": "2026-09-03T10:12:27.474731+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-f30e2feeaa5218b8",
+      "dataset": "re2ob",
+      "elapsed_seconds": 170.61755748896394,
+      "finish_timestamp": "2026-09-03T10:15:36.459177+00:00",
+      "pid": 204,
+      "start_timestamp": "2026-09-03T10:12:45.841564+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2ob-45687a171f241b04",
+      "dataset": "re2ob",
+      "elapsed_seconds": 159.61944369401317,
+      "finish_timestamp": "2026-09-03T10:17:53.004888+00:00",
+      "pid": 213,
+      "start_timestamp": "2026-09-03T10:15:13.385405+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-d0d93705e784491a",
+      "dataset": "re2ob",
+      "elapsed_seconds": 165.73261168494355,
+      "finish_timestamp": "2026-09-03T10:18:14.895164+00:00",
+      "pid": 216,
+      "start_timestamp": "2026-09-03T10:15:29.162499+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-c2ac02db4e3370a9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 0.34463981399312615,
+      "finish_timestamp": "2026-09-03T10:15:08.996940+00:00",
+      "pid": 210,
+      "start_timestamp": "2026-09-03T10:15:08.652259+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-1bb2e75872fd9037",
+      "dataset": "re2ob",
+      "elapsed_seconds": 205.78755453799386,
+      "finish_timestamp": "2026-09-03T10:18:27.626252+00:00",
+      "pid": 209,
+      "start_timestamp": "2026-09-03T10:15:01.838647+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-feeaaba6c71377df",
+      "dataset": "re2ob",
+      "elapsed_seconds": 203.6876510330476,
+      "finish_timestamp": "2026-09-03T10:18:50.291117+00:00",
+      "pid": 215,
+      "start_timestamp": "2026-09-03T10:15:26.603412+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-4f85dadf2507c3ca",
+      "dataset": "re2ob",
+      "elapsed_seconds": 196.95238419191446,
+      "finish_timestamp": "2026-09-03T10:18:29.996056+00:00",
+      "pid": 212,
+      "start_timestamp": "2026-09-03T10:15:13.043637+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-784d7eb25137c3c9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 181.41617041896097,
+      "finish_timestamp": "2026-09-03T10:17:47.707325+00:00",
+      "pid": 208,
+      "start_timestamp": "2026-09-03T10:14:46.291092+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-58eb5ae1a41b77e4",
+      "dataset": "re2ob",
+      "elapsed_seconds": 185.9999473799253,
+      "finish_timestamp": "2026-09-03T10:19:27.207460+00:00",
+      "pid": 218,
+      "start_timestamp": "2026-09-03T10:16:21.207451+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-d0382ea6cedfbd82",
+      "dataset": "re2ob",
+      "elapsed_seconds": 180.6974720809376,
+      "finish_timestamp": "2026-09-03T10:18:17.211085+00:00",
+      "pid": 214,
+      "start_timestamp": "2026-09-03T10:15:16.513569+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-f88fc943d724a354",
+      "dataset": "re2ob",
+      "elapsed_seconds": 166.5100387519924,
+      "finish_timestamp": "2026-09-03T10:18:23.032033+00:00",
+      "pid": 217,
+      "start_timestamp": "2026-09-03T10:15:36.521930+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2ob-b84066a37ca0c417",
+      "dataset": "re2ob",
+      "elapsed_seconds": 162.81052480998915,
+      "finish_timestamp": "2026-09-03T10:20:35.871857+00:00",
+      "pid": 220,
+      "start_timestamp": "2026-09-03T10:17:53.061297+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-b78a14faa7ea7263",
+      "dataset": "re2ob",
+      "elapsed_seconds": 148.13822047808208,
+      "finish_timestamp": "2026-09-03T10:20:43.138344+00:00",
+      "pid": 222,
+      "start_timestamp": "2026-09-03T10:18:15.000090+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-84724d7aa2b9dabd",
+      "dataset": "re2ob",
+      "elapsed_seconds": 168.6704336409457,
+      "finish_timestamp": "2026-09-03T10:17:57.845452+00:00",
+      "pid": 211,
+      "start_timestamp": "2026-09-03T10:15:09.174973+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-fa8a8fae0fda7c42",
+      "dataset": "re2ob",
+      "elapsed_seconds": 155.9343033490004,
+      "finish_timestamp": "2026-09-03T10:21:03.634002+00:00",
+      "pid": 225,
+      "start_timestamp": "2026-09-03T10:18:27.699648+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-7b0a90583e047a88",
+      "dataset": "re2ob",
+      "elapsed_seconds": 151.01307336101308,
+      "finish_timestamp": "2026-09-03T10:21:21.367201+00:00",
+      "pid": 227,
+      "start_timestamp": "2026-09-03T10:18:50.354061+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-ca26cbb7c2cc0c87",
+      "dataset": "re2ob",
+      "elapsed_seconds": 157.63518964406103,
+      "finish_timestamp": "2026-09-03T10:21:07.725611+00:00",
+      "pid": 226,
+      "start_timestamp": "2026-09-03T10:18:30.090366+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-6521847c78ca06e9",
+      "dataset": "re2ob",
+      "elapsed_seconds": 155.9324561000103,
+      "finish_timestamp": "2026-09-03T10:20:23.724021+00:00",
+      "pid": 219,
+      "start_timestamp": "2026-09-03T10:17:47.791492+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-7890056e7915d551",
+      "dataset": "re2ob",
+      "elapsed_seconds": 149.98166766902432,
+      "finish_timestamp": "2026-09-03T10:21:57.319255+00:00",
+      "pid": 228,
+      "start_timestamp": "2026-09-03T10:19:27.337538+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-35bd9974d6b59069",
+      "dataset": "re2ob",
+      "elapsed_seconds": 159.87819224607665,
+      "finish_timestamp": "2026-09-03T10:20:57.189815+00:00",
+      "pid": 223,
+      "start_timestamp": "2026-09-03T10:18:17.311568+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-7a91adc6e16587c6",
+      "dataset": "re2ob",
+      "elapsed_seconds": 162.86822630802635,
+      "finish_timestamp": "2026-09-03T10:21:05.957516+00:00",
+      "pid": 224,
+      "start_timestamp": "2026-09-03T10:18:23.089251+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2ob-f2b4cc2f87b35c03",
+      "dataset": "re2ob",
+      "elapsed_seconds": 172.0320701150922,
+      "finish_timestamp": "2026-09-03T10:23:27.959231+00:00",
+      "pid": 230,
+      "start_timestamp": "2026-09-03T10:20:35.927115+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2ob-c9c8f348d3f5974b",
+      "dataset": "re2ob",
+      "elapsed_seconds": 218.00487711897586,
+      "finish_timestamp": "2026-09-03T10:24:21.202404+00:00",
+      "pid": 231,
+      "start_timestamp": "2026-09-03T10:20:43.197473+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2ob-df7b6eca09a6c41f",
+      "dataset": "re2ob",
+      "elapsed_seconds": 185.48022069898434,
+      "finish_timestamp": "2026-09-03T10:21:03.378550+00:00",
+      "pid": 221,
+      "start_timestamp": "2026-09-03T10:17:57.898282+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2ob-34c4e276dad53220",
+      "dataset": "re2ob",
+      "elapsed_seconds": 172.99494728795253,
+      "finish_timestamp": "2026-09-03T10:23:56.718321+00:00",
+      "pid": 234,
+      "start_timestamp": "2026-09-03T10:21:03.723328+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2ob-3758cb8f0f1277f3",
+      "dataset": "re2ob",
+      "elapsed_seconds": 157.5996061109472,
+      "finish_timestamp": "2026-09-03T10:23:59.124894+00:00",
+      "pid": 237,
+      "start_timestamp": "2026-09-03T10:21:21.525238+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2ob-ce3f410f61f739c2",
+      "dataset": "re2ob",
+      "elapsed_seconds": 178.64520523906685,
+      "finish_timestamp": "2026-09-03T10:24:06.436305+00:00",
+      "pid": 236,
+      "start_timestamp": "2026-09-03T10:21:07.791060+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2ob-0c582795f6ae4798",
+      "dataset": "re2ob",
+      "elapsed_seconds": 163.595868953038,
+      "finish_timestamp": "2026-09-03T10:23:07.376980+00:00",
+      "pid": 229,
+      "start_timestamp": "2026-09-03T10:20:23.781049+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2ob-e849d2be7be5c713",
+      "dataset": "re2ob",
+      "elapsed_seconds": 166.65397065493744,
+      "finish_timestamp": "2026-09-03T10:24:44.026257+00:00",
+      "pid": 238,
+      "start_timestamp": "2026-09-03T10:21:57.372250+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2ob-58cff4fc86081830",
+      "dataset": "re2ob",
+      "elapsed_seconds": 155.94273513404187,
+      "finish_timestamp": "2026-09-03T10:23:33.191086+00:00",
+      "pid": 232,
+      "start_timestamp": "2026-09-03T10:20:57.248318+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2ob-ce93ebf8eb13a5ed",
+      "dataset": "re2ob",
+      "elapsed_seconds": 157.60797929693945,
+      "finish_timestamp": "2026-09-03T10:23:43.744201+00:00",
+      "pid": 235,
+      "start_timestamp": "2026-09-03T10:21:06.136182+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-e44ccb97e7cc1570",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6531.0838862659875,
+      "finish_timestamp": "2026-09-03T12:12:19.154896+00:00",
+      "pid": 240,
+      "start_timestamp": "2026-09-03T10:23:28.070959+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-a0c0a90c5448e7fa",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6797.608542272006,
+      "finish_timestamp": "2026-09-03T12:17:38.958963+00:00",
+      "pid": 246,
+      "start_timestamp": "2026-09-03T10:24:21.350358+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-0b529d9f6ca88d4b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6598.089266560972,
+      "finish_timestamp": "2026-09-03T12:11:01.632204+00:00",
+      "pid": 233,
+      "start_timestamp": "2026-09-03T10:21:03.542876+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-783d045c8102f972",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6346.440812175977,
+      "finish_timestamp": "2026-09-03T12:09:43.222640+00:00",
+      "pid": 243,
+      "start_timestamp": "2026-09-03T10:23:56.781775+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-e76e500ff655313b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6382.011384751997,
+      "finish_timestamp": "2026-09-03T12:10:21.197688+00:00",
+      "pid": 244,
+      "start_timestamp": "2026-09-03T10:23:59.186245+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-cc6c772d4116d054",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6221.182457376039,
+      "finish_timestamp": "2026-09-03T12:07:47.677597+00:00",
+      "pid": 245,
+      "start_timestamp": "2026-09-03T10:24:06.495084+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-c1b234f6cc4acbee",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6139.685866137035,
+      "finish_timestamp": "2026-09-03T12:05:27.123613+00:00",
+      "pid": 239,
+      "start_timestamp": "2026-09-03T10:23:07.437680+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-2782358136a64e6c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6109.386671568034,
+      "finish_timestamp": "2026-09-03T12:06:33.468564+00:00",
+      "pid": 247,
+      "start_timestamp": "2026-09-03T10:24:44.081848+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-1d48b3aec1ec4470",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6106.813571473933,
+      "finish_timestamp": "2026-09-03T12:05:20.078539+00:00",
+      "pid": 241,
+      "start_timestamp": "2026-09-03T10:23:33.264863+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-6a0d1ebf31fb52a6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6653.869753038976,
+      "finish_timestamp": "2026-09-03T12:14:37.683985+00:00",
+      "pid": 242,
+      "start_timestamp": "2026-09-03T10:23:43.814172+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-14c6e1b70d0c21e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6260.642838744097,
+      "finish_timestamp": "2026-09-03T13:56:39.852625+00:00",
+      "pid": 255,
+      "start_timestamp": "2026-09-03T12:12:19.209736+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-01d0096e9a504ced",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6733.546088528936,
+      "finish_timestamp": "2026-09-03T14:09:52.617064+00:00",
+      "pid": 257,
+      "start_timestamp": "2026-09-03T12:17:39.070912+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-bbbcbf7787fa152c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6372.876710825018,
+      "finish_timestamp": "2026-09-03T13:57:14.570741+00:00",
+      "pid": 254,
+      "start_timestamp": "2026-09-03T12:11:01.693982+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-ae09714023e727e1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6513.049691823078,
+      "finish_timestamp": "2026-09-03T13:58:16.387476+00:00",
+      "pid": 252,
+      "start_timestamp": "2026-09-03T12:09:43.337732+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-653810995a9aa3db",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6128.255374006927,
+      "finish_timestamp": "2026-09-03T13:52:29.521116+00:00",
+      "pid": 253,
+      "start_timestamp": "2026-09-03T12:10:21.265680+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-c82529d65e13adc0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6660.040260736016,
+      "finish_timestamp": "2026-09-03T13:58:47.781409+00:00",
+      "pid": 251,
+      "start_timestamp": "2026-09-03T12:07:47.741094+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-aa71e41ec8e7922d",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5887.925924240029,
+      "finish_timestamp": "2026-09-03T13:43:35.121451+00:00",
+      "pid": 249,
+      "start_timestamp": "2026-09-03T12:05:27.195472+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-cb1f1df38c99005a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6490.730868931976,
+      "finish_timestamp": "2026-09-03T13:54:44.269809+00:00",
+      "pid": 250,
+      "start_timestamp": "2026-09-03T12:06:33.538878+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-fe28a6c0dbd7d892",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6384.078003548901,
+      "finish_timestamp": "2026-09-03T13:51:44.222043+00:00",
+      "pid": 248,
+      "start_timestamp": "2026-09-03T12:05:20.143981+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-d4b1d66aaaa1a728",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6430.961203914019,
+      "finish_timestamp": "2026-09-03T14:01:48.735671+00:00",
+      "pid": 256,
+      "start_timestamp": "2026-09-03T12:14:37.774398+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-5bb89b87741349d7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6578.582972879987,
+      "finish_timestamp": "2026-09-03T15:46:18.560827+00:00",
+      "pid": 262,
+      "start_timestamp": "2026-09-03T13:56:39.977800+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-e4be9aa8e249ddf3",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6427.219696819899,
+      "finish_timestamp": "2026-09-03T15:56:59.926769+00:00",
+      "pid": 267,
+      "start_timestamp": "2026-09-03T14:09:52.707009+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-426ec979883ae8dc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5705.647713116021,
+      "finish_timestamp": "2026-09-03T15:32:20.450312+00:00",
+      "pid": 263,
+      "start_timestamp": "2026-09-03T13:57:14.802552+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-d0a74725c5d96362",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5591.420015443,
+      "finish_timestamp": "2026-09-03T15:31:27.894166+00:00",
+      "pid": 264,
+      "start_timestamp": "2026-09-03T13:58:16.474100+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-cdf514b035f34990",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6278.327127845027,
+      "finish_timestamp": "2026-09-03T15:37:07.950138+00:00",
+      "pid": 260,
+      "start_timestamp": "2026-09-03T13:52:29.622959+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-7d84c0b80f7f0032",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5421.467616637936,
+      "finish_timestamp": "2026-09-03T15:29:09.338513+00:00",
+      "pid": 265,
+      "start_timestamp": "2026-09-03T13:58:47.870789+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-995607e863fb7731",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6183.426868451061,
+      "finish_timestamp": "2026-09-03T15:26:38.729226+00:00",
+      "pid": 258,
+      "start_timestamp": "2026-09-03T13:43:35.302294+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-afdac60e6b000d3c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6508.701204592013,
+      "finish_timestamp": "2026-09-03T15:43:13.331182+00:00",
+      "pid": 261,
+      "start_timestamp": "2026-09-03T13:54:44.629925+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-ee2421859dfb0792",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2174.5674714649795,
+      "finish_timestamp": "2026-09-03T14:27:58.966689+00:00",
+      "pid": 259,
+      "start_timestamp": "2026-09-03T13:51:44.399170+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-44604ef8713a5943",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5884.138227446005,
+      "finish_timestamp": "2026-09-03T15:39:52.978587+00:00",
+      "pid": 266,
+      "start_timestamp": "2026-09-03T14:01:48.840306+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-72822d018b0df53f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5997.058450223063,
+      "finish_timestamp": "2026-09-03T17:26:15.689864+00:00",
+      "pid": 277,
+      "start_timestamp": "2026-09-03T15:46:18.631364+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-22292d58b67911fb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6177.027502795914,
+      "finish_timestamp": "2026-09-03T17:39:57.053287+00:00",
+      "pid": 278,
+      "start_timestamp": "2026-09-03T15:57:00.025717+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-fc53b7fb52199fb7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6173.763187197968,
+      "finish_timestamp": "2026-09-03T17:15:14.277848+00:00",
+      "pid": 273,
+      "start_timestamp": "2026-09-03T15:32:20.514617+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-5d2e4747cab0d818",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6470.758966343943,
+      "finish_timestamp": "2026-09-03T17:19:18.749533+00:00",
+      "pid": 272,
+      "start_timestamp": "2026-09-03T15:31:27.990516+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-2ae0e149b3ab15f1",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5786.7888959769625,
+      "finish_timestamp": "2026-09-03T17:13:34.824979+00:00",
+      "pid": 274,
+      "start_timestamp": "2026-09-03T15:37:08.036040+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-0f6b6213169d6acc",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3.174478326924145,
+      "finish_timestamp": "2026-09-03T15:29:12.584854+00:00",
+      "pid": 270,
+      "start_timestamp": "2026-09-03T15:29:09.410324+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-93fbbdf23f58f440",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6851.797674927977,
+      "finish_timestamp": "2026-09-03T17:20:50.680686+00:00",
+      "pid": 269,
+      "start_timestamp": "2026-09-03T15:26:38.882946+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-714d157727edd2d0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5551.834329691017,
+      "finish_timestamp": "2026-09-03T17:15:45.241253+00:00",
+      "pid": 276,
+      "start_timestamp": "2026-09-03T15:43:13.406873+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-472c8339fd3703e9",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6148.1772397229215,
+      "finish_timestamp": "2026-09-03T16:10:27.220059+00:00",
+      "pid": 268,
+      "start_timestamp": "2026-09-03T14:27:59.042764+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-606ef267348d40e5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6685.5991310389945,
+      "finish_timestamp": "2026-09-03T17:31:18.706262+00:00",
+      "pid": 275,
+      "start_timestamp": "2026-09-03T15:39:53.107072+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-35e803c63786ac4e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6389.6837771300925,
+      "finish_timestamp": "2026-09-03T19:12:45.450800+00:00",
+      "pid": 286,
+      "start_timestamp": "2026-09-03T17:26:15.766967+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-a141811c79edaa0b",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6387.10882155702,
+      "finish_timestamp": "2026-09-03T19:26:24.256320+00:00",
+      "pid": 288,
+      "start_timestamp": "2026-09-03T17:39:57.147438+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-b5173d4edf252af8",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6525.455326806055,
+      "finish_timestamp": "2026-09-03T19:03:59.795436+00:00",
+      "pid": 281,
+      "start_timestamp": "2026-09-03T17:15:14.340071+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-fd20b1f93a6ff4c0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2533.3541535680415,
+      "finish_timestamp": "2026-09-03T18:01:32.165350+00:00",
+      "pid": 284,
+      "start_timestamp": "2026-09-03T17:19:18.811138+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-010695b192f8dbea",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6146.591325614019,
+      "finish_timestamp": "2026-09-03T18:56:01.512812+00:00",
+      "pid": 280,
+      "start_timestamp": "2026-09-03T17:13:34.921430+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-94bd05feab03461e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6576.251355240936,
+      "finish_timestamp": "2026-09-03T17:18:48.914161+00:00",
+      "pid": 271,
+      "start_timestamp": "2026-09-03T15:29:12.662752+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-575015aa80c376c6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6455.462323667947,
+      "finish_timestamp": "2026-09-03T19:08:26.229630+00:00",
+      "pid": 285,
+      "start_timestamp": "2026-09-03T17:20:50.767241+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-727331fee88d4ce7",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6108.517033376964,
+      "finish_timestamp": "2026-09-03T18:57:33.858419+00:00",
+      "pid": 282,
+      "start_timestamp": "2026-09-03T17:15:45.341326+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-420fff915c5f5bc5",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6666.5610223239055,
+      "finish_timestamp": "2026-09-03T18:01:33.854860+00:00",
+      "pid": 279,
+      "start_timestamp": "2026-09-03T16:10:27.293787+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-f5512e2434f96386",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6337.921723508043,
+      "finish_timestamp": "2026-09-03T19:16:56.715261+00:00",
+      "pid": 287,
+      "start_timestamp": "2026-09-03T17:31:18.793485+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-a33887653c475d04",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6121.45899556193,
+      "finish_timestamp": "2026-09-03T20:54:46.982240+00:00",
+      "pid": 296,
+      "start_timestamp": "2026-09-03T19:12:45.523193+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-5f50dc54f6cb9fce",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6488.089422049001,
+      "finish_timestamp": "2026-09-03T21:14:32.439322+00:00",
+      "pid": 298,
+      "start_timestamp": "2026-09-03T19:26:24.349855+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-67172e499653d426",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6074.714180700015,
+      "finish_timestamp": "2026-09-03T20:45:14.581728+00:00",
+      "pid": 293,
+      "start_timestamp": "2026-09-03T19:03:59.867499+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-d14727a3c74e9768",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6306.43315675098,
+      "finish_timestamp": "2026-09-03T19:46:38.655913+00:00",
+      "pid": 289,
+      "start_timestamp": "2026-09-03T18:01:32.222717+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-2a03e4ad1a1d6f85",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6826.796034688014,
+      "finish_timestamp": "2026-09-03T20:49:48.394738+00:00",
+      "pid": 291,
+      "start_timestamp": "2026-09-03T18:56:01.598647+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-7d3fb265c1c0f9ed",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6772.502591834986,
+      "finish_timestamp": "2026-09-03T19:11:41.494107+00:00",
+      "pid": 283,
+      "start_timestamp": "2026-09-03T17:18:48.991458+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-2defd6e102bdaf53",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2515.1478424950037,
+      "finish_timestamp": "2026-09-03T19:50:21.480980+00:00",
+      "pid": 294,
+      "start_timestamp": "2026-09-03T19:08:26.333094+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-38941ca70beb687a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6435.328004817944,
+      "finish_timestamp": "2026-09-03T20:44:49.250111+00:00",
+      "pid": 292,
+      "start_timestamp": "2026-09-03T18:57:33.922051+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-3bd96ed8cc02f613",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6134.281750340015,
+      "finish_timestamp": "2026-09-03T19:43:48.224983+00:00",
+      "pid": 290,
+      "start_timestamp": "2026-09-03T18:01:33.943180+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-5a65eea398ba8435",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6627.988202932058,
+      "finish_timestamp": "2026-09-03T21:07:25.055611+00:00",
+      "pid": 297,
+      "start_timestamp": "2026-09-03T19:16:57.067354+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-b2342b2478b249cb",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6089.613089397084,
+      "finish_timestamp": "2026-09-03T22:36:16.675481+00:00",
+      "pid": 305,
+      "start_timestamp": "2026-09-03T20:54:47.062340+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-c7f9112580bfde33",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6527.09505664499,
+      "finish_timestamp": "2026-09-03T23:03:19.608454+00:00",
+      "pid": 308,
+      "start_timestamp": "2026-09-03T21:14:32.513335+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-fa81461ebec56b42",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6471.261284008971,
+      "finish_timestamp": "2026-09-03T22:33:05.915065+00:00",
+      "pid": 303,
+      "start_timestamp": "2026-09-03T20:45:14.653741+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-877f6cbd0cb33e7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6713.572897591977,
+      "finish_timestamp": "2026-09-03T21:38:32.310431+00:00",
+      "pid": 300,
+      "start_timestamp": "2026-09-03T19:46:38.737481+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-7cff180e5ff1cc71",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6453.6444465920795,
+      "finish_timestamp": "2026-09-03T22:37:22.111995+00:00",
+      "pid": 304,
+      "start_timestamp": "2026-09-03T20:49:48.467491+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-ffda523857bbf5c2",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6334.653516270919,
+      "finish_timestamp": "2026-09-03T20:57:16.460240+00:00",
+      "pid": 295,
+      "start_timestamp": "2026-09-03T19:11:41.806672+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-2fc3d2fb9c492b7c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6155.9343819590285,
+      "finish_timestamp": "2026-09-03T21:32:57.484233+00:00",
+      "pid": 301,
+      "start_timestamp": "2026-09-03T19:50:21.549786+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-04ce93a682b70df6",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6094.219757154002,
+      "finish_timestamp": "2026-09-03T22:26:23.621937+00:00",
+      "pid": 302,
+      "start_timestamp": "2026-09-03T20:44:49.402124+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-406c40ff0016fa9c",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6071.80843957304,
+      "finish_timestamp": "2026-09-03T21:25:00.166528+00:00",
+      "pid": 299,
+      "start_timestamp": "2026-09-03T19:43:48.358039+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-2ca7cff33586ca18",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6777.371862218017,
+      "finish_timestamp": "2026-09-03T23:00:22.514336+00:00",
+      "pid": 307,
+      "start_timestamp": "2026-09-03T21:07:25.142410+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-a7213c3da47edbd0",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3.395654430030845,
+      "finish_timestamp": "2026-09-03T22:36:20.381202+00:00",
+      "pid": 314,
+      "start_timestamp": "2026-09-03T22:36:16.985497+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-f1aa29dd3ba2343f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6070.493361374014,
+      "finish_timestamp": "2026-09-04T00:44:30.179785+00:00",
+      "pid": 319,
+      "start_timestamp": "2026-09-03T23:03:19.686353+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-56db4956167f9980",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6307.859703960014,
+      "finish_timestamp": "2026-09-04T00:18:13.862300+00:00",
+      "pid": 313,
+      "start_timestamp": "2026-09-03T22:33:06.002540+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-f09cbf3636ad02de",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6789.5283117819345,
+      "finish_timestamp": "2026-09-03T23:31:41.915415+00:00",
+      "pid": 311,
+      "start_timestamp": "2026-09-03T21:38:32.387052+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-e3f89de859062727",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6556.657254667953,
+      "finish_timestamp": "2026-09-04T00:26:38.836825+00:00",
+      "pid": 316,
+      "start_timestamp": "2026-09-03T22:37:22.179511+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-1283c56ed7675282",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6237.121247195988,
+      "finish_timestamp": "2026-09-03T22:41:13.658489+00:00",
+      "pid": 306,
+      "start_timestamp": "2026-09-03T20:57:16.537197+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-739ad24f1e2d7c29",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6480.175836208975,
+      "finish_timestamp": "2026-09-03T23:20:57.757805+00:00",
+      "pid": 310,
+      "start_timestamp": "2026-09-03T21:32:57.581906+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-fb57d883cd727c81",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6410.058924816898,
+      "finish_timestamp": "2026-09-04T00:13:13.822014+00:00",
+      "pid": 312,
+      "start_timestamp": "2026-09-03T22:26:23.763039+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-c8fbd9a7d1e92284",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6764.665324473986,
+      "finish_timestamp": "2026-09-03T23:17:44.895272+00:00",
+      "pid": 309,
+      "start_timestamp": "2026-09-03T21:25:00.229897+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-d83931768111dc58",
+      "dataset": "re2tt",
+      "elapsed_seconds": 5661.377694732975,
+      "finish_timestamp": "2026-09-04T00:34:44.001126+00:00",
+      "pid": 318,
+      "start_timestamp": "2026-09-03T23:00:22.623377+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    },
+    {
+      "case_id": "re2tt-4780a4f90c190bf4",
+      "dataset": "re2tt",
+      "elapsed_seconds": 3.2701989880297333,
+      "finish_timestamp": "2026-09-03T22:36:23.792462+00:00",
+      "pid": 315,
+      "start_timestamp": "2026-09-03T22:36:20.522213+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microcause-worker-0"
+    },
+    {
+      "case_id": "re2tt-20258ce8dbcd2300",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6243.802494590986,
+      "finish_timestamp": "2026-09-04T02:28:34.072595+00:00",
+      "pid": 327,
+      "start_timestamp": "2026-09-04T00:44:30.270045+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-1"
+    },
+    {
+      "case_id": "re2tt-cb3381bf9ed05034",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6762.650594562059,
+      "finish_timestamp": "2026-09-04T02:10:56.624639+00:00",
+      "pid": 324,
+      "start_timestamp": "2026-09-04T00:18:13.973994+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-2"
+    },
+    {
+      "case_id": "re2tt-e9071bdee1904785",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6947.055931831012,
+      "finish_timestamp": "2026-09-04T01:27:29.029720+00:00",
+      "pid": 322,
+      "start_timestamp": "2026-09-03T23:31:41.973741+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-3"
+    },
+    {
+      "case_id": "re2tt-722f5f89a57be699",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6528.630369192921,
+      "finish_timestamp": "2026-09-04T02:15:27.554451+00:00",
+      "pid": 325,
+      "start_timestamp": "2026-09-04T00:26:38.924043+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-4"
+    },
+    {
+      "case_id": "re2tt-bc9cd2d131533d16",
+      "dataset": "re2tt",
+      "elapsed_seconds": 2736.713314573979,
+      "finish_timestamp": "2026-09-03T23:26:50.508227+00:00",
+      "pid": 317,
+      "start_timestamp": "2026-09-03T22:41:13.794853+00:00",
+      "terminal_status": "METHOD_FAILURE",
+      "worker_id": "microcause-worker-5"
+    },
+    {
+      "case_id": "re2tt-f578fe138f6d4c7a",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6147.285338344052,
+      "finish_timestamp": "2026-09-04T01:03:25.171504+00:00",
+      "pid": 321,
+      "start_timestamp": "2026-09-03T23:20:57.886098+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-6"
+    },
+    {
+      "case_id": "re2tt-bed634aec03e773f",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6118.585732378997,
+      "finish_timestamp": "2026-09-04T01:55:12.493503+00:00",
+      "pid": 323,
+      "start_timestamp": "2026-09-04T00:13:13.907733+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-7"
+    },
+    {
+      "case_id": "re2tt-3fffa88dd3653f99",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6209.312024026993,
+      "finish_timestamp": "2026-09-04T01:01:14.305971+00:00",
+      "pid": 320,
+      "start_timestamp": "2026-09-03T23:17:44.993896+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-8"
+    },
+    {
+      "case_id": "re2tt-3e24ca7f9747c84e",
+      "dataset": "re2tt",
+      "elapsed_seconds": 6307.408815947012,
+      "finish_timestamp": "2026-09-04T02:19:51.496083+00:00",
+      "pid": 326,
+      "start_timestamp": "2026-09-04T00:34:44.087212+00:00",
+      "terminal_status": "SUCCESS",
+      "worker_id": "microcause-worker-9"
+    }
+  ],
+  "execution_commit": "113b9c6c2d778f984284573aa2c07c1a7848de75",
+  "labels_joined": false,
+  "method": "MicroCause",
+  "no_timeout": true,
+  "protocol_digest": "dbba81fae2b879bc77084bd6cc07c207c4a9f30dc5a286eb6b1533b0144429de",
+  "protocol_version": "RCA_BASELINE_RESCUE_PROTOCOL_V2",
+  "requested_worker_count": 10,
+  "runtime_digest": "c188923ccdd383b6f602b2304514fa4023ad8694544aede0b7dc3ff3cc8a7576",
+  "schema_version": "rca_baseline_rescue_runtime_v2",
+  "status_counts": {
+    "re2ob": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 1,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 89,
+      "TIMEOUT": 0
+    },
+    "re2tt": {
+      "ADAPTER_FAILURE": 0,
+      "DATA_FAILURE": 0,
+      "ENVIRONMENT_FAILURE": 0,
+      "INPUT_INTEGRITY_FAILURE": 0,
+      "METHOD_FAILURE": 7,
+      "PROCESS_CRASH/OOM": 0,
+      "SUCCESS": 83,
+      "TIMEOUT": 0
+    }
+  },
+  "terminal_case_count": 180,
+  "timeout_seconds": null
+}

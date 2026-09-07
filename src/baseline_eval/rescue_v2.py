@@ -357,6 +357,32 @@ def active_v2_method_lock_relative(root: Path, method: str) -> Path:
     return v2_method_lock_relative(method)
 
 
+def v2_method_lock_reissued_relative(method: str) -> Path:
+    """Return the immutable sidecar path used to re-attest a V2 method lock."""
+
+    _require_v2_method(method)
+    return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock_reissued.json"
+
+
+def v2_method_lock_reissued_v2_relative(method: str) -> Path:
+    """Return the corrected re-attestation path for a V2 method lock."""
+
+    _require_v2_method(method)
+    return V2_EXECUTION_ROOT_RELATIVE / "locks" / f"{method.lower()}_prediction_lock_reissued_v2.json"
+
+
+def active_v2_method_lock_relative(root: Path, method: str) -> Path:
+    """Select a reissued lock when one exists, otherwise the original lock."""
+
+    corrected = root / v2_method_lock_reissued_v2_relative(method)
+    if corrected.is_file():
+        return v2_method_lock_reissued_v2_relative(method)
+    reissued = root / v2_method_lock_reissued_relative(method)
+    if reissued.is_file():
+        return v2_method_lock_reissued_relative(method)
+    return v2_method_lock_relative(method)
+
+
 def _v2_protocol(root: Path = PROJECT_ROOT) -> dict[str, Any]:
     path = root / V2_PROTOCOL_RELATIVE
     if not path.is_file() or sha256_file(path) != V2_PROTOCOL_DIGEST:
