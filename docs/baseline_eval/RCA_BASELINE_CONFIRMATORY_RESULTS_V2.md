@@ -108,22 +108,31 @@ reported separately and are never pooled.
 
 ## Table C — Execution Robustness
 
+All six baselines are shown for both datasets with the frozen 90-case
+denominator. `METHOD_FAILURE` is retained as a legal zero-utility outcome;
+all blocking-status columns are zero, so every bound method lock is
+`INTEGRITY_VALID`.
+
 | Method | Dataset | Cases | SUCCESS | METHOD_FAILURE | DATA_FAILURE | ADAPTER_FAILURE | ENVIRONMENT_FAILURE | INPUT_INTEGRITY_FAILURE | PROCESS_CRASH/OOM | TIMEOUT |
 |---|---|---|---|---|---|---|---|---|---|---|
-| CIRCA | re2ob | 90 | 86 | 4 | 0 | 0 | 0 | 0 | 0 | 0 |
-| MicroCause | re2ob | 90 | 89 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| MicroRank | re2ob | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| TraceRCA | re2ob | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mmBARO | re2ob | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| CausalRCA | re2ob | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| CIRCA | re2tt | 90 | 80 | 10 | 0 | 0 | 0 | 0 | 0 | 0 |
-| MicroCause | re2tt | 90 | 83 | 7 | 0 | 0 | 0 | 0 | 0 | 0 |
-| MicroRank | re2tt | 90 | 75 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| TraceRCA | re2tt | 90 | 75 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mmBARO | re2tt | 90 | 89 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| CausalRCA | re2tt | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CIRCA | RE2-OB | 90 | 86 | 4 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MicroCause | RE2-OB | 90 | 89 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MicroRank | RE2-OB | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| TraceRCA | RE2-OB | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mmBARO | RE2-OB | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CausalRCA | RE2-OB | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CIRCA | RE2-TT | 90 | 80 | 10 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MicroCause | RE2-TT | 90 | 83 | 7 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MicroRank | RE2-TT | 90 | 75 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| TraceRCA | RE2-TT | 90 | 75 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mmBARO | RE2-TT | 90 | 89 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CausalRCA | RE2-TT | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Table D — Protocol / Output Comparability
+
+The CausalRCA row is included through the authorized CPU case-level extension;
+its native indicator output is evaluated through the same partial service
+projection rule, so complete service ranking and MRR are not claimed.
 
 | Method | Input | Supervision | Native granularity | Service projection | Complete service ranking | MRR legality |
 |---|---|---|---|---|---|---|
