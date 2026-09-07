@@ -1,0 +1,146 @@
+# Ada-RCA — RCAEval Six-Baseline Rescue & Unified Evaluation V2
+
+Performance-blind rescue execution was frozen before this post-lock report.
+Ada-RCA values are read from identity-asserted frozen evidence; no retraining is
+performed. The baseline scope is `CIRCA, MicroCause, MicroRank, TraceRCA, mmBARO, CausalRCA`. RE2-OB and RE2-TT are
+reported separately and are never pooled.
+
+## Table A — Overall RCA Performance
+
+| Method | OB AC@1 | OB AC@3 | OB AC@5 | OB Avg@5 | TT AC@1 | TT AC@3 | TT AC@5 | TT Avg@5 |
+|---|---|---|---|---|---|---|---|---|
+| CIRCA | 0.6666666667 | 0.8777777778 | 0.9000000000 | 0.8333333333 | 0.5555555556 | 0.7000000000 | 0.7222222222 | 0.6644444444 |
+| MicroCause | 0.3333333333 | 0.5333333333 | 0.6555555556 | 0.5133333333 | 0.1444444444 | 0.2333333333 | 0.3111111111 | 0.2311111111 |
+| MicroRank | 0.0000000000 | 0.3777777778 | 0.5444444444 | 0.3311111111 | 0.0777777778 | 0.3222222222 | 0.3222222222 | 0.2511111111 |
+| TraceRCA | 0.1555555556 | 0.6444444444 | 0.9555555556 | 0.6266666667 | 0.5666666667 | 0.6666666667 | 0.7000000000 | 0.6555555556 |
+| mmBARO | 0.1666666667 | 0.8777777778 | 0.9888888889 | 0.7622222222 | 0.6888888889 | 0.8111111111 | 0.8666666667 | 0.7977777778 |
+| CausalRCA | 0.0000000000 | 0.2000000000 | 0.6000000000 | 0.2400000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
+| Ada-RCA | 0.8777777778 | 0.9888888889 | 0.9888888889 | 0.9622222222 | 0.7111111111 | 0.8666666667 | 0.9333333333 | 0.8511111111 |
+
+## Table B — Fault-Level Performance
+
+| Method | Dataset | Fault | Cases | AC@1 | AC@3 | AC@5 | Avg@5 |
+|---|---|---|---|---|---|---|---|
+| Ada-RCA | re2ob | CPU | 15 | 1.0000000000 | 1.0000000000 | 1.0000000000 | 1.0000000000 |
+| Ada-RCA | re2ob | MEM | 15 | 0.8666666667 | 1.0000000000 | 1.0000000000 | 0.9733333333 |
+| Ada-RCA | re2ob | DISK | 15 | 1.0000000000 | 1.0000000000 | 1.0000000000 | 1.0000000000 |
+| Ada-RCA | re2ob | SOCKET | 15 | 0.8000000000 | 1.0000000000 | 1.0000000000 | 0.9600000000 |
+| Ada-RCA | re2ob | DELAY | 15 | 0.8000000000 | 1.0000000000 | 1.0000000000 | 0.9466666667 |
+| Ada-RCA | re2ob | LOSS | 15 | 0.8000000000 | 0.9333333333 | 0.9333333333 | 0.8933333333 |
+| CIRCA | re2ob | CPU | 15 | 0.6000000000 | 0.8000000000 | 0.8000000000 | 0.7600000000 |
+| CIRCA | re2ob | MEM | 15 | 0.8000000000 | 1.0000000000 | 1.0000000000 | 0.9600000000 |
+| CIRCA | re2ob | DISK | 15 | 0.8666666667 | 0.8666666667 | 0.8666666667 | 0.8666666667 |
+| CIRCA | re2ob | SOCKET | 15 | 0.6000000000 | 0.9333333333 | 0.9333333333 | 0.8533333333 |
+| CIRCA | re2ob | DELAY | 15 | 0.4666666667 | 0.8000000000 | 0.8666666667 | 0.7066666667 |
+| CIRCA | re2ob | LOSS | 15 | 0.6666666667 | 0.8666666667 | 0.9333333333 | 0.8533333333 |
+| MicroCause | re2ob | CPU | 15 | 0.3333333333 | 0.4666666667 | 0.5333333333 | 0.4400000000 |
+| MicroCause | re2ob | MEM | 15 | 0.3333333333 | 0.5333333333 | 0.6000000000 | 0.4800000000 |
+| MicroCause | re2ob | DISK | 15 | 0.4000000000 | 0.7333333333 | 0.8000000000 | 0.6933333333 |
+| MicroCause | re2ob | SOCKET | 15 | 0.2000000000 | 0.3333333333 | 0.6666666667 | 0.4000000000 |
+| MicroCause | re2ob | DELAY | 15 | 0.4000000000 | 0.6666666667 | 0.7333333333 | 0.6133333333 |
+| MicroCause | re2ob | LOSS | 15 | 0.3333333333 | 0.4666666667 | 0.6000000000 | 0.4533333333 |
+| MicroRank | re2ob | CPU | 15 | 0.0000000000 | 0.4000000000 | 0.6000000000 | 0.3600000000 |
+| MicroRank | re2ob | MEM | 15 | 0.0000000000 | 0.4000000000 | 0.6000000000 | 0.3600000000 |
+| MicroRank | re2ob | DISK | 15 | 0.0000000000 | 0.4000000000 | 0.6000000000 | 0.3600000000 |
+| MicroRank | re2ob | SOCKET | 15 | 0.0000000000 | 0.4000000000 | 0.6000000000 | 0.3600000000 |
+| MicroRank | re2ob | DELAY | 15 | 0.0000000000 | 0.4000000000 | 0.6000000000 | 0.3600000000 |
+| MicroRank | re2ob | LOSS | 15 | 0.0000000000 | 0.2666666667 | 0.2666666667 | 0.1866666667 |
+| TraceRCA | re2ob | CPU | 15 | 0.0666666667 | 0.8000000000 | 1.0000000000 | 0.6933333333 |
+| TraceRCA | re2ob | MEM | 15 | 0.0000000000 | 0.5333333333 | 1.0000000000 | 0.5733333333 |
+| TraceRCA | re2ob | DISK | 15 | 0.2000000000 | 0.7333333333 | 1.0000000000 | 0.6933333333 |
+| TraceRCA | re2ob | SOCKET | 15 | 0.1333333333 | 0.7333333333 | 1.0000000000 | 0.6800000000 |
+| TraceRCA | re2ob | DELAY | 15 | 0.4000000000 | 0.5333333333 | 0.8666666667 | 0.6000000000 |
+| TraceRCA | re2ob | LOSS | 15 | 0.1333333333 | 0.5333333333 | 0.8666666667 | 0.5200000000 |
+| mmBARO | re2ob | CPU | 15 | 0.0000000000 | 0.8000000000 | 0.9333333333 | 0.6666666667 |
+| mmBARO | re2ob | MEM | 15 | 0.4666666667 | 1.0000000000 | 1.0000000000 | 0.8933333333 |
+| mmBARO | re2ob | DISK | 15 | 0.0666666667 | 1.0000000000 | 1.0000000000 | 0.8000000000 |
+| mmBARO | re2ob | SOCKET | 15 | 0.0000000000 | 0.8666666667 | 1.0000000000 | 0.7200000000 |
+| mmBARO | re2ob | DELAY | 15 | 0.0000000000 | 0.7333333333 | 1.0000000000 | 0.6800000000 |
+| mmBARO | re2ob | LOSS | 15 | 0.4666666667 | 0.8666666667 | 1.0000000000 | 0.8133333333 |
+| CausalRCA | re2ob | CPU | 15 | 0.0000000000 | 0.2000000000 | 0.6000000000 | 0.2400000000 |
+| CausalRCA | re2ob | MEM | 15 | 0.0000000000 | 0.2000000000 | 0.6000000000 | 0.2400000000 |
+| CausalRCA | re2ob | DISK | 15 | 0.0000000000 | 0.2000000000 | 0.6000000000 | 0.2400000000 |
+| CausalRCA | re2ob | SOCKET | 15 | 0.0000000000 | 0.2000000000 | 0.6000000000 | 0.2400000000 |
+| CausalRCA | re2ob | DELAY | 15 | 0.0000000000 | 0.2000000000 | 0.6000000000 | 0.2400000000 |
+| CausalRCA | re2ob | LOSS | 15 | 0.0000000000 | 0.2000000000 | 0.6000000000 | 0.2400000000 |
+| Ada-RCA | re2tt | CPU | 15 | 0.8000000000 | 1.0000000000 | 1.0000000000 | 0.9600000000 |
+| Ada-RCA | re2tt | MEM | 15 | 0.8666666667 | 0.9333333333 | 1.0000000000 | 0.9200000000 |
+| Ada-RCA | re2tt | DISK | 15 | 1.0000000000 | 1.0000000000 | 1.0000000000 | 1.0000000000 |
+| Ada-RCA | re2tt | SOCKET | 15 | 0.8666666667 | 1.0000000000 | 1.0000000000 | 0.9733333333 |
+| Ada-RCA | re2tt | DELAY | 15 | 0.4000000000 | 0.6666666667 | 0.8666666667 | 0.6666666667 |
+| Ada-RCA | re2tt | LOSS | 15 | 0.3333333333 | 0.6000000000 | 0.7333333333 | 0.5866666667 |
+| CIRCA | re2tt | CPU | 15 | 0.4000000000 | 0.6000000000 | 0.6000000000 | 0.5333333333 |
+| CIRCA | re2tt | MEM | 15 | 0.8000000000 | 0.9333333333 | 0.9333333333 | 0.8933333333 |
+| CIRCA | re2tt | DISK | 15 | 0.8000000000 | 0.8000000000 | 0.8000000000 | 0.8000000000 |
+| CIRCA | re2tt | SOCKET | 15 | 0.8000000000 | 0.8666666667 | 0.8666666667 | 0.8400000000 |
+| CIRCA | re2tt | DELAY | 15 | 0.2000000000 | 0.4000000000 | 0.4666666667 | 0.3600000000 |
+| CIRCA | re2tt | LOSS | 15 | 0.3333333333 | 0.6000000000 | 0.6666666667 | 0.5600000000 |
+| MicroCause | re2tt | CPU | 15 | 0.0666666667 | 0.2000000000 | 0.2000000000 | 0.1733333333 |
+| MicroCause | re2tt | MEM | 15 | 0.0666666667 | 0.1333333333 | 0.2666666667 | 0.1333333333 |
+| MicroCause | re2tt | DISK | 15 | 0.2000000000 | 0.2666666667 | 0.4000000000 | 0.2666666667 |
+| MicroCause | re2tt | SOCKET | 15 | 0.3333333333 | 0.4000000000 | 0.4666666667 | 0.4133333333 |
+| MicroCause | re2tt | DELAY | 15 | 0.1333333333 | 0.2000000000 | 0.3333333333 | 0.2400000000 |
+| MicroCause | re2tt | LOSS | 15 | 0.0666666667 | 0.2000000000 | 0.2000000000 | 0.1600000000 |
+| MicroRank | re2tt | CPU | 15 | 0.0666666667 | 0.4000000000 | 0.4000000000 | 0.2933333333 |
+| MicroRank | re2tt | MEM | 15 | 0.1333333333 | 0.2666666667 | 0.2666666667 | 0.2266666667 |
+| MicroRank | re2tt | DISK | 15 | 0.0000000000 | 0.3333333333 | 0.3333333333 | 0.2133333333 |
+| MicroRank | re2tt | SOCKET | 15 | 0.0666666667 | 0.2666666667 | 0.2666666667 | 0.2133333333 |
+| MicroRank | re2tt | DELAY | 15 | 0.0666666667 | 0.3333333333 | 0.3333333333 | 0.2800000000 |
+| MicroRank | re2tt | LOSS | 15 | 0.1333333333 | 0.3333333333 | 0.3333333333 | 0.2800000000 |
+| TraceRCA | re2tt | CPU | 15 | 0.6000000000 | 0.6666666667 | 0.6666666667 | 0.6533333333 |
+| TraceRCA | re2tt | MEM | 15 | 0.4000000000 | 0.5333333333 | 0.5333333333 | 0.5066666667 |
+| TraceRCA | re2tt | DISK | 15 | 0.7333333333 | 0.8666666667 | 0.8666666667 | 0.8400000000 |
+| TraceRCA | re2tt | SOCKET | 15 | 0.4000000000 | 0.5333333333 | 0.6000000000 | 0.5200000000 |
+| TraceRCA | re2tt | DELAY | 15 | 0.7333333333 | 0.8000000000 | 0.9333333333 | 0.8266666667 |
+| TraceRCA | re2tt | LOSS | 15 | 0.5333333333 | 0.6000000000 | 0.6000000000 | 0.5866666667 |
+| mmBARO | re2tt | CPU | 15 | 0.4666666667 | 0.8000000000 | 0.8666666667 | 0.7466666667 |
+| mmBARO | re2tt | MEM | 15 | 0.9333333333 | 1.0000000000 | 1.0000000000 | 0.9866666667 |
+| mmBARO | re2tt | DISK | 15 | 1.0000000000 | 1.0000000000 | 1.0000000000 | 1.0000000000 |
+| mmBARO | re2tt | SOCKET | 15 | 0.6000000000 | 0.7333333333 | 0.8666666667 | 0.7333333333 |
+| mmBARO | re2tt | DELAY | 15 | 0.4666666667 | 0.6666666667 | 0.6666666667 | 0.6133333333 |
+| mmBARO | re2tt | LOSS | 15 | 0.6666666667 | 0.6666666667 | 0.8000000000 | 0.7066666667 |
+| CausalRCA | re2tt | CPU | 15 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
+| CausalRCA | re2tt | MEM | 15 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
+| CausalRCA | re2tt | DISK | 15 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
+| CausalRCA | re2tt | SOCKET | 15 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
+| CausalRCA | re2tt | DELAY | 15 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
+| CausalRCA | re2tt | LOSS | 15 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
+
+## Table C — Execution Robustness
+
+| Method | Dataset | Cases | SUCCESS | METHOD_FAILURE | DATA_FAILURE | ADAPTER_FAILURE | ENVIRONMENT_FAILURE | INPUT_INTEGRITY_FAILURE | PROCESS_CRASH/OOM | TIMEOUT |
+|---|---|---|---|---|---|---|---|---|---|---|
+| CIRCA | re2ob | 90 | 86 | 4 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MicroCause | re2ob | 90 | 89 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MicroRank | re2ob | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| TraceRCA | re2ob | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mmBARO | re2ob | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CausalRCA | re2ob | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CIRCA | re2tt | 90 | 80 | 10 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MicroCause | re2tt | 90 | 83 | 7 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MicroRank | re2tt | 90 | 75 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| TraceRCA | re2tt | 90 | 75 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mmBARO | re2tt | 90 | 89 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CausalRCA | re2tt | 90 | 90 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+## Table D — Protocol / Output Comparability
+
+| Method | Input | Supervision | Native granularity | Service projection | Complete service ranking | MRR legality |
+|---|---|---|---|---|---|---|
+| CIRCA | metric | case-wise unsupervised | indicator | partial service projection | NO | NOT-IDENTIFIABLE |
+| MicroCause | metric | case-wise unsupervised | indicator | partial service projection | NO | NOT-IDENTIFIABLE |
+| MicroRank | raw trace | case-wise unsupervised | operation | partial service projection | NO | NOT-IDENTIFIABLE |
+| TraceRCA | raw trace | case-wise unsupervised | operation | partial service projection | NO | NOT-IDENTIFIABLE |
+| mmBARO | multi-source | case-wise unsupervised | indicator | partial service projection | NO | NOT-IDENTIFIABLE |
+| CausalRCA | metric | case-wise unsupervised | indicator | partial service projection | NO | NOT-IDENTIFIABLE |
+| Ada-RCA | Metrics + Logs + Traces | root-supervised cross-case training | native service ranking | native service ranking | YES | FROZEN/NATIVE |
+
+## Paired fault-stratified bootstrap
+
+- Resamples: `10000`
+- Seed: `20260827`
+- Primary: Ada-RCA minus baseline `Avg@5`
+- Secondary: Ada-RCA minus baseline `AC@1`
+
+The baseline MRR field is `NOT-IDENTIFIABLE` because RCAEval native outputs
+are partial service projections and no candidate completion is legal.

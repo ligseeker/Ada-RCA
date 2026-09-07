@@ -590,7 +590,13 @@ def _markdown_table(columns: Sequence[str], rows: Sequence[Mapping[str, Any]]) -
     def value_for(row: Mapping[str, Any], column: str) -> Any:
         if column in row:
             return row[column]
-        return row.get(column.lower(), "N/A")
+        normalized = column.lower().replace(" ", "_")
+        if normalized in row:
+            return row[normalized]
+        for key, value in row.items():
+            if str(key).lower().replace(" ", "_") == normalized:
+                return value
+        return "N/A"
 
     lines.extend(
         "| " + " | ".join(_fmt(value_for(row, column)) for column in columns) + " |"

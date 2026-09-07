@@ -27,6 +27,7 @@ from src.baseline_eval.evaluation_v2 import (
     _case_utility,
     _fault_rows,
     _bootstrap_delta,
+    _markdown_table,
     BOOTSTRAP_SEED,
     evaluate_v2,
     require_v2_metric_unlock,
@@ -458,6 +459,13 @@ class RescueV2FailureAndMetricTest(unittest.TestCase):
         right = _bootstrap_delta(ada, base, metric="Avg@5", resamples=100, seed=BOOTSTRAP_SEED)
         self.assertEqual(left, right)
         self.assertEqual(left["point_estimate"], 1.0)
+
+    def test_19a_markdown_table_maps_spaced_columns_to_snake_case(self):
+        rendered = _markdown_table(
+            ("Method", "Complete service ranking", "MRR legality"),
+            [{"method": "CausalRCA", "complete_service_ranking": "NO", "MRR_legality": "NOT-IDENTIFIABLE"}],
+        )
+        self.assertIn("| CausalRCA | NO | NOT-IDENTIFIABLE |", rendered)
 
     def test_20_evaluation_gate_stops_before_label_join(self):
         import src.baseline_eval.evaluation_v2 as evaluation
