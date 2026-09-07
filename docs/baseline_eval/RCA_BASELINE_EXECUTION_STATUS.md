@@ -58,7 +58,7 @@ contents, and update this document.
 | Final comparison code | `60770dab33b22dc27f862c5aa9405b8bf608b613`; firewall compatibility `1fed561` | complete |
 | Final comparison regression tests | `badefd4` | focused `15/15` PASS |
 | V3 final metrics artifacts | `ad6b03ca794df30a2e83adb26344f689ad9282f9` | complete; six inherited rows identity-checked |
-| V3 canonical report | `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md` | generated; report/handoff commit pending |
+| V3 canonical report | `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md`; commit `8b07b79` | PASS; current canonical report |
 | Final validation | common-env unittest `262 tests`, pytest `262 passed`; old V2 SHA identity audit PASS | complete |
 
 The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
@@ -137,7 +137,7 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | BARO final integration amendment and scope lock | `bf6349e342fa2e1ffbb1348bccbf852821503bec`; `RCA_BASELINE_BARO_FINAL_INTEGRATION_AMENDMENT_V1.md`; `final_comparison_v3/scope_lock_v3.json` | complete before post-scope BARO evaluation |
 | Seven-baseline final comparison implementation | `60770da`; `badefd4`; `1fed561` | complete; no baseline rerun |
 | Seven-baseline final comparison artifacts | `ad6b03c` at `artifacts/baseline_eval/final_comparison_v3/` | complete; independent BARO evaluation plus inherited V2 identity |
-| Seven-baseline canonical report | `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md` | generated; included in final documentation commit |
+| Seven-baseline canonical report | `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md`; commit `8b07b79` | complete; current canonical report |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
