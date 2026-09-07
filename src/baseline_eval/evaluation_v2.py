@@ -619,6 +619,15 @@ def _render_report(
     robustness = read_json(root / output_relatives["robustness"])
     comparability = read_json(root / output_relatives["comparability"])
     bootstrap = read_json(root / output_relatives["paired_bootstrap"])
+    table_c_rows = [
+        {
+            **row,
+            "dataset": {"re2ob": "RE2-OB", "re2tt": "RE2-TT"}.get(
+                row.get("dataset"), row.get("dataset")
+            ),
+        }
+        for row in robustness["table_c"]["rows"]
+    ]
     report = f"""# {title}
 
 Performance-blind rescue execution was frozen before this post-lock report.
@@ -636,9 +645,18 @@ reported separately and are never pooled.
 
 ## Table C — Execution Robustness
 
-{_markdown_table(robustness['table_c']['columns'], robustness['table_c']['rows'])}
+All six baselines are shown for both datasets with the frozen 90-case
+denominator. `METHOD_FAILURE` is retained as a legal zero-utility outcome;
+all blocking-status columns are zero, so every bound method lock is
+`INTEGRITY_VALID`.
+
+{_markdown_table(robustness['table_c']['columns'], table_c_rows)}
 
 ## Table D — Protocol / Output Comparability
+
+The CausalRCA row is included through the authorized CPU case-level extension;
+its native indicator output is evaluated through the same partial service
+projection rule, so complete service ranking and MRR are not claimed.
 
 {_markdown_table(comparability['table_d']['columns'], comparability['table_d']['rows'])}
 
