@@ -4,7 +4,7 @@ Status: **V2 COMBINED EVALUATION COMPLETE — SIX-METHOD TABLE PUBLISHED**
 State revision: `2026-09-07.4`
 Last operational audit: 2026-09-07, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `0176694`
+Last synchronized central commit: `d876603`
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
