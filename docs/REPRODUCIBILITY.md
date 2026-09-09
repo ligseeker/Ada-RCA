@@ -48,7 +48,7 @@ Delete or move the corresponding ignored output directory before repeating a run
 
 ## Numerical portability limitation
 
-The committed reference artifacts were produced under Python 3.8.20, NumPy 1.24.1, pandas 1.5.3, SciPy 1.10.1, and scikit-learn 1.2.1. Persisted-state replay and metric reconstruction are deterministic under the retained tests.
+`requirements.txt` pins the reference dependency set: Python 3.8.20, NumPy 1.24.1, pandas 1.5.3, SciPy 1.10.1, and scikit-learn 1.2.1. The committed `environment.json` files record Python, NumPy, SciPy, and scikit-learn but omit pandas, so the pandas version is a repository requirement rather than artifact-recorded provenance. Persisted-state replay and metric reconstruction are deterministic under the retained tests.
 
 A fresh RE2-TT fit can be sensitive at the final floating-point identity boundary across numerical-library or BLAS builds. During the cleanup audit, rankings remained identical but the maximum absolute score difference was `1.2008172234345693e-12`, slightly above the frozen `1e-12` threshold. The run therefore correctly stopped with `STOP: FINAL METHOD REPLAY INVALID`. This is a score-level numerical portability limitation, not permission to relax the threshold or claim a successful exact replay.
 

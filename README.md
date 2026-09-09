@@ -85,11 +85,11 @@ PYTHONDONTWRITEBYTECODE=1 python scripts/run_final_method.py --dataset re2ob
 
 默认输出写入被 Git 忽略的 `artifacts/reproduced/final_method/<dataset>/`，不会覆盖已提交的冻结产物。入口要求启动时工作树为 clean，且目标数据集输出目录尚不存在。
 
-RE2-TT 使用相同命令并将数据集改为 `re2tt`。在冻结参考环境以外，即使排名完全一致，BLAS/浮点实现差异也可能使最大分数误差略高于严格的 `1e-12` 身份阈值；入口会按冻结规则报错而不会静默放宽阈值。详情见 [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md)。
+RE2-TT 使用相同命令并将数据集改为 `re2tt`。即使 Python 包版本相同，不同 BLAS/浮点实现也可能在排名完全一致时使最大分数误差略高于严格的 `1e-12` 身份阈值；入口会按冻结规则报错而不会静默放宽阈值。详情见 [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md)。
 
 ## 从原始 RCAEval 数据重建输入
 
-原始 RCAEval 数据不随仓库分发。以下命令将重建结果写入 `scratch/`，避免覆盖冻结产物：
+原始 RCAEval 数据不随仓库分发。以下命令只用于重建和审计数据准备阶段，并将结果写入 `scratch/`，避免覆盖冻结产物：
 
 ```bash
 python scripts/prepare_dataset.py \
@@ -106,7 +106,7 @@ python scripts/extract_features.py \
   --output-root scratch/features
 ```
 
-特征提取入口只读取 `inputs.jsonl` 和 `sources.jsonl`，不读取 `labels.jsonl`。最终方法入口刻意绑定仓库中已提交的冻结 source/features/splits，以避免无意改变评测输入；完整的产物角色和校验边界见复现文档。
+特征提取入口只读取 `inputs.jsonl` 和 `sources.jsonl`，不读取 `labels.jsonl`。这些 `scratch/` 结果不能直接驱动最终 runner；`run_final_method.py` 刻意绑定仓库中已提交的冻结 source/features/splits，以避免无意改变评测输入。完整的产物角色和校验边界见复现文档。
 
 ## 冻结结果与适用边界
 

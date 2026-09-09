@@ -2,7 +2,15 @@
 
 Status: FROZEN before any P3-A1/P3-A2 morphology performance result.
 
-This document fixes the complete numeric representation used by Z0, Z1, Z2, Z3, and Z3-SHUFFLE. Any factual infeasibility discovered later must be handled through the protocol-deviation procedure in `RESEARCH_STATUS.md`; unfavorable performance is not a reason to change this representation.
+Repository scope note: sections 1--10 are the authoritative specification for
+the representation used by final Ada-RCA. Section 11 records the earlier P3
+independent logistic-regression probe; it is not the final ranker. The final
+runner uses event-level conditional logistic regression with `max_iter=1000`
+and breaks exact score ties by candidate-name lexicographic order. The retained
+candidate registries are lexicographically ordered, so this matches their
+canonical order for the committed RE2-OB and RE2-TT artifacts.
+
+This document fixes the complete numeric representation used by Z0, Z1, Z2, Z3, and Z3-SHUFFLE. Any factual infeasibility discovered later must be recorded explicitly and handled fail-closed; unfavorable performance is not a reason to change this representation.
 
 ## 1. Event window and grid
 
