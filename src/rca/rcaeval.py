@@ -22,7 +22,6 @@ class DatasetProfile:
     id_namespace: str
     id_prefix: str
     uri_namespace: str
-    root_path: str
     expected_cases: int = 90
     replicates: Tuple[str, ...] = ("1", "2", "3")
     auxiliary_entities: FrozenSet[str] = _AUXILIARY_ENTITIES
@@ -30,11 +29,9 @@ class DatasetProfile:
 
 RE2OB = DatasetProfile(
     "re2ob", "RCAEval-RE2-OB", "RCAEval:RE2-OB", "re2ob", "re2-ob",
-    "/home/zhangll24/RCA_project/datasets/RCAEval/RE2-OB",
 )
 RE2TT = DatasetProfile(
     "re2tt", "RCAEval-RE2-TT", "RCAEval:RE2-TT", "re2tt", "re2-tt",
-    "/home/zhangll24/RCA_project/datasets/RCAEval/RE2/RE2-TT",
 )
 DATASETS = {profile.key: profile for profile in (RE2OB, RE2TT)}
 
@@ -115,8 +112,8 @@ def discover_case_directories(root: Path, profile: DatasetProfile) -> Sequence[P
     return directories
 
 
-def load_cases(profile: DatasetProfile, raw_path: str = None) -> AdapterResult:
-    root = Path(raw_path or profile.root_path).resolve()
+def load_cases(profile: DatasetProfile, raw_path: str) -> AdapterResult:
+    root = Path(raw_path).resolve()
     if not root.is_dir():
         raise FileNotFoundError(str(root))
     inputs, labels, sources, excluded = [], [], [], []
@@ -178,9 +175,9 @@ def load_cases(profile: DatasetProfile, raw_path: str = None) -> AdapterResult:
     return AdapterResult(tuple(inputs), tuple(labels), tuple(sources), tuple(excluded))
 
 
-def load_re2ob_cases(raw_path: str = None) -> AdapterResult:
+def load_re2ob_cases(raw_path: str) -> AdapterResult:
     return load_cases(RE2OB, raw_path)
 
 
-def load_re2tt_cases(raw_path: str = None) -> AdapterResult:
+def load_re2tt_cases(raw_path: str) -> AdapterResult:
     return load_cases(RE2TT, raw_path)

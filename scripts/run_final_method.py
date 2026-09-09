@@ -187,11 +187,10 @@ def run(dataset, output_root):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", required=True, choices=("re2ob", "re2tt"))
-    parser.add_argument("--output-root", default="artifacts/final_method")
+    parser.add_argument("--output-root", default="artifacts/reproduced/final_method")
     args = parser.parse_args()
     run(args.dataset, args.output_root)
 
 
 if __name__ == "__main__":
     main()
-

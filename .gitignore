@@ -25,3 +25,4 @@ tmp/
 # regenerated deterministically from the frozen representation code.
 # Manifests + checksums ARE committed so runs remain verifiable.
 artifacts/cache/
+artifacts/reproduced/

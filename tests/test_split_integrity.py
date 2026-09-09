@@ -1,7 +1,7 @@
 import unittest
 from pathlib import Path
 
-from scripts.p3_a0_splits import build_split
+from scripts.create_splits import build_split
 
 
 class SplitIntegrityTest(unittest.TestCase):
