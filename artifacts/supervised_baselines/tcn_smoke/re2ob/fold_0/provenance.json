@@ -1,0 +1,16 @@
+{
+  "branch": "evaluation/supervised-baselines",
+  "dataset": "re2ob",
+  "fold": 0,
+  "frozen_input_sha256": {
+    "assignments": "ca576819554ebe3d1cddd8f261bb661e7111896ff7b7dd6258e9f5daafad5195",
+    "candidate_registry": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19",
+    "feature_manifest": "cc171f32c7642c6ddbe59b5b52bb6f8351dd8d8a35289144277900bbbb1da4ed",
+    "split_manifest": "a672d12be89e91efd7fe69cdf81713b3d18482bba6b46620b0bfd0b4ff7bfd62"
+  },
+  "method": "tcn_smoke",
+  "protocol": "docs/supervised_baselines/SUPERVISED_BASELINE_PROTOCOL_V1.md",
+  "schema_version": "supervised_baseline_fold_v1",
+  "source_commit": "9cbe2a0b1bcd172c8c27dd60acd825ae3fa2024d",
+  "started_at": "2026-09-11T12:21:22.483220+00:00"
+}
