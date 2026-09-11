@@ -1,0 +1,19 @@
+{
+  "ci95": [
+    -0.03333333333333333,
+    0.022222222222222223
+  ],
+  "delta_by_fault": {
+    "cpu": -0.05333333333333334,
+    "delay": 0.02666666666666666,
+    "disk": 0.0,
+    "loss": 0.0,
+    "mem": 0.0,
+    "socket": 0.0
+  },
+  "direction": "supervised_baseline_minus_ada_rca_v1",
+  "metric": "Avg@5",
+  "point_delta": -0.004444444444444447,
+  "resamples": 10000,
+  "seed": 20260826
+}

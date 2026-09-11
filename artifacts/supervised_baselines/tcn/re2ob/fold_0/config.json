@@ -1,0 +1,41 @@
+{
+  "architecture": [
+    "Conv1d(8,32,kernel_size=3,padding=1)",
+    "ReLU",
+    "Dropout(0.2)",
+    "Conv1d(32,64,kernel_size=3,padding=1)",
+    "ReLU",
+    "Dropout(0.2)",
+    "AdaptiveAvgPool1d(1)",
+    "Linear(64,1)"
+  ],
+  "channel_order": [
+    "z.metric",
+    "z.log",
+    "z.trace-error",
+    "z.trace-latency",
+    "mask.metric",
+    "mask.log",
+    "mask.trace-error",
+    "mask.trace-latency"
+  ],
+  "checkpoint_selection": "final epoch only",
+  "deterministic_algorithms": true,
+  "device": "cpu",
+  "dtype": "float32",
+  "early_stopping": false,
+  "epochs": 100,
+  "event_batch_size": 1,
+  "hyperparameter_search": false,
+  "input": "frozen z plus q_mask, candidate x 8 x 80",
+  "learning_rate": 0.001,
+  "loss": "event-level cross entropy over complete candidate axis",
+  "method": "trajectory_tcn",
+  "normalization": "frozen case-local trajectory normalization only; no fold scaler",
+  "optimizer": "Adam",
+  "random_seed": 20260826,
+  "run_role": "FORMAL_OOF_FOLD",
+  "torch_num_threads": 1,
+  "validation": null,
+  "weight_decay": 0.0001
+}

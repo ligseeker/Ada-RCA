@@ -1,0 +1,9 @@
+{
+  "candidate_row_count": 330,
+  "case_count": 30,
+  "complete_candidate_rows": true,
+  "complete_rank_permutations": true,
+  "expected_candidate_row_count": 330,
+  "root_present_exactly_once_per_case": true,
+  "status": "PASS"
+}

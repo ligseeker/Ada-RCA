@@ -1,0 +1,11 @@
+{
+  "fit_label_case_ids_sha256": "e7b63ef509f73958347d2e5ade75d0dc70db48ec0bfbbb38fbf153dda73ce850",
+  "normalization_scope": "none",
+  "predict_interface_label_free": true,
+  "prediction_completed_at": "2026-09-11T12:28:23.736988+00:00",
+  "status": "PASS",
+  "test_case_count": 30,
+  "test_labels_joined_after_prediction": true,
+  "train_case_count": 60,
+  "train_test_overlap": []
+}

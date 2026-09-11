@@ -1,0 +1,11 @@
+{
+  "fit_label_case_ids_sha256": "7ec037cd4a0c46e091469213933c3df0ceda041d295a21410213ace066eeddbc",
+  "normalization_scope": "StandardScaler fit on outer-training candidate rows only",
+  "predict_interface_label_free": true,
+  "prediction_completed_at": "2026-09-11T12:27:40.321241+00:00",
+  "status": "PASS",
+  "test_case_count": 30,
+  "test_labels_joined_after_prediction": true,
+  "train_case_count": 60,
+  "train_test_overlap": []
+}

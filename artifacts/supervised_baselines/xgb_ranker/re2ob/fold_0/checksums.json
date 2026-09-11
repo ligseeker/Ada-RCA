@@ -1,0 +1,12 @@
+{
+  "config.json": "a4a3e5e1da90180d35ee04608cfa7ac67f48f287cb06805ffa97234f2accbbc0",
+  "environment.json": "862661cc27537939d8e58b11b9233e751c9f1449220710ef0af5e38b741a8447",
+  "integrity.json": "410cfa5b5881b2325b54372aaa241e3909c918b55e787be7c75ca9c59009db4c",
+  "label_firewall.json": "d631b59a7959dbc92e6f49e14ace4c7c4cb105800a8f8ed7cbae65fdaebc31c3",
+  "metrics.json": "e8d63a4a0fa7a607444135e8832ed788d042b14073ff97b4dba3998fe73ce4f5",
+  "model_state.ubj": "4bd162ddd2288a919c6d9983d58fce4e8dfef4e9e01c15b9946e266e145ba22d",
+  "predictions.jsonl": "a70f30b5baa6f40779e5fde6f67c06602b33003ad16584ca872f6818ed54a74b",
+  "provenance.json": "9b52a9b27ce1b6710f47fe1be0a3ebe67dd5fe9105f5756fc1afe121ed2cf590",
+  "runtime.json": "a91f719f879bec1d90a78c255b457983195ce37847ef48addeb47985f7291748",
+  "status.json": "62ff8feb91abbc28116962f81fc0e6f2f9ae570fbed8b76d98bd1d377f8af4f0"
+}

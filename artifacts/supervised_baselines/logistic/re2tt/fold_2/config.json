@@ -1,0 +1,13 @@
+{
+  "C": 1.0,
+  "class_weight": null,
+  "hyperparameter_search": false,
+  "input": "frozen Z1 32D only",
+  "learner": "sklearn.linear_model.LogisticRegression",
+  "max_iter": 5000,
+  "method": "z1_logistic",
+  "normalization": "StandardScaler fit on outer-training candidate rows only",
+  "penalty": "l2",
+  "random_state": 20260826,
+  "solver": "lbfgs"
+}

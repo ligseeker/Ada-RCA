@@ -1,0 +1,24 @@
+{
+  "ada_rca_v1": {
+    "re2ob": {
+      "AC@1": 0.8777777777777778,
+      "AC@3": 0.9888888888888889,
+      "AC@5": 0.9888888888888889,
+      "Avg@5": 0.9622222222222222,
+      "MRR": 0.9314814814814816
+    },
+    "re2tt": {
+      "AC@1": 0.7111111111111111,
+      "AC@3": 0.8666666666666667,
+      "AC@5": 0.9333333333333333,
+      "Avg@5": 0.851111111111111,
+      "MRR": 0.8034718881941106
+    }
+  },
+  "decision": "PENDING",
+  "missing": [
+    "tcn/re2tt"
+  ],
+  "primary_metric": "Avg@5",
+  "reason": "generic supervised comparator aggregates are incomplete"
+}
