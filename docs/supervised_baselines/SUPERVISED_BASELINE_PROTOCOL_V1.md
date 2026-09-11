@@ -166,6 +166,8 @@ training root index. Fixed training configuration:
 
 ```text
 PyTorch CPU
+float32
+torch_num_threads = 1
 Adam
 learning_rate = 1e-3
 weight_decay = 1e-4
