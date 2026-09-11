@@ -371,7 +371,16 @@ def run_fold(
 
     import time
     started_clock = time.monotonic()
-    scores_by_case = fit_and_score(train_events, train_roots, test_events, run_dir)
+    try:
+        scores_by_case = fit_and_score(train_events, train_roots, test_events, run_dir)
+    except Exception as exc:
+        write_json(run_dir / "status.json", {
+            "status": "FAILED",
+            "failed_at": datetime.now(timezone.utc).isoformat(),
+            "error_type": type(exc).__name__,
+            "error": str(exc),
+        })
+        raise
     prediction_completed_at = datetime.now(timezone.utc).isoformat()
     candidate_rows, metrics = evaluate_fold_scores(
         project_root, dataset, fold, test_events, scores_by_case
