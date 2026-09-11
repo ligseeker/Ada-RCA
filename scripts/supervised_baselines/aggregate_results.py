@@ -24,6 +24,7 @@ def main() -> None:
     parser.add_argument("--method", choices=METHODS)
     parser.add_argument("--dataset", choices=("re2ob", "re2tt"))
     parser.add_argument("--gate", action="store_true")
+    parser.add_argument("--gate-output", default="dejavu_gate.json")
     parser.add_argument("--output-root", default="artifacts/supervised_baselines")
     args = parser.parse_args()
     artifact_root = PROJECT_ROOT / args.output_root
@@ -31,7 +32,7 @@ def main() -> None:
         if args.method is not None or args.dataset is not None:
             parser.error("--gate cannot be combined with --method/--dataset")
         gate = evaluate_dejavu_gate(PROJECT_ROOT, artifact_root)
-        path = persist_dejavu_gate(artifact_root, gate)
+        path = persist_dejavu_gate(artifact_root, gate, args.gate_output)
         print(json.dumps({"gate": gate, "artifact": str(path)}, indent=2, sort_keys=True))
         return
     if args.method is None or args.dataset is None:

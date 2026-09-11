@@ -203,8 +203,12 @@ def evaluate_dejavu_gate(project_root: Path, artifact_root: Path) -> Mapping[str
     }
 
 
-def persist_dejavu_gate(artifact_root: Path, gate: Mapping[str, object]) -> Path:
-    path = artifact_root / "dejavu_gate.json"
+def persist_dejavu_gate(
+    artifact_root: Path, gate: Mapping[str, object], filename: str = "dejavu_gate.json"
+) -> Path:
+    if Path(filename).name != filename or not filename.endswith(".json"):
+        raise ValueError("gate filename must be a simple JSON filename")
+    path = artifact_root / filename
     if path.exists():
         raise FileExistsError("DejaVu gate artifact already exists")
     write_json(path, gate)
