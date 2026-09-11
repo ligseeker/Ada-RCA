@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import platform
 import subprocess
@@ -308,6 +309,7 @@ def base_environment() -> Mapping[str, object]:
         "pandas": pandas.__version__,
         "scipy": scipy.__version__,
         "scikit_learn": sklearn.__version__,
+        "PYTHONHASHSEED": os.environ.get("PYTHONHASHSEED"),
     }
 
 
@@ -362,6 +364,8 @@ def run_fold(
     environment_extra: Mapping[str, object],
 ) -> Mapping[str, object]:
     git_identity = current_git_identity(project_root)
+    if os.environ.get("PYTHONHASHSEED") != str(SEED):
+        raise RuntimeError("formal run requires PYTHONHASHSEED={}".format(SEED))
     disallowed_dirty = [
         entry for entry in git_identity["dirty_entries"]
         if not entry.startswith("?? artifacts/supervised_baselines/")

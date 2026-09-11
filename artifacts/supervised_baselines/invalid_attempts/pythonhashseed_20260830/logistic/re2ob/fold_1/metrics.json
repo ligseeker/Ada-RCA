@@ -1,0 +1,431 @@
+{
+  "by_fault": {
+    "cpu": {
+      "AC@1": 0.8,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.96,
+      "MRR": 0.9
+    },
+    "delay": {
+      "AC@1": 0.8,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9199999999999999,
+      "MRR": 0.8666666666666666
+    },
+    "disk": {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0
+    },
+    "loss": {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0
+    },
+    "mem": {
+      "AC@1": 0.6,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8800000000000001,
+      "MRR": 0.7666666666666666
+    },
+    "socket": {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0
+    }
+  },
+  "by_fold": {
+    "1": {
+      "AC@1": 0.8666666666666667,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9600000000000001,
+      "MRR": 0.9222222222222222
+    }
+  },
+  "by_root": {
+    "checkoutservice": {
+      "AC@1": 0.8333333333333334,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9333333333333332,
+      "MRR": 0.8888888888888888
+    },
+    "currencyservice": {
+      "AC@1": 0.6666666666666666,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9,
+      "MRR": 0.8055555555555557
+    },
+    "emailservice": {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0
+    },
+    "productcatalogservice": {
+      "AC@1": 0.8333333333333334,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.9666666666666667,
+      "MRR": 0.9166666666666666
+    },
+    "recommendationservice": {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0
+    }
+  },
+  "case_metrics": [
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-048f2e7d7bfbc927",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "emailservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-1d9a0d1641171551",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "checkoutservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-23213ee605c6b050",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "emailservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-3827c8c9ef1e8592",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "currencyservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-3e7e71a1c83dbc41",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "currencyservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-40e1893e43abba5c",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "currencyservice"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.6,
+      "MRR": 0.3333333333333333,
+      "case_id": "re2ob-4b9110d974bb1875",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "checkoutservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-505f802370635ec3",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "checkoutservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-57b75da971aabed5",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "emailservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-58cff4fc86081830",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "recommendationservice"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2ob-58eb5ae1a41b77e4",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "productcatalogservice"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.6,
+      "MRR": 0.3333333333333333,
+      "case_id": "re2ob-5f261573c1b3bdc5",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "currencyservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-6521847c78ca06e9",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "recommendationservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-71c7f9be34b19754",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "checkoutservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-7732042f2a190c79",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "productcatalogservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-7a91adc6e16587c6",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "recommendationservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-7aec8ac514e0d064",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "checkoutservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-7c278a568194196b",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "checkoutservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-8f991393cb9debdf",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "emailservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-b6db72fc58931786",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "productcatalogservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-b84066a37ca0c417",
+      "fault_type": "socket",
+      "fold": 1,
+      "root_service": "productcatalogservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-ce3f410f61f739c2",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "recommendationservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-d0d93705e784491a",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "productcatalogservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-d7f2f8eb2f0ad646",
+      "fault_type": "delay",
+      "fold": 1,
+      "root_service": "emailservice"
+    },
+    {
+      "AC@1": 0.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 0.8,
+      "MRR": 0.5,
+      "case_id": "re2ob-da48e150772a24fd",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "currencyservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-df7b6eca09a6c41f",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "recommendationservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-eb8f50fda4f9095f",
+      "fault_type": "disk",
+      "fold": 1,
+      "root_service": "currencyservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-f209212fc63ac713",
+      "fault_type": "mem",
+      "fold": 1,
+      "root_service": "emailservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-fa8a8fae0fda7c42",
+      "fault_type": "cpu",
+      "fold": 1,
+      "root_service": "recommendationservice"
+    },
+    {
+      "AC@1": 1.0,
+      "AC@3": 1.0,
+      "AC@5": 1.0,
+      "Avg@5": 1.0,
+      "MRR": 1.0,
+      "case_id": "re2ob-feeaaba6c71377df",
+      "fault_type": "loss",
+      "fold": 1,
+      "root_service": "productcatalogservice"
+    }
+  ],
+  "overall_cases": {
+    "AC@1": 0.8666666666666667,
+    "AC@3": 1.0,
+    "AC@5": 1.0,
+    "Avg@5": 0.9600000000000001,
+    "MRR": 0.9222222222222222
+  }
+}

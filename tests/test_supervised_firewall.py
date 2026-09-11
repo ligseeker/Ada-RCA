@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -40,7 +41,9 @@ class SupervisedFirewallTest(unittest.TestCase):
                 for event in test_events
             }
 
-        with tempfile.TemporaryDirectory() as output_root:
+        with tempfile.TemporaryDirectory() as output_root, patch.dict(
+            os.environ, {"PYTHONHASHSEED": "20260826"}
+        ):
             with patch.object(common, "load_label_subset", side_effect=labels), patch.object(
                 common,
                 "current_git_identity",
@@ -57,6 +60,27 @@ class SupervisedFirewallTest(unittest.TestCase):
                     {},
                 )
         self.assertEqual(calls, ["train_labels", "fit_predict", "test_labels"])
+
+    def test_wrong_python_hash_seed_is_rejected_before_artifact_creation(self):
+        with tempfile.TemporaryDirectory() as output_root, patch.dict(
+            os.environ, {"PYTHONHASHSEED": "20260830"}
+        ), patch.object(
+            common,
+            "current_git_identity",
+            return_value={"head": "test", "branch": "test", "dirty_entries": ()},
+        ):
+            with self.assertRaisesRegex(RuntimeError, "PYTHONHASHSEED=20260826"):
+                common.run_fold(
+                    PROJECT_ROOT,
+                    "re2ob",
+                    0,
+                    "toy",
+                    Path(output_root),
+                    {"normalization": "none"},
+                    lambda *_args: {},
+                    {},
+                )
+            self.assertEqual(list(Path(output_root).iterdir()), [])
 
 
 if __name__ == "__main__":
