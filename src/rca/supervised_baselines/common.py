@@ -287,8 +287,12 @@ def evaluate_fold_scores(
 def current_git_identity(project_root: Path) -> Mapping[str, object]:
     head = subprocess.check_output(("git", "rev-parse", "HEAD"), cwd=str(project_root), text=True).strip()
     branch = subprocess.check_output(("git", "branch", "--show-current"), cwd=str(project_root), text=True).strip()
-    dirty = bool(subprocess.check_output(("git", "status", "--porcelain"), cwd=str(project_root), text=True).strip())
-    return {"head": head, "branch": branch, "dirty": dirty}
+    status = subprocess.check_output(
+        ("git", "status", "--porcelain", "--untracked-files=all"),
+        cwd=str(project_root),
+        text=True,
+    ).splitlines()
+    return {"head": head, "branch": branch, "dirty_entries": tuple(status)}
 
 
 def base_environment() -> Mapping[str, object]:
@@ -358,8 +362,14 @@ def run_fold(
     environment_extra: Mapping[str, object],
 ) -> Mapping[str, object]:
     git_identity = current_git_identity(project_root)
-    if git_identity["dirty"]:
-        raise RuntimeError("formal supervised-baseline run requires a clean worktree")
+    disallowed_dirty = [
+        entry for entry in git_identity["dirty_entries"]
+        if not entry.startswith("?? artifacts/supervised_baselines/")
+    ]
+    if disallowed_dirty:
+        raise RuntimeError(
+            "formal run rejects non-artifact worktree changes: {}".format(disallowed_dirty)
+        )
     events = load_prediction_events(project_root, dataset)
     train_events, test_events = partition_fold(events, fold)
     run_dir = output_root / method / dataset / "fold_{}".format(fold)

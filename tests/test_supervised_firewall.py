@@ -44,7 +44,7 @@ class SupervisedFirewallTest(unittest.TestCase):
             with patch.object(common, "load_label_subset", side_effect=labels), patch.object(
                 common,
                 "current_git_identity",
-                return_value={"head": "test", "branch": "test", "dirty": False},
+                return_value={"head": "test", "branch": "test", "dirty_entries": ()},
             ):
                 common.run_fold(
                     PROJECT_ROOT,
