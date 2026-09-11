@@ -12,7 +12,8 @@ from typing import Callable, Dict, Iterable, Mapping, Sequence, Tuple
 import numpy as np
 
 from ..features import CHANNELS, N_BINS
-from ..p4_stats import evaluate_predictions
+from ..evaluator import aggregate_case_metrics, evaluate_case
+from ..p4_stats import FAULT_ORDER
 
 
 DATASETS = ("re2ob", "re2tt")
@@ -254,7 +255,32 @@ def evaluate_fold_scores(
             })
         candidates_by_case[event.case_id] = event.candidates
         roots[event.case_id] = root
-    metrics = evaluate_predictions(prediction_rows, candidates_by_case, roots)
+    case_metrics = []
+    for prediction in prediction_rows:
+        case_id = str(prediction["case_id"])
+        values = evaluate_case(
+            tuple(prediction["ranking"]), roots[case_id], tuple(candidates_by_case[case_id])
+        )
+        case_metrics.append({
+            **values,
+            "case_id": case_id,
+            "fault_type": prediction["fault_type"],
+            "fold": fold,
+            "root_service": roots[case_id],
+        })
+    metrics = {
+        "overall_cases": aggregate_case_metrics(case_metrics),
+        "by_fault": {
+            fault: aggregate_case_metrics([row for row in case_metrics if row["fault_type"] == fault])
+            for fault in FAULT_ORDER
+        },
+        "by_root": {
+            root: aggregate_case_metrics([row for row in case_metrics if row["root_service"] == root])
+            for root in sorted(set(roots.values()))
+        },
+        "by_fold": {str(fold): aggregate_case_metrics(case_metrics)},
+        "case_metrics": case_metrics,
+    }
     return tuple(candidate_rows), metrics
 
 
