@@ -85,17 +85,22 @@ edge only when both endpoints are different registered candidates. Deduplicate
 and lexicographically sort the edge list. Include all canonical candidates as
 nodes even if they have no retained edge.
 
-The following are forbidden: labels or condition names in graph construction,
-trace co-occurrence edges, inferred transitive edges, full-connected graphs,
-identity graphs, random edges, self loops, reverse-edge completion, and edges
-added merely to eliminate zero degree. Unmapped trace services and isolated
-candidates are reported, not repaired.
+The following are forbidden in the source FDG: labels or condition names in
+graph construction, trace co-occurrence edges, inferred transitive edges,
+full-connected graphs, identity graphs, random edges, self loops, reverse-edge
+completion, and edges added merely to eliminate zero degree. Unmapped trace
+services and isolated candidates are reported, not repaired. After the source
+FDG is fixed, the official `IncompleteFDGFactory` transformation remains part
+of DejaVu: it converts retained edges to bidirectional form and adds self loops
+for message passing. These model-internal edges are upstream behavior and are
+not reported as trace-derived topology.
 
 The official DGL conversion must be wrapped with an explicit node count for
-the `service` type. The single relation type is `service-calls-service`, and an
-empty typed edge tensor is legal. The official `GATConv` is instantiated with
-`allow_zero_in_degree=True`; this preserves isolated nodes without inventing
-topology. All other official GAT settings remain frozen below.
+the `service` type. The single source relation type is
+`service-calls-service`, and an empty typed edge tensor is legal. Explicit
+node counts preserve isolated candidates through conversion; the unchanged
+official factory then supplies the bidirectionality and self loops expected by
+the official `GATConv`. No `GATConv` setting is changed.
 
 ## 5. Raw-source lock
 

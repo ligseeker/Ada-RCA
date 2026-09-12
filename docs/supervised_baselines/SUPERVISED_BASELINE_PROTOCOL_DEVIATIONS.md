@@ -111,3 +111,22 @@ result artifact.
 - Scientific impact: none. This restores official runtime dependencies and
   prevents accidental use of the generic baseline environment's newer
   numerical stack. No experiment result exists at this point.
+
+## A7: distinguish source FDG edges from official message-passing edges
+
+- Detected: 2026-09-12 during direct inspection of the pinned
+  `IncompleteFDGFactory`, before adapter implementation or any model result.
+- Initial wording: forbid all reverse edges/self loops and set
+  `allow_zero_in_degree=True` on `GATConv`.
+- Official behavior: after loading the source FDG, the upstream factory calls
+  `dgl.to_bidirected(...)` and `dgl.add_self_loop(...)` before GAT message
+  passing. Once isolated candidates are preserved by explicit node counts,
+  those upstream self loops also eliminate zero-degree failures.
+- Correction: source provenance still contains only directed trace
+  parent-to-child edges and forbids invented completion. Preserve the official
+  model-internal bidirectional/self-loop transformation and leave `GATConv`
+  unchanged. The adapter's only graph compatibility change is explicit node
+  counts during heterograph construction.
+- Scientific impact: this increases fidelity to the published code and removes
+  an unnecessary model change. No labels, training, predictions, or metrics
+  informed the correction.
