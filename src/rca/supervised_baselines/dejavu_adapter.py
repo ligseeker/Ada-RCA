@@ -8,6 +8,8 @@ import math
 from pathlib import Path
 from typing import Mapping, Sequence
 
+import numpy as np
+
 
 TRACE_REQUIRED_COLUMNS = (
     "time",
@@ -271,4 +273,94 @@ def audit_source_registry(
         ),
         "failures": failures,
         "cases": list(cases),
+    }
+
+
+def prepare_metric_tensor(
+    source_row: Mapping[str, object], candidates: Sequence[str]
+) -> np.ndarray:
+    """Build one label-free candidate x CPU/MEM x time DejaVu tensor."""
+
+    canonical = tuple(str(value) for value in candidates)
+    if len(canonical) < 2 or len(set(canonical)) != len(canonical):
+        raise ValueError("candidate registry must be unique")
+    metric_path = Path(str(source_row["simple_metrics_path"]))
+    inject_path = Path(str(source_row["inject_time_path"]))
+    injection_time = float(inject_path.read_text(encoding="utf-8").strip())
+    required_times = tuple(injection_time + offset for offset in METRIC_OFFSETS_SECONDS)
+    required_set = set(required_times)
+    rows_by_time = {}
+    with metric_path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        header = set(reader.fieldnames or ())
+        required_columns = {
+            "{}_{}".format(candidate, suffix)
+            for candidate in canonical
+            for suffix in METRIC_SUFFIXES
+        }
+        if "time" not in header or not required_columns <= header:
+            raise ValueError("simple metric schema does not cover candidates")
+        for row in reader:
+            try:
+                timestamp = float(row["time"])
+            except (TypeError, ValueError):
+                continue
+            if timestamp not in required_set:
+                continue
+            if timestamp in rows_by_time:
+                raise ValueError("duplicate required metric timestamp")
+            rows_by_time[timestamp] = row
+
+    tensor = np.empty(
+        (len(canonical), len(METRIC_SUFFIXES), len(required_times)),
+        dtype=np.float64,
+    )
+    for candidate_index, candidate in enumerate(canonical):
+        for metric_index, suffix in enumerate(METRIC_SUFFIXES):
+            column = "{}_{}".format(candidate, suffix)
+            previous = None
+            for time_index, timestamp in enumerate(required_times):
+                raw = rows_by_time.get(timestamp, {}).get(column, "")
+                try:
+                    value = float(raw)
+                except (TypeError, ValueError):
+                    value = float("nan")
+                if not math.isfinite(value):
+                    if previous is None:
+                        raise ValueError("required metric has an unfillable leading gap")
+                    value = previous
+                tensor[candidate_index, metric_index, time_index] = value
+                previous = value
+
+    tensor = np.clip(tensor, -10.0, 10.0)
+    tensor -= np.mean(tensor[:, :, :10], axis=-1, keepdims=True)
+    if not np.all(np.isfinite(tensor)):
+        raise ValueError("prepared metric tensor must be finite")
+    return tensor.astype(np.float32)
+
+
+def build_graph_spec(
+    candidates: Sequence[str], edges: Sequence[Sequence[str]]
+) -> Mapping[str, object]:
+    """Map provenance-bound service edges to canonical candidate indices."""
+
+    canonical = tuple(str(value) for value in candidates)
+    if len(canonical) < 2 or len(set(canonical)) != len(canonical):
+        raise ValueError("candidate registry must be unique")
+    index = {candidate: position for position, candidate in enumerate(canonical)}
+    normalized = set()
+    for raw_edge in edges:
+        if len(raw_edge) != 2:
+            raise ValueError("each source edge must have two endpoints")
+        source, destination = map(str, raw_edge)
+        if source not in index or destination not in index:
+            raise ValueError("source edge endpoint is outside the candidate registry")
+        if source == destination:
+            raise ValueError("source FDG must not contain self loops")
+        normalized.add((source, destination))
+    ordered = sorted(normalized)
+    return {
+        "node_count": len(canonical),
+        "source_indices": [index[source] for source, _ in ordered],
+        "destination_indices": [index[destination] for _, destination in ordered],
     }

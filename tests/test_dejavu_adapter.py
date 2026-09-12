@@ -7,6 +7,8 @@ import unittest
 from src.rca.supervised_baselines.dejavu_adapter import (
     audit_case_source,
     audit_source_registry,
+    build_graph_spec,
+    prepare_metric_tensor,
 )
 
 
@@ -128,6 +130,41 @@ class DejaVuSourceAuditTest(unittest.TestCase):
             self.assertEqual(result["unfillable_metric_samples"], 0)
             self.assertEqual(result["duplicate_span_key_count"], 1)
             self.assertEqual(result["ambiguous_span_key_count"], 0)
+
+    def test_metric_tensor_and_graph_spec_follow_frozen_adapter_semantics(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            metrics_path, _, inject_path = self._write_case(root)
+            with metrics_path.open(encoding="utf-8") as handle:
+                rows = list(csv.reader(handle))
+            rows[12][2] = ""
+            with metrics_path.open("w", newline="", encoding="utf-8") as handle:
+                csv.writer(handle).writerows(rows)
+
+            tensor = prepare_metric_tensor(
+                {
+                    "simple_metrics_path": str(metrics_path),
+                    "inject_time_path": str(inject_path),
+                },
+                ("frontend", "idle", "worker"),
+            )
+            graph = build_graph_spec(
+                ("frontend", "idle", "worker"),
+                (("frontend", "worker"),),
+            )
+
+            self.assertEqual(tensor.shape, (3, 2, 20))
+            self.assertEqual(str(tensor.dtype), "float32")
+            self.assertAlmostEqual(float(tensor[:, :, :10].mean()), 0.0, places=6)
+            self.assertAlmostEqual(float(tensor[1, 0, 11]), 0.0, places=6)
+            self.assertEqual(
+                graph,
+                {
+                    "node_count": 3,
+                    "source_indices": [0],
+                    "destination_indices": [2],
+                },
+            )
 
 
 if __name__ == "__main__":
