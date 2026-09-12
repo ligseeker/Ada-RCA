@@ -364,3 +364,35 @@ def build_graph_spec(
         "source_indices": [index[source] for source, _ in ordered],
         "destination_indices": [index[destination] for _, destination in ordered],
     }
+
+
+def dejavu_fold_partitions(project_root: Path, dataset: str, fold: int):
+    """Return fixed model-train, inner-validation, and outer-test case IDs."""
+
+    if dataset not in ("re2ob", "re2tt") or fold not in (0, 1, 2):
+        raise ValueError("invalid dataset or fold")
+    project_root = Path(project_root)
+    source_path = project_root / "artifacts" / "source" / dataset / "sources.jsonl"
+    assignment_path = project_root / "artifacts" / "splits" / dataset / "assignments.json"
+    sources = {
+        str(row["case_id"]): int(row["replicate"])
+        for row in (
+            json.loads(line)
+            for line in source_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        )
+    }
+    assignments_doc = json.loads(assignment_path.read_text(encoding="utf-8"))
+    assignments = {str(row["case_id"]): int(row["fold"]) for row in assignments_doc}
+    if len(sources) != 90 or set(sources) != set(assignments):
+        raise ValueError("source and split case universes differ")
+    if any(assignments[case_id] != replicate - 1 for case_id, replicate in sources.items()):
+        raise ValueError("existing fold is not the frozen repetition assignment")
+    remaining_repetitions = sorted({1, 2, 3} - {fold + 1})
+    train_repetition, validation_repetition = remaining_repetitions
+    train_ids = tuple(sorted(case_id for case_id, rep in sources.items() if rep == train_repetition))
+    validation_ids = tuple(sorted(case_id for case_id, rep in sources.items() if rep == validation_repetition))
+    test_ids = tuple(sorted(case_id for case_id, rep in sources.items() if rep == fold + 1))
+    if tuple(map(len, (train_ids, validation_ids, test_ids))) != (30, 30, 30):
+        raise ValueError("DejaVu inner/outer partitions must each contain 30 events")
+    return train_ids, validation_ids, test_ids
