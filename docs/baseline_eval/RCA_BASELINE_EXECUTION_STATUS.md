@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
-Status: **FINAL COMPOSITE EVALUATION COMPLETE — SEVEN-BASELINE TABLE PUBLISHED**
-State revision: `2026-09-07.8`
-Last operational audit: 2026-09-07, Asia/Shanghai
+Status: **POST-LOCK INDEPENDENT BASELINE AUDIT COMPLETE — CAUSALRCA RUNTIME NOT EXECUTED**
+State revision: `2026-09-12.1`
+Last operational audit: 2026-09-12, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: this final handoff revision
+Last synchronized central commit: `46c8450` audit evidence; this handoff follows
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -41,7 +41,7 @@ contents, and update this document.
 | Item | Frozen/current value | Status |
 |---|---|---|
 | Required branch | `evaluation/rcaeval-baselines` | PASS |
-| Push state for this revision | `origin/evaluation/rcaeval-baselines` contains the final composite through `a22cda0` | PUSHED |
+| Push state for this revision | `origin/evaluation/rcaeval-baselines` contains the final composite through `a22cda0`; local audit commits are not pushed | NOT PUSHED |
 | This task Starting HEAD | `a0aebe29f7e568b6aa523fb259f2bbd62002a57c` | recorded |
 | Required starting HEAD | `54b403ff0441c318817818abeda13526652ae1d2` | ancestor present |
 | Ada-RCA Scientific V1 | `bed295326e567395e725caa82840a534dcc0b1de` | immutable |
@@ -59,7 +59,10 @@ contents, and update this document.
 | Final comparison regression tests | `badefd4` | focused `15/15` PASS |
 | V3 final metrics artifacts | `ad6b03ca794df30a2e83adb26344f689ad9282f9` | complete; six inherited rows identity-checked |
 | V3 canonical report | `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md`; commit `8b07b79` | PASS; current canonical report |
-| Final validation | common-env unittest `262 tests`, pytest `262 passed`; old V2 SHA identity audit PASS | complete |
+| Final validation before audit | common-env unittest `262 tests`, pytest `262 passed`; old V2 SHA identity audit PASS | complete |
+| Independent audit provenance | `artifacts/baseline_eval/audit_fix_v1/provenance_audit.json`; pinned RCAEval `5e96b700`; local audit source HEAD `218eb30` | complete; post-lock |
+| Independent audit artifacts | `artifacts/baseline_eval/audit_fix_v1/`; report `RCA_BASELINE_AUDIT_FIX_V1.md` | complete; committed `46c8450` |
+| Final audit validation | common-env unittest `275 tests`, `0` failures; JSON/CSV/JSONL integrity checks PASS | complete |
 
 The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
 only removes the final newline from the existing `artifacts/cache/` line. On
@@ -138,6 +141,10 @@ details are in `RCA_BASELINE_ENVIRONMENTS.md`.
 | Seven-baseline final comparison implementation | `60770da`; `badefd4`; `1fed561` | complete; no baseline rerun |
 | Seven-baseline final comparison artifacts | `ad6b03c` at `artifacts/baseline_eval/final_comparison_v3/` | complete; independent BARO evaluation plus inherited V2 identity |
 | Seven-baseline canonical report | `docs/baseline_eval/RCA_BASELINE_FINAL_COMPARISON_V3.md`; commit `8b07b79` | complete; current canonical report |
+| Frozen dual service-level evaluators | `bd34cce`, aligned to pinned RCAEval slot projection in `f88a7cb` | complete; synthetic tests PASS |
+| CausalRCA diagnostic seam and mock tests | `f1f4af7` | complete; no real CausalRCA invocation |
+| Post-lock audit generator and firewall gate | `31ffa24`; MicroRank case-evidence persistence `218eb30` | complete; audit outputs require committed lock binding |
+| Post-lock audit evidence and report | `46c8450` | complete; historical records/locks unchanged |
 
 The read-only command below performs dependency identity collection, two
 synthetic predictions, clean-checkout import verification, and OB/TT schema
@@ -423,6 +430,40 @@ CausalRCA extension lock verify centrally.
   unittest suite passed `262 tests` with `failed=0`, `skipped=0` in 94.716 s;
   the independent `pytest -q` run passed `262` tests in 38.40 s. The five
   historical V2 evaluation JSON SHA-256 identity checks also passed.
+
+### B9 — Independent post-lock audit — complete
+
+- The pinned RCAEval checkout was revalidated read-only at commit
+  `5e96b700445bfb5c599e505ecf37d53bf847bbeb`; the checkout is clean. The
+  input manifest and active BARO/V2 combined locks are bound in
+  `artifacts/baseline_eval/audit_fix_v1/provenance_audit.json`.
+- The audit covers all seven baseline methods on both datasets. Every selected
+  method/dataset has exactly 90 discovered records and 90 terminal records;
+  there are no missing, duplicate, foreign, or blocking records. Existing
+  `METHOD_FAILURE` records remain in the 90-case denominator and have zero
+  utility. Historical records and locks were not modified.
+- The dual evaluator was frozen before the final comparison: `unique_service`
+  retains the current alias/longest-prefix/first-occurrence adapter behavior;
+  `rcaeval_service_slot` follows pinned native entity projection and the
+  pinned `Evaluator`'s non-deduplicated slot Top-K behavior. The old 14 metric
+  rows equal the fresh `unique_service` raw-hit recomputation; both protocols
+  are published without performance-based selection.
+- Static method-source review confirmed the pinned BARO/mmBARO, CIRCA,
+  MicroCause, MicroRank, and TraceRCA paths and their failure counts. CIRCA's
+  pinned TT `dataset="ob"` argument is recorded as upstream behavior, not a
+  local repair. MicroRank's `top_max + 6` native cap and case-level examples
+  are recorded in `microrank_static_audit.json`.
+- CausalRCA's persisted service ranking is fixed within each dataset despite
+  69 (OB) and 80 (TT) unique native ranking digests; its adapted digest is
+  unique within each dataset. The resulting OB positions explain the exact
+  `0/90, 0/90, 18/90, 36/90, 54/90` hits, while all TT roots are outside
+  Top-5. The pinned source has broad PageRank and wrapper `except Exception`
+  fallbacks, but the frozen records retain neither the runtime exception nor
+  adjacency, so the exact historical trigger remains unknown.
+- Codex prepared a five-root-diverse-case-per-dataset diagnostic runner and
+  schema. It has not been run. A manual diagnostic is the next evidence step;
+  any repaired full CausalRCA result requires a new authorized attempt and
+  isolated output, never a resume or overwrite of the CPU lock.
 
 ## 7. Historical V1 plan and completed V2 replacement
 
