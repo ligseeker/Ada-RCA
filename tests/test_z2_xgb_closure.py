@@ -9,6 +9,7 @@ from src.rca.final_method import FINAL_Z2_DIMENSION, FINAL_Z2_FEATURE_ORDER_SHA2
 from src.rca.supervised_baselines.common import (
     EXPECTED_CANDIDATES,
     SupervisedEvent,
+    _allowed_untracked_artifact_prefixes,
     load_prediction_events,
 )
 from src.rca.supervised_baselines.aggregate import METHODS
@@ -111,6 +112,12 @@ class Z2XGBClosureTest(unittest.TestCase):
 
     def test_closure_aggregate_namespace_is_explicit(self):
         self.assertIn("z2_xgb", METHODS)
+
+    def test_closure_replay_subnamespace_is_firewalled(self):
+        prefixes = _allowed_untracked_artifact_prefixes(
+            PROJECT_ROOT, PROJECT_ROOT / "artifacts" / "z2_xgb_closure" / "replay_check"
+        )
+        self.assertIn("?? artifacts/z2_xgb_closure/", prefixes)
 
     def test_rank_transition_direction_and_case_pairing(self):
         self.assertEqual(classify_rank_transition(1, 2), "improved")

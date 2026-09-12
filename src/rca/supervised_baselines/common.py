@@ -362,7 +362,11 @@ def _allowed_untracked_artifact_prefixes(
                 "in-worktree output root must use artifacts/supervised_baselines[_*]: "
                 "{}".format(root)
             )
-        prefix = "?? {}/".format(relative.as_posix().rstrip("/"))
+        if len(parts) >= 2 and parts[1] == "z2_xgb_closure":
+            # The closure namespace may contain isolated replay/audit roots.
+            prefix = "?? artifacts/z2_xgb_closure/"
+        else:
+            prefix = "?? {}/".format(relative.as_posix().rstrip("/"))
         if prefix not in prefixes:
             prefixes.append(prefix)
     return tuple(prefixes)
