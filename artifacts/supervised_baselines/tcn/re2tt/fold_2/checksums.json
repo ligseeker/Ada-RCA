@@ -1,0 +1,13 @@
+{
+  "config.json": "1b0510f7efe841c01c1a9a720ab985d8db80ea24ee7c44ffb40b26d4529979b5",
+  "environment.json": "f514bd8380f88a2daad2aaa8bcf3e164bd796d5c24f610a8c86ff90f40cceba8",
+  "integrity.json": "9d73207c0b068d0a2c4b01070193f640bf87b0a6e8757ac9c8d31090e6280c93",
+  "label_firewall.json": "e6090e9f5d76122ca1f920acf084a4ea6f6bdf6f311b126e9433a18fa704db98",
+  "metrics.json": "4bd6d99548a4d630efa0b972ac3c132218ebb3d3b7a0890afa69a5838ab6a1ab",
+  "model_state.pt": "7fae45cedcb788ffd795d576eeb815c5181e1c07e7503f46646cfea3579c3593",
+  "predictions.jsonl": "47f28585e0c6e5fd6cb37e7e214268bde3fd8a1f6046a3204ffba3511152ba55",
+  "provenance.json": "39d658344adef13a66a23cf920ed1aa9459534069eeb736adc46001abed41f69",
+  "runtime.json": "7a03e32e132e976e74f0d3c0956dbf14e4fa5b903d1acbc8b108e6a8ea906336",
+  "status.json": "acb9613b13433fe660a85c7ec87ea39d4f78f69e09657319121c980007714c86",
+  "training_loss.json": "4a89c42cdabba89c7eec18acae72eb42cf50e32250005553ed82bf72dc92fb92"
+}
