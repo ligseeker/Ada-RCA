@@ -57,3 +57,29 @@ This is an execution-harness repair, not a performance-driven model change.
   aggregation. The completed TCN TT aggregate and DejaVu gate remain valid.
 
 This is a disclosed environment difference with exact non-impact evidence.
+
+## A4: DejaVu raw-data preflight correction before training
+
+- Detected: 2026-09-12 during the first label-blind RE2-OB source audit, before
+  DejaVu dataset preparation, dependency installation, training, prediction,
+  or result inspection.
+- Initial rule: every one of the 20 exact CPU/MEM samples had to be finite and
+  every repeated `(traceID, spanID)` key was blocking.
+- Observed source facts: two truncated metric files lack only late post-event
+  rows; five other files contain sparse blank CPU cells. Every such gap has a
+  preceding finite value in the same event series. Two trace files repeat 48
+  and 99 span keys respectively, but every repeated key resolves to the same
+  service; there is no conflicting parent-service mapping.
+- Correction: reproduce DejaVu's official forward-fill behavior within each
+  event and metric series, resetting state at event boundaries. Leading gaps
+  remain blocking. Record all duplicate span keys, but block only keys whose
+  duplicates map the same `(traceID, spanID)` to conflicting candidate
+  services.
+- Scientific impact: this is a pre-training data-compatibility correction to
+  match documented upstream missing-value semantics. It does not use labels,
+  scores, rankings, test metrics, or performance feedback and does not change
+  metric channels, graph edges, model architecture, loss, or hyperparameters.
+
+The first `FAIL` audit artifact is retained as chronological diagnostic
+evidence until superseded by a new create-once attempt; it is not an input or
+result artifact.

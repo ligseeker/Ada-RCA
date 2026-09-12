@@ -56,12 +56,14 @@ latency-percentile channel enters the model feature tensor. Raw traces are
 used only for the FDG described in Section 4.
 
 For each event and candidate, sample the metric rows at exact 60-second offsets
-from `t0 - 600` through `t0 + 540`, producing `candidate x 2 x 20`. Before
-training or prediction, reproduce the applicable official preprocessing on
-that event tensor: clip raw values to `[-10, 10]`, then subtract each
-candidate-metric's mean over the first 10 bins. CPU and memory rows must be
-present and finite at every required timestamp; the adapter fails closed
-instead of learning a new imputation rule.
+from `t0 - 600` through `t0 + 540`, producing `candidate x 2 x 20`. Apply the
+official forward-fill rule independently within that event and metric series;
+the fill state must reset at every event boundary. A missing value is legal
+only when an earlier finite value exists in the same event series. Leading
+missing values fail closed rather than using another event or a dataset-wide
+mean. Then reproduce the remaining applicable official preprocessing: clip
+values to `[-10, 10]` and subtract each candidate-metric's mean over the first
+10 bins.
 
 This event-local construction prevents telemetry from independent benchmark
 runs from being forward-filled across cases. It uses no fitted scaler and no
@@ -103,13 +105,17 @@ resolved path, byte size, and SHA-256. It must also bind:
 
 - source-registry SHA-256 and candidate-registry SHA-256;
 - exact trace headers and required metric columns;
-- parent-span join integrity and duplicate-key counts;
+- parent-span join integrity, duplicate-key counts, and conflicting-service
+  ambiguity counts;
 - retained edge counts and node coverage per case and dataset;
 - unmapped trace services and isolated registered candidates.
 
 The audit is label-blind and must never open `labels.jsonl`. Any missing file,
-schema mismatch, ambiguous parent span, missing/nonfinite required metric
-sample, or candidate-registry mismatch blocks preparation.
+schema mismatch, conflicting-service parent-span key, unfillable leading
+metric sample, or candidate-registry mismatch blocks preparation. Repeated
+span keys that resolve to the same service and within-event forward-fillable
+metric gaps are retained as audit counts but are not ambiguous and do not
+block preparation.
 
 ## 6. OOF and label firewall
 

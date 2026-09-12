@@ -101,8 +101,21 @@ def audit_case_source(
                     continue
                 observed_metric_samples.add((timestamp, column))
 
+    forward_fillable_samples = 0
+    unfillable_samples = 0
+    for column in required_metric_columns:
+        has_prior_value = False
+        for timestamp in sorted(required_times):
+            if (timestamp, column) in observed_metric_samples:
+                has_prior_value = True
+            elif has_prior_value:
+                forward_fillable_samples += 1
+            else:
+                unfillable_samples += 1
+
     span_rows = []
     span_services = {}
+    span_service_sets = {}
     duplicate_span_keys = set()
     raw_trace_services = set()
     with trace_path.open(newline="", encoding="utf-8") as handle:
@@ -121,8 +134,10 @@ def audit_case_source(
                 key = (trace_id, span_id)
                 if key in span_services:
                     duplicate_span_keys.add(key)
+                    span_service_sets[key].add(mapped_service)
                 else:
                     span_services[key] = mapped_service
+                    span_service_sets[key] = {mapped_service}
             span_rows.append((trace_id, parent_id, mapped_service))
 
     edges = set()
@@ -165,7 +180,13 @@ def audit_case_source(
         "observed_required_metric_samples": len(observed_metric_samples),
         "missing_required_metric_samples": expected_samples - len(observed_metric_samples),
         "nonfinite_required_metric_samples": nonfinite_metric_samples,
+        "forward_fillable_metric_samples": forward_fillable_samples,
+        "unfillable_metric_samples": unfillable_samples,
         "duplicate_span_key_count": len(duplicate_span_keys),
+        "ambiguous_span_key_count": sum(
+            len({service for service in services if service is not None}) > 1
+            for services in span_service_sets.values()
+        ),
         "missing_parent_span_join_count": missing_parent_span_joins,
         "edges": [list(edge) for edge in sorted(edges)],
         "edge_node_coverage": edge_nodes,
@@ -223,12 +244,10 @@ def audit_source_registry(
             failures.append("{}:missing_trace_columns".format(case["case_id"]))
         if case["missing_metric_columns"]:
             failures.append("{}:missing_metric_columns".format(case["case_id"]))
-        if case["missing_required_metric_samples"]:
-            failures.append("{}:missing_metric_samples".format(case["case_id"]))
-        if case["nonfinite_required_metric_samples"]:
-            failures.append("{}:nonfinite_metric_samples".format(case["case_id"]))
-        if case["duplicate_span_key_count"]:
-            failures.append("{}:duplicate_span_keys".format(case["case_id"]))
+        if case["unfillable_metric_samples"]:
+            failures.append("{}:unfillable_metric_samples".format(case["case_id"]))
+        if case["ambiguous_span_key_count"]:
+            failures.append("{}:ambiguous_span_keys".format(case["case_id"]))
 
     return {
         "schema_version": "dejavu_re2_source_audit_v1",

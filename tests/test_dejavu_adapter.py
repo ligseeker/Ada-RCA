@@ -98,6 +98,37 @@ class DejaVuSourceAuditTest(unittest.TestCase):
             self.assertNotIn("root_service", str(result))
             self.assertNotIn("fault_type", str(result))
 
+    def test_official_forward_fill_and_identical_duplicate_spans_are_audited(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            metrics_path, traces_path, inject_path = self._write_case(root)
+            with metrics_path.open(encoding="utf-8") as handle:
+                rows = list(csv.reader(handle))
+            rows[12][2] = ""
+            with metrics_path.open("w", newline="", encoding="utf-8") as handle:
+                csv.writer(handle).writerows(rows)
+            with traces_path.open("a", newline="", encoding="utf-8") as handle:
+                csv.writer(handle).writerow(
+                    [903, "t1", "p1", "frontendservice", "", "", "", "", 1, 200, ""]
+                )
+
+            result = audit_case_source(
+                {
+                    "case_id": "case-1",
+                    "simple_metrics_path": str(metrics_path),
+                    "traces_path": str(traces_path),
+                    "inject_time_path": str(inject_path),
+                },
+                ("frontend", "idle", "worker"),
+                "re2ob",
+            )
+
+            self.assertEqual(result["missing_required_metric_samples"], 1)
+            self.assertEqual(result["forward_fillable_metric_samples"], 1)
+            self.assertEqual(result["unfillable_metric_samples"], 0)
+            self.assertEqual(result["duplicate_span_key_count"], 1)
+            self.assertEqual(result["ambiguous_span_key_count"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()
