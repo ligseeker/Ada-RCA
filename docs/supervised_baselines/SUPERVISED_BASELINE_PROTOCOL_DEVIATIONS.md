@@ -18,3 +18,42 @@
   and output schemas. No configuration was changed after viewing A1 results.
 
 This is an execution-environment correction, not a performance-driven rerun.
+
+## A2: custom replay output rejected by the worktree firewall
+
+- Detected: 2026-09-12 from `/home/zhangll24/RCA_project/logs/run.log`.
+- Observed: the first fresh-replay LR fold completed, after which 17 remaining
+  fold commands failed with `formal run rejects non-artifact worktree changes`.
+- Root cause: the runner allowed only the hard-coded
+  `artifacts/supervised_baselines/` prefix instead of also recognizing the
+  explicit `--output-root artifacts/supervised_baselines_replay` namespace.
+- Downstream effect: six aggregation commands raised `FileNotFoundError`
+  because the rejected runs had produced no fold status files. The replay gate
+  was therefore correctly `PENDING` but is not a valid final replay gate.
+- Disposition: the incomplete replay is preserved under
+  `artifacts/supervised_baselines_replay/`, marked
+  `INVALID_EXECUTION_ORCHESTRATION`, and excluded from formal results.
+- Corrective action: commit `f4977e9` permits untracked output only under the
+  canonical namespace or the explicit `artifacts/supervised_baselines[_*]`
+  output root. Source changes, tracked artifact modifications, and unrelated
+  in-worktree output roots remain rejected.
+- Verification: the exact regression test failed before the patch and passed
+  after it; two sequential LR folds then completed under a new custom output
+  root. No feature, model, loss, seed, split, or evaluator changed.
+
+This is an execution-harness repair, not a performance-driven model change.
+
+## A3: recorded package-version difference during TCN completion
+
+- Observed: the retained earlier folds record NumPy/Pandas/scikit-learn
+  `1.24.1/1.5.3/1.2.1`; the later TCN TT folds record
+  `1.24.4/2.0.3/1.3.2`. Python 3.8.20, SciPy 1.10.1, Torch 1.12.0, CPU device,
+  model configuration, and seed are unchanged.
+- Audit: TCN TT fold 0 was replayed once in the later environment. All 2,040
+  candidate rows, complete ranks, root ranks, metrics, and candidate scores
+  match the retained formal fold exactly; maximum absolute score delta is 0.0.
+- Disposition: `EXACT_REPLAY_PASS`; the audit is retained under
+  `artifacts/supervised_baselines_env_drift_audit/` and is excluded from formal
+  aggregation. The completed TCN TT aggregate and DejaVu gate remain valid.
+
+This is a disclosed environment difference with exact non-impact evidence.
