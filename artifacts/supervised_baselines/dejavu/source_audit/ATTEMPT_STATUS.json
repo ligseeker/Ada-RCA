@@ -1,0 +1,11 @@
+{
+  "attempt": "A1",
+  "dataset_coverage": {
+    "re2ob": "COMPLETE_FAIL",
+    "re2tt": "NOT_RUN"
+  },
+  "disposition": "RETAINED_DIAGNOSTIC_NOT_ADAPTER_INPUT",
+  "reason": "Initial audit treated within-event forward-fillable metric gaps and identical-service duplicate span keys as blocking. Protocol deviation A4 was committed before a new attempt.",
+  "source_commit": "1241d2a",
+  "status": "SUPERSEDED_PREFLIGHT_RULE"
+}
