@@ -495,13 +495,13 @@ def _evaluator_static_audit(root: Path) -> dict[str, Any]:
         "local_adapter": {
             "path": str(adapter),
             "sha256": sha256_file(adapter),
-            "semantics": "longest legal candidate prefix, frontendservice alias, first occurrence retained, unmapped omitted",
+            "semantics": "longest legal candidate prefix, frontendservice alias, first occurrence retained, unmapped omitted (unique_service only)",
         },
         "pinned_rcaeval_evaluator_class": {
             "path": str(official),
             "sha256": sha256_file(official),
             "service_slot_code": _source_lines(official, 14, 25),
-            "finding": "Evaluator service_ranks preserves slot sequence; no service dedup occurs inside add_case before service_ranks[:k].",
+            "finding": "Evaluator service_ranks preserves the supplied entity slot sequence; no service dedup occurs inside add_case before service_ranks[:k].",
         },
         "pinned_rcaeval_main_driver": {
             "path": str(driver),
@@ -509,7 +509,7 @@ def _evaluator_static_audit(root: Path) -> dict[str, Any]:
             "projection_and_dedup_code": _source_lines(driver, 379, 397),
             "finding": "The pinned historical main.py driver separately maps x.split('_')[0].replace('-db','') and then removes duplicate Node services before calling Evaluator.",
         },
-        "audit_protocol_decision": "RCAEval-service-slot reproduces the pinned Evaluator class service-slot semantics while retaining the frozen repository alias mapping; unique-service reproduces the current adapter's first-occurrence deduplication.",
+        "audit_protocol_decision": "unique_service reproduces the current adapter's first-occurrence deduplication. RCAEval-service-slot applies pinned main.py's x.split('_')[0].replace('-db','') entity projection to every native slot and then reproduces Evaluator class slot membership without deduplication; it does not apply the local candidate registry or alias rule.",
     }
 
 
@@ -982,7 +982,7 @@ def render_report(payload: Mapping[str, Any]) -> str:
         "",
         "`unique_service`: native ranking -> frozen longest-prefix/alias mapping -> first occurrence retained -> duplicate service removed -> unmapped item removed -> Top-K.",
         "",
-        "`rcaeval_service_slot`: native ranking -> the same frozen alias/prefix mapping at each native slot -> no service deduplication -> Top-K slot membership. Unmapped slots are retained as nonmatching positions in this audit implementation. This isolates the pinned `Evaluator.add_case` service-slot behavior.",
+        "`rcaeval_service_slot`: native ranking -> pinned `main.py` entity projection (`x.split('_')[0].replace('-db','')`) at every native slot -> no service deduplication or local candidate filtering -> Top-K slot membership. This isolates the pinned `Evaluator.add_case` service-slot behavior. The local `frontendservice` alias belongs only to `unique_service`.",
         "",
         "Static source review found that pinned `RCAEval/benchmark/evaluation.py` uses `service_ranks[:k]` without deduplication. It also found pinned `main.py` deduplicates `Node` services before calling that class. This driver/class distinction is recorded rather than silently resolved in favor of a higher score.",
         "",
@@ -999,7 +999,7 @@ def render_report(payload: Mapping[str, Any]) -> str:
             ],
         ),
         "",
-        "The old values identity-check against the recomputed unique-service values for every reported metric. This is evidence that the current table is not a successful-case-only or post-hoc fraction calculation. The slot protocol lowers some Top-K values where duplicate operations/indicators occupy native slots; it does not change CausalRCA because its adapted service ranking is already identical across cases and contains no duplicate services.",
+        "The old values identity-check against the recomputed unique-service values for every reported metric. This is evidence that the current table is not a successful-case-only or post-hoc fraction calculation. The slot protocol lowers some Top-K values where duplicate operations/indicators occupy native slots; for CausalRCA the pinned entity projection happens to match the local service projection in these records.",
         "",
         "## 7. Protocol Difference Cases",
         "",

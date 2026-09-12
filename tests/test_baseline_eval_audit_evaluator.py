@@ -35,9 +35,23 @@ class BaselineAuditEvaluatorTest(unittest.TestCase):
             candidates=("frontend", "checkoutservice"),
         )
         self.assertEqual(result.unique_service_ranking, ("frontend", "checkoutservice"))
-        self.assertEqual(result.rcaeval_service_slots, ("frontend", None, "checkoutservice"))
         self.assertEqual(result.root_rank_unique, 2)
+        # RCAEval's pinned entity projection keeps the native service token;
+        # the local frontendservice alias is a U-only adapter rule.
+        self.assertEqual(result.rcaeval_service_slots, ("frontendservice", "unknown", "checkoutservice"))
         self.assertEqual(result.root_rank_slot, 3)
+
+    def test_rcaeval_slot_projection_keeps_unregistered_entities(self):
+        result = evaluate_case(
+            status=TerminalStatus.SUCCESS.value,
+            native_ranking=("unknown_cpu", "checkoutservice_latency"),
+            target="checkoutservice",
+            candidates=("checkoutservice",),
+        )
+        self.assertEqual(result.unique_service_ranking, ("checkoutservice",))
+        self.assertEqual(result.rcaeval_service_slots, ("unknown", "checkoutservice"))
+        self.assertEqual(result.root_rank_unique, 1)
+        self.assertEqual(result.root_rank_slot, 2)
 
     def test_method_failure_contributes_zero_utility(self):
         result = evaluate_case(

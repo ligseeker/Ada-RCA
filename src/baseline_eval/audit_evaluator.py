@@ -10,10 +10,12 @@ protocols:
     legal service is retained and unmapped items are omitted.
 
 ``rcaeval_service_slot``
-    Map every native slot with the same frozen alias/prefix rule, retain slot
-    positions (including ``None`` for an unmapped item), and do not deduplicate
-    services before Top-K membership is checked.  This is the slot-level
-    semantic exposed by the pinned RCAEval ``Evaluator`` class.
+    Apply the pinned RCAEval native-to-entity projection
+    ``x.split("_")[0].replace("-db", "")`` to every native slot, retain every
+    slot, and do not deduplicate services before Top-K membership is checked.
+    This is the slot-level semantic exposed by the pinned RCAEval
+    ``Evaluator`` class.  It intentionally does not apply the local candidate
+    registry or local alias rule.
 
 Both protocols use the fixed 90-case denominator supplied by the caller.  A
 failure contributes five zero hits, but a missing, duplicate, or foreign case
@@ -45,7 +47,7 @@ class CaseEvaluation:
     status: str
     native_ranking: tuple[str, ...]
     unique_service_ranking: tuple[str, ...]
-    rcaeval_service_slots: tuple[str | None, ...]
+    rcaeval_service_slots: tuple[str, ...]
     unique_hits: tuple[int, ...]
     rcaeval_slot_hits: tuple[int, ...]
     root_rank_unique: int | None
@@ -61,15 +63,10 @@ class CaseEvaluation:
         raise DualEvaluationError(f"unknown dual-evaluation protocol: {protocol}")
 
 
-def _slot_projection(
+def _local_slot_projection(
     native_ranking: Sequence[str], candidates: Sequence[str]
 ) -> tuple[str | None, ...]:
-    """Apply the frozen adapter mapping one native slot at a time.
-
-    ``adapt_native_ranking`` is the single source of truth for alias and
-    longest-prefix behavior.  Calling it on one item preserves the item's
-    native position while converting an unmapped item to a non-matching slot.
-    """
+    """Apply the local frozen adapter mapping one native slot at a time."""
 
     slots: list[str | None] = []
     for item in native_ranking:
@@ -82,14 +79,20 @@ def _slot_projection(
     return tuple(slots)
 
 
-def _first_rank(values: Sequence[str | None], target: str) -> int | None:
+def _rcaeval_service_projection(native_ranking: Sequence[str]) -> tuple[str, ...]:
+    """Reproduce pinned ``main.py``'s native item-to-entity projection."""
+
+    return tuple(str(item).split("_")[0].replace("-db", "") for item in native_ranking)
+
+
+def _first_rank(values: Sequence[str], target: str) -> int | None:
     for index, value in enumerate(values, start=1):
         if value == target:
             return index
     return None
 
 
-def _hits(values: Sequence[str | None], target: str) -> tuple[int, ...]:
+def _hits(values: Sequence[str], target: str) -> tuple[int, ...]:
     return tuple(int(target in values[:k]) for k in range(1, 6))
 
 
@@ -122,14 +125,15 @@ def evaluate_case(
     if not native:
         raise DualEvaluationError("SUCCESS case has an empty native ranking")
     unique = adapt_native_ranking(native, candidates).services
-    slots = _slot_projection(native, candidates)
+    local_slots = _local_slot_projection(native, candidates)
+    slots = _rcaeval_service_projection(native)
     unique_hits = _hits(unique, target)
     slot_hits = _hits(slots, target)
     affected = tuple(
         k for k, (unique_hit, slot_hit) in enumerate(zip(unique_hits, slot_hits), start=1)
         if unique_hit != slot_hit
     )
-    mapped_slots = tuple(value for value in slots if value is not None)
+    mapped_local_slots = tuple(value for value in local_slots if value is not None)
     return CaseEvaluation(
         status=normalized_status,
         native_ranking=native,
@@ -140,7 +144,7 @@ def evaluate_case(
         root_rank_unique=_first_rank(unique, target),
         root_rank_slot=_first_rank(slots, target),
         affected_k=affected,
-        dedup_changed=unique != mapped_slots,
+        dedup_changed=unique != mapped_local_slots,
     )
 
 
