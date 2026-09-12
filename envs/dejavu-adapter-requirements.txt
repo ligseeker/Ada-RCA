@@ -4,6 +4,12 @@
 # ~/.venvs/ada-rca-dejavu.
 dgl==0.8.2
 networkx==2.6.3
+numpy==1.21.6
+scipy==1.6.3
+pandas==1.4.4
+scikit-learn==1.0.2
+numba==0.55.2
+llvmlite==0.38.1
 pytorch-lightning==1.6.5
 torchmetrics==0.9.3
 diskcache==5.2.1

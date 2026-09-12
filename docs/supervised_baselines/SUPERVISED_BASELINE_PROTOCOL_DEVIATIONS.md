@@ -96,3 +96,18 @@ result artifact.
   `~/.venvs/ada-rca-dejavu`; no existing baseline environment is modified.
 - Scientific impact: none. This restores an official runtime dependency and
   changes no data, topology, model, loss, split, seed, or hyperparameter.
+
+## A6: DejaVu official scientific-stack closure preflight
+
+- Detected: 2026-09-12 during the second pinned-source import smoke and before
+  dataset preparation, training, prediction, or result inspection.
+- Observed: after restoring `regex`, official `utils/__init__.py` imported
+  `SoftDTW`, which unconditionally imports Numba. Numba was not present in the
+  inherited base environment even though it is declared by upstream.
+- Correction: install the mutually compatible upstream-era stack only in the
+  isolated DejaVu environment: NumPy 1.21.6, SciPy 1.6.3, Pandas 1.4.4,
+  scikit-learn 1.0.2, Numba 0.55.2, and llvmlite 0.38.1. Rerun `pip check` and
+  the pinned official GAT import/explicit-node-count DGL smoke.
+- Scientific impact: none. This restores official runtime dependencies and
+  prevents accidental use of the generic baseline environment's newer
+  numerical stack. No experiment result exists at this point.
