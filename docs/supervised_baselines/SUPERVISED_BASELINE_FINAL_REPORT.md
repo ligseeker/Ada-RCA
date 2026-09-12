@@ -1,6 +1,6 @@
 # Supervised Baseline Evaluation Final Report
 
-Status: `GENERIC_BASELINES_COMPLETE — DEJAVU_GATE_PASS`
+Status: `SUPERVISED_BASELINE_TRACK_COMPLETE — DEJAVU_GATE_PASS`
 
 Date: 2026-09-12
 
@@ -12,9 +12,11 @@ Date: 2026-09-12
 - Branch: `evaluation/supervised-baselines`
 - Frozen scientific implementation source: `1bdcaa996e0c9499e5623354ac76e6a92723f7ff`
 - TCN TT completion-fold source: `33b61065b3df5c31479f7b050522f6619eaa2cd5`
-- Evidence status: LR, XGB, and TCN complete; DejaVu feasibility work not started
-- Verification status: all 18 A2 fold checksums, label firewalls, candidate
-  permutations, and all six 90-case aggregates verified
+- DejaVu implementation source: `449f96b417660f1602e9c65ff1ea1444ec9de18b`
+- Evidence status: LR, XGB, TCN, and the legal metric-plus-trace-FDG DejaVu
+  adaptation are complete on both datasets
+- Verification status: all 24 formal fold checksums, label firewalls, candidate
+  permutations, and all eight 90-case aggregates verified
 
 ## A. Protocol
 
@@ -50,8 +52,12 @@ the invalid attempt.
 - **Trajectory-TCN:** committed `z` and `q_mask` arrays as 8 x 80 candidate
   sequences, two fixed Conv1D blocks, event-level candidate cross entropy,
   fixed 100 epochs, no validation or early stopping.
-- **DejaVu:** `NOT RUN`; the now-passed gate authorizes its separate feasibility
-  audit, but does not establish that a legal RE2 FDG mapping exists.
+- **DejaVu:** pinned official GAT implementation at `d1f082b...`, metric-only
+  `cpu, mem` tensor (2 x 20 per candidate), and a deterministic per-event FDG
+  derived only from explicit trace parent-span calls. The adapter preserves all
+  candidates, including isolated nodes, uses an inner 30/30 split within each
+  outer-train fold, disables the stock test callback, and joins outer-test
+  labels only after the complete score matrix is persisted.
 
 These are comparators, not new Ada-RCA components or method contributions.
 
@@ -64,7 +70,7 @@ Only complete 90-case OOF aggregates appear as results.
 | Z1-LR | Z1 32D | supervised | 0.8444 | 0.9556 | 0.9778 | 0.9267 | 0.8957 | 0.5778 | 0.7889 | 0.8667 | 0.7600 | 0.7066 |
 | Z1-XGB | Z1 32D | supervised ranker | 0.8889 | 0.9778 | 0.9889 | 0.9578 | 0.9334 | 0.8111 | 0.9222 | 0.9333 | 0.9000 | 0.8716 |
 | Trajectory-TCN | z + mask, 8 x 80 | supervised ranker | 0.8222 | 0.9778 | 0.9889 | 0.9422 | 0.8972 | 0.7667 | 0.9000 | 0.9667 | 0.8867 | 0.8464 |
-| DejaVu | Metric + FDG | supervised | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| DejaVu | Metric + trace-derived FDG | supervised | 0.7222 | 0.9000 | 0.9333 | 0.8600 | 0.8150 | 0.5444 | 0.6111 | 0.6333 | 0.6067 | 0.6017 |
 | Ada-RCA V1 | Z2 68D | supervised ranker | 0.8778 | 0.9889 | 0.9889 | 0.9622 | 0.9315 | 0.7111 | 0.8667 | 0.9333 | 0.8511 | 0.8035 |
 
 Optional paired fault-stratified bootstrap diagnostics use
@@ -79,6 +85,8 @@ point-estimate gate:
 | Z1-XGB | RE2-TT | +0.0489 | [0.0089, 0.0911] |
 | Trajectory-TCN | RE2-OB | -0.0200 | [-0.0533, 0.0133] |
 | Trajectory-TCN | RE2-TT | +0.0356 | [-0.0156, 0.0867] |
+| DejaVu | RE2-OB | -0.1022 | [-0.1533, -0.0511] |
+| DejaVu | RE2-TT | -0.2444 | [-0.3444, -0.1444] |
 
 ## D. DejaVu gate
 
@@ -112,25 +120,29 @@ result is counter-evidence against a general Ada-RCA superiority claim.
 
 ### Q4. Is Ada-RCA competitive with published supervised DejaVu?
 
-Not answerable. The development gate now passes, but DejaVu has not been legally
-adapted or run. FDG provenance and task mapping must pass the separate
-feasibility audit before execution.
+Yes under this frozen RE2 adaptation. Ada-RCA exceeds DejaVu on every headline
+metric in both datasets; its Avg@5 advantage is 0.1022 on OB and 0.2444 on TT.
+The paired fault-stratified bootstrap intervals for `DejaVu - Ada-RCA` are
+entirely below zero on both datasets. This supports benchmark competitiveness,
+but it is not a claim about every possible DejaVu dataset or topology: the RE2
+adapter is deliberately metric-only (`cpu, mem`), uses trace-derived service
+FDGs, and retains many isolated TT candidates rather than inventing edges.
 
 ## F. Current interpretation
 
-The complete generic-comparator evidence supports Ada-RCA against simple Z1-LR
-and shows no cross-dataset domination by either Z1-XGB or Trajectory-TCN. Both
-stronger comparators nevertheless exceed Ada-RCA on TT, so current support is
-qualified and heterogeneous, not a general superiority claim. Competitiveness
-against a published supervised RCA method remains unresolved until a legal
-DejaVu evaluation exists.
+The evidence still supports Ada-RCA, but only in a qualified sense. It beats
+simple Z1-LR on both datasets and the legal DejaVu adaptation by clear margins;
+neither Z1-XGB nor Trajectory-TCN dominates it across datasets. However, both
+stronger generic comparators exceed Ada-RCA on TT Avg@5, so the results do not
+support a universal superiority or a claim that Z2 morphology is always needed.
 
 ## G. Completion and blockers
 
 - Z1-LR: `COMPLETE`, 6/6 folds, OB/TT aggregates complete.
 - Z1-XGBRanker: `COMPLETE`, 6/6 folds, OB/TT aggregates complete.
 - Trajectory-TCN: `COMPLETE`, 6/6 folds, OB/TT aggregates complete.
-- DejaVu: `NOT STARTED`; feasibility audit is now authorized by the PASS gate.
+- DejaVu: `COMPLETE`, 6/6 formal folds plus one non-formal smoke; OB/TT
+  aggregates complete.
 
 All 18 required generic supervised fold-runs are complete. The later TT folds
 were produced at NumPy/Pandas/scikit-learn 1.24.4/2.0.3/1.3.2 rather than
@@ -138,6 +150,12 @@ were produced at NumPy/Pandas/scikit-learn 1.24.4/2.0.3/1.3.2 rather than
 TT fold 0 matched all 2,040 candidate rows and every score exactly
 (`max_abs_delta = 0.0`), so this recorded environment difference does not alter
 the gate result.
+
+The DejaVu source audit bound all 180 raw metric and trace files, found no
+unmapped trace service, and passed after applying the preregistered within-event
+forward-fill semantics. The isolated DejaVu environment passed `pip check` and
+the explicit-node-count DGL smoke. All six formal folds passed their artifact
+checksums, label firewall, complete-ranking, and graph-node-count checks.
 
 ## H. Commands
 
@@ -191,8 +209,47 @@ Tests:
 $PY -m unittest discover -s tests -p 'test_*.py' -v
 ```
 
-There is no DejaVu execution command yet because feasibility and FDG provenance
-have not been audited and no adapter has been implemented.
+DejaVu environment, preparation, six-fold execution, and aggregation:
+
+```bash
+DEJAVU_PY=/home/zhangll24/.venvs/ada-rca-dejavu/bin/python
+DEJAVU_SRC=/home/zhangll24/RCA_project/DejaVu-pinned
+
+# Environment setup; the extra index accelerates the legacy DGL wheel.
+test -x "$DEJAVU_PY" || python3.8 -m venv --system-site-packages /home/zhangll24/.venvs/ada-rca-dejavu
+$DEJAVU_PY -m pip install \
+  -i https://pypi.tuna.tsinghua.edu.cn/simple \
+  -f https://data.dgl.ai/wheels/repo.html \
+  -r envs/dejavu-adapter-requirements.txt
+test -d "$DEJAVU_SRC/.git" || git clone https://github.com/NetManAIOps/DejaVu.git "$DEJAVU_SRC"
+git -C "$DEJAVU_SRC" checkout --detach d1f082b086cef5597f5301a7b02882b5d0238ebe
+$DEJAVU_PY scripts/supervised_baselines/freeze_dejavu_environment.py \
+  --dejavu-root "$DEJAVU_SRC" \
+  --output artifacts/supervised_baselines/dejavu/environment_replay/environment.json
+
+# Create-once source audit and prepared-input replay namespaces.
+$DEJAVU_PY scripts/supervised_baselines/audit_dejavu_sources.py --dataset re2ob --workers 4 \
+  --output-root artifacts/supervised_baselines/dejavu/source_audit_replay
+$DEJAVU_PY scripts/supervised_baselines/audit_dejavu_sources.py --dataset re2tt --workers 4 \
+  --output-root artifacts/supervised_baselines/dejavu/source_audit_replay
+$DEJAVU_PY scripts/supervised_baselines/prepare_dejavu_inputs.py --dataset re2ob \
+  --source-audit-root artifacts/supervised_baselines/dejavu/source_audit_replay \
+  --output-root artifacts/supervised_baselines/dejavu/prepared_replay
+$DEJAVU_PY scripts/supervised_baselines/prepare_dejavu_inputs.py --dataset re2tt \
+  --source-audit-root artifacts/supervised_baselines/dejavu/source_audit_replay \
+  --output-root artifacts/supervised_baselines/dejavu/prepared_replay
+
+# Formal fold reruns use the already committed canonical prepared inputs.
+DJ_OUT=artifacts/supervised_baselines_dejavu_replay
+$DEJAVU_PY scripts/supervised_baselines/run_dejavu.py --dataset re2ob --fold 0 --dejavu-root "$DEJAVU_SRC" --output-root "$DJ_OUT"
+$DEJAVU_PY scripts/supervised_baselines/run_dejavu.py --dataset re2ob --fold 1 --dejavu-root "$DEJAVU_SRC" --output-root "$DJ_OUT"
+$DEJAVU_PY scripts/supervised_baselines/run_dejavu.py --dataset re2ob --fold 2 --dejavu-root "$DEJAVU_SRC" --output-root "$DJ_OUT"
+$DEJAVU_PY scripts/supervised_baselines/run_dejavu.py --dataset re2tt --fold 0 --dejavu-root "$DEJAVU_SRC" --output-root "$DJ_OUT"
+$DEJAVU_PY scripts/supervised_baselines/run_dejavu.py --dataset re2tt --fold 1 --dejavu-root "$DEJAVU_SRC" --output-root "$DJ_OUT"
+$DEJAVU_PY scripts/supervised_baselines/run_dejavu.py --dataset re2tt --fold 2 --dejavu-root "$DEJAVU_SRC" --output-root "$DJ_OUT"
+$DEJAVU_PY scripts/supervised_baselines/aggregate_results.py --method dejavu --dataset re2ob --output-root "$DJ_OUT"
+$DEJAVU_PY scripts/supervised_baselines/aggregate_results.py --method dejavu --dataset re2tt --output-root "$DJ_OUT"
+```
 
 ## I. Run-log failure diagnosis and repair
 
