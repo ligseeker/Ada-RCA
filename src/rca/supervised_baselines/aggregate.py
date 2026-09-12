@@ -20,7 +20,8 @@ from .common import (
 )
 
 
-METHODS = ("logistic", "xgb_ranker", "tcn")
+GENERIC_METHODS = ("logistic", "xgb_ranker", "tcn")
+METHODS = GENERIC_METHODS + ("dejavu",)
 FINAL_METRICS_SHA256 = {
     "re2ob": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1",
     "re2tt": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c",
@@ -161,7 +162,7 @@ def aggregate_method_dataset(
 def evaluate_dejavu_gate(project_root: Path, artifact_root: Path) -> Mapping[str, object]:
     missing = []
     comparator_metrics: Dict[str, Dict[str, Mapping[str, float]]] = {}
-    for method in METHODS:
+    for method in GENERIC_METHODS:
         comparator_metrics[method] = {}
         for dataset in ("re2ob", "re2tt"):
             path = artifact_root / method / dataset / "aggregate" / "metrics.json"
@@ -184,7 +185,7 @@ def evaluate_dejavu_gate(project_root: Path, artifact_root: Path) -> Mapping[str
             "ada_rca_v1": ada,
         }
     dominance = {}
-    for method in METHODS:
+    for method in GENERIC_METHODS:
         dominance[method] = {
             dataset: float(comparator_metrics[method][dataset]["Avg@5"])
             > float(ada[dataset]["Avg@5"])
