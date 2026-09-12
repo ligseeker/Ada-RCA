@@ -323,6 +323,41 @@ def create_run_directory(path: Path, config: Mapping[str, object]) -> str:
     return started_at
 
 
+def _allowed_untracked_artifact_prefixes(
+    project_root: Path, output_root: Path
+) -> Tuple[str, ...]:
+    """Return Git-porcelain prefixes for approved supervised artifact roots."""
+
+    project_root = project_root.resolve()
+    canonical_root = project_root / "artifacts" / "supervised_baselines"
+    roots = (canonical_root, output_root.resolve())
+    prefixes = []
+    for root in roots:
+        try:
+            relative = root.relative_to(project_root)
+        except ValueError:
+            # An output root outside the worktree cannot make this worktree dirty.
+            continue
+        parts = relative.parts
+        is_supervised_namespace = (
+            len(parts) >= 2
+            and parts[0] == "artifacts"
+            and (
+                parts[1] == "supervised_baselines"
+                or parts[1].startswith("supervised_baselines_")
+            )
+        )
+        if not is_supervised_namespace:
+            raise ValueError(
+                "in-worktree output root must use artifacts/supervised_baselines[_*]: "
+                "{}".format(root)
+            )
+        prefix = "?? {}/".format(relative.as_posix().rstrip("/"))
+        if prefix not in prefixes:
+            prefixes.append(prefix)
+    return tuple(prefixes)
+
+
 def finalize_run_directory(
     run_dir: Path,
     candidate_rows: Sequence[Mapping[str, object]],
@@ -366,9 +401,12 @@ def run_fold(
     git_identity = current_git_identity(project_root)
     if os.environ.get("PYTHONHASHSEED") != str(SEED):
         raise RuntimeError("formal run requires PYTHONHASHSEED={}".format(SEED))
+    allowed_artifact_prefixes = _allowed_untracked_artifact_prefixes(
+        project_root, output_root
+    )
     disallowed_dirty = [
         entry for entry in git_identity["dirty_entries"]
-        if not entry.startswith("?? artifacts/supervised_baselines/")
+        if not any(entry.startswith(prefix) for prefix in allowed_artifact_prefixes)
     ]
     if disallowed_dirty:
         raise RuntimeError(
