@@ -1,0 +1,12 @@
+{
+  "candidate_row_count": 6120,
+  "case_count": 90,
+  "complete_candidate_rankings": true,
+  "expected_candidate_row_count": 6120,
+  "folds": [
+    0,
+    1,
+    2
+  ],
+  "status": "PASS"
+}

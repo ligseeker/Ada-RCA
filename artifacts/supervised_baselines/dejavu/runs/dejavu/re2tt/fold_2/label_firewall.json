@@ -1,0 +1,13 @@
+{
+  "automatic_lr_find_enabled": false,
+  "fit_label_case_ids_sha256": "c698b2f8870168a1aa2912f1eb2072df5822b92adb3ca1cf12d0188563b8508d",
+  "inner_validation_case_count": 30,
+  "model_train_case_count": 30,
+  "outer_test_case_count": 30,
+  "outer_test_interface_label_free": true,
+  "outer_test_labels_joined_after_complete_score_matrix": true,
+  "partition_overlap": [],
+  "prediction_completed_at": "2026-09-12T14:41:02.633428+00:00",
+  "status": "PASS",
+  "stock_test_callback_enabled": false
+}
