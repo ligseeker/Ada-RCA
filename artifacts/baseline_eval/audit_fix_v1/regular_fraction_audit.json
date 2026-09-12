@@ -1,0 +1,544 @@
+{
+  "audit_status": "COMPLETE",
+  "dataset_design": {
+    "re2ob": {
+      "artifacts": {
+        "inputs": {
+          "path": "artifacts/source/re2ob/inputs.jsonl",
+          "sha256": "151cdf4cf89d89b5036cbf7b309c95e04fbf4a77a0012bd54cf7784778206dbb"
+        },
+        "labels": {
+          "path": "artifacts/source/re2ob/labels.jsonl",
+          "sha256": "f3dd164e03d9207af4d4e432a1848c2100ec7a65c125b420c80642a56be3dba7"
+        },
+        "service_registry": {
+          "path": "artifacts/source/re2ob/service_registry.json",
+          "sha256": "9eae7e79662ade83e0f6034073ab5c424bbf93be5765bd4bc5ea51d90c0efd19"
+        },
+        "sources": {
+          "path": "artifacts/source/re2ob/sources.jsonl",
+          "sha256": "c162bb9882035d7b50d94f69e25fd638746519a3f3d4ad6029468d1eee606591"
+        }
+      },
+      "candidate_count": 11,
+      "candidate_services": [
+        "adservice",
+        "cartservice",
+        "checkoutservice",
+        "currencyservice",
+        "emailservice",
+        "frontend",
+        "paymentservice",
+        "productcatalogservice",
+        "recommendationservice",
+        "redis",
+        "shippingservice"
+      ],
+      "case_count": 90,
+      "case_ids_aligned": true,
+      "display_name": "RE2-OB",
+      "fault_case_counts": {
+        "cpu": 15,
+        "delay": 15,
+        "disk": 15,
+        "loss": 15,
+        "mem": 15,
+        "socket": 15
+      },
+      "input_manifest_case_count": 90,
+      "root_case_counts": {
+        "checkoutservice": 18,
+        "currencyservice": 18,
+        "emailservice": 18,
+        "productcatalogservice": 18,
+        "recommendationservice": 18
+      },
+      "unique_case_count": 90
+    },
+    "re2tt": {
+      "artifacts": {
+        "inputs": {
+          "path": "artifacts/source/re2tt/inputs.jsonl",
+          "sha256": "1ca5e91387641c891e75a6e26bc3979f2398dae93e46147e97864cd503c7655d"
+        },
+        "labels": {
+          "path": "artifacts/source/re2tt/labels.jsonl",
+          "sha256": "950885c2d89872f670d8cb06121a0d8d4c3e9fbd6be5e97a29af89a6013481ca"
+        },
+        "service_registry": {
+          "path": "artifacts/source/re2tt/service_registry.json",
+          "sha256": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a"
+        },
+        "sources": {
+          "path": "artifacts/source/re2tt/sources.jsonl",
+          "sha256": "866ee17bec973d004984822eadef3076ca12c3b67505ba2ccabd7f4cfb9bc931"
+        }
+      },
+      "candidate_count": 68,
+      "candidate_services": [
+        "ts-admin-basic-info-service",
+        "ts-admin-order-service",
+        "ts-admin-route-service",
+        "ts-admin-travel-service",
+        "ts-admin-user-service",
+        "ts-assurance-mongo",
+        "ts-assurance-service",
+        "ts-auth-mongo",
+        "ts-auth-service",
+        "ts-avatar-service",
+        "ts-basic-service",
+        "ts-cancel-service",
+        "ts-config-mongo",
+        "ts-config-service",
+        "ts-consign-mongo",
+        "ts-consign-price-mongo",
+        "ts-consign-price-service",
+        "ts-consign-service",
+        "ts-contacts-mongo",
+        "ts-contacts-service",
+        "ts-execute-service",
+        "ts-food-map-mongo",
+        "ts-food-map-service",
+        "ts-food-mongo",
+        "ts-food-mysql",
+        "ts-food-service",
+        "ts-inside-payment-mongo",
+        "ts-inside-payment-service",
+        "ts-news-service",
+        "ts-notification-mongo",
+        "ts-notification-service",
+        "ts-order-mongo",
+        "ts-order-other-mongo",
+        "ts-order-other-service",
+        "ts-order-service",
+        "ts-payment-mongo",
+        "ts-payment-service",
+        "ts-preserve-mongo",
+        "ts-preserve-other-mongo",
+        "ts-preserve-other-service",
+        "ts-preserve-service",
+        "ts-price-mongo",
+        "ts-price-service",
+        "ts-rebook-service",
+        "ts-route-mongo",
+        "ts-route-plan-service",
+        "ts-route-service",
+        "ts-seat-service",
+        "ts-security-mongo",
+        "ts-security-service",
+        "ts-station-mongo",
+        "ts-station-service",
+        "ts-ticket-office-mongo",
+        "ts-ticket-office-service",
+        "ts-ticketinfo-service",
+        "ts-train-mongo",
+        "ts-train-service",
+        "ts-travel-mongo",
+        "ts-travel-plan-service",
+        "ts-travel-service",
+        "ts-travel2-mongo",
+        "ts-travel2-service",
+        "ts-ui-dashboard",
+        "ts-user-mongo",
+        "ts-user-service",
+        "ts-verification-code-service",
+        "ts-voucher-mysql",
+        "ts-voucher-service"
+      ],
+      "case_count": 90,
+      "case_ids_aligned": true,
+      "display_name": "RE2-TT",
+      "fault_case_counts": {
+        "cpu": 15,
+        "delay": 15,
+        "disk": 15,
+        "loss": 15,
+        "mem": 15,
+        "socket": 15
+      },
+      "input_manifest_case_count": 90,
+      "root_case_counts": {
+        "ts-auth-service": 18,
+        "ts-order-service": 18,
+        "ts-route-service": 18,
+        "ts-train-service": 18,
+        "ts-travel-service": 18
+      },
+      "unique_case_count": 90
+    }
+  },
+  "interpretation": "AC@K values use integer hits over 90 cases; Avg@5 uses the unrounded sum of five raw hit counts over 450 slots. The displayed fraction alone does not identify case-micro versus equally sized fault-macro aggregation.",
+  "occurrences": {
+    "0.1667": [
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.1667",
+        "exact_value": 0.16666666666666666,
+        "method": "mmBARO",
+        "metric": "AC@1",
+        "numerator": 15,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.1667",
+        "exact_value": 0.16666666666666666,
+        "method": "mmBARO",
+        "metric": "AC@1",
+        "numerator": 15,
+        "protocol": "rcaeval_service_slot"
+      }
+    ],
+    "0.2000": [
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.2000",
+        "exact_value": 0.2,
+        "method": "CausalRCA",
+        "metric": "AC@3",
+        "numerator": 18,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.2000",
+        "exact_value": 0.2,
+        "method": "CausalRCA",
+        "metric": "AC@3",
+        "numerator": 18,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.2000",
+        "exact_value": 0.2,
+        "method": "MicroCause",
+        "metric": "AC@2",
+        "numerator": 18,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.2000",
+        "exact_value": 0.2,
+        "method": "MicroCause",
+        "metric": "AC@2",
+        "numerator": 18,
+        "protocol": "rcaeval_service_slot"
+      }
+    ],
+    "0.3333": [
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.3333",
+        "exact_value": 0.3333333333333333,
+        "method": "MicroCause",
+        "metric": "AC@1",
+        "numerator": 30,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.3333",
+        "exact_value": 0.3333333333333333,
+        "method": "MicroCause",
+        "metric": "AC@1",
+        "numerator": 30,
+        "protocol": "rcaeval_service_slot"
+      }
+    ],
+    "0.4000": [
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.4000",
+        "exact_value": 0.4,
+        "method": "CausalRCA",
+        "metric": "AC@4",
+        "numerator": 36,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.4000",
+        "exact_value": 0.4,
+        "method": "CausalRCA",
+        "metric": "AC@4",
+        "numerator": 36,
+        "protocol": "rcaeval_service_slot"
+      }
+    ],
+    "0.6000": [
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.6000",
+        "exact_value": 0.6,
+        "method": "CausalRCA",
+        "metric": "AC@5",
+        "numerator": 54,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.6000",
+        "exact_value": 0.6,
+        "method": "CausalRCA",
+        "metric": "AC@5",
+        "numerator": 54,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.6000",
+        "exact_value": 0.6,
+        "method": "MicroCause",
+        "metric": "AC@5",
+        "numerator": 54,
+        "protocol": "rcaeval_service_slot"
+      }
+    ],
+    "0.6667": [
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.6667",
+        "exact_value": 0.6666666666666666,
+        "method": "BARO",
+        "metric": "AC@1",
+        "numerator": 60,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.6667",
+        "exact_value": 0.6666666666666666,
+        "method": "BARO",
+        "metric": "AC@1",
+        "numerator": 60,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.6667",
+        "exact_value": 0.6666666666666666,
+        "method": "CIRCA",
+        "metric": "AC@1",
+        "numerator": 60,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.6667",
+        "exact_value": 0.6666666666666666,
+        "method": "CIRCA",
+        "metric": "AC@1",
+        "numerator": 60,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.6667",
+        "exact_value": 0.6666666666666666,
+        "method": "TraceRCA",
+        "metric": "AC@2",
+        "numerator": 60,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.6667",
+        "exact_value": 0.6666666666666666,
+        "method": "TraceRCA",
+        "metric": "AC@3",
+        "numerator": 60,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.6667",
+        "exact_value": 0.6666666666666666,
+        "method": "TraceRCA",
+        "metric": "AC@3",
+        "numerator": 60,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.6667",
+        "exact_value": 0.6666666666666666,
+        "method": "TraceRCA",
+        "metric": "AC@4",
+        "numerator": 60,
+        "protocol": "rcaeval_service_slot"
+      }
+    ],
+    "0.8333": [
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8333",
+        "exact_value": 0.8333333333333334,
+        "method": "CIRCA",
+        "metric": "AC@2",
+        "numerator": 75,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 450,
+        "displayed_value": "0.8333",
+        "exact_value": 0.8333333333333334,
+        "method": "CIRCA",
+        "metric": "Avg@5",
+        "numerator": 375,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8333",
+        "exact_value": 0.8333333333333334,
+        "method": "CIRCA",
+        "metric": "AC@2",
+        "numerator": 75,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 450,
+        "displayed_value": "0.8333",
+        "exact_value": 0.8333333333333334,
+        "method": "CIRCA",
+        "metric": "Avg@5",
+        "numerator": 375,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2tt",
+        "denominator": 90,
+        "displayed_value": "0.8333",
+        "exact_value": 0.8333333333333334,
+        "method": "mmBARO",
+        "metric": "AC@4",
+        "numerator": 75,
+        "protocol": "unique_service"
+      }
+    ],
+    "0.8778": [
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8778",
+        "exact_value": 0.8777777777777778,
+        "method": "BARO",
+        "metric": "AC@3",
+        "numerator": 79,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8778",
+        "exact_value": 0.8777777777777778,
+        "method": "BARO",
+        "metric": "AC@3",
+        "numerator": 79,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8778",
+        "exact_value": 0.8777777777777778,
+        "method": "CIRCA",
+        "metric": "AC@3",
+        "numerator": 79,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8778",
+        "exact_value": 0.8777777777777778,
+        "method": "CIRCA",
+        "metric": "AC@3",
+        "numerator": 79,
+        "protocol": "rcaeval_service_slot"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8778",
+        "exact_value": 0.8777777777777778,
+        "method": "TraceRCA",
+        "metric": "AC@4",
+        "numerator": 79,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8778",
+        "exact_value": 0.8777777777777778,
+        "method": "mmBARO",
+        "metric": "AC@3",
+        "numerator": 79,
+        "protocol": "unique_service"
+      },
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.8778",
+        "exact_value": 0.8777777777777778,
+        "method": "mmBARO",
+        "metric": "AC@3",
+        "numerator": 79,
+        "protocol": "rcaeval_service_slot"
+      }
+    ],
+    "0.9889": [
+      {
+        "dataset": "re2ob",
+        "denominator": 90,
+        "displayed_value": "0.9889",
+        "exact_value": 0.9888888888888889,
+        "method": "mmBARO",
+        "metric": "AC@5",
+        "numerator": 89,
+        "protocol": "unique_service"
+      }
+    ]
+  },
+  "post_lock_audit": true,
+  "schema_version": "rca_baseline_regular_fraction_audit_v1",
+  "targets": [
+    "0.1667",
+    "0.2000",
+    "0.3333",
+    "0.4000",
+    "0.6000",
+    "0.6667",
+    "0.8333",
+    "0.8778",
+    "0.9889"
+  ]
+}

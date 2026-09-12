@@ -1,0 +1,132 @@
+{
+  "case_selection": [
+    {
+      "case_id": "re2ob-9e575f44de987a1a",
+      "dataset": "re2ob",
+      "historical_native_digest": "7e076d2e4d7ffc3d71831f445c861c103c695f3349c39d95381190e8edc8753c",
+      "historical_root_rank": 3,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "checkoutservice"
+    },
+    {
+      "case_id": "re2ob-cec5183e3f5418cf",
+      "dataset": "re2ob",
+      "historical_native_digest": "c9f693b72e51a397939afd29c18518d379c5d08ee13341336a0ed79f707e8121",
+      "historical_root_rank": 4,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "currencyservice"
+    },
+    {
+      "case_id": "re2ob-097a5d7ac0492007",
+      "dataset": "re2ob",
+      "historical_native_digest": "2b793adc2c137b9a3a940b88103ba66551ed12561c258503c6c40fb310af7df9",
+      "historical_root_rank": 5,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "emailservice"
+    },
+    {
+      "case_id": "re2ob-d3f1403a4a08a3b1",
+      "dataset": "re2ob",
+      "historical_native_digest": "0d285cfeb5fbd014cb11db4ffa8e1152dd345683ff31b2cfbc84579883fb1dd4",
+      "historical_root_rank": 8,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "productcatalogservice"
+    },
+    {
+      "case_id": "re2ob-84724d7aa2b9dabd",
+      "dataset": "re2ob",
+      "historical_native_digest": "75d4f8f7b65c36e719c765d70e2b5dfdf57b0ea1cf66f5b0f4bc534d0e847128",
+      "historical_root_rank": 9,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "recommendationservice"
+    },
+    {
+      "case_id": "re2tt-e44ccb97e7cc1570",
+      "dataset": "re2tt",
+      "historical_native_digest": "15dafd05ba2e3ca8321189b3c1db061b496b5024ca34b68f4b9ff0838532c8a2",
+      "historical_root_rank": 9,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "ts-auth-service"
+    },
+    {
+      "case_id": "re2tt-fe28a6c0dbd7d892",
+      "dataset": "re2tt",
+      "historical_native_digest": "499c78f6f8ec2a41edad01900f9d5adb3962a9e1153b49365b5b0de719a0562b",
+      "historical_root_rank": 35,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "ts-order-service"
+    },
+    {
+      "case_id": "re2tt-93fbbdf23f58f440",
+      "dataset": "re2tt",
+      "historical_native_digest": "73dcc134e87d059123581ba305382026c5507c24e077e96f488d70d402007570",
+      "historical_root_rank": 47,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "ts-route-service"
+    },
+    {
+      "case_id": "re2tt-2a03e4ad1a1d6f85",
+      "dataset": "re2tt",
+      "historical_native_digest": "a00a2f9310afa421781d4b39e4dd5a13677c0655c065bcbf49b419b9fc05da40",
+      "historical_root_rank": 57,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "ts-train-service"
+    },
+    {
+      "case_id": "re2tt-56db4956167f9980",
+      "dataset": "re2tt",
+      "historical_native_digest": "500549f79cc5c18bbb8051593f0ea32c59843411c7a26d0e9abcba832c805f9e",
+      "historical_root_rank": 60,
+      "reason": "one case per distinct frozen root; service projection is fixed-order in historical record",
+      "root_service": "ts-travel-service"
+    }
+  ],
+  "codex_runs_executed": 0,
+  "instrumentation_events": [
+    "pagerank_called",
+    "pagerank_success",
+    "pagerank_exception"
+  ],
+  "manual_operator_note": "Run only after reviewing the report. The diagnostic runner is single-process and writes to a caller-selected path; it does not resume or overwrite confirmatory records or locks.",
+  "recorded_fields": [
+    "PageRank input shape, nonzero count, density, finite/min/max",
+    "PageRank score shape, digest, unique count, finite/min/max/std",
+    "exception type and message",
+    "returned node_names, ranks, adjacency shape/nonzero count",
+    "ranks == node_names and explicit runtime failure classification"
+  ],
+  "schema_version": "rca_baseline_causalrca_runtime_diagnostic_schema_v1",
+  "selection_count": 10,
+  "selection_policy": "five root-diverse cases per dataset, selected from frozen CausalRCA records; this file contains no runtime diagnostic output.",
+  "source": {
+    "expected_sha256": "74aebfb9f8211db3a48385a73ae577e9673a432d719f859771bbf66dc2a008f0",
+    "pagerank_fallback": {
+      "end_line": 626,
+      "path": "/home/zhangll24/RCA_project/RCAEval-clean/RCAEval/e2e/causalrca.py",
+      "start_line": 620,
+      "text": "    # PageRank\n    try:\n        pagerank = PageRank()\n        scores = pagerank.fit_transform(np.abs(adj.T))\n    except Exception:  # empty graph\n        # print(\"empty graph\")\n        return {\"adj\": adj, \"node_names\": node_names, \"ranks\": node_names}"
+    },
+    "path": "/home/zhangll24/RCA_project/RCAEval-clean/RCAEval/e2e/causalrca.py",
+    "pinned_commit": "5e96b700445bfb5c599e505ecf37d53bf847bbeb",
+    "ranking_sort_and_return": {
+      "end_line": 643,
+      "path": "/home/zhangll24/RCA_project/RCAEval-clean/RCAEval/e2e/causalrca.py",
+      "start_line": 628,
+      "text": "    # merge scores and node names, sort by scores\n    ranks = list(zip(node_names, scores))\n    ranks.sort(key=lambda x: x[1], reverse=True)\n    # for n, s in ranks:\n    #     print(n, s)\n\n    ranks = [x[0] for x in ranks]\n\n    # postprocess adj, if adj[i,j] != 0 -> adj[i,j] = 1\n    adj[adj != 0] = 1\n\n    return {\n        \"adj\": adj,\n        \"node_names\": node_names,\n        \"ranks\": ranks,\n    }"
+    },
+    "sha256": "74aebfb9f8211db3a48385a73ae577e9673a432d719f859771bbf66dc2a008f0",
+    "threshold_and_training_exception_scope": {
+      "end_line": 616,
+      "path": "/home/zhangll24/RCA_project/RCAEval-clean/RCAEval/e2e/causalrca.py",
+      "start_line": 607,
+      "text": "        graph = origin_A.data.clone().cpu().numpy()\n        graph[np.abs(graph) < 0.1] = 0\n        graph[np.abs(graph) < 0.2] = 0\n        graph[np.abs(graph) < 0.3] = 0\n\n    except KeyboardInterrupt:\n        print(\"Done!\")\n\n    adj = graph\n    adj = np.abs(adj.T)"
+    },
+    "wrapper_broad_exception": {
+      "end_line": 30,
+      "path": "/home/zhangll24/RCA_project/RCAEval-clean/RCAEval/e2e/__init__.py",
+      "start_line": 21,
+      "text": "def rca(func):\n    \"\"\"RCA Wrapper to tolerate the case when the RCA algorithm fails.\"\"\"\n    def wrapper(*args, **kwargs):\n        try:\n            return func(*args, **kwargs)\n        except Exception as e:\n            from RCAEval.io.time_series import preprocess\n            data = preprocess(data=args[0], dataset=kwargs.get(\"dataset\"), dk_select_useful=False)\n            dummy = data.columns.to_list()\n            return {\"adj\": [], \"node_names\": dummy, \"ranks\": dummy}"
+    }
+  },
+  "status": "NOT_EXECUTED"
+}
