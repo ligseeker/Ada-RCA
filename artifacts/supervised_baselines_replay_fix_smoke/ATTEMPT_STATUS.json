@@ -1,0 +1,14 @@
+{
+  "decision": "DIAGNOSTIC_PASS",
+  "excluded_from_formal_results": true,
+  "formal_fold_0_non_score_mismatches": 0,
+  "formal_fold_0_score_max_abs_delta": 0.0,
+  "purpose": "Verify that two sequential fold runs under a custom supervised artifact output root are no longer rejected after the allowlist repair.",
+  "repair_commit": "f4977e9",
+  "schema_version": "supervised_baseline_replay_fix_smoke_v1",
+  "sequential_runs": [
+    "logistic/re2ob/fold_0",
+    "logistic/re2ob/fold_1"
+  ],
+  "status": "PASS"
+}
