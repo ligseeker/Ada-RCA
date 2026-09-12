@@ -1,0 +1,17 @@
+{
+  "history": [
+    {
+      "checkpoint_improved": true,
+      "epoch": 1,
+      "training_loss": 1.042909860610962,
+      "validation_loss": 0.9473639647165935
+    }
+  ],
+  "outer_test_metrics_used": false,
+  "selection": {
+    "best_epoch": 1,
+    "best_validation_loss": 0.9473639647165935,
+    "epochs_executed": 1,
+    "smoke": true
+  }
+}
