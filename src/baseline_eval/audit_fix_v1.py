@@ -96,6 +96,7 @@ AUDIT_OUTPUTS = (
     "dual_protocol_results.csv",
     "protocol_difference_cases.jsonl",
     "regular_fraction_audit.json",
+    "microrank_static_audit.json",
     "causalrca_static_audit.json",
     "causalrca_diagnostics_schema.json",
 )
@@ -849,6 +850,14 @@ def _protocol_difference_rows(
                     "root_rank_unique": row["root_rank_unique"],
                     "affected_k": row["affected_k"],
                     "dedup_changed": row["dedup_changed"],
+                    "native_ranking_length": row["native_output_length"],
+                    "adapted_ranking_length": row["adapted_output_length"],
+                    "native_ranking_digest": row["native_output_digest"],
+                    "adapted_ranking_digest": row["adapted_output_digest"],
+                    "duplicate_native_items": row["duplicate_native_items"],
+                    "unmapped_native_items": row["unmapped_native_items"],
+                    "missing_candidate_reasons": row["missing_candidate_reasons"],
+                    "error_type": row["error_type"],
                 })
     return differences
 
@@ -1309,6 +1318,12 @@ def generate_audit(root: Path = PROJECT_ROOT) -> dict[str, Any]:
             "post_lock_audit": True,
             **regular_fraction,
         },
+        "microrank_static_audit.json": {
+            "schema_version": "rca_baseline_microrank_static_audit_v1",
+            "audit_status": "COMPLETE",
+            "post_lock_audit": True,
+            **micro_rank,
+        },
         "causalrca_static_audit.json": causal_static,
         "causalrca_diagnostics_schema.json": diagnostic_schema,
     }
@@ -1318,6 +1333,7 @@ def generate_audit(root: Path = PROJECT_ROOT) -> dict[str, Any]:
         "denominator_audit.json",
         "dual_protocol_results.json",
         "regular_fraction_audit.json",
+        "microrank_static_audit.json",
         "causalrca_static_audit.json",
         "causalrca_diagnostics_schema.json",
     ):
