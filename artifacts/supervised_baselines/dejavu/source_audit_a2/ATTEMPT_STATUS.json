@@ -1,0 +1,22 @@
+{
+  "attempt": "A2",
+  "dataset_coverage": {
+    "re2ob": {
+      "case_count": 90,
+      "candidate_edge_coverage": "7/11",
+      "source_audit_sha256": "925a28a463dbad4a8fc604fbb2a2532ecfe1bfed0b5d2e91d2bbb9ded26ec77b",
+      "status": "PASS",
+      "union_edge_count": 9
+    },
+    "re2tt": {
+      "case_count": 90,
+      "candidate_edge_coverage": "26/68",
+      "source_audit_sha256": "85065c72b8979eae2ab6b3741cddba722e4f12c08b4c185e35015e36955e71ce",
+      "status": "PASS",
+      "union_edge_count": 55
+    }
+  },
+  "label_firewall": "PASS_NO_LABEL_FILE_READ",
+  "source_commit": "1f8e433",
+  "status": "COMPLETE_SOURCE_LOCK"
+}
