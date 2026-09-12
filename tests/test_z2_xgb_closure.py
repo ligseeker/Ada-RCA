@@ -11,6 +11,7 @@ from src.rca.supervised_baselines.common import (
     SupervisedEvent,
     load_prediction_events,
 )
+from src.rca.supervised_baselines.aggregate import METHODS
 from src.rca.supervised_baselines.xgb_ranker import XGB_CONFIG
 from src.rca.supervised_baselines.z2_xgb_ranker import (
     Z2_XGB_CONFIG,
@@ -103,6 +104,9 @@ class Z2XGBClosureTest(unittest.TestCase):
     def test_frozen_feature_order_digest_is_present(self):
         self.assertEqual(len(FINAL_Z2_FEATURE_ORDER_SHA256), 64)
         self.assertEqual(FINAL_Z2_DIMENSION, 68)
+
+    def test_closure_aggregate_namespace_is_explicit(self):
+        self.assertIn("z2_xgb", METHODS)
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ from .common import (
 
 
 GENERIC_METHODS = ("logistic", "xgb_ranker", "tcn")
-METHODS = GENERIC_METHODS + ("dejavu",)
+METHODS = GENERIC_METHODS + ("dejavu", "z2_xgb")
 FINAL_METRICS_SHA256 = {
     "re2ob": "080a4035753de2d9c8eeb15e9f4d18d43be34116ee9a3b7e0954ed797f5a43d1",
     "re2tt": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c",
