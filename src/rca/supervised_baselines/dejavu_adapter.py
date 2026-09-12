@@ -1,0 +1,255 @@
+"""Label-blind input audit and preparation primitives for the DejaVu adapter."""
+
+import csv
+from concurrent.futures import ProcessPoolExecutor
+import hashlib
+import json
+import math
+from pathlib import Path
+from typing import Mapping, Sequence
+
+
+TRACE_REQUIRED_COLUMNS = (
+    "time",
+    "traceID",
+    "spanID",
+    "serviceName",
+    "methodName",
+    "operationName",
+    "startTimeMillis",
+    "startTime",
+    "duration",
+    "statusCode",
+    "parentSpanID",
+)
+METRIC_OFFSETS_SECONDS = tuple(range(-600, 541, 60))
+METRIC_SUFFIXES = ("cpu", "mem")
+
+
+def _file_record(path: Path) -> Mapping[str, object]:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return {
+        "path": str(path.resolve()),
+        "bytes": path.stat().st_size,
+        "sha256": digest.hexdigest(),
+    }
+
+
+def _map_trace_service(raw_service: str, candidates: Sequence[str], dataset: str):
+    service = str(raw_service).strip()
+    if dataset == "re2ob" and service == "frontendservice":
+        service = "frontend"
+    return service if service in candidates else None
+
+
+def audit_case_source(
+    source_row: Mapping[str, object], candidates: Sequence[str], dataset: str
+) -> Mapping[str, object]:
+    """Audit one label-free RE2 source row and derive its explicit call edges."""
+
+    if dataset not in ("re2ob", "re2tt"):
+        raise ValueError("dataset must be re2ob or re2tt")
+    canonical = tuple(str(value) for value in candidates)
+    if len(canonical) < 2 or len(set(canonical)) != len(canonical):
+        raise ValueError("candidate registry must be unique")
+    required_fields = ("case_id", "simple_metrics_path", "traces_path", "inject_time_path")
+    if not all(field in source_row for field in required_fields):
+        raise ValueError("source row lacks required label-free paths")
+
+    metric_path = Path(str(source_row["simple_metrics_path"]))
+    trace_path = Path(str(source_row["traces_path"]))
+    inject_path = Path(str(source_row["inject_time_path"]))
+    for path in (metric_path, trace_path, inject_path):
+        if not path.is_file():
+            raise FileNotFoundError(path)
+    injection_time = float(inject_path.read_text(encoding="utf-8").strip())
+    required_times = {injection_time + offset for offset in METRIC_OFFSETS_SECONDS}
+    required_metric_columns = tuple(
+        "{}_{}".format(candidate, suffix)
+        for suffix in METRIC_SUFFIXES
+        for candidate in canonical
+    )
+
+    observed_metric_samples = set()
+    nonfinite_metric_samples = 0
+    with metric_path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        metric_header = tuple(reader.fieldnames or ())
+        missing_metric_columns = sorted(set(required_metric_columns) - set(metric_header))
+        if "time" not in metric_header:
+            raise ValueError("simple_metrics.csv lacks time")
+        for row in reader:
+            try:
+                timestamp = float(row["time"])
+            except (TypeError, ValueError):
+                continue
+            if timestamp not in required_times:
+                continue
+            for column in required_metric_columns:
+                if column not in row:
+                    continue
+                try:
+                    value = float(row[column])
+                except (TypeError, ValueError):
+                    nonfinite_metric_samples += 1
+                    continue
+                if not math.isfinite(value):
+                    nonfinite_metric_samples += 1
+                    continue
+                observed_metric_samples.add((timestamp, column))
+
+    span_rows = []
+    span_services = {}
+    duplicate_span_keys = set()
+    raw_trace_services = set()
+    with trace_path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        trace_header = tuple(reader.fieldnames or ())
+        missing_trace_columns = sorted(set(TRACE_REQUIRED_COLUMNS) - set(trace_header))
+        for row in reader:
+            trace_id = str(row.get("traceID", "")).strip()
+            span_id = str(row.get("spanID", "")).strip()
+            parent_id = str(row.get("parentSpanID", "")).strip()
+            raw_service = str(row.get("serviceName", "")).strip()
+            if raw_service:
+                raw_trace_services.add(raw_service)
+            mapped_service = _map_trace_service(raw_service, canonical, dataset)
+            if trace_id and span_id:
+                key = (trace_id, span_id)
+                if key in span_services:
+                    duplicate_span_keys.add(key)
+                else:
+                    span_services[key] = mapped_service
+            span_rows.append((trace_id, parent_id, mapped_service))
+
+    edges = set()
+    missing_parent_span_joins = 0
+    for trace_id, parent_id, child_service in span_rows:
+        if not trace_id or not parent_id:
+            continue
+        parent_key = (trace_id, parent_id)
+        if parent_key not in span_services:
+            missing_parent_span_joins += 1
+            continue
+        parent_service = span_services[parent_key]
+        if (
+            parent_service is not None
+            and child_service is not None
+            and parent_service != child_service
+        ):
+            edges.add((parent_service, child_service))
+
+    mapped_raw_services = {
+        raw for raw in raw_trace_services
+        if _map_trace_service(raw, canonical, dataset) is not None
+    }
+    unmapped_services = sorted(raw_trace_services - mapped_raw_services)
+    edge_nodes = sorted({node for edge in edges for node in edge})
+    expected_samples = len(required_times) * len(required_metric_columns)
+    return {
+        "case_id": str(source_row["case_id"]),
+        "dataset": dataset,
+        "files": {
+            "inject_time": _file_record(inject_path),
+            "simple_metrics": _file_record(metric_path),
+            "traces": _file_record(trace_path),
+        },
+        "trace_header": list(trace_header),
+        "missing_trace_columns": missing_trace_columns,
+        "metric_header_count": len(metric_header),
+        "missing_metric_columns": missing_metric_columns,
+        "required_metric_samples": expected_samples,
+        "observed_required_metric_samples": len(observed_metric_samples),
+        "missing_required_metric_samples": expected_samples - len(observed_metric_samples),
+        "nonfinite_required_metric_samples": nonfinite_metric_samples,
+        "duplicate_span_key_count": len(duplicate_span_keys),
+        "missing_parent_span_join_count": missing_parent_span_joins,
+        "edges": [list(edge) for edge in sorted(edges)],
+        "edge_node_coverage": edge_nodes,
+        "isolated_candidates": sorted(set(canonical) - set(edge_nodes)),
+        "unmapped_trace_services": unmapped_services,
+    }
+
+
+def _audit_case_args(args):
+    return audit_case_source(*args)
+
+
+def audit_source_registry(
+    sources_path: Path,
+    candidate_registry_path: Path,
+    dataset: str,
+    *,
+    expected_cases: int = 90,
+    workers: int = 1,
+) -> Mapping[str, object]:
+    """Audit a complete label-free source registry with deterministic output."""
+
+    sources_path = Path(sources_path)
+    candidate_registry_path = Path(candidate_registry_path)
+    candidate_doc = json.loads(candidate_registry_path.read_text(encoding="utf-8"))
+    candidates = tuple(str(value) for value in candidate_doc["services"])
+    source_rows = tuple(
+        json.loads(line)
+        for line in sources_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    )
+    case_ids = tuple(str(row.get("case_id", "")) for row in source_rows)
+    if len(source_rows) != expected_cases:
+        raise ValueError("source registry case count mismatch")
+    if not all(case_ids) or len(set(case_ids)) != len(case_ids):
+        raise ValueError("source registry case IDs must be complete and unique")
+    if workers < 1:
+        raise ValueError("workers must be positive")
+
+    args = tuple((row, candidates, dataset) for row in source_rows)
+    if workers == 1:
+        cases = tuple(_audit_case_args(arg) for arg in args)
+    else:
+        with ProcessPoolExecutor(max_workers=workers) as executor:
+            cases = tuple(executor.map(_audit_case_args, args))
+    cases = tuple(sorted(cases, key=lambda row: str(row["case_id"])))
+
+    union_edges = sorted(
+        {tuple(edge) for case in cases for edge in case["edges"]}
+    )
+    edge_nodes = {node for edge in union_edges for node in edge}
+    failures = []
+    for case in cases:
+        if case["missing_trace_columns"]:
+            failures.append("{}:missing_trace_columns".format(case["case_id"]))
+        if case["missing_metric_columns"]:
+            failures.append("{}:missing_metric_columns".format(case["case_id"]))
+        if case["missing_required_metric_samples"]:
+            failures.append("{}:missing_metric_samples".format(case["case_id"]))
+        if case["nonfinite_required_metric_samples"]:
+            failures.append("{}:nonfinite_metric_samples".format(case["case_id"]))
+        if case["duplicate_span_key_count"]:
+            failures.append("{}:duplicate_span_keys".format(case["case_id"]))
+
+    return {
+        "schema_version": "dejavu_re2_source_audit_v1",
+        "status": "PASS" if not failures else "FAIL",
+        "dataset": dataset,
+        "case_count": len(cases),
+        "candidate_count": len(candidates),
+        "candidates": list(candidates),
+        "source_registry": _file_record(sources_path),
+        "candidate_registry": _file_record(candidate_registry_path),
+        "trace_file_count": len(cases),
+        "metric_file_count": len(cases),
+        "union_edges": [list(edge) for edge in union_edges],
+        "candidates_ever_in_an_edge": sorted(edge_nodes),
+        "candidates_never_in_an_edge": sorted(set(candidates) - edge_nodes),
+        "unmapped_trace_services": sorted(
+            {service for case in cases for service in case["unmapped_trace_services"]}
+        ),
+        "total_missing_parent_span_joins": sum(
+            int(case["missing_parent_span_join_count"]) for case in cases
+        ),
+        "failures": failures,
+        "cases": list(cases),
+    }
