@@ -1,0 +1,678 @@
+{
+  "re2ob": {
+    "tcn_vs_ada": {
+      "by_fault": {
+        "cpu": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "delay": {
+          "degraded": 1,
+          "improved": 1,
+          "unchanged": 13
+        },
+        "disk": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "loss": {
+          "degraded": 5,
+          "improved": 2,
+          "unchanged": 8
+        },
+        "mem": {
+          "degraded": 2,
+          "improved": 1,
+          "unchanged": 12
+        },
+        "socket": {
+          "degraded": 2,
+          "improved": 1,
+          "unchanged": 12
+        }
+      },
+      "by_fold": {
+        "0": {
+          "degraded": 4,
+          "improved": 2,
+          "unchanged": 24
+        },
+        "1": {
+          "degraded": 4,
+          "improved": 2,
+          "unchanged": 24
+        },
+        "2": {
+          "degraded": 2,
+          "improved": 1,
+          "unchanged": 27
+        }
+      },
+      "by_root": {
+        "checkoutservice": {
+          "degraded": 2,
+          "improved": 1,
+          "unchanged": 15
+        },
+        "currencyservice": {
+          "degraded": 3,
+          "improved": 4,
+          "unchanged": 11
+        },
+        "emailservice": {
+          "degraded": 1,
+          "improved": 0,
+          "unchanged": 17
+        },
+        "productcatalogservice": {
+          "degraded": 3,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "recommendationservice": {
+          "degraded": 1,
+          "improved": 0,
+          "unchanged": 17
+        }
+      },
+      "case_count": 90,
+      "overall": {
+        "degraded": 10,
+        "improved": 5,
+        "unchanged": 75
+      }
+    },
+    "z1_xgb_vs_ada": {
+      "by_fault": {
+        "cpu": {
+          "degraded": 1,
+          "improved": 0,
+          "unchanged": 14
+        },
+        "delay": {
+          "degraded": 1,
+          "improved": 2,
+          "unchanged": 12
+        },
+        "disk": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "loss": {
+          "degraded": 2,
+          "improved": 2,
+          "unchanged": 11
+        },
+        "mem": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "socket": {
+          "degraded": 1,
+          "improved": 1,
+          "unchanged": 13
+        }
+      },
+      "by_fold": {
+        "0": {
+          "degraded": 2,
+          "improved": 2,
+          "unchanged": 26
+        },
+        "1": {
+          "degraded": 2,
+          "improved": 2,
+          "unchanged": 26
+        },
+        "2": {
+          "degraded": 1,
+          "improved": 1,
+          "unchanged": 28
+        }
+      },
+      "by_root": {
+        "checkoutservice": {
+          "degraded": 2,
+          "improved": 3,
+          "unchanged": 13
+        },
+        "currencyservice": {
+          "degraded": 1,
+          "improved": 2,
+          "unchanged": 15
+        },
+        "emailservice": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 18
+        },
+        "productcatalogservice": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 18
+        },
+        "recommendationservice": {
+          "degraded": 2,
+          "improved": 0,
+          "unchanged": 16
+        }
+      },
+      "case_count": 90,
+      "overall": {
+        "degraded": 5,
+        "improved": 5,
+        "unchanged": 80
+      }
+    },
+    "z2_xgb_vs_ada": {
+      "by_fault": {
+        "cpu": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "delay": {
+          "degraded": 1,
+          "improved": 0,
+          "unchanged": 14
+        },
+        "disk": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "loss": {
+          "degraded": 2,
+          "improved": 2,
+          "unchanged": 11
+        },
+        "mem": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "socket": {
+          "degraded": 0,
+          "improved": 1,
+          "unchanged": 14
+        }
+      },
+      "by_fold": {
+        "0": {
+          "degraded": 1,
+          "improved": 2,
+          "unchanged": 27
+        },
+        "1": {
+          "degraded": 1,
+          "improved": 1,
+          "unchanged": 28
+        },
+        "2": {
+          "degraded": 1,
+          "improved": 0,
+          "unchanged": 29
+        }
+      },
+      "by_root": {
+        "checkoutservice": {
+          "degraded": 1,
+          "improved": 0,
+          "unchanged": 17
+        },
+        "currencyservice": {
+          "degraded": 1,
+          "improved": 3,
+          "unchanged": 14
+        },
+        "emailservice": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 18
+        },
+        "productcatalogservice": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 18
+        },
+        "recommendationservice": {
+          "degraded": 1,
+          "improved": 0,
+          "unchanged": 17
+        }
+      },
+      "case_count": 90,
+      "overall": {
+        "degraded": 3,
+        "improved": 3,
+        "unchanged": 84
+      }
+    },
+    "z2_xgb_vs_z1_xgb": {
+      "by_fault": {
+        "cpu": {
+          "degraded": 0,
+          "improved": 1,
+          "unchanged": 14
+        },
+        "delay": {
+          "degraded": 2,
+          "improved": 0,
+          "unchanged": 13
+        },
+        "disk": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "loss": {
+          "degraded": 1,
+          "improved": 2,
+          "unchanged": 12
+        },
+        "mem": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "socket": {
+          "degraded": 1,
+          "improved": 2,
+          "unchanged": 12
+        }
+      },
+      "by_fold": {
+        "0": {
+          "degraded": 2,
+          "improved": 3,
+          "unchanged": 25
+        },
+        "1": {
+          "degraded": 1,
+          "improved": 1,
+          "unchanged": 28
+        },
+        "2": {
+          "degraded": 1,
+          "improved": 1,
+          "unchanged": 28
+        }
+      },
+      "by_root": {
+        "checkoutservice": {
+          "degraded": 3,
+          "improved": 1,
+          "unchanged": 14
+        },
+        "currencyservice": {
+          "degraded": 0,
+          "improved": 3,
+          "unchanged": 15
+        },
+        "emailservice": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 18
+        },
+        "productcatalogservice": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 18
+        },
+        "recommendationservice": {
+          "degraded": 1,
+          "improved": 1,
+          "unchanged": 16
+        }
+      },
+      "case_count": 90,
+      "overall": {
+        "degraded": 4,
+        "improved": 5,
+        "unchanged": 81
+      }
+    }
+  },
+  "re2tt": {
+    "tcn_vs_ada": {
+      "by_fault": {
+        "cpu": {
+          "degraded": 2,
+          "improved": 2,
+          "unchanged": 11
+        },
+        "delay": {
+          "degraded": 3,
+          "improved": 7,
+          "unchanged": 5
+        },
+        "disk": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "loss": {
+          "degraded": 2,
+          "improved": 7,
+          "unchanged": 6
+        },
+        "mem": {
+          "degraded": 1,
+          "improved": 2,
+          "unchanged": 12
+        },
+        "socket": {
+          "degraded": 3,
+          "improved": 1,
+          "unchanged": 11
+        }
+      },
+      "by_fold": {
+        "0": {
+          "degraded": 5,
+          "improved": 6,
+          "unchanged": 19
+        },
+        "1": {
+          "degraded": 5,
+          "improved": 8,
+          "unchanged": 17
+        },
+        "2": {
+          "degraded": 1,
+          "improved": 5,
+          "unchanged": 24
+        }
+      },
+      "by_root": {
+        "ts-auth-service": {
+          "degraded": 3,
+          "improved": 4,
+          "unchanged": 11
+        },
+        "ts-order-service": {
+          "degraded": 3,
+          "improved": 3,
+          "unchanged": 12
+        },
+        "ts-route-service": {
+          "degraded": 2,
+          "improved": 3,
+          "unchanged": 13
+        },
+        "ts-train-service": {
+          "degraded": 0,
+          "improved": 7,
+          "unchanged": 11
+        },
+        "ts-travel-service": {
+          "degraded": 3,
+          "improved": 2,
+          "unchanged": 13
+        }
+      },
+      "case_count": 90,
+      "overall": {
+        "degraded": 11,
+        "improved": 19,
+        "unchanged": 60
+      }
+    },
+    "z1_xgb_vs_ada": {
+      "by_fault": {
+        "cpu": {
+          "degraded": 2,
+          "improved": 3,
+          "unchanged": 10
+        },
+        "delay": {
+          "degraded": 4,
+          "improved": 6,
+          "unchanged": 5
+        },
+        "disk": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "loss": {
+          "degraded": 5,
+          "improved": 7,
+          "unchanged": 3
+        },
+        "mem": {
+          "degraded": 0,
+          "improved": 2,
+          "unchanged": 13
+        },
+        "socket": {
+          "degraded": 0,
+          "improved": 2,
+          "unchanged": 13
+        }
+      },
+      "by_fold": {
+        "0": {
+          "degraded": 2,
+          "improved": 8,
+          "unchanged": 20
+        },
+        "1": {
+          "degraded": 5,
+          "improved": 7,
+          "unchanged": 18
+        },
+        "2": {
+          "degraded": 4,
+          "improved": 5,
+          "unchanged": 21
+        }
+      },
+      "by_root": {
+        "ts-auth-service": {
+          "degraded": 3,
+          "improved": 2,
+          "unchanged": 13
+        },
+        "ts-order-service": {
+          "degraded": 0,
+          "improved": 4,
+          "unchanged": 14
+        },
+        "ts-route-service": {
+          "degraded": 3,
+          "improved": 3,
+          "unchanged": 12
+        },
+        "ts-train-service": {
+          "degraded": 1,
+          "improved": 7,
+          "unchanged": 10
+        },
+        "ts-travel-service": {
+          "degraded": 4,
+          "improved": 4,
+          "unchanged": 10
+        }
+      },
+      "case_count": 90,
+      "overall": {
+        "degraded": 11,
+        "improved": 20,
+        "unchanged": 59
+      }
+    },
+    "z2_xgb_vs_ada": {
+      "by_fault": {
+        "cpu": {
+          "degraded": 2,
+          "improved": 3,
+          "unchanged": 10
+        },
+        "delay": {
+          "degraded": 2,
+          "improved": 4,
+          "unchanged": 9
+        },
+        "disk": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "loss": {
+          "degraded": 4,
+          "improved": 6,
+          "unchanged": 5
+        },
+        "mem": {
+          "degraded": 0,
+          "improved": 2,
+          "unchanged": 13
+        },
+        "socket": {
+          "degraded": 1,
+          "improved": 1,
+          "unchanged": 13
+        }
+      },
+      "by_fold": {
+        "0": {
+          "degraded": 4,
+          "improved": 5,
+          "unchanged": 21
+        },
+        "1": {
+          "degraded": 3,
+          "improved": 5,
+          "unchanged": 22
+        },
+        "2": {
+          "degraded": 2,
+          "improved": 6,
+          "unchanged": 22
+        }
+      },
+      "by_root": {
+        "ts-auth-service": {
+          "degraded": 4,
+          "improved": 1,
+          "unchanged": 13
+        },
+        "ts-order-service": {
+          "degraded": 1,
+          "improved": 2,
+          "unchanged": 15
+        },
+        "ts-route-service": {
+          "degraded": 0,
+          "improved": 3,
+          "unchanged": 15
+        },
+        "ts-train-service": {
+          "degraded": 0,
+          "improved": 7,
+          "unchanged": 11
+        },
+        "ts-travel-service": {
+          "degraded": 4,
+          "improved": 3,
+          "unchanged": 11
+        }
+      },
+      "case_count": 90,
+      "overall": {
+        "degraded": 9,
+        "improved": 16,
+        "unchanged": 65
+      }
+    },
+    "z2_xgb_vs_z1_xgb": {
+      "by_fault": {
+        "cpu": {
+          "degraded": 2,
+          "improved": 1,
+          "unchanged": 12
+        },
+        "delay": {
+          "degraded": 3,
+          "improved": 2,
+          "unchanged": 10
+        },
+        "disk": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "loss": {
+          "degraded": 3,
+          "improved": 6,
+          "unchanged": 6
+        },
+        "mem": {
+          "degraded": 0,
+          "improved": 0,
+          "unchanged": 15
+        },
+        "socket": {
+          "degraded": 2,
+          "improved": 0,
+          "unchanged": 13
+        }
+      },
+      "by_fold": {
+        "0": {
+          "degraded": 3,
+          "improved": 1,
+          "unchanged": 26
+        },
+        "1": {
+          "degraded": 5,
+          "improved": 4,
+          "unchanged": 21
+        },
+        "2": {
+          "degraded": 2,
+          "improved": 4,
+          "unchanged": 24
+        }
+      },
+      "by_root": {
+        "ts-auth-service": {
+          "degraded": 4,
+          "improved": 2,
+          "unchanged": 12
+        },
+        "ts-order-service": {
+          "degraded": 2,
+          "improved": 0,
+          "unchanged": 16
+        },
+        "ts-route-service": {
+          "degraded": 0,
+          "improved": 3,
+          "unchanged": 15
+        },
+        "ts-train-service": {
+          "degraded": 0,
+          "improved": 1,
+          "unchanged": 17
+        },
+        "ts-travel-service": {
+          "degraded": 4,
+          "improved": 3,
+          "unchanged": 11
+        }
+      },
+      "case_count": 90,
+      "overall": {
+        "degraded": 10,
+        "improved": 9,
+        "unchanged": 71
+      }
+    }
+  }
+}

@@ -1,0 +1,526 @@
+{
+  "re2ob": {
+    "tcn_minus_ada": {
+      "AC@1": {
+        "ci95": [
+          -0.13333333333333333,
+          0.022222222222222223
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": 0.0,
+          "disk": 0.0,
+          "loss": -0.26666666666666666,
+          "mem": -0.06666666666666667,
+          "socket": 0.0
+        },
+        "direction": "tcn - ada",
+        "left": "tcn",
+        "metric": "AC@1",
+        "point_delta": -0.05555555555555555,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          -0.05333333333333333,
+          0.013333333333333336
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": -0.013333333333333338,
+          "disk": 0.0,
+          "loss": -0.013333333333333324,
+          "mem": -0.04,
+          "socket": -0.05333333333333334
+        },
+        "direction": "tcn - ada",
+        "left": "tcn",
+        "metric": "Avg@5",
+        "point_delta": -0.019999999999999997,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "MRR": {
+        "ci95": [
+          -0.07777777777777778,
+          0.009259259259259257
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": -0.011111111111111117,
+          "disk": 0.0,
+          "loss": -0.12222222222222222,
+          "mem": -0.05,
+          "socket": -0.022222222222222223
+        },
+        "direction": "tcn - ada",
+        "left": "tcn",
+        "metric": "MRR",
+        "point_delta": -0.03425925925925927,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      }
+    },
+    "z1_xgb_minus_ada": {
+      "AC@1": {
+        "ci95": [
+          -0.044444444444444446,
+          0.06666666666666667
+        ],
+        "delta_by_fault": {
+          "cpu": -0.06666666666666667,
+          "delay": 0.13333333333333333,
+          "disk": 0.0,
+          "loss": 0.0,
+          "mem": 0.0,
+          "socket": 0.0
+        },
+        "direction": "z1_xgb - ada",
+        "left": "z1_xgb",
+        "metric": "AC@1",
+        "point_delta": 0.011111111111111112,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          -0.03333333333333333,
+          0.022222222222222223
+        ],
+        "delta_by_fault": {
+          "cpu": -0.05333333333333334,
+          "delay": 0.02666666666666666,
+          "disk": 0.0,
+          "loss": 0.0,
+          "mem": 0.0,
+          "socket": 0.0
+        },
+        "direction": "z1_xgb - ada",
+        "left": "z1_xgb",
+        "metric": "Avg@5",
+        "point_delta": -0.004444444444444447,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "MRR": {
+        "ci95": [
+          -0.03153439153439153,
+          0.03518518518518519
+        ],
+        "delta_by_fault": {
+          "cpu": -0.05333333333333334,
+          "delay": 0.06666666666666667,
+          "disk": 0.0,
+          "loss": -0.001587301587301589,
+          "mem": 0.0,
+          "socket": 0.0
+        },
+        "direction": "z1_xgb - ada",
+        "left": "z1_xgb",
+        "metric": "MRR",
+        "point_delta": 0.001957671957671958,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      }
+    },
+    "z2_xgb_minus_ada": {
+      "AC@1": {
+        "ci95": [
+          -0.022222222222222223,
+          0.044444444444444446
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": 0.0,
+          "disk": 0.0,
+          "loss": 0.0,
+          "mem": 0.0,
+          "socket": 0.06666666666666667
+        },
+        "direction": "z2_xgb - ada",
+        "left": "z2_xgb",
+        "metric": "AC@1",
+        "point_delta": 0.011111111111111112,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          -0.024444444444444446,
+          0.026666666666666665
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": -0.013333333333333338,
+          "disk": 0.0,
+          "loss": 0.0,
+          "mem": 0.0,
+          "socket": 0.01333333333333333
+        },
+        "direction": "z2_xgb - ada",
+        "left": "z2_xgb",
+        "metric": "Avg@5",
+        "point_delta": -1.2335811384723962e-18,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "MRR": {
+        "ci95": [
+          -0.018518518518518524,
+          0.02592592592592593
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": -0.011111111111111112,
+          "disk": 0.0,
+          "loss": 0.0,
+          "mem": 0.0,
+          "socket": 0.03333333333333333
+        },
+        "direction": "z2_xgb - ada",
+        "left": "z2_xgb",
+        "metric": "MRR",
+        "point_delta": 0.0037037037037037034,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      }
+    },
+    "z2_xgb_minus_z1_xgb": {
+      "AC@1": {
+        "ci95": [
+          -0.05555555555555555,
+          0.05555555555555555
+        ],
+        "delta_by_fault": {
+          "cpu": 0.06666666666666667,
+          "delay": -0.13333333333333333,
+          "disk": 0.0,
+          "loss": 0.0,
+          "mem": 0.0,
+          "socket": 0.06666666666666667
+        },
+        "direction": "z2_xgb - z1_xgb",
+        "left": "z2_xgb",
+        "metric": "AC@1",
+        "point_delta": 0.0,
+        "resamples": 10000,
+        "right": "z1_xgb",
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          -0.013333333333333336,
+          0.026666666666666672
+        ],
+        "delta_by_fault": {
+          "cpu": 0.05333333333333334,
+          "delay": -0.04,
+          "disk": 0.0,
+          "loss": 0.0,
+          "mem": 0.0,
+          "socket": 0.01333333333333333
+        },
+        "direction": "z2_xgb - z1_xgb",
+        "left": "z2_xgb",
+        "metric": "Avg@5",
+        "point_delta": 0.0044444444444444444,
+        "resamples": 10000,
+        "right": "z1_xgb",
+        "seed": 20260826
+      },
+      "MRR": {
+        "ci95": [
+          -0.027883597883597882,
+          0.0325925925925926
+        ],
+        "delta_by_fault": {
+          "cpu": 0.05333333333333334,
+          "delay": -0.07777777777777778,
+          "disk": 0.0,
+          "loss": 0.0015873015873015873,
+          "mem": 0.0,
+          "socket": 0.03333333333333333
+        },
+        "direction": "z2_xgb - z1_xgb",
+        "left": "z2_xgb",
+        "metric": "MRR",
+        "point_delta": 0.0017460317460317473,
+        "resamples": 10000,
+        "right": "z1_xgb",
+        "seed": 20260826
+      }
+    }
+  },
+  "re2tt": {
+    "tcn_minus_ada": {
+      "AC@1": {
+        "ci95": [
+          -0.03333333333333333,
+          0.14444444444444443
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": 0.2,
+          "disk": 0.0,
+          "loss": 0.13333333333333333,
+          "mem": 0.06666666666666667,
+          "socket": -0.06666666666666667
+        },
+        "direction": "tcn - ada",
+        "left": "tcn",
+        "metric": "AC@1",
+        "point_delta": 0.05555555555555555,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          -0.015555555555555562,
+          0.08666666666666667
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": 0.16,
+          "disk": 0.0,
+          "loss": 0.09333333333333331,
+          "mem": 0.06666666666666668,
+          "socket": -0.10666666666666667
+        },
+        "direction": "tcn - ada",
+        "left": "tcn",
+        "metric": "Avg@5",
+        "point_delta": 0.03555555555555555,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "MRR": {
+        "ci95": [
+          -0.015734086900753567,
+          0.10066034017422906
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": 0.18258136924803592,
+          "disk": 0.0,
+          "loss": 0.09833333333333334,
+          "mem": 0.06444444444444446,
+          "socket": -0.08777777777777779
+        },
+        "direction": "tcn - ada",
+        "left": "tcn",
+        "metric": "MRR",
+        "point_delta": 0.04293022820800599,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      }
+    },
+    "z1_xgb_minus_ada": {
+      "AC@1": {
+        "ci95": [
+          0.011111111111111112,
+          0.18888888888888888
+        ],
+        "delta_by_fault": {
+          "cpu": 0.06666666666666667,
+          "delay": 0.26666666666666666,
+          "disk": 0.0,
+          "loss": 0.0,
+          "mem": 0.13333333333333333,
+          "socket": 0.13333333333333333
+        },
+        "direction": "z1_xgb - ada",
+        "left": "z1_xgb",
+        "metric": "AC@1",
+        "point_delta": 0.1,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          0.008888888888888885,
+          0.0911111111111111
+        ],
+        "delta_by_fault": {
+          "cpu": 0.01333333333333333,
+          "delay": 0.09333333333333332,
+          "disk": 0.0,
+          "loss": 0.08,
+          "mem": 0.08000000000000002,
+          "socket": 0.02666666666666666
+        },
+        "direction": "z1_xgb - ada",
+        "left": "z1_xgb",
+        "metric": "Avg@5",
+        "point_delta": 0.04888888888888889,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "MRR": {
+        "ci95": [
+          0.013728868510269478,
+          0.12297682861511364
+        ],
+        "delta_by_fault": {
+          "cpu": 0.03333333333333333,
+          "delay": 0.16659103108378473,
+          "disk": 0.0,
+          "loss": 0.04467103749712445,
+          "mem": 0.09777777777777778,
+          "socket": 0.06666666666666667
+        },
+        "direction": "z1_xgb - ada",
+        "left": "z1_xgb",
+        "metric": "MRR",
+        "point_delta": 0.06817330772644782,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      }
+    },
+    "z2_xgb_minus_ada": {
+      "AC@1": {
+        "ci95": [
+          0.03333333333333333,
+          0.18888888888888888
+        ],
+        "delta_by_fault": {
+          "cpu": 0.06666666666666667,
+          "delay": 0.26666666666666666,
+          "disk": 0.0,
+          "loss": 0.2,
+          "mem": 0.13333333333333333,
+          "socket": 0.0
+        },
+        "direction": "z2_xgb - ada",
+        "left": "z2_xgb",
+        "metric": "AC@1",
+        "point_delta": 0.1111111111111111,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          -0.0022222222222222253,
+          0.07777777777777778
+        ],
+        "delta_by_fault": {
+          "cpu": -7.401486830834377e-18,
+          "delay": 0.08,
+          "disk": 0.0,
+          "loss": 0.07999999999999999,
+          "mem": 0.08000000000000002,
+          "socket": -0.013333333333333338
+        },
+        "direction": "z2_xgb - ada",
+        "left": "z2_xgb",
+        "metric": "Avg@5",
+        "point_delta": 0.03777777777777777,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      },
+      "MRR": {
+        "ci95": [
+          0.01431652298318965,
+          0.11824520001603335
+        ],
+        "delta_by_fault": {
+          "cpu": 0.022222222222222216,
+          "delay": 0.15761460761460763,
+          "disk": 0.0,
+          "loss": 0.1264814814814815,
+          "mem": 0.09777777777777778,
+          "socket": -0.011111111111111117
+        },
+        "direction": "z2_xgb - ada",
+        "left": "z2_xgb",
+        "metric": "MRR",
+        "point_delta": 0.06549749633082967,
+        "resamples": 10000,
+        "right": "ada",
+        "seed": 20260826
+      }
+    },
+    "z2_xgb_minus_z1_xgb": {
+      "AC@1": {
+        "ci95": [
+          -0.05555555555555555,
+          0.07777777777777778
+        ],
+        "delta_by_fault": {
+          "cpu": 0.0,
+          "delay": 0.0,
+          "disk": 0.0,
+          "loss": 0.2,
+          "mem": 0.0,
+          "socket": -0.13333333333333333
+        },
+        "direction": "z2_xgb - z1_xgb",
+        "left": "z2_xgb",
+        "metric": "AC@1",
+        "point_delta": 0.011111111111111112,
+        "resamples": 10000,
+        "right": "z1_xgb",
+        "seed": 20260826
+      },
+      "Avg@5": {
+        "ci95": [
+          -0.04666666666666667,
+          0.019999999999999997
+        ],
+        "delta_by_fault": {
+          "cpu": -0.013333333333333338,
+          "delay": -0.01333333333333333,
+          "disk": 0.0,
+          "loss": -1.4802973661668754e-17,
+          "mem": 0.0,
+          "socket": -0.04
+        },
+        "direction": "z2_xgb - z1_xgb",
+        "left": "z2_xgb",
+        "metric": "Avg@5",
+        "point_delta": -0.011111111111111113,
+        "resamples": 10000,
+        "right": "z1_xgb",
+        "seed": 20260826
+      },
+      "MRR": {
+        "ci95": [
+          -0.04060454577181632,
+          0.03452431704545231
+        ],
+        "delta_by_fault": {
+          "cpu": -0.011111111111111112,
+          "delay": -0.00897642346917709,
+          "disk": 0.0,
+          "loss": 0.08181044398435701,
+          "mem": 0.0,
+          "socket": -0.07777777777777778
+        },
+        "direction": "z2_xgb - z1_xgb",
+        "left": "z2_xgb",
+        "metric": "MRR",
+        "point_delta": -0.0026758113956181612,
+        "resamples": 10000,
+        "right": "z1_xgb",
+        "seed": 20260826
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "aggregates": [
+    {
+      "candidate_rows": 990,
+      "case_count": 90,
+      "dataset": "re2ob",
+      "status": "PASS"
+    },
+    {
+      "candidate_rows": 6120,
+      "case_count": 90,
+      "dataset": "re2tt",
+      "status": "PASS"
+    }
+  ],
+  "deterministic_replay": {
+    "exact_sha256_matches": {
+      "config.json": true,
+      "environment.json": true,
+      "integrity.json": true,
+      "metrics.json": true,
+      "model_state.ubj": true,
+      "predictions.jsonl": true
+    },
+    "firewall_equal_after_timestamp_normalization": true,
+    "formal_fold": "z2_xgb/re2ob/fold_0",
+    "replay_fold": "replay_check/z2_xgb/re2ob/fold_0",
+    "status": "PASS",
+    "timestamps_and_runtime_excluded": true
+  },
+  "folds": [
+    {
+      "candidate_rows": 330,
+      "case_count": 30,
+      "dataset": "re2ob",
+      "fold": 0,
+      "source_commit": "318128f780835eefd849de9e2bcf14c0b1b7e1d6",
+      "status": "PASS"
+    },
+    {
+      "candidate_rows": 330,
+      "case_count": 30,
+      "dataset": "re2ob",
+      "fold": 1,
+      "source_commit": "318128f780835eefd849de9e2bcf14c0b1b7e1d6",
+      "status": "PASS"
+    },
+    {
+      "candidate_rows": 330,
+      "case_count": 30,
+      "dataset": "re2ob",
+      "fold": 2,
+      "source_commit": "318128f780835eefd849de9e2bcf14c0b1b7e1d6",
+      "status": "PASS"
+    },
+    {
+      "candidate_rows": 2040,
+      "case_count": 30,
+      "dataset": "re2tt",
+      "fold": 0,
+      "source_commit": "318128f780835eefd849de9e2bcf14c0b1b7e1d6",
+      "status": "PASS"
+    },
+    {
+      "candidate_rows": 2040,
+      "case_count": 30,
+      "dataset": "re2tt",
+      "fold": 1,
+      "source_commit": "318128f780835eefd849de9e2bcf14c0b1b7e1d6",
+      "status": "PASS"
+    },
+    {
+      "candidate_rows": 2040,
+      "case_count": 30,
+      "dataset": "re2tt",
+      "fold": 2,
+      "source_commit": "318128f780835eefd849de9e2bcf14c0b1b7e1d6",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-09-12T16:11:53.163161+00:00",
+  "protocol": "docs/z2_xgb_closure/Z2_XGB_CLOSURE_PROTOCOL_V1.md",
+  "representation_identity": "artifacts/z2_xgb_closure/representation_identity.json",
+  "schema_version": "z2_xgb_closure_validation_v1",
+  "scorer_config": {
+    "colsample_bytree": 1.0,
+    "hyperparameter_search": false,
+    "input": "frozen Z2 68D only",
+    "learner": "xgboost.XGBRanker",
+    "learning_rate": 0.05,
+    "max_depth": 3,
+    "method": "z2_xgb_ranker",
+    "n_estimators": 200,
+    "n_jobs": 1,
+    "normalization": "none",
+    "objective": "rank:pairwise",
+    "random_state": 20260826,
+    "reg_lambda": 1.0,
+    "subsample": 1.0,
+    "tree_method": "hist",
+    "validation": null
+  },
+  "source": {
+    "branch": "evaluation/z2-xgb-closure",
+    "commit": "1fe44b115fee5c062a763daee2c2bfabc0f2a641"
+  },
+  "status": "PASS"
+}

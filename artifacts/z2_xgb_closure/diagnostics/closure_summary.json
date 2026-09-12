@@ -1,0 +1,1434 @@
+{
+  "attribution": {
+    "re2ob": {
+      "AC@1": {
+        "delta_morph_linear": 0.022222222222222254,
+        "delta_morph_xgb": 0.0,
+        "interaction_delta": -0.022222222222222254
+      },
+      "AC@3": {
+        "delta_morph_linear": 0.0,
+        "delta_morph_xgb": 0.011111111111111183,
+        "interaction_delta": 0.011111111111111183
+      },
+      "AC@5": {
+        "delta_morph_linear": -0.011111111111111072,
+        "delta_morph_xgb": 0.0,
+        "interaction_delta": 0.011111111111111072
+      },
+      "Avg@5": {
+        "delta_morph_linear": 0.011111111111111183,
+        "delta_morph_xgb": 0.004444444444444362,
+        "interaction_delta": -0.006666666666666821
+      },
+      "MRR": {
+        "delta_morph_linear": 0.018148148148148247,
+        "delta_morph_xgb": 0.0017460317460316066,
+        "interaction_delta": -0.01640211640211664
+      }
+    },
+    "re2tt": {
+      "AC@1": {
+        "delta_morph_linear": 0.13333333333333341,
+        "delta_morph_xgb": 0.011111111111111072,
+        "interaction_delta": -0.12222222222222234
+      },
+      "AC@3": {
+        "delta_morph_linear": 0.06666666666666665,
+        "delta_morph_xgb": -0.011111111111111183,
+        "interaction_delta": -0.07777777777777783
+      },
+      "AC@5": {
+        "delta_morph_linear": 0.06666666666666665,
+        "delta_morph_xgb": -0.011111111111111072,
+        "interaction_delta": -0.07777777777777772
+      },
+      "Avg@5": {
+        "delta_morph_linear": 0.08666666666666667,
+        "delta_morph_xgb": -0.011111111111111072,
+        "interaction_delta": -0.09777777777777774
+      },
+      "MRR": {
+        "delta_morph_linear": 0.09545247048687033,
+        "delta_morph_xgb": -0.002675811395618344,
+        "interaction_delta": -0.09812828188248868
+      }
+    }
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20260826,
+    "stratification": "fault_type"
+  },
+  "datasets": [
+    "re2ob",
+    "re2tt"
+  ],
+  "matrix": {
+    "re2ob": {
+      "ada": {
+        "AC@1": 0.8777777777777778,
+        "AC@3": 0.9888888888888889,
+        "AC@5": 0.9888888888888889,
+        "Avg@5": 0.9622222222222222,
+        "MRR": 0.9314814814814816
+      },
+      "z1_cl": {
+        "AC@1": 0.8555555555555555,
+        "AC@3": 0.9888888888888889,
+        "AC@5": 1.0,
+        "Avg@5": 0.951111111111111,
+        "MRR": 0.9133333333333333
+      },
+      "z1_xgb": {
+        "AC@1": 0.8888888888888888,
+        "AC@3": 0.9777777777777777,
+        "AC@5": 0.9888888888888889,
+        "Avg@5": 0.9577777777777778,
+        "MRR": 0.9334391534391535
+      },
+      "z2_xgb": {
+        "AC@1": 0.8888888888888888,
+        "AC@3": 0.9888888888888889,
+        "AC@5": 0.9888888888888889,
+        "Avg@5": 0.9622222222222222,
+        "MRR": 0.9351851851851851
+      }
+    },
+    "re2tt": {
+      "ada": {
+        "AC@1": 0.7111111111111111,
+        "AC@3": 0.8666666666666667,
+        "AC@5": 0.9333333333333333,
+        "Avg@5": 0.851111111111111,
+        "MRR": 0.8034718881941106
+      },
+      "z1_cl": {
+        "AC@1": 0.5777777777777777,
+        "AC@3": 0.8,
+        "AC@5": 0.8666666666666667,
+        "Avg@5": 0.7644444444444444,
+        "MRR": 0.7080194177072403
+      },
+      "z1_xgb": {
+        "AC@1": 0.8111111111111111,
+        "AC@3": 0.9222222222222223,
+        "AC@5": 0.9333333333333333,
+        "Avg@5": 0.8999999999999998,
+        "MRR": 0.8716451959205582
+      },
+      "z2_xgb": {
+        "AC@1": 0.8222222222222222,
+        "AC@3": 0.9111111111111111,
+        "AC@5": 0.9222222222222223,
+        "Avg@5": 0.8888888888888887,
+        "MRR": 0.8689693845249399
+      }
+    }
+  },
+  "metrics": [
+    "AC@1",
+    "AC@3",
+    "AC@5",
+    "Avg@5",
+    "MRR"
+  ],
+  "paired_metrics": [
+    "Avg@5",
+    "AC@1",
+    "MRR"
+  ],
+  "paired_statistics": {
+    "re2ob": {
+      "tcn_minus_ada": {
+        "AC@1": {
+          "ci95": [
+            -0.13333333333333333,
+            0.022222222222222223
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": 0.0,
+            "disk": 0.0,
+            "loss": -0.26666666666666666,
+            "mem": -0.06666666666666667,
+            "socket": 0.0
+          },
+          "direction": "tcn - ada",
+          "left": "tcn",
+          "metric": "AC@1",
+          "point_delta": -0.05555555555555555,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "Avg@5": {
+          "ci95": [
+            -0.05333333333333333,
+            0.013333333333333336
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": -0.013333333333333338,
+            "disk": 0.0,
+            "loss": -0.013333333333333324,
+            "mem": -0.04,
+            "socket": -0.05333333333333334
+          },
+          "direction": "tcn - ada",
+          "left": "tcn",
+          "metric": "Avg@5",
+          "point_delta": -0.019999999999999997,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "MRR": {
+          "ci95": [
+            -0.07777777777777778,
+            0.009259259259259257
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": -0.011111111111111117,
+            "disk": 0.0,
+            "loss": -0.12222222222222222,
+            "mem": -0.05,
+            "socket": -0.022222222222222223
+          },
+          "direction": "tcn - ada",
+          "left": "tcn",
+          "metric": "MRR",
+          "point_delta": -0.03425925925925927,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        }
+      },
+      "z1_xgb_minus_ada": {
+        "AC@1": {
+          "ci95": [
+            -0.044444444444444446,
+            0.06666666666666667
+          ],
+          "delta_by_fault": {
+            "cpu": -0.06666666666666667,
+            "delay": 0.13333333333333333,
+            "disk": 0.0,
+            "loss": 0.0,
+            "mem": 0.0,
+            "socket": 0.0
+          },
+          "direction": "z1_xgb - ada",
+          "left": "z1_xgb",
+          "metric": "AC@1",
+          "point_delta": 0.011111111111111112,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "Avg@5": {
+          "ci95": [
+            -0.03333333333333333,
+            0.022222222222222223
+          ],
+          "delta_by_fault": {
+            "cpu": -0.05333333333333334,
+            "delay": 0.02666666666666666,
+            "disk": 0.0,
+            "loss": 0.0,
+            "mem": 0.0,
+            "socket": 0.0
+          },
+          "direction": "z1_xgb - ada",
+          "left": "z1_xgb",
+          "metric": "Avg@5",
+          "point_delta": -0.004444444444444447,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "MRR": {
+          "ci95": [
+            -0.03153439153439153,
+            0.03518518518518519
+          ],
+          "delta_by_fault": {
+            "cpu": -0.05333333333333334,
+            "delay": 0.06666666666666667,
+            "disk": 0.0,
+            "loss": -0.001587301587301589,
+            "mem": 0.0,
+            "socket": 0.0
+          },
+          "direction": "z1_xgb - ada",
+          "left": "z1_xgb",
+          "metric": "MRR",
+          "point_delta": 0.001957671957671958,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        }
+      },
+      "z2_xgb_minus_ada": {
+        "AC@1": {
+          "ci95": [
+            -0.022222222222222223,
+            0.044444444444444446
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": 0.0,
+            "disk": 0.0,
+            "loss": 0.0,
+            "mem": 0.0,
+            "socket": 0.06666666666666667
+          },
+          "direction": "z2_xgb - ada",
+          "left": "z2_xgb",
+          "metric": "AC@1",
+          "point_delta": 0.011111111111111112,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "Avg@5": {
+          "ci95": [
+            -0.024444444444444446,
+            0.026666666666666665
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": -0.013333333333333338,
+            "disk": 0.0,
+            "loss": 0.0,
+            "mem": 0.0,
+            "socket": 0.01333333333333333
+          },
+          "direction": "z2_xgb - ada",
+          "left": "z2_xgb",
+          "metric": "Avg@5",
+          "point_delta": -1.2335811384723962e-18,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "MRR": {
+          "ci95": [
+            -0.018518518518518524,
+            0.02592592592592593
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": -0.011111111111111112,
+            "disk": 0.0,
+            "loss": 0.0,
+            "mem": 0.0,
+            "socket": 0.03333333333333333
+          },
+          "direction": "z2_xgb - ada",
+          "left": "z2_xgb",
+          "metric": "MRR",
+          "point_delta": 0.0037037037037037034,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        }
+      },
+      "z2_xgb_minus_z1_xgb": {
+        "AC@1": {
+          "ci95": [
+            -0.05555555555555555,
+            0.05555555555555555
+          ],
+          "delta_by_fault": {
+            "cpu": 0.06666666666666667,
+            "delay": -0.13333333333333333,
+            "disk": 0.0,
+            "loss": 0.0,
+            "mem": 0.0,
+            "socket": 0.06666666666666667
+          },
+          "direction": "z2_xgb - z1_xgb",
+          "left": "z2_xgb",
+          "metric": "AC@1",
+          "point_delta": 0.0,
+          "resamples": 10000,
+          "right": "z1_xgb",
+          "seed": 20260826
+        },
+        "Avg@5": {
+          "ci95": [
+            -0.013333333333333336,
+            0.026666666666666672
+          ],
+          "delta_by_fault": {
+            "cpu": 0.05333333333333334,
+            "delay": -0.04,
+            "disk": 0.0,
+            "loss": 0.0,
+            "mem": 0.0,
+            "socket": 0.01333333333333333
+          },
+          "direction": "z2_xgb - z1_xgb",
+          "left": "z2_xgb",
+          "metric": "Avg@5",
+          "point_delta": 0.0044444444444444444,
+          "resamples": 10000,
+          "right": "z1_xgb",
+          "seed": 20260826
+        },
+        "MRR": {
+          "ci95": [
+            -0.027883597883597882,
+            0.0325925925925926
+          ],
+          "delta_by_fault": {
+            "cpu": 0.05333333333333334,
+            "delay": -0.07777777777777778,
+            "disk": 0.0,
+            "loss": 0.0015873015873015873,
+            "mem": 0.0,
+            "socket": 0.03333333333333333
+          },
+          "direction": "z2_xgb - z1_xgb",
+          "left": "z2_xgb",
+          "metric": "MRR",
+          "point_delta": 0.0017460317460317473,
+          "resamples": 10000,
+          "right": "z1_xgb",
+          "seed": 20260826
+        }
+      }
+    },
+    "re2tt": {
+      "tcn_minus_ada": {
+        "AC@1": {
+          "ci95": [
+            -0.03333333333333333,
+            0.14444444444444443
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": 0.2,
+            "disk": 0.0,
+            "loss": 0.13333333333333333,
+            "mem": 0.06666666666666667,
+            "socket": -0.06666666666666667
+          },
+          "direction": "tcn - ada",
+          "left": "tcn",
+          "metric": "AC@1",
+          "point_delta": 0.05555555555555555,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "Avg@5": {
+          "ci95": [
+            -0.015555555555555562,
+            0.08666666666666667
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": 0.16,
+            "disk": 0.0,
+            "loss": 0.09333333333333331,
+            "mem": 0.06666666666666668,
+            "socket": -0.10666666666666667
+          },
+          "direction": "tcn - ada",
+          "left": "tcn",
+          "metric": "Avg@5",
+          "point_delta": 0.03555555555555555,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "MRR": {
+          "ci95": [
+            -0.015734086900753567,
+            0.10066034017422906
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": 0.18258136924803592,
+            "disk": 0.0,
+            "loss": 0.09833333333333334,
+            "mem": 0.06444444444444446,
+            "socket": -0.08777777777777779
+          },
+          "direction": "tcn - ada",
+          "left": "tcn",
+          "metric": "MRR",
+          "point_delta": 0.04293022820800599,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        }
+      },
+      "z1_xgb_minus_ada": {
+        "AC@1": {
+          "ci95": [
+            0.011111111111111112,
+            0.18888888888888888
+          ],
+          "delta_by_fault": {
+            "cpu": 0.06666666666666667,
+            "delay": 0.26666666666666666,
+            "disk": 0.0,
+            "loss": 0.0,
+            "mem": 0.13333333333333333,
+            "socket": 0.13333333333333333
+          },
+          "direction": "z1_xgb - ada",
+          "left": "z1_xgb",
+          "metric": "AC@1",
+          "point_delta": 0.1,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "Avg@5": {
+          "ci95": [
+            0.008888888888888885,
+            0.0911111111111111
+          ],
+          "delta_by_fault": {
+            "cpu": 0.01333333333333333,
+            "delay": 0.09333333333333332,
+            "disk": 0.0,
+            "loss": 0.08,
+            "mem": 0.08000000000000002,
+            "socket": 0.02666666666666666
+          },
+          "direction": "z1_xgb - ada",
+          "left": "z1_xgb",
+          "metric": "Avg@5",
+          "point_delta": 0.04888888888888889,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "MRR": {
+          "ci95": [
+            0.013728868510269478,
+            0.12297682861511364
+          ],
+          "delta_by_fault": {
+            "cpu": 0.03333333333333333,
+            "delay": 0.16659103108378473,
+            "disk": 0.0,
+            "loss": 0.04467103749712445,
+            "mem": 0.09777777777777778,
+            "socket": 0.06666666666666667
+          },
+          "direction": "z1_xgb - ada",
+          "left": "z1_xgb",
+          "metric": "MRR",
+          "point_delta": 0.06817330772644782,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        }
+      },
+      "z2_xgb_minus_ada": {
+        "AC@1": {
+          "ci95": [
+            0.03333333333333333,
+            0.18888888888888888
+          ],
+          "delta_by_fault": {
+            "cpu": 0.06666666666666667,
+            "delay": 0.26666666666666666,
+            "disk": 0.0,
+            "loss": 0.2,
+            "mem": 0.13333333333333333,
+            "socket": 0.0
+          },
+          "direction": "z2_xgb - ada",
+          "left": "z2_xgb",
+          "metric": "AC@1",
+          "point_delta": 0.1111111111111111,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "Avg@5": {
+          "ci95": [
+            -0.0022222222222222253,
+            0.07777777777777778
+          ],
+          "delta_by_fault": {
+            "cpu": -7.401486830834377e-18,
+            "delay": 0.08,
+            "disk": 0.0,
+            "loss": 0.07999999999999999,
+            "mem": 0.08000000000000002,
+            "socket": -0.013333333333333338
+          },
+          "direction": "z2_xgb - ada",
+          "left": "z2_xgb",
+          "metric": "Avg@5",
+          "point_delta": 0.03777777777777777,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        },
+        "MRR": {
+          "ci95": [
+            0.01431652298318965,
+            0.11824520001603335
+          ],
+          "delta_by_fault": {
+            "cpu": 0.022222222222222216,
+            "delay": 0.15761460761460763,
+            "disk": 0.0,
+            "loss": 0.1264814814814815,
+            "mem": 0.09777777777777778,
+            "socket": -0.011111111111111117
+          },
+          "direction": "z2_xgb - ada",
+          "left": "z2_xgb",
+          "metric": "MRR",
+          "point_delta": 0.06549749633082967,
+          "resamples": 10000,
+          "right": "ada",
+          "seed": 20260826
+        }
+      },
+      "z2_xgb_minus_z1_xgb": {
+        "AC@1": {
+          "ci95": [
+            -0.05555555555555555,
+            0.07777777777777778
+          ],
+          "delta_by_fault": {
+            "cpu": 0.0,
+            "delay": 0.0,
+            "disk": 0.0,
+            "loss": 0.2,
+            "mem": 0.0,
+            "socket": -0.13333333333333333
+          },
+          "direction": "z2_xgb - z1_xgb",
+          "left": "z2_xgb",
+          "metric": "AC@1",
+          "point_delta": 0.011111111111111112,
+          "resamples": 10000,
+          "right": "z1_xgb",
+          "seed": 20260826
+        },
+        "Avg@5": {
+          "ci95": [
+            -0.04666666666666667,
+            0.019999999999999997
+          ],
+          "delta_by_fault": {
+            "cpu": -0.013333333333333338,
+            "delay": -0.01333333333333333,
+            "disk": 0.0,
+            "loss": -1.4802973661668754e-17,
+            "mem": 0.0,
+            "socket": -0.04
+          },
+          "direction": "z2_xgb - z1_xgb",
+          "left": "z2_xgb",
+          "metric": "Avg@5",
+          "point_delta": -0.011111111111111113,
+          "resamples": 10000,
+          "right": "z1_xgb",
+          "seed": 20260826
+        },
+        "MRR": {
+          "ci95": [
+            -0.04060454577181632,
+            0.03452431704545231
+          ],
+          "delta_by_fault": {
+            "cpu": -0.011111111111111112,
+            "delay": -0.00897642346917709,
+            "disk": 0.0,
+            "loss": 0.08181044398435701,
+            "mem": 0.0,
+            "socket": -0.07777777777777778
+          },
+          "direction": "z2_xgb - z1_xgb",
+          "left": "z2_xgb",
+          "metric": "MRR",
+          "point_delta": -0.0026758113956181612,
+          "resamples": 10000,
+          "right": "z1_xgb",
+          "seed": 20260826
+        }
+      }
+    }
+  },
+  "provenance": {
+    "generated_at": "2026-09-12T16:03:55.523099+00:00",
+    "input_artifacts": {
+      "ada": "artifacts/final_method/{dataset}",
+      "tcn": "artifacts/supervised_baselines/tcn/{dataset}/aggregate",
+      "z1_xgb": "artifacts/supervised_baselines/xgb_ranker/{dataset}/aggregate",
+      "z2_xgb": "artifacts/z2_xgb_closure/z2_xgb/{dataset}/aggregate"
+    },
+    "protocol": "docs/z2_xgb_closure/Z2_XGB_CLOSURE_PROTOCOL_V1.md",
+    "source": {
+      "branch": "evaluation/z2-xgb-closure",
+      "commit": "a66032122587a95dee3bc53e27e6e1a2b59c0065"
+    },
+    "z1_cl": {
+      "re2ob": {
+        "checksums": {
+          "config.json": "6d7d04dcc84a64d66f162368751e9e6c6c71fcb427b4194ebf5e7c04819a69b1",
+          "environment.json": "04919449c1c78af912d5e50a13fdbf03e51f79ded221953fd91473a7e13c7295",
+          "fit_summary.json": "18ae83d7372bdf60e51f261cd7a01c9e8b7cbe3044dd72105a39153554bba933",
+          "manifest.json": "8b24c2072b805b9d983e8d91c3a93deae257390c54f7824d03048bd19a5f1cae",
+          "metrics.json": "b59baff4d59563636c9abb18a16352388cf7e9b3a12229f3a11c350ba7e72869",
+          "model_input_manifest.json": "88a752ed610579bd7a5b74bf9cf8ef200afca743118bdf66df6983981f2bdc64",
+          "predictions.jsonl": "427671d9da42f2dc289b53bb6391d4a60a5c7b528047a6795790a9c8044106d9",
+          "runtime.json": "ad3f12e0307daebc64626f75e4a0bb5d4f259d67b99dadc6fccf3da4719328bd"
+        },
+        "commit": "d36ad67",
+        "config": {
+          "gradient_tolerance": 1e-08,
+          "lambda": 1.0,
+          "max_iter": 1000,
+          "optimizer": "scipy.optimize.minimize:L-BFGS-B",
+          "relative": false,
+          "representation": "z1",
+          "scaler": "StandardScaler train-fold candidate rows only",
+          "seed": 20260826,
+          "split": "frozen P3 3-fold OOF",
+          "variant": "a0"
+        },
+        "manifest": {
+          "dataset": "re2ob",
+          "dataset_manifest_sha256": "c0f830b4b89256fe1fe8b69d425173731769268a6e5869a3ade53bcdc0d8bbfc",
+          "feature_manifest_sha256": "cc171f32c7642c6ddbe59b5b52bb6f8351dd8d8a35289144277900bbbb1da4ed",
+          "git_commit": "4d754f6759ca5b25ae2d8abaeba57247c9f22e29",
+          "schema_version": "p4_g0_run_v1",
+          "split_manifest_sha256": "a672d12be89e91efd7fe69cdf81713b3d18482bba6b46620b0bfd0b4ff7bfd62",
+          "timestamp": "2026-08-26T16:52:08.487009+00:00",
+          "variant": "a0"
+        },
+        "path": "artifacts/p4_g0/predictions/a0/re2ob/metrics.json"
+      },
+      "re2tt": {
+        "checksums": {
+          "config.json": "6d7d04dcc84a64d66f162368751e9e6c6c71fcb427b4194ebf5e7c04819a69b1",
+          "environment.json": "04919449c1c78af912d5e50a13fdbf03e51f79ded221953fd91473a7e13c7295",
+          "fit_summary.json": "1ce10cf86d29c673c5a423a5c8c711824a911afe7a4856b4cadd1a00eab697b3",
+          "manifest.json": "3ff807586e44afce54d1461c998862bd31fa94e1d9f8f0f93f497466824c0b8a",
+          "metrics.json": "98ce68902bbdd4386881cc5fdcdfb802b5c321368e3ae65982365b3c604d9df7",
+          "model_input_manifest.json": "fb7dee19a6bf03fc5b729cb52dab52a0b0d8066a64676b1bdd3ecd4c689d75bc",
+          "predictions.jsonl": "ffedb6b4a79f09984c8f56353388cdf1825b75470fe591614113b84af10d84c4",
+          "runtime.json": "87ebb56821adb3d94706632160d02ddc0ef96ddf35b278676f9e3f7dfc611f9b"
+        },
+        "commit": "d36ad67",
+        "config": {
+          "gradient_tolerance": 1e-08,
+          "lambda": 1.0,
+          "max_iter": 1000,
+          "optimizer": "scipy.optimize.minimize:L-BFGS-B",
+          "relative": false,
+          "representation": "z1",
+          "scaler": "StandardScaler train-fold candidate rows only",
+          "seed": 20260826,
+          "split": "frozen P3 3-fold OOF",
+          "variant": "a0"
+        },
+        "manifest": {
+          "dataset": "re2tt",
+          "dataset_manifest_sha256": "710901cb6a86fcf7537929f594af723be3d4d600364efde1ad397c707646b9d8",
+          "feature_manifest_sha256": "ac0424a4018624a61e993649e2b94c678838a2d02dfc4bf8f5c1b0694a145256",
+          "git_commit": "4d754f6759ca5b25ae2d8abaeba57247c9f22e29",
+          "schema_version": "p4_g0_run_v1",
+          "split_manifest_sha256": "3c3947d6377433507ca1ea6b69d88f6d8f359b42937bbcff1a7ac98422f05d7e",
+          "timestamp": "2026-08-26T16:52:10.251432+00:00",
+          "variant": "a0"
+        },
+        "path": "artifacts/p4_g0/predictions/a0/re2tt/metrics.json"
+      }
+    }
+  },
+  "rank_transition_summaries": {
+    "re2ob": {
+      "tcn_vs_ada": {
+        "by_fault": {
+          "cpu": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "delay": {
+            "degraded": 1,
+            "improved": 1,
+            "unchanged": 13
+          },
+          "disk": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "loss": {
+            "degraded": 5,
+            "improved": 2,
+            "unchanged": 8
+          },
+          "mem": {
+            "degraded": 2,
+            "improved": 1,
+            "unchanged": 12
+          },
+          "socket": {
+            "degraded": 2,
+            "improved": 1,
+            "unchanged": 12
+          }
+        },
+        "by_fold": {
+          "0": {
+            "degraded": 4,
+            "improved": 2,
+            "unchanged": 24
+          },
+          "1": {
+            "degraded": 4,
+            "improved": 2,
+            "unchanged": 24
+          },
+          "2": {
+            "degraded": 2,
+            "improved": 1,
+            "unchanged": 27
+          }
+        },
+        "by_root": {
+          "checkoutservice": {
+            "degraded": 2,
+            "improved": 1,
+            "unchanged": 15
+          },
+          "currencyservice": {
+            "degraded": 3,
+            "improved": 4,
+            "unchanged": 11
+          },
+          "emailservice": {
+            "degraded": 1,
+            "improved": 0,
+            "unchanged": 17
+          },
+          "productcatalogservice": {
+            "degraded": 3,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "recommendationservice": {
+            "degraded": 1,
+            "improved": 0,
+            "unchanged": 17
+          }
+        },
+        "case_count": 90,
+        "overall": {
+          "degraded": 10,
+          "improved": 5,
+          "unchanged": 75
+        }
+      },
+      "z1_xgb_vs_ada": {
+        "by_fault": {
+          "cpu": {
+            "degraded": 1,
+            "improved": 0,
+            "unchanged": 14
+          },
+          "delay": {
+            "degraded": 1,
+            "improved": 2,
+            "unchanged": 12
+          },
+          "disk": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "loss": {
+            "degraded": 2,
+            "improved": 2,
+            "unchanged": 11
+          },
+          "mem": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "socket": {
+            "degraded": 1,
+            "improved": 1,
+            "unchanged": 13
+          }
+        },
+        "by_fold": {
+          "0": {
+            "degraded": 2,
+            "improved": 2,
+            "unchanged": 26
+          },
+          "1": {
+            "degraded": 2,
+            "improved": 2,
+            "unchanged": 26
+          },
+          "2": {
+            "degraded": 1,
+            "improved": 1,
+            "unchanged": 28
+          }
+        },
+        "by_root": {
+          "checkoutservice": {
+            "degraded": 2,
+            "improved": 3,
+            "unchanged": 13
+          },
+          "currencyservice": {
+            "degraded": 1,
+            "improved": 2,
+            "unchanged": 15
+          },
+          "emailservice": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 18
+          },
+          "productcatalogservice": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 18
+          },
+          "recommendationservice": {
+            "degraded": 2,
+            "improved": 0,
+            "unchanged": 16
+          }
+        },
+        "case_count": 90,
+        "overall": {
+          "degraded": 5,
+          "improved": 5,
+          "unchanged": 80
+        }
+      },
+      "z2_xgb_vs_ada": {
+        "by_fault": {
+          "cpu": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "delay": {
+            "degraded": 1,
+            "improved": 0,
+            "unchanged": 14
+          },
+          "disk": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "loss": {
+            "degraded": 2,
+            "improved": 2,
+            "unchanged": 11
+          },
+          "mem": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "socket": {
+            "degraded": 0,
+            "improved": 1,
+            "unchanged": 14
+          }
+        },
+        "by_fold": {
+          "0": {
+            "degraded": 1,
+            "improved": 2,
+            "unchanged": 27
+          },
+          "1": {
+            "degraded": 1,
+            "improved": 1,
+            "unchanged": 28
+          },
+          "2": {
+            "degraded": 1,
+            "improved": 0,
+            "unchanged": 29
+          }
+        },
+        "by_root": {
+          "checkoutservice": {
+            "degraded": 1,
+            "improved": 0,
+            "unchanged": 17
+          },
+          "currencyservice": {
+            "degraded": 1,
+            "improved": 3,
+            "unchanged": 14
+          },
+          "emailservice": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 18
+          },
+          "productcatalogservice": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 18
+          },
+          "recommendationservice": {
+            "degraded": 1,
+            "improved": 0,
+            "unchanged": 17
+          }
+        },
+        "case_count": 90,
+        "overall": {
+          "degraded": 3,
+          "improved": 3,
+          "unchanged": 84
+        }
+      },
+      "z2_xgb_vs_z1_xgb": {
+        "by_fault": {
+          "cpu": {
+            "degraded": 0,
+            "improved": 1,
+            "unchanged": 14
+          },
+          "delay": {
+            "degraded": 2,
+            "improved": 0,
+            "unchanged": 13
+          },
+          "disk": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "loss": {
+            "degraded": 1,
+            "improved": 2,
+            "unchanged": 12
+          },
+          "mem": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "socket": {
+            "degraded": 1,
+            "improved": 2,
+            "unchanged": 12
+          }
+        },
+        "by_fold": {
+          "0": {
+            "degraded": 2,
+            "improved": 3,
+            "unchanged": 25
+          },
+          "1": {
+            "degraded": 1,
+            "improved": 1,
+            "unchanged": 28
+          },
+          "2": {
+            "degraded": 1,
+            "improved": 1,
+            "unchanged": 28
+          }
+        },
+        "by_root": {
+          "checkoutservice": {
+            "degraded": 3,
+            "improved": 1,
+            "unchanged": 14
+          },
+          "currencyservice": {
+            "degraded": 0,
+            "improved": 3,
+            "unchanged": 15
+          },
+          "emailservice": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 18
+          },
+          "productcatalogservice": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 18
+          },
+          "recommendationservice": {
+            "degraded": 1,
+            "improved": 1,
+            "unchanged": 16
+          }
+        },
+        "case_count": 90,
+        "overall": {
+          "degraded": 4,
+          "improved": 5,
+          "unchanged": 81
+        }
+      }
+    },
+    "re2tt": {
+      "tcn_vs_ada": {
+        "by_fault": {
+          "cpu": {
+            "degraded": 2,
+            "improved": 2,
+            "unchanged": 11
+          },
+          "delay": {
+            "degraded": 3,
+            "improved": 7,
+            "unchanged": 5
+          },
+          "disk": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "loss": {
+            "degraded": 2,
+            "improved": 7,
+            "unchanged": 6
+          },
+          "mem": {
+            "degraded": 1,
+            "improved": 2,
+            "unchanged": 12
+          },
+          "socket": {
+            "degraded": 3,
+            "improved": 1,
+            "unchanged": 11
+          }
+        },
+        "by_fold": {
+          "0": {
+            "degraded": 5,
+            "improved": 6,
+            "unchanged": 19
+          },
+          "1": {
+            "degraded": 5,
+            "improved": 8,
+            "unchanged": 17
+          },
+          "2": {
+            "degraded": 1,
+            "improved": 5,
+            "unchanged": 24
+          }
+        },
+        "by_root": {
+          "ts-auth-service": {
+            "degraded": 3,
+            "improved": 4,
+            "unchanged": 11
+          },
+          "ts-order-service": {
+            "degraded": 3,
+            "improved": 3,
+            "unchanged": 12
+          },
+          "ts-route-service": {
+            "degraded": 2,
+            "improved": 3,
+            "unchanged": 13
+          },
+          "ts-train-service": {
+            "degraded": 0,
+            "improved": 7,
+            "unchanged": 11
+          },
+          "ts-travel-service": {
+            "degraded": 3,
+            "improved": 2,
+            "unchanged": 13
+          }
+        },
+        "case_count": 90,
+        "overall": {
+          "degraded": 11,
+          "improved": 19,
+          "unchanged": 60
+        }
+      },
+      "z1_xgb_vs_ada": {
+        "by_fault": {
+          "cpu": {
+            "degraded": 2,
+            "improved": 3,
+            "unchanged": 10
+          },
+          "delay": {
+            "degraded": 4,
+            "improved": 6,
+            "unchanged": 5
+          },
+          "disk": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "loss": {
+            "degraded": 5,
+            "improved": 7,
+            "unchanged": 3
+          },
+          "mem": {
+            "degraded": 0,
+            "improved": 2,
+            "unchanged": 13
+          },
+          "socket": {
+            "degraded": 0,
+            "improved": 2,
+            "unchanged": 13
+          }
+        },
+        "by_fold": {
+          "0": {
+            "degraded": 2,
+            "improved": 8,
+            "unchanged": 20
+          },
+          "1": {
+            "degraded": 5,
+            "improved": 7,
+            "unchanged": 18
+          },
+          "2": {
+            "degraded": 4,
+            "improved": 5,
+            "unchanged": 21
+          }
+        },
+        "by_root": {
+          "ts-auth-service": {
+            "degraded": 3,
+            "improved": 2,
+            "unchanged": 13
+          },
+          "ts-order-service": {
+            "degraded": 0,
+            "improved": 4,
+            "unchanged": 14
+          },
+          "ts-route-service": {
+            "degraded": 3,
+            "improved": 3,
+            "unchanged": 12
+          },
+          "ts-train-service": {
+            "degraded": 1,
+            "improved": 7,
+            "unchanged": 10
+          },
+          "ts-travel-service": {
+            "degraded": 4,
+            "improved": 4,
+            "unchanged": 10
+          }
+        },
+        "case_count": 90,
+        "overall": {
+          "degraded": 11,
+          "improved": 20,
+          "unchanged": 59
+        }
+      },
+      "z2_xgb_vs_ada": {
+        "by_fault": {
+          "cpu": {
+            "degraded": 2,
+            "improved": 3,
+            "unchanged": 10
+          },
+          "delay": {
+            "degraded": 2,
+            "improved": 4,
+            "unchanged": 9
+          },
+          "disk": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "loss": {
+            "degraded": 4,
+            "improved": 6,
+            "unchanged": 5
+          },
+          "mem": {
+            "degraded": 0,
+            "improved": 2,
+            "unchanged": 13
+          },
+          "socket": {
+            "degraded": 1,
+            "improved": 1,
+            "unchanged": 13
+          }
+        },
+        "by_fold": {
+          "0": {
+            "degraded": 4,
+            "improved": 5,
+            "unchanged": 21
+          },
+          "1": {
+            "degraded": 3,
+            "improved": 5,
+            "unchanged": 22
+          },
+          "2": {
+            "degraded": 2,
+            "improved": 6,
+            "unchanged": 22
+          }
+        },
+        "by_root": {
+          "ts-auth-service": {
+            "degraded": 4,
+            "improved": 1,
+            "unchanged": 13
+          },
+          "ts-order-service": {
+            "degraded": 1,
+            "improved": 2,
+            "unchanged": 15
+          },
+          "ts-route-service": {
+            "degraded": 0,
+            "improved": 3,
+            "unchanged": 15
+          },
+          "ts-train-service": {
+            "degraded": 0,
+            "improved": 7,
+            "unchanged": 11
+          },
+          "ts-travel-service": {
+            "degraded": 4,
+            "improved": 3,
+            "unchanged": 11
+          }
+        },
+        "case_count": 90,
+        "overall": {
+          "degraded": 9,
+          "improved": 16,
+          "unchanged": 65
+        }
+      },
+      "z2_xgb_vs_z1_xgb": {
+        "by_fault": {
+          "cpu": {
+            "degraded": 2,
+            "improved": 1,
+            "unchanged": 12
+          },
+          "delay": {
+            "degraded": 3,
+            "improved": 2,
+            "unchanged": 10
+          },
+          "disk": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "loss": {
+            "degraded": 3,
+            "improved": 6,
+            "unchanged": 6
+          },
+          "mem": {
+            "degraded": 0,
+            "improved": 0,
+            "unchanged": 15
+          },
+          "socket": {
+            "degraded": 2,
+            "improved": 0,
+            "unchanged": 13
+          }
+        },
+        "by_fold": {
+          "0": {
+            "degraded": 3,
+            "improved": 1,
+            "unchanged": 26
+          },
+          "1": {
+            "degraded": 5,
+            "improved": 4,
+            "unchanged": 21
+          },
+          "2": {
+            "degraded": 2,
+            "improved": 4,
+            "unchanged": 24
+          }
+        },
+        "by_root": {
+          "ts-auth-service": {
+            "degraded": 4,
+            "improved": 2,
+            "unchanged": 12
+          },
+          "ts-order-service": {
+            "degraded": 2,
+            "improved": 0,
+            "unchanged": 16
+          },
+          "ts-route-service": {
+            "degraded": 0,
+            "improved": 3,
+            "unchanged": 15
+          },
+          "ts-train-service": {
+            "degraded": 0,
+            "improved": 1,
+            "unchanged": 17
+          },
+          "ts-travel-service": {
+            "degraded": 4,
+            "improved": 3,
+            "unchanged": 11
+          }
+        },
+        "case_count": 90,
+        "overall": {
+          "degraded": 10,
+          "improved": 9,
+          "unchanged": 71
+        }
+      }
+    }
+  },
+  "schema_version": "z2_xgb_scientific_closure_diagnostics_v1"
+}
