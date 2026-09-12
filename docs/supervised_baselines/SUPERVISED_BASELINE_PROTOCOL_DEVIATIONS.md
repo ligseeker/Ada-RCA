@@ -83,3 +83,16 @@ This is a disclosed environment difference with exact non-impact evidence.
 The first `FAIL` audit artifact is retained as chronological diagnostic
 evidence until superseded by a new create-once attempt; it is not an input or
 result artifact.
+
+## A5: DejaVu minimal environment closure preflight
+
+- Detected: 2026-09-12 after isolated-environment installation and before
+  DejaVu dataset preparation, training, prediction, or result inspection.
+- Observed: `pip check` passed, but importing the pinned official GAT path
+  failed because `utils/load_model.py` imports the official requirement
+  `regex`, which the initial minimal runtime closure omitted.
+- Correction: add the upstream-pinned `regex==2021.11.10` requirement and
+  rerun the import/graph smoke test. The environment remains isolated at
+  `~/.venvs/ada-rca-dejavu`; no existing baseline environment is modified.
+- Scientific impact: none. This restores an official runtime dependency and
+  changes no data, topology, model, loss, split, seed, or hyperparameter.
