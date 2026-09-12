@@ -1,0 +1,17 @@
+# Minimal runtime closure for the official DejaVu GAT path at
+# d1f082b086cef5597f5301a7b02882b5d0238ebe. Torch 1.12.0 is inherited from
+# the read-only Python 3.8 base environment; this file is installed only into
+# ~/.venvs/ada-rca-dejavu.
+dgl==0.8.2
+networkx==2.6.3
+pytorch-lightning==1.6.5
+torchmetrics==0.9.3
+diskcache==5.2.1
+loguru==0.5.3
+pyprof==0.0.7
+torchinfo==1.5.4
+typed-argument-parser==1.7.2
+einops==0.3.2
+dill==0.3.4
+tqdm==4.62.3
+PyYAML==6.0.1
