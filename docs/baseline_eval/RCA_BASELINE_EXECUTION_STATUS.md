@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **POST-LOCK INDEPENDENT BASELINE AUDIT COMPLETE — CAUSALRCA RUNTIME NOT EXECUTED**
-State revision: `2026-09-12.2`
+State revision: `2026-09-12.3`
 Last operational audit: 2026-09-12, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `1ccad06` audit evidence-preserving revert; this handoff follows
+Last synchronized central commit: `8077f57` fault-level audit handoff; report wording clarification follows
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -454,7 +454,9 @@ CausalRCA extension lock verify centrally.
   `rcaeval_service_slot` follows pinned native entity projection and the
   pinned `Evaluator`'s non-deduplicated slot Top-K behavior. The old 14 metric
   rows equal the fresh `unique_service` raw-hit recomputation; both protocols
-  are published without performance-based selection.
+  are published without performance-based selection. CausalRCA's full slot
+  and unique rankings differ because slot projection retains native duplicates,
+  although their frozen K=1..5 root-hit counts happen to match.
 - Static method-source review confirmed the pinned BARO/mmBARO, CIRCA,
   MicroCause, MicroRank, and TraceRCA paths and their failure counts. CIRCA's
   pinned TT `dataset="ob"` argument is recorded as upstream behavior, not a

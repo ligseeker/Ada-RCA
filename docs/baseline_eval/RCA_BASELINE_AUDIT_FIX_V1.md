@@ -161,7 +161,7 @@ Synthetic test: `A_cpu, A_mem, B_cpu, C_cpu` with target `C` produces `A,B,C` an
 | CausalRCA | RE2-TT | AC@5 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
 | CausalRCA | RE2-TT | Avg@5 | 0.0000000000 | 0.0000000000 | 0.0000000000 | 0.0000000000 |
 
-The old values identity-check against the recomputed unique-service values for every reported metric. This is evidence that the current table is not a successful-case-only or post-hoc fraction calculation. The slot protocol lowers some Top-K values where duplicate operations/indicators occupy native slots; for CausalRCA the pinned entity projection happens to match the local service projection in these records.
+The old values identity-check against the recomputed unique-service values for every reported metric. This is evidence that the current table is not a successful-case-only or post-hoc fraction calculation. The slot protocol lowers some Top-K values where duplicate operations/indicators occupy native slots. CausalRCA's slot and unique representations are also different in full length/content because the slot protocol retains native duplicates; in these frozen records, however, the root-membership hit counts at K=1..5 happen to be identical under both protocols.
 
 ## 7. Protocol Difference Cases
 
