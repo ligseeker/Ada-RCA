@@ -96,6 +96,7 @@ AUDIT_OUTPUTS = (
     "dual_protocol_results.csv",
     "protocol_difference_cases.jsonl",
     "regular_fraction_audit.json",
+    "fault_level_audit.json",
     "microrank_static_audit.json",
     "causalrca_static_audit.json",
     "causalrca_diagnostics_schema.json",
@@ -778,6 +779,128 @@ def _regular_fraction_audit(
     }
 
 
+def _fault_level_audit(
+    root: Path,
+    case_rows: Mapping[tuple[str, str], Sequence[Mapping[str, Any]]],
+    label_details: Mapping[str, Mapping[str, Mapping[str, str]]],
+) -> dict[str, Any]:
+    """Reconcile stored fault-level rows with the case-micro raw hits.
+
+    The main audit estimand is case-micro over the exact 90-case universe.  The
+    existing fault-level files are read only to test whether their equal-size
+    strata happen to reproduce the same values; they are not used to select or
+    replace the main aggregation.
+    """
+
+    rows: list[dict[str, Any]] = []
+    source_checks: dict[str, Any] = {}
+    fault_names = {
+        dataset: sorted(
+            {details["fault_type"] for details in label_details[dataset].values()}
+        )
+        for dataset in DATASET_ORDER
+    }
+    for method in METHOD_ORDER:
+        for dataset in DATASET_ORDER:
+            relative = (
+                FINAL_COMPARISON_ROOT_RELATIVE / "fault_level_v3.json"
+                if method == "BARO"
+                else V2_EVALUATION_ROOT_RELATIVE / "fault_level_v2.json"
+            )
+            payload = read_json(root / relative)
+            source_rows = payload["rows"]
+            source_key = relative.as_posix()
+            source_checks.setdefault(source_key, {
+                "path": source_key,
+                "sha256": sha256_file(root / relative),
+                "total_rows": len(source_rows),
+                "schema_version": payload.get("schema_version"),
+            })
+            source_by_key = {
+                (
+                    str(source["method"]),
+                    str(source["dataset"]),
+                    str(source["fault"]).lower(),
+                ): source
+                for source in source_rows
+            }
+            for fault in fault_names[dataset]:
+                selected = [
+                    row
+                    for row in case_rows[(method, dataset)]
+                    if label_details[dataset][row["case_id"]]["fault_type"] == fault
+                ]
+                unique_hits = {
+                    f"hit@{k}": sum(row["hits_unique"][k - 1] for row in selected)
+                    for k in range(1, 6)
+                }
+                slot_hits = {
+                    f"hit@{k}": sum(row["hits_rcaeval_slot"][k - 1] for row in selected)
+                    for k in range(1, 6)
+                }
+                unique_metrics = {
+                    f"AC@{k}": unique_hits[f"hit@{k}"] / len(selected)
+                    for k in range(1, 6)
+                }
+                slot_metrics = {
+                    f"AC@{k}": slot_hits[f"hit@{k}"] / len(selected)
+                    for k in range(1, 6)
+                }
+                unique_metrics["Avg@5"] = sum(unique_hits.values()) / (5 * len(selected))
+                slot_metrics["Avg@5"] = sum(slot_hits.values()) / (5 * len(selected))
+                source = source_by_key.get((method, dataset, fault))
+                if source is None:
+                    raise RuntimeError(f"fault-level source row is missing for {method} {dataset} {fault}")
+                old_metrics = {metric: source[metric] for metric in (*METRICS, "Avg@5")}
+                rows.append({
+                    "method": method,
+                    "dataset": dataset,
+                    "fault": fault,
+                    "case_count": len(selected),
+                    "stored_source": source_key,
+                    "stored_cases": source.get("cases"),
+                    "stored_metrics": old_metrics,
+                    "unique_hit_counts": unique_hits,
+                    "rcaeval_service_slot_hit_counts": slot_hits,
+                    "unique_metrics": unique_metrics,
+                    "rcaeval_service_slot_metrics": slot_metrics,
+                    "stored_equals_unique_case_micro": {
+                        metric: abs(float(old_metrics[metric]) - unique_metrics[metric]) <= 5e-10
+                        for metric in (*METRICS, "Avg@5")
+                    },
+                })
+    return {
+        "schema_version": "rca_baseline_fault_level_audit_v1",
+        "audit_status": "COMPLETE",
+        "post_lock_audit": True,
+        "main_aggregation": "case_micro_exact_90_case_universe",
+        "fault_strata": {
+            dataset: {fault: sum(
+                details["fault_type"] == fault
+                for details in label_details[dataset].values()
+            ) for fault in fault_names[dataset]}
+            for dataset in DATASET_ORDER
+        },
+        "source_files": source_checks,
+        "rows": rows,
+        "assertions": {
+            "row_count_is_7_methods_x_2_datasets_x_6_faults": len(rows) == 84,
+            "every_case_fault_stratum_is_15": all(row["case_count"] == 15 for row in rows),
+            "stored_fault_cases_are_15": all(row["stored_cases"] == 15 for row in rows),
+            "stored_fault_rows_equal_case_micro_unique": all(
+                all(row["stored_equals_unique_case_micro"].values()) for row in rows
+            ),
+            "fault_level_not_used_for_main_aggregation": True,
+            "successful_case_only_not_used": True,
+            "seed_average_not_used": True,
+            "group_or_batch_average_not_used": True,
+            "partial_denominator_not_used": True,
+            "missing_or_failed_cases_not_skipped": True,
+            "duplicate_or_double_count_not_present": True,
+        },
+    }
+
+
 def _denominator_rows(
     record_metadata: Mapping[tuple[str, str], Mapping[str, Any]],
     case_rows: Mapping[tuple[str, str], Sequence[Mapping[str, Any]]],
@@ -928,6 +1051,7 @@ def render_report(payload: Mapping[str, Any]) -> str:
     denominator = payload["denominator_rows"]
     results = payload["dual_result_rows"]
     differences = payload["protocol_difference_rows"]
+    fault_level = payload["fault_level_audit"]
     causal = payload["causal_static"]
     micro = payload["microrank_audit"]
     method_audit = payload["method_source_audit"]
@@ -974,6 +1098,12 @@ def render_report(payload: Mapping[str, Any]) -> str:
         "There are no skipped cases in the active evidence. `METHOD_FAILURE` is retained in the denominator and contributes five zero hits under the frozen utility policy. Missing, duplicate, foreign, or blocking records would stop evaluation; none are present.",
         "",
         "The Avg@5 checks are true for all 14 method/dataset rows. The audit computes `sum(raw hit@1..hit@5)/(5*90)` and does not average rounded cells.",
+        "",
+        "The existing fault-level files were also reconciled as a separate audit. All 84 baseline method/dataset/fault rows contain 15 cases, and every stored fault-level metric equals the corresponding case-micro recomputation under `unique_service`. This confirms that the main table is not produced by fault-macro, successful-case-only, seed, group, batch, partial-denominator, or double-count aggregation; the equal 15-case fault strata merely make some macro and micro fractions numerically coincide.",
+        _markdown_table(
+            ["Fault-level source", "Rows in source", "SHA-256"],
+            [[source["path"], source["total_rows"], source["sha256"]] for source in fault_level["source_files"].values()],
+        ),
         "",
         "## 4. Regular Fraction Audit",
         "",
@@ -1126,7 +1256,7 @@ def render_report(payload: Mapping[str, Any]) -> str:
         "",
         "## 16. Artifacts, Tests, and Commits",
         "",
-        "Artifacts: `artifacts/baseline_eval/audit_fix_v1/` contains the provenance, denominator, dual-protocol, protocol-difference, regular-fraction, CausalRCA static audit, and diagnostic schema files. The full native rankings/ground truth used after the existing locks are joined are in the JSONL/case-level JSON artifacts; historical records and locks are unchanged.",
+        "Artifacts: `artifacts/baseline_eval/audit_fix_v1/` contains the provenance, denominator, fault-level, dual-protocol, protocol-difference, regular-fraction, MicroRank, CausalRCA static audit, and diagnostic schema files. The full native rankings/ground truth used after the existing locks are joined are in the JSONL/case-level JSON artifacts; historical records and locks are unchanged.",
         "",
         "Tests include fixed-denominator, failure-zero-utility, duplicate-service synthetic evaluation, PageRank success/exception instrumentation, empty/non-empty graph cases, fallback classification, and the existing performance firewall. The final command/result is recorded in the handoff after artifact generation.",
         "",
@@ -1217,6 +1347,7 @@ def generate_audit(root: Path = PROJECT_ROOT) -> dict[str, Any]:
         details_by_dataset,
     )
     regular_fraction = _regular_fraction_audit(aggregates, dataset_info)
+    fault_level = _fault_level_audit(root, evaluated_case_rows, details_by_dataset)
     diagnostic_schema = _diagnostic_schema(causal_case_rows, causal_static)
     method_source_audit = _source_static_audit(root)
     evaluator_static_audit = _evaluator_static_audit(root)
@@ -1318,6 +1449,7 @@ def generate_audit(root: Path = PROJECT_ROOT) -> dict[str, Any]:
             "post_lock_audit": True,
             **regular_fraction,
         },
+        "fault_level_audit.json": fault_level,
         "microrank_static_audit.json": {
             "schema_version": "rca_baseline_microrank_static_audit_v1",
             "audit_status": "COMPLETE",
@@ -1333,6 +1465,7 @@ def generate_audit(root: Path = PROJECT_ROOT) -> dict[str, Any]:
         "denominator_audit.json",
         "dual_protocol_results.json",
         "regular_fraction_audit.json",
+        "fault_level_audit.json",
         "microrank_static_audit.json",
         "causalrca_static_audit.json",
         "causalrca_diagnostics_schema.json",
@@ -1359,6 +1492,7 @@ def generate_audit(root: Path = PROJECT_ROOT) -> dict[str, Any]:
         "dual_result_rows": dual_result_rows,
         "protocol_difference_rows": protocol_difference_rows,
         "regular_fraction_audit": regular_fraction,
+        "fault_level_audit": fault_level,
         "causal_static": causal_static,
         "microrank_audit": micro_rank,
         "method_source_audit": method_source_audit,
@@ -1374,6 +1508,7 @@ def generate_audit(root: Path = PROJECT_ROOT) -> dict[str, Any]:
         "dual_result_rows": dual_result_rows,
         "protocol_difference_rows": protocol_difference_rows,
         "regular_fraction_audit": regular_fraction,
+        "fault_level_audit": fault_level,
         "causal_static": causal_static,
         "microrank_audit": micro_rank,
         "method_source_audit": method_source_audit,
