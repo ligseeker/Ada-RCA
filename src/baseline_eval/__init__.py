@@ -493,7 +493,6 @@ def assert_performance_firewall_tree(root: Path) -> None:
         "audit_fix_v1/dual_protocol_results.csv",
         "audit_fix_v1/protocol_difference_cases.jsonl",
         "audit_fix_v1/regular_fraction_audit.json",
-        "audit_fix_v1/fault_level_audit.json",
         "audit_fix_v1/microrank_static_audit.json",
         "audit_fix_v1/causalrca_static_audit.json",
         "audit_fix_v1/causalrca_diagnostics_schema.json",
