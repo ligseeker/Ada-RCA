@@ -1,10 +1,10 @@
 # RCAEval Confirmatory Baseline Execution Status and Handoff
 
 Status: **POST-LOCK INDEPENDENT BASELINE AUDIT COMPLETE — CAUSALRCA RUNTIME NOT EXECUTED**
-State revision: `2026-09-12.1`
+State revision: `2026-09-12.2`
 Last operational audit: 2026-09-12, Asia/Shanghai
 Branch: `evaluation/rcaeval-baselines`  
-Last synchronized central commit: `46c8450` audit evidence; this handoff follows
+Last synchronized central commit: `1ccad06` audit evidence-preserving revert; this handoff follows
 
 This is the canonical operational handoff for the RCAEval confirmatory
 baseline work. Read it at the start of every new session and update it after
@@ -62,7 +62,7 @@ contents, and update this document.
 | Final validation before audit | common-env unittest `262 tests`, pytest `262 passed`; old V2 SHA identity audit PASS | complete |
 | Independent audit provenance | `artifacts/baseline_eval/audit_fix_v1/provenance_audit.json`; pinned RCAEval `5e96b700`; local audit source HEAD `218eb30` | complete; post-lock |
 | Independent audit artifacts | `artifacts/baseline_eval/audit_fix_v1/`; report `RCA_BASELINE_AUDIT_FIX_V1.md` | complete; committed `46c8450` |
-| Final audit validation | common-env unittest `275 tests`, `0` failures; JSON/CSV/JSONL integrity checks PASS | complete |
+| Final audit validation | common-env unittest `275 tests`, `0` failures; JSON/CSV/JSONL integrity checks PASS; fault-level reconciliation PASS | complete |
 
 The `.gitignore` change was re-audited. It does **not** add ignore patterns; it
 only removes the final newline from the existing `artifacts/cache/` line. On
@@ -442,6 +442,13 @@ CausalRCA extension lock verify centrally.
   there are no missing, duplicate, foreign, or blocking records. Existing
   `METHOD_FAILURE` records remain in the 90-case denominator and have zero
   utility. Historical records and locks were not modified.
+- The existing fault-level evaluation source was independently checked without
+  writing a new performance artifact: all 84 baseline method/dataset/fault
+  rows (7 x 2 x 6) contain 15 cases, and their stored AC@1/3/5 and Avg@5
+  values exactly equal the case-micro `unique_service` recomputation. This is
+  a consistency check only; fault-level, seed, group, batch, successful-only,
+  partial-denominator, and duplicate aggregation are not used for the main
+  table.
 - The dual evaluator was frozen before the final comparison: `unique_service`
   retains the current alias/longest-prefix/first-occurrence adapter behavior;
   `rcaeval_service_slot` follows pinned native entity projection and the
