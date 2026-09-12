@@ -1,4 +1,5 @@
 import csv
+import inspect
 from pathlib import Path
 import tempfile
 import unittest
@@ -8,8 +9,10 @@ from src.rca.supervised_baselines.dejavu_adapter import (
     audit_case_source,
     audit_source_registry,
     build_graph_spec,
+    dejavu_fold_partitions,
     prepare_metric_tensor,
 )
+from src.rca.supervised_baselines.dejavu import DEJAVU_CONFIG, PreparedDejaVuEvent
 
 
 class DejaVuSourceAuditTest(unittest.TestCase):
@@ -165,6 +168,36 @@ class DejaVuSourceAuditTest(unittest.TestCase):
                     "destination_indices": [2],
                 },
             )
+
+    def test_inner_validation_uses_only_outer_train_repetitions(self):
+        project_root = Path(__file__).resolve().parents[1]
+        for dataset in ("re2ob", "re2tt"):
+            for fold in (0, 1, 2):
+                train_ids, validation_ids, test_ids = dejavu_fold_partitions(
+                    project_root, dataset, fold
+                )
+                self.assertEqual(len(train_ids), 30)
+                self.assertEqual(len(validation_ids), 30)
+                self.assertEqual(len(test_ids), 30)
+                self.assertFalse(set(train_ids) & set(validation_ids))
+                self.assertFalse(set(train_ids) & set(test_ids))
+                self.assertFalse(set(validation_ids) & set(test_ids))
+                self.assertEqual(len(set(train_ids) | set(validation_ids) | set(test_ids)), 90)
+
+    def test_model_configuration_and_prediction_event_are_frozen_label_free(self):
+        self.assertEqual(DEJAVU_CONFIG["feature_projector_type"], "CNN")
+        self.assertEqual(DEJAVU_CONFIG["FI_feature_dim"], 3)
+        self.assertEqual(DEJAVU_CONFIG["GAT_layers"], 1)
+        self.assertEqual(DEJAVU_CONFIG["GAT_num_heads"], 1)
+        self.assertEqual(DEJAVU_CONFIG["learning_rate"], 1e-2)
+        self.assertEqual(DEJAVU_CONFIG["weight_decay"], 1e-2)
+        self.assertEqual(DEJAVU_CONFIG["max_epochs"], 3000)
+        self.assertFalse(DEJAVU_CONFIG["automatic_lr_find"])
+        self.assertFalse(DEJAVU_CONFIG["stock_test_callback"])
+        fields = set(inspect.signature(PreparedDejaVuEvent).parameters)
+        self.assertNotIn("root_service", fields)
+        self.assertNotIn("fault_type", fields)
+        self.assertNotIn("condition", fields)
 
 
 if __name__ == "__main__":
