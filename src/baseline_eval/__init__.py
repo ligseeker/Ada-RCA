@@ -461,10 +461,10 @@ def assert_firewall_safe_record(record: Mapping[str, Any]) -> None:
 def assert_performance_firewall_tree(root: Path) -> None:
     """Fail closed on unauthorized pre-lock or post-scope artifacts.
 
-    The V3 final-comparison directory is the one explicitly authorized
-    post-scope exception.  It is accepted only as the exact committed output
-    set, with its committed scope lock; arbitrary new result files remain a
-    firewall breach.
+    The V3 final-comparison directory and the post-lock audit-fix directory
+    are explicitly authorized exceptions.  Each is accepted only as its
+    exact committed output set, with a committed lock binding; arbitrary new
+    result files remain a firewall breach.
     """
 
     artifact_root = root / "artifacts" / "baseline_eval"
@@ -485,6 +485,17 @@ def assert_performance_firewall_tree(root: Path) -> None:
         "final_comparison_v3/comparability_v3.json",
         "final_comparison_v3/paired_bootstrap_v3.json",
     }
+    audit_fix_relatives = {
+        "audit_fix_v1/provenance_audit.json",
+        "audit_fix_v1/denominator_audit.json",
+        "audit_fix_v1/denominator_audit.csv",
+        "audit_fix_v1/dual_protocol_results.json",
+        "audit_fix_v1/dual_protocol_results.csv",
+        "audit_fix_v1/protocol_difference_cases.jsonl",
+        "audit_fix_v1/regular_fraction_audit.json",
+        "audit_fix_v1/causalrca_static_audit.json",
+        "audit_fix_v1/causalrca_diagnostics_schema.json",
+    }
     observed = {
         str(path.relative_to(artifact_root))
         for path in artifact_root.rglob("*")
@@ -496,7 +507,9 @@ def assert_performance_firewall_tree(root: Path) -> None:
         for path in observed
         if path.startswith(("execution_v1/", "execution_v2/", "execution_v2_causalrca_cpu/"))
     )
-    unexpected = sorted(observed.difference(allowed).difference(execution_files))
+    unexpected = sorted(
+        observed.difference(allowed).difference(execution_files).difference(audit_fix_relatives)
+    )
     allowed_execution_patterns = (
         re.compile(r"execution_v1/input_manifest_v1\.json"),
         re.compile(r"execution_v1/environments/(?:baro|circa|microcause|microrank|tracerca|mmbaro|causalrca)\.json"),
@@ -569,6 +582,37 @@ def assert_performance_firewall_tree(root: Path) -> None:
                 raise FirewallBreach(
                     f"V3 final-comparison artifact is not committed: {relative}"
                 )
+    observed_audit_outputs = observed.intersection(audit_fix_relatives)
+    if observed_audit_outputs:
+        if observed_audit_outputs != audit_fix_relatives:
+            raise FirewallBreach("audit-fix output set is incomplete")
+        audit_lock = artifact_root / "execution_v2" / "prediction_lock_v2_causalrca.json"
+        if not audit_lock.is_file():
+            raise FirewallBreach("audit-fix outputs exist without the combined prediction lock")
+        provenance_path = artifact_root / "audit_fix_v1" / "provenance_audit.json"
+        try:
+            provenance_payload = json.loads(provenance_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise FirewallBreach("audit-fix provenance is not valid JSON") from exc
+        lock_binding = provenance_payload.get("global_prediction_lock", {})
+        if (
+            provenance_payload.get("schema_version") != "rca_baseline_provenance_audit_v1"
+            or provenance_payload.get("post_lock_audit") is not True
+            or provenance_payload.get("causalrca_runs_executed_by_codex") != 0
+            or lock_binding.get("path") != "artifacts/baseline_eval/execution_v2/prediction_lock_v2_causalrca.json"
+            or lock_binding.get("sha256") != _sha256(audit_lock)
+        ):
+            raise FirewallBreach("audit-fix provenance does not bind the locked post-label scope")
+        for relative in sorted(audit_fix_relatives):
+            committed = subprocess.run(
+                ("git", "show", f"HEAD:artifacts/baseline_eval/{relative}"),
+                cwd=root,
+                check=False,
+                capture_output=True,
+            )
+            path = artifact_root / relative
+            if committed.returncode != 0 or committed.stdout != path.read_bytes():
+                raise FirewallBreach(f"audit-fix artifact is not committed: {relative}")
     protocol = json.loads((artifact_root / "protocol_freeze_v1.json").read_text(encoding="utf-8"))
     provenance = json.loads((artifact_root / "provenance_v1.json").read_text(encoding="utf-8"))
     if protocol["performance_firewall"]["baseline_performance_exposed"]:
