@@ -12,6 +12,10 @@ from src.rca.supervised_baselines.common import (
     load_prediction_events,
 )
 from src.rca.supervised_baselines.aggregate import METHODS
+from src.rca.supervised_baselines.closure_diagnostics import (
+    classify_rank_transition,
+    summarize_rank_transitions,
+)
 from src.rca.supervised_baselines.xgb_ranker import XGB_CONFIG
 from src.rca.supervised_baselines.z2_xgb_ranker import (
     Z2_XGB_CONFIG,
@@ -107,6 +111,22 @@ class Z2XGBClosureTest(unittest.TestCase):
 
     def test_closure_aggregate_namespace_is_explicit(self):
         self.assertIn("z2_xgb", METHODS)
+
+    def test_rank_transition_direction_and_case_pairing(self):
+        self.assertEqual(classify_rank_transition(1, 2), "improved")
+        self.assertEqual(classify_rank_transition(2, 2), "unchanged")
+        self.assertEqual(classify_rank_transition(3, 2), "degraded")
+        old = {
+            "case-a": {"root_rank": 2, "fault_type": "mem", "root_service": "a", "fold": 0},
+            "case-b": {"root_rank": 1, "fault_type": "delay", "root_service": "b", "fold": 1},
+        }
+        new = {
+            "case-a": {"root_rank": 1, "fault_type": "mem", "root_service": "a", "fold": 0},
+            "case-b": {"root_rank": 3, "fault_type": "delay", "root_service": "b", "fold": 1},
+        }
+        summary = summarize_rank_transitions(new, old)
+        self.assertEqual(summary["case_count"], 2)
+        self.assertEqual(summary["overall"], {"improved": 1, "unchanged": 0, "degraded": 1})
 
 
 if __name__ == "__main__":
