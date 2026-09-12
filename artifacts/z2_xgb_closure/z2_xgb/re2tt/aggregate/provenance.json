@@ -1,0 +1,18 @@
+{
+  "ada_rca_metrics_sha256": "7dfcafc271420df860877e11c87778fba32a75793a3006a5ab48d3fad4f5ef5c",
+  "dataset": "re2tt",
+  "fold_directories": [
+    "fold_0",
+    "fold_1",
+    "fold_2"
+  ],
+  "frozen_input_sha256": {
+    "assignments": "88b4615ed3c950569ed7e4c4e9c66a302e8f88adf1715a8457540e00390b68e7",
+    "candidate_registry": "67ad834a58be40802d9a8071ae849b7812ee390b87b08b5d82567596a39d236a",
+    "feature_manifest": "ac0424a4018624a61e993649e2b94c678838a2d02dfc4bf8f5c1b0694a145256",
+    "split_manifest": "3c3947d6377433507ca1ea6b69d88f6d8f359b42937bbcff1a7ac98422f05d7e"
+  },
+  "generated_at": "2026-09-12T15:59:16.163142+00:00",
+  "method": "z2_xgb",
+  "schema_version": "supervised_baseline_aggregate_v1"
+}

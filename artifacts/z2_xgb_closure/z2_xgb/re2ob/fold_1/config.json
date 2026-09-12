@@ -1,0 +1,18 @@
+{
+  "colsample_bytree": 1.0,
+  "hyperparameter_search": false,
+  "input": "frozen Z2 68D only",
+  "learner": "xgboost.XGBRanker",
+  "learning_rate": 0.05,
+  "max_depth": 3,
+  "method": "z2_xgb_ranker",
+  "n_estimators": 200,
+  "n_jobs": 1,
+  "normalization": "none",
+  "objective": "rank:pairwise",
+  "random_state": 20260826,
+  "reg_lambda": 1.0,
+  "subsample": 1.0,
+  "tree_method": "hist",
+  "validation": null
+}
