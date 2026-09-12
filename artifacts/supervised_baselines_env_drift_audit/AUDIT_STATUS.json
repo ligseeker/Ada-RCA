@@ -1,0 +1,26 @@
+{
+  "comparison": "current-environment replay minus retained formal tcn/re2tt/fold_0",
+  "decision": "EXACT_REPLAY_PASS",
+  "excluded_from_formal_results": true,
+  "metric_mismatches": 0,
+  "non_score_row_mismatches": 0,
+  "replay_commit": "0e294ec",
+  "row_count": 2040,
+  "schema_version": "supervised_baseline_environment_drift_audit_v1",
+  "score_max_abs_delta": 0.0,
+  "score_nonzero_deltas": 0,
+  "version_difference": {
+    "formal": {
+      "numpy": "1.24.1",
+      "pandas": "1.5.3",
+      "scikit_learn": "1.2.1",
+      "torch": "1.12.0"
+    },
+    "replay": {
+      "numpy": "1.24.4",
+      "pandas": "2.0.3",
+      "scikit_learn": "1.3.2",
+      "torch": "1.12.0"
+    }
+  }
+}
