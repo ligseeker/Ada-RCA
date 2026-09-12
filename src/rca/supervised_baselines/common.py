@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 import platform
 import subprocess
-from typing import Callable, Dict, Iterable, Mapping, Sequence, Tuple
+from typing import Callable, Dict, Iterable, Mapping, Optional, Sequence, Tuple
 
 import numpy as np
 
@@ -50,10 +50,12 @@ class SupervisedEvent:
     candidates: Tuple[str, ...]
     z1: np.ndarray
     trajectory: np.ndarray
+    z2: Optional[np.ndarray] = None
 
     def __post_init__(self) -> None:
         z1 = np.asarray(self.z1, dtype=np.float64)
         trajectory = np.asarray(self.trajectory, dtype=np.float64)
+        z2 = None if self.z2 is None else np.asarray(self.z2, dtype=np.float64)
         candidate_count = len(self.candidates)
         if self.dataset not in DATASETS or self.fold not in FOLDS:
             raise ValueError("invalid dataset or fold")
@@ -61,10 +63,14 @@ class SupervisedEvent:
             raise ValueError("candidates must be unique")
         if z1.shape != (candidate_count, 32):
             raise ValueError("Z1 must be candidate x 32")
+        if z2 is not None and z2.shape != (candidate_count, 68):
+            raise ValueError("Z2 must be candidate x 68")
         if trajectory.shape != (candidate_count, 8, N_BINS):
             raise ValueError("trajectory must be candidate x 8 x 80")
         if not np.all(np.isfinite(z1)) or not np.all(np.isfinite(trajectory)):
             raise ValueError("supervised baseline inputs must be finite")
+        if z2 is not None and not np.all(np.isfinite(z2)):
+            raise ValueError("Z2 inputs must be finite")
         mask = trajectory[:, len(CHANNELS):, :]
         if not np.all((mask == 0.0) | (mask == 1.0)):
             raise ValueError("trajectory masks must be binary")
@@ -72,6 +78,7 @@ class SupervisedEvent:
             raise ValueError("missing trajectory cells must retain zero fill")
         object.__setattr__(self, "z1", z1)
         object.__setattr__(self, "trajectory", trajectory)
+        object.__setattr__(self, "z2", z2)
 
 
 def sha256_file(path: Path) -> str:
@@ -133,6 +140,7 @@ def load_prediction_events(project_root: Path, dataset: str) -> Mapping[str, Sup
             case_id = str(data["case_id"][0])
             event_candidates = tuple(str(value) for value in data["candidates"])
             base = np.asarray(data["base"], dtype=np.float64)
+            morphology = np.asarray(data["z2"], dtype=np.float64)
             z = np.asarray(data["z"], dtype=np.float64)
             q_mask = np.asarray(data["q_mask"], dtype=np.float64)
         if path.stem != case_id or event_candidates != candidates:
@@ -146,6 +154,7 @@ def load_prediction_events(project_root: Path, dataset: str) -> Mapping[str, Sup
             candidates=event_candidates,
             z1=base.reshape(len(candidates), -1),
             trajectory=np.concatenate((z, q_mask), axis=1),
+            z2=np.concatenate((base, morphology), axis=2).reshape(len(candidates), -1),
         )
     if set(events) != set(assignments):
         raise ValueError("features and assignments must align exactly")
@@ -345,6 +354,7 @@ def _allowed_untracked_artifact_prefixes(
             and (
                 parts[1] == "supervised_baselines"
                 or parts[1].startswith("supervised_baselines_")
+                or parts[1] == "z2_xgb_closure"
             )
         )
         if not is_supervised_namespace:
