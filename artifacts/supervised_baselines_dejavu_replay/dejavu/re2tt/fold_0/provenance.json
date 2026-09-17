@@ -1,0 +1,14 @@
+{
+  "adapter_protocol": "docs/supervised_baselines/DEJAVU_ADAPTER_PROTOCOL_V1.md",
+  "adapter_protocol_sha256": "60e8a95d1425545c2bdb3356461e2f1f0edc6b6cd1076719f09734ba859c18d3",
+  "branch": "evaluation/supervised-baselines",
+  "dataset": "re2tt",
+  "fold": 0,
+  "official_dejavu_commit": "d1f082b086cef5597f5301a7b02882b5d0238ebe",
+  "official_dejavu_root": "/home/zhangll24/RCA_project/DejaVu-pinned",
+  "prepared_manifest_sha256": "b17b12f9f8b4a45baa47955af5a822ac8fcf66425f7afc9757bdd4ddb0b5c6f7",
+  "run_role": "FORMAL_OOF_FOLD",
+  "schema_version": "dejavu_re2_fold_v1",
+  "source_commit": "c15e054ecbff9a7a54f26cb24c2e804c269da641",
+  "started_at": "2026-09-17T11:12:57.534104+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "config.json": "705e30b94de0a90c6424db9fde133ae5ed9b8b06beaefe52c8e35b58b7c325ac",
+  "environment.json": "c934e141588dbe47ede607e1524917ec8383fee84c83bc26820c2147487cafe8",
+  "integrity.json": "3202ff4fec8fb86f6e050918565accd1d997f05afee52a78fd00c9dd287666dc",
+  "label_firewall.json": "ea1bc6a6513bc7acbb221c98db6658857b2236e00867da4768224310e4bd86bb",
+  "metrics.json": "f53f30a52b96c05e0bfa99029ee28e8ec6a36b5aa4f18a1576aebc17ce28d77e",
+  "model_state.pt": "2aeb1b50f608e1255a948771bfaa50a3f5232b6c4f03e567ae01f71cc4f761d6",
+  "predictions.jsonl": "7c309369013cd12685c458b72b72a946223d174d8fa353ff6a654dda4553ee73",
+  "provenance.json": "8f0c5d804fd600a7989f6555804d099a55ef6bac10f06d983b0230adb9e6e5b9",
+  "runtime.json": "7ec6463b3786fda326489380bfb9773af45be8768cbbb3eb3d00853fb2d03c33",
+  "scores_label_free.npz": "e68c29fdf6b448d3012f9e001eebe6dc6972f7494c3846f163b93674c6c52bb4",
+  "status.json": "2cbd65aa6daf05523ffa3b0ad711a238f2f17b9189684566f07f720b8235cad4",
+  "training_history.json": "372e585ed25a63ab00021a094919729f0b96f7fe41d79e329e1174a43d39b4fb"
+}

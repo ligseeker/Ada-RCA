@@ -1,0 +1,10 @@
+{
+  "best_epoch": 10,
+  "best_validation_loss": 0.47092746098836263,
+  "elapsed_seconds": 12.437940372154117,
+  "epochs_executed": 510,
+  "inner_validation_cases": 30,
+  "model_train_cases": 30,
+  "outer_test_cases": 30,
+  "smoke": false
+}

@@ -1,0 +1,10 @@
+{
+  "candidate_row_count": 330,
+  "case_count": 30,
+  "complete_candidate_rows": true,
+  "complete_rank_permutations": true,
+  "complete_score_matrix_before_label_join": true,
+  "expected_candidate_row_count": 330,
+  "graph_node_count_complete": true,
+  "status": "PASS"
+}

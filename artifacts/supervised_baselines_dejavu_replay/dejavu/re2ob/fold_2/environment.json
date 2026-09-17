@@ -1,0 +1,16 @@
+{
+  "PYTHONHASHSEED": "20260826",
+  "dejavu_environment_manifest_sha256": "3e086a8ce107048672b125ed21890bedbd8deff434435a94e8885e62dd558766",
+  "dgl": "0.8.2",
+  "networkx": "2.6.3",
+  "numpy": "1.21.6",
+  "pandas": "1.4.4",
+  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.17",
+  "python": "3.8.20",
+  "python_executable": "/home/zhangll24/.venvs/ada-rca-dejavu/bin/python",
+  "pytorch_lightning": "1.6.5",
+  "scikit_learn": "1.0.2",
+  "scipy": "1.6.3",
+  "torch": "1.12.0",
+  "torchmetrics": "0.9.3"
+}
